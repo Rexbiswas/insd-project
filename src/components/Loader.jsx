@@ -1,111 +1,108 @@
-import React, { useEffect, useState } from 'react';
-// eslint-disable-next-line no-unused-vars
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 
-const words = ["Extraordinary", "Unexpected", "Design", "Future", "INSD"];
-
 const Loader = ({ setLoading }) => {
-    const [count, setCount] = useState(0);
-    const [currentWordIndex, setCurrentWordIndex] = useState(0);
+    const containerRef = useRef(null);
+    const textRef = useRef(null);
+    const percentRef = useRef(null);
+    const [progress, setProgress] = useState(0);
 
-    useEffect(() => {
-        const totalDuration = 4000; // 4.5 seconds
-        const startTime = Date.now();
-        let animationFrameId;
-        let wordInterval;
+    useLayoutEffect(() => {
+        let ctx = gsap.context(() => {
+            const tl = gsap.timeline({
+                onComplete: () => {
+                    setLoading(false);
+                }
+            });
 
-        const updateCounter = () => {
-            const elapsedTime = Date.now() - startTime;
-            const progress = Math.min(elapsedTime / totalDuration, 1);
+            // 1. Counter Animation (0 to 100)
+            // We animate a proxy object to use GSAP's easing on the state update
+            const counter = { val: 0 };
+            tl.to(counter, {
+                val: 100,
+                duration: 2.5,
+                ease: "power2.inOut",
+                onUpdate: () => {
+                    if (percentRef.current) {
+                        percentRef.current.textContent = Math.floor(counter.val);
+                    }
+                }
+            });
 
-            const easedProgress = 1 - Math.pow(1 - progress, 4);
+            // 2. Text Reveal / Cycle during count
+            // "Design" -> "Innovation" -> "INSD"
+            const words = ["UNEXPECTED", "EXTRAORDINARY", "FUTURE", "INSD"];
+            const wordDuration = 2.5 / words.length;
 
-            setCount(Math.floor(easedProgress * 100));
+            words.forEach((word, index) => {
+                setTimeout(() => {
+                    if (textRef.current) textRef.current.innerText = word;
+                }, index * wordDuration * 1000);
+            });
 
-            if (progress < 1) {
-                animationFrameId = requestAnimationFrame(updateCounter);
-            } else {
-                // Animation Complete
-                finishAnimation();
-            }
-        };
+            // 3. The "Unexpected" Reveal
+            // The black background splits into strips or the counter zooms out
 
-        wordInterval = setInterval(() => {
-            setCurrentWordIndex((prev) => (prev + 1) % words.length);
-        }, 800); // Slower word cycle
-
-        const finishAnimation = () => {
-            clearInterval(wordInterval);
-            setCurrentWordIndex(words.length - 1); // Ensure it ends on INSD
-
-            const tl = gsap.timeline();
-            tl.to(".loader-text", {
-                y: -100,
+            // Phase 1: Text explodes/scales
+            tl.to(".loader-content", {
+                scale: 1.5,
                 opacity: 0,
+                duration: 0.5,
+                ease: "power2.in"
+            });
+
+            // Phase 2: Shutter Reveal (Vertical Strips)
+            const shutters = gsap.utils.toArray('.shutter');
+            tl.to(shutters, {
+                height: "0%",
                 duration: 0.8,
-                ease: "power3.inOut",
-                stagger: 0.1
-            })
-                .to(".loader-container", {
-                    clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
-                    duration: 1,
-                    ease: "expo.inOut",
-                    onComplete: () => setLoading(false)
-                }, "-=0.2");
-        };
+                stagger: 0.05,
+                ease: "power4.inOut"
+            }, "-=0.2");
 
-        animationFrameId = requestAnimationFrame(updateCounter);
+            // Phase 3: Container removal (just to be safe)
+            tl.to(containerRef.current, {
+                display: "none",
+                duration: 0
+            });
 
-        return () => {
-            clearInterval(wordInterval);
-            cancelAnimationFrame(animationFrameId);
-        };
+        }, containerRef);
+
+        return () => ctx.revert();
     }, [setLoading]);
 
     return (
-        <div className="loader-container fixed inset-0 z-[9999] bg-black text-white flex flex-col items-center justify-center overflow-hidden" style={{ clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" }}>
+        <div ref={containerRef} className="fixed inset-0 z-[9999] flex flex-col pointer-events-none">
 
-            {/* Dynamic Word Display */}
-            <div className="h-24 overflow-hidden mb-8 relative">
-                <AnimatePresence mode="wait">
-                    <motion.h1
-                        key={currentWordIndex}
-                        initial={{ y: 50, opacity: 0, rotateX: -90 }}
-                        animate={{ y: 0, opacity: 1, rotateX: 0 }}
-                        exit={{ y: -50, opacity: 0, rotateX: 90 }}
-                        transition={{ duration: 0.5, ease: "backOut" }}
-                        className="loader-text text-6xl md:text-8xl font-black tracking-tighter text-center"
-                    >
-                        {words[currentWordIndex]}
-                    </motion.h1>
-                </AnimatePresence>
+            {/* Shutter Layers for Reveal */}
+            <div className="absolute inset-0 flex flex-col md:flex-row h-full w-full">
+                {[...Array(5)].map((_, i) => (
+                    <div key={i} className="shutter relative w-full h-full bg-black border-r border-white/5 last:border-r-0"></div>
+                ))}
             </div>
 
-            {/* Progress Counter */}
-            <div className="absolute bottom-12 right-12">
-                <h2 className="loader-text text-8xl font-light opacity-50 font-mono">
-                    {count}%
-                </h2>
+            {/* Content Centered on top of shutters */}
+            <div className="loader-content absolute inset-0 z-10 flex flex-col items-center justify-center text-white mix-blend-difference">
+
+                {/* Flashing Text */}
+                <h1 ref={textRef} className="text-6xl md:text-9xl font-black uppercase tracking-tighter mb-4">
+                    INSD
+                </h1>
+
+                {/* Progress Bar & Number */}
+                <div className="flex items-center gap-4 overflow-hidden">
+                    <div className="h-[1px] w-24 bg-white/50">
+                        <div className="h-full bg-white w-full origin-left animate-[loading_2s_ease-in-out_infinite]"></div>
+                    </div>
+                    <span ref={percentRef} className="text-4xl md:text-6xl font-black font-mono">0</span>
+                    <span className="text-xl md:text-2xl font-bold align-top">%</span>
+                </div>
+
             </div>
 
-            {/* Progress Bar */}
-            <div className="absolute top-0 left-0 w-full h-1 bg-white/20">
-                <motion.div
-                    className="h-full bg-pink-500"
-                    initial={{ width: "0%" }}
-                    animate={{ width: `${count}%` }}
-                    transition={{ ease: "linear", duration: 0.1 }}
-                />
-            </div>
+            {/* Background Noise/texture for "Rough" feel */}
+            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none z-20"></div>
 
-            {/* Decorative Lines */}
-            <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute left-12 top-0 bottom-0 w-[1px] bg-white/10" />
-                <div className="absolute right-12 top-0 bottom-0 w-[1px] bg-white/10" />
-                <div className="absolute top-12 left-0 right-0 h-[1px] bg-white/10" />
-                <div className="absolute bottom-12 left-0 right-0 h-[1px] bg-white/10" />
-            </div>
         </div>
     );
 };
