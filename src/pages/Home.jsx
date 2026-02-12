@@ -58,6 +58,7 @@ const Home = () => {
     const cursorImgRef = useRef(null);
     const philosophyListRef = useRef(null);
     const studentRef = useRef(null);
+    const scrollHintRef = useRef(null);
     const legacyRef = useRef(null);
 
 
@@ -117,6 +118,53 @@ const Home = () => {
                 "-=1"
             );
 
+            // Floating Breath Animation for Hero Chars
+            gsap.to(chars, {
+                y: "-=20",
+                rotate: (i) => i % 2 === 0 ? 1.5 : -1.5,
+                duration: 2.5,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut",
+                stagger: {
+                    each: 0.15,
+                    from: "center"
+                },
+                delay: 2
+            });
+
+            // New Enhanced Scroll Hint Animation
+            const scrollHintTl = gsap.timeline({ delay: 0.5 });
+            scrollHintTl
+                .to(scrollHintRef.current.querySelector('.scroll-line-progress'), {
+                    scaleY: 1,
+                    duration: 1.2,
+                    ease: "expo.inOut"
+                })
+                .to(scrollHintRef.current.querySelector('.scroll-text-small'), {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: "power2.out"
+                }, "-=0.4")
+                .fromTo(scrollHintRef.current.querySelectorAll('.char-hint-extra'),
+                    { opacity: 0, scale: 0, rotate: -45, filter: "blur(10px)" },
+                    { opacity: 1, scale: 1, rotate: 0, filter: "blur(0px)", stagger: 0.03, duration: 1, ease: "back.out(1.7)" },
+                    "-=0.6"
+                )
+                .to(scrollHintRef.current.querySelector('.scroll-text-main'), {
+                    opacity: 1,
+                    duration: 0.1
+                }, "<")
+                // Infinite Pulsing Loop
+                .to(scrollHintRef.current.querySelector('.scroll-line-progress'), {
+                    yPercent: 100,
+                    duration: 1.5,
+                    repeat: -1,
+                    ease: "power1.inOut",
+                    repeatDelay: 0.5
+                });
+
             // 2. Infinite Marquee Animation
             gsap.to(marqueeRef.current, {
                 xPercent: -50,
@@ -124,12 +172,6 @@ const Home = () => {
                 duration: 20,
                 ease: "linear",
             });
-
-
-
-
-
-
 
             const scrollTl = gsap.timeline({
                 scrollTrigger: {
@@ -151,7 +193,30 @@ const Home = () => {
                     opacity: 0,
                     duration: 0.5,
                     ease: "power2.in"
-                }, "<+=1.2"); // Start fading out as zoom completes
+                }, "<+=1.2")
+                // Unexpected UI: Elements stay but evolve into functional UI
+                .to(scrollHintRef.current, {
+                    scale: window.innerWidth < 768 ? 0.6 : 0.8,
+                    x: window.innerWidth < 768 ? (window.innerWidth / 2) - 60 : (window.innerWidth / 2) - 100, // Responsive move
+                    y: window.innerWidth < 768 ? 20 : 40,
+                    duration: 1.5,
+                    ease: "power3.inOut"
+                }, 0)
+                .to(scrollHintRef.current.querySelector('.relative'), {
+                    rotation: 90,
+                    width: window.innerWidth < 768 ? 60 : 120, // Responsive width
+                    scaleX: 1,
+                    duration: 1.5,
+                    ease: "power3.inOut"
+                }, 0)
+                .to(subTitleRef.current, {
+                    scale: window.innerWidth < 768 ? 0.9 : 1.2,
+                    y: window.innerWidth < 768 ? 80 : 150,
+                    color: "#f472b6",
+                    opacity: 1, // Keep fully visible
+                    duration: 2,
+                    ease: "expo.out"
+                }, 0.5);
 
 
 
@@ -466,14 +531,33 @@ const Home = () => {
                     <div className="text-center">
                         <h1 ref={titleRef} className="text-[12vw] leading-[0.9] font-black uppercase tracking-tighter text-slate-900">
                             {/* INSD Text - Black Color becomes Transparent in Screen Mode */}
-                            <div ref={insdRef} className="text-black text-[28vw] md:text-[34vw] font-black leading-none flex justify-center items-center w-full mt-32 md:mt-0 tracking-tighter will-change-transform">
-                                {splitText("INSD", "char-extra inline-block origin-bottom")}
-                            </div>
-
-                            <div ref={subTitleRef} className="overflow-hidden text-transparent bg-clip-text bg-linear-to-r from-pink-600 via-violet-600 to-indigo-600 text-center">
-                                {splitText("Unexpected.", "char-extra inline-block")}
+                            <div ref={insdRef} className="text-black text-[28vw] md:text-[34vw] font-black leading-none flex justify-center items-center w-full tracking-tighter will-change-transform backface-hidden">
+                                {["I", "N", "S", "D"].map((char, index) => (
+                                    <span key={index} className="char-extra inline-block origin-bottom transition-all duration-300 hover:text-pink-600 hover:scale-110">
+                                        {char}
+                                    </span>
+                                ))}
                             </div>
                         </h1>
+                    </div>
+                </div>
+
+                <div className="absolute bottom-28 md:bottom-10 left-1/2 -translate-x-1/2 w-full flex flex-col items-center z-20 pointer-events-none">
+                    <div ref={scrollHintRef} className="flex flex-col items-center gap-2 md:gap-4 mb-4 md:mb-8">
+                        <div className="relative h-6 md:h-10 w-[1px] bg-slate-400/50 overflow-hidden rounded-full">
+                            <div className="scroll-line-progress absolute top-0 left-0 w-full h-full bg-linear-to-b from-pink-500 via-violet-600 to-indigo-600 origin-top scale-y-0" />
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <p className="scroll-text-small text-[8px] md:text-[14px] font-mono uppercase tracking-[0.6em] text-slate-500 mb-1 md:mb-2 opacity-0 text-center whitespace-nowrap">
+                                Shift your perspective
+                            </p>
+                            <div className="scroll-text-main text-sm md:text-2xl font-black italic tracking-tight uppercase text-slate-900 opacity-0 whitespace-nowrap">
+                                {splitText("Keep Scrolling", "char-hint-extra inline-block")}
+                            </div>
+                        </div>
+                    </div>
+                    <div ref={subTitleRef} className="overflow-hidden text-transparent bg-clip-text bg-linear-to-r from-pink-600 via-violet-600 to-indigo-600 text-center whitespace-nowrap opacity-100 text-2xl md:text-4xl">
+                        {splitText("Unexpected.", "char-extra inline-block")}
                     </div>
                 </div>
 
@@ -872,6 +956,7 @@ const Home = () => {
                 </div>
             </div>
             {/* Separate Impact Stats Section */}
+
             <ImpactStats />
             <TestimonialSlider />
             <FeaturedIn />

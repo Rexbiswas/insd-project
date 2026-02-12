@@ -6,6 +6,7 @@ import Home from './pages/Home';
 
 import Page from './pages/Page';
 import Loader from './components/Loader';
+import BackToTop from './components/BackToTop';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -41,6 +42,7 @@ function App() {
             <Route path="*" element={<Page title="404 Not Found" />} />
           </Routes>
         </div>
+        <BackToTop />
       </Router>
     </>
   );
