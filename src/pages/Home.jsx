@@ -26,14 +26,28 @@ const Home = () => {
 
     const insdRef = useRef(null);
     const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+    const [activeFilter, setActiveFilter] = React.useState(null);
+    const [searchQuery, setSearchQuery] = React.useState("");
 
     const programs = {
         masters: ["Luxury Brand Management", "Fashion Design", "Graphic Design", "Jewellery Design", "Textile Design", "Interior Design", "Animation"],
-        bachelors: ["Fashion Design", "Graphic Design", "Jewellery Design", "Textile Design", "Interior Design", "Animation"],
-        diploma_two: ["Fashion Design", "Graphic Design", "Textile Design", "Interior Design", "Animation"],
-        diploma_one: ["Fashion Design", "Graphic Design", "Jewellery Design", "Textile Design", "Interior Design", "Animation"],
-        short: ["Fashion Design", "Interior Design"]
+        bachelors: ["Fashion Design", "Interior Design", "Communication Design", "Textile Design", "Product Design", "Strategic Innovation & Design"],
+        diploma_two: ["Fashion Design & Tech", "Interior Design & Tech", "Animation & VFX", "Graphic Design", "Textile Design"],
+        diploma_one: ["Fashion Design", "Interior Design", "Graphic Design", "Photography"],
+        short: ["Fashion Styling", "Luxury Brand Management", "Jewellery Design", "Photography"]
     };
+
+    // Filter Logic Helper
+    const filterPrograms = (list) => {
+        return list.filter(item => {
+            const matchesFilter = !activeFilter || item.includes(activeFilter);
+            const matchesSearch = item.toLowerCase().includes(searchQuery.toLowerCase());
+            return matchesFilter && matchesSearch;
+        });
+    };
+
+    // Check if any items exist for a category after filter
+    const hasItems = (list) => filterPrograms(list).length > 0;
     const subTitleRef = useRef(null);
     const maskRef = useRef(null);
 
@@ -452,8 +466,8 @@ const Home = () => {
                     <div className="text-center">
                         <h1 ref={titleRef} className="text-[12vw] leading-[0.9] font-black uppercase tracking-tighter text-slate-900">
                             {/* INSD Text - Black Color becomes Transparent in Screen Mode */}
-                            <div ref={insdRef} className="text-black text-[34vw] font-black leading-none flex justify-center items-center w-full mt-25">
-                                {splitText("INSD", "char-extra inline-block")}
+                            <div ref={insdRef} className="text-black text-[28vw] md:text-[34vw] font-black leading-none flex justify-center items-center w-full mt-32 md:mt-0 tracking-tighter will-change-transform">
+                                {splitText("INSD", "char-extra inline-block origin-bottom")}
                             </div>
 
                             <div ref={subTitleRef} className="overflow-hidden text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-violet-600 to-indigo-600 text-center">
@@ -470,10 +484,10 @@ const Home = () => {
             </div>
 
             {/* Marquee Strip */}
-            <div className="relative z-20 py-12 bg-black text-white overflow-hidden rotate-2 scale-110 border-y-8 border-white">
-                <div ref={marqueeRef} className="whitespace-nowrap flex text-8xl font-black tracking-tighter uppercase">
-                    <span className="pr-12">Fashion • Design • Innovation • Creativity • Future • Style •</span>
-                    <span className="pr-12">Fashion • Design • Innovation • Creativity • Future • Style •</span>
+            <div className="relative z-20 py-6 md:py-12 bg-black text-white overflow-hidden rotate-2 scale-110 border-y-4 md:border-y-8 border-white">
+                <div ref={marqueeRef} className="whitespace-nowrap flex text-4xl md:text-8xl font-black tracking-tighter uppercase">
+                    <span className="pr-6 md:pr-12">Fashion • Design • Innovation • Creativity • Future • Style •</span>
+                    <span className="pr-6 md:pr-12">Fashion • Design • Innovation • Creativity • Future • Style •</span>
                 </div>
             </div>
 
@@ -712,9 +726,14 @@ const Home = () => {
                                 <div className="flex items-center gap-6 border-b border-white/20 pb-4 mb-10 group-focus-within:border-purple-500 transition-colors duration-300">
                                     <div className="w-4 h-4 rounded-full bg-purple-500 animate-pulse"></div>
                                     <input
-                                        type="text"
+                                        type="search"
+                                        value={searchQuery}
+                                        onChange={(e) => {
+                                            setSearchQuery(e.target.value);
+                                            if (e.target.value) setIsDropdownOpen(true);
+                                        }}
                                         placeholder="Search Courses..."
-                                        className="bg-transparent border-none outline-none text-3xl md:text-4xl font-light text-white placeholder-slate-600 w-full"
+                                        className="bg-transparent border-none outline-none text-xl md:text-4xl font-light text-white placeholder-slate-600 w-full"
                                     />
                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="opacity-50 group-focus-within:opacity-100 group-focus-within:text-purple-400 transition-all duration-300">
                                         <circle cx="11" cy="11" r="8"></circle>
@@ -724,26 +743,40 @@ const Home = () => {
 
                                 {/* Expanded Program Explorer */}
                                 <div className="mt-8 transition-all duration-500 ease-in-out">
-                                    <div className="flex justify-between items-center mb-6">
+                                    <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:items-center mb-6 w-full">
                                         <button
                                             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                                            className="flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-slate-300 hover:text-white transition-colors group/btn"
+                                            className="flex items-center justify-between md:justify-start w-full md:w-auto gap-3 text-sm font-bold uppercase tracking-widest text-slate-300 hover:text-white transition-colors group/btn"
                                         >
-                                            <span className={`h-[1px] bg-current transition-all duration-300 ${isDropdownOpen ? 'w-12 bg-purple-500' : 'w-6'}`}></span>
-                                            {isDropdownOpen ? 'Close Programs' : 'Browse All Programs'}
+                                            <div className="flex items-center gap-3">
+                                                <span className={`h-[1px] bg-current transition-all duration-300 ${isDropdownOpen ? 'w-12 bg-purple-500' : 'w-6'}`}></span>
+                                                {isDropdownOpen ? 'Close Programs' : 'Browse All Programs'}
+                                            </div>
+                                            {/* Mobile Arrow Hint */}
+                                            <span className="md:hidden text-lg rotate-90 opacity-50">›</span>
                                         </button>
 
-                                        {!isDropdownOpen && (
-                                            <motion.div
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: 1 }}
-                                                className="flex gap-2"
+                                        <motion.div
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            className="flex gap-2 w-full md:w-auto overflow-x-auto custom-scrollbar pb-2 md:pb-0"
+                                        >
+                                            <span
+                                                onClick={() => { setActiveFilter(null); setIsDropdownOpen(true); }}
+                                                className={`px-4 py-2 md:px-3 md:py-1 whitespace-nowrap rounded-full border text-xs font-medium transition-colors duration-300 cursor-pointer ${activeFilter === null ? 'bg-white text-black border-white' : 'border-white/20 text-slate-300 bg-white/5 hover:bg-white hover:text-black'}`}
                                             >
-                                                {["Fashion", "Interior", "Luxury"].map((tag, i) => (
-                                                    <span key={i} className="px-3 py-1 rounded-full border border-white/20 text-xs font-medium text-slate-300 hover:bg-white hover:text-black transition-colors duration-300 cursor-pointer">{tag}</span>
-                                                ))}
-                                            </motion.div>
-                                        )}
+                                                All
+                                            </span>
+                                            {["Fashion", "Interior", "Luxury", "Graphic", "Animation"].map((tag, i) => (
+                                                <span
+                                                    key={i}
+                                                    onClick={() => { setActiveFilter(activeFilter === tag ? null : tag); setIsDropdownOpen(true); }}
+                                                    className={`px-4 py-2 md:px-3 md:py-1 whitespace-nowrap rounded-full border text-xs font-medium transition-colors duration-300 cursor-pointer ${activeFilter === tag ? 'bg-white text-black border-white' : 'border-white/20 text-slate-300 bg-white/5 hover:bg-white hover:text-black'}`}
+                                                >
+                                                    {tag}
+                                                </span>
+                                            ))}
+                                        </motion.div>
                                     </div>
 
                                     <AnimatePresence>
@@ -758,52 +791,72 @@ const Home = () => {
                                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 pt-4 pb-2 border-t border-white/10">
 
                                                     {/* Masters */}
-                                                    <div>
-                                                        <h4 className="text-purple-400 font-mono text-xs uppercase tracking-widest mb-4">Masters (M.Des)</h4>
-                                                        <ul className="space-y-2">
-                                                            {programs.masters.map((item, i) => (
-                                                                <li key={i} className="text-slate-400 hover:text-white hover:translate-x-2 transition-all duration-300 cursor-pointer text-sm">{item}</li>
-                                                            ))}
-                                                        </ul>
-                                                    </div>
+                                                    {hasItems(programs.masters) && (
+                                                        <div>
+                                                            <h4 className="text-purple-400 font-mono text-xs uppercase tracking-widest mb-4">Masters (M.Des)</h4>
+                                                            <ul className="space-y-2">
+                                                                {filterPrograms(programs.masters).map((item, i) => (
+                                                                    <li key={i} className="text-slate-400 hover:text-white hover:translate-x-2 transition-all duration-300 cursor-pointer text-sm">{item}</li>
+                                                                ))}
+                                                            </ul>
+                                                        </div>
+                                                    )}
 
                                                     {/* Bachelors */}
-                                                    <div>
-                                                        <h4 className="text-pink-400 font-mono text-xs uppercase tracking-widest mb-4">Bachelors (B.Des)</h4>
-                                                        <ul className="space-y-2">
-                                                            {programs.bachelors.map((item, i) => (
-                                                                <li key={i} className="text-slate-400 hover:text-white hover:translate-x-2 transition-all duration-300 cursor-pointer text-sm">{item}</li>
-                                                            ))}
-                                                        </ul>
-                                                    </div>
+                                                    {hasItems(programs.bachelors) && (
+                                                        <div>
+                                                            <h4 className="text-pink-400 font-mono text-xs uppercase tracking-widest mb-4">Bachelors (B.Des)</h4>
+                                                            <ul className="space-y-2">
+                                                                {filterPrograms(programs.bachelors).map((item, i) => (
+                                                                    <li key={i} className="text-slate-400 hover:text-white hover:translate-x-2 transition-all duration-300 cursor-pointer text-sm">{item}</li>
+                                                                ))}
+                                                            </ul>
+                                                        </div>
+                                                    )}
 
                                                     {/* Diplomas */}
                                                     <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-8 mt-4 pt-8 border-t border-white/5">
-                                                        <div>
-                                                            <h4 className="text-blue-400 font-mono text-xs uppercase tracking-widest mb-4">Adv. Diploma (2 Years)</h4>
-                                                            <ul className="space-y-2">
-                                                                {programs.diploma_two.map((item, i) => (
-                                                                    <li key={i} className="text-slate-400 hover:text-white hover:translate-x-2 transition-all duration-300 cursor-pointer text-sm">{item}</li>
-                                                                ))}
-                                                            </ul>
-                                                        </div>
-                                                        <div>
-                                                            <h4 className="text-blue-400 font-mono text-xs uppercase tracking-widest mb-4">Diploma (1 Year)</h4>
-                                                            <ul className="space-y-2">
-                                                                {programs.diploma_one.map((item, i) => (
-                                                                    <li key={i} className="text-slate-400 hover:text-white hover:translate-x-2 transition-all duration-300 cursor-pointer text-sm">{item}</li>
-                                                                ))}
-                                                            </ul>
-                                                        </div>
-                                                        <div>
-                                                            <h4 className="text-yellow-400 font-mono text-xs uppercase tracking-widest mb-4">Short Courses</h4>
-                                                            <ul className="space-y-2">
-                                                                {programs.short.map((item, i) => (
-                                                                    <li key={i} className="text-slate-400 hover:text-white hover:translate-x-2 transition-all duration-300 cursor-pointer text-sm">{item}</li>
-                                                                ))}
-                                                            </ul>
-                                                        </div>
+                                                        {hasItems(programs.diploma_two) && (
+                                                            <div>
+                                                                <h4 className="text-blue-400 font-mono text-xs uppercase tracking-widest mb-4">Adv. Diploma (2 Years)</h4>
+                                                                <ul className="space-y-2">
+                                                                    {filterPrograms(programs.diploma_two).map((item, i) => (
+                                                                        <li key={i} className="text-slate-400 hover:text-white hover:translate-x-2 transition-all duration-300 cursor-pointer text-sm">{item}</li>
+                                                                    ))}
+                                                                </ul>
+                                                            </div>
+                                                        )}
+                                                        {hasItems(programs.diploma_one) && (
+                                                            <div>
+                                                                <h4 className="text-blue-400 font-mono text-xs uppercase tracking-widest mb-4">Diploma (1 Year)</h4>
+                                                                <ul className="space-y-2">
+                                                                    {filterPrograms(programs.diploma_one).map((item, i) => (
+                                                                        <li key={i} className="text-slate-400 hover:text-white hover:translate-x-2 transition-all duration-300 cursor-pointer text-sm">{item}</li>
+                                                                    ))}
+                                                                </ul>
+                                                            </div>
+                                                        )}
+                                                        {hasItems(programs.short) && (
+                                                            <div>
+                                                                <h4 className="text-yellow-400 font-mono text-xs uppercase tracking-widest mb-4">Short Courses</h4>
+                                                                <ul className="space-y-2">
+                                                                    {filterPrograms(programs.short).map((item, i) => (
+                                                                        <li key={i} className="text-slate-400 hover:text-white hover:translate-x-2 transition-all duration-300 cursor-pointer text-sm">{item}</li>
+                                                                    ))}
+                                                                </ul>
+                                                            </div>
+                                                        )}
                                                     </div>
+
+                                                    {/* No Results Message */}
+                                                    {!hasItems(programs.masters) && !hasItems(programs.bachelors) &&
+                                                        !hasItems(programs.diploma_two) && !hasItems(programs.diploma_one) &&
+                                                        !hasItems(programs.short) && (
+                                                            <div className="col-span-full py-10 text-center text-slate-400">
+                                                                <p className="text-xl italic">No programs found matching "{searchQuery}"</p>
+                                                                {activeFilter && <p className="text-sm mt-2">Try removing the "{activeFilter}" filter</p>}
+                                                            </div>
+                                                        )}
                                                 </div>
                                             </motion.div>
                                         )}

@@ -22,6 +22,7 @@ const RollerLink = ({ to, children, colorClass, baseTextClass = "text-slate-800"
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [activeSubMenu, setActiveSubMenu] = useState(null);
     const { scrollY } = useScroll();
 
     // Scroll animations - using direct scrollY for instant responsiveness
@@ -62,10 +63,28 @@ const Navbar = () => {
 
     const menuItems = [
         { title: 'About Us', path: '/about-us' },
-        { title: 'Courses', path: '/courses' },
-        { title: 'Campuses', path: '/campuses' },
+        {
+            title: 'Courses',
+            path: '/courses',
+            subItems: [
+                { name: 'Fashion Design', path: '/courses/fashion-design' },
+                { name: 'Interior Design', path: '/courses/interior-design' },
+                { name: 'Graphic Design', path: '/courses/graphic-design' },
+                { name: 'Animation', path: '/courses/animation' },
+                { name: 'Textile Design', path: '/courses/textile-design' }
+            ]
+        },
+        {
+            title: 'Campuses',
+            path: '/campuses',
+            subItems: [
+                { name: 'Delhi', path: '/campuses/delhi' },
+                { name: 'Mumbai', path: '/campuses/mumbai' },
+                { name: 'Bangalore', path: '/campuses/bangalore' },
+                { name: 'Pune', path: '/campuses/pune' }
+            ]
+        },
         { title: 'Student Careers', path: '/student-careers' },
-
         { title: 'INSD 360', path: '/insd-360' },
         { title: 'Apply', path: '/apply' },
         { title: 'Contact Us', path: '/contact-us' },
@@ -227,9 +246,29 @@ const Navbar = () => {
                             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 w-full h-full">
 
                                 {/* Navigation Links Area (Main focus) */}
-                                <div className="lg:col-span-8 flex flex-col justify-center space-y-2">
+                                <div className="lg:col-span-8 flex flex-col justify-center space-y-2 h-full overflow-y-auto no-scrollbar pb-24">
+
+                                    {/* Search Bar - Mobile/Menu Responsive */}
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.3 }}
+                                        className="mb-8 w-full max-w-md"
+                                    >
+                                        <div className="relative group">
+                                            <input
+                                                type="text"
+                                                placeholder="Search programs, campuses..."
+                                                className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-4 text-white placeholder:text-slate-500 focus:outline-none focus:border-pink-500 focus:bg-white/10 transition-all font-mono text-sm tracking-wide"
+                                            />
+                                            <div className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-pink-500 transition-colors">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                            </div>
+                                        </div>
+                                    </motion.div>
+
                                     {menuItems.map((link, index) => (
-                                        <div key={link.title} className="overflow-hidden group perspective-[1000px]">
+                                        <div key={link.title} className="group perspective-[1000px]">
                                             <motion.div
                                                 initial={{ y: "100%", rotateX: -90, opacity: 0 }}
                                                 animate={{ y: "0%", rotateX: 0, opacity: 1 }}
@@ -241,20 +280,59 @@ const Navbar = () => {
                                                 }}
                                                 className="origin-bottom"
                                             >
-                                                <NavLink
-                                                    to={link.path}
-                                                    onClick={() => setIsOpen(false)}
-                                                    className={({ isActive }) =>
-                                                        `relative inline-flex items-center text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter uppercase transition-colors duration-300 ${isActive || ['Admission', 'Franchise'].includes(link.title) ? 'text-white' : 'text-slate-600 hover:text-white'}`
-                                                    }
-                                                >
-                                                    <span className="absolute -left-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-pink-500 text-4xl">
-                                                        <ArrowRight />
-                                                    </span>
-                                                    <span className="relative z-10 group-hover:translate-x-4 transition-transform duration-300">
-                                                        {link.title}
-                                                    </span>
-                                                </NavLink>
+                                                {!link.subItems ? (
+                                                    <NavLink
+                                                        to={link.path}
+                                                        onClick={() => setIsOpen(false)}
+                                                        className={({ isActive }) =>
+                                                            `relative inline-flex items-center text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter uppercase transition-colors duration-300 ${isActive || ['Admission', 'Franchise'].includes(link.title) ? 'text-white' : 'text-slate-600 hover:text-white'}`
+                                                        }
+                                                    >
+                                                        <span className="absolute -left-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-pink-500 text-4xl hidden lg:block">
+                                                            <ArrowRight />
+                                                        </span>
+                                                        <span className="relative z-10 group-hover:translate-x-4 transition-transform duration-300">
+                                                            {link.title}
+                                                        </span>
+                                                    </NavLink>
+                                                ) : (
+                                                    // Dropdown / Accordion Item
+                                                    <div className="flex flex-col">
+                                                        <button
+                                                            onClick={() => setActiveSubMenu(activeSubMenu === link.title ? null : link.title)}
+                                                            className={`relative inline-flex items-center text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter uppercase transition-colors duration-300 text-left ${activeSubMenu === link.title ? 'text-white' : 'text-slate-600 hover:text-white'}`}
+                                                        >
+                                                            <span className="relative z-10 group-hover:translate-x-4 transition-transform duration-300 flex items-center gap-4">
+                                                                {link.title}
+                                                                <span className={`text-2xl md:text-4xl transition-transform duration-300 ${activeSubMenu === link.title ? 'rotate-180 text-pink-500' : 'text-slate-700'}`}>▼</span>
+                                                            </span>
+                                                        </button>
+
+                                                        {/* Submenu Content */}
+                                                        <AnimatePresence>
+                                                            {activeSubMenu === link.title && (
+                                                                <motion.div
+                                                                    initial={{ height: 0, opacity: 0 }}
+                                                                    animate={{ height: "auto", opacity: 1 }}
+                                                                    exit={{ height: 0, opacity: 0 }}
+                                                                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                                                                    className="overflow-hidden pl-4 md:pl-8 border-l-2 border-white/10 mt-4 space-y-2"
+                                                                >
+                                                                    {link.subItems.map((sub, i) => (
+                                                                        <Link
+                                                                            key={i}
+                                                                            to={sub.path}
+                                                                            onClick={() => setIsOpen(false)}
+                                                                            className="block text-lg md:text-xl text-slate-400 hover:text-white py-2 font-mono tracking-wide uppercase hover:translate-x-2 transition-transform"
+                                                                        >
+                                                                            {sub.name}
+                                                                        </Link>
+                                                                    ))}
+                                                                </motion.div>
+                                                            )}
+                                                        </AnimatePresence>
+                                                    </div>
+                                                )}
                                             </motion.div>
                                         </div>
                                     ))}

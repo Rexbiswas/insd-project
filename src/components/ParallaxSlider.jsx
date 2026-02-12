@@ -112,20 +112,9 @@ const ParallaxSlider = () => {
                 });
             });
 
-            mm.add("(max-width: 767px)", () => {
-                // Mobile: Simple Fade In on Scroll for Vertical Stack
-                cards.forEach((card) => {
-                    gsap.from(card, {
-                        opacity: 0,
-                        y: 50,
-                        duration: 0.8,
-                        scrollTrigger: {
-                            trigger: card,
-                            start: "top 80%",
-                        }
-                    });
-                });
-            });
+            // Mobile optimization: We use native horizontal scroll with CSS Snap.
+            // No complex GSAP scrollTrigger needed for mobile to ensure smooth touch performance.
+            // We can add simple initial load animation if needed, but for now cleanliness is key.
 
         }, sectionRef);
 
@@ -144,13 +133,13 @@ const ParallaxSlider = () => {
             </div>
 
             {/* Horizontal Scroll wrapper */}
-            <div ref={triggerRef} className="h-screen overflow-hidden flex items-center relative z-10">
+            <div ref={triggerRef} className="h-screen md:h-screen overflow-x-auto md:overflow-hidden flex items-center relative z-10 snap-x snap-mandatory scroll-smooth no-scrollbar">
 
                 {/* The Track */}
-                <div ref={trackRef} className="flex flex-col md:flex-row gap-12 md:gap-24 px-6 md:px-32 w-full md:w-max h-auto md:h-[80vh] items-center will-change-transform pt-24 md:pt-0">
+                <div ref={trackRef} className="flex flex-row gap-6 md:gap-24 px-6 md:px-32 w-max h-[60vh] md:h-[80vh] items-center will-change-transform pt-0">
 
                     {/* Intro Card */}
-                    <div className="parallax-card w-full md:w-[30vw] h-auto md:h-full flex flex-col justify-center shrink-0 items-center md:items-start text-center md:text-left mb-12 md:mb-0">
+                    <div className="parallax-card w-[85vw] md:w-[30vw] h-full flex flex-col justify-center shrink-0 items-center md:items-start text-center md:text-left snap-center">
                         <h1 className="text-6xl md:text-8xl font-black uppercase leading-none tracking-tighter">
                             Global<br />
                             <span className="text-transparent stroke-text-white">Campus</span>
@@ -160,11 +149,16 @@ const ParallaxSlider = () => {
                             Experience the world's fashion capitals.
                             From Paris to New York, the world is your classroom.
                         </p>
+                        {/* Mobile Swipe Hint */}
+                        <div className="md:hidden mt-8 flex items-center gap-2 text-white/40 text-sm animate-pulse">
+                            <span>Swipe</span>
+                            <svg className="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </div>
                     </div>
 
                     {/* Slides */}
                     {slides.map((slide, i) => (
-                        <div key={i} className="parallax-card relative w-full md:w-[50vw] h-[60vh] md:h-full shrink-0 group perspective-500">
+                        <div key={i} className="parallax-card relative w-[85vw] md:w-[50vw] h-full shrink-0 group perspective-500 snap-center">
                             {/* Image Container */}
                             <div className="relative w-full h-full overflow-hidden rounded-[2rem] bg-slate-900 border border-white/10 group-hover:border-white/40 transition-colors duration-500">
                                 <img
@@ -195,7 +189,7 @@ const ParallaxSlider = () => {
                     ))}
 
                     {/* Outro */}
-                    <div className="parallax-card w-full md:w-[30vw] h-auto md:h-full flex flex-col justify-center items-center shrink-0 py-12 md:py-0">
+                    <div className="parallax-card w-[85vw] md:w-[30vw] h-full flex flex-col justify-center items-center shrink-0 snap-center">
                         <h2 className="text-4xl md:text-6xl font-black uppercase text-center leading-tight mb-8">
                             Ready to <br /> <span className="text-pink-500">Launch?</span>
                         </h2>

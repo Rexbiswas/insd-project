@@ -157,14 +157,14 @@ const InstagramGallery = () => {
             </div>
 
             {/* Bento Grid Gallery */}
-            <div className="container mx-auto px-6">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[300px]">
+            <div className="container mx-auto px-4 md:px-6">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 auto-rows-[200px] md:auto-rows-[300px]">
 
                     {instaPosts.map((post, i) => (
                         <div
                             key={post.id}
-                            className={`insta-card group relative bg-slate-900 rounded-3xl overflow-hidden cursor-pointer border border-white/5 
-                                ${post.featured ? 'md:col-span-2 md:row-span-2' : 'md:col-span-1 md:row-span-1'}
+                            className={`insta-card group relative bg-slate-900 rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer border border-white/5 
+                                ${post.featured ? 'col-span-2 row-span-2 md:col-span-2 md:row-span-2' : 'col-span-1 row-span-1 md:col-span-1 md:row-span-1'}
                             `}
                         >
                             {/* Image */}

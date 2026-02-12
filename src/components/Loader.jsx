@@ -82,23 +82,29 @@ const Loader = ({ setLoading }) => {
             </div>
 
             {/* Content Centered on top of shutters */}
-            <div className="loader-content absolute inset-0 z-10 flex flex-col items-center justify-center text-white mix-blend-difference">
+            <div className="loader-content absolute inset-0 z-10 flex flex-col items-center justify-center text-white mix-blend-difference px-4 text-center">
 
-                {/* Flashing Text */}
-                <h1 ref={textRef} className="text-6xl md:text-9xl font-black uppercase tracking-tighter mb-4">
+                {/* Flashing Text with Glitch Effect simulation via rapid font weight change or just bold */}
+                <h1 ref={textRef} className="text-5xl md:text-9xl font-black uppercase tracking-tighter mb-2 md:mb-4 min-h-[1.2em] flex items-center justify-center">
                     INSD
                 </h1>
 
                 {/* Progress Bar & Number */}
-                <div className="flex items-center gap-4 overflow-hidden">
-                    <div className="h-[1px] w-24 bg-white/50">
-                        <div className="h-full bg-white w-full origin-left animate-[loading_2s_ease-in-out_infinite]"></div>
+                <div className="flex flex-col items-center gap-2">
+                    <div className="flex items-end gap-2 overflow-hidden">
+                        <span ref={percentRef} className="text-5xl md:text-8xl font-black font-mono leading-none">0</span>
+                        <span className="text-2xl md:text-4xl font-bold font-mono mb-2">%</span>
                     </div>
-                    <span ref={percentRef} className="text-4xl md:text-6xl font-black font-mono">0</span>
-                    <span className="text-xl md:text-2xl font-bold align-top">%</span>
+
+                    <div className="w-48 md:w-64 h-[2px] bg-white/20 relative overflow-hidden mt-2">
+                        <div className="absolute inset-0 bg-white origin-left animate-[loading_2s_ease-in-out_infinite] w-full"></div>
+                    </div>
                 </div>
 
             </div>
+
+            {/* Scanline Effect */}
+            <div className="absolute inset-0 z-20 pointer-events-none opacity-10 bg-[linear-gradient(to_bottom,transparent_50%,black_50%)] bg-[length:100%_4px]"></div>
 
             {/* Background Noise/texture for "Rough" feel */}
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none z-20"></div>
