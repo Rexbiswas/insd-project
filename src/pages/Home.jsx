@@ -12,6 +12,7 @@ import ImpactStats from '../components/ImpactStats';
 import TestimonialSlider from '../components/TestimonialSlider';
 import FeaturedIn from '../components/FeaturedIn';
 import EventBlogs from '../components/EventBlogs';
+import InstagramGallery from '../components/InstagramGallery';
 import Footer from '../components/Footer';
 
 
@@ -822,6 +823,7 @@ const Home = () => {
             <TestimonialSlider />
             <FeaturedIn />
             <EventBlogs />
+            <InstagramGallery />
             <Footer />
         </div>
     );
