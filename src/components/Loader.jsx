@@ -72,7 +72,7 @@ const Loader = ({ setLoading }) => {
     }, [setLoading]);
 
     return (
-        <div ref={containerRef} className="fixed inset-0 z-[9999] flex flex-col pointer-events-none">
+        <div ref={containerRef} className="fixed inset-0 z-9999 flex flex-col pointer-events-none">
 
             {/* Shutter Layers for Reveal */}
             <div className="absolute inset-0 flex flex-col md:flex-row h-full w-full">
@@ -104,7 +104,7 @@ const Loader = ({ setLoading }) => {
             </div>
 
             {/* Scanline Effect */}
-            <div className="absolute inset-0 z-20 pointer-events-none opacity-10 bg-[linear-gradient(to_bottom,transparent_50%,black_50%)] bg-[length:100%_4px]"></div>
+            <div className="absolute inset-0 z-20 pointer-events-none opacity-10 bg-[linear-gradient(to_bottom,transparent_50%,black_50%)] bg-size-[100%_4px]"></div>
 
             {/* Background Noise/texture for "Rough" feel */}
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none z-20"></div>

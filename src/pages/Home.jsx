@@ -470,7 +470,7 @@ const Home = () => {
                                 {splitText("INSD", "char-extra inline-block origin-bottom")}
                             </div>
 
-                            <div ref={subTitleRef} className="overflow-hidden text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-violet-600 to-indigo-600 text-center">
+                            <div ref={subTitleRef} className="overflow-hidden text-transparent bg-clip-text bg-linear-to-r from-pink-600 via-violet-600 to-indigo-600 text-center">
                                 {splitText("Unexpected.", "char-extra inline-block")}
                             </div>
                         </h1>
@@ -496,7 +496,7 @@ const Home = () => {
                 {galleryItems.map((item, index) => (
                     <div
                         key={index}
-                        className="relative min-w-full md:min-w-0 md:flex-1 group transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] hover:flex-[3] cursor-pointer grayscale-0 md:grayscale md:hover:grayscale-0 border-r border-white/10 last:border-r-0 snap-center"
+                        className="relative min-w-full md:min-w-0 md:flex-1 group transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] hover:flex-3 cursor-pointer grayscale-0 md:grayscale md:hover:grayscale-0 border-r border-white/10 last:border-r-0 snap-center"
                     >
                         {/* Image Background */}
                         <div className="absolute inset-0 z-0">
@@ -506,13 +506,13 @@ const Home = () => {
                                 className="w-full h-full object-cover opacity-80 md:opacity-60 group-hover:opacity-100 transition-opacity duration-700 scale-100 md:scale-110 group-hover:scale-100 origin-center"
                             />
                             {/* Dark Overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent md:bg-black/60 md:group-hover:bg-black/20 transition-colors duration-700" />
+                            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent md:bg-black/60 md:group-hover:bg-black/20 transition-colors duration-700" />
                         </div>
 
                         {/* Content */}
                         <div className="absolute inset-0 z-10 flex flex-col justify-end p-8 pb-24 md:pb-12">
                             <div className="overflow-hidden">
-                                <h3 className="text-5xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-violet-600 translate-y-0 md:translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-100 uppercase tracking-tighter">
+                                <h3 className="text-5xl md:text-5xl font-black text-transparent bg-clip-text bg-linear-to-r from-pink-500 to-violet-600 translate-y-0 md:translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-100 uppercase tracking-tighter">
                                     {item.title}
                                 </h3>
                             </div>
@@ -537,7 +537,7 @@ const Home = () => {
             <div ref={aboutRef} className="relative bg-white text-black min-h-screen py-32 px-4 md:px-12 overflow-hidden cursor-none">
                 {/* cursor-none to encourage focus on the floating element */}
 
-                <div className="max-w-[90rem] mx-auto flex flex-col md:flex-row gap-24 relative z-10">
+                <div className="max-w-360 mx-auto flex flex-col md:flex-row gap-24 relative z-10">
 
                     {/* Sticky Left Content */}
                     <div className="md:w-5/12 relative">
@@ -547,7 +547,7 @@ const Home = () => {
                                     {splitText("Beyond", "reveal-text inline-block")}
                                 </div>
                                 <div className="overflow-hidden">
-                                    <span className="text-transparent bg-clip-text bg-gradient-to-br from-purple-600 to-blue-600">
+                                    <span className="text-transparent bg-clip-text bg-linear-to-br from-purple-600 to-blue-600">
                                         {splitText("Education.", "reveal-text inline-block")}
                                     </span>
                                 </div>
@@ -609,7 +609,7 @@ const Home = () => {
                 {/* Floating Image Reveal Element */}
                 <div
                     ref={cursorImgRef}
-                    className="fixed top-0 left-0 w-[400px] h-[550px] bg-cover bg-center rounded-[2rem] pointer-events-none z-0 mix-blend-multiply opacity-0 scale-0 -translate-x-1/2 -translate-y-1/2 shadow-2xl grayscale contrast-125"
+                    className="fixed top-0 left-0 w-[400px] h-[550px] bg-cover bg-center rounded-4xl pointer-events-none z-0 mix-blend-multiply opacity-0 scale-0 -translate-x-1/2 -translate-y-1/2 shadow-2xl grayscale contrast-125"
                 />
 
 
@@ -617,7 +617,7 @@ const Home = () => {
 
             {/* Student Spotlight Section - High Fashion Editorial Style */}
             <div ref={studentRef} className="relative min-h-screen py-32 px-4 md:px-12 overflow-hidden transition-colors duration-700">
-                <div className="max-w-[90rem] mx-auto">
+                <div className="max-w-360 mx-auto">
 
                     {/* Header */}
                     <div className="mb-24 border-b border-current pb-12 overflow-hidden">
@@ -633,7 +633,7 @@ const Home = () => {
 
                         {/* Large Image */}
                         <div className="md:col-span-7 relative">
-                            <div className="overflow-hidden rounded-sm aspect-[3/4]">
+                            <div className="overflow-hidden rounded-sm aspect-3/4">
                                 <img
                                     src="https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                                     className="spotlight-img-main w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-out"
@@ -653,7 +653,7 @@ const Home = () => {
                                     {splitText("\"INSD gave me the freedom to fail, which is the only way to truly succeed in design. My final collection was a direct result of that chaos.\"", "quote-word")}
                                 </p>
                                 <div className="flex items-center gap-4">
-                                    <div className="w-12 h-[1px] bg-current"></div>
+                                    <div className="w-12 h-px bg-current"></div>
                                     <span className="uppercase tracking-widest font-bold text-sm">Aravind K., Fashion Design '25</span>
                                 </div>
                             </div>
@@ -676,11 +676,11 @@ const Home = () => {
             <ParallaxSlider />
 
             {/* Legacy & Discovery Section - Unexpected Contrast */}
-            <div ref={legacyRef} className="relative min-h-[100vh] bg-white text-black py-0 px-0 flex flex-col items-center justify-center overflow-hidden -mt-[20vh] z-10 rounded-t-[4rem] shadow-2xl will-change-transform backface-hidden">
+            <div ref={legacyRef} className="relative min-h-screen bg-white text-black py-0 px-0 flex flex-col items-center justify-center overflow-hidden -mt-[20vh] z-10 rounded-t-[4rem] shadow-2xl will-change-transform backface-hidden">
 
                 {/* Next Level Background - Holographic Orbs (Optimized) */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-50">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-b from-purple-200 to-transparent blur-[80px] rounded-full mix-blend-multiply"></div>
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-linear-to-b from-purple-200 to-transparent blur-[80px] rounded-full mix-blend-multiply"></div>
                     <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-200 blur-[80px] rounded-full mix-blend-multiply"></div>
                     <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-pink-200 blur-[60px] rounded-full mix-blend-multiply"></div>
                 </div>
@@ -700,7 +700,7 @@ const Home = () => {
                     <div className="relative w-full h-full flex items-center justify-center perspective-[1000px] min-h-[600px]">
 
                         {/* Mixed Blend Mode Overlay for 'Future' feel */}
-                        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-50 opacity-50 pointer-events-none"></div>
+                        <div className="absolute inset-0 bg-linear-to-b from-transparent to-slate-50 opacity-50 pointer-events-none"></div>
 
                         {/* Vertical Infinite Carousel Background */}
                         <div className="absolute inset-0 overflow-hidden flex justify-center items-center opacity-[0.08] select-none pointer-events-none mix-blend-multiply mask-linear-fade">
@@ -749,7 +749,7 @@ const Home = () => {
                                             className="flex items-center justify-between md:justify-start w-full md:w-auto gap-3 text-sm font-bold uppercase tracking-widest text-slate-300 hover:text-white transition-colors group/btn"
                                         >
                                             <div className="flex items-center gap-3">
-                                                <span className={`h-[1px] bg-current transition-all duration-300 ${isDropdownOpen ? 'w-12 bg-purple-500' : 'w-6'}`}></span>
+                                                <span className={`h-px bg-current transition-all duration-300 ${isDropdownOpen ? 'w-12 bg-purple-500' : 'w-6'}`}></span>
                                                 {isDropdownOpen ? 'Close Programs' : 'Browse All Programs'}
                                             </div>
                                             {/* Mobile Arrow Hint */}

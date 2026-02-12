@@ -130,7 +130,7 @@ const InstagramGallery = () => {
         <div ref={containerRef} className="relative bg-black text-white min-h-screen py-32 overflow-hidden cursor-none">
 
             {/* Custom Cursor */}
-            <div ref={cursorRef} className="fixed top-0 left-0 w-32 h-32 bg-pink-500/20 rounded-full blur-[40px] pointer-events-none z-50 mix-blend-screen -translate-x-1/2 -translate-y-1/2 border border-white/20 flex items-center justify-center opacity-0 md:opacity-100 transition-opacity">
+            <div ref={cursorRef} className="fixed top-0 left-0 w-32 h-32 bg-pink-500/20 rounded-full blur-2xl pointer-events-none z-50 mix-blend-screen -translate-x-1/2 -translate-y-1/2 border border-white/20 flex items-center justify-center opacity-0 md:opacity-100 transition-opacity">
                 <div className="w-2 h-2 bg-white rounded-full"></div>
             </div>
 
@@ -147,7 +147,7 @@ const InstagramGallery = () => {
                     </h4>
                     <h2 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.9]">
                         Life On <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">The Feed</span>
+                        <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 via-pink-500 to-red-500">The Feed</span>
                     </h2>
                 </div>
                 <button className="group flex items-center gap-4 px-8 py-4 bg-white/5 border border-white/10 rounded-full backdrop-blur-md hover:bg-white hover:text-black transition-all duration-300">

@@ -62,7 +62,7 @@ const EventBlogs = () => {
             <div className="relative z-10 container mx-auto mb-20 flex flex-col md:flex-row items-end justify-between border-b border-white/10 pb-8 gap-8">
                 <div>
                     <h2 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter leading-none">
-                        Events <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500 italic font-serif">&</span> Blogs
+                        Events <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-500 to-pink-500 italic font-serif">&</span> Blogs
                     </h2>
                     <p className="text-slate-400 mt-4 max-w-md">
                         Insights from the industry experts and highlights from our latest campus events.
@@ -97,7 +97,7 @@ const EventBlogs = () => {
                         </div>
 
                         {/* Content Overlay */}
-                        <div className="absolute inset-0 z-20 flex flex-col justify-end p-8 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent opacity-90 group-hover:opacity-100 transition-all duration-500">
+                        <div className="absolute inset-0 z-20 flex flex-col justify-end p-8 bg-linear-to-t from-slate-950 via-slate-950/60 to-transparent opacity-90 group-hover:opacity-100 transition-all duration-500">
 
                             <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                 <div className="mb-4 overflow-hidden">

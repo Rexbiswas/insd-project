@@ -160,7 +160,7 @@ const ParallaxSlider = () => {
                     {slides.map((slide, i) => (
                         <div key={i} className="parallax-card relative w-[85vw] md:w-[50vw] h-full shrink-0 group perspective-500 snap-center">
                             {/* Image Container */}
-                            <div className="relative w-full h-full overflow-hidden rounded-[2rem] bg-slate-900 border border-white/10 group-hover:border-white/40 transition-colors duration-500">
+                            <div className="relative w-full h-full overflow-hidden rounded-4xl bg-slate-900 border border-white/10 group-hover:border-white/40 transition-colors duration-500">
                                 <img
                                     src={slide.image}
                                     alt={slide.title}
@@ -168,7 +168,7 @@ const ParallaxSlider = () => {
                                     className="w-full h-full object-cover scale-125 will-change-transform opacity-80 group-hover:opacity-100 transition-opacity duration-700"
                                 />
 
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
+                                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-transparent to-transparent"></div>
 
                                 <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full">
                                     <h3 className="slide-title text-[4rem] md:text-[8rem] leading-[0.8] font-black uppercase tracking-tighter text-transparent stroke-text-white group-hover:text-white transition-colors duration-500 mb-4">

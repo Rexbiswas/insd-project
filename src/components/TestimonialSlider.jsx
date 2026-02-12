@@ -91,11 +91,11 @@ const TestimonialSlider = () => {
         <div className="relative w-full min-h-screen bg-black flex items-center justify-center overflow-hidden py-24 select-none">
 
             {/* Dynamic Ambient Background */}
-            <div className={`absolute inset-0 bg-gradient-to-br ${currentData.color} opacity-[0.05] transition-colors duration-1000`}></div>
+            <div className={`absolute inset-0 bg-linear-to-br ${currentData.color} opacity-[0.05] transition-colors duration-1000`}></div>
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay"></div>
 
             {/* Giant Background Visuals */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] font-black text-[20vw] leading-none text-white/[0.02] uppercase text-center pointer-events-none whitespace-nowrap">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] font-black text-[20vw] leading-none text-white/2 uppercase text-center pointer-events-none whitespace-nowrap">
                 Student Voices
             </div>
 
@@ -130,10 +130,10 @@ const TestimonialSlider = () => {
                                     prevSlide();
                                 }
                             }}
-                            className="w-full bg-slate-900/40 backdrop-blur-2xl border border-white/10 rounded-[2rem] md:rounded-[3rem] p-6 md:p-16 flex flex-col md:flex-row gap-8 md:gap-16 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden relative group cursor-grab active:cursor-grabbing"
+                            className="w-full bg-slate-900/40 backdrop-blur-2xl border border-white/10 rounded-4xl md:rounded-[3rem] p-6 md:p-16 flex flex-col md:flex-row gap-8 md:gap-16 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden relative group cursor-grab active:cursor-grabbing"
                         >
                             {/* Decorative Glow */}
-                            <div className={`absolute -top-1/2 -right-1/2 w-full h-full bg-gradient-to-br ${currentData.color} blur-[150px] opacity-20 rounded-full pointer-events-none`}></div>
+                            <div className={`absolute -top-1/2 -right-1/2 w-full h-full bg-linear-to-br ${currentData.color} blur-[150px] opacity-20 rounded-full pointer-events-none`}></div>
 
                             {/* Image Section */}
                             <div className="relative w-full md:w-1/3 flex flex-col items-center justify-center shrink-0">
@@ -152,7 +152,7 @@ const TestimonialSlider = () => {
                                     </div>
 
                                     {/* Floating Badge */}
-                                    <div className={`absolute bottom-0 right-0 bg-gradient-to-r ${currentData.color} text-white text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full shadow-lg`}>
+                                    <div className={`absolute bottom-0 right-0 bg-linear-to-r ${currentData.color} text-white text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full shadow-lg`}>
                                         Alumni
                                     </div>
                                 </div>
@@ -160,7 +160,7 @@ const TestimonialSlider = () => {
                                 <div className="mt-8 text-center md:text-left">
                                     <h4 className="text-white/40 font-mono text-xs uppercase tracking-[0.2em] mb-2">{currentData.course}</h4>
                                     <h3 className="text-white font-bold text-lg">{currentData.name}</h3>
-                                    <p className={`text-transparent bg-clip-text bg-gradient-to-r ${currentData.color} font-medium`}>{currentData.role}</p>
+                                    <p className={`text-transparent bg-clip-text bg-linear-to-r ${currentData.color} font-medium`}>{currentData.role}</p>
                                 </div>
                             </div>
 
@@ -173,7 +173,7 @@ const TestimonialSlider = () => {
                                 </p>
 
                                 <div className="mt-12 flex items-center gap-4">
-                                    <div className="h-[1px] w-12 bg-white/20 group-hover:w-24 group-hover:bg-pink-500 transition-all duration-500"></div>
+                                    <div className="h-px w-12 bg-white/20 group-hover:w-24 group-hover:bg-pink-500 transition-all duration-500"></div>
                                     <span className="text-xs font-bold uppercase tracking-widest text-white/40">Success Story</span>
                                 </div>
                             </div>

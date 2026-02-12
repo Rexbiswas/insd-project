@@ -114,7 +114,7 @@ const Navbar = () => {
                     borderStyle: "solid",
                 }}
                 ref={navRef}
-                className="hidden md:flex fixed left-1/2 z-[100] px-6 py-4 items-center justify-between transition-all duration-300 pointer-events-auto w-full"
+                className="hidden md:flex fixed left-1/2 z-100 px-6 py-4 items-center justify-between transition-all duration-300 pointer-events-auto w-full"
             >
                 {/* Left: Logo */}
                 <Link to="/" className="nav-logo relative z-50 flex-shrink-0 block h-10 overflow-hidden" onClick={() => setIsOpen(false)}>
@@ -146,7 +146,7 @@ const Navbar = () => {
                         onClick={() => setIsOpen(!isOpen)}
                         className="group relative hidden md:flex items-center gap-3 px-5 py-2.5 bg-slate-900 text-white rounded-full overflow-hidden shadow-lg shadow-slate-900/20"
                     >
-                        <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-violet-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                        <div className="absolute inset-0 bg-linear-to-r from-pink-500 to-violet-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                         <span className="relative z-10 font-bold text-sm hidden sm:inline-block tracking-wide">
                             {isOpen ? "CLOSE" : "MENU"}
                         </span>
@@ -233,7 +233,7 @@ const Navbar = () => {
                         animate={{ clipPath: "circle(150% at 95% 40px)" }}
                         transition={{ duration: 0.8, delay: 0.1, ease: [0.76, 0, 0.24, 1] }}
                         exit={{ clipPath: "circle(0% at 95% 40px)", transition: { duration: 0.8, ease: "circIn", delay: 0.1 } }}
-                        className="fixed inset-0 z-[39] bg-[#0f172b] text-white overflow-hidden"
+                        className="fixed inset-0 z-39 bg-[#0f172b] text-white overflow-hidden"
                     >
                         {/* Background shapes */}
                         <div className="absolute inset-0 overflow-hidden pointer-events-none">

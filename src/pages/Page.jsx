@@ -23,7 +23,7 @@ const Page = ({ title }) => {
                     initial={{ width: 0 }}
                     animate={{ width: "100px" }}
                     transition={{ delay: 0.4, duration: 0.8 }}
-                    className="h-2 bg-gradient-to-r from-pink-500 to-violet-600 mx-auto rounded-full mb-8"
+                    className="h-2 bg-linear-to-r from-pink-500 to-violet-600 mx-auto rounded-full mb-8"
                 />
                 <motion.p
                     initial={{ y: 20, opacity: 0 }}

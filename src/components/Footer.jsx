@@ -56,8 +56,8 @@ const Footer = () => {
         <footer ref={footerRef} className="relative bg-black text-white overflow-hidden pt-24 pb-8 min-h-screen flex flex-col justify-between">
 
             {/* Ambient Background */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-slate-900 via-black to-black pointer-events-none"></div>
-            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,var(--tw-gradient-stops))] from-slate-900 via-black to-black pointer-events-none"></div>
+            <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-white/20 to-transparent"></div>
 
             <div className="relative z-10 container mx-auto px-6 md:px-12">
 
@@ -66,7 +66,7 @@ const Footer = () => {
                     <div className="lg:w-1/2 footer-element">
                         <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none mb-8">
                             Let's Design <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">The Future</span>
+                            <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-pink-400">The Future</span>
                         </h2>
                         <div className="relative group w-fit">
                             <button className="flex items-center gap-4 text-xl font-bold uppercase tracking-widest hover:text-purple-400 transition-colors duration-300">

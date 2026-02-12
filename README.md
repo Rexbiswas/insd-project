@@ -15,3 +15,7 @@ If you are developing a production application, we recommend using TypeScript wi
 three js
 lenis
 gsap
+framer-motion
+react-router-dom
+react-icons
+react-scroll
