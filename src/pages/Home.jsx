@@ -545,7 +545,7 @@ const Home = () => {
                 <div className="absolute bottom-28 md:bottom-10 left-1/2 -translate-x-1/2 w-full flex flex-col items-center z-20 pointer-events-none">
                     <div ref={scrollHintRef} className="flex flex-col items-center gap-2 md:gap-4 mb-4 md:mb-8">
                         <div className="relative h-6 md:h-10 w-[1px] bg-slate-400/50 overflow-hidden rounded-full">
-                            <div className="scroll-line-progress absolute top-0 left-0 w-full h-full bg-linear-to-b from-pink-500 via-violet-600 to-indigo-600 origin-top scale-y-0" />
+                            <div className="scroll-line-progress absolute top-0 left-0 w-[0.4rem] h-full bg-linear-to-b from-pink-500 via-violet-600 to-indigo-600 origin-top scale-y-0" />
                         </div>
                         <div className="flex flex-col items-center">
                             <p className="scroll-text-small text-[8px] md:text-[14px] font-mono uppercase tracking-[0.6em] text-slate-500 mb-1 md:mb-2 opacity-0 text-center whitespace-nowrap">
@@ -556,9 +556,9 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <div ref={subTitleRef} className="overflow-hidden text-transparent bg-clip-text bg-linear-to-r from-pink-600 via-violet-600 to-indigo-600 text-center whitespace-nowrap opacity-100 text-2xl md:text-4xl">
+                    {/* <div ref={subTitleRef} className="hidden md:block overflow-hidden text-transparent bg-clip-text bg-linear-to-r from-pink-600 via-violet-600 to-indigo-600 text-center whitespace-nowrap opacity-100 text-2xl md:text-4xl">
                         {splitText("Unexpected.", "char-extra inline-block")}
-                    </div>
+                    </div> */}
                 </div>
 
 
