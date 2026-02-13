@@ -280,59 +280,21 @@ const Navbar = () => {
                                                 }}
                                                 className="origin-bottom"
                                             >
-                                                {!link.subItems ? (
-                                                    <NavLink
-                                                        to={link.path}
-                                                        onClick={() => setIsOpen(false)}
-                                                        className={({ isActive }) =>
-                                                            `relative inline-flex items-center text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter uppercase transition-colors duration-300 ${isActive || ['Admission', 'Franchise'].includes(link.title) ? 'text-white' : 'text-slate-600 hover:text-white'}`
-                                                        }
-                                                    >
-                                                        <span className="absolute -left-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-pink-500 text-4xl hidden lg:block">
-                                                            <ArrowRight />
-                                                        </span>
-                                                        <span className="relative z-10 group-hover:translate-x-4 transition-transform duration-300">
-                                                            {link.title}
-                                                        </span>
-                                                    </NavLink>
-                                                ) : (
-                                                    // Dropdown / Accordion Item
-                                                    <div className="flex flex-col">
-                                                        <button
-                                                            onClick={() => setActiveSubMenu(activeSubMenu === link.title ? null : link.title)}
-                                                            className={`relative inline-flex items-center text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter uppercase transition-colors duration-300 text-left ${activeSubMenu === link.title ? 'text-white' : 'text-slate-600 hover:text-white'}`}
-                                                        >
-                                                            <span className="relative z-10 group-hover:translate-x-4 transition-transform duration-300 flex items-center gap-4">
-                                                                {link.title}
-                                                                <span className={`text-2xl md:text-4xl transition-transform duration-300 ${activeSubMenu === link.title ? 'rotate-180 text-pink-500' : 'text-slate-700'}`}>▼</span>
-                                                            </span>
-                                                        </button>
+                                                <NavLink
+                                                    to={link.path}
+                                                    onClick={() => setIsOpen(false)}
+                                                    className={({ isActive }) =>
+                                                        `relative inline-flex items-center text-2xl md:text-4xl lg:text-5xl font-black tracking-tighter uppercase transition-colors duration-300 ${isActive || ['Admission', 'Franchise', 'Apply'].includes(link.title) ? 'text-white' : 'text-slate-600 hover:text-white'}`
+                                                    }
+                                                >
+                                                    <span className="absolute -left-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-pink-500 text-4xl hidden lg:block">
+                                                        <ArrowRight />
+                                                    </span>
+                                                    <span className="relative z-10 group-hover:translate-x-4 transition-transform duration-300">
+                                                        {link.title}
+                                                    </span>
+                                                </NavLink>
 
-                                                        {/* Submenu Content */}
-                                                        <AnimatePresence>
-                                                            {activeSubMenu === link.title && (
-                                                                <motion.div
-                                                                    initial={{ height: 0, opacity: 0 }}
-                                                                    animate={{ height: "auto", opacity: 1 }}
-                                                                    exit={{ height: 0, opacity: 0 }}
-                                                                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                                                                    className="overflow-hidden pl-4 md:pl-8 border-l-2 border-white/10 mt-4 space-y-2"
-                                                                >
-                                                                    {link.subItems.map((sub, i) => (
-                                                                        <Link
-                                                                            key={i}
-                                                                            to={sub.path}
-                                                                            onClick={() => setIsOpen(false)}
-                                                                            className="block text-lg md:text-xl text-slate-400 hover:text-white py-2 font-mono tracking-wide uppercase hover:translate-x-2 transition-transform"
-                                                                        >
-                                                                            {sub.name}
-                                                                        </Link>
-                                                                    ))}
-                                                                </motion.div>
-                                                            )}
-                                                        </AnimatePresence>
-                                                    </div>
-                                                )}
                                             </motion.div>
                                         </div>
                                     ))}
