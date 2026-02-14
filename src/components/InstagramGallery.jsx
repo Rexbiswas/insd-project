@@ -1,5 +1,4 @@
 import React, { useRef, useLayoutEffect } from 'react';
-import { motion } from 'framer-motion';
 import { Instagram, ArrowUpRight, Heart, MessageCircle } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -160,7 +159,7 @@ const InstagramGallery = () => {
             <div className="container mx-auto px-4 md:px-6">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 auto-rows-[200px] md:auto-rows-[300px]">
 
-                    {instaPosts.map((post, i) => (
+                    {instaPosts.map((post) => (
                         <div
                             key={post.id}
                             className={`insta-card group relative bg-slate-900 rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer border border-white/5 

@@ -1,5 +1,4 @@
 import React, { useRef, useLayoutEffect, useEffect } from 'react';
-// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -13,6 +12,7 @@ import TestimonialSlider from '../components/TestimonialSlider';
 import FeaturedIn from '../components/FeaturedIn';
 import EventBlogs from '../components/EventBlogs';
 import InstagramGallery from '../components/InstagramGallery';
+import InsdiansByDesign from '../components/InsdiansByDesign';
 import Footer from '../components/Footer';
 
 
@@ -962,6 +962,7 @@ const Home = () => {
             <FeaturedIn />
             <EventBlogs />
             <InstagramGallery />
+            <InsdiansByDesign />
             <Footer />
         </div>
     );
