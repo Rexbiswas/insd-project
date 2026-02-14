@@ -173,14 +173,15 @@ const Footer = () => {
                     INSD DESIGN
                 </h1>
             </div>
-
+            <div className='flex justify-center items-center'>
+                <a href="#" className='hover:text-white transition-colors'>Design By Rishi Biswas</a>
+            </div>
             {/* Bottom Bar */}
             <div className="relative z-10 container mx-auto px-6 mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500 uppercase tracking-widest">
                 <p>&copy; 2026 INSD. All rights reserved.</p>
                 <div className="flex gap-8">
                     <a href="#" className="hover:text-white transition-colors">Privacy</a>
                     <a href="#" className="hover:text-white transition-colors">Terms</a>
-                    <a href="#" className="hover:text-white transition-colors">Design By Rishi</a>
                     <a href="#" className="hover:text-white transition-colors">Credits</a>
 
                 </div>
