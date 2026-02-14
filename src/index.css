@@ -53,9 +53,96 @@
     }
   }
 
+  @keyframes flicker {
+    0% {
+      opacity: 0.1;
+    }
+
+    5% {
+      opacity: 0.2;
+    }
+
+    10% {
+      opacity: 0.1;
+    }
+
+    15% {
+      opacity: 0.3;
+    }
+
+    20% {
+      opacity: 0.1;
+    }
+
+    25% {
+      opacity: 0.2;
+    }
+
+    30% {
+      opacity: 0.4;
+    }
+
+    35% {
+      opacity: 0.1;
+    }
+
+    40% {
+      opacity: 0.3;
+    }
+
+    45% {
+      opacity: 0.2;
+    }
+
+    50% {
+      opacity: 0.6;
+    }
+
+    55% {
+      opacity: 0.1;
+    }
+
+    60% {
+      opacity: 0.3;
+    }
+
+    65% {
+      opacity: 0.2;
+    }
+
+    70% {
+      opacity: 0.1;
+    }
+
+    75% {
+      opacity: 0.4;
+    }
+
+    80% {
+      opacity: 0.2;
+    }
+
+    85% {
+      opacity: 0.1;
+    }
+
+    90% {
+      opacity: 0.3;
+    }
+
+    95% {
+      opacity: 0.2;
+    }
+
+    100% {
+      opacity: 0.1;
+    }
+  }
+
   --animate-marquee-fast: marquee 20s linear infinite;
   --animate-scan: scan 4s linear infinite;
   --animate-spin-slow: spin-slow 12s linear infinite;
+  --animate-flicker: flicker 0.1s infinite;
 }
 
 :root {
