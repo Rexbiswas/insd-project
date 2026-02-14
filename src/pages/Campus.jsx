@@ -1,5 +1,5 @@
 import React, { useRef, useLayoutEffect, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
@@ -10,74 +10,149 @@ gsap.registerPlugin(ScrollTrigger);
 const Campuses = () => {
     const containerRef = useRef(null);
     const heroRef = useRef(null);
-    const gateRef = useRef(null);
     const locationsRef = useRef(null);
+    const horizontalScrollRef = useRef(null);
+    const horizontalSectionRef = useRef(null);
+    const portalTextRef = useRef(null);
 
     // Lenis Smooth Scroll Integration
     useEffect(() => {
         const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            smooth: true,
+            lerp: 0.1,
+            smoothWheel: true,
+            orientation: 'vertical',
+            gestureOrientation: 'vertical',
         });
 
-        lenis.on('scroll', ScrollTrigger.update);
-        gsap.ticker.add((time) => {
-            lenis.raf(time * 1000);
-        });
-        gsap.ticker.lagSmoothing(0);
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
 
-        return () => {
-            lenis.destroy();
-            gsap.ticker.remove(lenis.raf);
-        };
+        return () => lenis.destroy();
     }, []);
 
     useLayoutEffect(() => {
         let ctx = gsap.context(() => {
-            // 1. Hero "Gate" Animation
+            // 1. Portal Zoom-Through Hero
             const heroTl = gsap.timeline({
                 scrollTrigger: {
                     trigger: heroRef.current,
                     start: "top top",
-                    end: "+=100%",
-                    pin: true,
+                    end: "+=200%",
                     scrub: 1,
+                    pin: true,
                 }
             });
 
-            heroTl.to(".gate-left", { xPercent: -100, ease: "power2.inOut" }, 0)
-                .to(".gate-right", { xPercent: 100, ease: "power2.inOut" }, 0)
-                .to(".hero-logo", { scale: 0.5, opacity: 0, ease: "power2.inOut" }, 0)
-                .from(".hero-content-reveal", { scale: 0.8, opacity: 0, y: 50, ease: "power2.out" }, 0.5);
+            heroTl.to(".portal-gate-l", { xPercent: -100, opacity: 0, scale: 2, filter: "blur(20px)" }, 0)
+                .to(".portal-gate-r", { xPercent: 100, opacity: 0, scale: 2, filter: "blur(20px)" }, 0)
+                .to(portalTextRef.current, { scale: 50, opacity: 0, duration: 2, ease: "power2.in" }, 0)
+                .from(".hero-content-reveal", { scale: 0.5, opacity: 0, filter: "blur(30px)", duration: 2 }, 0.5)
+                .to(".hero-bg-video", { scale: 1.2, filter: "blur(0px)", opacity: 0.6 }, 0);
 
-            // 2. Interactive Location Travel
-            const sections = gsap.utils.toArray(".location-panel");
-            gsap.to(sections, {
-                xPercent: -100 * (sections.length - 1),
-                ease: "none",
-                scrollTrigger: {
-                    trigger: locationsRef.current,
-                    pin: true,
-                    scrub: 1,
-                    snap: 1 / (sections.length - 1),
-                    end: () => `+=${locationsRef.current.offsetWidth * sections.length}`
-                }
-            });
-
-            // 3. Text Stagger Reveal
-            gsap.utils.toArray(".reveal-text-campus").forEach(text => {
-                gsap.from(text, {
+            // 2. Horizontal "Travel" Section
+            if (horizontalScrollRef.current) {
+                const scrollAmount = horizontalScrollRef.current.scrollWidth - window.innerWidth;
+                gsap.to(horizontalScrollRef.current, {
+                    x: -scrollAmount,
+                    ease: "none",
                     scrollTrigger: {
-                        trigger: text,
+                        trigger: horizontalSectionRef.current,
+                        start: "top top",
+                        end: () => `+=${scrollAmount}`,
+                        pin: true,
+                        scrub: 1,
+                        invalidateOnRefresh: true,
+                    }
+                });
+
+                // Parallax images within horizontal slides
+                gsap.utils.toArray(".loc-panel-img").forEach(img => {
+                    gsap.fromTo(img,
+                        { x: -100 },
+                        {
+                            x: 100,
+                            ease: "none",
+                            scrollTrigger: {
+                                trigger: img,
+                                containerAnimation: gsap.getById("horizontalTween"), // Actually we just use scrub: 1 on the main timeline
+                                scrub: true
+                            }
+                        }
+                    );
+                });
+            }
+
+            // 3. Magnetic Hover for buttons
+            const magneticButtons = document.querySelectorAll(".magnetic-btn");
+            magneticButtons.forEach(btn => {
+                const xTo = gsap.quickTo(btn, "x", { duration: 1, ease: "elastic.out(1, 0.3)" });
+                const yTo = gsap.quickTo(btn, "y", { duration: 1, ease: "elastic.out(1, 0.3)" });
+
+                btn.addEventListener("mousemove", (e) => {
+                    const { clientX, clientY } = e;
+                    const { left, top, width, height } = btn.getBoundingClientRect();
+                    const x = (clientX - (left + width / 2)) * 0.5;
+                    const y = (clientY - (top + height / 2)) * 0.5;
+                    xTo(x);
+                    yTo(y);
+                });
+
+                btn.addEventListener("mouseleave", () => {
+                    xTo(0);
+                    yTo(0);
+                });
+            });
+
+            // 4. Lab Cards Reveal
+            gsap.utils.toArray(".lab-card").forEach((card, i) => {
+                gsap.from(card, {
+                    opacity: 0,
+                    y: 100,
+                    rotateX: 45,
+                    duration: 1.5,
+                    ease: "power4.out",
+                    scrollTrigger: {
+                        trigger: card,
                         start: "top 90%",
                         toggleActions: "play none none reverse"
-                    },
-                    y: 100,
-                    opacity: 0,
-                    duration: 1,
-                    ease: "expo.out"
+                    }
                 });
+            });
+
+            // 5. Scroll Progress Line
+            gsap.to(".scroll-progress", {
+                scaleX: 1,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: 0.3
+                }
+            });
+
+            // 6. Marquee Velocity Effect
+            let marqueeProxy = { timeScale: 1 };
+            const marqueeAnimation = gsap.fromTo(".marquee-vertical-nexus", { yPercent: 0 }, {
+                yPercent: -50,
+                duration: 30,
+                ease: "none",
+                repeat: -1
+            });
+
+            ScrollTrigger.create({
+                onUpdate: (self) => {
+                    let velocity = Math.abs(self.getVelocity());
+                    let scale = 1 + (velocity / 500);
+                    gsap.to(marqueeProxy, {
+                        timeScale: scale,
+                        duration: 0.5,
+                        onUpdate: () => marqueeAnimation.timeScale(marqueeProxy.timeScale)
+                    });
+                }
             });
 
         }, containerRef);
@@ -86,326 +161,235 @@ const Campuses = () => {
     }, []);
 
     const locations = [
-        {
-            city: "Delhi",
-            title: "The Creative Capital",
-            desc: "Our flagship campus in the heart of Delhi, where tradition meets futuristic design thinking.",
-            img: "https://images.pexels.com/photos/1547637/pexels-photo-1547637.jpeg",
-            accent: "from-pink-500 to-orange-500"
-        },
-        {
-            city: "Mumbai",
-            title: "Luxury & Glamour",
-            desc: "Based in the fashion hub of India, the Mumbai campus focuses on high-brand management and couture.",
-            img: "https://images.pexels.com/photos/10861113/pexels-photo-10861113.jpeg",
-            accent: "from-violet-600 to-indigo-600"
-        },
-        {
-            city: "Pune",
-            title: "Design Innovation",
-            desc: "A sprawling center for animation and graphic design specialists who build digital worlds.",
-            img: "https://images.pexels.com/photos/1531660/pexels-photo-1531660.jpeg",
-            accent: "from-emerald-500 to-cyan-500"
-        },
-        {
-            city: "Bangalore",
-            title: "The Tech Stitch",
-            desc: "Where software architecture meets interior aesthetics in India's technology headquarters.",
-            img: "https://images.pexels.com/photos/1517618/pexels-photo-1517618.jpeg",
-            accent: "from-amber-400 to-pink-500"
-        }
+        { city: "Delhi", title: "Creative Capital", desc: "A flagship ecosystem where heritage design meets modern luxury disruption.", img: "https://images.pexels.com/photos/1547637/pexels-photo-1547637.jpeg", num: "01" },
+        { city: "Mumbai", title: "Couture Hub", desc: "Based in India's fashion capital, focusing on the future of global brand identities.", img: "https://images.pexels.com/photos/10861113/pexels-photo-10861113.jpeg", num: "02" },
+        { city: "Pune", title: "Innovation Lab", desc: "A sprawling center dedicated to the fusion of tech, animation and architecture.", img: "https://images.pexels.com/photos/1531660/pexels-photo-1531660.jpeg", num: "03" },
+        { city: "Bangalore", title: "Tech Stitch", desc: "Where software logic meets textile craft in the heart of Silicon Valley India.", img: "https://images.pexels.com/photos/1517618/pexels-photo-1517618.jpeg", num: "04" }
     ];
 
     return (
-        <div ref={containerRef} className="bg-white overflow-hidden selection:bg-black selection:text-white">
+        <div ref={containerRef} className="bg-[#050505] text-white selection:bg-pink-500 selection:text-white overflow-hidden font-sans">
 
-            {/* Section 1: The Gate Hero */}
-            <div ref={heroRef} className="relative h-screen bg-[#0a0a0a] flex items-center justify-center overflow-hidden">
-                {/* Background Video (Revealed when gates open) */}
-                <div className="absolute inset-0 z-0">
-                    <video
-                        autoPlay muted loop playsInline
-                        className="w-full h-full object-cover brightness-50"
-                        src="https://www.pexels.com/download/video/3129957/"
-                    />
+            {/* Top Navigation Progress */}
+            <div className="fixed top-0 left-0 w-full h-[2px] bg-white/10 z-100 origin-left">
+                <div className="scroll-progress h-full bg-pink-600 scale-x-0 w-full origin-left" />
+            </div>
+
+            {/* Custom Background Noise/Grain */}
+            <div className="fixed inset-0 pointer-events-none opacity-20 z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
+
+            {/* Section 1: The Warp Portal Hero */}
+            <div ref={heroRef} className="relative h-screen bg-black flex items-center justify-center overflow-hidden">
+                <div className="hero-bg-video absolute inset-0 z-0 scale-125 filter blur-2xl opacity-0 transition-opacity duration-1000">
+                    <video autoPlay muted loop playsInline className="w-full h-full object-cover" src="https://www.pexels.com/download/video/3129957/" />
                 </div>
 
-                {/* The Gates */}
-                <div className="gate-left absolute left-0 top-0 w-1/2 h-full bg-slate-100 z-20 flex items-center justify-end border-r border-slate-200">
-                    <span className="text-[20vw] font-black text-slate-300 pointer-events-none translate-x-1/2 select-none">C</span>
+                {/* The "Portal" Gates */}
+                <div className="portal-gate-l absolute left-0 top-0 w-1/2 h-full bg-white z-20 flex items-center justify-end overflow-hidden">
+                    <h2 className="text-[30vw] font-black text-black/5 leading-none translate-x-1/2">CAM</h2>
                 </div>
-                <div className="gate-right absolute right-0 top-0 w-1/2 h-full bg-slate-100 z-20 flex items-center justify-start border-l border-slate-200">
-                    <span className="text-[20vw] font-black text-slate-300 pointer-events-none -translate-x-1/2 select-none">P</span>
+                <div className="portal-gate-r absolute right-0 top-0 w-1/2 h-full bg-white z-20 flex items-center justify-start overflow-hidden">
+                    <h2 className="text-[30vw] font-black text-black/5 leading-none -translate-x-1/2">PUS</h2>
                 </div>
 
-                {/* Middle Content */}
-                <div className="relative z-30 text-center">
-                    <div className="hero-logo mb-8">
-                        <img src="https://insd.edu.in/wp-content/uploads/2022/02/Final-Logo.png" alt="Logo" className="h-16 mx-auto invert" />
-                    </div>
-                    <div className="hero-content-reveal">
-                        <h1 className="text-white text-7xl md:text-9xl font-black uppercase tracking-tighter leading-none mb-6">
-                            Enter the <br /> <span className="mask-text">Domain.</span>
-                        </h1>
-                        <p className="text-white/60 font-mono tracking-[0.5em] uppercase text-xs">Unlock Our Pan-India Presence</p>
-                    </div>
+                <div ref={portalTextRef} className="relative z-30 pointer-events-none">
+                    <h1 className="text-black text-[15vw] font-black uppercase tracking-tighter leading-none italic">
+                        ENT<span className="text-transparent stroke-text-white stroke-black!">E</span>R
+                    </h1>
+                </div>
+
+                {/* Revealed Hero Content */}
+                <div className="hero-content-reveal absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none px-6">
+                    <span className="text-pink-500 font-mono tracking-[1.5em] uppercase text-[10px] mb-8 animate-pulse">Unlocking The Ecosystem</span>
+                    <h2 className="text-7xl md:text-9xl font-black uppercase tracking-tighter text-center max-w-5xl leading-[0.85]">
+                        Nodes Of <br /> <span className="text-transparent bg-clip-text bg-linear-to-r from-pink-500 to-violet-600">Pure Creation.</span>
+                    </h2>
                 </div>
             </div>
 
-            {/* Section 2: Immersive Intro */}
-            <section className="py-48 px-6 bg-white">
-                <div className="max-w-7xl mx-auto">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-                        <div className="relative reveal-img-container aspect-square rounded-[3rem] overflow-hidden group invisible">
-                            <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" alt="Campus Life" />
-                            <div className="absolute inset-0 bg-pink-600/10 mix-blend-overlay" />
+            {/* Section 2: Immersive Intro Grid */}
+            <section className="py-64 px-6 bg-[#050505] relative space-y-32">
+                <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
+                    <div className="order-2 md:order-1 relative">
+                        <div className="aspect-square bg-white rounded-[3rem] overflow-hidden group border border-white/10">
+                            <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg" className="w-full h-full object-cover grayscale transition-transform duration-1000 group-hover:scale-110" />
                         </div>
-                        <div>
-                            <span className="text-pink-500 font-bold uppercase tracking-[0.4em] text-xs block mb-6">Our Footprint</span>
-                            <h2 className="reveal-text-campus text-6xl md:text-8xl font-black uppercase tracking-tighter leading-tight mb-8">
-                                Nodes of <br /> <span className="text-transparent stroke-text-white !stroke-slate-900">Excellence.</span>
-                            </h2>
-                            <p className="reveal-text-campus text-xl text-slate-500 leading-relaxed font-light">
-                                From the vibrant streets of Mumbai to the academic hubs of Delhi, INSD campuses are designed as creative sanctuaries. We've built an infrastructure that breathes design.
-                            </p>
-                        </div>
+                        <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-pink-600/20 blur-[100px] -z-10" />
+                    </div>
+                    <div className="order-1 md:order-2">
+                        <span className="text-pink-500 font-bold uppercase tracking-[0.5em] text-[10px] block mb-6">Atmosphere</span>
+                        <h3 className="text-5xl md:text-7xl font-black uppercase leading-none tracking-tighter mb-8">
+                            Beyond <br /> Four Walls.
+                        </h3>
+                        <p className="text-slate-400 text-xl leading-relaxed font-light mb-12">
+                            An INSD campus is not just building—it's a high-performance laboratory where craftsmen, rebels, and visionaries meet to define the new luxury world.
+                        </p>
+                        <button className="magnetic-btn px-12 py-5 border border-white/20 rounded-full font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all">
+                            View 3D Tour
+                        </button>
                     </div>
                 </div>
             </section>
 
-            {/* Section 3: Horizontal Location Travel */}
-            <div ref={locationsRef} className="h-screen bg-black overflow-hidden flex whitespace-nowrap">
-                {locations.map((loc, i) => (
-                    <div key={i} className="location-panel relative min-w-full h-full flex items-center justify-center px-6 md:px-24">
-                        {/* City Background Text */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 opacity-10 select-none">
-                            <span className="text-[40vw] font-black uppercase text-white tracking-widest leading-none">
-                                {loc.city[0]}
-                            </span>
-                        </div>
-
-                        <div className="relative z-10 w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-24 items-center">
-                            <div className="order-2 lg:order-1">
-                                <span className={`inline-block px-4 py-1 rounded-full bg-linear-to-r ${loc.accent} text-white font-bold text-xs uppercase tracking-widest mb-6`}>
-                                    Campus 0{i + 1}
-                                </span>
-                                <h3 className="text-white text-7xl md:text-9xl font-black uppercase tracking-tighter leading-none mb-8">
-                                    {loc.city}
-                                </h3>
-                                <p className="text-white/60 text-xl font-light mb-12 max-w-md whitespace-normal leading-relaxed">
-                                    <span className="text-white font-bold">{loc.title}.</span> {loc.desc}
-                                </p>
-                                <motion.button
-                                    whileHover={{ scale: 1.05 }}
-                                    className="px-10 py-5 border border-white/20 text-white rounded-full font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all"
-                                >
-                                    Explore Campus
-                                </motion.button>
-                            </div>
-
-                            <div className="order-1 lg:order-2 h-[40vh] md:h-[60vh] rounded-3xl overflow-hidden relative group">
-                                <img src={loc.img} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" alt={loc.city} />
-                                <div className={`absolute inset-0 bg-linear-to-t ${loc.accent} opacity-20`} />
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-            {/* Section 4: Modern Facilities (Grid) */}
-            <section className="py-48 bg-slate-50 px-6">
-                <div className="max-w-7xl mx-auto">
-                    <div className="mb-24 flex flex-col md:flex-row justify-between items-end gap-12">
-                        <h2 className="text-[12vw] font-black uppercase tracking-tighter leading-none text-slate-200">
-                            The Labs.
+            {/* Section 3: Horizontal "Location Discovery" */}
+            <section ref={horizontalSectionRef} className="h-screen bg-white">
+                <div ref={horizontalScrollRef} className="h-full flex items-center px-[5vw] gap-32">
+                    {/* Intro Slide */}
+                    <div className="min-w-[80vw] md:min-w-[40vw] flex flex-col justify-center">
+                        <span className="text-pink-600 font-bold uppercase tracking-widest text-xs mb-6 block">— The Network</span>
+                        <h2 className="text-8xl font-black text-black leading-[0.85] tracking-tighter uppercase mb-12">
+                            Pan-India <br /> <span className="text-transparent stroke-text-white stroke-black!">Dominance.</span>
                         </h2>
-                        <p className="text-slate-500 text-lg max-w-sm mb-4">
-                            Equipped with world-class design technology, our labs are where vision turns into reality.
+                        <p className="text-xl text-slate-500 max-w-sm">
+                            Strategic hubs positioned in the epicenters of India's cultural and commercial revolutions.
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {[
-                            { name: "Couture Studio", desc: "Equipped with specialized high-end industrial machinery.", icon: "🧵" },
-                            { name: "VFX & Animation", desc: "Rendering farms and high-motion capture suites.", icon: "⚡" },
-                            { name: "Smart Interiors", desc: "Material libraries and 3D modeling workshops.", icon: "📐" }
-                        ].map((item, i) => (
-                            <motion.div
-                                key={i}
-                                whileHover={{ y: -10 }}
-                                className="bg-white p-12 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-2xl transition-all group"
-                            >
-                                <div className="text-5xl mb-8 grayscale group-hover:grayscale-0 transition-all">{item.icon}</div>
-                                <h4 className="text-2xl font-bold uppercase mb-4">{item.name}</h4>
-                                <p className="text-slate-400 font-light leading-relaxed">{item.desc}</p>
-                            </motion.div>
-                        ))}
-                    </div>
+                    {/* City Slides */}
+                    {locations.map((loc, i) => (
+                        <div key={i} className="min-w-[85vw] md:min-w-[70vw] h-[80vh] bg-[#0a0a0a] rounded-[3rem] relative overflow-hidden group group border border-black/5 shadow-2xl">
+                            {/* Background City Text */}
+                            <div className="absolute -bottom-20 -left-10 opacity-5 select-none pointer-events-none">
+                                <span className="text-[35vw] font-black text-white leading-none uppercase">{loc.city[0]}</span>
+                            </div>
+
+                            <div className="relative z-10 w-full h-full p-12 md:p-24 flex flex-col md:flex-row items-center gap-12">
+                                <div className="md:w-1/2 space-y-8">
+                                    <span className="text-pink-500 font-mono text-xl border border-pink-500/30 px-6 py-2 rounded-full w-fit block">0{i + 1}</span>
+                                    <h3 className="text-7xl md:text-9xl font-black uppercase text-white tracking-tighter leading-none">{loc.city}</h3>
+                                    <p className="text-slate-400 text-xl font-light whitespace-normal max-w-sm"><span className="text-white font-bold">{loc.title}.</span> {loc.desc}</p>
+                                    <button className="px-10 py-4 bg-white text-black font-bold uppercase tracking-widest rounded-full hover:bg-pink-600 hover:text-white transition-all">Explore Node</button>
+                                </div>
+                                <div className="md:w-1/2 h-full rounded-[2rem] overflow-hidden relative">
+                                    <img src={loc.img} className="loc-panel-img w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 transition-all duration-1000 scale-125 group-hover:scale-100" />
+                                    <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent" />
+                                </div>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </section>
 
-            {/* Section 5: Visit Reach (Modern Contact) */}
-            <section className="relative py-48 bg-black text-white px-6 overflow-hidden">
-                <div className="absolute inset-0 opacity-10 blur-[120px]">
-                    <div className="absolute top-0 left-0 w-96 h-96 bg-pink-600 rounded-full" />
-                    <div className="absolute bottom-0 right-0 w-96 h-96 bg-violet-600 rounded-full" />
-                </div>
-
-                <div className="max-w-4xl mx-auto text-center relative z-10">
-                    <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-12">
-                        Ready to Join <br /> <span className="text-transparent stroke-text-white">Our World?</span>
-                    </h2>
-                    <div className="flex flex-col md:flex-row gap-6 justify-center">
-                        <button className="px-12 py-6 bg-pink-600 text-white rounded-full font-bold uppercase tracking-widest transform transition active:scale-95 shadow-2xl shadow-pink-600/30">
-                            Apply for 2026
-                        </button>
-                        <button className="px-12 py-6 bg-white text-black rounded-full font-bold uppercase tracking-widest transform transition active:scale-95">
-                            Book Campus Tour
-                        </button>
-                    </div>
-                </div>
-            </section>
-
-            {/* Section 6: Campus Pulse (Editorial Parallax) */}
-            <section className="relative py-48 bg-white overflow-hidden selection:bg-pink-500">
+            {/* Section 4: The Core Labs (Perspective Grid) */}
+            <section className="py-64 bg-[#050505] relative overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6">
-                    <div className="relative mb-32 text-center md:text-left">
-                        <span className="text-pink-600 font-mono tracking-[0.5em] uppercase text-xs block mb-4">The Atmosphere</span>
-                        <h2 className="text-7xl md:text-9xl font-black uppercase tracking-tighter leading-[0.8]">
-                            Campus <br /><span className="text-transparent stroke-text-white !stroke-slate-900">Pulse.</span>
-                        </h2>
+                    <div className="flex flex-col md:flex-row justify-between items-end mb-32 gap-12">
+                        <div className="max-w-2xl">
+                            <span className="text-pink-500 font-mono uppercase tracking-[0.5em] text-[10px] block mb-4">Inside the Labs</span>
+                            <h2 className="text-6xl md:text-8xl font-black uppercase leading-none tracking-tighter">
+                                World-Class <br /> <span className="text-transparent stroke-text-white">Infrastructure.</span>
+                            </h2>
+                        </div>
+                        <p className="text-slate-400 text-lg max-w-sm mb-4 border-l border-white/10 pl-8">
+                            Our environments are engineered to reduce friction between idea and execution.
+                        </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
-                        {/* Left Column: Floating Images */}
-                        <div className="md:col-span-5 space-y-24">
-                            <motion.div
-                                whileHover={{ scale: 1.05, rotate: -2 }}
-                                className="relative aspect-3/4 bg-slate-100 rounded-[3rem] overflow-hidden group shadow-2xl"
-                            >
-                                <img src="https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg" className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110" alt="Vibe" />
-                                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-12">
-                                    <p className="text-white text-xl font-bold uppercase tracking-tight">Fashion Labs @ Night</p>
-                                </div>
-                            </motion.div>
-
-                            <div className="md:pl-12">
-                                <h3 className="text-3xl font-black uppercase mb-6">More than classrooms.</h3>
-                                <p className="text-slate-500 text-lg leading-relaxed font-light">
-                                    Our campuses are designed to be living labs. From the cafeteria to the couture studios, every corner is a canvas for your next breakthrough.
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Right Column: Dynamic Stats & Large Reveal */}
-                        <div className="md:col-span-7 space-y-24 md:pt-48">
-                            <div className="relative">
-                                <motion.div
-                                    whileHover={{ scale: 1.02, rotate: 2 }}
-                                    className="relative aspect-video bg-slate-100 rounded-[3rem] overflow-hidden group shadow-2xl"
-                                >
-                                    <img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg" className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-110" alt="Mentors" />
-                                    <div className="absolute top-12 left-12">
-                                        <span className="px-6 py-2 bg-white/10 backdrop-blur-md rounded-full text-white text-xs font-bold uppercase tracking-widest border border-white/20">Live Workshop</span>
-                                    </div>
-                                </motion.div>
-
-                                {/* Floating Overlay Info */}
-                                <div className="absolute -bottom-12 -left-12 bg-black text-white p-12 rounded-[2rem] hidden md:block max-w-xs shadow-2xl">
-                                    <span className="text-pink-500 text-4xl font-black mb-4 block">24/7</span>
-                                    <p className="text-sm font-bold uppercase tracking-widest text-slate-400">Access to high-end infrastructure for your final collections.</p>
-                                </div>
-                            </div>
-
-                            <div className="grid grid-cols-2 gap-12">
-                                {['Digital Library', 'Material Lab', 'Incubator Cell', 'Style Loft'].map((item, i) => (
-                                    <div key={i} className="border-t border-slate-200 pt-8 group cursor-pointer">
-                                        <span className="text-slate-300 font-mono text-xs block mb-4">0{i + 1}</span>
-                                        <h4 className="text-xl font-bold uppercase group-hover:text-pink-600 transition-colors">{item}</h4>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Background Rotating Text Decor */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full pointer-events-none opacity-[0.02] select-none">
-                    <h2 className="text-[30vw] font-black uppercase leading-none text-center transform -rotate-12">CREATIVE REBELLION</h2>
-                </div>
-            </section>
-
-            {/* Section 7: The Campus Warp (3D Depth Gallery) */}
-            <section className="relative h-[300vh] bg-[#050505] overflow-hidden">
-                <div className="sticky top-0 h-screen flex items-center justify-center perspective-[2000px]">
-
-                    {/* Perspective Guide Lines */}
-                    <div className="absolute inset-0 z-0 opacity-20">
-                        <div className="absolute top-1/2 left-0 w-full h-px bg-linear-to-r from-transparent via-pink-500 to-transparent" />
-                        <div className="absolute top-0 left-1/2 w-px h-full bg-linear-to-b from-transparent via-violet-500 to-transparent" />
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="w-[80vw] h-[80vw] border border-white/5 rounded-full animate-pulse" />
-                        </div>
-                    </div>
-
-                    <div className="relative w-full h-full flex items-center justify-center">
-                        {/* Layered Floating Elements */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                         {[
-                            { img: 'https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg', x: -300, y: -200, z: -500, rotate: 15, scale: 0.8 },
-                            { img: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg', x: 400, y: -150, z: -800, rotate: -10, scale: 1.2 },
-                            { img: 'https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg', x: -450, y: 180, z: -300, rotate: -5, scale: 0.9 },
-                            { img: 'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg', x: 350, y: 250, z: -600, rotate: 20, scale: 1.1 },
-                            { img: 'https://images.pexels.com/photos/4348404/pexels-photo-4348404.jpeg', x: 0, y: 0, z: -1000, rotate: 0, scale: 2.5 },
-                        ].map((item, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, scale: 0.5 }}
-                                whileInView={{
-                                    opacity: 1,
-                                    scale: item.scale,
-                                    x: item.x,
-                                    y: item.y,
-                                    z: item.z,
-                                    rotate: item.rotate
-                                }}
-                                transition={{
-                                    duration: 1.5,
-                                    delay: i * 0.2,
-                                    ease: "circOut"
-                                }}
-                                whileHover={{ z: 0, rotate: 0, scale: item.scale + 0.1, transition: { duration: 0.5 } }}
-                                className="absolute w-[80vw] md:w-[25vw] aspect-[3/4] rounded-3xl overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.8)] border border-white/10 group cursor-pointer"
-                            >
-                                <img src={item.img} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" alt="Focus" />
-                                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-8">
-                                    <span className="text-pink-500 font-mono text-xs uppercase mb-2">Campus View 0{i + 1}</span>
-                                    <h4 className="text-white text-2xl font-black uppercase tracking-tighter">Immersion.</h4>
+                            { name: "Couture Suite", desc: "Equipped with high-performance industrial machinery and couture tools.", icon: "🧵", bg: "bg-pink-600/5" },
+                            { name: "Animation Farm", desc: "Ultrafast rendering nodes and full-body motion capture stages.", icon: "⚡", bg: "bg-violet-600/5" },
+                            { name: "3D Workshops", desc: "Advanced rapid prototyping, SLA printing, and material libraries.", icon: "📐", bg: "bg-blue-600/5" }
+                        ].map((lab, i) => (
+                            <div key={i} className={`lab-card group relative p-16 rounded-[3rem] border border-white/5 ${lab.bg} hover:border-white/20 transition-all duration-700 overflow-hidden`}>
+                                <div className="absolute top-0 right-0 p-8 text-6xl grayscale group-hover:grayscale-0 transition-all opacity-20 group-hover:opacity-100">{lab.icon}</div>
+                                <div className="relative z-10">
+                                    <span className="text-pink-500 font-mono text-xs block mb-6">Lab Unit 0{i + 1}</span>
+                                    <h4 className="text-3xl font-black uppercase mb-6">{lab.name}</h4>
+                                    <p className="text-slate-400 leading-relaxed font-light">{lab.desc}</p>
                                 </div>
-                            </motion.div>
+                                {/* Hover Gradient Shadow */}
+                                <div className="absolute inset-x-0 bottom-0 h-1 bg-linear-to-r from-pink-500 to-violet-600 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-700" />
+                            </div>
                         ))}
                     </div>
+                </div>
+            </section>
 
-                    {/* Central Text Reveal */}
-                    <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
-                        <div className="text-center">
-                            <h3 className="text-[15vw] md:text-[12vw] font-black uppercase leading-none tracking-tighter blur-sm hover:blur-none transition-all duration-700 select-none opacity-20">
-                                DEEP <br /> SPACE
-                            </h3>
-                        </div>
-                    </div>
+            {/* Section 5: The "Warp" CTA */}
+            <section className="relative h-screen bg-black flex items-center justify-center">
+                {/* 3D Moving Perspective Background (Simulated with scale/blur) */}
+                <div className="absolute inset-0 z-0 overflow-hidden">
+                    <div className="absolute inset-0 bg-linear-to-br from-pink-600/20 via-black to-violet-600/20" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-px bg-white/5 rotate-45" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-px bg-white/5 -rotate-45" />
+                </div>
 
-                    {/* Navigation Hint */}
-                    <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">
-                        <div className="w-px h-24 bg-linear-to-b from-transparent via-pink-500 to-transparent" />
-                        <span className="text-[10px] font-bold uppercase tracking-[1em] text-white/30 whitespace-nowrap">Scroll to Warp</span>
+                <div className="relative z-10 text-center px-6">
+                    <h2 className="text-[12vw] font-black uppercase leading-none tracking-tighter mb-12 mix-blend-difference">
+                        Claim Your <br /> <span className="text-transparent stroke-text-white">Coordinate.</span>
+                    </h2>
+                    <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
+                        <button className="magnetic-btn px-16 py-6 bg-pink-600 text-white font-black rounded-full uppercase tracking-widest shadow-2xl shadow-pink-600/40">Apply For 26</button>
+                        <button className="magnetic-btn px-16 py-6 border border-white/20 backdrop-blur-3xl text-white font-black rounded-full uppercase tracking-widest hover:bg-white hover:text-black">Book A Tour</button>
                     </div>
                 </div>
             </section>
 
+            {/* Section 6: The Infinity Nexus (Success & Global Reach) */}
+            <section className="relative py-64 bg-black overflow-hidden">
+                <div className="max-w-[1400px] mx-auto px-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center mb-48">
+                        <div>
+                            <span className="text-pink-500 font-mono uppercase tracking-[0.5em] text-[10px] block mb-6 animate-pulse">Global Footprint</span>
+                            <h2 className="text-6xl md:text-9xl font-black uppercase tracking-tighter leading-[0.85] mb-12">
+                                Beyond <br /> <span className="text-transparent stroke-text-white italic">Boundaries.</span>
+                            </h2>
+                            <p className="text-slate-400 text-xl font-light leading-relaxed max-w-lg">
+                                Our graduates don't just find jobs; they colonize the industries of London, Milan, and Paris. This is the INSD global nexus.
+                            </p>
+                        </div>
+                        <div className="relative">
+                            {/* Cinematic Vertical Marquee (3D Tilted) */}
+                            <div className="relative h-[600px] w-full bg-white/5 rounded-[4rem] border border-white/10 overflow-hidden transform rotate-3 hover:rotate-0 transition-transform duration-1000">
+                                <div className="absolute inset-0 z-10 bg-linear-to-b from-black via-transparent to-black pointer-events-none" />
+                                <div className="flex flex-col gap-12 py-12 marquee-vertical-nexus">
+                                    {['VOGUE', 'GUCCI', 'PRADA', 'GOOGLE', 'APPLE', 'TESLA', 'ELLE'].map((brand, i) => (
+                                        <div key={i} className="text-center">
+                                            <span className="text-7xl md:text-8xl font-black text-white/10 hover:text-pink-500 transition-colors cursor-default select-none uppercase tracking-widest">{brand}</span>
+                                        </div>
+                                    ))}
+                                    {/* Duplicate for seamless loop */}
+                                    {['VOGUE', 'GUCCI', 'PRADA', 'GOOGLE', 'APPLE', 'TESLA', 'ELLE'].map((brand, i) => (
+                                        <div key={i + 7} className="text-center">
+                                            <span className="text-7xl md:text-8xl font-black text-white/10 hover:text-pink-500 transition-colors cursor-default select-none uppercase tracking-widest">{brand}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            {/* Floating Stats Decoration */}
+                            <div className="absolute -top-12 -right-12 bg-pink-600 text-white p-8 rounded-3xl shadow-2xl z-20 hidden md:block group cursor-default">
+                                <span className="text-4xl font-black block group-hover:scale-110 transition-transform">98%</span>
+                                <span className="text-[10px] font-bold uppercase tracking-widest text-white/60">Placement Velocity</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* The "Atmosphere" Mosaic Reveal */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 h-[600px]">
+                        {[
+                            { img: 'https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg', span: 'col-span-1 row-span-2' },
+                            { img: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg', span: 'col-span-1 row-span-1' },
+                            { img: 'https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg', span: 'col-span-2 row-span-1' },
+                            { img: 'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg', span: 'col-span-1 row-span-1' },
+                            { img: 'https://images.pexels.com/photos/4348404/pexels-photo-4348404.jpeg', span: 'col-span-1 row-span-1' },
+                        ].map((item, i) => (
+                            <div key={i} className={`${item.span} relative rounded-3xl overflow-hidden border border-white/5 group`}>
+                                <img src={item.img} className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-110" alt="Atmosphere" />
+                                <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                                    <span className="text-white font-bold uppercase tracking-widest text-xs">Live @ Studio 0{i + 1}</span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Background Decor: The "Data Stream" */}
+                <div className="absolute top-0 right-1/2 w-px h-full bg-linear-to-b from-transparent via-pink-500/20 to-transparent opacity-30" />
+                <div className="absolute top-0 left-1/3 w-px h-full bg-linear-to-b from-transparent via-violet-500/20 to-transparent opacity-30" />
+            </section>
 
             <Footer />
-
-
         </div>
     );
 };

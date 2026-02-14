@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
-import gsap from 'gsap';
 
 const testimonials = [
     {
@@ -36,7 +35,6 @@ const testimonials = [
 const TestimonialSlider = () => {
     const [current, setCurrent] = useState(0);
     const [direction, setDirection] = useState(1);
-    const containerRef = useRef(null);
 
     const nextSlide = () => {
         setDirection(1);
@@ -122,7 +120,7 @@ const TestimonialSlider = () => {
                             drag="x"
                             dragConstraints={{ left: 0, right: 0 }}
                             dragElastic={1}
-                            onDragEnd={(e, { offset, velocity }) => {
+                            onDragEnd={(e, { offset }) => {
                                 const swipe = offset.x; // swipe distance
                                 if (swipe < -50) {
                                     nextSlide();

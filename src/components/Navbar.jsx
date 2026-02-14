@@ -22,7 +22,6 @@ const RollerLink = ({ to, children, colorClass, baseTextClass = "text-slate-800"
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [activeSubMenu, setActiveSubMenu] = useState(null);
     const { scrollY } = useScroll();
 
     // Scroll animations - using direct scrollY for instant responsiveness
@@ -86,6 +85,7 @@ const Navbar = () => {
         },
         { title: 'Student Careers', path: '/student-careers' },
         { title: 'INSD 360', path: '/insd-360' },
+        { title: 'Franchise', path: '/franchise' },
         { title: 'Apply', path: '/apply' },
         { title: 'Contact Us', path: '/contact-us' },
     ];
@@ -117,7 +117,7 @@ const Navbar = () => {
                 className="hidden md:flex fixed left-1/2 z-100 px-6 py-4 items-center justify-between transition-all duration-300 pointer-events-auto w-full"
             >
                 {/* Left: Logo */}
-                <Link to="/" className="nav-logo relative z-50 flex-shrink-0 block h-10 overflow-hidden" onClick={() => setIsOpen(false)}>
+                <Link to="/" className="nav-logo relative z-50 shrink-0 block h-10 overflow-hidden" onClick={() => setIsOpen(false)}>
                     <motion.img
                         whileHover={{ scale: 1.1, rotate: 2 }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}

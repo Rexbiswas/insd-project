@@ -1,5 +1,4 @@
 import React, { useRef, useLayoutEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';

@@ -1,11 +1,10 @@
-import React, { useLayoutEffect, useRef, useState } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 
 const Loader = ({ setLoading }) => {
     const containerRef = useRef(null);
     const textRef = useRef(null);
     const percentRef = useRef(null);
-    const [progress, setProgress] = useState(0);
 
     useLayoutEffect(() => {
         let ctx = gsap.context(() => {

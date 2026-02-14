@@ -1,5 +1,4 @@
 import React, { useRef, useLayoutEffect } from 'react';
-import { motion } from 'framer-motion';
 import { Facebook, Instagram, Twitter, Linkedin, Youtube, ArrowUpRight, Mail, Phone, MapPin } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';

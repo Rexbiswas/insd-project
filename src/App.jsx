@@ -6,6 +6,8 @@ import Home from './pages/Home';
 
 import About from './pages/About';
 import Campus from './pages/Campus';
+import Franchise from './pages/Franchise';
+import Admission from './pages/Admission';
 import Loader from './components/Loader';
 import BackToTop from './components/BackToTop';
 
@@ -43,9 +45,9 @@ function App() {
             <Route path="/courses" element={<Placeholder title="Courses" />} />
             <Route path="/student-careers" element={<Placeholder title="Student Careers" />} />
             <Route path="/insd-360" element={<Placeholder title="INSD 360" />} />
-            <Route path="/franchise" element={<Placeholder title="Franchise" />} />
+            <Route path="/franchise" element={<Franchise />} />
             <Route path="/contact-us" element={<Placeholder title="Contact Us" />} />
-            <Route path="/apply" element={<Placeholder title="Apply Now" />} />
+            <Route path="/apply" element={<Admission />} />
             <Route path="*" element={<Placeholder title="404 Not Found" />} />
           </Routes>
         </div>

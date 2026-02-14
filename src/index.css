@@ -29,7 +29,33 @@
     }
   }
 
+  @keyframes scan {
+    0% {
+      top: 0%;
+    }
+
+    50% {
+      top: 100%;
+    }
+
+    100% {
+      top: 0%;
+    }
+  }
+
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
   --animate-marquee-fast: marquee 20s linear infinite;
+  --animate-scan: scan 4s linear infinite;
+  --animate-spin-slow: spin-slow 12s linear infinite;
 }
 
 :root {
