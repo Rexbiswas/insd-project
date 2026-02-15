@@ -84,6 +84,17 @@ const Particles = () => {
 };
 
 const Background3D = () => {
+    const [isMobile, setIsMobile] = React.useState(false);
+
+    React.useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    if (isMobile) return null;
+
     return (
         <div className="fixed inset-0 z-0 pointer-events-none bg-slate-50/50">
             <Canvas camera={{ position: [0, 0, 8], fov: 45 }}>

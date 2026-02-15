@@ -61,14 +61,19 @@ const Home = () => {
     const studentRef = useRef(null);
     const scrollHintRef = useRef(null);
     const legacyRef = useRef(null);
+    const [isMobile, setIsMobile] = React.useState(false);
 
 
     // Lenis Smooth Scroll Integration
     useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+
         const lenis = new Lenis({
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            smooth: true,
+            smooth: !isMobile, // Disable smooth scroll on mobile to avoid conflicts
         });
 
         // Sync ScrollTrigger with Lenis
@@ -83,20 +88,14 @@ const Home = () => {
         return () => {
             lenis.destroy();
             gsap.ticker.remove(lenis.raf);
+            window.removeEventListener('resize', checkMobile);
         };
-    }, []);
+    }, [isMobile]);
 
     useLayoutEffect(() => {
         let ctx = gsap.context(() => {
             const tl = gsap.timeline();
 
-            // 1. Shutter Open Animation (Page Load)
-            tl.to(shutterRef.current, {
-                height: 0,
-                duration: 1.5,
-                ease: "power4.inOut",
-                delay: 0.2
-            })
             // Text Reveal Animation
             const chars = containerRef.current.querySelectorAll('.char-extra');
             tl.fromTo(chars,
@@ -115,8 +114,7 @@ const Home = () => {
                     delay: 0.2,
                     stagger: 0.05,
                     ease: "power3.out"
-                },
-                "-=1"
+                }
             );
 
             // Floating Breath Animation for Hero Chars
@@ -179,45 +177,47 @@ const Home = () => {
                     trigger: heroRef.current,
                     start: "top top",
                     end: "+=150%",
-                    pin: true,
+                    pin: !isMobile,
                     scrub: 1,
                 }
             });
 
-            scrollTl
-                .to(insdRef.current, {
-                    scale: 50, // Massive scale to zoom through text
-                    duration: 2,
-                    ease: "power2.inOut"
-                })
-                .to([maskRef.current, titleRef.current], {
-                    opacity: 0,
-                    duration: 0.5,
-                    ease: "power2.in"
-                }, "<+=1.2")
-                // Unexpected UI: Elements stay but evolve into functional UI
-                .to(scrollHintRef.current, {
-                    scale: window.innerWidth < 768 ? 0.6 : 0.8,
-                    x: window.innerWidth < 768 ? (window.innerWidth / 2) - 60 : (window.innerWidth / 2) - 100, // Responsive move
-                    y: window.innerWidth < 768 ? 20 : 40,
-                    duration: 1.5,
-                    ease: "power3.inOut"
-                }, 0)
-                .to(scrollHintRef.current.querySelector('.relative'), {
-                    rotation: 90,
-                    width: window.innerWidth < 768 ? 60 : 120, // Responsive width
-                    scaleX: 1,
-                    duration: 1.5,
-                    ease: "power3.inOut"
-                }, 0)
-                .to(subTitleRef.current, {
-                    scale: window.innerWidth < 768 ? 0.9 : 1.2,
-                    y: window.innerWidth < 768 ? 80 : 150,
-                    color: "#f472b6",
-                    opacity: 1, // Keep fully visible
-                    duration: 2,
-                    ease: "expo.out"
-                }, 0.5);
+            if (!isMobile) {
+                scrollTl
+                    .to(insdRef.current, {
+                        scale: 50, // Massive scale to zoom through text
+                        duration: 2,
+                        ease: "power2.inOut"
+                    })
+                    .to([maskRef.current, titleRef.current], {
+                        opacity: 0,
+                        duration: 0.5,
+                        ease: "power2.in"
+                    }, "<+=1.2")
+                    // Unexpected UI: Elements stay but evolve into functional UI
+                    .to(scrollHintRef.current, {
+                        scale: 0.8,
+                        x: (window.innerWidth / 2) - 100, // Responsive move
+                        y: 40,
+                        duration: 1.5,
+                        ease: "power3.inOut"
+                    }, 0)
+                    .to(scrollHintRef.current.querySelector('.relative'), {
+                        rotation: 90,
+                        width: 120, // Responsive width
+                        scaleX: 1,
+                        duration: 1.5,
+                        ease: "power3.inOut"
+                    }, 0)
+                    .to(subTitleRef.current, {
+                        scale: 1.2,
+                        y: 150,
+                        color: "#f472b6",
+                        opacity: 1, // Keep fully visible
+                        duration: 2,
+                        ease: "expo.out"
+                    }, 0.5);
+            }
 
 
 

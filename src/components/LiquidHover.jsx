@@ -97,6 +97,14 @@ const LiquidPlane = ({ imageUrl, isHovered }) => {
 
 const LiquidHover = ({ imageUrl, className }) => {
     const [isHovered, setIsHovered] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    React.useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     return (
         <div
@@ -107,18 +115,20 @@ const LiquidHover = ({ imageUrl, className }) => {
                 backgroundImage: `url(${imageUrl})`
             }}
         >
-            <Canvas
-                gl={{ antialias: true, alpha: true }}
-                camera={{ position: [0, 0, 1] }}
-                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'auto' }}
-                onCreated={({ gl }) => {
-                    gl.setClearColor(0x000000, 0); // Transparent background
-                }}
-            >
-                <Suspense fallback={null}>
-                    <LiquidPlane imageUrl={imageUrl} isHovered={isHovered} />
-                </Suspense>
-            </Canvas>
+            {!isMobile && (
+                <Canvas
+                    gl={{ antialias: true, alpha: true }}
+                    camera={{ position: [0, 0, 1] }}
+                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'auto' }}
+                    onCreated={({ gl }) => {
+                        gl.setClearColor(0x000000, 0); // Transparent background
+                    }}
+                >
+                    <Suspense fallback={null}>
+                        <LiquidPlane imageUrl={imageUrl} isHovered={isHovered} />
+                    </Suspense>
+                </Canvas>
+            )}
         </div>
     );
 };
