@@ -22,17 +22,18 @@ const RollerLink = ({ to, children, colorClass, baseTextClass = "text-slate-800"
 
 import { useRegisterModal } from '../context/RegisterModalContext';
 
-const RegisterButton = ({ className = "", isDarkTheme = false, isScrolled = false }) => {
+const RegisterButton = ({ className = "", isDarkTheme = false, isScrolled = false, theme = null }) => {
     const { openModal } = useRegisterModal();
-    const isLightMode = !isDarkTheme || isScrolled;
+    // If theme is 'dark', it's forced dark. If 'light', forced light. Otherwise dynamic.
+    const isLightMode = theme === 'dark' ? false : theme === 'light' ? true : (!isDarkTheme || isScrolled);
 
     return (
         <button
             onClick={openModal}
-            className={`group relative overflow-hidden shadow-lg transition-all duration-300 rounded-full ${isLightMode ? 'bg-slate-900/5 hover:bg-slate-900/10 border-slate-900/10' : 'bg-white/10 hover:bg-white/20 border-white/20'} backdrop-blur-md border ${className}`}
+            className={`group relative overflow-hidden shadow-lg transition-all duration-300 rounded-full ${isLightMode ? 'bg-slate-900/5 hover:bg-slate-900 border-slate-900/10' : 'bg-white/10 hover:bg-white/20 border-white/20'} backdrop-blur-xl border ${className}`}
         >
             {/* Animated Gradient Background */}
-            <div className="absolute inset-0 bg-linear-to-r from-pink-500/20 via-violet-600/20 to-indigo-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-linear-to-r from-pink-600 via-violet-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-all duration-500" />
 
             {/* Shimmer Effect */}
             <div className="absolute inset-0 pointer-events-none">
@@ -43,10 +44,10 @@ const RegisterButton = ({ className = "", isDarkTheme = false, isScrolled = fals
             <div className="absolute inset-0 border border-white/20 group-hover:border-pink-500/50 rounded-full transition-colors duration-500" />
 
             <div className="relative z-10 flex items-center justify-center gap-1.5 md:gap-2">
-                <span className={`text-[10px] md:text-xs font-black tracking-widest uppercase transition-colors duration-300 ${isLightMode ? 'text-slate-900' : 'text-white'}`}>
+                <span className={`text-[10px] md:text-xs font-black tracking-widest uppercase transition-colors duration-300 ${isLightMode ? 'text-slate-900 group-hover:text-white' : 'text-white'}`}>
                     Register
                 </span>
-                <ArrowRight size={14} className={`transition-all duration-300 group-hover:translate-x-1 ${isLightMode ? 'text-slate-900' : 'text-white'}`} />
+                <ArrowRight size={14} className={`transition-all duration-300 group-hover:translate-x-1 ${isLightMode ? 'text-slate-900 group-hover:text-white' : 'text-white'}`} />
             </div>
 
             {/* Outer Glow Halo */}
@@ -62,8 +63,8 @@ const Navbar = () => {
     const { scrollY } = useScroll();
     const location = useLocation();
 
-    // Pages that have a dark background/theme
-    const darkPages = ['/apply', '/admission'];
+    // Pages that have a dark background/theme or high-impact gradient hero sections
+    const darkPages = ['/about-us', '/campuses', '/franchise', '/apply', '/courses'];
     const isDarkTheme = darkPages.includes(location.pathname);
 
     // Scroll values
@@ -83,20 +84,20 @@ const Navbar = () => {
     const navRadius = useTransform(scrollProgress, transitionRange, ["0px", "50px"]);
 
     // Frosted Glass Effect Transformations
-    const navBackground = useTransform(scrollProgress, transitionRange, ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.65)"]);
-    const navBackdrop = useTransform(scrollProgress, transitionRange, ["blur(0px)", "blur(12px)"]);
-    const navBorderColor = useTransform(scrollProgress, transitionRange, ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.5)"]);
-    const navShadow = useTransform(scrollProgress, transitionRange, ["none", "0 8px 32px 0 rgba(31, 38, 135, 0.1)"]);
+    const navBackground = useTransform(scrollProgress, transitionRange, ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.4)"]);
+    const navBackdrop = useTransform(scrollProgress, transitionRange, ["blur(0px) saturate(100%)", "blur(25px) saturate(180%)"]);
+    const navBorderColor = useTransform(scrollProgress, transitionRange, ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.4)"]);
+    const navShadow = useTransform(scrollProgress, transitionRange, ["none", "0 10px 40px -10px rgba(0, 0, 0, 0.1)"]);
 
     // Mobile Dynamic Island Animations
     const mobileWidth = useTransform(scrollProgress, transitionRange, ["100%", "360px"]);
     const mobileHeight = useTransform(scrollProgress, transitionRange, ["64px", "48px"]);
     const mobileTop = useTransform(scrollProgress, transitionRange, ["0px", "10px"]);
     const mobileRadius = useTransform(scrollProgress, transitionRange, ["0px", "10px"]);
-    const mobileBackground = useTransform(scrollProgress, transitionRange, ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.8)"]);
-    const mobileBackdrop = useTransform(scrollProgress, transitionRange, ["blur(0px)", "blur(12px)"]);
-    const mobileShadow = useTransform(scrollProgress, transitionRange, ["none", "0 10px 15px -3px rgba(0, 0, 0, 0.1)"]);
-    const mobileBorder = useTransform(scrollProgress, transitionRange, ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.5)"]);
+    const mobileBackground = useTransform(scrollProgress, transitionRange, ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.4)"]);
+    const mobileBackdrop = useTransform(scrollProgress, transitionRange, ["blur(0px) saturate(100%)", "blur(20px) saturate(180%)"]);
+    const mobileShadow = useTransform(scrollProgress, transitionRange, ["none", "0 10px 25px -5px rgba(0, 0, 0, 0.1)"]);
+    const mobileBorder = useTransform(scrollProgress, transitionRange, ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.4)"]);
 
     const navRef = useRef(null);
     const mobileNavRef = useRef(null);
@@ -167,6 +168,7 @@ const Navbar = () => {
                     borderRadius: navRadius,
                     backgroundColor: navBackground,
                     backdropFilter: navBackdrop,
+                    WebkitBackdropFilter: navBackdrop,
                     borderColor: navBorderColor,
                     boxShadow: navShadow,
                     borderWidth: "1px",
@@ -245,6 +247,7 @@ const Navbar = () => {
                     borderRadius: mobileRadius,
                     backgroundColor: isOpen ? "transparent" : mobileBackground,
                     backdropFilter: isOpen ? "none" : mobileBackdrop,
+                    WebkitBackdropFilter: isOpen ? "none" : mobileBackdrop,
                     boxShadow: isOpen ? "none" : mobileShadow,
                     borderColor: isOpen ? "transparent" : mobileBorder,
                     borderWidth: "1px",
@@ -270,7 +273,7 @@ const Navbar = () => {
             </motion.div >
 
             {/* Mobile Bottom Navigation Bar - iPhone Style */}
-            <div className={`fixed bottom-4 left-4 right-4 h-20 flex items-center justify-around px-4 border z-50 md:hidden rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] backdrop-blur-[25px] backdrop-saturate-150 transition-all duration-500 ${isOpen || (isDarkTheme && !isScrolled) ? 'bg-[#0f172b]/60 border-white/20' : 'bg-white/70 border-white/40'}`}>
+            <div className={`fixed bottom-2 left-2 right-2 h-20 flex items-center justify-around px-4 border z-50 md:hidden rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500 ${isOpen || (isDarkTheme && !isScrolled) ? 'apple-glass-dark !bg-slate-900/40' : 'apple-glass'}`}>
                 <NavLink
                     to="/"
                     onClick={() => setIsOpen(false)}
@@ -280,7 +283,7 @@ const Navbar = () => {
                 >
                     {({ isActive }) => (
                         <>
-                            {isActive && <motion.div layoutId="activePill" className="absolute inset-0 bg-pink-500/10 blur-xl rounded-full" />}
+                            {isActive && <motion.div layoutId="activePill" className="absolute inset-2 bg-pink-500/20 rounded-full shadow-[0_0_20px_rgba(236,72,153,0.2)]" />}
                             <Home size={24} strokeWidth={isActive ? 2.5 : 2} />
                             <span className={`text-[10px] font-black mt-1 uppercase tracking-tighter ${isActive ? 'opacity-100' : 'opacity-40'}`}>Home</span>
                         </>
@@ -296,7 +299,7 @@ const Navbar = () => {
                 >
                     {({ isActive }) => (
                         <>
-                            {isActive && <motion.div layoutId="activePill" className="absolute inset-0 bg-violet-500/10 blur-xl rounded-full" />}
+                            {isActive && <motion.div layoutId="activePill" className="absolute inset-2 bg-violet-500/20 rounded-full shadow-[0_0_20px_rgba(139,92,246,0.2)]" />}
                             <Sparkles size={24} strokeWidth={isActive ? 2.5 : 2} />
                             <span className={`text-[10px] font-black mt-1 uppercase tracking-tighter ${isActive ? 'opacity-100' : 'opacity-40'}`}>Courses</span>
                         </>
@@ -364,9 +367,12 @@ const Navbar = () => {
                                             </div>
                                         </div>
 
-                                        {/* Register CTA for Mobile Drawer */}
+                                        {/* Register CTA for Mobile Drawer - Forced Dark for dark menu */}
                                         <div className="md:hidden">
-                                            <RegisterButton className="w-full py-4 !rounded-2xl flex justify-center items-center" />
+                                            <RegisterButton
+                                                className="w-full py-4 !rounded-2xl flex justify-center items-center"
+                                                theme="dark"
+                                            />
                                         </div>
                                     </motion.div>
 
@@ -384,21 +390,11 @@ const Navbar = () => {
                                                 className="origin-bottom"
                                             >
                                                 <div className="flex flex-col">
-                                                    <div
-                                                        className="flex items-center justify-between group/link cursor-pointer"
-                                                        onClick={() => {
-                                                            if (link.subItems) {
-                                                                setExpandedItem(expandedItem === link.title ? null : link.title);
-                                                            }
-                                                        }}
-                                                    >
+                                                    <div className="flex items-center justify-between group/link">
                                                         <NavLink
-                                                            to={link.subItems || link.title === 'Apply' || link.title === 'Register' ? '#' : link.path}
+                                                            to={link.title === 'Apply' || link.title === 'Register' ? '#' : link.path}
                                                             onClick={(e) => {
-                                                                if (link.subItems) {
-                                                                    e.preventDefault();
-                                                                    setExpandedItem(expandedItem === link.title ? null : link.title);
-                                                                } else if (link.title === 'Apply' || link.title === 'Register') {
+                                                                if (link.title === 'Apply' || link.title === 'Register') {
                                                                     e.preventDefault();
                                                                     setIsOpen(false);
                                                                     openModal();
@@ -406,11 +402,11 @@ const Navbar = () => {
                                                                     setIsOpen(false);
                                                                 }
                                                             }}
-                                                            className={() => {
+                                                            className={({ isActive }) => {
                                                                 const isPathActive = location.pathname === link.path ||
                                                                     (link.subItems && link.subItems.some(sub => location.pathname === sub.path));
 
-                                                                return `relative inline-flex items-center text-xl md:text-3xl lg:text-4xl font-black tracking-tighter uppercase transition-colors duration-300 ${isPathActive ? 'text-white' : 'text-slate-600 hover:text-white'}`;
+                                                                return `relative inline-flex items-center text-2xl md:text-4xl lg:text-3xl font-black tracking-tighter uppercase transition-colors duration-300 ${isPathActive ? 'text-white' : 'text-slate-600 hover:text-white'}`;
                                                             }}
                                                         >
                                                             <span className="absolute -left-12 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300 text-pink-500 text-4xl hidden lg:block">
@@ -422,12 +418,13 @@ const Navbar = () => {
                                                         </NavLink>
 
                                                         {link.subItems && (
-                                                            <motion.div
+                                                            <motion.button
                                                                 animate={{ rotate: expandedItem === link.title ? 180 : 0 }}
-                                                                className={`p-2 transition-colors ${expandedItem === link.title ? 'text-pink-500' : 'text-slate-500 group-hover/link:text-white'}`}
+                                                                onClick={() => setExpandedItem(expandedItem === link.title ? null : link.title)}
+                                                                className={`p-4 transition-colors rounded-full hover:bg-white/5 ${expandedItem === link.title ? 'text-pink-500' : 'text-slate-500 hover:text-white'}`}
                                                             >
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
-                                                            </motion.div>
+                                                            </motion.button>
                                                         )}
                                                     </div>
 

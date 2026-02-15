@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
+import Courses from './pages/Courses';
+
 
 import About from './pages/About';
 import Campus from './pages/Campus';
@@ -47,7 +49,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about-us" element={<About />} />
             <Route path="/campuses" element={<Campus />} />
-            <Route path="/courses" element={<Placeholder title="Courses" />} />
+            <Route path="/courses" element={<Courses />} />
             <Route path="/student-careers" element={<Placeholder title="Student Careers" />} />
             <Route path="/insd-360" element={<Placeholder title="INSD 360" />} />
             <Route path="/franchise" element={<Franchise />} />

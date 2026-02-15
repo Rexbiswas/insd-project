@@ -13,7 +13,6 @@ import FeaturedIn from '../components/FeaturedIn';
 import EventBlogs from '../components/EventBlogs';
 import InstagramGallery from '../components/InstagramGallery';
 import InsdiansByDesign from '../components/InsdiansByDesign';
-
 import Footer from '../components/Footer';
 
 
