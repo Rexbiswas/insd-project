@@ -20,7 +20,43 @@ const RollerLink = ({ to, children, colorClass, baseTextClass = "text-slate-800"
     );
 };
 
+import { useRegisterModal } from '../context/RegisterModalContext';
+
+const RegisterButton = ({ className = "", isDarkTheme = false, isScrolled = false }) => {
+    const { openModal } = useRegisterModal();
+    const isLightMode = !isDarkTheme || isScrolled;
+
+    return (
+        <button
+            onClick={openModal}
+            className={`group relative overflow-hidden shadow-lg transition-all duration-300 rounded-full ${isLightMode ? 'bg-slate-900/5 hover:bg-slate-900/10 border-slate-900/10' : 'bg-white/10 hover:bg-white/20 border-white/20'} backdrop-blur-md border ${className}`}
+        >
+            {/* Animated Gradient Background */}
+            <div className="absolute inset-0 bg-linear-to-r from-pink-500/20 via-violet-600/20 to-indigo-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+            {/* Shimmer Effect */}
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-0 -left-full w-full h-full bg-linear-to-r from-transparent via-white/10 to-transparent skew-x-[-20deg] group-hover:animate-shimmer" />
+            </div>
+
+            {/* Glowing Border Animation */}
+            <div className="absolute inset-0 border border-white/20 group-hover:border-pink-500/50 rounded-full transition-colors duration-500" />
+
+            <div className="relative z-10 flex items-center justify-center gap-1.5 md:gap-2">
+                <span className={`text-[10px] md:text-xs font-black tracking-widest uppercase transition-colors duration-300 ${isLightMode ? 'text-slate-900' : 'text-white'}`}>
+                    Register
+                </span>
+                <ArrowRight size={14} className={`transition-all duration-300 group-hover:translate-x-1 ${isLightMode ? 'text-slate-900' : 'text-white'}`} />
+            </div>
+
+            {/* Outer Glow Halo */}
+            <div className="absolute -inset-[2px] bg-linear-to-r from-pink-500 via-violet-600 to-indigo-600 rounded-full blur-md opacity-0 group-hover:opacity-40 transition-opacity duration-500 -z-10" />
+        </button>
+    );
+};
+
 const Navbar = () => {
+    const { openModal } = useRegisterModal();
     const [isOpen, setIsOpen] = useState(false);
     const [expandedItem, setExpandedItem] = useState(null);
     const { scrollY } = useScroll();
@@ -179,6 +215,12 @@ const Navbar = () => {
                         )}
                     </AnimatePresence>
 
+                    <RegisterButton
+                        className="hidden md:block px-6 py-2"
+                        isDarkTheme={isDarkTheme}
+                        isScrolled={isScrolled}
+                    />
+
                     {/* Menu Toggle - Desktop Only */}
                     <motion.button
                         whileHover={{ scale: 1.05 }}
@@ -209,61 +251,77 @@ const Navbar = () => {
                     borderStyle: "solid",
                 }}
                 ref={mobileNavRef}
-                className="md:hidden fixed left-1/2 z-50 flex items-center justify-center pointer-events-none"
+                className="md:hidden fixed left-1/2 z-50 flex items-center pointer-events-none"
             >
-                <Link to="/" onClick={() => setIsOpen(false)} className="pointer-events-auto h-full flex items-center justify-center">
-                    <img
-                        className="h-8 w-auto object-contain drop-shadow-sm"
-                        src="https://insd.edu.in/wp-content/uploads/2022/02/Final-Logo.png"
-                        alt="INSD Logo"
-                    />
-                </Link>
+                <div className="relative w-full h-full flex items-center justify-between px-4 pointer-events-auto">
+                    {/* Ghost spacer to keep logo centered */}
+                    <div className="w-20 hidden md:block" />
+
+                    <Link to="/" onClick={() => setIsOpen(false)} className="h-full flex items-center justify-center mx-auto">
+                        <img
+                            className="h-7 md:h-8 w-auto object-contain drop-shadow-sm"
+                            src="https://insd.edu.in/wp-content/uploads/2022/02/Final-Logo.png"
+                            alt="INSD Logo"
+                        />
+                    </Link>
+
+                    {/* Register button removed from here for cleaner mobile look */}
+                </div>
             </motion.div >
 
-            {/* Mobile Bottom Navigation Bar */}
-            < div className={`fixed bottom-0 left-0 right-0 h-20 flex items-center justify-around px-6 border-t z-50 md:hidden pb-2 shadow-[0_-10px_30px_rgba(0,0,0,0.1)] backdrop-blur-xl transition-all duration-300 ${isOpen ? 'bg-[#0f172b] border-white/10' : 'bg-white/80 border-slate-200/50'}`
-            }>
+            {/* Mobile Bottom Navigation Bar - iPhone Style */}
+            <div className={`fixed bottom-4 left-4 right-4 h-20 flex items-center justify-around px-4 border z-50 md:hidden rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] backdrop-blur-[25px] backdrop-saturate-150 transition-all duration-500 ${isOpen || (isDarkTheme && !isScrolled) ? 'bg-[#0f172b]/60 border-white/20' : 'bg-white/70 border-white/40'}`}>
                 <NavLink
                     to="/"
                     onClick={() => setIsOpen(false)}
                     className={({ isActive }) =>
-                        `relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${isActive ? 'text-pink-600 bg-pink-500/10 shadow-[0_0_20px_rgba(236,72,153,0.3)]' : isOpen ? 'text-white/60 hover:text-white' : 'text-[#0f172b]/60 hover:text-[#0f172b]'}`
+                        `relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${isActive ? 'text-pink-600' : (isDarkTheme && !isScrolled) || isOpen ? 'text-white/40 hover:text-white' : 'text-slate-900/40 hover:text-slate-900'}`
                     }
                 >
-                    <Home size={24} strokeWidth={2} />
-                    <span className="text-[10px] font-bold mt-1">Home</span>
+                    {({ isActive }) => (
+                        <>
+                            {isActive && <motion.div layoutId="activePill" className="absolute inset-0 bg-pink-500/10 blur-xl rounded-full" />}
+                            <Home size={24} strokeWidth={isActive ? 2.5 : 2} />
+                            <span className={`text-[10px] font-black mt-1 uppercase tracking-tighter ${isActive ? 'opacity-100' : 'opacity-40'}`}>Home</span>
+                        </>
+                    )}
                 </NavLink>
 
                 <NavLink
                     to="/courses"
                     onClick={() => setIsOpen(false)}
                     className={({ isActive }) =>
-                        `relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${isActive ? 'text-violet-600 bg-violet-500/10 shadow-[0_0_20px_rgba(139,92,246,0.3)]' : isOpen ? 'text-white/60 hover:text-white' : 'text-[#0f172b]/60 hover:text-[#0f172b]'}`
+                        `relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${isActive ? 'text-violet-600' : (isDarkTheme && !isScrolled) || isOpen ? 'text-white/40 hover:text-white' : 'text-slate-900/40 hover:text-slate-900'}`
                     }
                 >
-                    <Sparkles size={24} strokeWidth={2} />
-                    <span className="text-[10px] font-bold mt-1">Courses</span>
-                </NavLink>
-
-                <NavLink
-                    to="/apply"
-                    onClick={() => setIsOpen(false)}
-                    className={({ isActive }) =>
-                        `relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${isActive ? 'text-pink-600 bg-pink-500/10 shadow-[0_0_20px_rgba(236,72,153,0.3)]' : isOpen ? 'text-white/60 hover:text-white' : 'text-[#0f172b]/60 hover:text-[#0f172b]'}`
-                    }
-                >
-                    <GraduationCap size={24} strokeWidth={2} />
-                    <span className="text-[10px] font-bold mt-1">Apply</span>
+                    {({ isActive }) => (
+                        <>
+                            {isActive && <motion.div layoutId="activePill" className="absolute inset-0 bg-violet-500/10 blur-xl rounded-full" />}
+                            <Sparkles size={24} strokeWidth={isActive ? 2.5 : 2} />
+                            <span className={`text-[10px] font-black mt-1 uppercase tracking-tighter ${isActive ? 'opacity-100' : 'opacity-40'}`}>Courses</span>
+                        </>
+                    )}
                 </NavLink>
 
                 <button
+                    onClick={() => {
+                        setIsOpen(false);
+                        openModal();
+                    }}
+                    className={`relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${(isDarkTheme && !isScrolled) || isOpen ? 'text-white/40 hover:text-white' : 'text-slate-900/40 hover:text-slate-900'}`}
+                >
+                    <GraduationCap size={24} strokeWidth={2} />
+                    <span className="text-[10px] font-black mt-1 uppercase tracking-tighter opacity-40">Apply</span>
+                </button>
+
+                <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className={`relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${isOpen ? 'text-white bg-white/10' : 'text-[#0f172b]/60 hover:text-[#0f172b]'}`}
+                    className={`relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${isOpen ? 'text-pink-600 bg-pink-500/5' : (isDarkTheme && !isScrolled) ? 'text-white/40 hover:text-white' : 'text-slate-900/40 hover:text-slate-900'}`}
                 >
                     {isOpen ? <X size={26} strokeWidth={2} /> : <LayoutGrid size={24} strokeWidth={2} />}
-                    <span className="text-[10px] font-bold mt-1">{isOpen ? 'Close' : 'Menu'}</span>
+                    <span className={`text-[10px] font-black mt-1 uppercase tracking-tighter ${isOpen ? 'opacity-100' : 'opacity-40'}`}>{isOpen ? 'Close' : 'Menu'}</span>
                 </button>
-            </div >
+            </div>
 
             {/* Full Screen Menu Overlay */}
             < AnimatePresence >
@@ -286,14 +344,14 @@ const Navbar = () => {
                             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 w-full h-full">
 
                                 {/* Navigation Links Area (Main focus) */}
-                                <div className="lg:col-span-8 flex flex-col justify-start md:justify-center space-y-2 h-full overflow-y-auto no-scrollbar pb-32 pt-34 md:pt-0">
+                                <div className="lg:col-span-8 flex flex-col justify-start md:justify-center space-y-2 h-full overflow-y-auto no-scrollbar pb-32 pt-12 md:pt-0">
 
                                     {/* Search Bar - Mobile/Menu Responsive */}
                                     <motion.div
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 0.3 }}
-                                        className="mb-8 w-full max-w-md shrink-0"
+                                        className="mb-8 w-full max-w-md shrink-0 flex flex-col gap-4"
                                     >
                                         <div className="relative group">
                                             <input
@@ -304,6 +362,11 @@ const Navbar = () => {
                                             <div className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-pink-500 transition-colors">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                                             </div>
+                                        </div>
+
+                                        {/* Register CTA for Mobile Drawer */}
+                                        <div className="md:hidden">
+                                            <RegisterButton className="w-full py-4 !rounded-2xl flex justify-center items-center" />
                                         </div>
                                     </motion.div>
 
@@ -330,11 +393,15 @@ const Navbar = () => {
                                                         }}
                                                     >
                                                         <NavLink
-                                                            to={link.subItems ? '#' : link.path}
+                                                            to={link.subItems || link.title === 'Apply' || link.title === 'Register' ? '#' : link.path}
                                                             onClick={(e) => {
                                                                 if (link.subItems) {
                                                                     e.preventDefault();
                                                                     setExpandedItem(expandedItem === link.title ? null : link.title);
+                                                                } else if (link.title === 'Apply' || link.title === 'Register') {
+                                                                    e.preventDefault();
+                                                                    setIsOpen(false);
+                                                                    openModal();
                                                                 } else {
                                                                     setIsOpen(false);
                                                                 }

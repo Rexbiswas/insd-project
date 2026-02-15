@@ -139,10 +139,21 @@
     }
   }
 
+  @keyframes shimmer {
+    from {
+      left: -100%;
+    }
+
+    to {
+      left: 100%;
+    }
+  }
+
   --animate-marquee-fast: marquee 20s linear infinite;
   --animate-scan: scan 4s linear infinite;
   --animate-spin-slow: spin-slow 12s linear infinite;
   --animate-flicker: flicker 0.1s infinite;
+  --animate-shimmer: shimmer 2s linear infinite;
 }
 
 :root {

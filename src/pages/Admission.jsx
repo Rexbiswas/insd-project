@@ -2,12 +2,15 @@ import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
+import { useRegisterModal } from '../context/RegisterModalContext';
 import Footer from '../components/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Admission = () => {
+    const { openModal } = useRegisterModal();
     const containerRef = useRef(null);
     const apertureRef = useRef(null);
     const { scrollYProgress } = useScroll();
@@ -172,22 +175,27 @@ const Admission = () => {
                         </p>
                     </div>
 
-                    <div className="md:w-2/3 w-full">
-                        <form className="space-y-20">
-                            {[
-                                { label: "Legal Name", type: "text", placeholder: "SURNAME, GIVEN NAME" },
-                                { label: "Frequency", type: "email", placeholder: "EMAIL@DOMAIN.COM" },
-                                { label: "Department", type: "text", placeholder: "CORE OF CHOICE" }
-                            ].map((f, i) => (
-                                <div key={i} className="relative group">
-                                    <label className="text-[10px] font-mono text-pink-600 block mb-4 uppercase tracking-[0.5em]">{f.label}</label>
-                                    <input type={f.type} placeholder={f.placeholder} className="w-full bg-transparent border-b border-white/10 py-4 text-3xl md:text-5xl font-black uppercase outline-none focus:border-white transition-all placeholder:text-white/5" />
-                                </div>
-                            ))}
-                            <button className="w-full md:w-auto px-20 py-8 bg-white text-black font-black uppercase tracking-[0.4em] text-sm hover:bg-pink-600 hover:text-white transition-all shadow-2xl">
-                                Submit Registry
-                            </button>
-                        </form>
+                    <div className="md:w-2/3 w-full flex flex-col items-center justify-center border border-white/10 rounded-[4rem] p-12 md:p-32 bg-white/5 backdrop-blur-3xl group relative overflow-hidden">
+                        {/* Decorative background element */}
+                        <div className="absolute inset-0 bg-linear-to-br from-pink-500/10 via-transparent to-violet-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+                        <h3 className="text-4xl md:text-7xl font-black uppercase mb-12 text-center group-hover:text-pink-500 transition-colors leading-[0.8] tracking-tighter relative z-10">Ready to <br /> Begin?</h3>
+
+                        <button
+                            onClick={openModal}
+                            className="relative z-10 w-full md:w-auto px-20 py-8 bg-white/10 backdrop-blur-xl border border-white/20 text-white font-black uppercase tracking-[0.4em] text-sm hover:bg-white hover:text-black transition-all shadow-2xl rounded-full text-center group/btn"
+                        >
+                            <span className="flex items-center gap-4">
+                                Open Protocol Sequence
+                                <ArrowRight className="group-hover/btn:translate-x-4 transition-transform" />
+                            </span>
+                        </button>
+
+                        <div className="mt-12 flex gap-4 opacity-30 relative z-10">
+                            <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                            <div className="w-2 h-2 rounded-full bg-white animate-pulse delay-150" />
+                            <div className="w-2 h-2 rounded-full bg-white animate-pulse delay-300" />
+                        </div>
                     </div>
                 </div>
             </section>

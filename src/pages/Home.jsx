@@ -149,8 +149,8 @@ const Home = () => {
                     ease: "power2.out"
                 }, "-=0.4")
                 .fromTo(scrollHintRef.current.querySelectorAll('.char-hint-extra'),
-                    { opacity: 0, scale: 0, rotate: -45, filter: "blur(10px)" },
-                    { opacity: 1, scale: 1, rotate: 0, filter: "blur(0px)", stagger: 0.03, duration: 1, ease: "back.out(1.7)" },
+                    { opacity: 0, scale: 0, rotate: -45 },
+                    { opacity: 1, scale: 1, rotate: 0, stagger: 0.03, duration: 1, ease: "back.out(1.7)" },
                     "-=0.6"
                 )
                 .to(scrollHintRef.current.querySelector('.scroll-text-main'), {
@@ -543,13 +543,13 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div className="absolute bottom-28 md:bottom-10 left-1/2 -translate-x-1/2 w-full flex flex-col items-center z-20 pointer-events-none">
-                    <div ref={scrollHintRef} className="flex flex-col items-center gap-2 md:gap-4 mb-4 md:mb-8">
-                        <div className="flex flex-col items-center">
-                            <p className="scroll-text-small text-[8px] md:text-[14px] font-mono uppercase tracking-[0.6em] text-slate-500 mb-1 md:mb-2 opacity-0 text-center whitespace-nowrap">
+                <div className="absolute bottom-28 md:bottom-10 left-1/2 -translate-x-1/2 w-full flex flex-col items-center z-50 pointer-events-none">
+                    <div ref={scrollHintRef} className="flex flex-col items-center gap-2 md:gap-4 mb-4 md:mb-8" style={{ mixBlendMode: 'difference' }}>
+                        <div className="flex flex-col items-center text-[#333]">
+                            <p className="scroll-text-small text-[8px] md:text-[14px] font-mono uppercase tracking-[0.6em] mb-1 md:mb-2 opacity-0 text-center whitespace-nowrap">
                                 Shift your perspective
                             </p>
-                            <div className="scroll-text-main text-sm md:text-2xl font-black italic tracking-tight uppercase text-slate-900 opacity-0 whitespace-nowrap">
+                            <div className="scroll-text-main text-sm md:text-2xl font-black italic tracking-tight uppercase opacity-0 whitespace-nowrap">
                                 {splitText("Keep Scrolling", "char-hint-extra inline-block")}
                             </div>
                         </div>

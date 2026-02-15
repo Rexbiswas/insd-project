@@ -25,14 +25,19 @@ const ScrollToTop = () => {
   return null;
 };
 
+import { RegisterModalProvider } from './context/RegisterModalContext';
+import RegistrationModal from './components/RegistrationModal';
+
 function App() {
   const [loading, setLoading] = useState(true);
 
   return (
-    <>
+    <RegisterModalProvider>
       <AnimatePresence>
         {loading && <Loader key="loader" setLoading={setLoading} />}
       </AnimatePresence>
+
+      <RegistrationModal />
 
       <Router>
         <ScrollToTop />
@@ -53,7 +58,7 @@ function App() {
         </div>
         <BackToTop />
       </Router>
-    </>
+    </RegisterModalProvider>
   );
 }
 
