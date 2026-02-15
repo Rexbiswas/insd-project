@@ -109,7 +109,7 @@ const Admission = () => {
                                 transition={{ duration: 1, ease: "circOut" }}
                                 className="flex-1 w-full"
                             >
-                                <div className="group relative aspect-[16/10] rounded-2xl overflow-hidden cursor-none">
+                                <div className="group relative aspect-16/10 rounded-2xl overflow-hidden cursor-none">
                                     <img src={section.img} className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-110" alt={section.title} />
                                     <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all" />
                                 </div>
@@ -138,7 +138,7 @@ const Admission = () => {
             </section>
 
             {/* 3. THE "DECK" STACK (Pure CSS/GSAP Hybrid) */}
-            <section className="py-64 bg-white text-black px-6 rounded-[5rem] translate-y-[-5rem] relative z-20">
+            <section className="py-64 bg-white text-black px-6 rounded-[5rem] -translate-y-20 relative z-20">
                 <div className="max-w-4xl mx-auto">
                     <div className="text-center mb-40">
                         <h2 className="text-[12vw] font-black uppercase leading-none tracking-tighter mb-10">Elite <br /> Access.</h2>

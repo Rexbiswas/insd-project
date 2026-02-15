@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Menu as MenuIcon, X, ArrowRight, Home, Sparkles, GraduationCap, LayoutGrid } from 'lucide-react';
@@ -22,7 +22,21 @@ const RollerLink = ({ to, children, colorClass, baseTextClass = "text-slate-800"
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [expandedItem, setExpandedItem] = useState(null);
     const { scrollY } = useScroll();
+    const location = useLocation();
+
+    // Pages that have a dark background/theme
+    const darkPages = ['/apply', '/admission'];
+    const isDarkTheme = darkPages.includes(location.pathname);
+
+    // Scroll values
+    const [isScrolled, setIsScrolled] = useState(false);
+    useEffect(() => {
+        return scrollY.onChange((latest) => {
+            setIsScrolled(latest > 50);
+        });
+    }, [scrollY]);
 
     // Scroll animations - using direct scrollY for instant responsiveness
     const scrollProgress = scrollY;
@@ -61,7 +75,15 @@ const Navbar = () => {
     }, []);
 
     const menuItems = [
-        { title: 'About Us', path: '/about-us' },
+        {
+            title: 'About Us',
+            path: '/about-us',
+            subItems: [
+                { name: 'About Us', path: '/about-us' },
+                { name: 'International Partners', path: '/international-partners' },
+                { name: 'Go Global', path: '/go-global' }
+            ]
+        },
         {
             title: 'Courses',
             path: '/courses',
@@ -96,6 +118,7 @@ const Navbar = () => {
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = 'unset';
+            setExpandedItem(null); // Reset expanded item when closing menu
         }
     }, [isOpen]);
 
@@ -130,14 +153,31 @@ const Navbar = () => {
                 {/* Right: Actions */}
                 <div className="flex items-center gap-2 md:gap-8">
                     {/* Quick Links - Visible on Desktop */}
-                    <div className="hidden md:flex items-center gap-6">
-                        <RollerLink to="/apply" colorClass="group-hover:text-pink-600" baseTextClass={isOpen ? "text-white" : "text-slate-800"}>
-                            <span>Admission</span>
-                        </RollerLink>
-                        <RollerLink to="/franchise" colorClass="group-hover:text-violet-600" baseTextClass={isOpen ? "text-white" : "text-slate-800"}>
-                            <span>Franchise</span>
-                        </RollerLink>
-                    </div>
+                    <AnimatePresence>
+                        {!isOpen && (
+                            <motion.div
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: 20 }}
+                                className="hidden md:flex items-center gap-6"
+                            >
+                                <RollerLink
+                                    to="/apply"
+                                    colorClass="group-hover:text-pink-600"
+                                    baseTextClass={isDarkTheme && !isScrolled ? "text-white" : "text-slate-800"}
+                                >
+                                    <span>Admission</span>
+                                </RollerLink>
+                                <RollerLink
+                                    to="/franchise"
+                                    colorClass="group-hover:text-violet-600"
+                                    baseTextClass={isDarkTheme && !isScrolled ? "text-white" : "text-slate-800"}
+                                >
+                                    <span>Franchise</span>
+                                </RollerLink>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
 
                     {/* Menu Toggle - Desktop Only */}
                     <motion.button
@@ -246,14 +286,14 @@ const Navbar = () => {
                             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 w-full h-full">
 
                                 {/* Navigation Links Area (Main focus) */}
-                                <div className="lg:col-span-8 flex flex-col justify-center space-y-2 h-full overflow-y-auto no-scrollbar pb-24">
+                                <div className="lg:col-span-8 flex flex-col justify-start md:justify-center space-y-2 h-full overflow-y-auto no-scrollbar pb-32 pt-34 md:pt-0">
 
                                     {/* Search Bar - Mobile/Menu Responsive */}
                                     <motion.div
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 0.3 }}
-                                        className="mb-8 w-full max-w-md"
+                                        className="mb-8 w-full max-w-md shrink-0"
                                     >
                                         <div className="relative group">
                                             <input
@@ -268,7 +308,7 @@ const Navbar = () => {
                                     </motion.div>
 
                                     {menuItems.map((link, index) => (
-                                        <div key={link.title} className="group perspective-[1000px]">
+                                        <div key={link.title} className="group perspective-[1000px] shrink-0">
                                             <motion.div
                                                 initial={{ y: "100%", rotateX: -90, opacity: 0 }}
                                                 animate={{ y: "0%", rotateX: 0, opacity: 1 }}
@@ -280,21 +320,80 @@ const Navbar = () => {
                                                 }}
                                                 className="origin-bottom"
                                             >
-                                                <NavLink
-                                                    to={link.path}
-                                                    onClick={() => setIsOpen(false)}
-                                                    className={({ isActive }) =>
-                                                        `relative inline-flex items-center text-2xl md:text-4xl lg:text-5xl font-black tracking-tighter uppercase transition-colors duration-300 ${isActive || ['Admission', 'Franchise', 'Apply'].includes(link.title) ? 'text-white' : 'text-slate-600 hover:text-white'}`
-                                                    }
-                                                >
-                                                    <span className="absolute -left-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-pink-500 text-4xl hidden lg:block">
-                                                        <ArrowRight />
-                                                    </span>
-                                                    <span className="relative z-10 group-hover:translate-x-4 transition-transform duration-300">
-                                                        {link.title}
-                                                    </span>
-                                                </NavLink>
+                                                <div className="flex flex-col">
+                                                    <div
+                                                        className="flex items-center justify-between group/link cursor-pointer"
+                                                        onClick={() => {
+                                                            if (link.subItems) {
+                                                                setExpandedItem(expandedItem === link.title ? null : link.title);
+                                                            }
+                                                        }}
+                                                    >
+                                                        <NavLink
+                                                            to={link.subItems ? '#' : link.path}
+                                                            onClick={(e) => {
+                                                                if (link.subItems) {
+                                                                    e.preventDefault();
+                                                                    setExpandedItem(expandedItem === link.title ? null : link.title);
+                                                                } else {
+                                                                    setIsOpen(false);
+                                                                }
+                                                            }}
+                                                            className={() => {
+                                                                const isPathActive = location.pathname === link.path ||
+                                                                    (link.subItems && link.subItems.some(sub => location.pathname === sub.path));
 
+                                                                return `relative inline-flex items-center text-xl md:text-3xl lg:text-4xl font-black tracking-tighter uppercase transition-colors duration-300 ${isPathActive ? 'text-white' : 'text-slate-600 hover:text-white'}`;
+                                                            }}
+                                                        >
+                                                            <span className="absolute -left-12 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300 text-pink-500 text-4xl hidden lg:block">
+                                                                <ArrowRight />
+                                                            </span>
+                                                            <span className="relative z-10 group-hover/link:translate-x-4 transition-transform duration-300">
+                                                                {link.title}
+                                                            </span>
+                                                        </NavLink>
+
+                                                        {link.subItems && (
+                                                            <motion.div
+                                                                animate={{ rotate: expandedItem === link.title ? 180 : 0 }}
+                                                                className={`p-2 transition-colors ${expandedItem === link.title ? 'text-pink-500' : 'text-slate-500 group-hover/link:text-white'}`}
+                                                            >
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
+                                                            </motion.div>
+                                                        )}
+                                                    </div>
+
+                                                    {link.subItems && (
+                                                        <AnimatePresence>
+                                                            {expandedItem === link.title && (
+                                                                <motion.div
+                                                                    initial={{ height: 0, opacity: 0 }}
+                                                                    animate={{ height: "auto", opacity: 1 }}
+                                                                    exit={{ height: 0, opacity: 0 }}
+                                                                    transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
+                                                                    className="overflow-hidden flex flex-col pl-4 md:pl-8 mt-4 space-y-4 border-l-2 border-pink-500/30 ml-2"
+                                                                >
+                                                                    {link.subItems.map((subItem) => (
+                                                                        <NavLink
+                                                                            key={subItem.name}
+                                                                            to={subItem.path}
+                                                                            onClick={() => setIsOpen(false)}
+                                                                            className={({ isActive }) =>
+                                                                                `group/sub relative flex items-center text-lg md:text-xl font-bold transition-all duration-300 uppercase tracking-tight ${isActive ? 'text-pink-500' : 'text-slate-400 hover:text-white'}`
+                                                                            }
+                                                                        >
+                                                                            <span className="w-0 h-[2px] bg-pink-500 mr-0 transition-all duration-300 group-hover/sub:w-4 group-hover/sub:mr-3" />
+                                                                            <span className="group-hover/sub:translate-x-1 transition-transform duration-300">
+                                                                                {subItem.name}
+                                                                            </span>
+                                                                        </NavLink>
+                                                                    ))}
+                                                                </motion.div>
+                                                            )}
+                                                        </AnimatePresence>
+                                                    )}
+                                                </div>
                                             </motion.div>
                                         </div>
                                     ))}
@@ -309,7 +408,7 @@ const Navbar = () => {
                                         className="space-y-4"
                                     >
                                         <h3 className="text-pink-500 font-bold uppercase tracking-widest text-sm">Contact</h3>
-                                        <div className="space-y-2 text-lg text-slate-300">
+                                        <div className="space-y-2 text-base text-slate-300">
                                             <a href="tel:+917701933935">+91 7701933935</a>
                                             <br />
                                             <a href="tel:+917827066618">+91 7827066618</a>
@@ -323,8 +422,8 @@ const Navbar = () => {
                                         className="space-y-4"
                                     >
                                         <h3 className="text-violet-500 font-bold uppercase tracking-widest text-sm">Address</h3>
-                                        <div className="space-y-2 text-lg text-slate-300">
-                                            <h1 className="text-2xl font-bold">INSD CORPORATE CENTRES</h1>
+                                        <div className="space-y-2 text-base text-slate-300">
+                                            <h1 className="text-xl font-bold">INSD CORPORATE CENTRES</h1>
                                             <p>INSD North: A11, Gujranwala Town,</p>
                                             <p>Block A, New Delhi, Delhi 110009</p>
                                         </div>

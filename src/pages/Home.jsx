@@ -13,6 +13,7 @@ import FeaturedIn from '../components/FeaturedIn';
 import EventBlogs from '../components/EventBlogs';
 import InstagramGallery from '../components/InstagramGallery';
 import InsdiansByDesign from '../components/InsdiansByDesign';
+import LiquidHover from '../components/LiquidHover';
 import Footer from '../components/Footer';
 
 
@@ -507,7 +508,7 @@ const Home = () => {
 
     return (
         <div ref={containerRef} className="min-h-screen text-slate-900 overflow-hidden relative">
-
+            <Background3D />
             {/* Fixed Global Video Background */}
             <div className="fixed inset-0 z-0">
                 <video
@@ -556,9 +557,9 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    {/* <div ref={subTitleRef} className="hidden md:block overflow-hidden text-transparent bg-clip-text bg-linear-to-r from-pink-600 via-violet-600 to-indigo-600 text-center whitespace-nowrap opacity-100 text-2xl md:text-4xl">
+                    <div ref={subTitleRef} className="hidden md:block overflow-hidden text-transparent bg-clip-text bg-linear-to-r from-pink-600 via-violet-600 to-indigo-600 text-center whitespace-nowrap opacity-100 text-2xl md:text-4xl">
                         {splitText("Unexpected.", "char-extra inline-block")}
-                    </div> */}
+                    </div>
                 </div>
 
 
@@ -583,14 +584,13 @@ const Home = () => {
                         className="relative min-w-full md:min-w-0 md:flex-1 group transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] hover:flex-3 cursor-pointer grayscale-0 md:grayscale md:hover:grayscale-0 border-r border-white/10 last:border-r-0 snap-center"
                     >
                         {/* Image Background */}
-                        <div className="absolute inset-0 z-0">
-                            <img
-                                src={item.img}
-                                alt={item.title}
-                                className="w-full h-full object-cover opacity-80 md:opacity-60 group-hover:opacity-100 transition-opacity duration-700 scale-100 md:scale-110 group-hover:scale-100 origin-center"
+                        <div className="absolute inset-0 z-0 overflow-hidden">
+                            <LiquidHover
+                                imageUrl={item.img}
+                                className="w-full h-full object-cover opacity-80 md:opacity-60 group-hover:opacity-100 transition-opacity duration-700"
                             />
-                            {/* Dark Overlay */}
-                            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent md:bg-black/60 md:group-hover:bg-black/20 transition-colors duration-700" />
+                            {/* Dark Overlay - Pointer Events None to allow LiquidHover interaction */}
+                            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent md:bg-black/60 md:group-hover:bg-black/20 transition-colors duration-700 pointer-events-none" />
                         </div>
 
                         {/* Content */}
@@ -718,10 +718,9 @@ const Home = () => {
                         {/* Large Image */}
                         <div className="md:col-span-7 relative">
                             <div className="overflow-hidden rounded-sm aspect-3/4">
-                                <img
-                                    src="https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                                <LiquidHover
+                                    imageUrl="https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                                     className="spotlight-img-main w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-out"
-                                    alt="Student Work"
                                 />
                             </div>
                             {/* Graphic Elements */}

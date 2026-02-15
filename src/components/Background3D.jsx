@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { ContactShadows, Environment } from '@react-three/drei';
+import { ContactShadows, Environment, MeshDistortMaterial } from '@react-three/drei';
 import * as THREE from 'three';
 
 const MorphingBlob = () => {
@@ -40,7 +40,16 @@ const MorphingBlob = () => {
     });
 
     return (
-        null
+        <mesh ref={blobRef} position={[0, 0, 0]}>
+            <sphereGeometry args={[1, 64, 64]} />
+            <meshDistortMaterial
+                ref={materialRef}
+                color="#ec4899"
+                speed={3}
+                distort={0.4}
+                radius={1}
+            />
+        </mesh>
     );
 };
 
