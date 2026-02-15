@@ -13,7 +13,7 @@ import FeaturedIn from '../components/FeaturedIn';
 import EventBlogs from '../components/EventBlogs';
 import InstagramGallery from '../components/InstagramGallery';
 import InsdiansByDesign from '../components/InsdiansByDesign';
-import LiquidHover from '../components/LiquidHover';
+
 import Footer from '../components/Footer';
 
 
@@ -582,9 +582,10 @@ const Home = () => {
                     >
                         {/* Image Background */}
                         <div className="absolute inset-0 z-0 overflow-hidden">
-                            <LiquidHover
-                                imageUrl={item.img}
-                                className="w-full h-full object-cover opacity-80 md:opacity-60 group-hover:opacity-100 transition-opacity duration-700"
+                            <img
+                                src={item.img}
+                                alt={item.title}
+                                className="w-full h-full object-cover opacity-80 md:opacity-60 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110"
                             />
                             {/* Dark Overlay - Pointer Events None to allow LiquidHover interaction */}
                             <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent md:bg-black/60 md:group-hover:bg-black/20 transition-colors duration-700 pointer-events-none" />
@@ -715,9 +716,10 @@ const Home = () => {
                         {/* Large Image */}
                         <div className="md:col-span-7 relative">
                             <div className="overflow-hidden rounded-sm aspect-3/4">
-                                <LiquidHover
-                                    imageUrl="https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                                    className="spotlight-img-main w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-out"
+                                <img
+                                    src="https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                                    alt="Future Visionaries"
+                                    className="spotlight-img-main w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-out hover:scale-105"
                                 />
                             </div>
                             {/* Graphic Elements */}
