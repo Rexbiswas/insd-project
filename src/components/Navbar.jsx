@@ -69,8 +69,16 @@ const Navbar = () => {
 
     // Scroll values
     const [isScrolled, setIsScrolled] = useState(false);
+    // Responsive check
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     useEffect(() => {
-        return scrollY.onChange((latest) => {
+        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    useEffect(() => {
+        return scrollY.on("change", (latest) => {
             setIsScrolled(latest > 50);
         });
     }, [scrollY]);
@@ -330,11 +338,11 @@ const Navbar = () => {
             < AnimatePresence >
                 {isOpen && (
                     <motion.div
-                        initial={{ clipPath: "circle(0% at 95% 40px)" }}
-                        animate={{ clipPath: "circle(150% at 95% 40px)" }}
-                        transition={{ duration: 0.8, delay: 0.1, ease: [0.76, 0, 0.24, 1] }}
-                        exit={{ clipPath: "circle(0% at 95% 40px)", transition: { duration: 0.8, ease: "circIn", delay: 0.1 } }}
-                        className="fixed inset-0 z-39 bg-[#0f172b] text-white overflow-hidden"
+                        initial={isMobile ? { y: "100%", borderRadius: "2rem 2rem 0 0" } : { clipPath: "circle(0% at 95% 40px)" }}
+                        animate={isMobile ? { y: 0, borderRadius: "0 0 0 0" } : { clipPath: "circle(150% at 95% 40px)" }}
+                        transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+                        exit={isMobile ? { y: "100%", borderRadius: "2rem 2rem 0 0" } : { clipPath: "circle(0% at 95% 40px)", transition: { duration: 0.8, ease: "circIn" } }}
+                        className="fixed inset-0 z-39 bg-[#0f172b] text-white overflow-hidden shadow-2xl"
                     >
                         {/* Background shapes */}
                         <div className="absolute inset-0 overflow-hidden pointer-events-none">
