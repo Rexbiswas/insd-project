@@ -136,11 +136,11 @@ const ParallaxSlider = () => {
             <div ref={triggerRef} className="h-screen md:h-screen overflow-x-auto md:overflow-hidden flex items-center relative z-10 snap-x snap-mandatory scroll-smooth no-scrollbar">
 
                 {/* The Track */}
-                <div ref={trackRef} className="flex flex-row gap-6 md:gap-24 px-6 md:px-32 w-max h-[60vh] md:h-[80vh] items-center will-change-transform pt-0">
+                <div ref={trackRef} className="flex flex-row gap-6 md:gap-16 xl:gap-24 px-6 md:px-32 w-max h-[60vh] md:h-[80vh] items-center will-change-transform pt-0">
 
                     {/* Intro Card */}
                     <div className="parallax-card w-[85vw] md:w-[30vw] h-full flex flex-col justify-center shrink-0 items-center md:items-start text-center md:text-left snap-center">
-                        <h1 className="text-6xl md:text-8xl font-black uppercase leading-none tracking-tighter">
+                        <h1 className="text-6xl md:text-6xl lg:text-7xl xl:text-8xl font-black uppercase leading-none tracking-tighter">
                             Global<br />
                             <span className="text-transparent stroke-text-white">Campus</span>
                         </h1>
@@ -171,7 +171,7 @@ const ParallaxSlider = () => {
                                 <div className="absolute inset-0 bg-linear-to-t from-black/90 via-transparent to-transparent"></div>
 
                                 <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full">
-                                    <h3 className="slide-title text-[4rem] md:text-[8rem] leading-[0.8] font-black uppercase tracking-tighter text-transparent stroke-text-white group-hover:text-white transition-colors duration-500 mb-4">
+                                    <h3 className="slide-title text-[4rem] md:text-[5rem] lg:text-[6rem] xl:text-[8rem] leading-[0.8] font-black uppercase tracking-tighter text-transparent stroke-text-white group-hover:text-white transition-colors duration-500 mb-4">
                                         {slide.title}
                                     </h3>
                                     <div className="flex justify-between items-end border-t border-white/20 pt-6">

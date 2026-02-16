@@ -132,7 +132,7 @@ const InsdiansByDesign = () => {
                     className="relative transform-gpu"
                     style={{ transformStyle: 'preserve-3d' }}
                 >
-                    <h2 className="text-[9vw] md:text-[10vw] font-black uppercase tracking-tighter text-white leading-[0.9] flex flex-wrap justify-center gap-x-[0.15em]">
+                    <h2 className="text-[9vw] md:text-[8vw] xl:text-[7rem] font-black uppercase tracking-tighter text-white leading-[0.9] flex flex-wrap justify-center gap-x-[0.15em]">
                         {text.split(" ").map((word, wordIdx) => (
                             <span key={wordIdx} className={`inline-block ${word.startsWith('#') ? 'text-pink-500' : ''}`}>
                                 {word.split("").map((char, charIdx) => (

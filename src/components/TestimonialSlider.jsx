@@ -128,7 +128,7 @@ const TestimonialSlider = () => {
                                     prevSlide();
                                 }
                             }}
-                            className="w-full bg-slate-900/40 backdrop-blur-2xl border border-white/10 rounded-4xl md:rounded-[3rem] p-6 md:p-16 flex flex-col md:flex-row gap-8 md:gap-16 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden relative group cursor-grab active:cursor-grabbing"
+                            className="w-full bg-slate-900/40 backdrop-blur-2xl border border-white/10 rounded-4xl md:rounded-[3rem] p-6 md:p-12 xl:p-16 flex flex-col md:flex-row gap-8 md:gap-16 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden relative group cursor-grab active:cursor-grabbing"
                         >
                             {/* Decorative Glow */}
                             <div className={`absolute -top-1/2 -right-1/2 w-full h-full bg-linear-to-br ${currentData.color} blur-[150px] opacity-20 rounded-full pointer-events-none`}></div>

@@ -52,7 +52,7 @@ const EventBlogs = () => {
     }, []);
 
     return (
-        <div ref={containerRef} className="w-full bg-slate-950 py-32 px-4 md:px-12 relative overflow-hidden">
+        <div ref={containerRef} className="w-full bg-slate-950 py-20 md:py-24 lg:py-32 px-4 md:px-12 relative overflow-hidden">
 
             {/* Background Texture */}
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 brightness-100 contrast-150 mix-blend-overlay pointer-events-none"></div>
@@ -76,7 +76,7 @@ const EventBlogs = () => {
             {/* Grid */}
             <div className="relative z-10 container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {blogs.map((blog) => (
-                    <div key={blog.id} className="blog-card group relative h-[500px] bg-slate-900 rounded-3xl overflow-hidden cursor-pointer border border-white/5 hover:border-white/20 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-900/20">
+                    <div key={blog.id} className="blog-card group relative h-[450px] lg:h-[450px] xl:h-[500px] bg-slate-900 rounded-3xl overflow-hidden cursor-pointer border border-white/5 hover:border-white/20 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-900/20">
 
                         {/* Full Background Image */}
                         <div className="absolute inset-0 w-full h-full">
