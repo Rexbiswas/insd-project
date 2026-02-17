@@ -197,7 +197,7 @@ const Insd360 = () => {
                 {/* Horizontal Slider Track */}
                 <div ref={sliderRef} className="flex gap-8 px-10 md:px-32 w-fit items-center h-[70vh]">
                     {/* Intro Slide */}
-                    <div className="flex-shrink-0 w-[400px] md:w-[600px] h-full flex flex-col justify-center text-white p-8">
+                    <div className="shrink-0 w-[400px] md:w-[600px] h-full flex flex-col justify-center text-white p-8">
                         <h2 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
                             Beyond <br />
                             <span className="text-slate-500">Borders.</span>
@@ -213,11 +213,11 @@ const Insd360 = () => {
                     {features.map((item, index) => (
                         <div
                             key={index}
-                            className="flex-shrink-0 relative w-[400px] md:w-[500px] h-full rounded-2xl overflow-hidden border border-white/10 bg-slate-900 group hover:border-pink-500/50 transition-colors"
+                            className="shrink-0 relative w-[400px] md:w-[500px] h-full rounded-2xl overflow-hidden border border-white/10 bg-slate-900 group hover:border-pink-500/50 transition-colors"
                         >
                             {/* Image Container with Overflow for Parallax */}
                             <div className="absolute inset-0 z-0 overflow-hidden">
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 opacity-60" />
+                                <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent z-10 opacity-60" />
                                 <img
                                     src={item.img}
                                     alt={item.title}
@@ -244,7 +244,7 @@ const Insd360 = () => {
                     ))}
 
                     {/* End Slide */}
-                    <div className="flex-shrink-0 w-[400px] h-full flex items-center justify-center p-8">
+                    <div className="shrink-0 w-[400px] h-full flex items-center justify-center p-8">
                         <div className="text-center">
                             <h3 className="text-3xl font-bold text-white mb-4">You're Next.</h3>
                             <button className="px-8 py-3 bg-white text-black font-bold uppercase tracking-wider hover:bg-pink-500 hover:text-white transition-colors rounded-full">
@@ -271,7 +271,7 @@ const Insd360 = () => {
                             <h2 className="text-sm font-mono text-pink-500 tracking-[0.5em] uppercase mb-6">Beyond Design</h2>
                             <h3 className="text-5xl md:text-7xl font-black uppercase leading-tight mb-8">
                                 Crafting <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">Digital DNA</span>
+                                <span className="text-transparent bg-clip-text bg-linear-to-r from-pink-500 to-purple-500">Digital DNA</span>
                             </h3>
                             <p className="text-slate-400 text-lg leading-relaxed max-w-md">
                                 We don't just teach design; we engineer creative intelligence.
@@ -280,7 +280,7 @@ const Insd360 = () => {
                             </p>
                         </div>
                         <div className="relative h-[600px] w-full rounded-3xl overflow-hidden reveal-img group">
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
+                            <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent z-10" />
                             <img
                                 src="https://images.pexels.com/photos/2528118/pexels-photo-2528118.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                                 alt="Digital Fashion"
@@ -326,7 +326,7 @@ const Insd360 = () => {
                             { val: "15k+", label: "Alumni Network" },
                         ].map((stat, i) => (
                             <div key={i} className="reveal-stat p-10 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
-                                <div className="text-6xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-600 mb-4 font-sans">{stat.val}</div>
+                                <div className="text-6xl md:text-7xl font-black text-transparent bg-clip-text bg-linear-to-b from-white to-slate-600 mb-4 font-sans">{stat.val}</div>
                                 <div className="text-slate-400 uppercase tracking-widest font-mono text-sm">{stat.label}</div>
                             </div>
                         ))}
@@ -349,7 +349,7 @@ const Insd360 = () => {
                             "Vogue", "Prada", "Gucci", "Elle", "Zara", "H&M", "Raymond", "Sabyasachi", "Manish Malhotra",
                             "Vogue", "Prada", "Gucci", "Elle", "Zara", "H&M", "Raymond", "Sabyasachi", "Manish Malhotra"
                         ].map((brand, i) => (
-                            <span key={i} className="text-5xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-white/5 uppercase hover:from-pink-500 hover:to-purple-500 transition-all duration-500 cursor-default">
+                            <span key={i} className="text-5xl md:text-8xl font-black text-transparent bg-clip-text bg-linear-to-b from-white/20 to-white/5 uppercase hover:from-pink-500 hover:to-purple-500 transition-all duration-500 cursor-default">
                                 {brand}
                             </span>
                         ))}
@@ -364,7 +364,7 @@ const Insd360 = () => {
                         Admissions Open 2024
                     </div>
                     <h2 className="text-6xl md:text-9xl font-black text-white uppercase tracking-tighter mb-8 leading-none">
-                        Create <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600">Now.</span>
+                        Create <span className="text-transparent bg-clip-text bg-linear-to-r from-pink-500 to-purple-600">Now.</span>
                     </h2>
                     <p className="text-slate-400 max-w-2xl mx-auto text-lg md:text-xl mb-12 leading-relaxed">
                         The future doesn't wait. Join the next generation of design leaders at INSD.
@@ -377,7 +377,7 @@ const Insd360 = () => {
                 </div>
 
                 {/* Background Grid/Glow */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-pink-600/10 blur-[120px] rounded-full pointer-events-none animate-pulse" />
             </section>
             <Footer />

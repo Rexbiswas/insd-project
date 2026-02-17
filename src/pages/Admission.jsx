@@ -175,9 +175,9 @@ const Admission = () => {
                         </p>
                     </div>
 
-                    <div className="md:w-2/3 w-full flex flex-col items-center justify-center border border-white/10 rounded-[4rem] p-12 md:p-32 bg-white/5 backdrop-blur-3xl group relative overflow-hidden">
+                    <div className="md:w-2/3 w-full flex flex-col items-center justify-center border border-white/20 rounded-[4rem] p-12 md:p-32 bg-white/5 backdrop-blur-[50px] shadow-[inset_0_0_50px_rgba(255,255,255,0.05)] group relative overflow-hidden">
                         {/* Decorative background element */}
-                        <div className="absolute inset-0 bg-linear-to-br from-pink-500/10 via-transparent to-violet-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                        <div className="absolute inset-0 bg-linear-to-br from-pink-500/20 via-transparent to-violet-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
                         <h3 className="text-4xl md:text-7xl font-black uppercase mb-12 text-center group-hover:text-pink-500 transition-colors leading-[0.8] tracking-tighter relative z-10">Ready to <br /> Begin?</h3>
 

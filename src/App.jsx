@@ -11,6 +11,7 @@ import Campus from './pages/Campus';
 import Franchise from './pages/Franchise';
 import Insd360 from './pages/Insd360';
 import Admission from './pages/Admission';
+import InternationalPartner from './pages/InternationalPartner';
 import Loader from './components/Loader';
 import BackToTop from './components/BackToTop';
 
@@ -55,6 +56,7 @@ function App() {
             <Route path="/insd-360" element={<Insd360 />} />
             <Route path="/franchise" element={<Franchise />} />
             <Route path="/contact-us" element={<Placeholder title="Contact Us" />} />
+            <Route path="/international-partners" element={<InternationalPartner />} />
             <Route path="/apply" element={<Admission />} />
             <Route path="*" element={<Placeholder title="404 Not Found" />} />
           </Routes>

@@ -414,10 +414,10 @@ const Navbar = () => {
                                                                 const isPathActive = location.pathname === link.path ||
                                                                     (link.subItems && link.subItems.some(sub => location.pathname === sub.path));
 
-                                                                return `relative inline-flex items-center text-2xl md:text-3xl lg:text-5xl font-black tracking-tighter uppercase transition-colors duration-300 ${isPathActive ? 'text-white' : 'text-slate-600 hover:text-white'}`;
+                                                                return `relative inline-flex items-center text-xl md:text-2xl lg:text-3xl font-black tracking-tighter uppercase transition-colors duration-300 ${isPathActive ? 'text-white' : 'text-slate-600 hover:text-white'}`;
                                                             }}
                                                         >
-                                                            <span className="absolute -left-12 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300 text-pink-500 text-4xl hidden lg:block">
+                                                            <span className="absolute -left-12 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300 text-pink-500 text-3xl hidden lg:block">
                                                                 <ArrowRight />
                                                             </span>
                                                             <span className="relative z-10 group-hover/link:translate-x-4 transition-transform duration-300">
@@ -452,7 +452,7 @@ const Navbar = () => {
                                                                             to={subItem.path}
                                                                             onClick={() => setIsOpen(false)}
                                                                             className={({ isActive }) =>
-                                                                                `group/sub relative flex items-center text-lg md:text-xl font-bold transition-all duration-300 uppercase tracking-tight ${isActive ? 'text-pink-500' : 'text-slate-400 hover:text-white'}`
+                                                                                `group/sub relative flex items-center text-base md:text-lg font-bold transition-all duration-300 uppercase tracking-tight ${isActive ? 'text-pink-500' : 'text-slate-400 hover:text-white'}`
                                                                             }
                                                                         >
                                                                             <span className="w-0 h-[2px] bg-pink-500 mr-0 transition-all duration-300 group-hover/sub:w-4 group-hover/sub:mr-3" />
