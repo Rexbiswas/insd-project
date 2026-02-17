@@ -42,7 +42,7 @@ const MorphingBlob = () => {
     return (
         <mesh ref={blobRef} position={[0, 0, 0]}>
             <sphereGeometry args={[1, 64, 64]} />
-            <meshDistortMaterial
+            <MeshDistortMaterial
                 ref={materialRef}
                 color="#ec4899"
                 speed={3}

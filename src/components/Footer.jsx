@@ -52,7 +52,7 @@ const Footer = () => {
     ];
 
     return (
-        <footer ref={footerRef} className="relative bg-black text-white overflow-hidden pt-24 pb-8 min-h-screen flex flex-col justify-between">
+        <footer ref={footerRef} className="relative bg-black text-white overflow-hidden pt-16 lg:pt-24 pb-8 min-h-screen flex flex-col justify-between">
 
             {/* Ambient Background */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,var(--tw-gradient-stops))] from-slate-900 via-black to-black pointer-events-none"></div>
@@ -61,9 +61,9 @@ const Footer = () => {
             <div className="relative z-10 container mx-auto px-6 md:px-12">
 
                 {/* Top Section: CTA & Newsletter */}
-                <div className="flex flex-col lg:flex-row gap-16 mb-24">
+                <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 mb-16 lg:mb-24">
                     <div className="lg:w-1/2 footer-element">
-                        <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none mb-8">
+                        <h2 className="text-5xl lg:text-7xl font-black uppercase tracking-tighter leading-none mb-8">
                             Let's Design <br />
                             <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-pink-400">The Future</span>
                         </h2>
@@ -94,7 +94,7 @@ const Footer = () => {
                 </div>
 
                 {/* Middle Section: Links & Contact */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-12 border-t border-white/10 pt-16">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 border-t border-white/10 pt-12 lg:pt-16">
 
                     {/* Brand Column */}
                     <div className="col-span-1 md:col-span-4 footer-element">

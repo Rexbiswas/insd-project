@@ -197,7 +197,7 @@ const Navbar = () => {
                 </Link>
 
                 {/* Right: Actions */}
-                <div className="flex items-center gap-2 md:gap-8">
+                <div className="flex items-center gap-2 md:gap-6 lg:gap-10">
                     {/* Quick Links - Visible on Desktop */}
                     <AnimatePresence>
                         {!isOpen && (
@@ -281,7 +281,7 @@ const Navbar = () => {
             </motion.div >
 
             {/* Mobile Bottom Navigation Bar - iPhone Style */}
-            <div className={`fixed bottom-2 left-2 right-2 h-20 flex items-center justify-around px-4 border z-50 md:hidden rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500 ${isOpen || (isDarkTheme && !isScrolled) ? 'apple-glass-dark !bg-slate-900/40' : 'apple-glass'}`}>
+            <div className={`fixed bottom-2 left-2 right-2 h-20 flex items-center justify-around px-4 border z-50 md:hidden rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500 ${isOpen || (isDarkTheme && !isScrolled) ? 'apple-glass-dark bg-slate-900/40!' : 'apple-glass'}`}>
                 <NavLink
                     to="/"
                     onClick={() => setIsOpen(false)}
@@ -378,7 +378,7 @@ const Navbar = () => {
                                         {/* Register CTA for Mobile Drawer - Forced Dark for dark menu */}
                                         <div className="md:hidden">
                                             <RegisterButton
-                                                className="w-full py-4 !rounded-2xl flex justify-center items-center"
+                                                className="w-full py-4 rounded-2xl! flex justify-center items-center"
                                                 theme="dark"
                                             />
                                         </div>
@@ -414,7 +414,7 @@ const Navbar = () => {
                                                                 const isPathActive = location.pathname === link.path ||
                                                                     (link.subItems && link.subItems.some(sub => location.pathname === sub.path));
 
-                                                                return `relative inline-flex items-center text-2xl md:text-4xl lg:text-3xl font-black tracking-tighter uppercase transition-colors duration-300 ${isPathActive ? 'text-white' : 'text-slate-600 hover:text-white'}`;
+                                                                return `relative inline-flex items-center text-2xl md:text-3xl lg:text-5xl font-black tracking-tighter uppercase transition-colors duration-300 ${isPathActive ? 'text-white' : 'text-slate-600 hover:text-white'}`;
                                                             }}
                                                         >
                                                             <span className="absolute -left-12 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300 text-pink-500 text-4xl hidden lg:block">

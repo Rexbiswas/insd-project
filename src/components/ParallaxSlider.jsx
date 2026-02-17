@@ -136,7 +136,7 @@ const ParallaxSlider = () => {
             <div ref={triggerRef} className="h-screen md:h-screen overflow-x-auto md:overflow-hidden flex items-center relative z-10 snap-x snap-mandatory scroll-smooth no-scrollbar">
 
                 {/* The Track */}
-                <div ref={trackRef} className="flex flex-row gap-6 md:gap-16 xl:gap-24 px-6 md:px-32 w-max h-[60vh] md:h-[80vh] items-center will-change-transform pt-0">
+                <div ref={trackRef} className="flex flex-row gap-6 md:gap-16 xl:gap-24 px-6 md:px-32 w-max h-[60vh] md:h-[70vh] xl:h-[80vh] items-center will-change-transform pt-0">
 
                     {/* Intro Card */}
                     <div className="parallax-card w-[85vw] md:w-[30vw] h-full flex flex-col justify-center shrink-0 items-center md:items-start text-center md:text-left snap-center">

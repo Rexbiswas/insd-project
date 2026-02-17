@@ -131,37 +131,47 @@ const Home = () => {
                 delay: 2
             });
 
-            // New Enhanced Scroll Hint Animation
+            // New Enhanced Scroll Hint Animation - SAFE CHECK
             const scrollHintTl = gsap.timeline({ delay: 0.5 });
+
+            // Text Animations (Run independently of line)
             scrollHintTl
-                .to(scrollHintRef.current.querySelector('.scroll-line-progress'), {
-                    scaleY: 1,
-                    duration: 1.2,
-                    ease: "expo.inOut"
-                })
-                .to(scrollHintRef.current.querySelector('.scroll-text-small'), {
+                .to(scrollHintRef.current?.querySelector('.scroll-text-small'), {
                     opacity: 1,
                     y: 0,
                     duration: 0.8,
                     ease: "power2.out"
-                }, "-=0.4")
-                .fromTo(scrollHintRef.current.querySelectorAll('.char-hint-extra'),
+                })
+                .fromTo(scrollHintRef.current?.querySelectorAll('.char-hint-extra'),
                     { opacity: 0, scale: 0, rotate: -45 },
                     { opacity: 1, scale: 1, rotate: 0, stagger: 0.03, duration: 1, ease: "back.out(1.7)" },
-                    "-=0.6"
+                    "-=0.4"
                 )
-                .to(scrollHintRef.current.querySelector('.scroll-text-main'), {
+                .to(scrollHintRef.current?.querySelector('.scroll-text-main'), {
                     opacity: 1,
                     duration: 0.1
-                }, "<")
-                // Infinite Pulsing Loop
-                .to(scrollHintRef.current.querySelector('.scroll-line-progress'), {
-                    yPercent: 100,
-                    duration: 1.5,
-                    repeat: -1,
-                    ease: "power1.inOut",
-                    repeatDelay: 0.5
-                });
+                }, "<");
+
+            // Optional Line Animation if it exists (for safety/future-proofing)
+            const scrollLine = scrollHintRef.current?.querySelector('.scroll-line-progress');
+            if (scrollLine) {
+                // Prepend line animation if it existed
+                gsap.fromTo(scrollLine,
+                    { scaleY: 0 },
+                    {
+                        scaleY: 1, duration: 1.2, ease: "expo.inOut", onComplete: () => {
+                            // Loop after entrance
+                            gsap.to(scrollLine, {
+                                yPercent: 100,
+                                duration: 1.5,
+                                repeat: -1,
+                                ease: "power1.inOut",
+                                repeatDelay: 0.5
+                            });
+                        }
+                    }
+                );
+            }
 
             // 2. Infinite Marquee Animation
             gsap.to(marqueeRef.current, {
@@ -353,6 +363,7 @@ const Home = () => {
                 const yToSmall = gsap.quickTo(smallImg, "y", { duration: 0.5, ease: "power3" });
 
                 window.addEventListener("mousemove", (e) => {
+                    if (!studentRef.current) return;
                     const rect = studentRef.current.getBoundingClientRect();
                     if (e.clientY >= rect.top && e.clientY <= rect.bottom) {
                         const x = (e.clientX - window.innerWidth / 2) * 0.05;
@@ -542,8 +553,8 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div className="absolute bottom-28 md:bottom-10 lg:bottom-16 left-1/2 -translate-x-1/2 w-full flex flex-col items-center z-50 pointer-events-none">
-                    <div ref={scrollHintRef} className="flex flex-col items-center gap-2 md:gap-4 lg:gap-6 mb-4 md:mb-8" style={{ mixBlendMode: 'difference' }}>
+                <div className="absolute bottom-28 md:bottom-10 left-1/2 -translate-x-1/2 w-full flex flex-col items-center z-50 pointer-events-none">
+                    <div ref={scrollHintRef} className="flex flex-col items-center gap-2 md:gap-4 mb-4 md:mb-8" style={{ mixBlendMode: 'difference' }}>
                         <div className="flex flex-col items-center text-[#333]">
                             <p className="scroll-text-small text-[8px] md:text-[14px] font-mono uppercase tracking-[0.6em] mb-1 md:mb-2 opacity-0 text-center whitespace-nowrap">
                                 Shift your perspective
@@ -615,15 +626,15 @@ const Home = () => {
             </div>
 
             {/* Awwwards-style "Philosophy" Section - White Theme for Contrast */}
-            <div ref={aboutRef} className="relative bg-white text-black min-h-screen py-20 md:py-24 lg:py-32 px-4 md:px-12 overflow-hidden cursor-none">
+            <div ref={aboutRef} className="relative bg-white text-black min-h-screen py-20 md:py-32 px-4 md:px-12 overflow-hidden cursor-none">
                 {/* cursor-none to encourage focus on the floating element */}
 
                 <div className="max-w-360 mx-auto flex flex-col md:flex-row gap-24 relative z-10">
 
                     {/* Sticky Left Content */}
                     <div className="md:w-5/12 relative">
-                        <div className="sticky top-24 lg:top-32 xl:top-32">
-                            <h2 className="text-[10vw] md:text-[8vw] lg:text-[7vw] leading-[0.85] font-black uppercase tracking-tighter mb-12 mix-blend-exclusion">
+                        <div className="sticky top-24 xl:top-32">
+                            <h2 className="text-[10vw] md:text-[7vw] leading-[0.85] font-black uppercase tracking-tighter mb-12 mix-blend-exclusion">
                                 <div className="overflow-hidden">
                                     {splitText("Beyond", "reveal-text inline-block")}
                                 </div>
@@ -653,7 +664,7 @@ const Home = () => {
                     <div ref={philosophyListRef} className="md:w-7/12 flex flex-col justify-center">
 
                         {/* Interactive Item 1 */}
-                        <div className="philosophy-item group border-t border-black/10 py-16 md:py-20 lg:py-24 cursor-pointer relative" data-img="https://images.pexels.com/photos/837134/pexels-photo-837134.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+                        <div className="philosophy-item group border-t border-black/10 py-16 md:py-24 cursor-pointer relative" data-img="https://images.pexels.com/photos/837134/pexels-photo-837134.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
                             <div className="flex items-baseline gap-12">
                                 <span className="item-num text-2xl font-mono text-slate-300 transition-all duration-300">01</span>
                                 <h3 className="item-text text-6xl md:text-8xl font-black uppercase tracking-tighter transition-all duration-300">Global Exposure</h3>
@@ -664,7 +675,7 @@ const Home = () => {
                         </div>
 
                         {/* Interactive Item 2 */}
-                        <div className="philosophy-item group border-t border-black/10 py-16 md:py-20 lg:py-24 cursor-pointer relative" data-img="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+                        <div className="philosophy-item group border-t border-black/10 py-16 md:py-24 cursor-pointer relative" data-img="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
                             <div className="flex items-baseline gap-12">
                                 <span className="item-num text-2xl font-mono text-slate-300 transition-all duration-300">02</span>
                                 <h3 className="item-text text-6xl md:text-8xl font-black uppercase tracking-tighter transition-all duration-300">Live Projects</h3>
@@ -675,7 +686,7 @@ const Home = () => {
                         </div>
 
                         {/* Interactive Item 3 */}
-                        <div className="philosophy-item group border-t border-b border-black/10 py-16 md:py-20 lg:py-24 cursor-pointer relative" data-img="https://images.pexels.com/photos/2041005/pexels-photo-2041005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+                        <div className="philosophy-item group border-t border-b border-black/10 py-16 md:py-24 cursor-pointer relative" data-img="https://images.pexels.com/photos/2041005/pexels-photo-2041005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
                             <div className="flex items-baseline gap-12">
                                 <span className="item-num text-2xl font-mono text-slate-300 transition-all duration-300">03</span>
                                 <h3 className="item-text text-6xl md:text-8xl font-black uppercase tracking-tighter transition-all duration-300">Big Mentors</h3>
@@ -697,7 +708,7 @@ const Home = () => {
             </div>
 
             {/* Student Spotlight Section - High Fashion Editorial Style */}
-            <div ref={studentRef} className="relative min-h-screen py-20 md:py-24 lg:py-32 px-4 md:px-12 overflow-hidden transition-colors duration-700">
+            <div ref={studentRef} className="relative min-h-screen py-20 md:py-32 px-4 md:px-12 overflow-hidden transition-colors duration-700">
                 <div className="max-w-360 mx-auto">
 
                     {/* Header */}
@@ -767,7 +778,7 @@ const Home = () => {
                 </div>
 
                 {/* Main Content Wrapper */}
-                <div className="legacy-content relative z-20 w-full max-w-6xl mx-auto flex flex-col items-center gap-16 md:gap-24 py-20 lg:py-32 px-4 md:px-12 pointer-events-auto">
+                <div className="legacy-content relative z-20 w-full max-w-6xl mx-auto flex flex-col items-center gap-24 py-32 px-4 md:px-12 pointer-events-auto">
 
                     {/* Top: Legacy Text (Centered & Animated) */}
                     <div className="relative z-10 text-center max-w-5xl mx-auto">
