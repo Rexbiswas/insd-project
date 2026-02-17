@@ -964,7 +964,6 @@ const Home = () => {
                 </div>
             </div>
             {/* Separate Impact Stats Section */}
-
             <ImpactStats />
             <TestimonialSlider />
             <FeaturedIn />

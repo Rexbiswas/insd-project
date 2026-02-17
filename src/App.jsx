@@ -9,9 +9,13 @@ import Courses from './pages/Courses';
 import About from './pages/About';
 import Campus from './pages/Campus';
 import Franchise from './pages/Franchise';
+import Insd360 from './pages/Insd360';
 import Admission from './pages/Admission';
 import Loader from './components/Loader';
 import BackToTop from './components/BackToTop';
+
+import { RegisterModalProvider } from './context/RegisterModalContext';
+import RegistrationModal from './components/RegistrationModal';
 
 const Placeholder = ({ title }) => (
   <div className="min-h-screen flex items-center justify-center bg-slate-50">
@@ -26,9 +30,6 @@ const ScrollToTop = () => {
   }, [pathname]);
   return null;
 };
-
-import { RegisterModalProvider } from './context/RegisterModalContext';
-import RegistrationModal from './components/RegistrationModal';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -51,7 +52,7 @@ function App() {
             <Route path="/campuses" element={<Campus />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/student-careers" element={<Placeholder title="Student Careers" />} />
-            <Route path="/insd-360" element={<Placeholder title="INSD 360" />} />
+            <Route path="/insd-360" element={<Insd360 />} />
             <Route path="/franchise" element={<Franchise />} />
             <Route path="/contact-us" element={<Placeholder title="Contact Us" />} />
             <Route path="/apply" element={<Admission />} />
