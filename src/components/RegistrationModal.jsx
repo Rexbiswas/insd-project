@@ -3,43 +3,92 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Check, ArrowRight, Sparkles, LogIn } from 'lucide-react';
 import { useRegisterModal } from '../context/RegisterModalContext';
 
-
-
 const RegistrationModal = () => {
     const { isOpen, closeModal } = useRegisterModal();
     const [authMode, setAuthMode] = useState('register'); // 'register' | 'login'
     const [step, setStep] = useState(1);
     const [formData, setFormData] = useState({
-        name: '',
+        username: '',
         email: '',
-        phone: '',
-        course: '',
+        password: '',
+        firstName: '',
+        lastName: '',
+        street1: '',
+        street2: '',
         city: '',
-        password: ''
+        state: '',
+        pinCode: '',
+        country: '',
+        phone: '',
+        dob: '',
+        centre: '',
+        level: '',
+        stream: '',
+        scholarship: '',
+        comments: '',
+        communications: {
+            email: true,
+            post: false,
+            sms: false
+        },
+        privacy: false,
+        captchaInput: ''
     });
     const [loginData, setLoginData] = useState({ email: '', password: '' });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
+    const [captcha, setCaptcha] = useState({ num1: 0, num2: 0, answer: 0 });
 
-    // Reset form when modal closes
     useEffect(() => {
-        if (!isOpen) {
+        if (isOpen) {
+            // Generate simple math captcha
+            const n1 = Math.floor(Math.random() * 10);
+            const n2 = Math.floor(Math.random() * 10);
+            setCaptcha({ num1: n1, num2: n2, answer: n1 + n2 });
+
             setTimeout(() => {
                 setAuthMode('register');
                 setStep(1);
                 setIsSuccess(false);
-                setFormData({ name: '', email: '', phone: '', course: '', city: '', password: '' });
+                setFormData({
+                    username: '', email: '', password: '', firstName: '', lastName: '',
+                    street1: '', street2: '', city: '', state: '', pinCode: '', country: '',
+                    phone: '', dob: '', centre: '', level: '', stream: '', scholarship: '',
+                    comments: '', communications: { email: true, post: false, sms: false },
+                    privacy: false, captchaInput: ''
+                });
                 setLoginData({ email: '', password: '' });
+                // Regenerate captcha on reset
+                const r1 = Math.floor(Math.random() * 10);
+                const r2 = Math.floor(Math.random() * 10);
+                setCaptcha({ num1: r1, num2: r2, answer: r1 + r2 });
             }, 500);
         }
     }, [isOpen]);
 
     const handleRegisterSubmit = async (e) => {
         e.preventDefault();
-        if (step < 4) {
+
+        if (step < 10) {
             setStep(step + 1);
             return;
         }
+
+        // Final Step Validation
+        if (!formData.privacy) {
+            alert("Please accept the Privacy Notice.");
+            return;
+        }
+        if (parseInt(formData.captchaInput) !== captcha.answer) {
+            alert("Incorrect Captcha. Please try again.");
+            // Regenerate captcha
+            const n1 = Math.floor(Math.random() * 10);
+            const n2 = Math.floor(Math.random() * 10);
+            setCaptcha({ num1: n1, num2: n2, answer: n1 + n2 });
+            setFormData(prev => ({ ...prev, captchaInput: '' }));
+            return;
+        }
+
         setIsSubmitting(true);
         // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 2000));
@@ -56,10 +105,15 @@ const RegistrationModal = () => {
         setIsSuccess(true);
     };
 
-
-
     const handleBack = () => {
         if (step > 1) setStep(step - 1);
+    };
+
+    const toggleComm = (type) => {
+        setFormData(prev => ({
+            ...prev,
+            communications: { ...prev.communications, [type]: !prev.communications[type] }
+        }));
     };
 
     if (!isOpen) return null;
@@ -120,112 +174,216 @@ const RegistrationModal = () => {
                                         </h2>
                                     </div>
 
-                                    {/* Google Login Button */}
-
-
                                     {/* Form Steps */}
                                     {authMode === 'register' ? (
                                         <form onSubmit={handleRegisterSubmit} className="flex-1 flex flex-col justify-between">
                                             <div className="space-y-6">
                                                 <AnimatePresence mode="wait">
+
+                                                    {/* Step 1: User & Pass */}
                                                     {step === 1 && (
-                                                        <motion.div
-                                                            key="step1"
-                                                            initial={{ opacity: 0, x: 20 }}
-                                                            animate={{ opacity: 1, x: 0 }}
-                                                            exit={{ opacity: 0, x: -20 }}
-                                                            className="space-y-4"
-                                                        >
+                                                        <motion.div key="step1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-4">
+                                                            <h3 className="text-sm font-bold text-pink-300 uppercase tracking-widest mb-4">Account Setup (1/10)</h3>
                                                             <div className="space-y-2">
-                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Full Name</label>
-                                                                <input
-                                                                    autoFocus
-                                                                    type="text"
-                                                                    placeholder="Enter your full name"
-                                                                    value={formData.name}
-                                                                    onChange={e => setFormData({ ...formData, name: e.target.value })}
-                                                                    className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/30 focus:outline-none focus:bg-black/30 focus:border-pink-500/50 transition-all shadow-inner"
-                                                                />
+                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Username</label>
+                                                                <input autoFocus type="text" placeholder="Choose a username" value={formData.username} onChange={e => setFormData({ ...formData, username: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
                                                             </div>
                                                             <div className="space-y-2">
-                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Phone Number</label>
-                                                                <input
-                                                                    type="tel"
-                                                                    placeholder="+91 XXXXX XXXXX"
-                                                                    value={formData.phone}
-                                                                    onChange={e => setFormData({ ...formData, phone: e.target.value })}
-                                                                    className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/30 focus:outline-none focus:bg-black/30 focus:border-pink-500/50 transition-all shadow-inner"
-                                                                />
+                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Password *</label>
+                                                                <input type="password" required placeholder="Create a password" value={formData.password} onChange={e => setFormData({ ...formData, password: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
                                                             </div>
                                                         </motion.div>
                                                     )}
 
+                                                    {/* Step 2: Email & Phone */}
                                                     {step === 2 && (
-                                                        <motion.div
-                                                            key="step2"
-                                                            initial={{ opacity: 0, x: 20 }}
-                                                            animate={{ opacity: 1, x: 0 }}
-                                                            exit={{ opacity: 0, x: -20 }}
-                                                            className="space-y-4"
-                                                        >
+                                                        <motion.div key="step2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-4">
+                                                            <h3 className="text-sm font-bold text-pink-300 uppercase tracking-widest mb-4">Contact Info (2/10)</h3>
                                                             <div className="space-y-2">
-                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Email Address</label>
-                                                                <input
-                                                                    autoFocus
-                                                                    type="email"
-                                                                    placeholder="hello@example.com"
-                                                                    value={formData.email}
-                                                                    onChange={e => setFormData({ ...formData, email: e.target.value })}
-                                                                    className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/30 focus:outline-none focus:bg-black/30 focus:border-pink-500/50 transition-all shadow-inner"
-                                                                />
+                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Email Address *</label>
+                                                                <input autoFocus type="email" required placeholder="hello@example.com" value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
+                                                            </div>
+                                                            <div className="space-y-2">
+                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Phone *</label>
+                                                                <input type="tel" required placeholder="+91 XXXXX XXXXX" value={formData.phone} onChange={e => setFormData({ ...formData, phone: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
                                                             </div>
                                                         </motion.div>
                                                     )}
 
+                                                    {/* Step 3: Name */}
                                                     {step === 3 && (
-                                                        <motion.div
-                                                            key="step3"
-                                                            initial={{ opacity: 0, x: 20 }}
-                                                            animate={{ opacity: 1, x: 0 }}
-                                                            exit={{ opacity: 0, x: -20 }}
-                                                            className="space-y-4"
-                                                        >
+                                                        <motion.div key="step3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-4">
+                                                            <h3 className="text-sm font-bold text-pink-300 uppercase tracking-widest mb-4">Personal Details (3/10)</h3>
                                                             <div className="space-y-2">
-                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Area of Interest</label>
-                                                                <select
-                                                                    autoFocus
-                                                                    value={formData.course}
-                                                                    onChange={e => setFormData({ ...formData, course: e.target.value })}
-                                                                    className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:bg-black/30 focus:border-pink-500/50 transition-all shadow-inner appearance-none cursor-pointer"
-                                                                >
-                                                                    <option value="" className="bg-slate-900 text-slate-400">Select a Program</option>
-                                                                    <option value="fashion" className="bg-slate-900">Fashion Design</option>
-                                                                    <option value="interior" className="bg-slate-900">Interior Design</option>
-                                                                    <option value="graphic" className="bg-slate-900">Graphic Design</option>
-                                                                    <option value="animation" className="bg-slate-900">Animation</option>
+                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">First Name *</label>
+                                                                <input autoFocus type="text" required placeholder="First Name" value={formData.firstName} onChange={e => setFormData({ ...formData, firstName: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
+                                                            </div>
+                                                            <div className="space-y-2">
+                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Last Name *</label>
+                                                                <input type="text" required placeholder="Last Name" value={formData.lastName} onChange={e => setFormData({ ...formData, lastName: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
+                                                            </div>
+                                                        </motion.div>
+                                                    )}
+
+                                                    {/* Step 4: DOB & Country */}
+                                                    {step === 4 && (
+                                                        <motion.div key="step4" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-4">
+                                                            <h3 className="text-sm font-bold text-pink-300 uppercase tracking-widest mb-4">Basic Info (4/10)</h3>
+                                                            <div className="space-y-2">
+                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Date of Birth</label>
+                                                                <input autoFocus type="date" value={formData.dob} onChange={e => setFormData({ ...formData, dob: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
+                                                            </div>
+                                                            <div className="space-y-2">
+                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Country</label>
+                                                                <input type="text" placeholder="Country" value={formData.country} onChange={e => setFormData({ ...formData, country: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
+                                                            </div>
+                                                        </motion.div>
+                                                    )}
+
+                                                    {/* Step 5: Address 1 */}
+                                                    {step === 5 && (
+                                                        <motion.div key="step5" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-4">
+                                                            <h3 className="text-sm font-bold text-pink-300 uppercase tracking-widest mb-4">Address Details (5/10)</h3>
+                                                            <div className="space-y-2">
+                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Street Address</label>
+                                                                <input autoFocus type="text" placeholder="House/Flat No, Street" value={formData.street1} onChange={e => setFormData({ ...formData, street1: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
+                                                            </div>
+                                                            <div className="space-y-2">
+                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Street Address 2</label>
+                                                                <input type="text" placeholder="Apartment, suite, unit, etc." value={formData.street2} onChange={e => setFormData({ ...formData, street2: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
+                                                            </div>
+                                                        </motion.div>
+                                                    )}
+
+                                                    {/* Step 6: City & State */}
+                                                    {step === 6 && (
+                                                        <motion.div key="step6" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-4">
+                                                            <h3 className="text-sm font-bold text-pink-300 uppercase tracking-widest mb-4">Location (6/10)</h3>
+                                                            <div className="space-y-2">
+                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">City</label>
+                                                                <input autoFocus type="text" placeholder="City" value={formData.city} onChange={e => setFormData({ ...formData, city: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
+                                                            </div>
+                                                            <div className="space-y-2">
+                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">State</label>
+                                                                <input type="text" placeholder="State" value={formData.state} onChange={e => setFormData({ ...formData, state: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
+                                                            </div>
+                                                        </motion.div>
+                                                    )}
+
+                                                    {/* Step 7: PIN & Centre */}
+                                                    {step === 7 && (
+                                                        <motion.div key="step7" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-4">
+                                                            <h3 className="text-sm font-bold text-pink-300 uppercase tracking-widest mb-4">Location & Campus (7/10)</h3>
+                                                            <div className="space-y-2">
+                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">PIN Code</label>
+                                                                <input autoFocus type="text" placeholder="PIN Code" value={formData.pinCode} onChange={e => setFormData({ ...formData, pinCode: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
+                                                            </div>
+                                                            <div className="space-y-2">
+                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Which Centre?</label>
+                                                                <select value={formData.centre} onChange={e => setFormData({ ...formData, centre: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none appearance-none cursor-pointer bg-slate-900">
+                                                                    <option value="">Select a Centre</option>
+                                                                    <option value="North Campus">North Campus</option>
+                                                                    <option value="South Campus">South Campus</option>
+                                                                    <option value="West Campus">West Campus</option>
+                                                                    <option value="East Campus">East Campus</option>
                                                                 </select>
                                                             </div>
                                                         </motion.div>
                                                     )}
 
-                                                    {step === 4 && (
-                                                        <motion.div
-                                                            key="step4"
-                                                            initial={{ opacity: 0, x: 20 }}
-                                                            animate={{ opacity: 1, x: 0 }}
-                                                            exit={{ opacity: 0, x: -20 }}
-                                                            className="space-y-4"
-                                                        >
+                                                    {/* Step 8: Level & Stream */}
+                                                    {step === 8 && (
+                                                        <motion.div key="step8" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-4">
+                                                            <h3 className="text-sm font-bold text-pink-300 uppercase tracking-widest mb-4">Course Details (8/10)</h3>
                                                             <div className="space-y-2">
-                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Current City</label>
-                                                                <input
-                                                                    autoFocus
-                                                                    type="text"
-                                                                    placeholder="e.g. New Delhi"
-                                                                    value={formData.city}
-                                                                    onChange={e => setFormData({ ...formData, city: e.target.value })}
-                                                                    className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/30 focus:outline-none focus:bg-black/30 focus:border-pink-500/50 transition-all shadow-inner"
-                                                                />
+                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Level of Studies</label>
+                                                                <select autoFocus value={formData.level} onChange={e => setFormData({ ...formData, level: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none appearance-none cursor-pointer bg-slate-900">
+                                                                    <option value="">Select Level</option>
+                                                                    <option value="Undergraduate">Undergraduate</option>
+                                                                    <option value="Postgraduate">Postgraduate</option>
+                                                                    <option value="Diploma">Diploma</option>
+                                                                    <option value="Certificate">Certificate</option>
+                                                                </select>
+                                                            </div>
+                                                            <div className="space-y-2">
+                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Stream of Interest</label>
+                                                                <select value={formData.stream} onChange={e => setFormData({ ...formData, stream: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none appearance-none cursor-pointer bg-slate-900">
+                                                                    <option value="">Select a Stream</option>
+                                                                    <option value="fashion">Fashion Design</option>
+                                                                    <option value="interior">Interior Design</option>
+                                                                    <option value="graphic">Graphic Design</option>
+                                                                    <option value="animation">Animation</option>
+                                                                </select>
+                                                            </div>
+                                                        </motion.div>
+                                                    )}
+
+                                                    {/* Step 9: Scholarship & Comments */}
+                                                    {step === 9 && (
+                                                        <motion.div key="step9" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-4">
+                                                            <h3 className="text-sm font-bold text-pink-300 uppercase tracking-widest mb-4">Additional Info (9/10)</h3>
+                                                            <div className="space-y-2">
+                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Require Scholarship?</label>
+                                                                <select autoFocus value={formData.scholarship} onChange={e => setFormData({ ...formData, scholarship: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none appearance-none cursor-pointer bg-slate-900">
+                                                                    <option value="">Select Option</option>
+                                                                    <option value="Yes">Yes</option>
+                                                                    <option value="No">No</option>
+                                                                </select>
+                                                            </div>
+                                                            <div className="space-y-2">
+                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Comments/Questions</label>
+                                                                <textarea rows="2" placeholder="Any specific questions?" value={formData.comments} onChange={e => setFormData({ ...formData, comments: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none resize-none" />
+                                                            </div>
+                                                        </motion.div>
+                                                    )}
+
+                                                    {/* Step 10: Finalizing */}
+                                                    {step === 10 && (
+                                                        <motion.div key="step10" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-4">
+                                                            <h3 className="text-sm font-bold text-pink-300 uppercase tracking-widest mb-4">Finalizing (10/10)</h3>
+
+                                                            <div className="space-y-2">
+                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Your Communications</label>
+                                                                <div className="flex gap-4 px-2">
+                                                                    {['email', 'post', 'sms'].map((type) => (
+                                                                        <label key={type} className="flex items-center gap-2 cursor-pointer group">
+                                                                            <div className={`w-4 h-4 rounded border flex items-center justify-center transition-all ${formData.communications[type] ? 'bg-pink-500 border-pink-500' : 'border-slate-500 group-hover:border-pink-400'}`}>
+                                                                                {formData.communications[type] && <Check size={10} className="text-white" />}
+                                                                            </div>
+                                                                            <input type="checkbox" className="hidden" checked={formData.communications[type]} onChange={() => toggleComm(type)} />
+                                                                            <span className="text-xs uppercase font-bold text-slate-300">{type}</span>
+                                                                        </label>
+                                                                    ))}
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="space-y-2 mt-4 px-2">
+                                                                <label className="flex items-start gap-3 cursor-pointer group">
+                                                                    <div className={`mt-0.5 min-w-[16px] h-4 rounded border flex items-center justify-center transition-all ${formData.privacy ? 'bg-pink-500 border-pink-500' : 'border-slate-500 group-hover:border-pink-400'}`}>
+                                                                        {formData.privacy && <Check size={10} className="text-white" />}
+                                                                    </div>
+                                                                    <input type="checkbox" className="hidden" checked={formData.privacy} onChange={() => setFormData({ ...formData, privacy: !formData.privacy })} />
+                                                                    <span className="text-[10px] text-slate-400 leading-tight">
+                                                                        I confirm I have read the Privacy Notice.
+                                                                    </span>
+                                                                </label>
+                                                            </div>
+
+                                                            <div className="space-y-2 mt-2">
+                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Security Question</label>
+                                                                <div className="flex items-center gap-3">
+                                                                    <div className="bg-white/10 px-4 py-3 rounded-xl text-white font-mono font-bold tracking-wider">
+                                                                        {captcha.num1} + {captcha.num2} = ?
+                                                                    </div>
+                                                                    <input
+                                                                        type="number"
+                                                                        // autoFocus
+                                                                        placeholder="Answer"
+                                                                        value={formData.captchaInput}
+                                                                        onChange={e => setFormData({ ...formData, captchaInput: e.target.value })}
+                                                                        className="w-full bg-black/20 border border-white/10 rounded-xl px-6 py-3 text-white focus:border-pink-500/50 transition-all outline-none"
+                                                                    />
+                                                                </div>
                                                             </div>
                                                         </motion.div>
                                                     )}
@@ -243,12 +401,15 @@ const RegistrationModal = () => {
                                                         Back
                                                     </button>
                                                 ) : (
-                                                    <div className="flex gap-1">
-                                                        {[1, 2, 3, 4].map(i => (
-                                                            <div key={i} className={`h-1 rounded-full transition-all duration-300 ${i <= step ? 'w-6 bg-pink-500' : 'w-2 bg-white/20'}`} />
-                                                        ))}
-                                                    </div>
+                                                    <div className="flex gap-1" />
                                                 )}
+
+                                                {/* Step Indicators */}
+                                                <div className="absolute left-1/2 -translate-x-1/2 flex gap-1">
+                                                    {[...Array(10)].map((_, i) => (
+                                                        <div key={i} className={`h-1 rounded-full transition-all duration-300 ${i + 1 <= step ? 'w-2 bg-pink-500' : 'w-1 bg-white/20'}`} style={{ width: i + 1 === step ? '16px' : '4px' }} />
+                                                    ))}
+                                                </div>
 
                                                 <button
                                                     type="submit"
@@ -257,7 +418,7 @@ const RegistrationModal = () => {
                                                 >
                                                     <div className="absolute inset-0 bg-linear-to-r from-pink-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                                     <span className="relative z-10 group-hover:text-white flex items-center gap-2">
-                                                        {step === 4 ? (isSubmitting ? 'Sending...' : 'Submit Request') : 'Next'}
+                                                        {step === 10 ? (isSubmitting ? 'Sending...' : 'Submit Request') : 'Next'}
                                                         {!isSubmitting && <ArrowRight size={16} />}
                                                     </span>
                                                 </button>
