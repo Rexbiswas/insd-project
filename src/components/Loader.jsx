@@ -30,8 +30,8 @@ const Loader = ({ setLoading }) => {
 
             // 2. Text Reveal / Cycle during count
             // "Design" -> "Innovation" -> "INSD"
-            const words = ["UNEXPECTED", "EXTRAORDINARY", "FUTURE", "INSD"];
-            const wordDuration = 2.5 / words.length;
+            const words = ["15", "YEARS", "OF", "CREATIVES", "EXPERIENCE"];
+            const wordDuration = 1.5 / words.length;
 
             words.forEach((word, index) => {
                 setTimeout(() => {

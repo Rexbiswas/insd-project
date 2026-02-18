@@ -60,6 +60,7 @@ const Navbar = () => {
     const { openModal } = useRegisterModal();
     const [isOpen, setIsOpen] = useState(false);
     const [expandedItem, setExpandedItem] = useState(null);
+    const [expandedSubItem, setExpandedSubItem] = useState(null);
     const { scrollY } = useScroll();
     const location = useLocation();
 
@@ -133,11 +134,30 @@ const Navbar = () => {
             title: 'Courses',
             path: '/courses',
             subItems: [
-                { name: 'Fashion Design', path: '/courses/fashion-design' },
-                { name: 'Interior Design', path: '/courses/interior-design' },
-                { name: 'Graphic Design', path: '/courses/graphic-design' },
-                { name: 'Animation', path: '/courses/animation' },
-                { name: 'Textile Design', path: '/courses/textile-design' }
+                {
+                    name: 'Undergraduate',
+                    path: '/courses/undergraduate',
+                },
+                {
+                    name: 'Postgraduate',
+                    path: '/courses/postgraduate',
+                },
+                {
+                    name: 'MSc In Luxury Brand Management',
+                    path: '/courses/msc-luxury-brand-management'
+                },
+                {
+                    name: 'Diploma & Certificates',
+                    path: '/courses/diploma-and-certificates',
+                },
+                {
+                    name: 'Short Term Courses',
+                    path: '/courses/short-term-courses',
+                },
+                {
+                    name: 'Online Courses',
+                    path: '/courses/online-courses',
+                }
             ]
         },
         {
@@ -447,19 +467,74 @@ const Navbar = () => {
                                                                     className="overflow-hidden flex flex-col pl-4 md:pl-8 mt-4 space-y-4 border-l-2 border-pink-500/30 ml-2"
                                                                 >
                                                                     {link.subItems.map((subItem) => (
-                                                                        <NavLink
-                                                                            key={subItem.name}
-                                                                            to={subItem.path}
-                                                                            onClick={() => setIsOpen(false)}
-                                                                            className={({ isActive }) =>
-                                                                                `group/sub relative flex items-center text-base md:text-lg font-bold transition-all duration-300 uppercase tracking-tight ${isActive ? 'text-pink-500' : 'text-slate-400 hover:text-white'}`
-                                                                            }
-                                                                        >
-                                                                            <span className="w-0 h-[2px] bg-pink-500 mr-0 transition-all duration-300 group-hover/sub:w-4 group-hover/sub:mr-3" />
-                                                                            <span className="group-hover/sub:translate-x-1 transition-transform duration-300">
-                                                                                {subItem.name}
-                                                                            </span>
-                                                                        </NavLink>
+                                                                        <div key={subItem.name} className="flex flex-col">
+                                                                            {subItem.subItems ? (
+                                                                                <>
+                                                                                    <div className="flex items-center justify-between group/sub w-full">
+                                                                                        <NavLink
+                                                                                            to={subItem.path}
+                                                                                            onClick={() => setIsOpen(false)}
+                                                                                            className={({ isActive }) =>
+                                                                                                `relative flex items-center text-base md:text-lg font-bold transition-all duration-300 uppercase tracking-tight ${isActive ? 'text-pink-500' : 'text-slate-400 hover:text-white'}`
+                                                                                            }
+                                                                                        >
+                                                                                            <span className="w-0 h-[2px] bg-pink-500 mr-0 transition-all duration-300 group-hover/sub:w-4 group-hover/sub:mr-3" />
+                                                                                            <span className="group-hover/sub:translate-x-1 transition-transform duration-300">
+                                                                                                {subItem.name}
+                                                                                            </span>
+                                                                                        </NavLink>
+                                                                                        <motion.button
+                                                                                            animate={{ rotate: expandedSubItem === subItem.name ? 180 : 0 }}
+                                                                                            onClick={(e) => {
+                                                                                                e.preventDefault();
+                                                                                                e.stopPropagation();
+                                                                                                setExpandedSubItem(expandedSubItem === subItem.name ? null : subItem.name);
+                                                                                            }}
+                                                                                            className={`p-1 transition-colors rounded-full hover:bg-white/5 ${expandedSubItem === subItem.name ? 'text-pink-500' : 'text-slate-500 hover:text-white'}`}
+                                                                                        >
+                                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
+                                                                                        </motion.button>
+                                                                                    </div>
+                                                                                    <AnimatePresence>
+                                                                                        {expandedSubItem === subItem.name && (
+                                                                                            <motion.div
+                                                                                                initial={{ height: 0, opacity: 0 }}
+                                                                                                animate={{ height: "auto", opacity: 1 }}
+                                                                                                exit={{ height: 0, opacity: 0 }}
+                                                                                                transition={{ duration: 0.3, ease: [0.76, 0, 0.24, 1] }}
+                                                                                                className="overflow-hidden flex flex-col pl-4 mt-2 space-y-2 border-l border-pink-500/20 ml-2"
+                                                                                            >
+                                                                                                {subItem.subItems.map((nestedItem) => (
+                                                                                                    <NavLink
+                                                                                                        key={nestedItem.name}
+                                                                                                        to={nestedItem.path}
+                                                                                                        onClick={() => setIsOpen(false)}
+                                                                                                        className={({ isActive }) =>
+                                                                                                            `block text-sm font-medium transition-all duration-300 uppercase tracking-wide ${isActive ? 'text-pink-400' : 'text-slate-500 hover:text-slate-300'}`
+                                                                                                        }
+                                                                                                    >
+                                                                                                        {nestedItem.name}
+                                                                                                    </NavLink>
+                                                                                                ))}
+                                                                                            </motion.div>
+                                                                                        )}
+                                                                                    </AnimatePresence>
+                                                                                </>
+                                                                            ) : (
+                                                                                <NavLink
+                                                                                    to={subItem.path}
+                                                                                    onClick={() => setIsOpen(false)}
+                                                                                    className={({ isActive }) =>
+                                                                                        `group/sub relative flex items-center text-base md:text-lg font-bold transition-all duration-300 uppercase tracking-tight ${isActive ? 'text-pink-500' : 'text-slate-400 hover:text-white'}`
+                                                                                    }
+                                                                                >
+                                                                                    <span className="w-0 h-[2px] bg-pink-500 mr-0 transition-all duration-300 group-hover/sub:w-4 group-hover/sub:mr-3" />
+                                                                                    <span className="group-hover/sub:translate-x-1 transition-transform duration-300">
+                                                                                        {subItem.name}
+                                                                                    </span>
+                                                                                </NavLink>
+                                                                            )}
+                                                                        </div>
                                                                     ))}
                                                                 </motion.div>
                                                             )}
