@@ -8,11 +8,11 @@ const ImpactStats = () => {
     const statsRef = useRef(null);
 
     const stats = [
-        { value: 15000, suffix: "+", label: "Students Graduated", color: "from-pink-400 to-purple-400" },
-        { value: 120, suffix: "+", label: "Faculty Presence", color: "from-purple-400 to-indigo-400" },
-        { value: 7, suffix: "", label: "International Campuses", color: "from-indigo-400 to-blue-400" },
-        { value: 50, suffix: "+", label: "National Campuses", color: "from-blue-400 to-cyan-400" },
-        { value: 100, suffix: "+", label: "Brand Partners", color: "from-cyan-400 to-emerald-400" },
+        { value: 15000, suffix: "+", label: "Students Graduated", color: "from-primary to-secondary" },
+        { value: 120, suffix: "+", label: "Faculty Presence", color: "from-secondary to-primary" },
+        { value: 7, suffix: "", label: "International Campuses", color: "from-secondary to-primary" },
+        { value: 50, suffix: "+", label: "National Campuses", color: "from-secondary to-primary" },
+        { value: 100, suffix: "+", label: "Brand Partners", color: "from-primary to-secondary" },
     ];
 
     useLayoutEffect(() => {
@@ -74,7 +74,7 @@ const ImpactStats = () => {
                         >
                             0{stat.suffix}
                         </div>
-                        <div className="h-1 w-12 bg-white/20 rounded-full mb-4 group-hover:w-24 group-hover:bg-purple-500 transition-all duration-300"></div>
+                        <div className="h-1 w-12 bg-white/20 rounded-full mb-4 group-hover:w-24 group-hover:bg-primary transition-all duration-300"></div>
                         <div className="text-xs font-mono uppercase tracking-widest text-slate-400 group-hover:text-white transition-colors duration-300">
                             {stat.label}
                         </div>

@@ -143,7 +143,7 @@ const About = () => {
     }, []);
 
     return (
-        <div ref={containerRef} className="bg-[#050505] text-white selection:bg-pink-500 selection:text-white overflow-hidden">
+        <div ref={containerRef} className="bg-[#050505] text-white selection:bg-primary selection:text-white overflow-hidden">
 
             {/* Background Grain/Noise Overlay */}
             <div className="fixed inset-0 pointer-events-none opacity-20 z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
@@ -153,7 +153,7 @@ const About = () => {
                 <div className="hero-bg absolute inset-0 bg-[url('https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=1600')] bg-cover bg-center brightness-[0.4]" />
 
                 <div ref={heroTextRef} className="relative z-10 flex flex-col items-center">
-                    <span className="text-pink-600 font-mono tracking-[1.5em] uppercase text-[10px] mb-8 animate-pulse">Designing Legacies</span>
+                    <span className="text-primary font-mono tracking-[1.5em] uppercase text-[10px] mb-8 animate-pulse">Designing Legacies</span>
                     <h1 className="text-[25vw] font-black leading-none tracking-tighter flex items-baseline">
                         I<span className="text-transparent stroke-text-white opacity-40">N</span>SD
                     </h1>
@@ -163,7 +163,7 @@ const About = () => {
                 {/* Sub-content revealed during zoom */}
                 <div className="vision-content absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none">
                     <h2 className="text-6xl md:text-8xl font-black uppercase tracking-tighter text-center max-w-4xl px-6 leading-[0.9]">
-                        Where <span className="text-transparent bg-clip-text bg-linear-to-r from-pink-500 to-violet-600">Rebellion</span> <br /> Meets Craft.
+                        Where <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary">Rebellion</span> <br /> Meets Craft.
                     </h2>
                 </div>
             </section>
@@ -176,7 +176,7 @@ const About = () => {
                             <h3 className="text-4xl font-bold uppercase tracking-tighter mb-8 leading-tight">
                                 A Century of <br /> Vision, Compressed.
                             </h3>
-                            <div className="w-24 h-1 bg-pink-600" />
+                            <div className="w-24 h-1 bg-primary" />
                         </div>
                         <div className="md:col-span-2 grid grid-cols-2 gap-12">
                             {[
@@ -185,7 +185,7 @@ const About = () => {
                                 { label: 'Design Awards', val: '100+' },
                                 { label: 'Industry Partners', val: '80+' }
                             ].map((stat, i) => (
-                                <div key={i} className="group border-l border-white/10 pl-8 hover:border-pink-500 transition-colors duration-500">
+                                <div key={i} className="group border-l border-white/10 pl-8 hover:border-primary transition-colors duration-500">
                                     <span className="block text-5xl md:text-7xl font-black mb-2">{stat.val}</span>
                                     <span className="text-xs uppercase tracking-[0.3em] text-slate-500 font-mono">{stat.label}</span>
                                 </div>
@@ -200,7 +200,7 @@ const About = () => {
                 <div ref={horizontalScrollRef} className="h-full flex items-center px-[10vw] gap-32">
                     {/* Founder Intro */}
                     <div className="min-w-[80vw] md:min-w-[40vw] flex flex-col">
-                        <span className="text-pink-600 font-bold uppercase tracking-widest text-xs mb-6 block">— Our Genesis</span>
+                        <span className="text-primary font-bold uppercase tracking-widest text-xs mb-6 block">— Our Genesis</span>
                         <h2 className="text-8xl font-black text-black leading-[0.85] tracking-tighter uppercase mb-12">
                             Born from <br /> <span className="text-transparent stroke-text-white stroke-black!">IAS Vision.</span>
                         </h2>
@@ -218,7 +218,7 @@ const About = () => {
                         <div key={i} className="min-w-[70vw] md:min-w-[50vw] h-[70vh] relative group overflow-hidden rounded-[2rem] shadow-2xl">
                             <img src={item.img} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100" />
                             <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-12">
-                                <span className="text-pink-500 font-mono mb-2">Pillar 0{i + 1}</span>
+                                <span className="text-primary font-mono mb-2">Pillar 0{i + 1}</span>
                                 <h3 className="text-7xl font-black uppercase text-white tracking-tighter">{item.title}</h3>
                             </div>
                         </div>
@@ -238,8 +238,8 @@ const About = () => {
             {/* Section 5: The Pillars (3D Floating Grid) */}
             <section className="relative pb-64 px-6 bg-[#050505] overflow-hidden">
                 {/* Floating Parallax Accents */}
-                <div className="parallax-layer absolute top-20 left-[10%] w-64 h-64 bg-pink-600/10 blur-[120px] rounded-full" />
-                <div className="parallax-layer absolute bottom-20 right-[15%] w-96 h-96 bg-violet-600/10 blur-[150px] rounded-full" />
+                <div className="parallax-layer absolute top-20 left-[10%] w-64 h-64 bg-primary/10 blur-[120px] rounded-full" />
+                <div className="parallax-layer absolute bottom-20 right-[15%] w-96 h-96 bg-secondary/10 blur-[150px] rounded-full" />
 
                 <div className="max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
@@ -250,14 +250,14 @@ const About = () => {
                                 { title: 'Impact', desc: 'Design that doesnt move the world is just decoration.' }
                             ].map((pill, i) => (
                                 <div key={i} className="floating-card group bg-white/5 backdrop-blur-xl border border-white/10 p-12 rounded-[2.5rem] hover:bg-white/10 transition-all duration-500">
-                                    <span className="text-pink-600 font-mono text-xl block mb-6 px-4 py-1 border border-pink-600/40 rounded-full w-fit">0{i + 1}</span>
+                                    <span className="text-primary font-mono text-xl block mb-6 px-4 py-1 border border-primary/40 rounded-full w-fit">0{i + 1}</span>
                                     <h3 className="text-5xl font-black uppercase tracking-tighter mb-6">{pill.title}</h3>
                                     <p className="text-slate-400 text-lg leading-relaxed">{pill.desc}</p>
                                 </div>
                             ))}
                         </div>
                         <div className="hidden md:block relative">
-                            <div className="reveal-img-container aspect-3/4 rounded-[3rem] overflow-hidden rotate-3 shadow-pink-500/10 shadow-2xl">
+                            <div className="reveal-img-container aspect-3/4 rounded-[3rem] overflow-hidden rotate-3 shadow-primary/10 shadow-2xl">
                                 <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg" className="w-full h-full object-cover" />
                             </div>
                             <div className="absolute -bottom-12 -right-12 w-96 p-12 bg-white text-black rounded-[2rem] shadow-2xl -rotate-6">
@@ -278,7 +278,7 @@ const About = () => {
                         Join The <br /> Revolution.
                     </h2>
                     <div className="flex flex-col md:flex-row gap-8 justify-center">
-                        <button className="magnetic-btn px-12 py-5 bg-pink-600 text-white font-bold rounded-full uppercase tracking-widest transition-transform">Explore Careers</button>
+                        <button className="magnetic-btn px-12 py-5 bg-primary text-white font-bold rounded-full uppercase tracking-widest transition-transform">Explore Careers</button>
                         <button className="magnetic-btn px-12 py-5 bg-white text-black font-bold rounded-full uppercase tracking-widest transition-transform">Get Prospectus</button>
                     </div>
                 </div>

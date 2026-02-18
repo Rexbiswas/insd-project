@@ -10,7 +10,7 @@ const testimonials = [
         course: "MiLuxBM, Feb 2021",
         image: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=800", // Placeholder
         quote: "I'm glad to have been introduced to the MiLuxBM programme at the International School of Design. I am looking for a position in the Luxury space after three years of experience in events and digital marketing. This program has provided me with the opportunity to interact with numerous industry experts.",
-        color: "from-pink-500 to-rose-500"
+        color: "from-primary to-secondary"
     },
     {
         id: 2,
@@ -19,7 +19,7 @@ const testimonials = [
         course: "B.Des Fashion, 2022",
         image: "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=800",
         quote: "The practical exposure at INSD is unmatched. From fashion weeks to live projects, every day was a new learning curve. The faculty doesn't just teach; they mentor you to become industry-ready professionals.",
-        color: "from-purple-500 to-indigo-500"
+        color: "from-primary to-secondary"
     },
     {
         id: 3,
@@ -28,7 +28,7 @@ const testimonials = [
         course: "M.Des Interior, 2020",
         image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=800",
         quote: "Designing spaces requires a different perspective, and INSD helped me find mine. The luxury labs and material libraries gave me the freedom to experiment and create designs that stand out.",
-        color: "from-blue-500 to-cyan-500"
+        color: "from-primary to-secondary"
     }
 ];
 
@@ -171,7 +171,7 @@ const TestimonialSlider = () => {
                                 </p>
 
                                 <div className="mt-12 flex items-center gap-4">
-                                    <div className="h-px w-12 bg-white/20 group-hover:w-24 group-hover:bg-pink-500 transition-all duration-500"></div>
+                                    <div className="h-px w-12 bg-white/20 group-hover:w-24 group-hover:bg-primary transition-all duration-500"></div>
                                     <span className="text-xs font-bold uppercase tracking-widest text-white/40">Success Story</span>
                                 </div>
                             </div>

@@ -6,7 +6,7 @@ const BackToTop = () => {
     const [isVisible, setIsVisible] = useState(false);
     const { scrollY } = useScroll();
 
-    useMotionValueEvent(scrollY, "change", (latest) => {
+    useMotionValueEvent(scrollY, "var(--color-primary)", (latest) => {
         const show = latest > 300;
         if (show !== isVisible) {
             setIsVisible(show);
@@ -34,10 +34,10 @@ const BackToTop = () => {
                     className="fixed bottom-24 md:bottom-8 right-4 md:right-8 z-100 group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full shadow-lg bg-white/80 backdrop-blur-md border border-white/20 hover:shadow-xl transition-all duration-300"
                     aria-label="Back to top"
                 >
-                    <div className="absolute inset-0 rounded-full bg-linear-to-tr from-pink-500 to-violet-600 opacity-20 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 rounded-full bg-linear-to-tr from-primary to-secondary opacity-20 group-hover:opacity-100 transition-opacity duration-300" />
 
                     {/* Ring animation */}
-                    <div className="absolute inset-0 rounded-full border-2 border-pink-500/30 scale-100 group-hover:scale-125 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out" />
+                    <div className="absolute inset-0 rounded-full border-2 border-primary/30 scale-100 group-hover:scale-125 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out" />
 
                     <ArrowUp
                         size={24}

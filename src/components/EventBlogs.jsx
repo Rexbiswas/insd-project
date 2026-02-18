@@ -61,7 +61,7 @@ const EventBlogs = () => {
             <div className="relative z-10 container mx-auto mb-20 flex flex-col md:flex-row items-end justify-between border-b border-white/10 pb-8 gap-8">
                 <div>
                     <h2 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter leading-none">
-                        Events <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-500 to-pink-500 italic font-serif">&</span> Blogs
+                        Events <span className="text-transparent bg-clip-text bg-linear-to-r from-secondary to-primary italic font-serif">&</span> Blogs
                     </h2>
                     <p className="text-slate-400 mt-4 max-w-md">
                         Insights from the industry experts and highlights from our latest campus events.
@@ -76,7 +76,7 @@ const EventBlogs = () => {
             {/* Grid */}
             <div className="relative z-10 container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {blogs.map((blog) => (
-                    <div key={blog.id} className="blog-card group relative h-[450px] lg:h-[450px] xl:h-[500px] bg-slate-900 rounded-3xl overflow-hidden cursor-pointer border border-white/5 hover:border-white/20 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-900/20">
+                    <div key={blog.id} className="blog-card group relative h-[450px] lg:h-[450px] xl:h-[500px] bg-slate-900 rounded-3xl overflow-hidden cursor-pointer border border-white/5 hover:border-white/20 transition-all duration-500 hover:shadow-2xl hover:shadow-secondary/20">
 
                         {/* Full Background Image */}
                         <div className="absolute inset-0 w-full h-full">
@@ -100,12 +100,12 @@ const EventBlogs = () => {
 
                             <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                 <div className="mb-4 overflow-hidden">
-                                    <span className="inline-block text-xs font-mono text-purple-400 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-100">
+                                    <span className="inline-block text-xs font-mono text-primary transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-100">
                                         {blog.date}
                                     </span>
                                 </div>
 
-                                <h3 className="text-2xl font-bold text-white leading-tight mb-2 group-hover:text-purple-100 transition-colors drop-shadow-lg">
+                                <h3 className="text-2xl font-bold text-white leading-tight mb-2 group-hover:text-primary/20 transition-colors drop-shadow-lg">
                                     {blog.title}
                                 </h3>
 

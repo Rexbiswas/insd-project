@@ -38,11 +38,11 @@ const Footer = () => {
     }, []);
 
     const socialLinks = [
-        { icon: Instagram, label: "Instagram", color: "hover:text-pink-500" },
-        { icon: Linkedin, label: "LinkedIn", color: "hover:text-blue-500" },
-        { icon: Facebook, label: "Facebook", color: "hover:text-blue-600" },
-        { icon: Youtube, label: "YouTube", color: "hover:text-red-500" },
-        { icon: Twitter, label: "Twitter", color: "hover:text-sky-400" },
+        { icon: Instagram, label: "Instagram", color: "hover:text-primary" },
+        { icon: Linkedin, label: "LinkedIn", color: "hover:text-secondary" },
+        { icon: Facebook, label: "Facebook", color: "hover:text-secondary" },
+        { icon: Youtube, label: "YouTube", color: "hover:text-primary" },
+        { icon: Twitter, label: "Twitter", color: "hover:text-secondary" },
     ];
 
     const quickLinks = [
@@ -65,10 +65,10 @@ const Footer = () => {
                     <div className="lg:w-1/2 footer-element">
                         <h2 className="text-5xl lg:text-7xl font-black uppercase tracking-tighter leading-none mb-8">
                             Let's Design <br />
-                            <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-pink-400">The Future</span>
+                            <span className="text-transparent bg-clip-text bg-linear-to-r from-secondary to-primary">The Future</span>
                         </h2>
                         <div className="relative group w-fit">
-                            <button className="flex items-center gap-4 text-xl font-bold uppercase tracking-widest hover:text-purple-400 transition-colors duration-300">
+                            <button className="flex items-center gap-4 text-xl font-bold uppercase tracking-widest hover:text-secondary transition-colors duration-300">
                                 Apply for 2026
                                 <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300 group-hover:scale-110">
                                     <ArrowUpRight className="w-5 h-5" />
@@ -84,9 +84,9 @@ const Footer = () => {
                             <input
                                 type="email"
                                 placeholder="Enter your email address"
-                                className="w-full bg-transparent border-b border-white/10 py-4 text-xl md:text-2xl outline-none focus:border-purple-500 transition-colors duration-300 placeholder:text-slate-700 font-light"
+                                className="w-full bg-transparent border-b border-white/10 py-4 text-xl md:text-2xl outline-none focus:border-secondary transition-colors duration-300 placeholder:text-slate-700 font-light"
                             />
-                            <button className="absolute right-0 top-1/2 -translate-y-1/2 text-sm font-bold uppercase tracking-widest hover:text-purple-400 transition-colors">
+                            <button className="absolute right-0 top-1/2 -translate-y-1/2 text-sm font-bold uppercase tracking-widest hover:text-secondary transition-colors">
                                 Subscribe
                             </button>
                         </div>
@@ -139,7 +139,7 @@ const Footer = () => {
                         <h4 className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-6">Contact</h4>
                         <ul className="space-y-6">
                             <li className="flex items-start gap-4">
-                                <div className="mt-1 w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center shrink-0 text-purple-400">
+                                <div className="mt-1 w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center shrink-0 text-primary">
                                     <MapPin className="w-4 h-4" />
                                 </div>
                                 <span className="text-slate-300 text-sm leading-relaxed">
@@ -148,13 +148,13 @@ const Footer = () => {
                                 </span>
                             </li>
                             <li className="flex items-center gap-4">
-                                <div className="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center shrink-0 text-purple-400">
+                                <div className="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center shrink-0 text-primary">
                                     <Phone className="w-4 h-4" />
                                 </div>
                                 <span className="text-slate-300 text-sm">+91 98765 43210</span>
                             </li>
                             <li className="flex items-center gap-4">
-                                <div className="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center shrink-0 text-purple-400">
+                                <div className="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center shrink-0 text-primary">
                                     <Mail className="w-4 h-4" />
                                 </div>
                                 <span className="text-slate-300 text-sm">admissions@insd.edu</span>

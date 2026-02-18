@@ -51,12 +51,12 @@ const FeaturedIn = () => {
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none"></div>
 
             {/* Glowing Orbs for "Unexpected" feel */}
-            <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-purple-900/40 blur-[120px] rounded-full mix-blend-screen pointer-events-none animate-pulse"></div>
-            <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-blue-900/40 blur-[100px] rounded-full mix-blend-screen pointer-events-none"></div>
+            <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-secondary/40 blur-[120px] rounded-full mix-blend-screen pointer-events-none animate-pulse"></div>
+            <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-secondary/40 blur-[100px] rounded-full mix-blend-screen pointer-events-none"></div>
 
             <div className="relative z-10 container mx-auto px-6 mb-20 text-center">
                 <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter mb-4">
-                    Featured <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-pink-400">In</span>
+                    Featured <span className="text-transparent bg-clip-text bg-linear-to-r from-secondary to-primary">In</span>
                 </h2>
                 <div className="w-24 h-1 bg-linear-to-r from-transparent via-white/50 to-transparent mx-auto"></div>
             </div>
@@ -68,7 +68,7 @@ const FeaturedIn = () => {
                     {[...brands, ...brands, ...brands, ...brands].map((brand, i) => (
                         <div
                             key={i}
-                            className="feature-card group relative w-64 h-40 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl flex items-center justify-center p-8 cursor-pointer hover:bg-white/10 hover:border-white/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(120,50,255,0.3)] perspective-1000 shrink-0"
+                            className="feature-card group relative w-64 h-40 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl flex items-center justify-center p-8 cursor-pointer hover:bg-white/10 hover:border-white/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(219,52,54,0.3)] perspective-1000 shrink-0"
                         >
                             {/* Inner Glow */}
                             <div className="absolute inset-0 bg-linear-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>

@@ -63,13 +63,13 @@ const Admission = () => {
     }, []);
 
     const sections = [
-        { title: "Design Tech", img: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg", hex: "#ec4899" },
-        { title: "Visual Arts", img: "https://images.pexels.com/photos/1183992/pexels-photo-1183992.jpeg", hex: "#8b5cf6" },
-        { title: "Luxury Fashion", img: "https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg", hex: "#f43f5e" }
+        { title: "Design Tech", img: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg", hex: "var(--color-primary)" },
+        { title: "Visual Arts", img: "https://images.pexels.com/photos/1183992/pexels-photo-1183992.jpeg", hex: "var(--color-secondary)" },
+        { title: "Luxury Fashion", img: "https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg", hex: "var(--color-primary)" }
     ];
 
     return (
-        <div ref={containerRef} className="bg-[#080808] text-white selection:bg-pink-500 font-sans overflow-hidden">
+        <div ref={containerRef} className="bg-[#080808] text-white selection:bg-primary font-sans overflow-hidden">
 
             {/* 1. THE APERTURE HERO */}
             <section ref={apertureRef} className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -84,7 +84,7 @@ const Admission = () => {
                 </div>
 
                 <div className="relative z-20 text-center px-6">
-                    <h2 className="text-pink-500 font-mono tracking-[1em] text-[10px] uppercase mb-8">System_Initiate</h2>
+                    <h2 className="text-primary font-mono tracking-[1em] text-[10px] uppercase mb-8">System_Initiate</h2>
                     <h1 className="aperture-title text-8xl md:text-[14rem] font-black uppercase leading-none tracking-tighter italic">
                         The Core <br /> <span className="text-transparent stroke-text-white stroke-white!">Protocol.</span>
                     </h1>
@@ -124,7 +124,7 @@ const Admission = () => {
                                 transition={{ duration: 1, delay: 0.2, ease: "circOut" }}
                                 className="flex-1 space-y-10"
                             >
-                                <span className="text-pink-600 font-mono text-xs tracking-widest uppercase">Module_{section.title.replace(' ', '_')}</span>
+                                <span className="text-primary font-mono text-xs tracking-widest uppercase">Module_{section.title.replace(' ', '_')}</span>
                                 <h2 className="text-7xl md:text-9xl font-black uppercase leading-[0.85] tracking-tighter">
                                     {section.title.split(' ')[0]} <br /> <span className="opacity-30 italic">{section.title.split(' ')[1] || 'Core'}</span>
                                 </h2>
@@ -154,7 +154,7 @@ const Admission = () => {
                             { step: "02", val: "Dean's Vetting", desc: "High-level strategic conversation regarding your industry trajectory." }
                         ].map((m, i) => (
                             <div key={i} className="flex gap-16 items-start group">
-                                <span className="text-9xl font-black text-slate-100 leading-none group-hover:text-pink-100 transition-colors uppercase">{m.step}</span>
+                                <span className="text-9xl font-black text-slate-100 leading-none group-hover:text-primary/20 transition-colors uppercase">{m.step}</span>
                                 <div className="space-y-6 pt-4">
                                     <h3 className="text-4xl font-extrabold uppercase italic">{m.val}</h3>
                                     <p className="text-slate-500 text-2xl font-light leading-tight">{m.desc}</p>
@@ -177,9 +177,9 @@ const Admission = () => {
 
                     <div className="md:w-2/3 w-full flex flex-col items-center justify-center border border-white/20 rounded-[4rem] p-12 md:p-32 bg-white/5 backdrop-blur-[50px] shadow-[inset_0_0_50px_rgba(255,255,255,0.05)] group relative overflow-hidden">
                         {/* Decorative background element */}
-                        <div className="absolute inset-0 bg-linear-to-br from-pink-500/20 via-transparent to-violet-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                        <div className="absolute inset-0 bg-linear-to-br from-primary/20 via-transparent to-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-                        <h3 className="text-4xl md:text-7xl font-black uppercase mb-12 text-center group-hover:text-pink-500 transition-colors leading-[0.8] tracking-tighter relative z-10">Ready to <br /> Begin?</h3>
+                        <h3 className="text-4xl md:text-7xl font-black uppercase mb-12 text-center group-hover:text-primary transition-colors leading-[0.8] tracking-tighter relative z-10">Ready to <br /> Begin?</h3>
 
                         <button
                             onClick={openModal}

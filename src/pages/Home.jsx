@@ -6,7 +6,7 @@ import Background3D from '../components/Background3D';
 import Lenis from 'lenis';
 
 import InsdBackground from '../components/InsdBackground';
-import ParallaxSlider from '../components/ParallaxSlider';
+
 import ImpactStats from '../components/ImpactStats';
 import TestimonialSlider from '../components/TestimonialSlider';
 import FeaturedIn from '../components/FeaturedIn';
@@ -221,7 +221,7 @@ const Home = () => {
                     .to(subTitleRef.current, {
                         scale: 1.2,
                         y: 150,
-                        color: "#f472b6",
+                        color: "var(--color-primary)",
                         opacity: 1, // Keep fully visible
                         duration: 2,
                         ease: "expo.out"
@@ -268,7 +268,7 @@ const Home = () => {
                         cursorImg.style.backgroundImage = `url(${imgUrl})`;
                         gsap.to(cursorImg, { scale: 1, opacity: 1, duration: 0.4, ease: "power2.out" });
                     }
-                    gsap.to(item.querySelectorAll('.item-text'), { x: 40, color: "#7c3aed", duration: 0.4, ease: "back.out(1.7)" }); // Bouncier text move
+                    gsap.to(item.querySelectorAll('.item-text'), { x: 40, color: "var(--color-secondary)", duration: 0.4, ease: "back.out(1.7)" }); // Bouncier text move
                     gsap.to(item.querySelectorAll('.item-num'), { opacity: 0.2, x: 20, scale: 0.8, duration: 0.4 });
                 });
 
@@ -544,7 +544,7 @@ const Home = () => {
                             {/* INSD Text - Black Color becomes Transparent in Screen Mode */}
                             <div ref={insdRef} className="text-black text-[28vw] md:text-[32vw] xl:text-[26rem] font-black leading-none flex justify-center items-center w-full tracking-tighter will-change-transform backface-hidden">
                                 {["I", "N", "S", "D"].map((char, index) => (
-                                    <span key={index} className="char-extra inline-block origin-bottom transition-all duration-300 hover:text-pink-600 hover:scale-110">
+                                    <span key={index} className="char-extra inline-block origin-bottom transition-all duration-300 hover:text-primary hover:scale-110">
                                         {char}
                                     </span>
                                 ))}
@@ -564,7 +564,7 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <div ref={subTitleRef} className="hidden md:block overflow-hidden text-transparent bg-clip-text bg-linear-to-r from-pink-600 via-violet-600 to-indigo-600 text-center whitespace-nowrap opacity-100 text-2xl md:text-4xl">
+                    <div ref={subTitleRef} className="hidden md:block overflow-hidden text-transparent bg-clip-text bg-linear-to-r from-primary via-secondary to-secondary text-center whitespace-nowrap opacity-100 text-2xl md:text-4xl">
                         {splitText("Unexpected.", "char-extra inline-block")}
                     </div>
                 </div>
@@ -604,12 +604,12 @@ const Home = () => {
                         {/* Content */}
                         <div className="absolute inset-0 z-10 flex flex-col justify-end p-8 pb-24 md:pb-12">
                             <div className="overflow-hidden">
-                                <h3 className="text-5xl md:text-5xl font-black text-transparent bg-clip-text bg-linear-to-r from-pink-500 to-violet-600 translate-y-0 md:translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-100 uppercase tracking-tighter">
+                                <h3 className="text-5xl md:text-5xl font-black text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary translate-y-0 md:translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-100 uppercase tracking-tighter">
                                     {item.title}
                                 </h3>
                             </div>
                             <div className="overflow-hidden mt-2 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
-                                <p className="text-white/80 text-sm font-medium tracking-widest uppercase border-t border-pink-500/50 pt-4 inline-block">
+                                <p className="text-white/80 text-sm font-medium tracking-widest uppercase border-t border-primary/50 pt-4 inline-block">
                                     Explore Program
                                 </p>
                             </div>
@@ -639,7 +639,7 @@ const Home = () => {
                                     {splitText("Beyond", "reveal-text inline-block")}
                                 </div>
                                 <div className="overflow-hidden">
-                                    <span className="text-transparent bg-clip-text bg-linear-to-br from-purple-600 to-blue-600">
+                                    <span className="text-transparent bg-clip-text bg-linear-to-br from-secondary to-primary">
                                         {splitText("Education.", "reveal-text inline-block")}
                                     </span>
                                 </div>
@@ -652,9 +652,9 @@ const Home = () => {
                             <motion.button
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.9 }}
-                                className="group relative px-12 py-5 bg-black text-white text-xl font-bold rounded-full uppercase tracking-widest overflow-hidden hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300"
+                                className="group relative px-12 py-5 bg-black text-white text-xl font-bold rounded-full uppercase tracking-widest overflow-hidden hover:shadow-2xl hover:shadow-secondary/50 transition-all duration-300"
                             >
-                                <span className="relative z-10 group-hover:text-purple-300 transition-colors">Our Philosophy</span>
+                                <span className="relative z-10 group-hover:text-primary transition-colors">Our Philosophy</span>
                                 <div className="absolute inset-0 bg-zinc-800 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-out" />
                             </motion.button>
                         </div>
@@ -716,7 +716,7 @@ const Home = () => {
                         <span className="block text-sm font-mono tracking-widest uppercase mb-4 opacity-60">Spotlight</span>
                         <h2 className="text-[6vw] font-black uppercase tracking-tighter leading-none flex flex-col">
                             <span className="spotlight-title-1 block">Future</span>
-                            <span className="spotlight-title-2 italic font-serif font-light text-purple-500 block self-end">Visionaries</span>
+                            <span className="spotlight-title-2 italic font-serif font-light text-secondary block self-end">Visionaries</span>
                         </h2>
                     </div>
 
@@ -765,16 +765,16 @@ const Home = () => {
             </div>
 
             {/* Horizontal Parallax Slider - Global Exposure */}
-            <ParallaxSlider />
+
 
             {/* Legacy & Discovery Section - Unexpected Contrast */}
             <div ref={legacyRef} className="relative min-h-screen bg-white text-black py-0 px-0 flex flex-col items-center justify-center overflow-hidden -mt-[20vh] z-10 rounded-t-[4rem] shadow-2xl will-change-transform backface-hidden">
 
                 {/* Next Level Background - Holographic Orbs (Optimized) */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-50">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-linear-to-b from-purple-200 to-transparent blur-[80px] rounded-full mix-blend-multiply"></div>
-                    <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-200 blur-[80px] rounded-full mix-blend-multiply"></div>
-                    <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-pink-200 blur-[60px] rounded-full mix-blend-multiply"></div>
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-linear-to-b from-secondary/30 to-transparent blur-[80px] rounded-full mix-blend-multiply"></div>
+                    <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-secondary/20 blur-[80px] rounded-full mix-blend-multiply"></div>
+                    <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-primary/20 blur-[60px] rounded-full mix-blend-multiply"></div>
                 </div>
 
                 {/* Main Content Wrapper */}
@@ -815,8 +815,8 @@ const Home = () => {
                                 <label className="block text-xs font-mono uppercase tracking-widest text-slate-400 mb-6">Find your path</label>
 
                                 {/* Input Area */}
-                                <div className="flex items-center gap-6 border-b border-white/20 pb-4 mb-10 group-focus-within:border-purple-500 transition-colors duration-300">
-                                    <div className="w-4 h-4 rounded-full bg-purple-500 animate-pulse"></div>
+                                <div className="flex items-center gap-6 border-b border-white/20 pb-4 mb-10 group-focus-within:border-secondary transition-colors duration-300">
+                                    <div className="w-4 h-4 rounded-full bg-secondary animate-pulse"></div>
                                     <input
                                         type="search"
                                         value={searchQuery}
@@ -827,7 +827,7 @@ const Home = () => {
                                         placeholder="Search Courses..."
                                         className="bg-transparent border-none outline-none text-xl md:text-4xl font-light text-white placeholder-slate-600 w-full"
                                     />
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="opacity-50 group-focus-within:opacity-100 group-focus-within:text-purple-400 transition-all duration-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="opacity-50 group-focus-within:opacity-100 group-focus-within:text-secondary transition-all duration-300">
                                         <circle cx="11" cy="11" r="8"></circle>
                                         <path d="m21 21-4.3-4.3"></path>
                                     </svg>
@@ -841,7 +841,7 @@ const Home = () => {
                                             className="flex items-center justify-between md:justify-start w-full md:w-auto gap-3 text-sm font-bold uppercase tracking-widest text-slate-300 hover:text-white transition-colors group/btn"
                                         >
                                             <div className="flex items-center gap-3">
-                                                <span className={`h-px bg-current transition-all duration-300 ${isDropdownOpen ? 'w-12 bg-purple-500' : 'w-6'}`}></span>
+                                                <span className={`h-px bg-current transition-all duration-300 ${isDropdownOpen ? 'w-12 bg-secondary' : 'w-6'}`}></span>
                                                 {isDropdownOpen ? 'Close Programs' : 'Browse All Programs'}
                                             </div>
                                             {/* Mobile Arrow Hint */}
@@ -897,7 +897,7 @@ const Home = () => {
                                                     {/* Bachelors */}
                                                     {hasItems(programs.bachelors) && (
                                                         <div>
-                                                            <h4 className="text-pink-400 font-mono text-xs uppercase tracking-widest mb-4">Bachelors (B.Des)</h4>
+                                                            <h4 className="text-primary font-mono text-xs uppercase tracking-widest mb-4">Bachelors (B.Des)</h4>
                                                             <ul className="space-y-2">
                                                                 {filterPrograms(programs.bachelors).map((item, i) => (
                                                                     <li key={i} className="text-slate-400 hover:text-white hover:translate-x-2 transition-all duration-300 cursor-pointer text-sm">{item}</li>
@@ -910,7 +910,7 @@ const Home = () => {
                                                     <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-8 mt-4 pt-8 border-t border-white/5">
                                                         {hasItems(programs.diploma_two) && (
                                                             <div>
-                                                                <h4 className="text-blue-400 font-mono text-xs uppercase tracking-widest mb-4">Adv. Diploma (2 Years)</h4>
+                                                                <h4 className="text-secondary font-mono text-xs uppercase tracking-widest mb-4">Adv. Diploma (2 Years)</h4>
                                                                 <ul className="space-y-2">
                                                                     {filterPrograms(programs.diploma_two).map((item, i) => (
                                                                         <li key={i} className="text-slate-400 hover:text-white hover:translate-x-2 transition-all duration-300 cursor-pointer text-sm">{item}</li>
@@ -920,7 +920,7 @@ const Home = () => {
                                                         )}
                                                         {hasItems(programs.diploma_one) && (
                                                             <div>
-                                                                <h4 className="text-blue-400 font-mono text-xs uppercase tracking-widest mb-4">Diploma (1 Year)</h4>
+                                                                <h4 className="text-secondary font-mono text-xs uppercase tracking-widest mb-4">Diploma (1 Year)</h4>
                                                                 <ul className="space-y-2">
                                                                     {filterPrograms(programs.diploma_one).map((item, i) => (
                                                                         <li key={i} className="text-slate-400 hover:text-white hover:translate-x-2 transition-all duration-300 cursor-pointer text-sm">{item}</li>
@@ -930,7 +930,7 @@ const Home = () => {
                                                         )}
                                                         {hasItems(programs.short) && (
                                                             <div>
-                                                                <h4 className="text-yellow-400 font-mono text-xs uppercase tracking-widest mb-4">Short Courses</h4>
+                                                                <h4 className="text-primary font-mono text-xs uppercase tracking-widest mb-4">Short Courses</h4>
                                                                 <ul className="space-y-2">
                                                                     {filterPrograms(programs.short).map((item, i) => (
                                                                         <li key={i} className="text-slate-400 hover:text-white hover:translate-x-2 transition-all duration-300 cursor-pointer text-sm">{item}</li>

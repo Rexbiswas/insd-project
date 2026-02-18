@@ -107,7 +107,7 @@ const InsdiansByDesign = () => {
             </div>
 
             {/* Spotlight - Single Layer Follow */}
-            <div ref={spotlightRef} className="absolute top-0 left-0 w-[40vw] h-[40vw] bg-pink-500/10 blur-[120px] rounded-full pointer-events-none z-10 -translate-x-1/2 -translate-y-1/2"></div>
+            <div ref={spotlightRef} className="absolute top-0 left-0 w-[40vw] h-[40vw] bg-primary/10 blur-[120px] rounded-full pointer-events-none z-10 -translate-x-1/2 -translate-y-1/2"></div>
 
             {/* Main Stage */}
             <div ref={contentRef} className="relative z-20 w-full max-w-7xl px-6 flex flex-col items-center justify-center">
@@ -134,7 +134,7 @@ const InsdiansByDesign = () => {
                 >
                     <h2 className="text-[9vw] md:text-[8vw] xl:text-[7rem] font-black uppercase tracking-tighter text-white leading-[0.9] flex flex-wrap justify-center gap-x-[0.15em]">
                         {text.split(" ").map((word, wordIdx) => (
-                            <span key={wordIdx} className={`inline-block ${word.startsWith('#') ? 'text-pink-500' : ''}`}>
+                            <span key={wordIdx} className={`inline-block ${word.startsWith('#') ? 'text-primary' : ''}`}>
                                 {word.split("").map((char, charIdx) => (
                                     <span key={charIdx} className="char inline-block whitespace-nowrap">
                                         {char}
@@ -147,7 +147,7 @@ const InsdiansByDesign = () => {
 
                 {/* Sub-tag */}
                 <div className="mt-12 overflow-hidden">
-                    <p className="text-pink-500/60 font-mono tracking-[0.5em] uppercase text-[10px] md:text-sm border-t border-white/10 pt-8">
+                    <p className="text-primary/60 font-mono tracking-[0.5em] uppercase text-[10px] md:text-sm border-t border-white/10 pt-8">
                         Design • Innovation • Culture
                     </p>
                 </div>
@@ -155,8 +155,8 @@ const InsdiansByDesign = () => {
 
             {/* Aesthetic Borders - Simple SVG overlays */}
             <div className="absolute inset-10 border border-white/5 pointer-events-none rounded-3xl">
-                <div className="absolute top-0 left-12 h-px w-24 bg-pink-500/20"></div>
-                <div className="absolute bottom-0 right-12 h-px w-24 bg-purple-500/20"></div>
+                <div className="absolute top-0 left-12 h-px w-24 bg-primary/20"></div>
+                <div className="absolute bottom-0 right-12 h-px w-24 bg-secondary/20"></div>
             </div>
         </div>
     );

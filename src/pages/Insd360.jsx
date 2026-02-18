@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect } from 'react';
+import React, { useRef, useLayoutEffect, useState, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, Globe, Zap, Users, Trophy, Sparkles, Cpu, Feather, Box, Maximize } from 'lucide-react';
@@ -12,6 +12,33 @@ const Insd360 = () => {
     const sliderRef = useRef(null);
     const triggerRef = useRef(null);
     const progressBarRef = useRef(null);
+    const cursorRef = useRef(null);
+    const [activeImg, setActiveImg] = useState(null);
+
+    useEffect(() => {
+        const cursor = cursorRef.current;
+        if (!cursor) return;
+
+        const xTo = gsap.quickTo(cursor, "x", { duration: 0.6, ease: "power3" });
+        const yTo = gsap.quickTo(cursor, "y", { duration: 0.6, ease: "power3" });
+
+        const moveCursor = (e) => {
+            xTo(e.clientX);
+            yTo(e.clientY);
+        };
+
+        window.addEventListener("mousemove", moveCursor);
+        return () => window.removeEventListener("mousemove", moveCursor);
+    }, []);
+
+    useEffect(() => {
+        const cursor = cursorRef.current;
+        if (activeImg) {
+            gsap.to(cursor, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.7)" });
+        } else {
+            gsap.to(cursor, { scale: 0, opacity: 0, duration: 0.3, ease: "power2.in" });
+        }
+    }, [activeImg]);
 
     useLayoutEffect(() => {
         let ctx = gsap.context(() => {
@@ -144,37 +171,37 @@ const Insd360 = () => {
         {
             title: "London Fashion Week",
             desc: "INSDians taking over the global runway. Official showcase partners.",
-            icon: <Globe className="w-12 h-12 mb-4 text-pink-500" />,
+            icon: <Globe className="w-12 h-12 mb-4 text-primary" />,
             img: "https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=800"
         },
         {
             title: "New York Fashion Week",
             desc: "From classroom to the Big Apple. Presenting sustainable couture.",
-            icon: <Sparkles className="w-12 h-12 mb-4 text-purple-500" />,
+            icon: <Sparkles className="w-12 h-12 mb-4 text-secondary" />,
             img: "https://images.pexels.com/photos/2030826/pexels-photo-2030826.jpeg?auto=compress&cs=tinysrgb&w=800"
         },
         {
             title: "Lakme Fashion Week",
             desc: "India's premier fashion event. Students designing for stars.",
-            icon: <Feather className="w-12 h-12 mb-4 text-emerald-400" />,
+            icon: <Feather className="w-12 h-12 mb-4 text-primary" />,
             img: "https://images.pexels.com/photos/2235071/pexels-photo-2235071.jpeg?auto=compress&cs=tinysrgb&w=800"
         },
         {
             title: "Dubai Design Week",
             desc: "Middle East's design capital. Architecture & Interior showcases.",
-            icon: <Box className="w-12 h-12 mb-4 text-yellow-500" />,
+            icon: <Box className="w-12 h-12 mb-4 text-secondary" />,
             img: "https://images.pexels.com/photos/276551/pexels-photo-276551.jpeg?auto=compress&cs=tinysrgb&w=800"
         },
         {
             title: "Paris Art Expo",
             desc: "The heart of art. Graphic design and avant-garde exhibits.",
-            icon: <Maximize className="w-12 h-12 mb-4 text-blue-500" />,
+            icon: <Maximize className="w-12 h-12 mb-4 text-primary" />,
             img: "https://images.pexels.com/photos/1579739/pexels-photo-1579739.jpeg?auto=compress&cs=tinysrgb&w=800"
         },
         {
             title: "Times Fashion Week",
             desc: "Setting trends nationally. The future of Indian fashion.",
-            icon: <Zap className="w-12 h-12 mb-4 text-cyan-400" />,
+            icon: <Zap className="w-12 h-12 mb-4 text-secondary" />,
             img: "https://images.pexels.com/photos/994197/pexels-photo-994197.jpeg?auto=compress&cs=tinysrgb&w=800"
         }
     ];
@@ -184,13 +211,13 @@ const Insd360 = () => {
             <section ref={triggerRef} className="relative h-screen bg-slate-950 overflow-hidden flex flex-col justify-center">
 
                 {/* Background Atmosphere */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-900/20 via-slate-950 to-slate-950 pointer-events-none" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-secondary/20 via-slate-950 to-slate-950 pointer-events-none" />
 
                 {/* Header Overlay */}
                 <div className="absolute top-10 left-0 w-full z-20 text-center pointer-events-none">
-                    <h2 className="text-sm font-mono text-purple-400 tracking-[0.5em] uppercase mb-4">INSD Global</h2>
+                    <h2 className="text-sm font-mono text-secondary tracking-[0.5em] uppercase mb-4">INSD Global</h2>
                     <h1 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter">
-                        World <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-violet-500">Stage</span>
+                        World <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Stage</span>
                     </h1>
                 </div>
 
@@ -205,7 +232,7 @@ const Insd360 = () => {
                         <p className="text-lg text-slate-400 max-w-md">
                             Experience our students' journey from campus studios to international runways.
                         </p>
-                        <div className="mt-8 flex items-center gap-4 text-sm font-mono text-purple-400">
+                        <div className="mt-8 flex items-center gap-4 text-sm font-mono text-secondary">
                             <ArrowUpRight className="w-6 h-6" /> Scroll to Explore
                         </div>
                     </div>
@@ -213,7 +240,7 @@ const Insd360 = () => {
                     {features.map((item, index) => (
                         <div
                             key={index}
-                            className="shrink-0 relative w-[400px] md:w-[500px] h-full rounded-2xl overflow-hidden border border-white/10 bg-slate-900 group hover:border-pink-500/50 transition-colors"
+                            className="shrink-0 relative w-[400px] md:w-[500px] h-full rounded-2xl overflow-hidden border border-white/10 bg-slate-900 group hover:border-primary/50 transition-colors"
                         >
                             {/* Image Container with Overflow for Parallax */}
                             <div className="absolute inset-0 z-0 overflow-hidden">
@@ -228,7 +255,7 @@ const Insd360 = () => {
                             {/* Content Overlay */}
                             <div className="absolute bottom-0 left-0 w-full p-8 z-20">
                                 <div className="flex items-center gap-4 mb-4">
-                                    <div className="p-3 bg-pink-600/80 backdrop-blur-md rounded-xl text-white">
+                                    <div className="p-3 bg-primary/80 backdrop-blur-md rounded-xl text-white">
                                         {React.cloneElement(item.icon, { className: "w-6 h-6" })}
                                     </div>
                                     <div className="px-3 py-1 bg-white/10 backdrop-blur-md rounded-full border border-white/10 text-[10px] font-mono uppercase tracking-widest text-white">
@@ -247,7 +274,7 @@ const Insd360 = () => {
                     <div className="shrink-0 w-[400px] h-full flex items-center justify-center p-8">
                         <div className="text-center">
                             <h3 className="text-3xl font-bold text-white mb-4">You're Next.</h3>
-                            <button className="px-8 py-3 bg-white text-black font-bold uppercase tracking-wider hover:bg-pink-500 hover:text-white transition-colors rounded-full">
+                            <button className="px-8 py-3 bg-white text-black font-bold uppercase tracking-wider hover:bg-primary hover:text-white transition-colors rounded-full">
                                 Apply Now
                             </button>
                         </div>
@@ -268,10 +295,10 @@ const Insd360 = () => {
                 <div className="max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-32">
                         <div className="reveal-text">
-                            <h2 className="text-sm font-mono text-pink-500 tracking-[0.5em] uppercase mb-6">Beyond Design</h2>
+                            <h2 className="text-sm font-mono text-primary tracking-[0.5em] uppercase mb-6">Beyond Design</h2>
                             <h3 className="text-5xl md:text-7xl font-black uppercase leading-tight mb-8">
                                 Crafting <br />
-                                <span className="text-transparent bg-clip-text bg-linear-to-r from-pink-500 to-purple-500">Digital DNA</span>
+                                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary">Digital DNA</span>
                             </h3>
                             <p className="text-slate-400 text-lg leading-relaxed max-w-md">
                                 We don't just teach design; we engineer creative intelligence.
@@ -296,18 +323,23 @@ const Insd360 = () => {
                     {/* Timeline / Steps */}
                     <div className="space-y-4">
                         {[
-                            { id: "01", title: "Ideation", type: "Neural Sync", desc: "Brainstorming with AI-assisted moodboards." },
-                            { id: "02", title: "Creation", type: "Virtual Prototyping", desc: "Zero-waste 3D sampling and draping." },
-                            { id: "03", title: "Execution", type: "Sustainable Fabric", desc: "Ethical sourcing meets high-tech textiles." },
-                            { id: "04", title: "Launch", type: "Metaverse Runway", desc: "Global exposure in digital and physical realms." },
+                            { id: "01", title: "Ideation", type: "Neural Sync", desc: "Brainstorming with AI-assisted moodboards.", img: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600" },
+                            { id: "02", title: "Creation", type: "Virtual Prototyping", desc: "Zero-waste 3D sampling and draping.", img: "https://images.pexels.com/photos/3965543/pexels-photo-3965543.jpeg?auto=compress&cs=tinysrgb&w=600" },
+                            { id: "03", title: "Execution", type: "Sustainable Fabric", desc: "Ethical sourcing meets high-tech textiles.", img: "https://images.pexels.com/photos/461428/pexels-photo-461428.jpeg?auto=compress&cs=tinysrgb&w=600" },
+                            { id: "04", title: "Launch", type: "Metaverse Runway", desc: "Global exposure in digital and physical realms.", img: "https://images.pexels.com/photos/1579930/pexels-photo-1579930.jpeg?auto=compress&cs=tinysrgb&w=600" },
                         ].map((step, idx) => (
-                            <div key={idx} className="reveal-row group border-t border-white/10 hover:border-pink-500/50 transition-colors py-12 flex flex-col md:flex-row md:items-center justify-between cursor-pointer">
+                            <div
+                                key={idx}
+                                className="reveal-row group border-t border-white/10 hover:border-primary/50 transition-colors py-12 flex flex-col md:flex-row md:items-center justify-between cursor-pointer relative z-10"
+                                onMouseEnter={() => setActiveImg(step.img)}
+                                onMouseLeave={() => setActiveImg(null)}
+                            >
                                 <div className="flex items-center gap-8 mb-4 md:mb-0">
-                                    <span className="text-xl font-mono text-slate-600 group-hover:text-pink-500 transition-colors">/{step.id}</span>
+                                    <span className="text-xl font-mono text-slate-600 group-hover:text-primary transition-colors">/{step.id}</span>
                                     <h4 className="text-3xl md:text-5xl font-bold uppercase text-slate-300 group-hover:text-white group-hover:translate-x-4 transition-all duration-300">{step.title}</h4>
                                 </div>
                                 <div className="md:text-right">
-                                    <div className="text-pink-500 font-mono text-sm uppercase tracking-wider mb-1">{step.type}</div>
+                                    <div className="text-primary font-mono text-sm uppercase tracking-wider mb-1">{step.type}</div>
                                     <div className="text-slate-500 group-hover:text-slate-300 transition-colors">{step.desc}</div>
                                 </div>
                             </div>
@@ -337,7 +369,7 @@ const Insd360 = () => {
             {/* NEW: Industry Partners Marquee */}
             <section className="py-24 bg-black border-t border-white/10 overflow-hidden relative">
                 <div className="mb-16 text-center">
-                    <h3 className="text-pink-500 font-mono text-xs md:text-sm tracking-[0.3em] uppercase mb-2">Built for the Industry</h3>
+                    <h3 className="text-primary font-mono text-xs md:text-sm tracking-[0.3em] uppercase mb-2">Built for the Industry</h3>
                     <h2 className="text-2xl md:text-3xl text-white font-bold uppercase tracking-wide">Trusted By Global Leaders</h2>
                 </div>
 
@@ -349,7 +381,7 @@ const Insd360 = () => {
                             "Vogue", "Prada", "Gucci", "Elle", "Zara", "H&M", "Raymond", "Sabyasachi", "Manish Malhotra",
                             "Vogue", "Prada", "Gucci", "Elle", "Zara", "H&M", "Raymond", "Sabyasachi", "Manish Malhotra"
                         ].map((brand, i) => (
-                            <span key={i} className="text-5xl md:text-8xl font-black text-transparent bg-clip-text bg-linear-to-b from-white/20 to-white/5 uppercase hover:from-pink-500 hover:to-purple-500 transition-all duration-500 cursor-default">
+                            <span key={i} className="text-5xl md:text-8xl font-black text-transparent bg-clip-text bg-linear-to-b from-white/20 to-white/5 uppercase hover:from-primary hover:to-secondary transition-all duration-500 cursor-default">
                                 {brand}
                             </span>
                         ))}
@@ -360,26 +392,43 @@ const Insd360 = () => {
             {/* NEW: Final CTA */}
             <section className="relative py-32 md:py-48 bg-slate-950 flex flex-col items-center justify-center text-center px-4 overflow-hidden">
                 <div className="reveal-cta relative z-10">
-                    <div className="inline-block p-2 px-4 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-pink-400 font-mono text-xs uppercase tracking-widest mb-8">
+                    <div className="inline-block p-2 px-4 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-primary font-mono text-xs uppercase tracking-widest mb-8">
                         Admissions Open 2024
                     </div>
                     <h2 className="text-6xl md:text-9xl font-black text-white uppercase tracking-tighter mb-8 leading-none">
-                        Create <span className="text-transparent bg-clip-text bg-linear-to-r from-pink-500 to-purple-600">Now.</span>
+                        Create <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary">Now.</span>
                     </h2>
                     <p className="text-slate-400 max-w-2xl mx-auto text-lg md:text-xl mb-12 leading-relaxed">
                         The future doesn't wait. Join the next generation of design leaders at INSD.
                         Your journey to the global stage starts here.
                     </p>
-                    <button className="group relative px-12 py-5 bg-white text-black font-black uppercase tracking-widest hover:bg-pink-600 hover:text-white transition-all duration-300 rounded-full overflow-hidden">
+                    <button className="group relative px-12 py-5 bg-white text-black font-black uppercase tracking-widest hover:bg-primary hover:text-white transition-all duration-300 rounded-full overflow-hidden">
                         <span className="relative z-10">Start Application</span>
-                        <div className="absolute inset-0 bg-pink-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                        <div className="absolute inset-0 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                     </button>
                 </div>
 
                 {/* Background Grid/Glow */}
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-pink-600/10 blur-[120px] rounded-full pointer-events-none animate-pulse" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 blur-[120px] rounded-full pointer-events-none animate-pulse" />
             </section>
+            {/* Floating Image Cursor */}
+            <div
+                ref={cursorRef}
+                className="fixed top-0 left-0 w-[300px] h-[400px] rounded-2xl overflow-hidden pointer-events-none z-50 hidden md:block mix-blend-normal shadow-2xl border border-white/20"
+                style={{
+                    transform: 'translate(-50%, -50%) scale(0)',
+                    opacity: 0
+                }}
+            >
+                {activeImg && (
+                    <img
+                        src={activeImg}
+                        alt="Preview"
+                        className="w-full h-full object-cover"
+                    />
+                )}
+            </div>
             <Footer />
         </div>
     );

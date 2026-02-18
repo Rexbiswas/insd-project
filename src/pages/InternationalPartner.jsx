@@ -6,13 +6,13 @@ import Footer from '../components/Footer';
 
 // Partner Data
 const partners = [
-    { name: "University of Arts London", location: "UK", image: "https://images.pexels.com/photos/207691/pexels-photo-207691.jpeg?auto=compress&cs=tinysrgb&w=800", color: "from-pink-500 to-rose-500" },
-    { name: "Domus Academy", location: "Milan, Italy", image: "https://images.pexels.com/photos/2064826/pexels-photo-2064826.jpeg?auto=compress&cs=tinysrgb&w=800", color: "from-blue-500 to-cyan-500" },
-    { name: "NABA", location: "Milan, Italy", image: "https://images.pexels.com/photos/3747463/pexels-photo-3747463.jpeg?auto=compress&cs=tinysrgb&w=800", color: "from-purple-500 to-indigo-500" },
-    { name: "London College of Fashion", location: "London, UK", image: "https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=800", color: "from-orange-500 to-red-500" },
-    { name: "Parsons School of Design", location: "New York, USA", image: "https://images.pexels.com/photos/159751/book-book-pages-read-literature-159751.jpeg?auto=compress&cs=tinysrgb&w=800", color: "from-green-500 to-emerald-500" },
-    { name: "Paris College of Art", location: "Paris, France", image: "https://images.pexels.com/photos/256417/pexels-photo-256417.jpeg?auto=compress&cs=tinysrgb&w=800", color: "from-yellow-400 to-orange-500" },
-    { name: "Lasalle College", location: "Montreal, Canada", image: "https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=800", color: "from-teal-500 to-cyan-500" }
+    { name: "University of Arts London", location: "UK", image: "https://images.pexels.com/photos/207691/pexels-photo-207691.jpeg?auto=compress&cs=tinysrgb&w=800", color: "from-primary to-secondary" },
+    { name: "Domus Academy", location: "Milan, Italy", image: "https://images.pexels.com/photos/2064826/pexels-photo-2064826.jpeg?auto=compress&cs=tinysrgb&w=800", color: "from-primary to-secondary" },
+    { name: "NABA", location: "Milan, Italy", image: "https://images.pexels.com/photos/3747463/pexels-photo-3747463.jpeg?auto=compress&cs=tinysrgb&w=800", color: "from-primary to-secondary" },
+    { name: "London College of Fashion", location: "London, UK", image: "https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=800", color: "from-primary to-secondary" },
+    { name: "Parsons School of Design", location: "New York, USA", image: "https://images.pexels.com/photos/159751/book-book-pages-read-literature-159751.jpeg?auto=compress&cs=tinysrgb&w=800", color: "from-primary to-secondary" },
+    { name: "Paris College of Art", location: "Paris, France", image: "https://images.pexels.com/photos/256417/pexels-photo-256417.jpeg?auto=compress&cs=tinysrgb&w=800", color: "from-primary to-secondary" },
+    { name: "Lasalle College", location: "Montreal, Canada", image: "https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=800", color: "from-primary to-secondary" }
 ];
 
 const PartnerRow = ({ data, index, setHoveredPartner }) => {
@@ -29,7 +29,7 @@ const PartnerRow = ({ data, index, setHoveredPartner }) => {
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 pointer-events-none" />
 
             <div className="flex items-baseline gap-6 relative z-10">
-                <span className="text-sm font-mono text-slate-500 group-hover:text-pink-500 transition-colors">0{index + 1}</span>
+                <span className="text-sm font-mono text-slate-500 group-hover:text-primary transition-colors">0{index + 1}</span>
                 <h3 className="text-4xl md:text-6xl font-black text-slate-300 uppercase tracking-tighter group-hover:text-white group-hover:translate-x-4 transition-all duration-300">
                     {data.name}
                 </h3>
@@ -109,11 +109,11 @@ const InternationalPartner = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, ease: 'easeOut' }}
                 >
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-pink-500/30 bg-pink-500/10 text-pink-400 font-mono text-xs uppercase tracking-widest mb-6">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary font-mono text-xs uppercase tracking-widest mb-6">
                         <Globe size={14} /> Global Network
                     </div>
                     <h1 className="text-6xl md:text-[8vw] font-black leading-[0.9] tracking-tighter uppercase mb-8">
-                        Beyond <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">Borders</span>.<br />
+                        Beyond <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Borders</span>.<br />
                         Beyond <span className="outline-text text-transparent" style={{ WebkitTextStroke: "1px rgba(255,255,255,0.3)" }}>Limits</span>.
                     </h1>
                     <p className="text-slate-400 text-lg md:text-xl max-w-2xl leading-relaxed">
@@ -130,7 +130,7 @@ const InternationalPartner = () => {
                     >
                         <div className="w-[80%] h-[80%] border border-white/5 rounded-full" />
                     </motion.div>
-                    <motion.div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-pink-500/20">
+                    <motion.div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary/20">
                         <MapPin size={100} />
                     </motion.div>
                 </div>
@@ -159,7 +159,7 @@ const InternationalPartner = () => {
 
             {/* Interactive World Map / Connection CTA */}
             <section className="relative py-32 flex flex-col items-center justify-center text-center overflow-hidden z-10">
-                <div className="absolute inset-0 bg-gradient-to-t from-pink-900/10 via-slate-950 to-slate-950" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-slate-950 to-slate-950" />
 
                 <motion.div
                     initial={{ scale: 0.8, opacity: 0 }}
@@ -173,7 +173,7 @@ const InternationalPartner = () => {
                     </p>
 
                     <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-                        <button className="px-8 py-4 bg-white text-black font-bold uppercase tracking-widest rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300">
+                        <button className="px-8 py-4 bg-white text-black font-bold uppercase tracking-widest rounded-full hover:bg-primary hover:text-white transition-all duration-300">
                             Apply for Exchange
                         </button>
                         <button className="px-8 py-4 border border-white/20 text-white font-bold uppercase tracking-widest rounded-full hover:bg-white/10 transition-all duration-300 flex items-center gap-2">

@@ -33,7 +33,7 @@ const RegisterButton = ({ className = "", isDarkTheme = false, isScrolled = fals
             className={`group relative overflow-hidden shadow-lg transition-all duration-300 rounded-full ${isLightMode ? 'bg-slate-900/5 hover:bg-slate-900 border-slate-900/10' : 'bg-white/10 hover:bg-white/20 border-white/20'} backdrop-blur-xl border ${className}`}
         >
             {/* Animated Gradient Background */}
-            <div className="absolute inset-0 bg-linear-to-r from-pink-600 via-violet-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-all duration-500" />
+            <div className="absolute inset-0 bg-linear-to-r from-primary to-secondary opacity-0 group-hover:opacity-100 transition-all duration-500" />
 
             {/* Shimmer Effect */}
             <div className="absolute inset-0 pointer-events-none">
@@ -41,7 +41,7 @@ const RegisterButton = ({ className = "", isDarkTheme = false, isScrolled = fals
             </div>
 
             {/* Glowing Border Animation */}
-            <div className="absolute inset-0 border border-white/20 group-hover:border-pink-500/50 rounded-full transition-colors duration-500" />
+            <div className="absolute inset-0 border border-white/20 group-hover:border-primary/50 rounded-full transition-colors duration-500" />
 
             <div className="relative z-10 flex items-center justify-center gap-1.5 md:gap-2">
                 <span className={`text-[10px] md:text-xs font-black tracking-widest uppercase transition-colors duration-300 ${isLightMode ? 'text-slate-900 group-hover:text-white' : 'text-white'}`}>
@@ -51,7 +51,7 @@ const RegisterButton = ({ className = "", isDarkTheme = false, isScrolled = fals
             </div>
 
             {/* Outer Glow Halo */}
-            <div className="absolute -inset-[2px] bg-linear-to-r from-pink-500 via-violet-600 to-indigo-600 rounded-full blur-md opacity-0 group-hover:opacity-40 transition-opacity duration-500 -z-10" />
+            <div className="absolute -inset-[2px] bg-linear-to-r from-primary to-secondary rounded-full blur-md opacity-0 group-hover:opacity-40 transition-opacity duration-500 -z-10" />
         </button>
     );
 };
@@ -229,14 +229,14 @@ const Navbar = () => {
                             >
                                 <RollerLink
                                     to="/apply"
-                                    colorClass="group-hover:text-pink-600"
+                                    colorClass="group-hover:text-primary"
                                     baseTextClass={isDarkTheme && !isScrolled ? "text-white" : "text-slate-800"}
                                 >
                                     <span>Admission</span>
                                 </RollerLink>
                                 <RollerLink
                                     to="/franchise"
-                                    colorClass="group-hover:text-violet-600"
+                                    colorClass="group-hover:text-secondary"
                                     baseTextClass={isDarkTheme && !isScrolled ? "text-white" : "text-slate-800"}
                                 >
                                     <span>Franchise</span>
@@ -258,7 +258,7 @@ const Navbar = () => {
                         onClick={() => setIsOpen(!isOpen)}
                         className="group relative hidden md:flex items-center gap-3 px-5 py-2.5 bg-slate-900 text-white rounded-full overflow-hidden shadow-lg shadow-slate-900/20"
                     >
-                        <div className="absolute inset-0 bg-linear-to-r from-pink-500 to-violet-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                        <div className="absolute inset-0 bg-linear-to-r from-primary to-secondary translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                         <span className="relative z-10 font-bold text-sm hidden sm:inline-block tracking-wide">
                             {isOpen ? "CLOSE" : "MENU"}
                         </span>
@@ -306,12 +306,12 @@ const Navbar = () => {
                     to="/"
                     onClick={() => setIsOpen(false)}
                     className={({ isActive }) =>
-                        `relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${isActive ? 'text-pink-600' : (isDarkTheme && !isScrolled) || isOpen ? 'text-white/40 hover:text-white' : 'text-slate-900/40 hover:text-slate-900'}`
+                        `relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${isActive ? 'text-primary' : (isDarkTheme && !isScrolled) || isOpen ? 'text-white/40 hover:text-white' : 'text-slate-900/40 hover:text-slate-900'}`
                     }
                 >
                     {({ isActive }) => (
                         <>
-                            {isActive && <motion.div layoutId="activePill" className="absolute inset-2 bg-pink-500/20 rounded-full shadow-[0_0_20px_rgba(236,72,153,0.2)]" />}
+                            {isActive && <motion.div layoutId="activePill" className="absolute inset-2 bg-primary/20 rounded-full shadow-[0_0_20px_rgba(236,72,153,0.2)]" />}
                             <Home size={24} strokeWidth={isActive ? 2.5 : 2} />
                             <span className={`text-[10px] font-black mt-1 uppercase tracking-tighter ${isActive ? 'opacity-100' : 'opacity-40'}`}>Home</span>
                         </>
@@ -322,12 +322,12 @@ const Navbar = () => {
                     to="/courses"
                     onClick={() => setIsOpen(false)}
                     className={({ isActive }) =>
-                        `relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${isActive ? 'text-violet-600' : (isDarkTheme && !isScrolled) || isOpen ? 'text-white/40 hover:text-white' : 'text-slate-900/40 hover:text-slate-900'}`
+                        `relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${isActive ? 'text-secondary' : (isDarkTheme && !isScrolled) || isOpen ? 'text-white/40 hover:text-white' : 'text-slate-900/40 hover:text-slate-900'}`
                     }
                 >
                     {({ isActive }) => (
                         <>
-                            {isActive && <motion.div layoutId="activePill" className="absolute inset-2 bg-violet-500/20 rounded-full shadow-[0_0_20px_rgba(139,92,246,0.2)]" />}
+                            {isActive && <motion.div layoutId="activePill" className="absolute inset-2 bg-secondary/20 rounded-full shadow-[0_0_20px_rgba(139,92,246,0.2)]" />}
                             <Sparkles size={24} strokeWidth={isActive ? 2.5 : 2} />
                             <span className={`text-[10px] font-black mt-1 uppercase tracking-tighter ${isActive ? 'opacity-100' : 'opacity-40'}`}>Courses</span>
                         </>
@@ -347,7 +347,7 @@ const Navbar = () => {
 
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className={`relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${isOpen ? 'text-pink-600 bg-pink-500/5' : (isDarkTheme && !isScrolled) ? 'text-white/40 hover:text-white' : 'text-slate-900/40 hover:text-slate-900'}`}
+                    className={`relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${isOpen ? 'text-primary bg-primary/5' : (isDarkTheme && !isScrolled) ? 'text-white/40 hover:text-white' : 'text-slate-900/40 hover:text-slate-900'}`}
                 >
                     {isOpen ? <X size={26} strokeWidth={2} /> : <LayoutGrid size={24} strokeWidth={2} />}
                     <span className={`text-[10px] font-black mt-1 uppercase tracking-tighter ${isOpen ? 'opacity-100' : 'opacity-40'}`}>{isOpen ? 'Close' : 'Menu'}</span>
@@ -366,8 +366,8 @@ const Navbar = () => {
                     >
                         {/* Background shapes */}
                         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                            <div className="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-pink-600/30 rounded-full blur-[120px] mix-blend-screen animate-pulse" />
-                            <div className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-violet-600/30 rounded-full blur-[120px] mix-blend-screen animate-pulse delay-1000" />
+                            <div className="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-primary/30 rounded-full blur-[120px] mix-blend-screen animate-pulse" />
+                            <div className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-secondary/30 rounded-full blur-[120px] mix-blend-screen animate-pulse delay-1000" />
                             <div className="absolute top-[40%] left-[40%] w-[40vw] h-[40vw] bg-indigo-600/20 rounded-full blur-[100px] mix-blend-screen animate-pulse delay-2000" />
                         </div>
 
@@ -388,9 +388,9 @@ const Navbar = () => {
                                             <input
                                                 type="text"
                                                 placeholder="Search programs, campuses..."
-                                                className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-4 text-white placeholder:text-slate-500 focus:outline-none focus:border-pink-500 focus:bg-white/10 transition-all font-mono text-sm tracking-wide"
+                                                className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-4 text-white placeholder:text-slate-500 focus:outline-none focus:border-primary focus:bg-white/10 transition-all font-mono text-sm tracking-wide"
                                             />
-                                            <div className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-pink-500 transition-colors">
+                                            <div className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-primary transition-colors">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                                             </div>
                                         </div>
@@ -437,7 +437,7 @@ const Navbar = () => {
                                                                 return `relative inline-flex items-center text-xl md:text-2xl lg:text-3xl font-black tracking-tighter uppercase transition-colors duration-300 ${isPathActive ? 'text-white' : 'text-slate-600 hover:text-white'}`;
                                                             }}
                                                         >
-                                                            <span className="absolute -left-12 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300 text-pink-500 text-3xl hidden lg:block">
+                                                            <span className="absolute -left-12 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300 text-primary text-3xl hidden lg:block">
                                                                 <ArrowRight />
                                                             </span>
                                                             <span className="relative z-10 group-hover/link:translate-x-4 transition-transform duration-300">
@@ -449,7 +449,7 @@ const Navbar = () => {
                                                             <motion.button
                                                                 animate={{ rotate: expandedItem === link.title ? 180 : 0 }}
                                                                 onClick={() => setExpandedItem(expandedItem === link.title ? null : link.title)}
-                                                                className={`p-4 transition-colors rounded-full hover:bg-white/5 ${expandedItem === link.title ? 'text-pink-500' : 'text-slate-500 hover:text-white'}`}
+                                                                className={`p-4 transition-colors rounded-full hover:bg-white/5 ${expandedItem === link.title ? 'text-primary' : 'text-slate-500 hover:text-white'}`}
                                                             >
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
                                                             </motion.button>
@@ -464,7 +464,7 @@ const Navbar = () => {
                                                                     animate={{ height: "auto", opacity: 1 }}
                                                                     exit={{ height: 0, opacity: 0 }}
                                                                     transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
-                                                                    className="overflow-hidden flex flex-col pl-4 md:pl-8 mt-4 space-y-4 border-l-2 border-pink-500/30 ml-2"
+                                                                    className="overflow-hidden flex flex-col pl-4 md:pl-8 mt-4 space-y-4 border-l-2 border-primary/30 ml-2"
                                                                 >
                                                                     {link.subItems.map((subItem) => (
                                                                         <div key={subItem.name} className="flex flex-col">
@@ -475,10 +475,10 @@ const Navbar = () => {
                                                                                             to={subItem.path}
                                                                                             onClick={() => setIsOpen(false)}
                                                                                             className={({ isActive }) =>
-                                                                                                `relative flex items-center text-base md:text-lg font-bold transition-all duration-300 uppercase tracking-tight ${isActive ? 'text-pink-500' : 'text-slate-400 hover:text-white'}`
+                                                                                                `relative flex items-center text-base md:text-lg font-bold transition-all duration-300 uppercase tracking-tight ${isActive ? 'text-primary' : 'text-slate-400 hover:text-white'}`
                                                                                             }
                                                                                         >
-                                                                                            <span className="w-0 h-[2px] bg-pink-500 mr-0 transition-all duration-300 group-hover/sub:w-4 group-hover/sub:mr-3" />
+                                                                                            <span className="w-0 h-[2px] bg-primary mr-0 transition-all duration-300 group-hover/sub:w-4 group-hover/sub:mr-3" />
                                                                                             <span className="group-hover/sub:translate-x-1 transition-transform duration-300">
                                                                                                 {subItem.name}
                                                                                             </span>
@@ -490,7 +490,7 @@ const Navbar = () => {
                                                                                                 e.stopPropagation();
                                                                                                 setExpandedSubItem(expandedSubItem === subItem.name ? null : subItem.name);
                                                                                             }}
-                                                                                            className={`p-1 transition-colors rounded-full hover:bg-white/5 ${expandedSubItem === subItem.name ? 'text-pink-500' : 'text-slate-500 hover:text-white'}`}
+                                                                                            className={`p-1 transition-colors rounded-full hover:bg-white/5 ${expandedSubItem === subItem.name ? 'text-primary' : 'text-slate-500 hover:text-white'}`}
                                                                                         >
                                                                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
                                                                                         </motion.button>
@@ -502,7 +502,7 @@ const Navbar = () => {
                                                                                                 animate={{ height: "auto", opacity: 1 }}
                                                                                                 exit={{ height: 0, opacity: 0 }}
                                                                                                 transition={{ duration: 0.3, ease: [0.76, 0, 0.24, 1] }}
-                                                                                                className="overflow-hidden flex flex-col pl-4 mt-2 space-y-2 border-l border-pink-500/20 ml-2"
+                                                                                                className="overflow-hidden flex flex-col pl-4 mt-2 space-y-2 border-l border-primary/20 ml-2"
                                                                                             >
                                                                                                 {subItem.subItems.map((nestedItem) => (
                                                                                                     <NavLink
@@ -510,7 +510,7 @@ const Navbar = () => {
                                                                                                         to={nestedItem.path}
                                                                                                         onClick={() => setIsOpen(false)}
                                                                                                         className={({ isActive }) =>
-                                                                                                            `block text-sm font-medium transition-all duration-300 uppercase tracking-wide ${isActive ? 'text-pink-400' : 'text-slate-500 hover:text-slate-300'}`
+                                                                                                            `block text-sm font-medium transition-all duration-300 uppercase tracking-wide ${isActive ? 'text-primary' : 'text-slate-500 hover:text-slate-300'}`
                                                                                                         }
                                                                                                     >
                                                                                                         {nestedItem.name}
@@ -525,10 +525,10 @@ const Navbar = () => {
                                                                                     to={subItem.path}
                                                                                     onClick={() => setIsOpen(false)}
                                                                                     className={({ isActive }) =>
-                                                                                        `group/sub relative flex items-center text-base md:text-lg font-bold transition-all duration-300 uppercase tracking-tight ${isActive ? 'text-pink-500' : 'text-slate-400 hover:text-white'}`
+                                                                                        `group/sub relative flex items-center text-base md:text-lg font-bold transition-all duration-300 uppercase tracking-tight ${isActive ? 'text-primary' : 'text-slate-400 hover:text-white'}`
                                                                                     }
                                                                                 >
-                                                                                    <span className="w-0 h-[2px] bg-pink-500 mr-0 transition-all duration-300 group-hover/sub:w-4 group-hover/sub:mr-3" />
+                                                                                    <span className="w-0 h-[2px] bg-primary mr-0 transition-all duration-300 group-hover/sub:w-4 group-hover/sub:mr-3" />
                                                                                     <span className="group-hover/sub:translate-x-1 transition-transform duration-300">
                                                                                         {subItem.name}
                                                                                     </span>
@@ -554,7 +554,7 @@ const Navbar = () => {
                                         transition={{ delay: 0.5 }}
                                         className="space-y-4"
                                     >
-                                        <h3 className="text-pink-500 font-bold uppercase tracking-widest text-sm">Contact</h3>
+                                        <h3 className="text-primary font-bold uppercase tracking-widest text-sm">Contact</h3>
                                         <div className="space-y-2 text-base text-slate-300">
                                             <a href="tel:+917701933935">+91 7701933935</a>
                                             <br />
@@ -568,7 +568,7 @@ const Navbar = () => {
                                         transition={{ delay: 0.6 }}
                                         className="space-y-4"
                                     >
-                                        <h3 className="text-violet-500 font-bold uppercase tracking-widest text-sm">Address</h3>
+                                        <h3 className="text-secondary font-bold uppercase tracking-widest text-sm">Address</h3>
                                         <div className="space-y-2 text-base text-slate-300">
                                             <h1 className="text-xl font-bold">INSD CORPORATE CENTRES</h1>
                                             <p>INSD North: A11, Gujranwala Town,</p>
@@ -585,7 +585,7 @@ const Navbar = () => {
                                         <h3 className="text-white font-bold uppercase tracking-widest text-sm">Follow Us</h3>
                                         <div className="flex gap-4">
                                             {['Instagram', 'LinkedIn', 'Facebook'].map(social => (
-                                                <a key={social} href="#" className="text-slate-400 hover:text-white hover:underline decoration-pink-500 underline-offset-4 transition-all">
+                                                <a key={social} href="#" className="text-slate-400 hover:text-white hover:underline decoration-primary underline-offset-4 transition-all">
                                                     {social}
                                                 </a>
                                             ))}

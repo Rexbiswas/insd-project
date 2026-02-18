@@ -56,9 +56,9 @@ const Contact = () => {
         <div className="min-h-screen bg-slate-50 relative overflow-hidden">
             {/* Background Abstract Elements */}
             <div className="fixed inset-0 pointer-events-none z-0">
-                <div className="absolute top-[-10%] left-[-10%] w-[40rem] h-[40rem] bg-violet-200/40 rounded-full blur-[100px] mix-blend-multiply opacity-70 animate-blob" />
-                <div className="absolute top-[-10%] right-[-10%] w-[35rem] h-[35rem] bg-pink-200/40 rounded-full blur-[100px] mix-blend-multiply opacity-70 animate-blob animation-delay-2000" />
-                <div className="absolute bottom-[-20%] left-[20%] w-[45rem] h-[45rem] bg-blue-200/40 rounded-full blur-[100px] mix-blend-multiply opacity-70 animate-blob animation-delay-4000" />
+                <div className="absolute top-[-10%] left-[-10%] w-[40rem] h-[40rem] bg-secondary/20 rounded-full blur-[100px] mix-blend-multiply opacity-70 animate-blob" />
+                <div className="absolute top-[-10%] right-[-10%] w-[35rem] h-[35rem] bg-primary/20 rounded-full blur-[100px] mix-blend-multiply opacity-70 animate-blob animation-delay-2000" />
+                <div className="absolute bottom-[-20%] left-[20%] w-[45rem] h-[45rem] bg-secondary/20 rounded-full blur-[100px] mix-blend-multiply opacity-70 animate-blob animation-delay-4000" />
             </div>
 
             {/* Hero Section */}
@@ -73,7 +73,7 @@ const Contact = () => {
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.2 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/50 backdrop-blur-sm border border-slate-200 text-xs font-bold uppercase tracking-widest text-violet-600 mb-6 shadow-sm"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/50 backdrop-blur-sm border border-slate-200 text-xs font-bold uppercase tracking-widest text-secondary mb-6 shadow-sm"
                     >
                         <MessageSquare size={12} />
                         <span>We're Here to Listen</span>
@@ -81,7 +81,7 @@ const Contact = () => {
 
                     <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-6 tracking-tight leading-tight">
                         Let's Start a <br className="hidden md:block" />
-                        <span className="text-transparent bg-clip-text bg-linear-to-r from-violet-600 to-pink-500">Conversation.</span>
+                        <span className="text-transparent bg-clip-text bg-linear-to-r from-secondary to-primary">Conversation.</span>
                     </h1>
 
                     <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
@@ -102,9 +102,9 @@ const Contact = () => {
                         >
                             {/* Contact Card 1: Main Office */}
                             <motion.div variants={itemVars} className="group relative p-8 bg-white/80 backdrop-blur-xl border border-white/40 rounded-[2rem] shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-                                <div className="absolute inset-x-0 bottom-0 h-1 bg-linear-to-r from-violet-500 to-pink-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-[2rem]" />
+                                <div className="absolute inset-x-0 bottom-0 h-1 bg-linear-to-r from-secondary to-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-[2rem]" />
                                 <div className="flex items-start gap-6">
-                                    <div className="w-12 h-12 rounded-2xl bg-violet-50 flex items-center justify-center text-violet-600 group-hover:bg-violet-600 group-hover:text-white transition-colors duration-300 shadow-inner">
+                                    <div className="w-12 h-12 rounded-2xl bg-secondary/5 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white transition-colors duration-300 shadow-inner">
                                         <MapPin size={24} />
                                     </div>
                                     <div>
@@ -114,7 +114,7 @@ const Contact = () => {
                                             Gujranwala Town, Part 1,<br />
                                             Delhi - 110009
                                         </p>
-                                        <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm font-bold text-violet-600 hover:text-pink-500 transition-colors">
+                                        <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm font-bold text-secondary hover:text-primary transition-colors">
                                             Get Directions <ArrowRight size={14} className="ml-1" />
                                         </a>
                                     </div>
@@ -123,25 +123,25 @@ const Contact = () => {
 
                             {/* Contact Card 2: Contact Info */}
                             <motion.div variants={itemVars} className="group relative p-8 bg-white/80 backdrop-blur-xl border border-white/40 rounded-[2rem] shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-                                <div className="absolute inset-x-0 bottom-0 h-1 bg-linear-to-r from-pink-500 to-orange-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-[2rem]" />
+                                <div className="absolute inset-x-0 bottom-0 h-1 bg-linear-to-r from-primary to-secondary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-[2rem]" />
                                 <div className="flex flex-col gap-6">
                                     <div className="flex items-center gap-4">
-                                        <div className="w-10 h-10 rounded-xl bg-pink-50 flex items-center justify-center text-pink-600 group-hover:bg-pink-600 group-hover:text-white transition-colors duration-300">
+                                        <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                                             <Phone size={20} />
                                         </div>
                                         <div>
                                             <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Call Us</p>
-                                            <a href="tel:+919876543210" className="text-lg font-bold text-slate-900 hover:text-pink-600 transition-colors">+91 &nbsp; 7701933935</a>
+                                            <a href="tel:+919876543210" className="text-lg font-bold text-slate-900 hover:text-primary transition-colors">+91 &nbsp; 7701933935</a>
                                         </div>
                                     </div>
                                     <div className="w-full h-px bg-slate-100" />
                                     <div className="flex items-center gap-4">
-                                        <div className="w-10 h-10 rounded-xl bg-pink-50 flex items-center justify-center text-pink-600 group-hover:bg-pink-600 group-hover:text-white transition-colors duration-300">
+                                        <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                                             <Mail size={20} />
                                         </div>
                                         <div>
                                             <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Email Us</p>
-                                            <a href="mailto:info@insd.edu.in" className="text-lg font-bold text-slate-900 hover:text-pink-600 transition-colors">info@insd.edu.in</a>
+                                            <a href="mailto:info@insd.edu.in" className="text-lg font-bold text-slate-900 hover:text-primary transition-colors">info@insd.edu.in</a>
                                         </div>
                                     </div>
                                 </div>
@@ -149,12 +149,12 @@ const Contact = () => {
 
                             {/* Contact Card 3: Socials */}
                             <motion.div variants={itemVars} className="p-8 bg-slate-900 text-white rounded-[2rem] shadow-2xl overflow-hidden relative group">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-violet-500/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-violet-500/40 transition-colors duration-500" />
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-secondary/40 transition-colors duration-500" />
                                 <div className="relative z-10">
                                     <h3 className="text-xl font-bold mb-6">Connect With Us</h3>
                                     <div className="flex gap-4">
                                         {[Instagram, Facebook, Linkedin, Twitter].map((Icon, idx) => (
-                                            <a key={idx} href="#" className="w-12 h-12 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all hover:scale-110 hover:shadow-lg hover:shadow-pink-500/20">
+                                            <a key={idx} href="#" className="w-12 h-12 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all hover:scale-110 hover:shadow-lg hover:shadow-primary/20">
                                                 <Icon size={20} />
                                             </a>
                                         ))}
@@ -174,8 +174,8 @@ const Contact = () => {
                             className="bg-white/70 backdrop-blur-2xl border border-white/50 rounded-[2.5rem] p-8 md:p-12 shadow-2xl relative overflow-hidden"
                         >
                             {/* Decorative gradients inside form */}
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-linear-to-br from-pink-200 to-violet-200 opacity-30 blur-3xl pointer-events-none" />
-                            <div className="absolute bottom-0 left-0 w-64 h-64 bg-linear-to-tr from-blue-200 to-teal-200 opacity-30 blur-3xl pointer-events-none" />
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-linear-to-br from-primary/20 to-secondary/20 opacity-30 blur-3xl pointer-events-none" />
+                            <div className="absolute bottom-0 left-0 w-64 h-64 bg-linear-to-tr from-secondary/20 to-primary/20 opacity-30 blur-3xl pointer-events-none" />
 
                             <div className="relative z-10">
                                 <h2 className="text-3xl font-black text-slate-900 mb-2">Send a Message</h2>
@@ -192,7 +192,7 @@ const Contact = () => {
                                                     required
                                                     value={formState.name}
                                                     onChange={handleChange}
-                                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-3 text-slate-800 font-medium focus:border-violet-500 focus:bg-white transition-all outline-none"
+                                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-3 text-slate-800 font-medium focus:border-secondary focus:bg-white transition-all outline-none"
                                                     placeholder="John Doe"
                                                 />
                                             </div>
@@ -204,7 +204,7 @@ const Contact = () => {
                                                     required
                                                     value={formState.email}
                                                     onChange={handleChange}
-                                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-3 text-slate-800 font-medium focus:border-violet-500 focus:bg-white transition-all outline-none"
+                                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-3 text-slate-800 font-medium focus:border-secondary focus:bg-white transition-all outline-none"
                                                     placeholder="john@example.com"
                                                 />
                                             </div>
@@ -218,7 +218,7 @@ const Contact = () => {
                                                     name="phone"
                                                     value={formState.phone}
                                                     onChange={handleChange}
-                                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-3 text-slate-800 font-medium focus:border-violet-500 focus:bg-white transition-all outline-none"
+                                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-3 text-slate-800 font-medium focus:border-secondary focus:bg-white transition-all outline-none"
                                                     placeholder="+91 98765 43210"
                                                 />
                                             </div>
@@ -228,7 +228,7 @@ const Contact = () => {
                                                     name="subject"
                                                     value={formState.subject}
                                                     onChange={handleChange}
-                                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-3 text-slate-800 font-medium focus:border-violet-500 focus:bg-white transition-all outline-none appearance-none cursor-pointer"
+                                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-3 text-slate-800 font-medium focus:border-secondary focus:bg-white transition-all outline-none appearance-none cursor-pointer"
                                                 >
                                                     <option value="">Select a Subject</option>
                                                     <option value="Admission">Admission Inquiry</option>
@@ -247,7 +247,7 @@ const Contact = () => {
                                                 rows="5"
                                                 value={formState.message}
                                                 onChange={handleChange}
-                                                className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-3 text-slate-800 font-medium focus:border-violet-500 focus:bg-white transition-all outline-none resize-none"
+                                                className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-3 text-slate-800 font-medium focus:border-secondary focus:bg-white transition-all outline-none resize-none"
                                                 placeholder="How can we help you today?"
                                             />
                                         </div>
@@ -262,7 +262,7 @@ const Contact = () => {
                                                     {isSubmitting ? 'Sending...' : 'Send Message'}
                                                     {!isSubmitting && <Send size={18} className="group-hover:translate-x-1 transition-transform" />}
                                                 </span>
-                                                <div className="absolute inset-0 bg-linear-to-r from-violet-600 via-pink-600 to-violet-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                                <div className="absolute inset-0 bg-linear-to-r from-secondary via-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                             </button>
                                         </div>
                                     </form>
