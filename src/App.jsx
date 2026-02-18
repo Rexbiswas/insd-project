@@ -15,6 +15,7 @@ import InternationalPartner from './pages/InternationalPartner';
 import Contact from './pages/Contact';
 import Loader from './components/Loader';
 import BackToTop from './components/BackToTop';
+import StudentCareers from './pages/StudentCareers';
 
 import { RegisterModalProvider } from './context/RegisterModalContext';
 import RegistrationModal from './components/RegistrationModal';
@@ -53,7 +54,9 @@ function App() {
             <Route path="/about-us" element={<About />} />
             <Route path="/campuses" element={<Campus />} />
             <Route path="/courses" element={<Courses />} />
-            <Route path="/student-careers" element={<Placeholder title="Student Careers" />} />
+            <Route path="/courses" element={<Courses />} />
+            <Route path="/student-careers" element={<StudentCareers />} />
+            <Route path="/insd-360" element={<Insd360 />} />
             <Route path="/insd-360" element={<Insd360 />} />
             <Route path="/franchise" element={<Franchise />} />
             <Route path="/contact-us" element={<Contact />} />
