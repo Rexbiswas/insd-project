@@ -243,7 +243,7 @@ const StudentCareers = () => {
                                 <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent transition-opacity duration-500 group-hover:opacity-80" />
 
                                 <div className="absolute bottom-0 left-0 w-full p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                    <div className="w-12 h-1 bg-primary mb-4 w-0 group-hover:w-12 transition-all duration-500 delay-100" />
+                                    <div className="h-1 bg-primary mb-4 w-0 group-hover:w-12 transition-all duration-500 delay-100" />
                                     <h3 className="text-3xl font-bold text-white uppercase mb-2 leading-none">{path.title}</h3>
                                     <p className="text-slate-300 font-mono text-sm tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
                                         / {path.role}

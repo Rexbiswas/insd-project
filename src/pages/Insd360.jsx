@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect, useState, useEffect } from 'react';
+import React, { useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, Globe, Zap, Users, Trophy, Sparkles, Cpu, Feather, Box, Maximize } from 'lucide-react';
@@ -12,33 +12,6 @@ const Insd360 = () => {
     const sliderRef = useRef(null);
     const triggerRef = useRef(null);
     const progressBarRef = useRef(null);
-    const cursorRef = useRef(null);
-    const [activeImg, setActiveImg] = useState(null);
-
-    useEffect(() => {
-        const cursor = cursorRef.current;
-        if (!cursor) return;
-
-        const xTo = gsap.quickTo(cursor, "x", { duration: 0.6, ease: "power3" });
-        const yTo = gsap.quickTo(cursor, "y", { duration: 0.6, ease: "power3" });
-
-        const moveCursor = (e) => {
-            xTo(e.clientX);
-            yTo(e.clientY);
-        };
-
-        window.addEventListener("mousemove", moveCursor);
-        return () => window.removeEventListener("mousemove", moveCursor);
-    }, []);
-
-    useEffect(() => {
-        const cursor = cursorRef.current;
-        if (activeImg) {
-            gsap.to(cursor, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.7)" });
-        } else {
-            gsap.to(cursor, { scale: 0, opacity: 0, duration: 0.3, ease: "power2.in" });
-        }
-    }, [activeImg]);
 
     useLayoutEffect(() => {
         let ctx = gsap.context(() => {
@@ -323,17 +296,12 @@ const Insd360 = () => {
                     {/* Timeline / Steps */}
                     <div className="space-y-4">
                         {[
-                            { id: "01", title: "Ideation", type: "Neural Sync", desc: "Brainstorming with AI-assisted moodboards.", img: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600" },
-                            { id: "02", title: "Creation", type: "Virtual Prototyping", desc: "Zero-waste 3D sampling and draping.", img: "https://images.pexels.com/photos/3965543/pexels-photo-3965543.jpeg?auto=compress&cs=tinysrgb&w=600" },
-                            { id: "03", title: "Execution", type: "Sustainable Fabric", desc: "Ethical sourcing meets high-tech textiles.", img: "https://images.pexels.com/photos/461428/pexels-photo-461428.jpeg?auto=compress&cs=tinysrgb&w=600" },
-                            { id: "04", title: "Launch", type: "Metaverse Runway", desc: "Global exposure in digital and physical realms.", img: "https://images.pexels.com/photos/1579930/pexels-photo-1579930.jpeg?auto=compress&cs=tinysrgb&w=600" },
+                            { id: "01", title: "Ideation", type: "Neural Sync", desc: "Brainstorming with AI-assisted moodboards." },
+                            { id: "02", title: "Creation", type: "Virtual Prototyping", desc: "Zero-waste 3D sampling and draping." },
+                            { id: "03", title: "Execution", type: "Sustainable Fabric", desc: "Ethical sourcing meets high-tech textiles." },
+                            { id: "04", title: "Launch", type: "Metaverse Runway", desc: "Global exposure in digital and physical realms." },
                         ].map((step, idx) => (
-                            <div
-                                key={idx}
-                                className="reveal-row group border-t border-white/10 hover:border-primary/50 transition-colors py-12 flex flex-col md:flex-row md:items-center justify-between cursor-pointer relative z-10"
-                                onMouseEnter={() => setActiveImg(step.img)}
-                                onMouseLeave={() => setActiveImg(null)}
-                            >
+                            <div key={idx} className="reveal-row group border-t border-white/10 hover:border-primary/50 transition-colors py-12 flex flex-col md:flex-row md:items-center justify-between cursor-pointer">
                                 <div className="flex items-center gap-8 mb-4 md:mb-0">
                                     <span className="text-xl font-mono text-slate-600 group-hover:text-primary transition-colors">/{step.id}</span>
                                     <h4 className="text-3xl md:text-5xl font-bold uppercase text-slate-300 group-hover:text-white group-hover:translate-x-4 transition-all duration-300">{step.title}</h4>
@@ -412,23 +380,6 @@ const Insd360 = () => {
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 blur-[120px] rounded-full pointer-events-none animate-pulse" />
             </section>
-            {/* Floating Image Cursor */}
-            <div
-                ref={cursorRef}
-                className="fixed top-0 left-0 w-[300px] h-[400px] rounded-2xl overflow-hidden pointer-events-none z-50 hidden md:block mix-blend-normal shadow-2xl border border-white/20"
-                style={{
-                    transform: 'translate(-50%, -50%) scale(0)',
-                    opacity: 0
-                }}
-            >
-                {activeImg && (
-                    <img
-                        src={activeImg}
-                        alt="Preview"
-                        className="w-full h-full object-cover"
-                    />
-                )}
-            </div>
             <Footer />
         </div>
     );

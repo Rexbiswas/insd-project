@@ -12,6 +12,7 @@ import Franchise from './pages/Franchise';
 import Insd360 from './pages/Insd360';
 import Admission from './pages/Admission';
 import InternationalPartner from './pages/InternationalPartner';
+import Undergraduate from './pages/Undergraduate';
 import Contact from './pages/Contact';
 import Loader from './components/Loader';
 import BackToTop from './components/BackToTop';
@@ -54,9 +55,8 @@ function App() {
             <Route path="/about-us" element={<About />} />
             <Route path="/campuses" element={<Campus />} />
             <Route path="/courses" element={<Courses />} />
-            <Route path="/courses" element={<Courses />} />
+            <Route path="/courses/undergraduate" element={<Undergraduate />} />
             <Route path="/student-careers" element={<StudentCareers />} />
-            <Route path="/insd-360" element={<Insd360 />} />
             <Route path="/insd-360" element={<Insd360 />} />
             <Route path="/franchise" element={<Franchise />} />
             <Route path="/contact-us" element={<Contact />} />
