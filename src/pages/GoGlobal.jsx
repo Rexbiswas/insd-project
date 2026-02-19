@@ -91,7 +91,7 @@ const GoGlobal = () => {
 
                 <div className="relative z-10 container mx-auto px-6 text-center">
                     <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-8 hero-text shadow-xl">
-                        <Plane className="text-blue-400 -rotate-45" size={20} />
+                        <Plane className="text-[#db3436] -rotate-45" size={20} />
                         <span className="text-sm font-bold tracking-widest uppercase">Global Opportunities</span>
                     </div>
                     <h1 className="hero-text text-5xl md:text-7xl lg:text-9xl font-black mb-6 tracking-tight leading-none drop-shadow-2xl">
@@ -221,7 +221,7 @@ const GoGlobal = () => {
                         ].map((item, i) => (
                             <div key={i} className={`pathway-step flex flex-col md:flex-row gap-8 items-center ${item.align === 'right' ? 'md:flex-row-reverse' : ''}`}>
                                 <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-                                    <div className={`w-20 h-20 rounded-full flex items-center justify-center text-3xl font-black text-white ${item.align === 'right' ? 'bg-purple-600 md:order-last md:ml-8' : 'bg-blue-600 md:mr-8'}`}>
+                                    <div className={`w-20 h-20 rounded-full flex items-center justify-center text-3xl font-black text-white ${item.align === 'right' ? 'bg-[#db3436] md:order-last md:ml-8' : 'bg-[#134a84] md:mr-8'}`}>
                                         {item.step}
                                     </div>
                                 </div>
@@ -249,7 +249,7 @@ const GoGlobal = () => {
                                 <img src={dest.image} alt={dest.city} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                                 <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
                                 <div className="absolute bottom-0 left-0 w-full p-8 text-white">
-                                    <p className="text-sm font-bold tracking-widest uppercase mb-1 text-blue-400 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">{dest.country}</p>
+                                    <p className="text-sm font-bold tracking-widest uppercase mb-1 text-[#db3436] translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">{dest.country}</p>
                                     <h3 className="text-4xl font-black translate-y-4 group-hover:translate-y-0 transition-transform duration-300">{dest.city}</h3>
                                 </div>
                             </div>

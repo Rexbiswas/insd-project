@@ -15,6 +15,7 @@ import InternationalPartner from './pages/InternationalPartner';
 import Undergraduate from './pages/Undergraduate';
 import Contact from './pages/Contact';
 import GoGlobal from './pages/GoGlobal';
+import MscLuxury from './pages/MscLuxury';
 import Loader from './components/Loader';
 import BackToTop from './components/BackToTop';
 import StudentCareers from './pages/StudentCareers';
@@ -57,6 +58,7 @@ function App() {
             <Route path="/campuses" element={<Campus />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/courses/undergraduate" element={<Undergraduate />} />
+            <Route path="/courses/msc-luxury-brand-management" element={<MscLuxury />} />
             <Route path="/student-careers" element={<StudentCareers />} />
             <Route path="/insd-360" element={<Insd360 />} />
             <Route path="/franchise" element={<Franchise />} />
