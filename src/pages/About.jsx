@@ -279,7 +279,7 @@ const About = () => {
                     </h2>
                     <div className="flex flex-col md:flex-row gap-8 justify-center">
                         <button className="magnetic-btn px-12 py-5 bg-primary text-white font-bold rounded-full uppercase tracking-widest transition-transform">Explore Careers</button>
-                        <button className="magnetic-btn px-12 py-5 bg-white text-black font-bold rounded-full uppercase tracking-widest transition-transform">Get Prospectus</button>
+                        <button className="magnetic-btn px-12 py-5 bg-white text-black font-bold rounded-full uppercase tracking-widest transition-transform"><a href="https://insdpunepcmc.com/wp-content/uploads/2023/05/Course-booklet-INSD-2022.pdf" download={{}}>Get Prospectus</a></button>
                     </div>
                 </div>
             </section>
