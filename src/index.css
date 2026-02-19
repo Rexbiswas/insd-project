@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
+::selection{
+  background-color: var(--color-primary);
+  color: white;
+}
 @theme {
   --color-primary: #db3436;
   --color-secondary: #134a84;
