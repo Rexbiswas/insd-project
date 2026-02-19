@@ -585,8 +585,9 @@ const Navbar = () => {
                                         <h3 className="text-white font-bold uppercase tracking-widest text-sm">Follow Us</h3>
                                         <div className="flex gap-4">
                                             {['Instagram', 'LinkedIn', 'Facebook'].map(social => (
-                                                <a key={social} href="#" className="text-slate-400 hover:text-white hover:underline decoration-primary underline-offset-4 transition-all">
+                                                <a key={social} href="#" className="relative group text-slate-400 hover:text-white transition-colors duration-300 py-1">
                                                     {social}
+                                                    <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full" />
                                                 </a>
                                             ))}
                                         </div>
