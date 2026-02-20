@@ -15,10 +15,10 @@ app.use(cors({ origin: '*', credentials: true }));
 
 // Prevent topology errors from crashing the process
 process.on('unhandledRejection', (reason) => {
-    // Silence errors to keep process alive
+    console.error('Unhandled Rejection:', reason);
 });
 process.on('uncaughtException', (err) => {
-    // Silence errors to keep process alive
+    console.error('Uncaught Exception:', err);
 });
 
 // Start Server

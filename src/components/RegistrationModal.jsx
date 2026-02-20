@@ -103,11 +103,12 @@ const RegistrationModal = () => {
             if (response.ok) {
                 setIsSuccess(true);
             } else {
-                alert(data.message || "Registration failed");
+                console.error("Registration Failed. Status:", response.status, "Data:", data);
+                alert(data.message || "Registration failed (Status " + response.status + ")");
             }
         } catch (error) {
-            console.error("Registration Error:", error);
-            alert("An error occurred during registration. Please try again.");
+            console.error("Registration Network/Fetch Error:", error);
+            alert("Network Error: " + error.message);
         } finally {
             setIsSubmitting(false);
         }
