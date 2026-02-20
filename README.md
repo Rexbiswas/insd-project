@@ -19,3 +19,9 @@ framer-motion
 react-router-dom
 react-icons
 react-scroll
+
+INSD-2026-RISHI-BISWAS
+
+[MongoDB Atlas Database Access](https://cloud.mongodb.com/v2/6997e212917a73620facfd88#/security/database/users)
+
+[mongodb+srv://rexbiswas1_db_user:INSD-2026-RISHI-BISWAS@cluster1.6bbej9r.mongodb.net/insd?appName=Cluster1](mongodb+srv://rexbiswas1_db_user:INSD-2026-RISHI-BISWAS@cluster1.6bbej9r.mongodb.net/insd?appName=Cluster1)

@@ -7,14 +7,19 @@ const authRoutes = require('./routes/auth');
 
 const app = express();
 
+// Disable buffering so we get immediate errors if not connected
+mongoose.set('bufferCommands', false);
+
 // Middleware
 app.use(express.json());
 app.use(cors());
 
 // Database Connection
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI, {
+    serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
+})
     .then(() => console.log('MongoDB Connected'))
-    .catch((err) => console.log(err));
+    .catch((err) => console.log('MongoDB Connection Error:', err));
 
 // Routes
 app.use('/api/auth', authRoutes);
