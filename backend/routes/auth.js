@@ -14,6 +14,8 @@ router.post('/register', async (req, res) => {
             comments, communications
         } = req.body;
 
+        console.log("Registration attempt received for:", email);
+
         // Check if user exists
         const existingUser = await User.findOne({
             $or: [{ email: email }, { username: username }]

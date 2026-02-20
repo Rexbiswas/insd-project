@@ -1,0 +1,13 @@
+{
+    "watch": [
+        "backend/"
+    ],
+    "ext": "js,json",
+    "ignore": [
+        "node_modules",
+        "src",
+        "public",
+        "dist",
+        "vite.config.js"
+    ]
+}
