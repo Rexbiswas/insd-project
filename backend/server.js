@@ -13,6 +13,22 @@ const PORT = process.env.PORT || 5001;
 app.use(express.json());
 app.use(cors({ origin: '*', credentials: true }));
 
+// Routes
+app.get('/', (req, res) => {
+    res.send('INSD Backend Server is Running');
+});
+app.use('/api/auth', authRoutes);
+
+// Database Connection
+if (process.env.MONGO_URI) {
+    mongoose.connect(process.env.MONGO_URI, {
+        serverSelectionTimeoutMS: 5000,
+        connectTimeoutMS: 10000
+    })
+        .then(() => console.log('MongoDB Connected successfully'))
+        .catch((err) => console.log('MongoDB Connection failed:', err.message));
+}
+
 // Prevent topology errors from crashing the process
 process.on('unhandledRejection', (reason) => {
     console.error('Unhandled Rejection:', reason);
@@ -25,17 +41,4 @@ process.on('uncaughtException', (err) => {
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on port ${PORT}`);
     console.log(`Visit http://localhost:${PORT} to verify`);
-
-    // Database Connection (Background)
-    if (process.env.MONGO_URI) {
-        mongoose.connect(process.env.MONGO_URI, { serverSelectionTimeoutMS: 5000 })
-            .then(() => console.log('MongoDB Connected successfully'))
-            .catch(() => console.log('MongoDB Connection failed - check IP whitelist or URI'));
-    }
 });
-
-// Routes
-app.get('/', (req, res) => {
-    res.send('INSD Backend Server is Running');
-});
-app.use('/api/auth', authRoutes);

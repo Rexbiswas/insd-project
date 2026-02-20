@@ -101,7 +101,17 @@ const RegistrationModal = () => {
                 body: JSON.stringify(formData)
             });
 
-            const data = await response.json();
+            const contentType = response.headers.get("content-type");
+            let data;
+            if (contentType && contentType.includes("application/json")) {
+                data = await response.json();
+            } else {
+                const text = await response.text();
+                console.error("Non-JSON response received:", text);
+                alert("Server error (Non-JSON): " + text.substring(0, 100));
+                setIsSubmitting(false);
+                return;
+            }
 
             if (response.ok) {
                 setIsSuccess(true);
@@ -129,17 +139,29 @@ const RegistrationModal = () => {
                 },
                 body: JSON.stringify(loginData)
             });
-            const data = await response.json();
+
+            const contentType = response.headers.get("content-type");
+            let data;
+            if (contentType && contentType.includes("application/json")) {
+                data = await response.json();
+            } else {
+                const text = await response.text();
+                console.error("Non-JSON login response:", text);
+                alert("Login Server Error: " + text.substring(0, 100));
+                setIsSubmitting(false);
+                return;
+            }
+
             if (response.ok) {
                 // Store token in localStorage or context (omitted for now)
                 console.log("Login Successful:", data);
                 setIsSuccess(true);
             } else {
-                alert(data.message || "Login failed");
+                alert(data.message || "Login failed (Status " + response.status + ")");
             }
         } catch (error) {
             console.error("Login Error:", error);
-            alert("An error occurred during login.");
+            alert("Login Network Error: " + error.message);
         } finally {
             setIsSubmitting(false);
         }
