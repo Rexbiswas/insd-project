@@ -90,19 +90,52 @@ const RegistrationModal = () => {
         }
 
         setIsSubmitting(true);
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        setIsSubmitting(false);
-        setIsSuccess(true);
+
+        try {
+            const response = await fetch('http://localhost:5001/api/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setIsSuccess(true);
+            } else {
+                alert(data.message || "Registration failed");
+            }
+        } catch (error) {
+            console.error("Registration Error:", error);
+            alert("An error occurred during registration. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
-        // Simulate Login
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        setIsSubmitting(false);
-        setIsSuccess(true);
+        try {
+            const response = await fetch('http://localhost:5001/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(loginData)
+            });
+            const data = await response.json();
+            if (response.ok) {
+                // Store token in localStorage or context (omitted for now)
+                console.log("Login Successful:", data);
+                setIsSuccess(true);
+            } else {
+                alert(data.message || "Login failed");
+            }
+        } catch (error) {
+            console.error("Login Error:", error);
+            alert("An error occurred during login.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleBack = () => {
