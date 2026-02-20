@@ -94,7 +94,10 @@ const RegistrationModal = () => {
         try {
             const response = await fetch('/api/auth/register', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'bypass-tunnel-reminder': 'true'
+                },
                 body: JSON.stringify(formData)
             });
 
@@ -120,7 +123,10 @@ const RegistrationModal = () => {
         try {
             const response = await fetch('/api/auth/login', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'bypass-tunnel-reminder': 'true'
+                },
                 body: JSON.stringify(loginData)
             });
             const data = await response.json();
