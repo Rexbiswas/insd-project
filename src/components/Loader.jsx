@@ -30,7 +30,7 @@ const Loader = ({ setLoading }) => {
 
             // 2. Text Reveal / Cycle during count
             // "Design" -> "Innovation" -> "INSD"
-            const words = ["15", "YEARS", "OF", "CREATIVES", "EXPERIENCE"];
+            const words = ["15", "YEARS", "OF", "CREATIVES", "EXECELLENCE"];
             const wordDuration = 1.5 / words.length;
 
             words.forEach((word, index) => {

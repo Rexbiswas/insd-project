@@ -40,40 +40,51 @@ const ScrollToTop = () => {
 function App() {
   const [loading, setLoading] = useState(true);
 
+  React.useEffect(() => {
+    if (!loading) {
+      setTimeout(() => {
+        import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
+          ScrollTrigger.refresh();
+        });
+      }, 500);
+    }
+  }, [loading]);
+
   return (
     <RegisterModalProvider>
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {loading && <Loader key="loader" setLoading={setLoading} />}
       </AnimatePresence>
 
-      <RegistrationModal />
+      <div className={`transition-opacity duration-1000 ${loading ? 'opacity-0' : 'opacity-100'}`}>
+        <RegistrationModal />
 
-      <Router>
-        <ScrollToTop />
-        <Navbar />
-        <div className="relative z-0 bg-slate-50 min-h-screen pb-24 md:pb-0">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about-us" element={<About />} />
-            <Route path="/campuses" element={<Campus />} />
-            <Route path="/courses" element={<Courses />} />
-            <Route path="/courses/undergraduate" element={<Undergraduate />} />
-            <Route path="/courses/msc-luxury-brand-management" element={<MscLuxury />} />
-            <Route path="/student-careers" element={<StudentCareers />} />
-            <Route path="/insd-360" element={<Insd360 />} />
-            <Route path="/franchise" element={<Franchise />} />
-            <Route path="/contact-us" element={<Contact />} />
-            <Route path="/go-global" element={<GoGlobal />} />
-            <Route path="/international-partners" element={<InternationalPartner />} />
-            <Route path="/apply" element={<Admission />} />
-            <Route path="*" element={<Placeholder title="404 Not Found" />} />
-          </Routes>
-        </div>
-        <BackToTop />
-      </Router>
+        <Router>
+          <ScrollToTop />
+          <Navbar />
+          <div className="relative z-0 bg-slate-50 min-h-screen pb-24 md:pb-0 overflow-x-hidden">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about-us" element={<About />} />
+              <Route path="/campuses" element={<Campus />} />
+              <Route path="/courses" element={<Courses />} />
+              <Route path="/courses/undergraduate" element={<Undergraduate />} />
+              <Route path="/courses/msc-luxury-brand-management" element={<MscLuxury />} />
+              <Route path="/student-careers" element={<StudentCareers />} />
+              <Route path="/insd-360" element={<Insd360 />} />
+              <Route path="/franchise" element={<Franchise />} />
+              <Route path="/contact-us" element={<Contact />} />
+              <Route path="/go-global" element={<GoGlobal />} />
+              <Route path="/international-partners" element={<InternationalPartner />} />
+              <Route path="/apply" element={<Admission />} />
+              <Route path="*" element={<Placeholder title="404 Not Found" />} />
+            </Routes>
+          </div>
+          <BackToTop />
+        </Router>
+      </div>
     </RegisterModalProvider>
   );
 }
-
 
 export default App;

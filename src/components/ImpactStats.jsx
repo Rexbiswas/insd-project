@@ -58,7 +58,7 @@ const ImpactStats = () => {
     }, []);
 
     return (
-        <div ref={statsRef} className="width-full min-h-[50vh] bg-slate-900 flex items-center justify-center py-24 relative overflow-hidden">
+        <div ref={statsRef} className="w-full min-h-[50vh] bg-slate-900 flex items-center justify-center py-24 relative overflow-hidden">
 
             {/* Background Details */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-slate-800/50 via-slate-900 to-slate-950 pointer-events-none"></div>

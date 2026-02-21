@@ -10,11 +10,13 @@ import InsdBackground from '../components/InsdBackground';
 import ImpactStats from '../components/ImpactStats';
 import TestimonialSlider from '../components/TestimonialSlider';
 import FeaturedIn from '../components/FeaturedIn';
+import AdmissionScroller from '../components/AdmissionScroller';
+import StepVisual from '../components/StepVisual';
 import EventBlogs from '../components/EventBlogs';
 import InstagramGallery from '../components/InstagramGallery';
 import InsdiansByDesign from '../components/InsdiansByDesign';
 import Footer from '../components/Footer';
-
+import BackToTop from '../components/BackToTop';
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -54,9 +56,6 @@ const Home = () => {
     const heroRef = useRef(null);
     const shutterRef = useRef(null);
     const marqueeRef = useRef(null);
-    const aboutRef = useRef(null);
-    const cursorImgRef = useRef(null);
-    const philosophyListRef = useRef(null);
     const studentRef = useRef(null);
     const scrollHintRef = useRef(null);
     const legacyRef = useRef(null);
@@ -70,7 +69,7 @@ const Home = () => {
         window.addEventListener('resize', checkMobile);
 
         const lenis = new Lenis({
-            duration: 1.2,
+            duration: 1.0, // Reduced from 1.2 for faster response
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             smooth: !isMobile, // Disable smooth scroll on mobile to avoid conflicts
         });
@@ -93,7 +92,7 @@ const Home = () => {
 
     useLayoutEffect(() => {
         let ctx = gsap.context(() => {
-            const tl = gsap.timeline();
+            const tl = gsap.timeline({ delay: 3.8 });
 
             // Text Reveal Animation
             const chars = containerRef.current.querySelectorAll('.char-extra');
@@ -187,7 +186,7 @@ const Home = () => {
                     start: "top top",
                     end: "+=150%",
                     pin: !isMobile,
-                    scrub: 1,
+                    scrub: 0.5, // Faster animation tracking
                 }
             });
 
@@ -230,74 +229,7 @@ const Home = () => {
 
 
 
-            // 5. Philosophy Section - Enhance Interactions
-            const listItems = document.querySelectorAll('.philosophy-item');
-            const cursorImg = cursorImgRef.current;
 
-            // Image Follow Cursor Logic - High Performance with quickTo
-            const xTo = gsap.quickTo(cursorImg, "x", { duration: 0.6, ease: "power3" });
-            const yTo = gsap.quickTo(cursorImg, "y", { duration: 0.6, ease: "power3" });
-
-            const moveCursorImg = (e) => {
-                const rect = aboutRef.current.getBoundingClientRect();
-                if (e.clientY >= rect.top && e.clientY <= rect.bottom && cursorImg) {
-                    xTo(e.clientX);
-                    yTo(e.clientY - rect.top);
-                }
-            };
-            window.addEventListener('mousemove', moveCursorImg);
-
-            // Item Hover Logic - Crossfade & Scale
-            listItems.forEach((item) => {
-                // Scroll Trigger Reveal for each item
-                gsap.from(item, {
-                    scrollTrigger: {
-                        trigger: item,
-                        start: "top 85%",
-                        toggleActions: "play none none reverse"
-                    },
-                    y: 100,
-                    opacity: 0,
-                    duration: 1,
-                    ease: "power3.out"
-                });
-
-                item.addEventListener('mouseenter', () => {
-                    const imgUrl = item.getAttribute('data-img');
-                    if (cursorImg && imgUrl) {
-                        cursorImg.style.backgroundImage = `url(${imgUrl})`;
-                        gsap.to(cursorImg, { scale: 1, opacity: 1, duration: 0.4, ease: "power2.out" });
-                    }
-                    gsap.to(item.querySelectorAll('.item-text'), { x: 40, color: "var(--color-secondary)", duration: 0.4, ease: "back.out(1.7)" }); // Bouncier text move
-                    gsap.to(item.querySelectorAll('.item-num'), { opacity: 0.2, x: 20, scale: 0.8, duration: 0.4 });
-                });
-
-                item.addEventListener('mouseleave', () => {
-                    if (cursorImg) {
-                        gsap.to(cursorImg, { scale: 0, opacity: 0, duration: 0.3, ease: "power2.in" });
-                    }
-                    gsap.to(item.querySelectorAll('.item-text'), { x: 0, color: "black", duration: 0.4, ease: "power2.out" });
-                    gsap.to(item.querySelectorAll('.item-num'), { opacity: 1, x: 0, scale: 1, duration: 0.4 });
-                });
-            });
-
-
-            // Title Reveal Animation
-            const splitTitle = document.querySelectorAll('.reveal-text');
-            splitTitle.forEach((char) => {
-                gsap.from(char, {
-                    scrollTrigger: {
-                        trigger: aboutRef.current,
-                        start: "top 60%",
-                    },
-                    y: 100,
-                    opacity: 0,
-                    rotateX: -90,
-                    stagger: 0.05,
-                    duration: 1,
-                    ease: "power4.out"
-                });
-            });
 
             // 6. Student Spotlight - Dark Mode Transition
             gsap.fromTo(studentRef.current,
@@ -394,7 +326,7 @@ const Home = () => {
                             trigger: legacyRef.current,
                             start: "top 95%",
                             end: "top 60%",
-                            scrub: 1
+                            scrub: 0.5
                         }
                     }
                 );
@@ -406,7 +338,7 @@ const Home = () => {
                         trigger: legacyRef.current,
                         start: "top 80%",
                         end: "bottom 40%",
-                        scrub: 1
+                        scrub: 0.5
                     }
                 });
 
@@ -459,7 +391,7 @@ const Home = () => {
                             trigger: searchContainer,
                             start: "top 90%",
                             end: "top 40%",
-                            scrub: 1
+                            scrub: 0.5
                         }
                     }
                 );
@@ -473,7 +405,7 @@ const Home = () => {
                 });
             }
 
-            return () => window.removeEventListener('mousemove', moveCursorImg);
+
 
 
 
@@ -517,38 +449,20 @@ const Home = () => {
     };
 
     return (
-        <div ref={containerRef} className="min-h-screen text-slate-900 overflow-hidden relative">
+        <div ref={containerRef} className="min-h-screen text-slate-900 relative overflow-x-hidden">
             <Background3D />
             {/* Fixed Global Video Background */}
             <div className="fixed inset-0 z-0">
-                <video
-                    className="w-full h-full object-cover"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    src="https://www.pexels.com/download/video/8145203/"
-                />
+                <img className="w-full h-full object-cover" src="https://img.sanishtech.com/u/5404fdb38cd8f5bab3e0495a8d6035c3.jpg" alt="" />
             </div>
-
-
-
-
             {/* Hero Section - Pinned Wrapper relative to Viewport */}
             <div ref={heroRef} className="relative z-10 h-screen w-full flex flex-col justify-center items-center perspective-[1000px]">
 
                 {/* Mask Layer: Mix-Blend-Screen handles the cutout effect */}
                 <div ref={maskRef} className="absolute inset-0 flex flex-col justify-center items-center bg-slate-50 mix-blend-screen pointer-events-none select-none z-10">
                     <div className="text-center">
-                        <h1 ref={titleRef} className="text-[12vw] xl:text-[10rem] leading-[0.9] font-black uppercase tracking-tighter text-slate-900">
-                            {/* INSD Text - Black Color becomes Transparent in Screen Mode */}
-                            <div ref={insdRef} className="text-black text-[28vw] md:text-[32vw] xl:text-[26rem] font-black leading-none flex justify-center items-center w-full tracking-tighter will-change-transform backface-hidden">
-                                {["I", "N", "S", "D"].map((char, index) => (
-                                    <span key={index} className="char-extra inline-block origin-bottom transition-all duration-300 hover:text-primary hover:scale-110">
-                                        {char}
-                                    </span>
-                                ))}
-                            </div>
+                        <h1 ref={insdRef} className="text-black text-[28vw] md:text-[32vw] xl:text-[26rem] font-black leading-none flex items-center justify-center will-change-transform backface-hidden mb-24 md:mb-36">
+                            {["I", "N", "S", "D"].map((char, index) => <span key={index} className={`char-extra inline-block origin-bottom transition-all duration-300 hover:text-primary hover:scale-110 ${index === 0 ? 'mt-4 md:mt-8 mr-[-2vw] md:mr-[-1vw]' : 'w-[1ch] text-center'}`}>{char}</span>)}
                         </h1>
                     </div>
                 </div>
@@ -625,87 +539,8 @@ const Home = () => {
                 ))}
             </div>
 
-            {/* Awwwards-style "Philosophy" Section - White Theme for Contrast */}
-            <div ref={aboutRef} className="relative bg-white text-black min-h-screen py-20 md:py-32 px-4 md:px-12 overflow-hidden cursor-none">
-                {/* cursor-none to encourage focus on the floating element */}
-
-                <div className="max-w-360 mx-auto flex flex-col md:flex-row gap-24 relative z-10">
-
-                    {/* Sticky Left Content */}
-                    <div className="md:w-5/12 relative">
-                        <div className="sticky top-24 xl:top-32">
-                            <h2 className="text-[10vw] md:text-[7vw] leading-[0.85] font-black uppercase tracking-tighter mb-12 mix-blend-exclusion">
-                                <div className="overflow-hidden">
-                                    {splitText("Beyond", "reveal-text inline-block")}
-                                </div>
-                                <div className="overflow-hidden">
-                                    <span className="text-transparent bg-clip-text bg-linear-to-br from-secondary to-primary">
-                                        {splitText("Education.", "reveal-text inline-block")}
-                                    </span>
-                                </div>
-                            </h2>
-                            <p className="text-2xl md:text-3xl font-light leading-relaxed max-w-xl text-slate-800 mb-12 border-l-4 border-black pl-8">
-                                We don't just teach design.<br />
-                                <span className="font-bold">We culture creative rebels</span> who challenge the status quo.
-                            </p>
-
-                            <motion.button
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.9 }}
-                                className="group relative px-12 py-5 bg-black text-white text-xl font-bold rounded-full uppercase tracking-widest overflow-hidden hover:shadow-2xl hover:shadow-secondary/50 transition-all duration-300"
-                            >
-                                <span className="relative z-10 group-hover:text-primary transition-colors">Our Philosophy</span>
-                                <div className="absolute inset-0 bg-zinc-800 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-out" />
-                            </motion.button>
-                        </div>
-                    </div>
-
-                    {/* Scrolling Right Content - Interactive List */}
-                    <div ref={philosophyListRef} className="md:w-7/12 flex flex-col justify-center">
-
-                        {/* Interactive Item 1 */}
-                        <div className="philosophy-item group border-t border-black/10 py-16 md:py-24 cursor-pointer relative" data-img="https://images.pexels.com/photos/837134/pexels-photo-837134.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
-                            <div className="flex items-baseline gap-12">
-                                <span className="item-num text-2xl font-mono text-slate-300 transition-all duration-300">01</span>
-                                <h3 className="item-text text-6xl md:text-8xl font-black uppercase tracking-tighter transition-all duration-300">Global Exposure</h3>
-                            </div>
-                            <p className="mt-8 text-xl text-slate-500 max-w-md ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden md:block">
-                                Paris Fashion Week. Milan Design Fair. The world is your classroom.
-                            </p>
-                        </div>
-
-                        {/* Interactive Item 2 */}
-                        <div className="philosophy-item group border-t border-black/10 py-16 md:py-24 cursor-pointer relative" data-img="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
-                            <div className="flex items-baseline gap-12">
-                                <span className="item-num text-2xl font-mono text-slate-300 transition-all duration-300">02</span>
-                                <h3 className="item-text text-6xl md:text-8xl font-black uppercase tracking-tighter transition-all duration-300">Live Projects</h3>
-                            </div>
-                            <p className="mt-8 text-xl text-slate-500 max-w-md ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden md:block">
-                                Real clients. Real budgets. Real pressure. Experience clarity in chaos.
-                            </p>
-                        </div>
-
-                        {/* Interactive Item 3 */}
-                        <div className="philosophy-item group border-t border-b border-black/10 py-16 md:py-24 cursor-pointer relative" data-img="https://images.pexels.com/photos/2041005/pexels-photo-2041005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
-                            <div className="flex items-baseline gap-12">
-                                <span className="item-num text-2xl font-mono text-slate-300 transition-all duration-300">03</span>
-                                <h3 className="item-text text-6xl md:text-8xl font-black uppercase tracking-tighter transition-all duration-300">Big Mentors</h3>
-                            </div>
-                            <p className="mt-8 text-xl text-slate-500 max-w-md ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden md:block">
-                                Learn from the mavericks who shaped the industry.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Floating Image Reveal Element */}
-                <div
-                    ref={cursorImgRef}
-                    className="fixed top-0 left-0 w-[400px] h-[550px] bg-cover bg-center rounded-4xl pointer-events-none z-0 mix-blend-multiply opacity-0 scale-0 -translate-x-1/2 -translate-y-1/2 shadow-2xl grayscale contrast-125"
-                />
-
-
-            </div>
+            <AdmissionScroller />
+            <StepVisual />
 
             {/* Student Spotlight Section - High Fashion Editorial Style */}
             <div ref={studentRef} className="relative min-h-screen py-20 md:py-32 px-4 md:px-12 overflow-hidden transition-colors duration-700">
@@ -970,7 +805,9 @@ const Home = () => {
             <EventBlogs />
             <InstagramGallery />
             <InsdiansByDesign />
-            <Footer />
+            <div className="relative z-50">
+                <Footer />
+            </div>
         </div>
     );
 };

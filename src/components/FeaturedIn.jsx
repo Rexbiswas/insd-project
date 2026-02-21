@@ -9,14 +9,54 @@ const FeaturedIn = () => {
     const marqueeRef = useRef(null);
 
     const brands = [
-        { name: "The Tribune", url: "https://logo.clearbit.com/tribuneindia.com", domain: "tribuneindia.com" },
-        { name: "India Today", url: "https://logo.clearbit.com/indiatoday.in", domain: "indiatoday.in" },
-        { name: "The Hindu", url: "https://logo.clearbit.com/thehindu.com", domain: "thehindu.com" },
-        { name: "Luxury Abode", url: "https://logo.clearbit.com/luxuryabode.com", domain: "luxuryabode.com" }, // Might fail, fallback needed?
-        { name: "Education Times", url: "https://logo.clearbit.com/educationtimes.com", domain: "educationtimes.com" },
-        { name: "Times of India", url: "https://logo.clearbit.com/timesofindia.indiatimes.com", domain: "timesofindia.indiatimes.com" },
-        { name: "Vogue", url: "https://logo.clearbit.com/vogue.in", domain: "vogue.in" },
-        { name: "Elle", url: "https://logo.clearbit.com/elle.in", domain: "elle.in" }
+        {
+            name: "The Tribune",
+            url: "https://insd.edu.in/wp-content/uploads/2021/04/tribune-india-logo.jpg",
+            bg: "https://insd.edu.in/wp-content/uploads/2021/04/tribune-india-logo.jpg",
+            domain: "tribuneindia.com"
+        },
+        {
+            name: "India Today",
+            url: "https://insd.edu.in/wp-content/uploads/2021/04/India_Today_Group_Logo.png",
+            bg: "https://insd.edu.in/wp-content/uploads/2021/04/India_Today_Group_Logo.png",
+            domain: "indiatoday.in"
+        },
+        {
+            name: "The Hindu",
+            url: "https://upload.wikimedia.org/wikipedia/commons/4/41/The_Hindu_logo.svg",
+            bg: "https://images.pexels.com/photos/3886870/pexels-photo-3886870.jpeg",
+            domain: "thehindu.com"
+        },
+        {
+            name: "Luxury Abode",
+            url: "https://www.luxuryabode.in/uploads/logo/1647413669_Luxury_Abode_Logo_Png.png",
+            bg: "https://images.pexels.com/photos/3288102/pexels-photo-3288102.jpeg",
+            domain: "luxuryabode.in"
+        },
+        {
+            name: "Education Times",
+            url: "https://www.educationtimes.com/newassets/images/ET_Logo.svg",
+            bg: "https://images.pexels.com/photos/301920/pexels-photo-301920.jpeg",
+            domain: "educationtimes.com"
+        },
+        {
+            name: "Times of India",
+            url: "https://upload.wikimedia.org/wikipedia/commons/7/7b/The_times_of_india.svg",
+            bg: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg",
+            domain: "timesofindia.indiatimes.com"
+        },
+        {
+            name: "Vogue",
+            url: "https://upload.wikimedia.org/wikipedia/commons/1/13/Vogue_India_logo.svg",
+            bg: "https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg",
+            domain: "vogue.in"
+        },
+        {
+            name: "Elle",
+            url: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Elle-Logo.svg",
+            bg: "https://images.pexels.com/photos/7679863/pexels-photo-7679863.jpeg",
+            domain: "elle.in"
+        }
     ];
 
     useLayoutEffect(() => {
@@ -25,11 +65,6 @@ const FeaturedIn = () => {
             // Infinite Marquee Animation
             const tl = gsap.timeline({ repeat: -1 });
             const marqueeContent = marqueeRef.current;
-
-            // Calculate width dynamically if possible, or just animate percentage
-            // Calculate width dynamically if possible, or just animate percentage
-            // For a smooth loop, we need to move by exactly 1/4th (since we quadruple the list)
-
             tl.to(marqueeContent, {
                 xPercent: -25,
                 ease: "none",
@@ -68,25 +103,40 @@ const FeaturedIn = () => {
                     {[...brands, ...brands, ...brands, ...brands].map((brand, i) => (
                         <div
                             key={i}
-                            className="feature-card group relative w-64 h-40 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl flex items-center justify-center p-8 cursor-pointer hover:bg-white/10 hover:border-white/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(219,52,54,0.3)] perspective-1000 shrink-0"
+                            className="feature-card group relative w-72 h-44 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl flex items-center justify-center p-8 cursor-pointer overflow-hidden transition-all duration-700 hover:-translate-y-2 hover:border-white/40 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.8)] shrink-0"
                         >
+                            {/* Brand Context Background Image (Reveals on Hover) */}
+                            <div className="absolute inset-0 z-0 overflow-hidden">
+                                <img
+                                    src={brand.bg}
+                                    alt=""
+                                    className="w-full h-full object-cover opacity-0 group-hover:opacity-40 transition-all duration-1000 scale-150 group-hover:scale-100 blur-[2px] group-hover:blur-0"
+                                />
+                                <div className="absolute inset-0 bg-black/60 group-hover:bg-black/20 transition-colors duration-700" />
+                            </div>
+
                             {/* Inner Glow */}
-                            <div className="absolute inset-0 bg-linear-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                            <div className="absolute inset-0 bg-linear-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl z-10"></div>
 
                             {/* Logo Image */}
                             <img
                                 src={brand.url}
                                 alt={brand.name}
+                                crossOrigin="anonymous"
                                 onError={(e) => {
-                                    e.target.style.display = 'none';
-                                    const fallback = e.target.nextElementSibling;
-                                    if (fallback) fallback.classList.remove('hidden');
+                                    if (!e.target.src.includes('clearbit.com')) {
+                                        e.target.src = `https://logo.clearbit.com/${brand.domain}`;
+                                    } else {
+                                        e.target.style.display = 'none';
+                                        const fallback = e.target.nextElementSibling;
+                                        if (fallback) fallback.classList.remove('hidden');
+                                    }
                                 }}
-                                className="w-full h-full object-contain filter grayscale brightness-200 contrast-100 opacity-60 group-hover:filter-none group-hover:opacity-100 transition-all duration-500 scale-90 group-hover:scale-100"
+                                className="relative z-20 w-[80%] h-[80%] object-contain filter grayscale invert brightness-0 opacity-40 group-hover:filter-none group-hover:invert-0 group-hover:brightness-100 group-hover:opacity-100 transition-all duration-700 scale-90 group-hover:scale-105"
                             />
 
                             {/* Text Fallback (Hidden by default) */}
-                            <div className="fallback-text hidden absolute inset-0 flex items-center justify-center text-white font-bold text-xl text-center p-4">
+                            <div className="fallback-text hidden absolute inset-0 z-30 flex items-center justify-center text-white/50 font-medium text-lg text-center p-4">
                                 {brand.name}
                             </div>
                         </div>

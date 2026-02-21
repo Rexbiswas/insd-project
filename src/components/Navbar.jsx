@@ -116,7 +116,7 @@ const Navbar = () => {
         // We use xPercent: -50 to maintain centering since we remove the CSS translate class to avoid conflicts
         gsap.fromTo([navRef.current, mobileNavRef.current],
             { yPercent: -100, xPercent: -50, autoAlpha: 0 },
-            { yPercent: 0, xPercent: -50, autoAlpha: 1, duration: 1.5, ease: "expo.out", delay: 0.5 }
+            { yPercent: 0, xPercent: -50, autoAlpha: 1, duration: 1.5, ease: "expo.out", delay: 3.8 }
         );
     }, []);
 

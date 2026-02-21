@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
-::selection{
+::selection {
   background-color: var(--color-primary);
   color: white;
 }
+
 @theme {
   --color-primary: #db3436;
   --color-secondary: #134a84;
@@ -178,6 +179,14 @@
   --animate-flicker: flicker 0.1s infinite;
   --animate-shimmer: shimmer 2s linear infinite;
   --animate-blob: blob 7s infinite;
+}
+
+html,
+body,
+#root {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
 :root {
