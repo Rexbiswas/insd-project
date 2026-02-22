@@ -318,7 +318,7 @@ const Footer = () => {
 
                     <a href="https://rishibiswas.dev" className="flex items-center gap-2 hover:text-white transition-colors">
                         <Zap className="w-3 h-3" />
-                        Nexus_Design_By_Rishi_Biswas
+                        Design By Rishi Biswas
                     </a>
                 </div>
             </div>
