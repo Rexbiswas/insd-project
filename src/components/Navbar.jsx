@@ -171,7 +171,18 @@ const Navbar = () => {
             ]
         },
         { title: 'Student Careers', path: '/student-careers' },
-        { title: 'INSD 360', path: '/insd-360' },
+        {
+            title: 'INSD 360',
+            path: '/insd-360',
+            subItems: [
+                { name: 'Blog', path: '/insd-360/blog' },
+                { name: 'Events', path: '/insd-360/events' },
+                { name: 'Gallery', path: '/insd-360/gallery' },
+                { name: 'Insdians', path: '/insd-360/insdians' },
+                { name: 'Fashion Week', path: '/insd-360/fashion-week' },
+                { name: 'The Paris Project', path: '/insd-360/paris-project' }
+            ]
+        },
         { title: 'Franchise', path: '/franchise' },
         { title: 'Apply', path: '/apply' },
         { title: 'Contact Us', path: '/contact-us' },
@@ -434,7 +445,7 @@ const Navbar = () => {
                                                                 const isPathActive = location.pathname === link.path ||
                                                                     (link.subItems && link.subItems.some(sub => location.pathname === sub.path));
 
-                                                                return `relative inline-flex items-center text-xl md:text-2xl lg:text-3xl font-black tracking-tighter uppercase transition-colors duration-300 ${isPathActive ? 'text-white' : 'text-slate-600 hover:text-white'}`;
+                                                                return `relative inline-flex items-center text-lg md:text-xl lg:text-2xl font-black tracking-tighter uppercase transition-colors duration-300 ${isPathActive ? 'text-white' : 'text-slate-600 hover:text-white'}`;
                                                             }}
                                                         >
                                                             <span className="absolute -left-12 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300 text-primary text-3xl hidden lg:block">
