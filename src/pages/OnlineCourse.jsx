@@ -163,7 +163,7 @@ const OnlineCourse = () => {
                         <motion.div
                             style={{ y: y1 }}
                             whileHover={{ rotateY: 5, rotateX: -5 }}
-                            className="relative aspect-[3/4] bg-white/5 backdrop-blur-3xl rounded-[3rem] border border-white/20 p-8 md:p-12 shadow-[0_50px_100px_rgba(0,0,0,0.5)] overflow-hidden group/card"
+                            className="relative aspect-3/4 bg-white/5 backdrop-blur-3xl rounded-[3rem] border border-white/20 p-8 md:p-12 shadow-[0_50px_100px_rgba(0,0,0,0.5)] overflow-hidden group/card"
                         >
                             <div className="absolute top-0 left-0 w-full h-full bg-linear-to-br from-white/10 to-transparent pointer-events-none"></div>
 
@@ -245,7 +245,7 @@ const OnlineCourse = () => {
                             { icon: <Star />, title: "Elite Mentorship", desc: "Direct feedback sessions from creative directors of heritage luxury houses." },
                             { icon: <Clock />, title: "Infinite Access", desc: "LIFETIME access to updated course materials and our global design repository." }
                         ].map((item, idx) => (
-                            <div key={idx} className="reveal-card group p-8 rounded-[2rem] bg-slate-50 hover:bg-black transition-all duration-500 cursor-default">
+                            <div key={idx} className="reveal-card group p-8 rounded-4xl bg-slate-50 hover:bg-black transition-all duration-500 cursor-default">
                                 <div className="w-14 h-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white transition-colors">
                                     {item.icon}
                                 </div>
@@ -262,7 +262,7 @@ const OnlineCourse = () => {
                 <div className="max-w-7xl mx-auto">
                     <div
                         onClick={togglePlay}
-                        className="relative aspect-video rounded-[3rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.3)] group cursor-pointer"
+                        className="relative aspect-video rounded-4xl overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.3)] group cursor-pointer"
                     >
                         {/* Video Element */}
                         <video
@@ -319,7 +319,7 @@ const OnlineCourse = () => {
                         </div>
 
                         {/* Interactive UI frame */}
-                        <div className="absolute inset-8 border border-white/20 rounded-[2rem] pointer-events-none group-hover:inset-4 transition-all duration-700"></div>
+                        <div className="absolute inset-8 border border-white/20 rounded-4xl pointer-events-none group-hover:inset-4 transition-all duration-700"></div>
                     </div>
 
                     {/* Captions / Legend */}
@@ -382,7 +382,7 @@ const OnlineCourse = () => {
 
                 {/* Decorative Elements for Curriculum */}
                 <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/10 blur-[120px] rounded-full pointer-events-none"></div>
-                <div className="absolute bottom-0 left-0 w-full h-[1px] bg-linear-to-r from-transparent via-white/10 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 w-full h-px bg-linear-to-r from-transparent via-white/10 to-transparent"></div>
             </section>
 
             {/* --- PREMIUM CERTIFICATION SECTION --- */}
@@ -406,7 +406,7 @@ const OnlineCourse = () => {
                                     <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full group-hover/cert:bg-primary/40 transition-all duration-1000 scale-110"></div>
 
                                     {/* The Certificate Frame */}
-                                    <div className="relative h-full w-full bg-linear-to-br from-white/10 to-transparent p-[1px] rounded-xl backdrop-blur-sm overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.8)] transform-gpu transition-all duration-700 group-hover/cert:rotate-y-0 group-hover/cert:scale-105">
+                                    <div className="relative h-full w-full bg-linear-to-br from-white/10 to-transparent p-px rounded-xl backdrop-blur-sm overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.8)] transform-gpu transition-all duration-700 group-hover/cert:rotate-y-0 group-hover/cert:scale-105">
                                         <div className="absolute inset-0 bg-slate-900/40 z-0"></div>
 
                                         <img

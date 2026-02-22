@@ -21,6 +21,7 @@ import BackToTop from './components/BackToTop';
 import StudentCareers from './pages/StudentCareers';
 import OnlineCourse from './pages/OnlineCourse';
 import Blog from './pages/Blog';
+import FashionWeek from './pages/FashionWeek';
 import WhatsappCTA from './components/WhatsappCTA';
 
 
@@ -83,6 +84,7 @@ function App() {
               <Route path="/apply" element={<Admission />} />
               <Route path="/courses/online-courses" element={<OnlineCourse />} />
               <Route path="/insd-360/blog" element={<Blog />} />
+              <Route path="/insd-360/fashion-week" element={<FashionWeek />} />
 
               <Route path="*" element={<Placeholder title="404 Not Found" />} />
             </Routes>
