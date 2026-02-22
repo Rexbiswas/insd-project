@@ -2,7 +2,7 @@ import React, { useRef, useLayoutEffect, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Background3D from '../components/Background3D';
+
 import Lenis from 'lenis';
 
 import InsdBackground from '../components/InsdBackground';
@@ -468,7 +468,7 @@ const Home = () => {
 
     return (
         <div ref={containerRef} className="min-h-screen text-slate-900 relative overflow-x-hidden">
-            <Background3D />
+
             {/* Fixed Global Video Background */}
             <div className="fixed inset-0 z-0">
                 <img className="w-full h-full object-cover" src="https://img.sanishtech.com/u/5404fdb38cd8f5bab3e0495a8d6035c3.jpg" alt="" />
