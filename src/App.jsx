@@ -19,6 +19,8 @@ import MscLuxury from './pages/MscLuxury';
 import Loader from './components/Loader';
 import BackToTop from './components/BackToTop';
 import StudentCareers from './pages/StudentCareers';
+import OnlineCourse from './pages/OnlineCourse';
+
 
 import { RegisterModalProvider } from './context/RegisterModalContext';
 import RegistrationModal from './components/RegistrationModal';
@@ -77,6 +79,8 @@ function App() {
               <Route path="/go-global" element={<GoGlobal />} />
               <Route path="/international-partners" element={<InternationalPartner />} />
               <Route path="/apply" element={<Admission />} />
+              <Route path="/courses/online-courses" element={<OnlineCourse />} />
+
               <Route path="*" element={<Placeholder title="404 Not Found" />} />
             </Routes>
           </div>

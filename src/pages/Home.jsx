@@ -480,11 +480,11 @@ const Home = () => {
 
                 {/* Mask Layer: Mix-Blend-Screen handles the cutout effect */}
                 <div ref={maskRef} className="absolute inset-0 flex flex-col justify-center items-center bg-white md:bg-white mix-blend-screen pointer-events-none select-none z-10 w-full overflow-hidden">
-                    {/* Refined Watermark Logo */}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-[0.05] md:opacity-[0.08] z-0 pointer-events-none">
+                    {/* Watermark Logo - Inside mask for participation in blend */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-30 md:opacity-40 z-0 overflow-hidden">
                         <img
                             src="https://insd.edu.in/wp-content/uploads/2019/11/INSD-circle-Logo_black_100pxl.png"
-                            alt=""
+                            alt="INSD Watermark"
                             className="w-[80vw] md:w-[35vw] h-auto object-contain grayscale brightness-0 opacity-50"
                         />
                     </div>
