@@ -270,14 +270,26 @@ body {
   /* Firefox */
 }
 
-.stroke-text-white {
+.stroke-text-white,
+.strok-text-white {
   -webkit-text-stroke: 1px white;
   color: transparent;
 }
 
+.strok-text-black {
+  -webkit-text-stroke: 1px #0f172a;
+  color: transparent;
+}
+
 @media (min-width: 768px) {
-  .stroke-text-white {
+
+  .stroke-text-white,
+  .strok-text-white {
     -webkit-text-stroke: 2px white;
+  }
+
+  .strok-text-black {
+    -webkit-text-stroke: 2px #0f172a;
   }
 }
 

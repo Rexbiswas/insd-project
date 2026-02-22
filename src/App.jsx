@@ -20,6 +20,8 @@ import Loader from './components/Loader';
 import BackToTop from './components/BackToTop';
 import StudentCareers from './pages/StudentCareers';
 import OnlineCourse from './pages/OnlineCourse';
+import Blog from './pages/Blog';
+import WhatsappCTA from './components/WhatsappCTA';
 
 
 import { RegisterModalProvider } from './context/RegisterModalContext';
@@ -80,10 +82,12 @@ function App() {
               <Route path="/international-partners" element={<InternationalPartner />} />
               <Route path="/apply" element={<Admission />} />
               <Route path="/courses/online-courses" element={<OnlineCourse />} />
+              <Route path="/insd-360/blog" element={<Blog />} />
 
               <Route path="*" element={<Placeholder title="404 Not Found" />} />
             </Routes>
           </div>
+          <WhatsappCTA />
           <BackToTop />
         </Router>
       </div>
