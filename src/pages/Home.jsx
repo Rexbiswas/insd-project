@@ -476,7 +476,7 @@ const Home = () => {
             <div ref={heroRef} className="relative z-10 h-screen w-full flex flex-col justify-center items-center perspective-[1000px]">
 
                 {/* Mask Layer: Mix-Blend-Screen handles the cutout effect */}
-                <div ref={maskRef} className="absolute inset-0 flex flex-col justify-center items-center bg-white/95 md:bg-slate-50 mix-blend-screen pointer-events-none select-none z-10 w-full overflow-hidden pt-20">
+                <div ref={maskRef} className="absolute inset-0 flex flex-col justify-center items-center bg-white md:bg-slate-50 mix-blend-screen pointer-events-none select-none z-10 w-full overflow-hidden pt-20">
                     <div className="flex flex-col items-center justify-center w-full px-4">
 
                         <h1 ref={insdRef} className="text-black text-[28vw] md:text-[32vw] xl:text-[26rem] font-black leading-[0.8] flex items-center justify-center will-change-transform backface-hidden m-0 p-0">{["I", "N", "S", "D"].map((char, index) => <span key={index} className={`char-extra inline-block origin-bottom transition-all duration-300 hover:text-primary hover:scale-110 ${index === 0 ? 'relative top-[1vw] md:top-[0.2vw] mr-[-1vw] md:mr-[-1vw]' : 'w-[1ch] text-center'}`}>{char}</span>)}</h1>
