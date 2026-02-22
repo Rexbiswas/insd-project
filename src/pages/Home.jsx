@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import Lenis from 'lenis';
 
+
 import InsdBackground from '../components/InsdBackground';
 
 import ImpactStats from '../components/ImpactStats';
@@ -476,8 +477,17 @@ const Home = () => {
             {/* Hero Section - Pinned Wrapper relative to Viewport */}
             <div ref={heroRef} className="relative z-10 h-screen w-full flex flex-col justify-center items-center perspective-[1000px]">
 
+
                 {/* Mask Layer: Mix-Blend-Screen handles the cutout effect */}
-                <div ref={maskRef} className="absolute inset-0 flex flex-col justify-center items-center bg-white md:bg-slate-50 mix-blend-screen pointer-events-none select-none z-10 w-full overflow-hidden">
+                <div ref={maskRef} className="absolute inset-0 flex flex-col justify-center items-center bg-white md:bg-white mix-blend-screen pointer-events-none select-none z-10 w-full overflow-hidden">
+                    {/* Refined Watermark Logo */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-[0.05] md:opacity-[0.08] z-0 pointer-events-none">
+                        <img
+                            src="https://insd.edu.in/wp-content/uploads/2019/11/INSD-circle-Logo_black_100pxl.png"
+                            alt=""
+                            className="w-[80vw] md:w-[35vw] h-auto object-contain grayscale brightness-0 opacity-50"
+                        />
+                    </div>
                     <div className="flex flex-col items-center justify-center w-full px-4">
 
                         <h1 ref={insdRef} className="text-black text-[28vw] md:text-[32vw] xl:text-[26rem] font-black leading-[0.8] flex items-center justify-center will-change-transform backface-hidden m-0 p-0">{["I", "N", "S", "D"].map((char, index) => <span key={index} className={`char-extra inline-block origin-bottom transition-all duration-300 hover:text-primary hover:scale-110 ${index === 0 ? 'relative top-[1vw] md:top-[0.2vw] mr-[-1vw] md:mr-[-1vw]' : 'w-[1ch] text-center'}`}>{char}</span>)}</h1>
@@ -493,7 +503,7 @@ const Home = () => {
                 </div>
 
                 {/* Keep Scrolling UI - Fixed at Bottom with Enhanced Mobile Visibility */}
-                <div className="absolute bottom-24 md:bottom-12 left-0 w-full flex flex-col items-center z-50 pointer-events-none select-none">
+                <div className="absolute bottom-24 md:bottom-12 left-0 w-full flex flex-col items-center z-50 pointer-events-auto select-none">
                     <div ref={scrollHintRef} className="flex flex-col items-center group">
                         <div className="flex flex-col items-center text-[#333] relative">
                             {/* Premium Scroll Explorer UI */}
