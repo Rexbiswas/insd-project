@@ -58,6 +58,7 @@ const Home = () => {
     const marqueeRef = useRef(null);
     const studentRef = useRef(null);
     const scrollHintRef = useRef(null);
+    const taglineRef = useRef(null);
     const legacyRef = useRef(null);
     const [isMobile, setIsMobile] = React.useState(false);
 
@@ -92,7 +93,7 @@ const Home = () => {
 
     useLayoutEffect(() => {
         let ctx = gsap.context(() => {
-            const tl = gsap.timeline({ delay: 3.8 });
+            const tl = gsap.timeline({ delay: 1 }); // Reduced from 3.8 for snappier feel
 
             // Text Reveal Animation
             const chars = containerRef.current.querySelectorAll('.char-extra');
@@ -115,6 +116,14 @@ const Home = () => {
                 }
             );
 
+            // Tagline Reveal - Staggered Characters
+            const taglineChars = taglineRef.current.querySelectorAll('.tagline-char');
+            tl.fromTo(taglineChars,
+                { opacity: 0, y: 20, scale: 0.5, filter: "blur(10px)" },
+                { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 1.2, stagger: 0.02, ease: "back.out(1.7)" },
+                "-=1.5"
+            );
+
             // Floating Breath Animation for Hero Chars
             gsap.to(chars, {
                 y: "-=20",
@@ -130,26 +139,28 @@ const Home = () => {
                 delay: 2
             });
 
-            // New Enhanced Scroll Hint Animation - SAFE CHECK
+            // New Premium Scroll Hint Animation
             const scrollHintTl = gsap.timeline({ delay: 0.5 });
 
-            // Text Animations (Run independently of line)
             scrollHintTl
-                .to(scrollHintRef.current?.querySelector('.scroll-text-small'), {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.8,
-                    ease: "power2.out"
-                })
-                .fromTo(scrollHintRef.current?.querySelectorAll('.char-hint-extra'),
-                    { opacity: 0, scale: 0, rotate: -45 },
-                    { opacity: 1, scale: 1, rotate: 0, stagger: 0.03, duration: 1, ease: "back.out(1.7)" },
-                    "-=0.4"
+                .fromTo(scrollHintRef.current?.querySelector('.scroll-explorer-container'),
+                    { opacity: 0, y: 30, scale: 0.9 },
+                    { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: "power4.out" }
                 )
-                .to(scrollHintRef.current?.querySelector('.scroll-text-main'), {
-                    opacity: 1,
-                    duration: 0.1
-                }, "<");
+                .fromTo(scrollHintRef.current?.querySelector('.scroll-line-indicator'),
+                    { scaleY: 0, opacity: 0 },
+                    { scaleY: 1, opacity: 1, duration: 1, ease: "expo.inOut" },
+                    "-=0.6"
+                );
+
+            // Floating movement for the scroll pill
+            gsap.to(scrollHintRef.current?.querySelector('.scroll-pill'), {
+                y: 5,
+                duration: 2,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
 
             // Optional Line Animation if it exists (for safety/future-proofing)
             const scrollLine = scrollHintRef.current?.querySelector('.scroll-line-progress');
@@ -186,50 +197,56 @@ const Home = () => {
                     start: "top top",
                     end: "+=150%",
                     pin: !isMobile,
-                    scrub: 0.5, // Faster animation tracking
+                    scrub: 0.5,
                 }
             });
 
-            if (!isMobile) {
-                scrollTl
-                    .to(insdRef.current, {
-                        scale: 50, // Massive scale to zoom through text
-                        duration: 2,
-                        ease: "power2.inOut"
-                    })
-                    .to([maskRef.current, titleRef.current], {
-                        opacity: 0,
-                        duration: 0.5,
-                        ease: "power2.in"
-                    }, "<+=1.2")
-                    // Unexpected UI: Elements stay but evolve into functional UI
-                    .to(scrollHintRef.current, {
-                        scale: 0.8,
-                        x: (window.innerWidth / 2) - 100, // Responsive move
-                        y: 40,
-                        duration: 1.5,
-                        ease: "power3.inOut"
-                    }, 0)
-                    .to(scrollHintRef.current.querySelector('.relative'), {
-                        rotation: 90,
-                        width: 120, // Responsive width
-                        scaleX: 1,
-                        duration: 1.5,
-                        ease: "power3.inOut"
-                    }, 0)
-                    .to(subTitleRef.current, {
-                        scale: 1.2,
-                        y: 150,
-                        color: "var(--color-primary)",
-                        opacity: 1, // Keep fully visible
-                        duration: 2,
-                        ease: "expo.out"
-                    }, 0.5);
+            if (taglineRef.current) {
+                scrollTl.to(taglineRef.current, {
+                    x: -250,
+                    opacity: 0,
+                    scale: 0.6,
+                    filter: "blur(30px)",
+                    duration: 1,
+                    ease: "power2.in"
+                }, 0);
+            }
+
+            if (scrollHintRef.current) {
+                const hintLine = scrollHintRef.current.querySelector('.scroll-line-indicator');
+                const scrollExplorer = scrollHintRef.current.querySelector('.scroll-explorer-container');
+
+                scrollTl.to(scrollExplorer, {
+                    x: -300,
+                    opacity: 0,
+                    scale: 0.8,
+                    filter: "blur(20px)",
+                    duration: 1,
+                    ease: "power2.in"
+                }, 0.2);
+
+                scrollTl.to(hintLine, {
+                    scaleY: 0,
+                    opacity: 0,
+                    duration: 0.5
+                }, 0.1);
             }
 
 
 
-
+            if (!isMobile) {
+                scrollTl
+                    .to(insdRef.current, {
+                        scale: 50,
+                        duration: 2,
+                        ease: "power2.inOut"
+                    }, 0)
+                    .to([maskRef.current, titleRef.current], {
+                        opacity: 0,
+                        duration: 0.5,
+                        ease: "power2.in"
+                    }, "<+=1.2");
+            }
 
             // 6. Student Spotlight - Dark Mode Transition
             gsap.fromTo(studentRef.current,
@@ -459,34 +476,43 @@ const Home = () => {
             <div ref={heroRef} className="relative z-10 h-screen w-full flex flex-col justify-center items-center perspective-[1000px]">
 
                 {/* Mask Layer: Mix-Blend-Screen handles the cutout effect */}
-                <div ref={maskRef} className="absolute inset-0 flex flex-col justify-center items-center bg-slate-50 mix-blend-screen pointer-events-none select-none z-10">
-                    <div className="text-center">
-                        <h1 ref={insdRef} className="text-black text-[28vw] md:text-[32vw] xl:text-[26rem] font-black leading-none flex items-center justify-center will-change-transform backface-hidden mb-24 md:mb-36">
-                            {["I", "N", "S", "D"].map((char, index) => <span key={index} className={`char-extra inline-block origin-bottom transition-all duration-300 hover:text-primary hover:scale-110 ${index === 0 ? 'mt-4 md:mt-8 mr-[-2vw] md:mr-[-1vw]' : 'w-[1ch] text-center'}`}>{char}</span>)}
-                        </h1>
-                    </div>
-                </div>
+                <div ref={maskRef} className="absolute inset-0 flex flex-col justify-center items-center bg-white/95 md:bg-slate-50 mix-blend-screen pointer-events-none select-none z-10 w-full overflow-hidden pt-20">
+                    <div className="flex flex-col items-center justify-center w-full px-4">
 
-                <div className="absolute bottom-28 md:bottom-10 left-1/2 -translate-x-1/2 w-full flex flex-col items-center z-50 pointer-events-none">
-                    <div ref={scrollHintRef} className="flex flex-col items-center gap-2 md:gap-4 mb-4 md:mb-8" style={{ mixBlendMode: 'difference' }}>
-                        <div className="flex flex-col items-center text-[#333]">
-                            <p className="scroll-text-small text-[8px] md:text-[14px] font-mono uppercase tracking-[0.6em] mb-1 md:mb-2 opacity-0 text-center whitespace-nowrap">
-                                Shift your perspective
+                        <h1 ref={insdRef} className="text-black text-[28vw] md:text-[32vw] xl:text-[26rem] font-black leading-[0.8] flex items-center justify-center will-change-transform backface-hidden m-0 p-0">{["I", "N", "S", "D"].map((char, index) => <span key={index} className={`char-extra inline-block origin-bottom transition-all duration-300 hover:text-primary hover:scale-110 ${index === 0 ? 'relative top-[1vw] md:top-[0.2vw] mr-[-1vw] md:mr-[-1vw]' : 'w-[1ch] text-center'}`}>{char}</span>)}</h1>
+                        {/* Premium Relocated Tagline */}
+                        <div ref={taglineRef} className="mt-8 md:mt-12 px-6 py-2 md:px-10 md:py-3 border border-black/10 rounded-full backdrop-blur-xl bg-white/10 will-change-transform shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] flex items-center justify-center overflow-hidden group">
+                            <p className="text-black text-[10px] md:text-sm font-black uppercase tracking-[0.4em] md:tracking-[0.6em] whitespace-nowrap flex gap-[1px]">
+                                {splitText("INSD - India's Design Skill School", "tagline-char")}
                             </p>
-                            <div className="scroll-text-main text-sm md:text-2xl font-black italic tracking-tight uppercase opacity-0 whitespace-nowrap">
-                                {splitText("Keep Scrolling", "char-hint-extra inline-block")}
+                            {/* Inner Shine Effect */}
+                            <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                        </div>
+                        <div ref={scrollHintRef} className="mt-8 md:mt-12 flex flex-col items-center group">
+                            <div className="flex flex-col items-center text-[#333] relative">
+                                {/* Premium Scroll Explorer UI */}
+                                <div className="scroll-explorer-container flex flex-col items-center opacity-0">
+                                    <div className="flex items-center gap-4 mb-3">
+                                        <span className="w-12 h-[1px] bg-linear-to-r from-transparent to-primary/40"></span>
+                                        <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.5em] text-black/50 italic">Scroll to Explore</span>
+                                        <span className="w-12 h-[1px] bg-linear-to-l from-transparent to-primary/40"></span>
+                                    </div>
+
+                                    <div className="scroll-pill relative w-8 h-12 md:w-10 md:h-16 rounded-full border border-black/10 flex justify-center p-2 backdrop-blur-md bg-white/10 shadow-lg hover:border-primary/30 transition-all duration-500 overflow-hidden">
+                                        {/* Animated Scroll Dot */}
+                                        <div className="w-1.5 h-3 bg-linear-to-b from-primary to-secondary rounded-full animate-bounce"></div>
+
+                                        {/* Glass Highlight */}
+                                        <div className="absolute top-0 left-0 w-full h-full bg-linear-to-br from-white/20 to-transparent pointer-events-none"></div>
+
+                                        {/* Inner Liquid Glow */}
+                                        <div className="absolute -bottom-2 left-0 w-full h-6 bg-primary/10 blur-xl animate-pulse"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div ref={subTitleRef} className="hidden md:block overflow-hidden text-transparent bg-clip-text bg-linear-to-r from-primary via-secondary to-secondary text-center whitespace-nowrap opacity-100 text-2xl md:text-4xl">
-                        {splitText("Unexpected.", "char-extra inline-block")}
-                    </div>
                 </div>
-
-
-
-
-
             </div>
 
             {/* Marquee Strip */}
