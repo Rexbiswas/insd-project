@@ -217,13 +217,14 @@ const Home = () => {
                 const scrollExplorer = scrollHintRef.current.querySelector('.scroll-explorer-container');
 
                 scrollTl.to(scrollExplorer, {
-                    x: -300,
+                    x: isMobile ? 0 : -300,
+                    y: isMobile ? 50 : 0,
                     opacity: 0,
                     scale: 0.8,
                     filter: "blur(20px)",
                     duration: 1,
                     ease: "power2.in"
-                }, 0.2);
+                }, isMobile ? 0.05 : 0.2);
 
                 scrollTl.to(hintLine, {
                     scaleY: 0,
@@ -476,38 +477,38 @@ const Home = () => {
             <div ref={heroRef} className="relative z-10 h-screen w-full flex flex-col justify-center items-center perspective-[1000px]">
 
                 {/* Mask Layer: Mix-Blend-Screen handles the cutout effect */}
-                <div ref={maskRef} className="absolute inset-0 flex flex-col justify-center items-center bg-white md:bg-slate-50 mix-blend-screen pointer-events-none select-none z-10 w-full overflow-hidden pt-20">
+                <div ref={maskRef} className="absolute inset-0 flex flex-col justify-center items-center bg-white md:bg-slate-50 mix-blend-screen pointer-events-none select-none z-10 w-full overflow-hidden">
                     <div className="flex flex-col items-center justify-center w-full px-4">
 
                         <h1 ref={insdRef} className="text-black text-[28vw] md:text-[32vw] xl:text-[26rem] font-black leading-[0.8] flex items-center justify-center will-change-transform backface-hidden m-0 p-0">{["I", "N", "S", "D"].map((char, index) => <span key={index} className={`char-extra inline-block origin-bottom transition-all duration-300 hover:text-primary hover:scale-110 ${index === 0 ? 'relative top-[1vw] md:top-[0.2vw] mr-[-1vw] md:mr-[-1vw]' : 'w-[1ch] text-center'}`}>{char}</span>)}</h1>
                         {/* Premium Relocated Tagline */}
-                        <div ref={taglineRef} className="mt-8 md:mt-12 px-6 py-2 md:px-10 md:py-3 border border-black/10 rounded-full backdrop-blur-xl bg-white/10 will-change-transform shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] flex items-center justify-center overflow-hidden group">
-                            <p className="text-black text-[10px] md:text-sm font-black uppercase tracking-[0.4em] md:tracking-[0.6em] whitespace-nowrap flex gap-[1px]">
+                        <div ref={taglineRef} className="mt-2 md:mt-12 px-6 py-2 md:px-10 md:py-3 border border-black/10 rounded-full backdrop-blur-xl bg-white/10 will-change-transform shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] flex items-center justify-center overflow-hidden group">
+                            <p className="text-black text-[10px] md:text-sm font-black uppercase tracking-[0.4em] md:tracking-[0.6em] whitespace-nowrap flex gap-px">
                                 {splitText("INSD - India's Design Skill School", "tagline-char")}
                             </p>
                             {/* Inner Shine Effect */}
                             <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                         </div>
-                        <div ref={scrollHintRef} className="mt-8 md:mt-12 flex flex-col items-center group">
-                            <div className="flex flex-col items-center text-[#333] relative">
-                                {/* Premium Scroll Explorer UI */}
-                                <div className="scroll-explorer-container flex flex-col items-center opacity-0">
-                                    <div className="flex items-center gap-4 mb-3">
-                                        <span className="w-12 h-[1px] bg-linear-to-r from-transparent to-primary/40"></span>
-                                        <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.5em] text-black/50 italic">Scroll to Explore</span>
-                                        <span className="w-12 h-[1px] bg-linear-to-l from-transparent to-primary/40"></span>
-                                    </div>
+                    </div>
+                </div>
 
-                                    <div className="scroll-pill relative w-8 h-12 md:w-10 md:h-16 rounded-full border border-black/10 flex justify-center p-2 backdrop-blur-md bg-white/10 shadow-lg hover:border-primary/30 transition-all duration-500 overflow-hidden">
-                                        {/* Animated Scroll Dot */}
-                                        <div className="w-1.5 h-3 bg-linear-to-b from-primary to-secondary rounded-full animate-bounce"></div>
+                {/* Keep Scrolling UI - Fixed at Bottom with Enhanced Mobile Visibility */}
+                <div className="absolute bottom-24 md:bottom-12 left-0 w-full flex flex-col items-center z-50 pointer-events-none select-none">
+                    <div ref={scrollHintRef} className="flex flex-col items-center group">
+                        <div className="flex flex-col items-center text-[#333] relative">
+                            {/* Premium Scroll Explorer UI */}
+                            <div className="scroll-explorer-container flex flex-col items-center opacity-0">
 
-                                        {/* Glass Highlight */}
-                                        <div className="absolute top-0 left-0 w-full h-full bg-linear-to-br from-white/20 to-transparent pointer-events-none"></div>
 
-                                        {/* Inner Liquid Glow */}
-                                        <div className="absolute -bottom-2 left-0 w-full h-6 bg-primary/10 blur-xl animate-pulse"></div>
-                                    </div>
+                                <div className="scroll-pill relative w-10 h-16 rounded-full border border-black/20 flex justify-center p-2 backdrop-blur-xl bg-white/20 shadow-[0_0_20px_rgba(0,0,0,0.1)] hover:border-primary/30 transition-all duration-500 overflow-hidden outline outline-1 outline-white/40">
+                                    {/* Animated Scroll Dot */}
+                                    <div className="w-2 h-4 bg-linear-to-b from-primary to-secondary rounded-full animate-bounce shadow-[0_0_10px_rgba(219,52,54,0.3)]"></div>
+
+                                    {/* Glass Highlight */}
+                                    <div className="absolute top-0 left-0 w-full h-full bg-linear-to-br from-white/40 to-transparent pointer-events-none"></div>
+
+                                    {/* Inner Liquid Glow - High Visibility */}
+                                    <div className="absolute -bottom-2 left-0 w-full h-8 bg-primary/20 blur-xl animate-pulse"></div>
                                 </div>
                             </div>
                         </div>
@@ -525,45 +526,47 @@ const Home = () => {
 
             {/* Unique Vertical Accordion Gallery */}
             <div className="relative z-20 bg-black h-screen md:min-h-screen flex overflow-x-auto md:flex-row md:overflow-hidden snap-x snap-mandatory scroll-smooth">
-                {galleryItems.map((item, index) => (
-                    <div
-                        key={index}
-                        className="relative min-w-full md:min-w-0 md:flex-1 group transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] hover:flex-3 cursor-pointer grayscale-0 md:grayscale md:hover:grayscale-0 border-r border-white/10 last:border-r-0 snap-center"
-                    >
-                        {/* Image Background */}
-                        <div className="absolute inset-0 z-0 overflow-hidden">
-                            <img
-                                src={item.img}
-                                alt={item.title}
-                                className="w-full h-full object-cover opacity-80 md:opacity-60 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110"
-                            />
-                            {/* Dark Overlay - Pointer Events None to allow LiquidHover interaction */}
-                            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent md:bg-black/60 md:group-hover:bg-black/20 transition-colors duration-700 pointer-events-none" />
-                        </div>
+                {
+                    galleryItems.map((item, index) => (
+                        <div
+                            key={index}
+                            className="relative min-w-full md:min-w-0 md:flex-1 group transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] hover:flex-3 cursor-pointer grayscale-0 md:grayscale md:hover:grayscale-0 border-r border-white/10 last:border-r-0 snap-center"
+                        >
+                            {/* Image Background */}
+                            <div className="absolute inset-0 z-0 overflow-hidden">
+                                <img
+                                    src={item.img}
+                                    alt={item.title}
+                                    className="w-full h-full object-cover opacity-80 md:opacity-60 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110"
+                                />
+                                {/* Dark Overlay - Pointer Events None to allow LiquidHover interaction */}
+                                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent md:bg-black/60 md:group-hover:bg-black/20 transition-colors duration-700 pointer-events-none" />
+                            </div>
 
-                        {/* Content */}
-                        <div className="absolute inset-0 z-10 flex flex-col justify-end p-8 pb-24 md:pb-12">
-                            <div className="overflow-hidden">
-                                <h3 className="text-5xl md:text-5xl font-black text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary translate-y-0 md:translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-100 uppercase tracking-tighter">
+                            {/* Content */}
+                            <div className="absolute inset-0 z-10 flex flex-col justify-end p-8 pb-24 md:pb-12">
+                                <div className="overflow-hidden">
+                                    <h3 className="text-5xl md:text-5xl font-black text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary translate-y-0 md:translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-100 uppercase tracking-tighter">
+                                        {item.title}
+                                    </h3>
+                                </div>
+                                <div className="overflow-hidden mt-2 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                                    <p className="text-white/80 text-sm font-medium tracking-widest uppercase border-t border-primary/50 pt-4 inline-block">
+                                        Explore Program
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Collapsed State Title (Desktop Only) */}
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 opacity-0 md:opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none hidden md:block">
+                                <span className="text-white/50 font-bold uppercase tracking-widest text-xl whitespace-nowrap">
                                     {item.title}
-                                </h3>
-                            </div>
-                            <div className="overflow-hidden mt-2 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
-                                <p className="text-white/80 text-sm font-medium tracking-widest uppercase border-t border-primary/50 pt-4 inline-block">
-                                    Explore Program
-                                </p>
+                                </span>
                             </div>
                         </div>
-
-                        {/* Collapsed State Title (Desktop Only) */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 opacity-0 md:opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none hidden md:block">
-                            <span className="text-white/50 font-bold uppercase tracking-widest text-xl whitespace-nowrap">
-                                {item.title}
-                            </span>
-                        </div>
-                    </div>
-                ))}
-            </div>
+                    ))
+                }
+            </div >
 
             <AdmissionScroller />
             <StepVisual />
@@ -834,7 +837,7 @@ const Home = () => {
             <div className="relative z-50">
                 <Footer />
             </div>
-        </div>
+        </div >
     );
 };
 
