@@ -23,16 +23,13 @@ import OnlineCourse from './pages/OnlineCourse';
 import Blog from './pages/Blog';
 import FashionWeek from './pages/FashionWeek';
 import WhatsappCTA from './components/WhatsappCTA';
+import AIChatbot from './components/AIChatbot';
 
 
 import { RegisterModalProvider } from './context/RegisterModalContext';
 import RegistrationModal from './components/RegistrationModal';
 
-const Placeholder = ({ title }) => (
-  <div className="min-h-screen flex items-center justify-center bg-slate-50">
-    <h1 className="text-4xl font-black uppercase tracking-tighter text-slate-300">{title} Coming Soon</h1>
-  </div>
-);
+import NotFound from './pages/NotFound';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -86,11 +83,13 @@ function App() {
               <Route path="/insd-360/blog" element={<Blog />} />
               <Route path="/insd-360/fashion-week" element={<FashionWeek />} />
 
-              <Route path="*" element={<Placeholder title="404 Not Found" />} />
+              <Route path="/test-404" element={<NotFound />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
           <WhatsappCTA />
           <BackToTop />
+          <AIChatbot />
         </Router>
       </div>
     </RegisterModalProvider>

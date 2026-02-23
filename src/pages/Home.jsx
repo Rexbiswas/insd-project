@@ -472,7 +472,7 @@ const Home = () => {
 
             {/* Fixed Global Video Background */}
             <div className="fixed inset-0 z-0">
-                <img className="w-full h-full object-cover" src="https://img.sanishtech.com/u/5404fdb38cd8f5bab3e0495a8d6035c3.jpg" alt="" />
+                <img className="w-full h-full object-cover" src="https://ik.imagekit.io/fmldynl4j4/IMG_3440.JPG" alt="" />
             </div>
             {/* Hero Section - Pinned Wrapper relative to Viewport */}
             <div ref={heroRef} className="relative z-10 h-screen w-full flex flex-col justify-center items-center perspective-[1000px]">
@@ -485,7 +485,7 @@ const Home = () => {
                         <img
                             src="https://insd.edu.in/wp-content/uploads/2019/11/INSD-circle-Logo_black_100pxl.png"
                             alt="INSD Watermark"
-                            className="w-[80vw] md:w-[35vw] h-auto object-contain grayscale brightness-0 opacity-50"
+                            className="w-[vw] md:w-[20vw] h-auto object-contain grayscale brightness-0 opacity-40 mix-blend-multiply"
                         />
                     </div>
                     <div className="flex flex-col items-center justify-center w-full px-4">
