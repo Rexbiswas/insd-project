@@ -190,7 +190,11 @@ process.on('uncaughtException', (err) => {
 });
 
 // Start Server
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running on port ${PORT}`);
-    console.log(`Visit http://localhost:${PORT} to verify`);
-});
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, '0.0.0.0', () => {
+        console.log(`Server running on port ${PORT}`);
+        console.log(`Visit http://localhost:${PORT} to verify`);
+    });
+}
+
+module.exports = app;
