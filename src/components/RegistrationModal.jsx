@@ -108,7 +108,7 @@ const RegistrationModal = () => {
             } else {
                 const text = await response.text();
                 console.error("Non-JSON response received:", text);
-                alert("Server error (Non-JSON): " + text.substring(0, 100));
+                alert(`Server Error (${response.status}): ${text.substring(0, 100)}`);
                 setIsSubmitting(false);
                 return;
             }
