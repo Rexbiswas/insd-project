@@ -23,7 +23,7 @@ import OnlineCourse from './pages/OnlineCourse';
 import Blog from './pages/Blog';
 import FashionWeek from './pages/FashionWeek';
 import WhatsappCTA from './components/WhatsappCTA';
-import AIChatbot from './components/AIChatbot';
+// import AIChatbot from './components/AIChatbot';
 
 
 import { RegisterModalProvider } from './context/RegisterModalContext';
@@ -89,7 +89,7 @@ function App() {
           </div>
           <WhatsappCTA />
           <BackToTop />
-          <AIChatbot />
+          {/* <AIChatbot /> */}
         </Router>
       </div>
     </RegisterModalProvider>
