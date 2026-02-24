@@ -160,8 +160,8 @@ const FashionWeek = () => {
                     className="absolute inset-x-6 inset-y-20 md:inset-x-32 md:inset-y-40 z-2 border border-black/5 rounded-[4rem] md:rounded-[10rem] overflow-hidden group shadow-[0_80px_150px_rgba(0,0,100,0.08)] bg-white/50 backdrop-blur-sm"
                 >
                     <img
-                        src="https://insd.edu.in/wp-content/uploads/2019/11/FASHION-SHOW-BANNER-min-1.jpg"
-                        className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-8000 ease-out brightness-105 saturate-50"
+                        src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1976&auto=format&fit=crop"
+                        className="w-full h-full object-cover opacity-80 md:opacity-70 group-hover:scale-105 transition-transform duration-8000 ease-out brightness-100 sm:brightness-105 saturate-100 sm:saturate-50 object-center md:object-top"
                         alt="Hero Focus"
                     />
 
@@ -295,15 +295,15 @@ const FashionWeek = () => {
                                     >
                                         <img
                                             src={[
-                                                "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1972&auto=format&fit=crop",
+                                                "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2040&auto=format&fit=crop",
                                                 "https://images.unsplash.com/photo-1539109132314-34a77bd6819f?q=80&w=1974&auto=format&fit=crop",
                                                 "https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=2071&auto=format&fit=crop",
                                                 "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2070&auto=format&fit=crop"
                                             ][currentSlide % 4]}
-                                            className="w-full h-full object-cover grayscale brightness-110"
+                                            className="w-full h-full object-cover grayscale-0 md:grayscale brightness-100 md:brightness-110"
                                             alt="Manifesto Loop"
                                         />
-                                        <div className="absolute inset-0 bg-linear-to-tr from-primary/20 via-transparent to-transparent opacity-40" />
+                                        <div className="absolute inset-0 bg-linear-to-tr from-primary/10 via-transparent to-transparent opacity-60 md:opacity-40" />
                                     </motion.div>
                                 </AnimatePresence>
 
