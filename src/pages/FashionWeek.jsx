@@ -160,8 +160,8 @@ const FashionWeek = () => {
                     className="absolute inset-x-6 inset-y-20 md:inset-x-32 md:inset-y-40 z-2 border border-black/5 rounded-[4rem] md:rounded-[10rem] overflow-hidden group shadow-[0_80px_150px_rgba(0,0,100,0.08)] bg-white/50 backdrop-blur-sm"
                 >
                     <img
-                        src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1976&auto=format&fit=crop"
-                        className="w-full h-full object-cover opacity-80 md:opacity-70 group-hover:scale-105 transition-transform duration-8000 ease-out brightness-100 sm:brightness-105 saturate-100 sm:saturate-50 object-center md:object-top"
+                        src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=100&w=2000&auto=format&fit=crop"
+                        className="w-full h-full object-cover opacity-100 md:opacity-70 group-hover:scale-105 transition-transform duration-8000 ease-out brightness-100 saturate-100 transform-gpu object-center md:object-top"
                         alt="Hero Focus"
                     />
 
@@ -295,12 +295,12 @@ const FashionWeek = () => {
                                     >
                                         <img
                                             src={[
-                                                "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2040&auto=format&fit=crop",
-                                                "https://images.unsplash.com/photo-1539109132314-34a77bd6819f?q=80&w=1974&auto=format&fit=crop",
-                                                "https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=2071&auto=format&fit=crop",
-                                                "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2070&auto=format&fit=crop"
+                                                "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=100&w=2000&auto=format&fit=crop",
+                                                "https://images.unsplash.com/photo-1539109132314-34a77bd6819f?q=100&w=2000&auto=format&fit=crop",
+                                                "https://images.unsplash.com/photo-1445205170230-053b83016050?q=100&w=2000&auto=format&fit=crop",
+                                                "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=100&w=2000&auto=format&fit=crop"
                                             ][currentSlide % 4]}
-                                            className="w-full h-full object-cover grayscale-0 md:grayscale brightness-100 md:brightness-110"
+                                            className="w-full h-full object-cover grayscale-0 md:grayscale brightness-100 md:brightness-110 transform-gpu"
                                             alt="Manifesto Loop"
                                         />
                                         <div className="absolute inset-0 bg-linear-to-tr from-primary/10 via-transparent to-transparent opacity-60 md:opacity-40" />
@@ -369,7 +369,7 @@ const FashionWeek = () => {
                             <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] rounded-[3rem] md:rounded-[8rem] overflow-hidden border border-black/5 bg-white/40 backdrop-blur-md shadow-2xl shadow-blue-900/5 transform-gpu transition-all duration-1200 group-hover:scale-[1.01] group-hover:shadow-blue-900/10">
                                 <img
                                     src={item.image}
-                                    className="w-full h-full object-cover opacity-90 contrast-[1.05] group-hover:scale-105 group-hover:opacity-100 transition-all duration-5000 grayscale hover:grayscale-0"
+                                    className="w-full h-full object-cover opacity-100 md:opacity-90 contrast-[1.02] md:contrast-[1.05] group-hover:scale-105 transition-all duration-5000 grayscale-0 md:grayscale hover:grayscale-0 transform-gpu"
                                     alt={item.title}
                                 />
                                 <div className="absolute inset-0 bg-linear-to-t from-white/90 via-transparent to-white/10" />
@@ -468,9 +468,9 @@ const FashionWeek = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: idx * 0.1, duration: 1 }}
                                 whileHover={{ y: -15 }}
-                                className="group relative aspect-3/5 rounded-4xl sm:rounded-4xl md:rounded-[3.5rem] overflow-hidden bg-white/40 border border-black/5 shadow-2xl shadow-blue-900/5 backdrop-blur-sm"
+                                className="group relative aspect-3/5 rounded-4xl md:rounded-[3.5rem] overflow-hidden bg-white/40 border border-black/5 shadow-2xl shadow-blue-900/5 backdrop-blur-sm"
                             >
-                                <img src={item.img} className="w-full h-full object-cover opacity-70 group-hover:scale-110 group-hover:opacity-100 transition-all duration-1500 grayscale hover:grayscale-0 saturate-50 hover:saturate-100" alt="archive" />
+                                <img src={item.img} className="w-full h-full object-cover opacity-100 md:opacity-70 group-hover:scale-110 transition-all duration-1500 grayscale-0 md:grayscale hover:grayscale-0 saturate-100 md:saturate-50 hover:saturate-100 transform-gpu" alt="archive" />
                                 <div className="absolute inset-0 bg-linear-to-t from-white via-white/10 to-transparent" />
                                 <div className="absolute inset-x-6 sm:inset-x-10 bottom-8 sm:bottom-12">
                                     <div className="flex items-center gap-4 text-primary/60 mb-2 sm:mb-3 font-black">
