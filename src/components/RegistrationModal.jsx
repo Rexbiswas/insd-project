@@ -209,7 +209,8 @@ const RegistrationModal = () => {
                         </div>
 
                         {/* Content Scrollable Area */}
-                        <div className="relative z-10 p-8 md:p-10 flex flex-col h-full min-h-[750px] overflow-y-auto no-scrollbar">
+                        <div className="relative z-10 p-6 md:p-10 flex flex-col h-full min-h-[500px] md:min-h-[750px] overflow-y-auto no-scrollbar">
+
 
                             {/* Close Button */}
                             <button
@@ -227,13 +228,14 @@ const RegistrationModal = () => {
                                             {authMode === 'register' ? <Sparkles size={10} /> : <LogIn size={10} />}
                                             <span>{authMode === 'register' ? 'Join the Elite' : 'Welcome Back'}</span>
                                         </div>
-                                        <h2 className="text-3xl font-black text-white leading-tight">
+                                        <h2 className="text-2xl md:text-3xl font-black text-white leading-tight">
                                             {authMode === 'register' ? (
                                                 <>Begin Your <br /><span className="text-transparent bg-clip-text bg-linear-to-r from-pink-300 to-violet-300">Design Legacy</span></>
                                             ) : (
                                                 <>Access <br /><span className="text-transparent bg-clip-text bg-linear-to-r from-pink-300 to-violet-300">Your Terminal</span></>
                                             )}
                                         </h2>
+
                                     </div>
 
                                     {/* Form Steps */}
@@ -247,13 +249,14 @@ const RegistrationModal = () => {
                                                         <motion.div key="step1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-4">
                                                             <h3 className="text-sm font-bold text-pink-300 uppercase tracking-widest mb-4">Account Setup (1/10)</h3>
                                                             <div className="space-y-2">
-                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Username</label>
-                                                                <input autoFocus type="text" placeholder="Choose a username" value={formData.username} onChange={e => setFormData({ ...formData, username: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
+                                                                <label className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Username</label>
+                                                                <input autoFocus type="text" placeholder="Choose a username" value={formData.username} onChange={e => setFormData({ ...formData, username: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-3 md:px-6 md:py-4 text-white focus:border-pink-500/50 transition-all outline-none text-sm md:text-base" />
                                                             </div>
                                                             <div className="space-y-2">
-                                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Password *</label>
-                                                                <input type="password" required placeholder="Create a password" value={formData.password} onChange={e => setFormData({ ...formData, password: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
+                                                                <label className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Password *</label>
+                                                                <input type="password" required placeholder="Create a password" value={formData.password} onChange={e => setFormData({ ...formData, password: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-3 md:px-6 md:py-4 text-white focus:border-pink-500/50 transition-all outline-none text-sm md:text-base" />
                                                             </div>
+
                                                         </motion.div>
                                                     )}
 

@@ -14,7 +14,6 @@
   /* Animation keyframes */
   @keyframes float {
 
-
     0%,
     100% {
       transform: translateY(0);
@@ -201,11 +200,19 @@ body {
   /* Slate 900 */
   overflow-x: hidden;
   font-family: 'Outfit', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+}
+
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
 }
 
 ::-webkit-scrollbar-track {
@@ -223,16 +230,16 @@ body {
 
 /* Apple-Style Premium Frosted Glass */
 .apple-glass {
-  backdrop-filter: blur(25px) saturate(180%);
-  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   background: rgba(255, 255, 255, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
 }
 
 .apple-glass-dark {
-  backdrop-filter: blur(25px) saturate(180%);
-  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   background: rgba(15, 23, 43, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
@@ -272,12 +279,12 @@ body {
 
 .stroke-text-white,
 .strok-text-white {
-  -webkit-text-stroke: 1px white;
+  -webkit-text-stroke: 0.5px white;
   color: transparent;
 }
 
 .strok-text-black {
-  -webkit-text-stroke: 1px #0f172a;
+  -webkit-text-stroke: 0.5px #0f172a;
   color: transparent;
 }
 
@@ -298,4 +305,46 @@ body {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Responsive Font Utilities */
+.text-giant {
+  font-size: clamp(3rem, 15vw, 12rem);
+  line-height: 0.9;
+}
+
+.text-hero {
+  font-size: clamp(4rem, 25vw, 24rem);
+  line-height: 0.8;
+}
+
+/* Fix for mobile horizontal scroll in some layouts */
+.mobile-stack {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .mobile-stack {
+    flex-direction: row;
+  }
+}
+
+/* Pulse animation for high priority items */
+@keyframes pulse-soft {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(0.98);
+  }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
 }

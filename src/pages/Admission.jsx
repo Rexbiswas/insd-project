@@ -14,6 +14,14 @@ const Admission = () => {
     const containerRef = useRef(null);
     const apertureRef = useRef(null);
     const { scrollYProgress } = useScroll();
+    const [isMobile, setIsMobile] = React.useState(window.innerWidth < 768);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
 
     // Lenis Smooth Scroll
     useEffect(() => {
@@ -63,10 +71,11 @@ const Admission = () => {
     }, []);
 
     const sections = [
-        { title: "Design Tech", img: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg", hex: "var(--color-primary)" },
-        { title: "Visual Arts", img: "https://images.pexels.com/photos/1183992/pexels-photo-1183992.jpeg", hex: "var(--color-secondary)" },
-        { title: "Luxury Fashion", img: "https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg", hex: "var(--color-primary)" }
+        { title: "Design Tech", img: `https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=${isMobile ? 800 : 1200}`, hex: "var(--color-primary)" },
+        { title: "Visual Arts", img: `https://images.pexels.com/photos/1183992/pexels-photo-1183992.jpeg?auto=compress&cs=tinysrgb&w=${isMobile ? 800 : 1200}`, hex: "var(--color-secondary)" },
+        { title: "Luxury Fashion", img: `https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=${isMobile ? 800 : 1200}`, hex: "var(--color-primary)" }
     ];
+
 
     return (
         <div ref={containerRef} className="bg-[#080808] text-white selection:bg-primary font-sans overflow-hidden">
@@ -84,11 +93,12 @@ const Admission = () => {
                 </div>
 
                 <div className="relative z-20 text-center px-6">
-                    <h2 className="text-primary font-mono tracking-[1em] text-[10px] uppercase mb-8">System_Initiate</h2>
-                    <h1 className="aperture-title text-8xl md:text-[14rem] font-black uppercase leading-none tracking-tighter italic">
+                    <h2 className="text-primary font-mono tracking-[0.5em] md:tracking-[1em] text-[9px] md:text-[10px] uppercase mb-8">System_Initiate</h2>
+                    <h1 className="aperture-title text-5xl md:text-8xl lg:text-[14rem] font-black uppercase leading-[0.85] tracking-tighter italic">
                         The Core <br /> <span className="text-transparent stroke-text-white stroke-white!">Protocol.</span>
                     </h1>
                 </div>
+
 
                 <div className="absolute bottom-10 left-10 z-30 font-mono text-[10px] opacity-30 flex items-center gap-4">
                     <div className="w-8 h-8 rounded-full border border-white flex items-center justify-center animate-spin-slow">×</div>
@@ -122,19 +132,20 @@ const Admission = () => {
                                 initial={{ opacity: 0, x: 50 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 1, delay: 0.2, ease: "circOut" }}
-                                className="flex-1 space-y-10"
+                                className="flex-1 space-y-6 md:space-y-10"
                             >
-                                <span className="text-primary font-mono text-xs tracking-widest uppercase">Module_{section.title.replace(' ', '_')}</span>
-                                <h2 className="text-7xl md:text-9xl font-black uppercase leading-[0.85] tracking-tighter">
+                                <span className="text-primary font-mono text-[10px] md:text-xs tracking-widest uppercase">Module_{section.title.replace(' ', '_')}</span>
+                                <h2 className="text-5xl md:text-7xl lg:text-9xl font-black uppercase leading-[0.85] tracking-tighter">
                                     {section.title.split(' ')[0]} <br /> <span className="opacity-30 italic">{section.title.split(' ')[1] || 'Core'}</span>
                                 </h2>
-                                <p className="text-slate-400 text-xl font-light leading-relaxed max-w-sm">
+                                <p className="text-slate-400 text-lg md:text-xl font-light leading-relaxed max-w-sm">
                                     A deep dive into high-fidelity execution and conceptual disruption within {section.title}.
                                 </p>
-                                <button className="px-10 py-4 border border-white/10 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all">
+                                <button className="px-8 md:px-10 py-3 md:py-4 border border-white/10 rounded-full font-bold uppercase tracking-widest text-[10px] md:text-xs hover:bg-white hover:text-black transition-all">
                                     View Syllabus
                                 </button>
                             </motion.div>
+
                         </div>
                     ))}
                 </div>
@@ -148,20 +159,21 @@ const Admission = () => {
                         <div className="w-20 h-2 bg-black mx-auto" />
                     </div>
 
-                    <div className="space-y-40">
+                    <div className="space-y-24 md:space-y-40">
                         {[
                             { step: "01", val: "Portfolio Scan", desc: "A qualitative assessment of your creative intuition and visual logic." },
                             { step: "02", val: "Dean's Vetting", desc: "High-level strategic conversation regarding your industry trajectory." }
                         ].map((m, i) => (
-                            <div key={i} className="flex gap-16 items-start group">
-                                <span className="text-9xl font-black text-slate-100 leading-none group-hover:text-primary/20 transition-colors uppercase">{m.step}</span>
-                                <div className="space-y-6 pt-4">
-                                    <h3 className="text-4xl font-extrabold uppercase italic">{m.val}</h3>
-                                    <p className="text-slate-500 text-2xl font-light leading-tight">{m.desc}</p>
+                            <div key={i} className="flex flex-col md:flex-row gap-8 md:gap-16 items-start group">
+                                <span className="text-7xl md:text-9xl font-black text-slate-100 leading-none group-hover:text-primary/20 transition-colors uppercase">{m.step}</span>
+                                <div className="space-y-4 md:space-y-6 pt-0 md:pt-4">
+                                    <h3 className="text-2xl md:text-4xl font-extrabold uppercase italic">{m.val}</h3>
+                                    <p className="text-slate-500 text-lg md:text-2xl font-light leading-tight">{m.desc}</p>
                                 </div>
                             </div>
                         ))}
                     </div>
+
                 </div>
             </section>
 
@@ -183,13 +195,14 @@ const Admission = () => {
 
                         <button
                             onClick={openModal}
-                            className="relative z-10 w-full md:w-auto px-20 py-8 bg-white/10 backdrop-blur-xl border border-white/20 text-white font-black uppercase tracking-[0.4em] text-sm hover:bg-white hover:text-black transition-all shadow-2xl rounded-full text-center group/btn"
+                            className="relative z-10 w-full md:w-auto px-12 md:px-20 py-6 md:py-8 bg-white/10 backdrop-blur-xl border border-white/20 text-white font-black uppercase tracking-[0.2em] md:tracking-[0.4em] text-[10px] md:text-sm hover:bg-white hover:text-black transition-all shadow-2xl rounded-full text-center group/btn"
                         >
-                            <span className="flex items-center gap-4">
+                            <span className="flex items-center justify-center gap-4">
                                 Open Protocol Sequence
-                                <ArrowRight className="group-hover/btn:translate-x-4 transition-transform" />
+                                <ArrowRight className="group-hover/btn:translate-x-4 transition-transform size-4" />
                             </span>
                         </button>
+
 
                         <div className="mt-12 flex gap-4 opacity-30 relative z-10">
                             <div className="w-2 h-2 rounded-full bg-white animate-pulse" />

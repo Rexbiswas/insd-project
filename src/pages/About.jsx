@@ -15,6 +15,14 @@ const About = () => {
     const heroTextRef = useRef(null);
     const scrollSectionRef = useRef(null);
     const lensRef = useRef(null);
+    const [isMobile, setIsMobile] = React.useState(window.innerWidth < 768);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
 
     // Lenis Smooth Scroll Integration
     useEffect(() => {
@@ -152,6 +160,7 @@ const About = () => {
             <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden">
                 <div className="hero-bg absolute inset-0 bg-[url('https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=1600')] bg-cover bg-center brightness-[0.4]" />
 
+
                 <div ref={heroTextRef} className="relative z-10 flex flex-col items-center">
                     <span className="text-primary font-mono tracking-[1.5em] uppercase text-[10px] mb-8 animate-pulse">Designing Legacies</span>
                     <h1 className="text-[25vw] font-black leading-none tracking-tighter flex items-baseline">
@@ -169,25 +178,25 @@ const About = () => {
             </section>
 
             {/* Section 2: Kinetic Statistics */}
-            <section className="relative py-48 bg-[#050505] z-10">
+            <section className="relative py-24 md:py-48 bg-[#050505] z-10">
                 <div className="max-w-7xl mx-auto px-6">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-24 items-center">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-24 items-center">
                         <div className="md:col-span-1">
-                            <h3 className="text-4xl font-bold uppercase tracking-tighter mb-8 leading-tight">
-                                A Century of <br /> Vision, Compressed.
+                            <h3 className="text-3xl md:text-4xl font-bold uppercase tracking-tighter mb-6 md:mb-8 leading-tight">
+                                A Century of <br className="hidden md:block" /> Vision, Compressed.
                             </h3>
-                            <div className="w-24 h-1 bg-primary" />
+                            <div className="w-20 md:w-24 h-1 bg-primary" />
                         </div>
-                        <div className="md:col-span-2 grid grid-cols-2 gap-12">
+                        <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-12">
                             {[
                                 { label: 'Centers Globally', val: '50+' },
                                 { label: 'Creative Alumni', val: '15k+' },
                                 { label: 'Design Awards', val: '100+' },
                                 { label: 'Industry Partners', val: '80+' }
                             ].map((stat, i) => (
-                                <div key={i} className="group border-l border-white/10 pl-8 hover:border-primary transition-colors duration-500">
-                                    <span className="block text-5xl md:text-7xl font-black mb-2">{stat.val}</span>
-                                    <span className="text-xs uppercase tracking-[0.3em] text-slate-500 font-mono">{stat.label}</span>
+                                <div key={i} className="group border-l border-white/10 pl-6 md:pl-8 hover:border-primary transition-colors duration-500">
+                                    <span className="block text-5xl md:text-7xl font-black mb-1 md:mb-2">{stat.val}</span>
+                                    <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.3em] text-slate-500 font-mono">{stat.label}</span>
                                 </div>
                             ))}
                         </div>
@@ -195,19 +204,21 @@ const About = () => {
                 </div>
             </section>
 
+
             {/* Section 3: The Horizontal Discovery */}
             <section ref={horizontalSectionRef} className="h-screen bg-white">
-                <div ref={horizontalScrollRef} className="h-full flex items-center px-[10vw] gap-32">
+                <div ref={horizontalScrollRef} className="h-full flex items-center px-[5vw] md:px-[10vw] gap-12 md:gap-32">
                     {/* Founder Intro */}
-                    <div className="min-w-[80vw] md:min-w-[40vw] flex flex-col">
-                        <span className="text-primary font-bold uppercase tracking-widest text-xs mb-6 block">— Our Genesis</span>
-                        <h2 className="text-8xl font-black text-black leading-[0.85] tracking-tighter uppercase mb-12">
+                    <div className="min-w-[85vw] md:min-w-[40vw] flex flex-col">
+                        <span className="text-primary font-bold uppercase tracking-widest text-[10px] md:text-xs mb-4 md:mb-6 block">— Our Genesis</span>
+                        <h2 className="text-5xl md:text-8xl font-black text-black leading-[0.85] tracking-tighter uppercase mb-6 md:mb-12">
                             Born from <br /> <span className="text-transparent stroke-text-white stroke-black!">IAS Vision.</span>
                         </h2>
-                        <p className="text-xl text-slate-500 max-w-md">
+                        <p className="text-lg md:text-xl text-slate-500 max-w-md">
                             Co-founded by the 1st Director General of NIFT, INSD isn't just a school—it's a national framework for creative excellence.
                         </p>
                     </div>
+
 
                     {/* Interactive Showcase */}
                     {[
@@ -216,13 +227,15 @@ const About = () => {
                         { title: 'Future Tech', img: 'https://images.pexels.com/photos/8145203/pexels-photo-8145203.jpeg' }
                     ].map((item, i) => (
                         <div key={i} className="min-w-[70vw] md:min-w-[50vw] h-[70vh] relative group overflow-hidden rounded-[2rem] shadow-2xl">
-                            <img src={item.img} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100" />
+                            <img src={`${item.img}?auto=compress&cs=tinysrgb&w=${isMobile ? 800 : 1200}`} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100" loading="lazy" />
                             <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-12">
                                 <span className="text-primary font-mono mb-2">Pillar 0{i + 1}</span>
-                                <h3 className="text-7xl font-black uppercase text-white tracking-tighter">{item.title}</h3>
+                                <h3 className="text-5xl md:text-7xl font-black uppercase text-white tracking-tighter leading-none">{item.title}</h3>
                             </div>
                         </div>
                     ))}
+
+
                 </div>
             </section>
 
@@ -242,24 +255,26 @@ const About = () => {
                 <div className="parallax-layer absolute bottom-20 right-[15%] w-96 h-96 bg-secondary/10 blur-[150px] rounded-full" />
 
                 <div className="max-w-7xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
-                        <div className="space-y-32">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
+                        <div className="space-y-12 md:space-y-32">
                             {[
                                 { title: 'Authenticity', desc: 'True design cannot be faked. We prioritize raw, unfiltered expression.' },
                                 { title: 'Precision', desc: 'Where art meets engineering. Every detail is a deliberate choice.' },
                                 { title: 'Impact', desc: 'Design that doesnt move the world is just decoration.' }
                             ].map((pill, i) => (
-                                <div key={i} className="floating-card group bg-white/5 backdrop-blur-xl border border-white/10 p-12 rounded-[2.5rem] hover:bg-white/10 transition-all duration-500">
-                                    <span className="text-primary font-mono text-xl block mb-6 px-4 py-1 border border-primary/40 rounded-full w-fit">0{i + 1}</span>
-                                    <h3 className="text-5xl font-black uppercase tracking-tighter mb-6">{pill.title}</h3>
-                                    <p className="text-slate-400 text-lg leading-relaxed">{pill.desc}</p>
+                                <div key={i} className="floating-card group bg-white/5 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] hover:bg-white/10 transition-all duration-500">
+                                    <span className="text-primary font-mono text-base md:text-xl block mb-4 md:mb-6 px-3 md:px-4 py-1 border border-primary/40 rounded-full w-fit">0{i + 1}</span>
+                                    <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4 md:mb-6">{pill.title}</h3>
+                                    <p className="text-slate-400 text-base md:text-lg leading-relaxed">{pill.desc}</p>
                                 </div>
                             ))}
                         </div>
+
                         <div className="hidden md:block relative">
                             <div className="reveal-img-container aspect-3/4 rounded-[3rem] overflow-hidden rotate-3 shadow-primary/10 shadow-2xl">
-                                <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg" className="w-full h-full object-cover" />
+                                <img src={`https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1200`} className="w-full h-full object-cover" loading="lazy" />
                             </div>
+
                             <div className="absolute -bottom-12 -right-12 w-96 p-12 bg-white text-black rounded-[2rem] shadow-2xl -rotate-6">
                                 <p className="text-2xl font-black italic">"Design is the silent ambassador of your brand."</p>
                             </div>

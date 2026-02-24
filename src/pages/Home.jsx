@@ -446,13 +446,14 @@ const Home = () => {
     }, []);
 
     const galleryItems = [
-        { title: "Fashion Design", img: "https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
-        { title: "Luxury Management", img: "https://images.pexels.com/photos/2088210/pexels-photo-2088210.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
-        { title: "Interior Design", img: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
-        { title: "Jewellery Design", img: "https://images.pexels.com/photos/2735970/pexels-photo-2735970.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
-        { title: "Graphic Design", img: "https://images.pexels.com/photos/4348404/pexels-photo-4348404.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
-        { title: "Animation", img: "https://images.pexels.com/photos/356079/pexels-photo-356079.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }
+        { title: "Fashion Design", img: `https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=${isMobile ? 600 : 1260}&h=750&dpr=1` },
+        { title: "Luxury Management", img: `https://images.pexels.com/photos/2088210/pexels-photo-2088210.jpeg?auto=compress&cs=tinysrgb&w=${isMobile ? 600 : 1260}&h=750&dpr=1` },
+        { title: "Interior Design", img: `https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=${isMobile ? 600 : 1260}&h=750&dpr=1` },
+        { title: "Jewellery Design", img: `https://images.pexels.com/photos/2735970/pexels-photo-2735970.jpeg?auto=compress&cs=tinysrgb&w=${isMobile ? 600 : 1260}&h=750&dpr=1` },
+        { title: "Graphic Design", img: `https://images.pexels.com/photos/4348404/pexels-photo-4348404.jpeg?auto=compress&cs=tinysrgb&w=${isMobile ? 600 : 1260}&h=750&dpr=1` },
+        { title: "Animation", img: `https://images.pexels.com/photos/356079/pexels-photo-356079.jpeg?auto=compress&cs=tinysrgb&w=${isMobile ? 600 : 1260}&h=750&dpr=1` }
     ];
+
 
     const carouselTerms = [
         "Fashion", "Innovation", "Luxury", "Design", "Future", "Creative", "Global", "Digital", "Textile", "Art"
@@ -470,10 +471,10 @@ const Home = () => {
     return (
         <div ref={containerRef} className="min-h-screen text-slate-900 relative overflow-x-hidden">
 
-            {/* Fixed Global Video Background */}
             <div className="fixed inset-0 z-0">
-                <img className="w-full h-full object-cover" src="https://ik.imagekit.io/fmldynl4j4/IMG_3440.JPG" alt="" />
+                <img className="w-full h-full object-cover" src={`https://ik.imagekit.io/fmldynl4j4/IMG_3440.JPG?tr=w-${isMobile ? 800 : 1600},q-${isMobile ? 60 : 80}`} alt="Background Gradient" loading="eager" />
             </div>
+
             {/* Hero Section - Pinned Wrapper relative to Viewport */}
             <div ref={heroRef} className="relative z-10 h-screen w-full flex flex-col justify-center items-center perspective-[1000px]">
 
@@ -488,14 +489,25 @@ const Home = () => {
                             className="w-[vw] md:w-[20vw] h-auto object-contain grayscale brightness-0 opacity-40 mix-blend-multiply"
                         />
                     </div>
-                    <div className="flex flex-col items-center justify-center w-full px-4">
+                    <div className="flex flex-col items-center justify-center w-full px-4 text-center">
 
-                        <h1 ref={insdRef} className="text-black text-[28vw] md:text-[32vw] xl:text-[26rem] font-black leading-[0.8] flex items-center justify-center will-change-transform backface-hidden m-0 p-0">{["I", "N", "S", "D"].map((char, index) => <span key={index} className={`char-extra inline-block origin-bottom transition-all duration-300 hover:text-primary hover:scale-110 ${index === 0 ? 'relative top-[1vw] md:top-[0.2vw] mr-[-1vw] md:mr-[-1vw]' : 'w-[1ch] text-center'}`}>{char}</span>)}</h1>
+                        <h1 ref={insdRef} className="text-black text-hero font-black flex items-center justify-center will-change-transform backface-hidden m-0 p-0 relative">
+                            {["I", "N", "S", "D"].map((char, index) => (
+                                <span
+                                    key={index}
+                                    className={`char-extra inline-block origin-bottom transition-all duration-300 hover:text-primary hover:scale-110 
+                                    ${index === 0 ? 'relative top-[1vw] md:top-[0.2vw] mr-[-1vw]' : 'w-[1ch] text-center'}`}
+                                >
+                                    {char}
+                                </span>
+                            ))}
+                        </h1>
                         {/* Premium Relocated Tagline */}
-                        <div ref={taglineRef} className="mt-2 md:mt-12 px-6 py-2 md:px-10 md:py-3 border border-black/10 rounded-full backdrop-blur-xl bg-white/10 will-change-transform shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] flex items-center justify-center overflow-hidden group">
-                            <p className="text-black text-[10px] md:text-sm font-black uppercase tracking-[0.4em] md:tracking-[0.6em] whitespace-nowrap flex gap-px">
+                        <div ref={taglineRef} className="mt-4 md:mt-12 px-5 py-2 md:px-10 md:py-3 border border-black/10 rounded-full backdrop-blur-xl bg-white/10 will-change-transform shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] flex items-center justify-center overflow-hidden group max-w-[90vw]">
+                            <p className="text-black text-[9px] sm:text-xs md:text-sm font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] md:tracking-[0.6em] whitespace-nowrap flex gap-px px-2">
                                 {splitText("INSD - India's Design Skill School", "tagline-char")}
                             </p>
+
                             {/* Inner Shine Effect */}
                             <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                         </div>
@@ -527,8 +539,8 @@ const Home = () => {
             </div>
 
             {/* Marquee Strip */}
-            <div className="relative z-20 py-6 md:py-12 bg-black text-white overflow-hidden rotate-2 scale-110 border-y-4 md:border-y-8 border-white">
-                <div ref={marqueeRef} className="whitespace-nowrap flex text-4xl md:text-8xl font-black tracking-tighter uppercase">
+            <div className="relative z-20 py-4 md:py-12 bg-black text-white overflow-hidden rotate-2 scale-110 border-y-2 md:border-y-8 border-white">
+                <div ref={marqueeRef} className="whitespace-nowrap flex text-3xl md:text-8xl font-black tracking-tighter uppercase line-height-none">
                     <span className="pr-6 md:pr-12">Fashion • Design • Innovation • Creativity • Future • Style •</span>
                     <span className="pr-6 md:pr-12">Fashion • Design • Innovation • Creativity • Future • Style •</span>
                 </div>
@@ -554,14 +566,14 @@ const Home = () => {
                             </div>
 
                             {/* Content */}
-                            <div className="absolute inset-0 z-10 flex flex-col justify-end p-8 pb-24 md:pb-12">
+                            <div className="absolute inset-0 z-10 flex flex-col justify-end p-6 md:p-8 pb-32 md:pb-12">
                                 <div className="overflow-hidden">
-                                    <h3 className="text-5xl md:text-5xl font-black text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary translate-y-0 md:translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-100 uppercase tracking-tighter">
+                                    <h3 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary translate-y-0 md:translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-100 uppercase tracking-tighter">
                                         {item.title}
                                     </h3>
                                 </div>
                                 <div className="overflow-hidden mt-2 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
-                                    <p className="text-white/80 text-sm font-medium tracking-widest uppercase border-t border-primary/50 pt-4 inline-block">
+                                    <p className="text-white/80 text-[10px] md:text-sm font-bold tracking-widest uppercase border-t border-primary/50 pt-3 inline-block">
                                         Explore Program
                                     </p>
                                 </div>
@@ -586,9 +598,9 @@ const Home = () => {
                 <div className="max-w-360 mx-auto">
 
                     {/* Header */}
-                    <div className="mb-24 border-b border-current pb-12 overflow-hidden">
-                        <span className="block text-sm font-mono tracking-widest uppercase mb-4 opacity-60">Spotlight</span>
-                        <h2 className="text-[6vw] font-black uppercase tracking-tighter leading-none flex flex-col">
+                    <div className="mb-16 md:mb-24 border-b border-current pb-8 md:pb-12 overflow-hidden">
+                        <span className="block text-[10px] md:text-sm font-mono tracking-widest uppercase mb-4 opacity-60">Spotlight</span>
+                        <h2 className="text-[12vw] md:text-[6vw] font-black uppercase tracking-tighter leading-none flex flex-col">
                             <span className="spotlight-title-1 block">Future</span>
                             <span className="spotlight-title-2 italic font-serif font-light text-secondary block self-end">Visionaries</span>
                         </h2>
@@ -601,8 +613,9 @@ const Home = () => {
                         <div className="md:col-span-7 relative">
                             <div className="overflow-hidden rounded-sm aspect-3/4">
                                 <img
-                                    src="https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                                    src={`https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=${isMobile ? 800 : 1260}`}
                                     alt="Future Visionaries"
+                                    loading="lazy"
                                     className="spotlight-img-main w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-out hover:scale-105"
                                 />
                             </div>
@@ -613,14 +626,14 @@ const Home = () => {
                         </div>
 
                         {/* Content & Smaller Image */}
-                        <div className="md:col-span-5 flex flex-col justify-between h-full pl-8">
+                        <div className="md:col-span-5 flex flex-col justify-between h-full pl-0 md:pl-8">
                             <div className="mb-12">
-                                <p className="text-2xl font-light leading-relaxed mb-8 opacity-80 flex flex-wrap gap-x-2 quote-container">
+                                <p className="text-xl md:text-2xl font-light leading-relaxed mb-8 opacity-80 flex flex-wrap gap-x-2 quote-container">
                                     {splitText("\"INSD gave me the freedom to fail, which is the only way to truly succeed in design. My final collection was a direct result of that chaos.\"", "quote-word")}
                                 </p>
                                 <div className="flex items-center gap-4">
-                                    <div className="w-12 h-px bg-current"></div>
-                                    <span className="uppercase tracking-widest font-bold text-sm">Aravind K., Fashion Design '25</span>
+                                    <div className="w-8 md:w-12 h-px bg-current"></div>
+                                    <span className="uppercase tracking-widest font-bold text-[10px] md:text-sm">Aravind K., Fashion Design '25</span>
                                 </div>
                             </div>
 
@@ -656,10 +669,10 @@ const Home = () => {
 
                     {/* Top: Legacy Text (Centered & Animated) */}
                     <div className="relative z-10 text-center max-w-5xl mx-auto">
-                        <h3 className="text-3xl md:text-5xl font-bold leading-tight uppercase tracking-tight text-slate-300 text-center">
-                            {splitText("INSD was co-founded by IAS Officer & 1st Director General of NIFT who gave birth to Design Education in India along with Mr Sunjey Aggarwal and Pranav Raj Aggarwal. It is a National Award-Winning Design School that has built a community of artists, designers, and media professionals. Our programs are internationally acclaimed and focus on giving students a global outlook.", "legacy-word transition-all duration-300 will-change-transform inline-block mx-1")}
+                        <h3 className="text-xl sm:text-2xl md:text-5xl font-bold leading-tight uppercase tracking-tight text-slate-300 text-center px-4">
+                            {splitText("INSD was co-founded by IAS Officer & 1st Director General of NIFT who gave birth to Design Education in India along with Mr Sunjey Aggarwal and Pranav Raj Aggarwal. It is a National Award-Winning Design School that has built a community of artists, designers, and media professionals. Our programs are internationally acclaimed and focus on giving students a global outlook.", "legacy-word transition-all duration-300 will-change-transform inline-block mx-0.5 md:mx-1")}
                         </h3>
-                        <div className="mt-12 w-32 h-2 bg-black mx-auto rounded-full"></div>
+                        <div className="mt-8 md:mt-12 w-20 md:w-32 h-1 md:h-2 bg-black mx-auto rounded-full"></div>
                     </div>
 
                     {/* Bottom: Unexpected Search Interaction & Carousel */}
