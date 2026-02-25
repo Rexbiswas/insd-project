@@ -100,9 +100,9 @@ const StepVisual = () => {
                         </h2>
                     </div>
                     <div className="md:w-1/3 pb-4">
-                        <p className="text-xl md:text-2xl font-medium leading-tight text-slate-500 border-l-2 border-primary pl-6 hover:border-secondary transition-colors duration-500">
+                        <h2 className="text-xl md:text-4xl font-black leading-tight text-slate-500 border-l-2 border-primary pl-6 hover:border-secondary transition-colors duration-500">
                             We don't just teach design. We culture creative rebels who redefine the status quo.
-                        </p>
+                        </h2>
                     </div>
                 </div>
 
@@ -139,9 +139,9 @@ const StepVisual = () => {
                                     <h3 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none">
                                         {step.title}
                                     </h3>
-                                    <p className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-md">
+                                    <h2 className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-md">
                                         {step.description}
-                                    </p>
+                                    </h2>
                                     <motion.button
                                         whileHover={{ x: 10 }}
                                         className="flex items-center gap-4 text-sm font-mono font-bold tracking-widest uppercase text-slate-400 hover:text-primary transition-colors cursor-pointer group/btn"

@@ -9,6 +9,7 @@ import Lenis from 'lenis';
 import InsdBackground from '../components/InsdBackground';
 
 import ImpactStats from '../components/ImpactStats';
+import TOICertification from '../components/TOICertification';
 import TestimonialSlider from '../components/TestimonialSlider';
 import FeaturedIn from '../components/FeaturedIn';
 import AdmissionScroller from '../components/AdmissionScroller';
@@ -17,6 +18,7 @@ import EventBlogs from '../components/EventBlogs';
 import InstagramGallery from '../components/InstagramGallery';
 import InsdiansByDesign from '../components/InsdiansByDesign';
 import Footer from '../components/Footer';
+import NetworkCounter from '../components/NetworkCounter';
 import BackToTop from '../components/BackToTop';
 
 
@@ -472,11 +474,11 @@ const Home = () => {
         <div ref={containerRef} className="min-h-screen text-slate-900 relative overflow-x-hidden">
 
             <div className="fixed inset-0 z-0 bg-white">
+                <img className="w-full h-full object-cover" src="https://ik.imagekit.io/fmldynl4j4/IMG_3440.JPG?updatedAt=1771841966154" alt="Hero Background" />
             </div>
 
             {/* Hero Section - Pinned Wrapper relative to Viewport */}
             <div ref={heroRef} className="relative z-10 h-screen w-full flex flex-col justify-center items-center perspective-[1000px]">
-
 
                 {/* Mask Layer: Mix-Blend-Screen handles the cutout effect */}
                 <div ref={maskRef} className="absolute inset-0 flex flex-col justify-center items-center bg-white md:bg-white mix-blend-screen pointer-events-none select-none z-10 w-full overflow-hidden">
@@ -590,6 +592,8 @@ const Home = () => {
             </div >
 
             <AdmissionScroller />
+            <NetworkCounter />
+            <TOICertification />
             <StepVisual />
 
             {/* Student Spotlight Section - High Fashion Editorial Style */}
@@ -649,9 +653,6 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-
-            {/* Horizontal Parallax Slider - Global Exposure */}
-
 
             {/* Legacy & Discovery Section - Unexpected Contrast */}
             <div ref={legacyRef} className="relative min-h-screen bg-white text-black py-0 px-0 flex flex-col items-center justify-center overflow-hidden -mt-[20vh] z-10 rounded-t-[4rem] shadow-2xl will-change-transform backface-hidden">
@@ -845,8 +846,6 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
             {/* Separate Impact Stats Section */}

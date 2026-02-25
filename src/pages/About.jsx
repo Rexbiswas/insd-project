@@ -163,10 +163,10 @@ const About = () => {
 
                 <div ref={heroTextRef} className="relative z-10 flex flex-col items-center">
                     <span className="text-primary font-mono tracking-[1.5em] uppercase text-[10px] mb-8 animate-pulse">Designing Legacies</span>
-                    <h1 className="text-[25vw] font-black leading-none tracking-tighter flex items-baseline text-black">
-                        I<span className="text-transparent strok-text-black opacity-40">N</span>SD
+                    <h1 className="text-[25vw] font-black leading-none tracking-tighter flex items-baseline text-white">
+                        I<span className="text-transparent stroke-text-white opacity-40">N</span>SD
                     </h1>
-                    <span className="text-[12vw] font-black leading-none tracking-tighter flex items-baseline">Design</span>
+                    <span className="text-[12vw] font-black leading-none tracking-tighter flex items-baseline text-white">Design</span>
                 </div>
 
                 {/* Sub-content revealed during zoom */}
