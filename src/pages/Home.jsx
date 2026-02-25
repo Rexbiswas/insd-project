@@ -20,6 +20,8 @@ import InsdiansByDesign from '../components/InsdiansByDesign';
 import Footer from '../components/Footer';
 import NetworkCounter from '../components/NetworkCounter';
 import BackToTop from '../components/BackToTop';
+import DesignLifestyle from '../components/DesignLifestyle';
+import SocialProof from '../components/SocialProof';
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -594,6 +596,8 @@ const Home = () => {
             <AdmissionScroller />
             <NetworkCounter />
             <TOICertification />
+            <DesignLifestyle />
+            <SocialProof />
             <StepVisual />
 
             {/* Student Spotlight Section - High Fashion Editorial Style */}

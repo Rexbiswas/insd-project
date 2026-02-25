@@ -386,12 +386,12 @@ const OnlineCourse = () => {
             </section>
 
             {/* --- PREMIUM CERTIFICATION SECTION --- */}
-            <section id="certification" className="relative py-32 px-4 md:px-12 bg-white overflow-hidden">
+            <section id="certification" className="relative py-32 px-4 md:px-12 bg-[#fafafa] overflow-hidden">
                 <div className="max-w-7xl mx-auto">
-                    <div className="relative bg-slate-950 rounded-[4rem] p-12 md:p-24 overflow-hidden group">
+                    <div className="relative bg-white rounded-[4rem] p-12 md:p-24 border border-slate-100 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.05)] overflow-hidden group">
                         {/* Background Luxury Texture */}
-                        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] pointer-events-none"></div>
-                        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 blur-[150px] rounded-full group-hover:bg-primary/20 transition-all duration-1000"></div>
+                        <div className="absolute inset-0 opacity-[0.4] pointer-events-none mix-blend-multiply bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]" />
+                        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 blur-[150px] rounded-full group-hover:bg-primary/10 transition-all duration-1000"></div>
 
                         <div className="relative z-10 flex flex-col lg:flex-row items-center gap-16 md:gap-24">
                             {/* Certificate Image Column: Next Level 3D Display */}
@@ -400,34 +400,53 @@ const OnlineCourse = () => {
                                     initial={{ scale: 0.8, opacity: 0, rotateY: -30 }}
                                     whileInView={{ scale: 1, opacity: 1, rotateY: -10 }}
                                     transition={{ duration: 1.5, ease: "expo.out" }}
-                                    className="relative group/cert h-[300px] md:h-[450px] w-full max-w-[500px]"
+                                    className="relative group/cert h-[350px] md:h-[500px] w-full max-w-[550px]"
                                 >
                                     {/* Holographic Background Glow */}
-                                    <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full group-hover/cert:bg-primary/40 transition-all duration-1000 scale-110"></div>
+                                    <div className="absolute inset-0 bg-primary/5 blur-[100px] rounded-full group-hover/cert:bg-primary/15 transition-all duration-1000 scale-110"></div>
 
                                     {/* The Certificate Frame */}
-                                    <div className="relative h-full w-full bg-linear-to-br from-white/10 to-transparent p-px rounded-xl backdrop-blur-sm overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.8)] transform-gpu transition-all duration-700 group-hover/cert:rotate-y-0 group-hover/cert:scale-105">
-                                        <div className="absolute inset-0 bg-slate-900/40 z-0"></div>
+                                    <div className="relative h-full w-full bg-[#faf9f6] p-4 md:p-8 rounded-sm shadow-[0_40px_80px_rgba(0,0,0,0.1)] border-[16px] border-white transform-gpu transition-all duration-700 group-hover/cert:rotate-y-0 group-hover/cert:scale-105 overflow-hidden">
 
-                                        <img
-                                            src="https://insd.edu.in/luxuryonline/img/asset-1.png"
-                                            alt="INSD Professional Certificate"
-                                            className="relative z-10 w-full h-full object-contain p-2 md:p-4 filter brightness-110 contrast-105"
-                                        />
+                                        {/* Inner Ornate Border */}
+                                        <div className="absolute inset-2 border border-primary/20 pointer-events-none after:content-[''] after:absolute after:inset-1 after:border after:border-primary/10" />
+
+                                        {/* Paper Texture Overlay */}
+                                        <div className="absolute inset-0 opacity-[0.3] pointer-events-none mix-blend-multiply bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]" />
+
+                                        <div className="relative z-10 h-full flex flex-col items-center justify-between text-center py-4">
+                                            <img src="https://insd.edu.in/wp-content/uploads/2019/11/INSD-circle-Logo_black_100pxl.png" className="w-16 opacity-80" alt="INSD" />
+
+                                            <div className="space-y-4">
+                                                <h4 className="font-serif italic text-primary text-[10px] md:text-xs tracking-widest uppercase">Certificate of Completion</h4>
+                                                <h2 className="text-2xl md:text-4xl font-serif text-slate-900 border-b border-slate-200 pb-2">Professional Diploma</h2>
+                                                <p className="text-[10px] md:text-xs font-mono tracking-widest text-slate-400 uppercase italic">Awarded for Excellence in Design & Disruptive Innovation</p>
+                                            </div>
+
+                                            <div className="w-full flex justify-between items-end px-4">
+                                                <div className="text-left">
+                                                    <div className="w-16 md:w-32 h-px bg-slate-300 mb-2" />
+                                                    <p className="text-[8px] font-bold uppercase tracking-tighter opacity-40">Academic Dean</p>
+                                                </div>
+                                                <div className="relative">
+                                                    <img src="https://ik.imagekit.io/fmldynl4j4/unnamed.jpg" className="w-16 h-16 md:w-24 md:h-24 rounded-full border-4 border-white shadow-lg" alt="Seal" />
+                                                </div>
+                                                <div className="text-right">
+                                                    <div className="w-16 md:w-32 h-px bg-slate-300 mb-2" />
+                                                    <p className="text-[8px] font-bold uppercase tracking-tighter opacity-40">Director, INSD</p>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         {/* Glass Shine Effect */}
-                                        <div className="absolute inset-0 z-20 bg-linear-to-tr from-transparent via-white/10 to-transparent -translate-x-full group-hover/cert:translate-x-full transition-transform duration-1500 ease-in-out"></div>
-
-                                        {/* Corner Decorations */}
-                                        <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-primary/50 z-30"></div>
-                                        <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-primary/50 z-30"></div>
+                                        <div className="absolute inset-0 z-20 bg-linear-to-tr from-transparent via-white/40 to-transparent -translate-x-full group-hover/cert:translate-x-full transition-transform duration-2000 ease-in-out"></div>
                                     </div>
 
                                     {/* Signature Badge */}
-                                    <div className="absolute -bottom-6 -right-6 md:-bottom-10 md:-right-10 bg-white p-4 md:p-6 rounded-2xl shadow-2xl z-40 transform rotate-12 group-hover/cert:rotate-0 transition-transform duration-500">
+                                    <div className="absolute -bottom-6 -right-6 md:-bottom-10 md:-right-10 bg-slate-900 p-4 md:p-6 rounded-2xl shadow-2xl z-40 transform rotate-12 group-hover/cert:rotate-0 transition-transform duration-500">
                                         <div className="flex flex-col items-center">
-                                            <div className="text-slate-900 font-black text-xl md:text-2xl italic font-serif leading-none">Verified</div>
-                                            <div className="text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1">Authentic Credential</div>
+                                            <div className="text-white font-black text-xl md:text-2xl italic font-serif leading-none">Verified</div>
+                                            <div className="text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-white/40 mt-1">Authentic Credential</div>
                                         </div>
                                     </div>
                                 </motion.div>
@@ -435,23 +454,35 @@ const OnlineCourse = () => {
 
                             {/* Text Content Column */}
                             <div className="w-full lg:w-1/2 text-center lg:text-left">
-                                <h2 className="text-5xl md:text-8xl font-light text-white italic font-serif mb-8 reveal-card">
-                                    Certification
+                                <span className="inline-block text-primary font-bold tracking-[0.4em] uppercase text-xs mb-6">Credentialing</span>
+                                <h2 className="text-5xl md:text-8xl font-black text-slate-900 tracking-tighter leading-none mb-8">
+                                    Global <br />
+                                    <span className="text-transparent strok-text-black italic">Recognition.</span>
                                 </h2>
-                                <p className="text-xl md:text-3xl text-white/70 leading-relaxed font-light mb-12 max-w-2xl reveal-card">
-                                    On <span className="text-white font-bold">successful completion</span> of the course, you will receive a
-                                    <span className="text-primary italic font-serif mx-2">Certificate of Completion</span>
-                                    from <span className="text-white font-black block mt-2 uppercase tracking-widest text-lg md:text-2xl underline decoration-primary underline-offset-8">International School of Design</span>.
+                                <p className="text-xl md:text-2xl text-slate-600 leading-relaxed font-medium mb-12 max-w-2xl">
+                                    On <span className="text-slate-900 font-bold">successful completion</span> of the course, you will receive an industry-recognized
+                                    <span className="text-primary italic font-serif mx-2 underline decoration-primary/30">Certificate of Pursuit</span>
+                                    from the <span className="text-slate-900 font-black">International School of Design</span>.
                                 </p>
 
-                                <div className="flex flex-wrap justify-center lg:justify-start gap-8 opacity-40 grayscale group-hover:grayscale-0 transition-all duration-700">
-                                    <div className="flex items-center gap-2">
-                                        <CheckCircle2 size={20} />
-                                        <span className="text-xs font-bold uppercase tracking-widest text-white">Verified Excellence</span>
+                                <div className="flex flex-wrap justify-center lg:justify-start gap-8 border-t border-slate-100 pt-10">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center">
+                                            <CheckCircle2 size={24} className="text-primary" />
+                                        </div>
+                                        <div className="text-left">
+                                            <p className="text-xs font-black uppercase tracking-widest text-slate-900">Verified</p>
+                                            <p className="text-[10px] font-bold text-slate-400">Blockchain Secured</p>
+                                        </div>
                                     </div>
-                                    <div className="flex items-center gap-2">
-                                        <CheckCircle2 size={20} />
-                                        <span className="text-xs font-bold uppercase tracking-widest text-white">Global Accreditation</span>
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center">
+                                            <CheckCircle2 size={24} className="text-primary" />
+                                        </div>
+                                        <div className="text-left">
+                                            <p className="text-xs font-black uppercase tracking-widest text-slate-900">Global</p>
+                                            <p className="text-[10px] font-bold text-slate-400">Industry Accredited</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
