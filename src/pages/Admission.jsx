@@ -78,7 +78,7 @@ const Admission = () => {
 
 
     return (
-        <div ref={containerRef} className="bg-[#080808] text-white selection:bg-primary font-sans overflow-hidden">
+        <div ref={containerRef} className="bg-white text-black selection:bg-primary font-sans overflow-hidden">
 
             {/* 1. THE APERTURE HERO */}
             <section ref={apertureRef} className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -89,13 +89,13 @@ const Admission = () => {
 
                 {/* The Masking Layer */}
                 <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
-                    <div className="aperture-mask w-40 h-40 bg-[#080808] rounded-full scale-[20]" style={{ boxShadow: '0 0 0 500vmax #080808' }}></div>
+                    <div className="aperture-mask w-40 h-40 bg-white rounded-full scale-[20]" style={{ boxShadow: '0 0 0 500vmax #ffffff' }}></div>
                 </div>
 
                 <div className="relative z-20 text-center px-6">
                     <h2 className="text-primary font-mono tracking-[0.5em] md:tracking-[1em] text-[9px] md:text-[10px] uppercase mb-8">System_Initiate</h2>
                     <h1 className="aperture-title text-5xl md:text-8xl lg:text-[14rem] font-black uppercase leading-[0.85] tracking-tighter italic">
-                        The Core <br /> <span className="text-transparent stroke-text-white stroke-white!">Protocol.</span>
+                        The Core <br /> <span className="text-transparent strok-text-black opacity-40">Protocol.</span>
                     </h1>
                 </div>
 

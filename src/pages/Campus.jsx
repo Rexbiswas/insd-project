@@ -177,10 +177,10 @@ const Campuses = () => {
 
 
     return (
-        <div ref={containerRef} className="bg-[#050505] text-white selection:bg-primary selection:text-white overflow-hidden font-sans">
+        <div ref={containerRef} className="bg-white text-black selection:bg-primary selection:text-white overflow-hidden font-sans">
 
             {/* Top Navigation Progress */}
-            <div className="fixed top-0 left-0 w-full h-[2px] bg-white/10 z-100 origin-left">
+            <div className="fixed top-0 left-0 w-full h-[2px] bg-black/10 z-100 origin-left">
                 <div className="scroll-progress h-full bg-primary scale-x-0 w-full origin-left" />
             </div>
 
@@ -188,7 +188,7 @@ const Campuses = () => {
             <div className="fixed inset-0 pointer-events-none opacity-20 z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
 
             {/* Section 1: The Warp Portal Hero */}
-            <div ref={heroRef} className="relative h-screen bg-black flex items-center justify-center overflow-hidden">
+            <div ref={heroRef} className="relative h-screen bg-white flex items-center justify-center overflow-hidden">
                 <div className="hero-bg-video absolute inset-0 z-0 scale-125 filter blur-2xl opacity-0 transition-opacity duration-1000">
                     <video autoPlay muted loop playsInline className="w-full h-full object-cover" src="https://www.pexels.com/download/video/3129957/" />
                 </div>
@@ -203,7 +203,7 @@ const Campuses = () => {
 
                 <div ref={portalTextRef} className="relative z-30 pointer-events-none px-4 text-center">
                     <h1 className="text-black text-[18vw] md:text-[15vw] font-black uppercase tracking-tighter leading-none italic">
-                        ENT<span className="text-transparent stroke-text-white stroke-black!">E</span>R
+                        ENT<span className="text-transparent strok-text-black opacity-40">E</span>R
                     </h1>
                 </div>
 
@@ -219,7 +219,7 @@ const Campuses = () => {
             </div>
 
             {/* Section 2: Immersive Intro Grid */}
-            <section className="py-64 px-6 bg-[#050505] relative space-y-32">
+            <section className="py-64 px-6 bg-white relative space-y-32">
                 <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
                     <div className="order-2 md:order-1 relative">
                         <div className="aspect-square bg-white rounded-[3rem] overflow-hidden group border border-white/10">
@@ -233,7 +233,7 @@ const Campuses = () => {
                         <h3 className="text-4xl md:text-7xl font-black uppercase leading-none tracking-tighter mb-8">
                             Beyond <br /> Four Walls.
                         </h3>
-                        <p className="text-slate-400 text-lg md:text-xl leading-relaxed font-light mb-12">
+                        <p className="text-black/60 text-lg md:text-xl leading-relaxed font-light mb-12">
                             An INSD campus is not just building—it's a high-performance laboratory where craftsmen, rebels, and visionaries meet to define the new luxury world.
                         </p>
 
@@ -261,18 +261,18 @@ const Campuses = () => {
 
                     {/* City Slides */}
                     {locations.map((loc, i) => (
-                        <div key={i} className="min-w-[85vw] md:min-w-[70vw] h-[80vh] bg-[#0a0a0a] rounded-[3rem] relative overflow-hidden group group border border-black/5 shadow-2xl">
+                        <div key={i} className="min-w-[85vw] md:min-w-[70vw] h-[80vh] bg-white rounded-[3rem] relative overflow-hidden group group border border-black/5 shadow-2xl">
                             {/* Background City Text */}
                             <div className="absolute -bottom-20 -left-10 opacity-5 select-none pointer-events-none">
-                                <span className="text-[35vw] font-black text-white leading-none uppercase">{loc.city[0]}</span>
+                                <span className="text-[35vw] font-black text-black leading-none uppercase">{loc.city[0]}</span>
                             </div>
 
                             <div className="relative z-10 w-full h-full p-8 md:p-24 flex flex-col md:flex-row items-center gap-10 md:gap-12">
                                 <div className="w-full md:w-1/2 space-y-6 md:space-y-8">
                                     <span className="text-primary font-mono text-sm md:text-xl border border-primary/30 px-4 md:px-6 py-1 md:py-2 rounded-full w-fit block">0{i + 1}</span>
-                                    <h3 className="text-5xl md:text-9xl font-black uppercase text-white tracking-tighter leading-none">{loc.city}</h3>
-                                    <p className="text-slate-400 text-base md:text-xl font-light whitespace-normal max-w-sm"><span className="text-white font-bold">{loc.title}.</span> {loc.desc}</p>
-                                    <button className="px-8 md:px-10 py-3 md:py-4 bg-white text-black font-bold uppercase tracking-widest rounded-full hover:bg-primary hover:text-white transition-all text-xs md:text-base">Explore Node</button>
+                                    <h3 className="text-5xl md:text-9xl font-black uppercase text-black tracking-tighter leading-none">{loc.city}</h3>
+                                    <p className="text-black/60 text-base md:text-xl font-light whitespace-normal max-w-sm"><span className="text-black font-bold">{loc.title}.</span> {loc.desc}</p>
+                                    <button className="px-8 md:px-10 py-3 md:py-4 bg-black text-white font-bold uppercase tracking-widest rounded-full hover:bg-primary hover:text-white transition-all text-xs md:text-base">Explore Node</button>
                                 </div>
                                 <div className="w-full md:w-1/2 h-full rounded-[1.5rem] md:rounded-[2rem] overflow-hidden relative min-h-[200px] md:min-h-0">
                                     <img src={loc.img} className="loc-panel-img w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 transition-all duration-1000 scale-125 group-hover:scale-100" />
@@ -286,17 +286,17 @@ const Campuses = () => {
             </section>
 
             {/* Section 4: The Core Labs (Perspective Grid) */}
-            <section className="py-64 bg-[#050505] relative overflow-hidden">
+            <section className="py-64 bg-white relative overflow-hidden border-t border-black/5">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="flex flex-col md:flex-row justify-between items-end mb-32 gap-12">
                         <div className="max-w-2xl">
                             <span className="text-primary font-mono uppercase tracking-[0.5em] text-[9px] md:text-[10px] block mb-4">Inside the Labs</span>
-                            <h2 className="text-4xl md:text-8xl font-black uppercase leading-none tracking-tighter">
-                                World-Class <br /> <span className="text-transparent stroke-text-white">Infrastructure.</span>
+                            <h2 className="text-4xl md:text-8xl font-black uppercase leading-none tracking-tighter text-black">
+                                World-Class <br /> <span className="text-transparent strok-text-black">Infrastructure.</span>
                             </h2>
                         </div>
 
-                        <p className="text-slate-400 text-lg max-w-sm mb-4 border-l border-white/10 pl-8">
+                        <p className="text-black/60 text-lg max-w-sm mb-4 border-l border-black/10 pl-8">
                             Our environments are engineered to reduce friction between idea and execution.
                         </p>
                     </div>
@@ -311,8 +311,8 @@ const Campuses = () => {
                                 <div className="absolute top-0 right-0 p-8 text-6xl grayscale group-hover:grayscale-0 transition-all opacity-20 group-hover:opacity-100">{lab.icon}</div>
                                 <div className="relative z-10">
                                     <span className="text-primary font-mono text-[10px] md:text-xs block mb-6">Lab Unit 0{i + 1}</span>
-                                    <h4 className="text-2xl md:text-3xl font-black uppercase mb-6">{lab.name}</h4>
-                                    <p className="text-slate-400 leading-relaxed font-light text-sm md:text-base">{lab.desc}</p>
+                                    <h4 className="text-2xl md:text-3xl font-black uppercase mb-6 text-black">{lab.name}</h4>
+                                    <p className="text-black/60 leading-relaxed font-light text-sm md:text-base">{lab.desc}</p>
                                 </div>
 
                                 {/* Hover Gradient Shadow */}
@@ -344,37 +344,36 @@ const Campuses = () => {
             </section>
 
             {/* Section 6: The Infinity Nexus (Success & Global Reach) */}
-            <section className="relative py-64 bg-black overflow-hidden">
+            <section className="relative py-64 bg-white overflow-hidden border-t border-black/5">
                 <div className="max-w-[1400px] mx-auto px-6">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center mb-48">
                         <div>
                             <span className="text-primary font-mono uppercase tracking-[0.5em] text-[9px] md:text-[10px] block mb-6 animate-pulse">Global Footprint</span>
-                            <h2 className="text-5xl md:text-9xl font-black uppercase tracking-tighter leading-[0.85] mb-12">
-                                Beyond <br /> <span className="text-transparent stroke-text-white italic">Boundaries.</span>
+                            <h2 className="text-5xl md:text-9xl font-black uppercase tracking-tighter leading-[0.85] mb-12 text-black">
+                                Beyond <br /> <span className="text-transparent strok-text-black italic">Boundaries.</span>
                             </h2>
-                            <p className="text-slate-400 text-lg md:text-xl font-light leading-relaxed max-w-lg">
+                            <p className="text-black/60 text-lg md:text-xl font-light leading-relaxed max-w-lg">
                                 Our graduates don't just find jobs; they colonize the industries of London, Milan, and Paris. This is the INSD global nexus.
                             </p>
                         </div>
 
                         <div className="relative">
                             {/* Cinematic Vertical Marquee (3D Tilted) */}
-                            <div className="relative h-[600px] w-full bg-white/5 rounded-[4rem] border border-white/10 overflow-hidden transform rotate-3 hover:rotate-0 transition-transform duration-1000">
-                                <div className="absolute inset-0 z-10 bg-linear-to-b from-black via-transparent to-black pointer-events-none" />
+                            <div className="relative h-[600px] w-full bg-black/5 rounded-[4rem] border border-black/5 overflow-hidden transform rotate-3 hover:rotate-0 transition-transform duration-1000">
+                                <div className="absolute inset-0 z-10 bg-linear-to-b from-white via-transparent to-white pointer-events-none" />
                                 <div className="flex flex-col gap-8 md:gap-12 py-12 marquee-vertical-nexus">
                                     {['VOGUE', 'GUCCI', 'PRADA', 'GOOGLE', 'APPLE', 'TESLA', 'ELLE'].map((brand, i) => (
                                         <div key={i} className="text-center">
-                                            <span className="text-5xl md:text-8xl font-black text-white/10 hover:text-primary transition-colors cursor-default select-none uppercase tracking-widest">{brand}</span>
+                                            <span className="text-5xl md:text-8xl font-black text-black/5 hover:text-primary transition-colors cursor-default select-none uppercase tracking-widest">{brand}</span>
                                         </div>
                                     ))}
                                     {/* Duplicate for seamless loop */}
                                     {['VOGUE', 'GUCCI', 'PRADA', 'GOOGLE', 'APPLE', 'TESLA', 'ELLE'].map((brand, i) => (
                                         <div key={i + 7} className="text-center">
-                                            <span className="text-5xl md:text-8xl font-black text-white/10 hover:text-primary transition-colors cursor-default select-none uppercase tracking-widest">{brand}</span>
+                                            <span className="text-5xl md:text-8xl font-black text-black/5 hover:text-primary transition-colors cursor-default select-none uppercase tracking-widest">{brand}</span>
                                         </div>
                                     ))}
                                 </div>
-
                             </div>
                             {/* Floating Stats Decoration */}
                             <div className="absolute -top-12 -right-12 bg-primary text-white p-8 rounded-3xl shadow-2xl z-20 hidden md:block group cursor-default">

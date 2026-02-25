@@ -471,8 +471,7 @@ const Home = () => {
     return (
         <div ref={containerRef} className="min-h-screen text-slate-900 relative overflow-x-hidden">
 
-            <div className="fixed inset-0 z-0">
-                <img className="w-full h-full object-cover" src={`https://ik.imagekit.io/fmldynl4j4/IMG_3440.JPG?tr=w-${isMobile ? 800 : 1600},q-${isMobile ? 60 : 80}`} alt="Background Gradient" loading="eager" />
+            <div className="fixed inset-0 z-0 bg-white">
             </div>
 
             {/* Hero Section - Pinned Wrapper relative to Viewport */}

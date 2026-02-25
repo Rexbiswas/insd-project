@@ -128,7 +128,7 @@ const FashionWeek = () => {
 
 
     return (
-        <div ref={containerRef} className="bg-[#f2f8fc] text-black selection:bg-primary selection:text-white font-sans overflow-x-hidden">
+        <div ref={containerRef} className="bg-white text-black selection:bg-primary selection:text-white font-sans overflow-x-hidden">
 
             {/* --- GLOBAL APP ELEMENTS --- */}
             <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.05] mix-blend-multiply bg-[url('https://www.transparenttextures.com/patterns/film-grain.png')]" />
@@ -182,7 +182,7 @@ const FashionWeek = () => {
 
 
                 {/* --- HERO AUTOMATED SLIDER: THE COUTURE CYCLE --- */}
-                <div className="relative z-10 w-full h-[70vh] md:h-[80vh] flex flex-col items-center justify-center px-6 overflow-hidden">
+                <div className="relative z-10 w-full h-[85vh] sm:h-[70vh] md:h-[80vh] flex flex-col items-center justify-center px-4 sm:px-6 overflow-hidden">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={currentSlide % collections.length}
@@ -196,9 +196,9 @@ const FashionWeek = () => {
                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none overflow-hidden h-full flex items-center justify-center">
                                 <motion.h1
                                     initial={{ scale: 0.8, opacity: 0 }}
-                                    animate={{ scale: 1, opacity: 0.08 }}
+                                    animate={{ scale: 1, opacity: 0.05 }}
                                     transition={{ duration: 2 }}
-                                    className="text-[25vw] md:text-[20vw] font-black uppercase text-black tracking-tighter italic whitespace-nowrap"
+                                    className="text-[35vw] md:text-[20vw] font-black uppercase text-black tracking-tighter italic whitespace-nowrap opacity-5"
                                 >
                                     {collections[currentSlide % collections.length].title}
                                 </motion.h1>
@@ -207,57 +207,57 @@ const FashionWeek = () => {
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                className="text-primary/70 font-mono text-[8px] md:text-xs uppercase mb-6 md:mb-12 flex items-center gap-4 text-center relative z-20"
+                                className="text-primary/70 font-mono text-[7px] sm:text-[8px] md:text-xs uppercase mb-4 sm:mb-6 md:mb-12 flex items-center gap-3 sm:gap-4 text-center relative z-20"
                             >
-                                <div className="hidden sm:block w-10 h-px bg-primary/30" />
+                                <div className="hidden xs:block w-6 sm:w-10 h-px bg-primary/30" />
                                 Collection_{collections[currentSlide % collections.length].year}
-                                <div className="hidden sm:block w-10 h-px bg-primary/30" />
+                                <div className="hidden xs:block w-6 sm:w-10 h-px bg-primary/30" />
                             </motion.div>
 
                             {/* Main Slide Card */}
-                            <div className="flex flex-col lg:flex-row items-center gap-10 md:gap-20 w-full relative z-20">
+                            <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-20 w-full relative z-20">
                                 {/* Technical Spec Node (Responsive) */}
                                 <motion.div
-                                    className="w-full lg:w-1/2 bg-white/40 backdrop-blur-3xl border border-white/60 rounded-[3rem] md:rounded-[4xl] p-6 md:p-10 shadow-2xl relative overflow-hidden order-2 lg:order-1"
+                                    className="w-full lg:w-1/2 bg-white/40 backdrop-blur-3xl border border-white/60 rounded-[2.5rem] md:rounded-[4xl] p-5 sm:p-6 md:p-10 shadow-2xl relative overflow-hidden order-2 lg:order-1"
                                 >
                                     <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/pinstripe.png')]" />
 
-                                    <div className="flex items-center gap-6 mb-8">
+                                    <div className="flex items-center gap-4 sm:gap-6 mb-6 md:mb-8">
                                         <div className="relative">
-                                            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border border-primary/20 p-2">
+                                            <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full border border-primary/20 p-1.5 md:p-2">
                                                 <div className="w-full h-full rounded-full bg-primary/10 flex items-center justify-center animate-pulse">
-                                                    <Sparkles className="w-6 h-6 md:w-8 md:h-8 text-primary" />
+                                                    <Sparkles className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 text-primary" />
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="text-left">
-                                            <span className="text-[8px] md:text-[10px] font-mono text-primary font-bold uppercase tracking-widest">{collections[currentSlide % collections.length].serial}</span>
-                                            <h3 className="text-2xl md:text-5xl font-black uppercase italic tracking-tighter text-black/80">{collections[currentSlide % collections.length].title}</h3>
+                                            <span className="text-[7px] sm:text-[8px] md:text-[10px] font-mono text-primary font-bold uppercase tracking-widest">{collections[currentSlide % collections.length].serial}</span>
+                                            <h3 className="text-xl sm:text-2xl md:text-5xl font-black uppercase italic tracking-tighter text-black/80">{collections[currentSlide % collections.length].title}</h3>
                                         </div>
                                     </div>
 
-                                    <div className="grid grid-cols-2 gap-6 md:gap-10 mb-8 border-t border-black/5 pt-8">
+                                    <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-10 mb-6 md:mb-8 border-t border-black/5 pt-6 md:pt-8">
                                         <div className="flex flex-col">
-                                            <span className="text-[7px] md:text-[9px] font-mono text-black/30 uppercase tracking-widest mb-1">Theme</span>
-                                            <span className="text-xs md:text-xl font-black text-black/70 italic uppercase">{collections[currentSlide % collections.length].theme}</span>
+                                            <span className="text-[6px] sm:text-[7px] md:text-[9px] font-mono text-black/30 uppercase tracking-widest mb-1">Theme</span>
+                                            <span className="text-[10px] sm:text-xs md:text-xl font-black text-black/70 italic uppercase">{collections[currentSlide % collections.length].theme}</span>
                                         </div>
                                         <div className="flex flex-col">
-                                            <span className="text-[7px] md:text-[9px] font-mono text-black/30 uppercase tracking-widest mb-1">Aesthetics</span>
-                                            <span className="text-xs md:text-xl font-black text-primary italic uppercase">AVANT_GARDE</span>
+                                            <span className="text-[6px] sm:text-[7px] md:text-[9px] font-mono text-black/30 uppercase tracking-widest mb-1">Aesthetics</span>
+                                            <span className="text-[10px] sm:text-xs md:text-xl font-black text-primary italic uppercase">AVANT_GARDE</span>
                                         </div>
                                     </div>
 
                                     <motion.button
                                         whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
-                                        className="w-full bg-black text-white py-4 md:py-6 rounded-2xl text-[10px] md:text-xs font-black uppercase tracking-[0.4em] hover:bg-primary transition-all shadow-xl"
+                                        className="w-full bg-black text-white py-3.5 sm:py-4 md:py-6 rounded-xl sm:rounded-2xl text-[9px] sm:text-[10px] md:text-xs font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] hover:bg-primary transition-all shadow-xl"
                                     >
                                         Explore Couture
                                     </motion.button>
                                 </motion.div>
 
                                 {/* Image Showcase Node */}
-                                <div className="w-full lg:w-1/2 aspect-video lg:aspect-square relative rounded-[3rem] md:rounded-[4rem] overflow-hidden border border-black/5 shadow-2xl order-1 lg:order-2">
+                                <div className="w-full lg:w-1/2 aspect-[4/3] sm:aspect-video lg:aspect-square relative rounded-[2.5rem] md:rounded-[4rem] overflow-hidden border border-black/5 shadow-2xl order-1 lg:order-2">
                                     <motion.img
                                         initial={{ scale: 1.2 }}
                                         animate={{ scale: 1 }}
@@ -265,13 +265,13 @@ const FashionWeek = () => {
                                         className="w-full h-full object-cover transform-gpu"
                                         alt="Couture View"
                                     />
-                                    <div className="absolute inset-x-6 bottom-6 md:inset-x-10 md:bottom-10 bg-white/60 backdrop-blur-xl p-4 md:p-6 rounded-3xl border border-white/40 flex justify-between items-center">
+                                    <div className="absolute inset-x-4 bottom-4 sm:inset-x-6 sm:bottom-6 md:inset-x-10 md:bottom-10 bg-white/60 backdrop-blur-xl p-3 sm:p-4 md:p-6 rounded-2xl sm:rounded-3xl border border-white/40 flex justify-between items-center">
                                         <div className="flex flex-col">
-                                            <span className="text-[6px] md:text-[8px] font-mono text-black/40 uppercase tracking-widest">Location_Sync</span>
-                                            <span className="text-[10px] md:text-sm font-black text-black/80">{collections[currentSlide % collections.length].location}</span>
+                                            <span className="text-[5px] sm:text-[6px] md:text-[8px] font-mono text-black/40 uppercase tracking-widest">Location_Sync</span>
+                                            <span className="text-[9px] sm:text-[10px] md:text-sm font-black text-black/80">{collections[currentSlide % collections.length].location}</span>
                                         </div>
-                                        <div className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center">
-                                            <MapPin className="w-5 h-5" />
+                                        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black text-white flex items-center justify-center">
+                                            <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
                                         </div>
                                     </div>
                                 </div>
@@ -294,7 +294,7 @@ const FashionWeek = () => {
             </section>
 
             {/* --- VISUAL MANIFESTO: THE ICE CORE --- */}
-            <section className="py-24 md:py-80 relative px-6 lg:px-20 overflow-hidden bg-[#f2f8fc]">
+            <section className="py-24 md:py-80 relative px-6 lg:px-20 overflow-hidden bg-white">
                 <div className="absolute top-0 right-0 w-[60vw] h-[60vw] bg-blue-500/5 rounded-full blur-[180px] pointer-events-none" />
 
                 <div className="container mx-auto">
@@ -369,21 +369,21 @@ const FashionWeek = () => {
                             {/* Floating Metadata spec Node (Smaller, more refined) */}
                             <motion.div
                                 key={`node-${currentSlide}`}
-                                initial={{ x: 50, opacity: 0 }}
+                                initial={{ x: 30, opacity: 0 }}
                                 animate={{ x: 0, opacity: 1 }}
                                 transition={{ delay: 0.5, duration: 1 }}
-                                className="absolute -top-10 -right-4 sm:-right-6 md:top-24 md:-right-20 bg-white/80 backdrop-blur-2xl p-4 md:p-10 rounded-[2rem] md:rounded-4xl shadow-2xl border border-white z-30 max-w-[140px] md:max-w-none"
+                                className="absolute -bottom-6 -right-2 sm:-right-4 md:top-24 md:-right-20 bg-white/90 backdrop-blur-3xl p-3 sm:p-4 md:p-10 rounded-2xl sm:rounded-3xl md:rounded-4xl shadow-2xl border border-white z-30 max-w-[120px] sm:max-w-none"
                             >
-                                <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-6">
+                                <div className="flex items-center gap-1.5 md:gap-3 mb-2 md:mb-6">
                                     <div className="w-1 md:w-1.5 h-1 md:h-1.5 rounded-full bg-primary animate-ping" />
-                                    <div className="font-mono text-[7px] md:text-[9px] uppercase tracking-[0.4em] text-black/40">Spec_Node_0{(currentSlide % 4) + 1}</div>
+                                    <div className="font-mono text-[6px] md:text-[9px] uppercase tracking-[0.3em] sm:tracking-[0.4em] text-black/40">Spec_Node_0{(currentSlide % 4) + 1}</div>
                                 </div>
-                                <div className="text-sm md:text-3xl font-black uppercase italic leading-none tracking-tighter text-black/90 mb-3 md:mb-6">
+                                <div className="text-[10px] sm:text-xs md:text-3xl font-black uppercase italic leading-none tracking-tighter text-black/90 mb-2 md:mb-6">
                                     {["SILK_GEO", "LA_POMPE", "CYBER_TEXT", "NEO_NOIR"][currentSlide % 4]}
                                 </div>
                                 <div className="flex gap-1 md:gap-2">
-                                    <span className="text-[6px] md:text-[7px] font-mono bg-black text-white px-1.5 md:px-2 py-0.5 md:py-1 rounded-sm">V.2.0</span>
-                                    <span className="text-[6px] md:text-[7px] font-mono border border-black/10 px-1.5 md:px-2 py-0.5 md:py-1 rounded-sm text-black/40">SENS_0.42</span>
+                                    <span className="text-[5px] md:text-[7px] font-mono bg-black text-white px-1 md:px-2 py-0.5 md:py-1 rounded-sm">V.2.0</span>
+                                    <span className="text-[5px] md:text-[7px] font-mono border border-black/10 px-1 md:px-2 py-0.5 md:py-1 rounded-sm text-black/40">SENS_0.42</span>
                                 </div>
                             </motion.div>
                         </div>
@@ -634,7 +634,7 @@ const FashionWeek = () => {
 
 
             {/* --- ADMISSION CTA: CRYSTAL GATEWAY --- */}
-            <section className="py-32 md:py-60 px-6 md:px-20 relative bg-[#f2f8fc]">
+            <section className="py-32 md:py-60 px-6 md:px-20 relative bg-white">
                 <div className="container mx-auto">
                     <div className="relative bg-black text-white p-12 md:p-32 rounded-[4rem] md:rounded-[10rem] overflow-hidden group shadow-[0_100px_200px_rgba(0,10,50,0.4)]">
                         <div className="absolute inset-0 bg-linear-to-tr from-primary/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1500" />

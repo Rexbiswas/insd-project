@@ -151,7 +151,7 @@ const About = () => {
     }, []);
 
     return (
-        <div ref={containerRef} className="bg-[#050505] text-white selection:bg-primary selection:text-white overflow-hidden">
+        <div ref={containerRef} className="bg-white text-black selection:bg-primary selection:text-white overflow-hidden">
 
             {/* Background Grain/Noise Overlay */}
             <div className="fixed inset-0 pointer-events-none opacity-20 z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
@@ -163,8 +163,8 @@ const About = () => {
 
                 <div ref={heroTextRef} className="relative z-10 flex flex-col items-center">
                     <span className="text-primary font-mono tracking-[1.5em] uppercase text-[10px] mb-8 animate-pulse">Designing Legacies</span>
-                    <h1 className="text-[25vw] font-black leading-none tracking-tighter flex items-baseline">
-                        I<span className="text-transparent stroke-text-white opacity-40">N</span>SD
+                    <h1 className="text-[25vw] font-black leading-none tracking-tighter flex items-baseline text-black">
+                        I<span className="text-transparent strok-text-black opacity-40">N</span>SD
                     </h1>
                     <span className="text-[12vw] font-black leading-none tracking-tighter flex items-baseline">Design</span>
                 </div>
@@ -178,7 +178,7 @@ const About = () => {
             </section>
 
             {/* Section 2: Kinetic Statistics */}
-            <section className="relative py-24 md:py-48 bg-[#050505] z-10">
+            <section className="relative py-24 md:py-48 bg-white z-10 border-b border-black/5">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-24 items-center">
                         <div className="md:col-span-1">
@@ -194,8 +194,8 @@ const About = () => {
                                 { label: 'Design Awards', val: '100+' },
                                 { label: 'Industry Partners', val: '80+' }
                             ].map((stat, i) => (
-                                <div key={i} className="group border-l border-white/10 pl-6 md:pl-8 hover:border-primary transition-colors duration-500">
-                                    <span className="block text-5xl md:text-7xl font-black mb-1 md:mb-2">{stat.val}</span>
+                                <div key={i} className="group border-l border-black/10 pl-6 md:pl-8 hover:border-primary transition-colors duration-500">
+                                    <span className="block text-5xl md:text-7xl font-black mb-1 md:mb-2 text-black">{stat.val}</span>
                                     <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.3em] text-slate-500 font-mono">{stat.label}</span>
                                 </div>
                             ))}
@@ -240,16 +240,16 @@ const About = () => {
             </section>
 
             {/* Section 4: The Core Narrative (Type-Reveal) */}
-            <section className="relative py-64 px-6 bg-[#050505]">
+            <section className="relative py-64 px-6 bg-white">
                 <div className="max-w-6xl mx-auto text-center">
-                    <h3 className="type-reveal text-4xl md:text-7xl font-bold leading-[1.1] uppercase tracking-tight text-white/90">
+                    <h3 className="type-reveal text-4xl md:text-7xl font-bold leading-[1.1] uppercase tracking-tight text-black/90">
                         In a world of fast fashion and generic interiors, we teach our students to slow down and build things that matter. Our labs are battlegrounds for ideas, where the only rule is to challenge the predictable.
                     </h3>
                 </div>
             </section>
 
             {/* Section 5: The Pillars (3D Floating Grid) */}
-            <section className="relative pb-64 px-6 bg-[#050505] overflow-hidden">
+            <section className="relative pb-64 px-6 bg-white overflow-hidden">
                 {/* Floating Parallax Accents */}
                 <div className="parallax-layer absolute top-20 left-[10%] w-64 h-64 bg-primary/10 blur-[120px] rounded-full" />
                 <div className="parallax-layer absolute bottom-20 right-[15%] w-96 h-96 bg-secondary/10 blur-[150px] rounded-full" />
@@ -262,10 +262,10 @@ const About = () => {
                                 { title: 'Precision', desc: 'Where art meets engineering. Every detail is a deliberate choice.' },
                                 { title: 'Impact', desc: 'Design that doesnt move the world is just decoration.' }
                             ].map((pill, i) => (
-                                <div key={i} className="floating-card group bg-white/5 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] hover:bg-white/10 transition-all duration-500">
+                                <div key={i} className="floating-card group bg-black/5 backdrop-blur-xl border border-black/5 p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] hover:bg-black/10 transition-all duration-500">
                                     <span className="text-primary font-mono text-base md:text-xl block mb-4 md:mb-6 px-3 md:px-4 py-1 border border-primary/40 rounded-full w-fit">0{i + 1}</span>
-                                    <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4 md:mb-6">{pill.title}</h3>
-                                    <p className="text-slate-400 text-base md:text-lg leading-relaxed">{pill.desc}</p>
+                                    <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4 md:mb-6 text-black">{pill.title}</h3>
+                                    <p className="text-black/60 text-base md:text-lg leading-relaxed">{pill.desc}</p>
                                 </div>
                             ))}
                         </div>

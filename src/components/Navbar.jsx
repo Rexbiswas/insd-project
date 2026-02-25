@@ -65,7 +65,7 @@ const Navbar = () => {
     const location = useLocation();
 
     // Pages that have a dark background/theme or high-impact gradient hero sections
-    const darkPages = ['/about-us', '/campuses', '/franchise', '/apply', '/courses'];
+    const darkPages = ['/franchise', '/apply', '/courses'];
     const isDarkTheme = darkPages.includes(location.pathname);
 
     // Scroll values
