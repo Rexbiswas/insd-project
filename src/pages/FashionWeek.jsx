@@ -101,25 +101,28 @@ const FashionWeek = () => {
             year: "2026",
             title: "Cyber-Silk",
             theme: "Techno-Loom",
-            image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2040&auto=format&fit=crop",
+            image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=100&w=2000&auto=format&fit=crop",
             location: "New York Hub",
-            glow: "from-primary/20"
+            glow: "from-primary/20",
+            serial: "CS_77_X"
         },
         {
             year: "2025",
             title: "Noir Archive",
             theme: "Monochrome",
-            image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070&auto=format&fit=crop",
+            image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=100&w=2000&auto=format&fit=crop",
             location: "Paris Atelier",
-            glow: "from-slate-400/20"
+            glow: "from-slate-400/20",
+            serial: "NA_04_P"
         },
         {
             year: "2024",
             title: "Primal Fiber",
             theme: "Earth Core",
-            image: "https://images.unsplash.com/photo-1539109132314-34a77bd6819f?q=80&w=1974&auto=format&fit=crop",
+            image: "https://images.unsplash.com/photo-1539109132314-34a77bd6819f?q=100&w=2000&auto=format&fit=crop",
             location: "Milan Gallery",
-            glow: "from-orange-400/20"
+            glow: "from-orange-400/20",
+            serial: "PF_92_M"
         }
     ];
 
@@ -178,80 +181,114 @@ const FashionWeek = () => {
 
 
 
-                <div className="relative z-10 flex flex-col items-center w-full px-6">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 1.5, ease: "easeOut" }}
-                        className="text-primary/70 font-mono text-[8px] md:text-xs uppercase mb-6 md:mb-12 flex items-center gap-4 text-center"
-                    >
-                        <div className="hidden sm:block w-10 h-px bg-primary/30" />
-                        Mastering The Art Of Aesthetics
-                        <div className="hidden sm:block w-10 h-px bg-primary/30" />
-                    </motion.div>
-
-                    <h1 className="text-6xl sm:text-8xl md:text-[14vw] font-black uppercase text-black/10 absolute top-1/2 -translate-y-1/2 pointer-events-none select-none tracking-tighter italic">
-                        RUNWAY
-                    </h1>
-
-                    <div className="flex flex-col items-center gap-8 md:gap-12 mt-8 md:mt-12 scale-90 md:scale-100">
+                {/* --- HERO AUTOMATED SLIDER: THE COUTURE CYCLE --- */}
+                <div className="relative z-10 w-full h-[70vh] md:h-[80vh] flex flex-col items-center justify-center px-6 overflow-hidden">
+                    <AnimatePresence mode="wait">
                         <motion.div
-                            initial={{ opacity: 0, x: -50 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 1, duration: 1.2, ease: "expoOut" }}
-                            className="relative group w-full max-w-[320px] sm:max-w-none"
+                            key={currentSlide % collections.length}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] }}
+                            className="flex flex-col items-center w-full max-w-7xl relative"
                         >
-                            <div className="bg-white/60 backdrop-blur-2xl border border-black/5 rounded-[2.5rem] p-1.5 flex items-center justify-between sm:justify-start gap-4 sm:gap-8 group-hover:border-primary/20 group-hover:bg-white/80 transition-all duration-700 relative overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.05)]">
-                                <div className="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-
-                                <div className="flex items-center gap-3 sm:gap-5 pl-4 sm:pl-8 py-3 sm:py-5">
-                                    <div className="relative">
-                                        <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl border border-black/5 flex items-center justify-center group-hover:border-primary/20 transition-colors bg-white/40">
-                                            <Zap className="w-5 h-5 sm:w-7 sm:h-7 text-primary/80 group-hover:scale-110 transition-transform" />
-                                        </div>
-                                        <div className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-primary rounded-full animate-pulse shadow-[0_0_15px_rgba(219,52,54,0.3)]" />
-                                    </div>
-
-                                    <div className="flex flex-col">
-                                        <span className="text-[6px] sm:text-[7px] font-mono text-primary tracking-[0.3em] uppercase mb-1 opacity-60">Auth_Level_05</span>
-                                        <span className="text-xs sm:text-base font-black uppercase tracking-widest text-black/80 group-hover:text-black transition-colors">Access Protocol</span>
-                                    </div>
-                                </div>
-
-                                <motion.button
-                                    whileHover={{ width: isMobile ? "56px" : "200px" }}
-                                    className="h-14 w-14 md:h-20 md:w-20 bg-black text-white flex items-center justify-center gap-4 rounded-3xl overflow-hidden transition-all duration-700 shadow-2xl group/btn hover:bg-primary"
+                            {/* Slanted Backdrop Text */}
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none overflow-hidden h-full flex items-center justify-center">
+                                <motion.h1
+                                    initial={{ scale: 0.8, opacity: 0 }}
+                                    animate={{ scale: 1, opacity: 0.08 }}
+                                    transition={{ duration: 2 }}
+                                    className="text-[25vw] md:text-[20vw] font-black uppercase text-black tracking-tighter italic whitespace-nowrap"
                                 >
-                                    <span className="font-black uppercase tracking-widest text-xs whitespace-nowrap hidden md:group-hover/btn:block">Request Entry</span>
-                                    <ChevronRight className="w-6 h-6 md:w-8 md:h-8 shrink-0 group-hover/btn:translate-x-1 transition-transform" />
-                                </motion.button>
+                                    {collections[currentSlide % collections.length].title}
+                                </motion.h1>
                             </div>
-                        </motion.div>
 
-                        <motion.div
-                            initial={{ opacity: 0, x: 50 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 1.3, duration: 1.2, ease: "expoOut" }}
-                            className="flex items-center gap-6"
-                        >
-                            <div className="h-10 md:h-16 w-px bg-linear-to-b from-transparent via-black/10 to-transparent" />
-                            <div className="flex flex-col gap-2 md:gap-3">
-                                <div className="flex items-center gap-3">
-                                    <span className="text-[8px] md:text-[9px] font-mono text-black/40 uppercase tracking-[0.4em]">2026_Schedule</span>
-                                    <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                                </div>
-                                <div className="flex items-center gap-6 md:gap-10 group">
-                                    <h4 className="text-xl md:text-4xl font-black italic tracking-tighter uppercase text-black/50 group-hover:text-black transition-colors">
-                                        Next <span className="strok-text-black text-transparent opacity-20">PHASE.</span>
-                                    </h4>
-                                    <div className="flex flex-col items-end">
-                                        <span className="text-[8px] md:text-[10px] font-black text-black/20 group-hover:text-primary transition-colors italic">PARIS ATELIER</span>
-                                        <span className="text-[7px] md:text-[8px] font-bold text-black/30 whitespace-nowrap">MARCH 14, 2026</span>
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="text-primary/70 font-mono text-[8px] md:text-xs uppercase mb-6 md:mb-12 flex items-center gap-4 text-center relative z-20"
+                            >
+                                <div className="hidden sm:block w-10 h-px bg-primary/30" />
+                                Collection_{collections[currentSlide % collections.length].year}
+                                <div className="hidden sm:block w-10 h-px bg-primary/30" />
+                            </motion.div>
+
+                            {/* Main Slide Card */}
+                            <div className="flex flex-col lg:flex-row items-center gap-10 md:gap-20 w-full relative z-20">
+                                {/* Technical Spec Node (Responsive) */}
+                                <motion.div
+                                    className="w-full lg:w-1/2 bg-white/40 backdrop-blur-3xl border border-white/60 rounded-[3rem] md:rounded-[4xl] p-6 md:p-10 shadow-2xl relative overflow-hidden order-2 lg:order-1"
+                                >
+                                    <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/pinstripe.png')]" />
+
+                                    <div className="flex items-center gap-6 mb-8">
+                                        <div className="relative">
+                                            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border border-primary/20 p-2">
+                                                <div className="w-full h-full rounded-full bg-primary/10 flex items-center justify-center animate-pulse">
+                                                    <Sparkles className="w-6 h-6 md:w-8 md:h-8 text-primary" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="text-left">
+                                            <span className="text-[8px] md:text-[10px] font-mono text-primary font-bold uppercase tracking-widest">{collections[currentSlide % collections.length].serial}</span>
+                                            <h3 className="text-2xl md:text-5xl font-black uppercase italic tracking-tighter text-black/80">{collections[currentSlide % collections.length].title}</h3>
+                                        </div>
+                                    </div>
+
+                                    <div className="grid grid-cols-2 gap-6 md:gap-10 mb-8 border-t border-black/5 pt-8">
+                                        <div className="flex flex-col">
+                                            <span className="text-[7px] md:text-[9px] font-mono text-black/30 uppercase tracking-widest mb-1">Theme</span>
+                                            <span className="text-xs md:text-xl font-black text-black/70 italic uppercase">{collections[currentSlide % collections.length].theme}</span>
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <span className="text-[7px] md:text-[9px] font-mono text-black/30 uppercase tracking-widest mb-1">Aesthetics</span>
+                                            <span className="text-xs md:text-xl font-black text-primary italic uppercase">AVANT_GARDE</span>
+                                        </div>
+                                    </div>
+
+                                    <motion.button
+                                        whileHover={{ scale: 1.02 }}
+                                        whileTap={{ scale: 0.98 }}
+                                        className="w-full bg-black text-white py-4 md:py-6 rounded-2xl text-[10px] md:text-xs font-black uppercase tracking-[0.4em] hover:bg-primary transition-all shadow-xl"
+                                    >
+                                        Explore Couture
+                                    </motion.button>
+                                </motion.div>
+
+                                {/* Image Showcase Node */}
+                                <div className="w-full lg:w-1/2 aspect-video lg:aspect-square relative rounded-[3rem] md:rounded-[4rem] overflow-hidden border border-black/5 shadow-2xl order-1 lg:order-2">
+                                    <motion.img
+                                        initial={{ scale: 1.2 }}
+                                        animate={{ scale: 1 }}
+                                        src={collections[currentSlide % collections.length].image}
+                                        className="w-full h-full object-cover transform-gpu"
+                                        alt="Couture View"
+                                    />
+                                    <div className="absolute inset-x-6 bottom-6 md:inset-x-10 md:bottom-10 bg-white/60 backdrop-blur-xl p-4 md:p-6 rounded-3xl border border-white/40 flex justify-between items-center">
+                                        <div className="flex flex-col">
+                                            <span className="text-[6px] md:text-[8px] font-mono text-black/40 uppercase tracking-widest">Location_Sync</span>
+                                            <span className="text-[10px] md:text-sm font-black text-black/80">{collections[currentSlide % collections.length].location}</span>
+                                        </div>
+                                        <div className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center">
+                                            <MapPin className="w-5 h-5" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
+                            {/* Slider Navigation Dots */}
+                            <div className="flex gap-4 mt-12 md:mt-20 relative z-20">
+                                {collections.map((_, i) => (
+                                    <button
+                                        key={i}
+                                        onClick={() => setCurrentSlide(i)}
+                                        className={`h-1.5 md:h-2 transition-all duration-500 rounded-full ${i === (currentSlide % collections.length) ? "w-12 md:w-20 bg-primary" : "w-4 md:w-6 bg-black/10 hover:bg-black/20"}`}
+                                    />
+                                ))}
+                            </div>
                         </motion.div>
-                    </div>
+                    </AnimatePresence>
                 </div>
 
             </section>
@@ -375,7 +412,7 @@ const FashionWeek = () => {
                                 <div className="absolute inset-0 bg-linear-to-t from-white/90 via-transparent to-white/10" />
 
                                 <div className="absolute top-6 md:top-20 right-6 md:right-20 text-right">
-                                    <p className="text-primary font-mono text-[7px] md:text-xs tracking-[0.4em] uppercase mb-1.5 md:mb-2 font-black">PROTO-TYPE_{i + 1}</p>
+                                    <p className="text-primary font-mono text-[7px] md:text-xs tracking-[0.4em] uppercase mb-1.5 md:mb-2 font-black">{item.serial}</p>
                                     <div className="w-10 md:w-32 h-0.5 bg-primary/40 ml-auto" />
                                 </div>
 
@@ -457,10 +494,10 @@ const FashionWeek = () => {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                         {[
-                            { year: "2023", city: "Mumbai", stats: "42 Designers", img: "https://images.unsplash.com/photo-1550241895-511bd010364d?q=80&w=2070&auto=format&fit=crop" },
-                            { year: "2022", city: "Paris", stats: "38 Designers", img: "https://images.unsplash.com/photo-1539109132314-34a77bd6819f?q=80&w=1974&auto=format&fit=crop" },
-                            { year: "2021", city: "Milan", stats: "45 Designers", img: "https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=2071&auto=format&fit=crop" },
-                            { year: "2020", city: "London", stats: "31 Designers", img: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=2074&auto=format&fit=crop" }
+                            { year: "2023", city: "Mumbai", stats: "42 Designers", img: "https://images.unsplash.com/photo-1550241895-511bd010364d?q=100&w=2000&auto=format&fit=crop" },
+                            { year: "2022", city: "Paris", stats: "38 Designers", img: "https://images.unsplash.com/photo-1539109132314-34a77bd6819f?q=100&w=2000&auto=format&fit=crop" },
+                            { year: "2021", city: "Milan", stats: "45 Designers", img: "https://images.unsplash.com/photo-1445205170230-053b83016050?q=100&w=2000&auto=format&fit=crop" },
+                            { year: "2020", city: "London", stats: "31 Designers", img: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=100&w=2000&auto=format&fit=crop" }
                         ].map((item, idx) => (
                             <motion.div
                                 key={idx}
@@ -468,25 +505,39 @@ const FashionWeek = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: idx * 0.1, duration: 1 }}
                                 whileHover={{ y: -15 }}
-                                className="group relative aspect-3/5 rounded-4xl md:rounded-[3.5rem] overflow-hidden bg-white/40 border border-black/5 shadow-2xl shadow-blue-900/5 backdrop-blur-sm"
+                                className="group relative aspect-3/5 rounded-[3rem] md:rounded-[4rem] overflow-hidden bg-white/40 border border-black/5 shadow-2xl shadow-blue-900/5 backdrop-blur-sm"
                             >
                                 <img src={item.img} className="w-full h-full object-cover opacity-100 md:opacity-70 group-hover:scale-110 transition-all duration-1500 grayscale-0 md:grayscale hover:grayscale-0 saturate-100 md:saturate-50 hover:saturate-100 transform-gpu" alt="archive" />
-                                <div className="absolute inset-0 bg-linear-to-t from-white via-white/10 to-transparent" />
-                                <div className="absolute inset-x-6 sm:inset-x-10 bottom-8 sm:bottom-12">
+                                <div className="absolute inset-0 bg-linear-to-t from-white via-white/20 to-transparent" />
+
+                                {/* Industrial Spec Overlay - Next Level Detail */}
+                                <div className="absolute inset-0 border-[0.5px] border-primary/0 group-hover:border-primary/20 transition-all duration-700 m-4 rounded-[2.5rem] pointer-events-none overflow-hidden">
+                                    <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-primary/0 group-hover:border-primary/40 group-hover:translate-x-0 group-hover:translate-y-0 -translate-x-4 -translate-y-4 transition-all duration-700" />
+                                    <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-primary/0 group-hover:border-primary/40 group-hover:translate-x-0 group-hover:translate-y-0 translate-x-4 translate-y-4 transition-all duration-700" />
+                                </div>
+
+                                <div className="absolute inset-x-6 sm:inset-x-10 bottom-8 sm:bottom-12 z-10 text-black">
                                     <div className="flex items-center gap-4 text-primary/60 mb-2 sm:mb-3 font-black">
                                         <div className="w-8 sm:w-10 h-0.5 bg-primary/30" />
                                         <span className="text-[8px] sm:text-[9px] font-mono uppercase tracking-[0.4em]">{item.year}</span>
                                     </div>
                                     <h4 className="text-2xl sm:text-3xl md:text-5xl font-black uppercase italic tracking-tighter mb-4 sm:mb-6 text-black/80">{item.city}</h4>
+
                                     <div className="flex justify-between items-center opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-4 group-hover:translate-y-0">
-                                        <span className="text-[8px] sm:text-[10px] font-mono text-black/30 uppercase tracking-[0.4em]">{item.stats}</span>
+                                        <div className="flex flex-col">
+                                            <span className="text-[7px] font-mono text-primary/60 uppercase tracking-[0.2em] mb-1">DATA_STREAM</span>
+                                            <span className="text-[9px] sm:text-[10px] font-mono text-black/40 uppercase tracking-[0.4em]">{item.stats}</span>
+                                        </div>
                                         <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black text-white flex items-center justify-center shadow-2xl hover:bg-primary transition-colors">
                                             <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6" />
                                         </div>
                                     </div>
                                 </div>
-                                <div className="absolute top-6 sm:top-10 right-6 text-primary/40 opacity-0 group-hover:opacity-100 transition-opacity">
+
+                                {/* Floating Metadata Badge */}
+                                <div className="absolute top-8 right-8 text-primary/40 opacity-0 group-hover:opacity-100 transition-all duration-700 -translate-y-4 group-hover:translate-y-0 flex flex-col items-end gap-2">
                                     <Star className="w-6 h-6 sm:w-8 sm:h-8 fill-current" />
+                                    <span className="text-[6px] font-mono uppercase tracking-[0.5em] text-primary">Verified_Spec</span>
                                 </div>
                             </motion.div>
                         ))}
@@ -549,15 +600,29 @@ const FashionWeek = () => {
                 <div className="container mx-auto px-6 relative z-10">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-32 items-center">
                         {[
-                            { val: "24M+", lab: "Protocols Reached" },
-                            { val: "500+", lab: "Designers Deployed" },
-                            { val: "12", lab: "Atelier Nodes" },
-                            { val: "ELITE", lab: "Showcase Status" }
+                            { val: "24M+", lab: "Global Impressions", code: "IMPR_SYNC" },
+                            { val: "500+", lab: "Designers Launched", code: "DSGN_EXIT" },
+                            { val: "12", lab: "Atelier Hubs", code: "HUB_STAT" },
+                            { val: "ELITE", lab: "Industry Status", code: "AUTH_X" }
                         ].map((stat, i) => (
-                            <div key={i} className="text-center group p-8 sm:p-10 rounded-4xl border border-black/5 hover:bg-white/50 transition-all duration-700">
-                                <h3 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black italic tracking-tighter mb-4 sm:mb-6 text-black/80 group-hover:text-primary transition-colors duration-700">{stat.val}</h3>
-                                <div className="w-12 h-0.5 md:w-16 md:h-1 bg-primary/20 mx-auto mb-6 sm:mb-8 group-hover:w-24 md:group-hover:w-32 group-hover:bg-primary transition-all duration-700" />
-                                <p className="text-[9px] sm:text-[11px] font-black uppercase tracking-[0.4em] sm:tracking-[0.6em] text-black/40 group-hover:text-black/70 transition-colors">{stat.lab}</p>
+                            <div key={i} className="text-center group p-8 sm:p-12 rounded-[3.5rem] border border-black/5 hover:bg-white/80 hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-1000 relative overflow-hidden">
+                                {/* Pulse Sync Background Detail */}
+                                <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-all duration-1000" />
+
+                                <div className="relative z-10">
+                                    <div className="flex justify-center mb-6">
+                                        <span className="text-[7px] font-mono text-primary/40 tracking-[0.8em] uppercase group-hover:text-primary/80 transition-colors">{stat.code}</span>
+                                    </div>
+                                    <h3 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black italic tracking-tighter mb-4 text-black/80 group-hover:text-black transition-colors duration-1000 leading-none">{stat.val}</h3>
+                                    <div className="w-12 h-0.5 bg-primary/20 mx-auto mb-8 group-hover:w-full group-hover:bg-primary/40 transition-all duration-1000" />
+                                    <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.4em] sm:tracking-[0.6em] text-black/30 group-hover:text-black/80 transition-colors">{stat.lab}</p>
+
+                                    {/* Pinging Sync Indicator */}
+                                    <div className="mt-8 flex justify-center items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-1000">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-primary animate-ping" />
+                                        <span className="text-[7px] font-mono text-primary font-bold uppercase tracking-widest">Active_Sync</span>
+                                    </div>
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -594,7 +659,7 @@ const FashionWeek = () => {
                                 <span className="strok-text-white italic opacity-30">Horizon.</span>
                             </h2>
                             <p className="text-white/50 text-base sm:text-xl md:text-5xl font-light mb-12 md:mb-20 max-w-5xl italic leading-tight px-4">
-                                Secure your entry into the <span className="text-white font-black underline decoration-primary decoration-2 md:decoration-4 underline-offset-8 md:underline-offset-12">Institutional Protocol</span> and join the global fashion vanguard.
+                                Secure your entry into the <span className="text-white font-black underline decoration-primary decoration-2 md:decoration-4 underline-offset-8 md:underline-offset-12">Global Design Collective</span> and join the fashion vanguard.
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-6 md:gap-12 w-full sm:w-auto items-center px-4">
