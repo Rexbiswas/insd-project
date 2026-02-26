@@ -50,9 +50,6 @@ const TOICertification = () => {
     const isSceneInView = useInView(sceneRef, { margin: "-100px 0px" });
     const isPhysicsInView = useInView(physicsSectionRef, { margin: "-100px 0px", once: true });
 
-    // Infinite loop trick: copy array to make it seamless
-    const sliderItems = [...certificates, ...certificates, ...certificates];
-
     React.useEffect(() => {
         if (isPhysicsInView && physicsSectionRef.current) {
             gsap.fromTo(".physics-header",
@@ -197,33 +194,18 @@ const TOICertification = () => {
                 <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-bold tracking-[0.3em] uppercase text-[10px] md:text-xs mb-6">
                     Official Recognition
                 </span>
-                <h2 className="text-[10vw] md:text-[5vw] font-black uppercase leading-[0.9] tracking-tighter text-slate-900">
-                    Awards & <br className="md:hidden" /> Certificates
+                <h2 className="text-[8vw] md:text-[4vw] font-black uppercase leading-[0.9] tracking-tighter text-slate-900">
+                    Times of India <br className="md:hidden" /> award & <br className="hidden md:block" /> certification badges
                 </h2>
             </div>
 
-            {/* Slider Track */}
-            <div className="relative w-full flex items-center overflow-x-hidden py-10">
-                {/* Edge Fades for seamless infinite effect */}
-                <div className="absolute top-0 left-0 w-16 md:w-48 h-full bg-linear-to-r from-[#f3f3f3] to-transparent z-10 pointer-events-none" />
-                <div className="absolute top-0 right-0 w-16 md:w-48 h-full bg-linear-to-l from-[#f3f3f3] to-transparent z-10 pointer-events-none" />
-
-                <motion.div
-                    className="flex gap-6 md:gap-10 px-6 md:px-10"
-                    animate={{
-                        x: ['-33.333%', '-66.666%'] // Moves exactly one full set loop
-                    }}
-                    transition={{
-                        repeat: Infinity,
-                        ease: "linear",
-                        duration: 30 // adjust speed
-                    }}
-                    style={{ width: "max-content" }}
-                >
-                    {sliderItems.map((cert, index) => (
+            {/* Cards Grid */}
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {certificates.map((cert) => (
                         <div
-                            key={index}
-                            className="relative w-[280px] md:w-[400px] h-[350px] md:h-[500px] flex-shrink-0 group rounded-3xl bg-white border border-slate-100 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.1)] transition-all duration-500 overflow-hidden flex flex-col items-center justify-center p-8 cursor-pointer"
+                            key={cert.id}
+                            className="relative w-full aspect-[4/5] flex-shrink-0 group rounded-3xl bg-white border border-slate-100 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.1)] transition-all duration-500 overflow-hidden flex flex-col items-center justify-center p-8 cursor-pointer"
                         >
                             {/* Inner Shine Hover Effect */}
                             <div className="absolute inset-0 bg-linear-to-bl from-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-20" />
@@ -255,7 +237,7 @@ const TOICertification = () => {
                             <div className="absolute bottom-0 left-0 w-full h-1.5 bg-slate-100 group-hover:bg-linear-to-r group-hover:from-primary group-hover:to-secondary transition-all duration-500" />
                         </div>
                     ))}
-                </motion.div>
+                </div>
             </div>
 
             {/* Matter.js Interactive Physics Showcase */}
@@ -273,7 +255,7 @@ const TOICertification = () => {
                 {/* Physics Container */}
                 <div
                     ref={sceneRef}
-                    className="w-full max-w-5xl mx-auto h-[600px] bg-white rounded-3xl border border-slate-200 shadow-inner overflow-hidden relative cursor-grab active:cursor-grabbing"
+                    className="w-full max-w-5xl mx-auto h-[600px] bg-[#f3f3f3] rounded-3xl overflow-hidden relative cursor-grab active:cursor-grabbing"
                 >
                     {/* The canvas injects here */}
                 </div>
