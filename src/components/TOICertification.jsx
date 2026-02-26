@@ -28,18 +28,12 @@ const certificates = [
     },
     {
         id: 5,
-        image: "https://ik.imagekit.io/fmldynl4j4/insd-awards/Award%20-%20Best%20Design%20Institute%20in%20North%20India%20JPG.jpg",
-        title: "Best Design Institute in North India",
-        tag: "Career"
-    },
-    {
-        id: 6,
         image: "https://image2url.com/r2/default/images/1772097879772-cf85dfcb-8056-49cc-b5f6-a8f006ec8f8a.jpg",
         title: "International College of the Year",
         tag: "Career"
     },
     {
-        id: 7,
+        id: 6,
         image: "https://ik.imagekit.io/fmldynl4j4/insd-awards/Award%20-%20International%20College%20of%20the%20Year%202021_page-0001.jpg?updatedAt=1772091967595",
         title: "International College of the Year",
         tag: "Career"
