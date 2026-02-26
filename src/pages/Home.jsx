@@ -28,6 +28,7 @@ import GlobalDesignEconomy from '../components/GlobalDesignEconomy';
 import GovernmentValidation from '../components/GovernmentValidation';
 import StudentTransformation from '../components/StudentTransformation';
 import GlobalIndustryNetwork from '../components/GlobalIndustryNetwork';
+import FinalCTA from '../components/FinalCTA';
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -488,8 +489,8 @@ const Home = () => {
     return (
         <div ref={containerRef} className="min-h-screen text-slate-900 relative overflow-x-hidden">
 
-            <div className="fixed inset-0  pointer-events-none">
-                <img className="w-full h-full object-cover opacity-50" src="https://ik.imagekit.io/fmldynl4j4/IMG_3440.JPG?updatedAt=1771841966154" alt="Hero Background" />
+            <div className="fixed inset-0 pointer-events-none z-0">
+                <img className="w-full h-full object-cover" src="https://ik.imagekit.io/fmldynl4j4/IMG_3440.JPG?updatedAt=1771841966154" alt="Hero Background" />
             </div>
 
             {/* Hero Section - Pinned Wrapper relative to Viewport */}
@@ -616,6 +617,7 @@ const Home = () => {
             <GlobalDesignEconomy />
             <GovernmentValidation />
             <StudentTransformation />
+            <FinalCTA />
             <StepVisual />
             <ImpactStats />
             <GlobalIndustryNetwork />
