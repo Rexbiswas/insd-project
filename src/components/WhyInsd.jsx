@@ -38,7 +38,7 @@ const WhyInsd = () => {
     ];
 
     return (
-        <section ref={sectionRef} className="relative py-32 md:py-48 bg-white overflow-hidden selection:bg-primary selection:text-white">
+        <section ref={sectionRef} className="relative py-32 md:py-48 bg-[#f3f3f3] overflow-hidden selection:bg-primary selection:text-white">
             {/* Philosophical Background Accents */}
             <div className="absolute top-0 right-0 w-[80vw] h-[80vw] bg-slate-50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 opacity-60 pointer-events-none" />
 

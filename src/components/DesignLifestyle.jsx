@@ -98,7 +98,7 @@ const DesignLifestyle = () => {
     ];
 
     return (
-        <section ref={sectionRef} className="relative py-20 md:py-32 bg-slate-50 overflow-hidden">
+        <section ref={sectionRef} className="relative py-20 md:py-32 bg-[#f3f3f3] overflow-hidden">
             <div className="container mx-auto px-4 md:px-12">
                 <div ref={contentRef} className="max-w-4xl mb-16 md:mb-24">
                     <h1 className="lifestyle-title text-[10vw] md:text-[5vw] font-black uppercase leading-[0.9] tracking-tighter mb-8 flex flex-wrap gap-x-4">

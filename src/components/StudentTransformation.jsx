@@ -129,7 +129,7 @@ const StudentTransformation = () => {
     ];
 
     return (
-        <section ref={sectionRef} className="relative py-24 md:py-40 bg-white overflow-hidden selection:bg-primary selection:text-white z-20">
+        <section ref={sectionRef} className="relative py-24 md:py-40 bg-[#f3f3f3] overflow-hidden selection:bg-primary selection:text-white z-20">
             {/* Background Narrative */}
             <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-slate-50/50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 opacity-30 pointer-events-none" />
 

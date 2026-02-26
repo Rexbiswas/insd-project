@@ -33,7 +33,7 @@ const SocialProof = () => {
     ];
 
     return (
-        <section ref={sectionRef} className="relative z-20 py-24 md:py-40 bg-white text-slate-900 overflow-hidden">
+        <section ref={sectionRef} className="relative z-20 py-24 md:py-40 bg-[#f3f3f3] text-slate-900 overflow-hidden">
             {/* Soft Ambient Background Elements */}
             <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 blur-[100px] rounded-full pointer-events-none" />

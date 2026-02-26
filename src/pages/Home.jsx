@@ -522,7 +522,7 @@ const Home = () => {
                         {/* Premium Relocated Tagline */}
                         <div ref={taglineRef} className="mt-4 md:mt-12 px-5 py-2 md:px-10 md:py-3 border border-black/10 rounded-full backdrop-blur-xl bg-white/10 will-change-transform shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] flex items-center justify-center overflow-hidden group max-w-[90vw]">
                             <p className="text-black text-[9px] sm:text-xs md:text-sm font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] md:tracking-[0.6em] whitespace-nowrap flex gap-px px-2">
-                                {splitText("INSD - India's Design Skill School", "tagline-char")}
+                                {splitText("INSD - India's Skill School", "tagline-char")}
                             </p>
 
                             {/* Inner Shine Effect */}

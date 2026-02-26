@@ -50,7 +50,7 @@ const GlobalDesignEconomy = () => {
     ];
 
     return (
-        <section ref={sectionRef} className="relative py-24 md:py-32 bg-white overflow-hidden selection:bg-primary selection:text-white z-20">
+        <section ref={sectionRef} className="relative py-24 md:py-32 bg-[#f3f3f3] overflow-hidden selection:bg-primary selection:text-white z-20">
             {/* Background Narrative */}
             <div className="absolute top-0 left-0 w-full h-full opacity-[0.02] pointer-events-none overflow-hidden">
                 <motion.div style={{ rotate }} className="absolute -top-1/4 -right-1/4 origin-center">

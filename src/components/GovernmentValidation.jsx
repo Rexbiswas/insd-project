@@ -36,7 +36,7 @@ const GovernmentValidation = () => {
     ];
 
     return (
-        <section ref={sectionRef} className="relative py-24 md:py-32 bg-slate-50 overflow-hidden selection:bg-primary selection:text-white z-20">
+        <section ref={sectionRef} className="relative py-24 md:py-32 bg-[#f3f3f3] overflow-hidden selection:bg-primary selection:text-white z-20">
             {/* Background Narrative */}
             <motion.div
                 style={{ rotate }}

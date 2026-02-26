@@ -63,7 +63,7 @@ function App() {
         <Router>
           <ScrollToTop />
           <Navbar />
-          <div className="relative z-0 bg-slate-50 min-h-screen pb-24 md:pb-0 overflow-x-hidden">
+          <div className="relative z-0 bg-[#f3f3f3] min-h-screen pb-24 md:pb-0 overflow-x-hidden">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about-us" element={<About />} />
