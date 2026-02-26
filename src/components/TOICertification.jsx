@@ -244,10 +244,10 @@ const TOICertification = () => {
             <div className="container mx-auto px-6 mt-32 relative z-10" ref={physicsSectionRef}>
                 <div className="text-center mb-10 physics-header">
                     <span className="inline-block px-4 py-1 rounded-full bg-slate-200 text-slate-800 font-bold tracking-[0.2em] uppercase text-[10px] md:text-xs mb-4">
-                        Interact & Play
+                        Times of India
                     </span>
                     <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tight text-slate-900">
-                        Our Accolade
+                        Awards Given By Times Of India
                     </h3>
                     <p className="text-slate-500 mt-2 text-sm max-w-lg mx-auto">Use your mouse or finger to drag and throw the award around.</p>
                 </div>

@@ -21,6 +21,8 @@ import BackToTop from './components/BackToTop';
 import StudentCareers from './pages/StudentCareers';
 import OnlineCourse from './pages/OnlineCourse';
 import Blog from './pages/Blog';
+import FashionWeek from './pages/FashionWeek';
+import ParisProject from './pages/ParisProject';
 import WhatsappCTA from './components/WhatsappCTA';
 // import AIChatbot from './components/AIChatbot';
 
@@ -80,6 +82,8 @@ function App() {
               <Route path="/apply" element={<Admission />} />
               <Route path="/courses/online-courses" element={<OnlineCourse />} />
               <Route path="/insd-360/blog" element={<Blog />} />
+              <Route path="/insd-360/fashion-week" element={<FashionWeek />} />
+              <Route path="/insd-360/paris-project" element={<ParisProject />} />
 
               <Route path="/test-404" element={<NotFound />} />
               <Route path="*" element={<NotFound />} />

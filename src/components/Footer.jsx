@@ -1,6 +1,6 @@
 import React, { useRef, useLayoutEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Facebook, Instagram, Twitter, Linkedin, Youtube, ArrowUpRight, Mail, Phone, MapPin, Download, MessageSquare, MessageCircle, ShieldCheck, Globe, Zap } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Linkedin, Youtube, ArrowUpRight, ChevronRight, Mail, Phone, MapPin, Download, MessageSquare, MessageCircle, ShieldCheck, Globe, Zap } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -124,7 +124,7 @@ const Footer = () => {
     ];
 
     return (
-        <footer ref={footerRef} className="relative bg-[#050505] text-white pt-32 pb-12 overflow-hidden">
+        <footer ref={footerRef} className="relative bg-gradient-to-br from-[#801e20] to-[#0a2746] text-white pt-32 pb-12 overflow-hidden">
 
             {/* Atmospheric Orbs */}
             <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/10 blur-[150px] -translate-y-1/2 translate-x-1/2 rounded-full pointer-events-none" />
@@ -132,42 +132,7 @@ const Footer = () => {
 
             <div className="relative z-10 container mx-auto px-6 lg:px-12">
 
-                {/* Header Phase: Next Level Editorial */}
-                <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 mb-32 border-b border-white/5 pb-20 relative group/header">
-                    <div className="max-w-4xl relative">
-                        {/* Decorative Vertical Line */}
-                        <div className="absolute -left-8 top-0 bottom-0 w-px bg-linear-to-b from-primary via-transparent to-transparent opacity-20 hidden md:block" />
 
-                        <div className="flex items-center gap-4 text-primary font-mono text-[10px] md:text-xs uppercase tracking-[0.5em] mb-10 reveal-card">
-                            <span className="w-12 h-px bg-primary animate-pulse-slow"></span>
-                            <span className="bg-primary/10 px-3 py-1 rounded-sm backdrop-blur-md">Creative Frontier</span>
-                        </div>
-
-                        <h2 className="text-6xl lg:text-[10rem] font-black uppercase tracking-tighter leading-[0.8] mb-8 relative">
-                            <span className="block opacity-90">Ready to</span>
-                            <span className="block text-transparent strok-text-white italic drop-shadow-[0_0_30px_rgba(255,255,255,0.15)] group-hover/header:text-white transition-all duration-1000 ease-expo">Evolve?</span>
-                        </h2>
-
-                        <p className="text-white/40 text-lg md:text-2xl font-light leading-relaxed max-w-xl reveal-card">
-                            Join the global design elite. Our frontier is where your <span className="text-white font-medium">vision becomes institutionalized.</span>
-                        </p>
-                    </div>
-
-                    {/* Quick Stats Reveal */}
-                    <div className="hidden xl:flex flex-col items-end text-right gap-6">
-                        <div className="reveal-card">
-                            <h4 className="text-3xl font-black text-white">45+</h4>
-                            <p className="text-[10px] text-white/30 uppercase tracking-[0.2em] font-bold">Global Chapters</p>
-                        </div>
-                        <div className="reveal-card">
-                            <h4 className="text-3xl font-black text-white">98%</h4>
-                            <p className="text-[10px] text-white/30 uppercase tracking-[0.2em] font-bold">Placement Index</p>
-                        </div>
-                    </div>
-
-                    {/* Background Header Glow */}
-                    <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-primary/20 blur-[130px] -z-10 rounded-full opacity-0 group-hover/header:opacity-100 transition-opacity duration-1000" />
-                </div>
 
                 {/* --- THE NEXUS ADMISSION COCKPIT --- */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-40">
@@ -175,57 +140,38 @@ const Footer = () => {
                         <motion.a
                             key={i}
                             href={cta.link}
-                            whileHover={{ y: -12, scale: 1.02 }}
-                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                            className="footer-node group relative min-h-[280px] rounded-[3rem] bg-[#0A0A0A] border border-white/5 overflow-hidden transition-all duration-700 flex flex-col justify-between p-10 hover:border-primary/40 hover:shadow-[0_40px_80px_-20px_rgba(219,52,54,0.2)]"
+                            whileHover={{ y: -5, scale: 1.02 }}
+                            transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                            className="group relative h-24 rounded-full bg-white/5 backdrop-blur-md border border-white/10 overflow-hidden transition-all duration-500 flex items-center px-4 hover:bg-white/10 hover:border-white/20 hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] shadow-xl cursor-pointer"
                         >
-                            {/* Layer 0: Background Chromatic Bleed */}
-                            <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-1000 ${cta.glow} blur-[100px] pointer-events-none`} />
+                            {/* Accent Glow hidden inside */}
+                            <div className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700 ${cta.glow} blur-2xl pointer-events-none`} />
 
-                            {/* Layer 2: Top Meta Info */}
-                            <div className="relative z-10 flex justify-between items-start">
-                                <div className="relative">
-                                    <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-500 overflow-hidden">
-                                        <cta.icon className="w-6 h-6 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-125" />
-                                        {/* Radial Shine */}
-                                        <div className="absolute inset-0 bg-linear-to-tr from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                            <div className="relative z-10 flex items-center justify-between w-full">
+                                {/* Left Side: Icon & Text */}
+                                <div className="flex items-center gap-5">
+                                    <div className="w-16 h-16 shrink-0 rounded-full bg-white text-slate-900 flex items-center justify-center shadow-inner group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-500 overflow-hidden relative">
+                                        <div className="absolute inset-0 bg-gradient-to-tr from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                        <cta.icon className="w-6 h-6 transition-transform duration-500 group-hover:rotate-12" />
                                     </div>
-                                    {/* Corner Accents */}
-                                    <div className="absolute -top-1 -left-1 w-2 h-2 border-t border-l border-primary/40 rounded-tl-sm opacity-0 group-hover:opacity-100 transition-all duration-500" />
-                                </div>
-                                <div className="flex flex-col items-end">
-                                    <span className="font-mono text-[9px] text-white/20 tracking-[0.4em] uppercase group-hover:text-primary/60 transition-colors">
-                                        PHASE_0{i + 1}
-                                    </span>
-                                    <div className="w-8 h-[2px] bg-primary/20 mt-2 group-hover:w-12 transition-all duration-500"></div>
-                                </div>
-                            </div>
-
-                            {/* Layer 3: Main Editorial Typography */}
-                            <div className="relative z-10">
-                                <h4 className="text-3xl md:text-4xl font-black uppercase tracking-tighter leading-none mb-3 transform-gpu group-hover:translate-x-2 transition-transform duration-700">
-                                    {cta.label.split(' ').map((word, wi) => (
-                                        <span key={wi} className={wi % 2 !== 0 ? "text-transparent strok-text-white italic opacity-80" : "block"}>
-                                            {word}{" "}
+                                    
+                                    <div className="flex flex-col">
+                                        <span className="text-xs uppercase tracking-widest text-primary/80 font-bold mb-1 group-hover:text-primary transition-colors">
+                                            {cta.tag}
                                         </span>
-                                    ))}
-                                </h4>
-                                <p className="text-white/30 text-[10px] md:text-xs uppercase tracking-[0.2em] font-black group-hover:text-white transition-colors duration-500">
-                                    {cta.desc}
-                                </p>
-                            </div>
-
-                            {/* Layer 4: Interactive Status Bar */}
-                            <div className="relative z-10 flex items-center gap-4 mt-6">
-                                <div className="flex-1 h-px bg-white/5 overflow-hidden">
-                                    <div className="w-full h-full bg-linear-to-r from-transparent via-primary to-transparent -translate-x-full group-hover:animate-shimmer transition-all duration-1000" />
+                                        <h4 className="text-xl md:text-2xl font-bold tracking-tight text-white leading-none">
+                                            {cta.label}
+                                        </h4>
+                                    </div>
                                 </div>
-                                <ArrowUpRight className="w-5 h-5 text-white/20 group-hover:text-primary group-hover:rotate-45 transition-all duration-500" />
-                            </div>
 
-                            {/* Layer 5: Massive Background Ghost Label */}
-                            <div className="absolute -right-6 -bottom-8 text-[10rem] font-black text-white/[0.02] italic select-none pointer-events-none group-hover:text-primary/[0.06] transition-all duration-700 whitespace-nowrap uppercase tracking-tighter">
-                                {cta.tag}
+                                {/* Right Side: Chevron & Status */}
+                                <div className="flex items-center justify-end pr-4">
+                                     <div className="w-10 h-10 shrink-0 rounded-full border border-white/20 flex items-center justify-center group-hover:border-primary group-hover:bg-primary transition-colors duration-500 relative overflow-hidden">
+                                          <ChevronRight className="w-5 h-5 text-white/50 group-hover:text-white transition-all duration-500 absolute group-hover:translate-x-full opacity-100 group-hover:opacity-0" />
+                                          <ChevronRight className="w-5 h-5 text-white transition-all duration-500 absolute -translate-x-full opacity-0 group-hover:translate-x-0 group-hover:opacity-100" />
+                                     </div>
+                                </div>
                             </div>
                         </motion.a>
                     ))}
@@ -336,7 +282,7 @@ const Footer = () => {
                     <div className="flex gap-10">
                         <a href="#" className="hover:text-primary transition-colors">Security</a>
                         <a href="#" className="hover:text-primary transition-colors">Privacy</a>
-                        <a href="#" className="hover:text-primary transition-colors">Legal Matrix</a>
+                        <a href="#" className="hover:text-primary transition-colors">Terms & Conditions</a>
                     </div>
 
                     <a href="https://rishibiswas.dev" className="flex items-center gap-2 hover:text-white transition-colors">
