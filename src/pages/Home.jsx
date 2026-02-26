@@ -22,6 +22,12 @@ import NetworkCounter from '../components/NetworkCounter';
 import BackToTop from '../components/BackToTop';
 import DesignLifestyle from '../components/DesignLifestyle';
 import SocialProof from '../components/SocialProof';
+import WhyInsd from '../components/WhyInsd';
+import AiFutureDesign from '../components/AiFutureDesign';
+import GlobalDesignEconomy from '../components/GlobalDesignEconomy';
+import GovernmentValidation from '../components/GovernmentValidation';
+import StudentTransformation from '../components/StudentTransformation';
+import GlobalIndustryNetwork from '../components/GlobalIndustryNetwork';
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -95,6 +101,13 @@ const Home = () => {
             window.removeEventListener('resize', checkMobile);
         };
     }, [isMobile]);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            ScrollTrigger.refresh();
+        }, 1000);
+        return () => clearTimeout(timer);
+    }, []);
 
     useLayoutEffect(() => {
         let ctx = gsap.context(() => {
@@ -432,7 +445,7 @@ const Home = () => {
 
 
 
-        }, containerRef);
+        }, containerRef.current);
 
         const onMouseMove = (e) => {
             const { clientX, clientY } = e;
@@ -475,8 +488,8 @@ const Home = () => {
     return (
         <div ref={containerRef} className="min-h-screen text-slate-900 relative overflow-x-hidden">
 
-            <div className="fixed inset-0 z-0 bg-white">
-                <img className="w-full h-full object-cover" src="https://ik.imagekit.io/fmldynl4j4/IMG_3440.JPG?updatedAt=1771841966154" alt="Hero Background" />
+            <div className="fixed inset-0  pointer-events-none">
+                <img className="w-full h-full object-cover opacity-50" src="https://ik.imagekit.io/fmldynl4j4/IMG_3440.JPG?updatedAt=1771841966154" alt="Hero Background" />
             </div>
 
             {/* Hero Section - Pinned Wrapper relative to Viewport */}
@@ -489,7 +502,7 @@ const Home = () => {
                         <img
                             src="https://insd.edu.in/wp-content/uploads/2019/11/INSD-circle-Logo_black_100pxl.png"
                             alt="INSD Watermark"
-                            className="w-[vw] md:w-[20vw] h-auto object-contain grayscale brightness-0 opacity-40 mix-blend-multiply"
+                            className="w-[60vw] md:w-[20vw] h-auto object-contain grayscale brightness-0 opacity-40 mix-blend-multiply"
                         />
                     </div>
                     <div className="flex flex-col items-center justify-center w-full px-4 text-center">
@@ -598,7 +611,14 @@ const Home = () => {
             <TOICertification />
             <DesignLifestyle />
             <SocialProof />
+            <WhyInsd />
+            <AiFutureDesign />
+            <GlobalDesignEconomy />
+            <GovernmentValidation />
+            <StudentTransformation />
             <StepVisual />
+            <ImpactStats />
+            <GlobalIndustryNetwork />
 
             {/* Student Spotlight Section - High Fashion Editorial Style */}
             <div ref={studentRef} className="relative min-h-screen py-20 md:py-32 px-4 md:px-12 overflow-hidden transition-colors duration-700">
@@ -852,8 +872,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            {/* Separate Impact Stats Section */}
-            <ImpactStats />
+            {/* Separate Impact Stats Section - Moved up */}
             <TestimonialSlider />
             <FeaturedIn />
             <EventBlogs />

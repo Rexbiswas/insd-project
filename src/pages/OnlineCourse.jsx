@@ -406,7 +406,7 @@ const OnlineCourse = () => {
                                     <div className="absolute inset-0 bg-primary/5 blur-[100px] rounded-full group-hover/cert:bg-primary/15 transition-all duration-1000 scale-110"></div>
 
                                     {/* The Certificate Frame */}
-                                    <div className="relative h-full w-full bg-[#faf9f6] p-4 md:p-8 rounded-sm shadow-[0_40px_80px_rgba(0,0,0,0.1)] border-[16px] border-white transform-gpu transition-all duration-700 group-hover/cert:rotate-y-0 group-hover/cert:scale-105 overflow-hidden">
+                                    <div className="relative h-full w-full bg-[#faf9f6] p-4 md:p-8 rounded-sm shadow-[0_40px_80px_rgba(0,0,0,0.1)] border-16 border-white transform-gpu transition-all duration-700 group-hover/cert:rotate-y-0 group-hover/cert:scale-105 overflow-hidden">
 
                                         {/* Inner Ornate Border */}
                                         <div className="absolute inset-2 border border-primary/20 pointer-events-none after:content-[''] after:absolute after:inset-1 after:border after:border-primary/10" />

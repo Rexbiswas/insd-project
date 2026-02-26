@@ -23,7 +23,7 @@ const StatCounter = ({ endValue, suffix, label, color }) => {
                 {count.toLocaleString()}{suffix}
             </div>
             <div className="h-1.5 w-12 bg-white/10 rounded-full mb-6 group-hover:w-24 group-hover:bg-primary transition-all duration-700"></div>
-            <div className="text-[10px] md:text-xs font-mono uppercase tracking-[0.4em] text-slate-500 group-hover:text-white font-bold transition-colors duration-500">
+            <div className="text-[10px] md:text-xs font-mono uppercase tracking-[0.4em] text-white/50 group-hover:text-white font-bold transition-colors duration-500">
                 {label}
             </div>
         </div>

@@ -1,72 +1,9 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Award, FileCheck, Landmark, Star, Medal, Globe } from 'lucide-react';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const SocialProof = () => {
     const sectionRef = useRef(null);
-    const counterRef = useRef(null);
-
-    useLayoutEffect(() => {
-        let ctx = gsap.context(() => {
-            // Title Animation
-            gsap.from(".proof-title span", {
-                y: 50,
-                opacity: 0,
-                rotateX: -90,
-                stagger: 0.1,
-                duration: 1,
-                ease: "back.out(1.7)",
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top 80%",
-                }
-            });
-
-            // Counter Animation
-            gsap.from(".years-count", {
-                innerHTML: 0,
-                duration: 2,
-                ease: "power2.out",
-                snap: { innerHTML: 1 },
-                scrollTrigger: {
-                    trigger: counterRef.current,
-                    start: "top 85%",
-                }
-            });
-
-            // Card Reveal
-            gsap.from(".proof-card", {
-                y: 100,
-                opacity: 0,
-                stagger: 0.2,
-                duration: 1,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: ".proof-grid",
-                    start: "top 80%",
-                }
-            });
-
-            // Floating movement for cards
-            gsap.to(".proof-card", {
-                y: -15,
-                duration: 2,
-                repeat: -1,
-                yoyo: true,
-                ease: "sine.inOut",
-                stagger: {
-                    each: 0.3,
-                    from: "random"
-                }
-            });
-        }, sectionRef);
-
-        return () => ctx.revert();
-    }, []);
 
     const proofItems = [
         {
@@ -96,7 +33,7 @@ const SocialProof = () => {
     ];
 
     return (
-        <section ref={sectionRef} className="relative py-24 md:py-40 bg-white text-slate-900 overflow-hidden">
+        <section ref={sectionRef} className="relative z-20 py-24 md:py-40 bg-white text-slate-900 overflow-hidden">
             {/* Soft Ambient Background Elements */}
             <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 blur-[100px] rounded-full pointer-events-none" />
@@ -108,19 +45,43 @@ const SocialProof = () => {
                 <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-12">
                     <div className="max-w-3xl">
                         <span className="inline-block text-primary font-bold tracking-[0.4em] uppercase text-xs mb-4">Verification & Authority</span>
-                        <h2 className="proof-title text-[8vw] md:text-[5.5vw] font-black uppercase leading-[0.85] tracking-tighter mb-8 flex flex-wrap gap-x-5">
+                        <motion.h2
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            variants={{
+                                visible: { transition: { staggerChildren: 0.1 } }
+                            }}
+                            className="text-[8vw] md:text-[5.5vw] font-black uppercase leading-[0.85] tracking-tighter mb-8 flex flex-wrap gap-x-5"
+                        >
                             {"Trusted. Recognised. Proven.".split(" ").map((word, i) => (
-                                <span key={i} className="inline-block">{word}</span>
+                                <motion.span
+                                    key={i}
+                                    className="inline-block"
+                                    variants={{
+                                        hidden: { y: 50, opacity: 0, rotateX: -90 },
+                                        visible: { y: 0, opacity: 1, rotateX: 0 }
+                                    }}
+                                    transition={{ duration: 1, ease: [0.175, 0.885, 0.32, 1.275] }}
+                                >
+                                    {word}
+                                </motion.span>
                             ))}
-                        </h2>
-                        <div className="h-1.5 w-32 bg-linear-to-r from-primary to-secondary rounded-full"></div>
+                        </motion.h2>
+                        <div className="h-1.5 w-32 bg-primary rounded-full"></div>
                     </div>
 
-                    <div ref={counterRef} className="flex items-center gap-8 group bg-slate-50 p-6 md:p-10 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-md transition-shadow duration-500">
+                    <div className="flex items-center gap-8 group bg-slate-50 p-6 md:p-10 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-md transition-shadow duration-500">
                         <div className="text-right flex items-baseline">
-                            <span className="years-count text-8xl md:text-10xl font-black text-transparent bg-clip-text bg-linear-to-b from-slate-900 to-slate-500 leading-none">
+                            <motion.span
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.8 }}
+                                className="text-8xl md:text-10xl font-black text-slate-800 leading-none"
+                            >
                                 15
-                            </span>
+                            </motion.span>
                             <span className="text-5xl md:text-7xl font-black text-primary ml-1">+</span>
                         </div>
                         <div className="text-left max-w-[180px]">
@@ -134,9 +95,16 @@ const SocialProof = () => {
                     </div>
                 </div>
 
-                <div className="proof-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
                     {proofItems.map((item, index) => (
-                        <div key={index} className="proof-card group relative h-[500px] rounded-[2.5rem] overflow-hidden bg-white border border-slate-100 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.12)] transition-all duration-700">
+                        <motion.div
+                            key={index}
+                            initial={{ y: 50, opacity: 0 }}
+                            whileInView={{ y: 0, opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: index * 0.1, ease: "easeOut" }}
+                            className="group relative h-[500px] rounded-[2.5rem] overflow-hidden bg-white border border-slate-100 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.12)] transition-shadow duration-700"
+                        >
                             {/* Card Image with Refined Overlay */}
                             <div className="absolute inset-0 z-0 h-full w-full">
                                 <img
@@ -160,7 +128,7 @@ const SocialProof = () => {
                                     {item.title}
                                 </h3>
 
-                                <p className="text-slate-500 text-sm font-medium leading-relaxed mb-6 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 group-hover:text-white/80 transition-all duration-500 delay-100">
+                                <p className="text-slate-500 text-sm font-medium leading-relaxed mb-6 group-hover:text-white/80 transition-all duration-500 delay-100">
                                     {item.desc}
                                 </p>
 
@@ -174,7 +142,7 @@ const SocialProof = () => {
                             <div className="absolute top-0 right-0 p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                                 <Globe className="w-6 h-6 text-white/40" />
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
 
@@ -188,12 +156,12 @@ const SocialProof = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
                         <div>
                             <div className="flex items-center gap-4 mb-6">
-                                <span className="w-12 h-[1px] bg-primary"></span>
+                                <span className="w-12 h-px bg-primary"></span>
                                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">Founding Heritage</span>
                             </div>
                             <h3 className="text-3xl md:text-5xl font-black text-slate-900 leading-[1.1] tracking-tight mb-8">
                                 A Legacy Engineered by <br />
-                                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary italic font-serif">Visionary Leadership</span>
+                                <span className="text-slate-800 italic font-serif">Visionary Leadership</span>
                             </h3>
                             <p className="text-slate-600 text-lg md:text-xl font-medium leading-relaxed max-w-xl">
                                 Co-founded by the <span className="text-slate-900 font-bold">IAS Officer & 1st Director General of NIFT</span>, INSD has pioneered design education in India for over 15 years, building a community of world-class artists and entrepreneurs.

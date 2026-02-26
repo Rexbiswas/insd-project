@@ -69,7 +69,7 @@ const DesignLifestyle = () => {
                     }
                 });
             });
-        }, sectionRef);
+        }, sectionRef.current);
 
         return () => ctx.revert();
     }, []);
@@ -159,7 +159,7 @@ const DesignLifestyle = () => {
 
                             {/* Stylized Floating Number */}
                             <div className="absolute top-10 right-10 z-20 transition-transform duration-700 group-hover:scale-110 group-hover:-rotate-12">
-                                <span className="text-white/10 text-7xl md:text-9xl font-black italic select-none stroke-text-white/20">
+                                <span className="text-white/10 text-7xl md:text-9xl font-black italic select-none stroke-text">
                                     0{index + 1}
                                 </span>
                             </div>
