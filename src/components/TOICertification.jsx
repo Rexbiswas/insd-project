@@ -1,133 +1,126 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Award, ShieldCheck, Star, CheckCircle2 } from 'lucide-react';
+
+const certificates = [
+    {
+        id: 1,
+        image: "https://ik.imagekit.io/fmldynl4j4/insd-awards/WhatsApp%20Image%202025-05-03%20at%205.24.15%20PM%20(3).jpeg",
+        title: "National Award Best Design College",
+        tag: "National"
+    },
+    {
+        id: 2,
+        image: "https://ik.imagekit.io/fmldynl4j4/insd-awards/academic%20leader%20award.jpg",
+        title: "Academic Leader Award",
+        tag: "Excellence"
+    },
+    {
+        id: 3,
+        image: "https://ik.imagekit.io/fmldynl4j4/insd-awards/Best%20design%20school%20award%202017%20insd.jpg",
+        title: "Best Design School Award",
+        tag: "Global"
+    },
+    {
+        id: 4,
+        image: "https://ik.imagekit.io/fmldynl4j4/insd-awards/INSD%20receives%20National%20award.jpg",
+        title: "National Award Outstanding Placement Record",
+        tag: "Career"
+    },
+    {
+        id: 5,
+        image: "https://ik.imagekit.io/fmldynl4j4/insd-awards/Award%20-%20Best%20Design%20Institute%20in%20North%20India%20JPG.jpg",
+        title: "Best Design Institute in North India",
+        tag: "Career"
+    },
+    {
+        id: 6,
+        image: "https://image2url.com/r2/default/images/1772097879772-cf85dfcb-8056-49cc-b5f6-a8f006ec8f8a.jpg",
+        title: "International College of the Year",
+        tag: "Career"
+    },
+    {
+        id: 7,
+        image: "https://ik.imagekit.io/fmldynl4j4/insd-awards/Award%20-%20International%20College%20of%20the%20Year%202021_page-0001.jpg?updatedAt=1772091967595",
+        title: "International College of the Year",
+        tag: "Career"
+    }
+];
 
 const TOICertification = () => {
-    const containerRef = React.useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start end", "end start"]
-    });
+    const containerRef = useRef(null);
 
-    const rotateX = useTransform(scrollYProgress, [0, 1], [10, -10]);
-    const shineX = useTransform(scrollYProgress, [0, 1], ["-100%", "200%"]);
+    // Infinite loop trick: copy array to make it seamless
+    const sliderItems = [...certificates, ...certificates, ...certificates];
 
     return (
-        <section ref={containerRef} className="relative py-32 md:py-64 overflow-hidden bg-white">
-            {/* Ambient Environment */}
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(0,0,0,0.02)_0%,transparent_70%)] pointer-events-none" />
+        <section ref={containerRef} className="relative py-24 md:py-32 bg-[#f3f3f3] overflow-hidden">
+            {/* Header */}
+            <div className="container mx-auto px-6 mb-16 text-center relative z-10">
+                <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-bold tracking-[0.3em] uppercase text-[10px] md:text-xs mb-6">
+                    Official Recognition
+                </span>
+                <h2 className="text-[10vw] md:text-[5vw] font-black uppercase leading-[0.9] tracking-tighter text-slate-900">
+                    Awards & <br className="md:hidden" /> Certificates
+                </h2>
+            </div>
 
-            <div className="container mx-auto px-6 relative z-10">
-                <div className="max-w-6xl mx-auto">
-                    <motion.div
-                        style={{ perspective: 2000 }}
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
-                    >
-                        <motion.div
-                            style={{ rotateX }}
-                            className="relative group bg-[#faf9f6] rounded-2xl md:rounded-[0.5rem] shadow-[0_50px_100px_rgba(0,0,0,0.08)] border-[12px] md:border-[24px] border-white overflow-hidden"
+            {/* Slider Track */}
+            <div className="relative w-full flex items-center overflow-x-hidden py-10">
+                {/* Edge Fades for seamless infinite effect */}
+                <div className="absolute top-0 left-0 w-16 md:w-48 h-full bg-linear-to-r from-[#f3f3f3] to-transparent z-10 pointer-events-none" />
+                <div className="absolute top-0 right-0 w-16 md:w-48 h-full bg-linear-to-l from-[#f3f3f3] to-transparent z-10 pointer-events-none" />
+
+                <motion.div
+                    className="flex gap-6 md:gap-10 px-6 md:px-10"
+                    animate={{
+                        x: ['-33.333%', '-66.666%'] // Moves exactly one full set loop
+                    }}
+                    transition={{
+                        repeat: Infinity,
+                        ease: "linear",
+                        duration: 30 // adjust speed
+                    }}
+                    style={{ width: "max-content" }}
+                >
+                    {sliderItems.map((cert, index) => (
+                        <div
+                            key={index}
+                            className="relative w-[280px] md:w-[400px] h-[350px] md:h-[500px] flex-shrink-0 group rounded-3xl bg-white border border-slate-100 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.1)] transition-all duration-500 overflow-hidden flex flex-col items-center justify-center p-8 cursor-pointer"
                         >
-                            {/* Inner Ornate Border */}
-                            <div className="absolute inset-4 md:inset-8 border-2 border-primary/20 pointer-events-none after:content-[''] after:absolute after:inset-1 after:border after:border-primary/10" />
+                            {/* Inner Shine Hover Effect */}
+                            <div className="absolute inset-0 bg-linear-to-bl from-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-20" />
 
-                            {/* Corner Accents */}
-                            {[0, 90, 180, 270].map((rot) => (
-                                <div
-                                    key={rot}
-                                    className="absolute w-12 h-12 md:w-20 md:h-20 border-t-2 border-l-2 border-primary/40 z-20"
-                                    style={{
-                                        transform: `rotate(${rot}deg)`,
-                                        top: rot === 0 || rot === 270 ? '2rem' : 'auto',
-                                        bottom: rot === 90 || rot === 180 ? '2rem' : 'auto',
-                                        left: rot === 0 || rot === 90 ? '2rem' : 'auto',
-                                        right: rot === 180 || rot === 270 ? '2rem' : 'auto'
-                                    }}
-                                />
-                            ))}
-
-                            {/* Paper Texture Overlay */}
-                            <div className="absolute inset-0 opacity-[0.4] pointer-events-none mix-blend-multiply bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]" />
-
-                            <div className="relative z-10 p-10 md:p-24 flex flex-col items-center text-center">
-                                {/* Certificate Header */}
-                                <div className="space-y-4 mb-16">
-                                    <motion.div
-                                        initial={{ scale: 0 }}
-                                        whileInView={{ scale: 1 }}
-                                        transition={{ type: "spring", damping: 12 }}
-                                        className="w-20 h-20 md:w-24 md:h-24 bg-primary rounded-full mx-auto flex items-center justify-center shadow-xl shadow-primary/20"
-                                    >
-                                        <Award className="text-white w-10 h-10 md:w-12 md:h-12" />
-                                    </motion.div>
-                                    <h4 className="font-serif italic text-primary text-lg md:text-xl tracking-widest uppercase">Award of Excellence</h4>
-                                </div>
-
-                                {/* Main Content */}
-                                <div className="max-w-4xl space-y-8">
-                                    <span className="text-xs md:text-sm font-mono tracking-[0.5em] text-black/40 uppercase">This is to certify that</span>
-
-                                    <h2 className="text-4xl md:text-7xl font-serif text-black leading-tight tracking-tight">
-                                        International School <br className="hidden md:block" /> of Design
-                                    </h2>
-
-                                    <div className="w-32 h-px bg-primary/30 mx-auto" />
-
-                                    <p className="text-lg md:text-2xl font-light text-black/60 leading-relaxed max-w-2xl mx-auto italic">
-                                        Has been globally recognized by <span className="text-black font-serif font-bold not-italic">The Times of India</span> for revolutionary design pedagogy and industry-benchmark curriculum, securing the title of
-                                        <span className="text-primary font-bold block mt-4 not-italic uppercase tracking-widest text-base md:text-lg">#01 Design Education Framework</span>
-                                    </p>
-                                </div>
-
-                                {/* Bottom Details & Seal */}
-                                <div className="mt-20 w-full grid grid-cols-1 md:grid-cols-3 gap-12 items-end">
-                                    {/* Signature 1 */}
-                                    <div className="flex flex-col items-center space-y-4">
-                                        <div className="w-48 h-px bg-black/10" />
-                                        <span className="font-mono text-[10px] uppercase tracking-widest text-black/40 text-center">Registrar <br /> National Board</span>
-                                    </div>
-
-                                    {/* The Golden Seal */}
-                                    <div className="flex justify-center relative py-8 md:py-0">
-                                        <div className="relative z-20">
-                                            <motion.img
-                                                src="https://ik.imagekit.io/fmldynl4j4/unnamed.jpg"
-                                                alt="Official Seal"
-                                                className="w-32 h-32 md:w-48 md:h-48 object-contain rounded-full"
-                                            />
-                                        </div>
-
-                                        {/* Seal Taglines */}
-                                        <div className="absolute -bottom-8 whitespace-nowrap">
-                                            <span className="bg-black text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.3em]">Official Certification</span>
-                                        </div>
-                                    </div>
-
-                                    {/* Signature 2 */}
-                                    <div className="flex flex-col items-center space-y-4">
-                                        <div className="w-48 h-px bg-black/10" />
-                                        <span className="font-mono text-[10px] uppercase tracking-widest text-black/40 text-center">Academic Council <br /> INSD Global</span>
-                                    </div>
-                                </div>
+                            {/* Tag */}
+                            <div className="absolute top-6 left-6 z-20">
+                                <span className="bg-slate-50 text-slate-600 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border border-slate-100 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-colors duration-500">
+                                    {cert.tag}
+                                </span>
                             </div>
 
-                            {/* Holographic Shine Logic */}
-                            <motion.div
-                                style={{ left: shineX }}
-                                className="absolute top-0 w-full h-full bg-linear-to-r from-transparent via-white/20 to-transparent pointer-events-none -skew-x-12"
-                            />
-                        </motion.div>
+                            {/* Image Container */}
+                            <div className="relative w-full h-[60%] flex items-center justify-center mt-8 mb-6 z-10">
+                                <img
+                                    src={cert.image}
+                                    alt={cert.title}
+                                    className="max-w-full max-h-full object-contain drop-shadow-xl group-hover:scale-110 transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]"
+                                />
+                            </div>
 
-                        {/* Shadow logic */}
-                        <div className="absolute -z-10 bottom-0 left-10 right-10 h-20 bg-black/10 blur-3xl opacity-50 rounded-full translate-y-10" />
-                    </motion.div>
-                </div>
+                            {/* Title */}
+                            <div className="relative z-10 text-center w-full mt-auto">
+                                <h3 className="text-lg md:text-xl font-black text-slate-800 uppercase tracking-tighter leading-none group-hover:text-primary transition-colors duration-500">
+                                    {cert.title}
+                                </h3>
+                            </div>
+
+                            {/* Decorative bottom border */}
+                            <div className="absolute bottom-0 left-0 w-full h-1.5 bg-slate-100 group-hover:bg-linear-to-r group-hover:from-primary group-hover:to-secondary transition-all duration-500" />
+                        </div>
+                    ))}
+                </motion.div>
             </div>
         </section>
     );
 };
 
 export default TOICertification;
-

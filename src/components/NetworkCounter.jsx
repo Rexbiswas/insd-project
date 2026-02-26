@@ -26,22 +26,22 @@ const CounterItem = ({ endValue, suffix, label, delay }) => {
                 className="flex flex-col"
             >
                 <div className="flex items-baseline justify-center md:justify-start gap-1">
-                    <span className="text-5xl md:text-7xl font-black tracking-tighter text-black leading-none">
+                    <span className="text-5xl md:text-7xl font-black tracking-tighter text-white leading-none">
                         {count.toLocaleString()}{suffix}
                     </span>
                 </div>
-                <span className="mt-4 text-[10px] md:text-xs font-mono uppercase tracking-[0.4em] text-slate-400 font-bold group-hover:text-primary transition-colors duration-500">
+                <span className="mt-4 text-[10px] md:text-xs font-mono uppercase tracking-[0.4em] text-white/70 font-bold group-hover:text-white transition-colors duration-500">
                     {label}
                 </span>
             </motion.div>
 
             {/* Decorative underline */}
-            <div className="mt-6 w-12 h-1 bg-slate-100 rounded-full overflow-hidden">
+            <div className="mt-6 w-12 h-1 bg-white/20 rounded-full overflow-hidden">
                 <motion.div
                     initial={{ scaleX: 0 }}
                     animate={isInView ? { scaleX: 1 } : {}}
                     transition={{ duration: 1.5, delay: delay + 0.5 }}
-                    className="h-full bg-linear-to-r from-primary to-secondary origin-left"
+                    className="h-full bg-white origin-left"
                 />
             </div>
         </div>
@@ -57,19 +57,8 @@ const NetworkCounter = () => {
     ];
 
     return (
-        <section className="relative py-24 md:py-40 bg-white overflow-hidden border-t border-slate-50">
+        <section className="relative py-24 md:py-40 bg-linear-to-r from-[#db3436] to-[#134a84] text-white overflow-hidden">
             {/* Background Aesthetic */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-[0.03] pointer-events-none">
-                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="black" strokeWidth="1" />
-                        </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#grid)" />
-                </svg>
-            </div>
-
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 md:gap-20">
                     {stats.map((stat, i) => (
@@ -85,8 +74,8 @@ const NetworkCounter = () => {
             </div>
 
             {/* Floating Accents */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 blur-[120px] rounded-full -translate-x-1/2 translate-y-1/2" />
+            <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2" />
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/10 blur-[120px] rounded-full -translate-x-1/2 translate-y-1/2" />
         </section>
     );
 };
