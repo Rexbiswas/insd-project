@@ -1,5 +1,7 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import Matter from 'matter-js';
+import gsap from 'gsap';
 
 const certificates = [
     {
@@ -42,9 +44,151 @@ const certificates = [
 
 const TOICertification = () => {
     const containerRef = useRef(null);
+    const sceneRef = useRef(null);
+    const physicsSectionRef = useRef(null);
+    const engineRef = useRef(null);
+    const isSceneInView = useInView(sceneRef, { margin: "-100px 0px" });
+    const isPhysicsInView = useInView(physicsSectionRef, { margin: "-100px 0px", once: true });
 
     // Infinite loop trick: copy array to make it seamless
     const sliderItems = [...certificates, ...certificates, ...certificates];
+
+    React.useEffect(() => {
+        if (isPhysicsInView && physicsSectionRef.current) {
+            gsap.fromTo(".physics-header",
+                { y: 50, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
+            );
+            gsap.fromTo(sceneRef.current,
+                { scale: 0.95, opacity: 0, y: 30 },
+                { scale: 1, opacity: 1, y: 0, duration: 1, delay: 0.2, ease: "back.out(1.2)" }
+            );
+        }
+    }, [isPhysicsInView]);
+
+    React.useEffect(() => {
+        if (!isSceneInView || !sceneRef.current) return;
+
+        let engine;
+        let render;
+        let runner;
+
+        const initMatter = (textureImg) => {
+            if (!sceneRef.current) return;
+
+            // Initialize Matter.js Engine
+            engine = Matter.Engine.create();
+            render = Matter.Render.create({
+                element: sceneRef.current,
+                engine: engine,
+                options: {
+                    width: sceneRef.current.clientWidth,
+                    height: 800,
+                    wireframes: false,
+                    background: 'transparent'
+                }
+            });
+
+            // Add boundaries
+            const floor = Matter.Bodies.rectangle(
+                sceneRef.current.clientWidth / 2,
+                810,
+                sceneRef.current.clientWidth,
+                20,
+                { isStatic: true, render: { fillStyle: 'transparent' } }
+            );
+            const leftWall = Matter.Bodies.rectangle(
+                -10,
+                300,
+                20,
+                600,
+                { isStatic: true, render: { fillStyle: 'transparent' } }
+            );
+            const rightWall = Matter.Bodies.rectangle(
+                sceneRef.current.clientWidth + 10,
+                300,
+                20,
+                600,
+                { isStatic: true, render: { fillStyle: 'transparent' } }
+            );
+
+            // Create a single, larger bouncy award body using the provided image
+            // We use a responsive massive size to make it feel like a real significant award inside the box
+            const targetSize = Math.min(650, sceneRef.current.clientWidth * 0.9);
+            const scale = targetSize / textureImg.width;
+            const aspect = textureImg.height / textureImg.width;
+
+            const width = targetSize;
+            const height = targetSize * aspect;
+
+            const x = sceneRef.current.clientWidth / 2; // Center horizontally
+            const y = -200; // Drop from above
+
+            const awardBody = Matter.Bodies.rectangle(x, y, width, height, {
+                // A very slight chamfer so it isn't an exact rigid box but retains a flat bottom for standing upright.
+                chamfer: { radius: 10 },
+                restitution: 0.3, // less bouncy so it settles faster
+                friction: 0.8, // more surface friction
+                frictionAir: 0.02, // slight air resistance to fall straight
+                density: 0.05, // make it heavier
+                render: {
+                    sprite: {
+                        texture: textureImg.src,
+                        xScale: scale,
+                        yScale: scale
+                    }
+                }
+            });
+
+            // Set high angular inertia so it resists spinning to help it land standing up
+            Matter.Body.setInertia(awardBody, Infinity);
+
+            Matter.Composite.add(engine.world, [floor, leftWall, rightWall, awardBody]);
+
+            // Add mouse control
+            const mouse = Matter.Mouse.create(render.canvas);
+            const mouseConstraint = Matter.MouseConstraint.create(engine, {
+                mouse: mouse,
+                constraint: {
+                    stiffness: 0.2,
+                    render: {
+                        visible: false
+                    }
+                }
+            });
+            Matter.Composite.add(engine.world, mouseConstraint);
+
+            // Keep the mouse in sync with rendering
+            render.mouse = mouse;
+
+            Matter.Render.run(render);
+            runner = Matter.Runner.create();
+            Matter.Runner.run(runner, engine);
+
+            engineRef.current = engine;
+        };
+
+        const img = new window.Image();
+        img.src = "https://ik.imagekit.io/fmldynl4j4/insd-awards/WhatsApp_Image_2025-05-03_at_5.24.15_PM__1_-removebg-preview.png";
+        img.onload = () => {
+            initMatter(img);
+        };
+
+        return () => {
+            img.onload = null;
+            if (render) {
+                Matter.Render.stop(render);
+                if (render.canvas) {
+                    render.canvas.remove();
+                }
+            }
+            if (runner) Matter.Runner.stop(runner);
+            if (engine) {
+                Matter.World.clear(engine.world);
+                Matter.Engine.clear(engine);
+            }
+        };
+    }, [isSceneInView]);
 
     return (
         <section ref={containerRef} className="relative py-24 md:py-32 bg-[#f3f3f3] overflow-hidden">
@@ -112,6 +256,27 @@ const TOICertification = () => {
                         </div>
                     ))}
                 </motion.div>
+            </div>
+
+            {/* Matter.js Interactive Physics Showcase */}
+            <div className="container mx-auto px-6 mt-32 relative z-10" ref={physicsSectionRef}>
+                <div className="text-center mb-10 physics-header">
+                    <span className="inline-block px-4 py-1 rounded-full bg-slate-200 text-slate-800 font-bold tracking-[0.2em] uppercase text-[10px] md:text-xs mb-4">
+                        Interact & Play
+                    </span>
+                    <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tight text-slate-900">
+                        Our Accolade
+                    </h3>
+                    <p className="text-slate-500 mt-2 text-sm max-w-lg mx-auto">Use your mouse or finger to drag and throw the award around.</p>
+                </div>
+
+                {/* Physics Container */}
+                <div
+                    ref={sceneRef}
+                    className="w-full max-w-5xl mx-auto h-[600px] bg-white rounded-3xl border border-slate-200 shadow-inner overflow-hidden relative cursor-grab active:cursor-grabbing"
+                >
+                    {/* The canvas injects here */}
+                </div>
             </div>
         </section>
     );
