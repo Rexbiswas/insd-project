@@ -24,3 +24,8 @@ dist-ssr
 *.sw?
 .vercel
 .env*.local
+
+# Secrets and Env Configs
+.env
+backend/.env
+src/config.json

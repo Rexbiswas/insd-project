@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { Menu as MenuIcon, X, ArrowRight, Home, Sparkles, GraduationCap, LayoutGrid } from 'lucide-react';
+import { Menu as MenuIcon, X, ArrowRight, Home, Sparkles, GraduationCap, LayoutGrid, User } from 'lucide-react';
 import gsap from 'gsap';
 
 const RollerLink = ({ to, children, colorClass, baseTextClass = "text-slate-800" }) => {
@@ -21,6 +21,7 @@ const RollerLink = ({ to, children, colorClass, baseTextClass = "text-slate-800"
 };
 
 import { useRegisterModal } from '../context/RegisterModalContext';
+import { useAuth } from '../context/AuthContext';
 
 const RegisterButton = ({ className = "", isDarkTheme = false, isScrolled = false, theme = null }) => {
     const { openModal } = useRegisterModal();
@@ -58,6 +59,7 @@ const RegisterButton = ({ className = "", isDarkTheme = false, isScrolled = fals
 
 const Navbar = () => {
     const { openModal } = useRegisterModal();
+    const { user } = useAuth();
     const [isOpen, setIsOpen] = useState(false);
     const [expandedItem, setExpandedItem] = useState(null);
     const [expandedSubItem, setExpandedSubItem] = useState(null);
@@ -274,6 +276,24 @@ const Navbar = () => {
                             {isOpen ? "CLOSE" : "MENU"}
                         </span>
                     </motion.button>
+
+                    {/* Profile Component */}
+                    {user ? (
+                        <Link 
+                            to="/profile" 
+                            className={`hidden md:flex items-center justify-center w-10 h-10 rounded-full border transition-all duration-300 font-black text-sm ${isDarkTheme && !isScrolled ? 'border-primary bg-primary text-white hover:scale-105' : 'border-primary bg-primary text-white hover:scale-105'} shadow-xl`}
+                            title="Profile Dashboard"
+                        >
+                            {user.username.charAt(0).toUpperCase()}
+                        </Link>
+                    ) : (
+                        <button 
+                            onClick={openModal}
+                            className={`hidden md:flex items-center justify-center w-10 h-10 rounded-full border transition-all duration-300 ${isDarkTheme && !isScrolled ? 'border-white/20 text-white hover:bg-white hover:text-slate-900' : 'border-slate-200 text-slate-800 bg-white hover:bg-slate-900 hover:border-slate-900 hover:text-white'} shadow-sm`}
+                        >
+                            <User size={18} strokeWidth={2.5} />
+                        </button>
+                    )}
                 </div>
             </motion.nav>
 

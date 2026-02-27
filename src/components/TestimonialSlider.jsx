@@ -86,14 +86,14 @@ const TestimonialSlider = () => {
     const currentData = testimonials[current];
 
     return (
-        <div className="relative w-full min-h-screen bg-black flex items-center justify-center overflow-hidden py-24 select-none">
+        <div className="relative w-full min-h-screen bg-[#f3f3f3] flex items-center justify-center overflow-hidden py-24 select-none border-y border-slate-300">
 
             {/* Dynamic Ambient Background */}
-            <div className={`absolute inset-0 bg-linear-to-br ${currentData.color} opacity-[0.05] transition-colors duration-1000`}></div>
-            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay"></div>
+            <div className={`absolute inset-0 bg-linear-to-br ${currentData.color} opacity-[0.03] transition-colors duration-1000`}></div>
+            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-30 mix-blend-multiply pointer-events-none"></div>
 
             {/* Giant Background Visuals */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] font-black text-[20vw] leading-none text-white/2 uppercase text-center pointer-events-none whitespace-nowrap">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] font-black text-[20vw] leading-none text-slate-200/50 uppercase text-center pointer-events-none whitespace-nowrap">
                 Student Voices
             </div>
 
@@ -102,7 +102,7 @@ const TestimonialSlider = () => {
                 {/* Left Controls (Desktop) */}
                 <button
                     onClick={prevSlide}
-                    className="hidden md:flex w-16 h-16 rounded-full border border-white/10 items-center justify-center text-white/50 hover:text-white hover:bg-white/10 hover:scale-110 transition-all duration-300 backdrop-blur-md z-50 group"
+                    className="hidden md:flex w-16 h-16 rounded-full border border-slate-300 items-center justify-center text-slate-400 hover:text-slate-900 hover:bg-white hover:scale-110 hover:shadow-lg transition-all duration-300 backdrop-blur-md z-50 group bg-white/50"
                 >
                     <ChevronLeft className="w-8 h-8 group-hover:-translate-x-1 transition-transform" />
                 </button>
@@ -128,20 +128,20 @@ const TestimonialSlider = () => {
                                     prevSlide();
                                 }
                             }}
-                            className="w-full bg-slate-900/40 backdrop-blur-2xl border border-white/10 rounded-4xl md:rounded-[3rem] p-6 md:p-12 xl:p-16 flex flex-col md:flex-row gap-8 md:gap-16 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden relative group cursor-grab active:cursor-grabbing"
+                            className="w-full bg-white/70 backdrop-blur-2xl border border-slate-200 rounded-4xl md:rounded-[3rem] p-6 md:p-12 xl:p-16 flex flex-col md:flex-row gap-8 md:gap-16 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.08)] overflow-hidden relative group cursor-grab active:cursor-grabbing"
                         >
                             {/* Decorative Glow */}
-                            <div className={`absolute -top-1/2 -right-1/2 w-full h-full bg-linear-to-br ${currentData.color} blur-[150px] opacity-20 rounded-full pointer-events-none`}></div>
+                            <div className={`absolute -top-1/2 -right-1/2 w-full h-full bg-linear-to-br ${currentData.color} blur-[150px] opacity-[0.15] rounded-full pointer-events-none`}></div>
 
                             {/* Image Section */}
                             <div className="relative w-full md:w-1/3 flex flex-col items-center justify-center shrink-0">
                                 <div className="relative w-48 h-48 md:w-64 md:h-64">
                                     {/* Rotating Ring */}
-                                    <div className={`absolute inset-0 rounded-full border-2 border-dashed border-white/20 animate-[spin_10s_linear_infinite]`}></div>
-                                    <div className={`absolute -inset-4 rounded-full border border-white/10 opacity-50`}></div>
+                                    <div className={`absolute inset-0 rounded-full border-2 border-dashed border-slate-300 animate-[spin_10s_linear_infinite]`}></div>
+                                    <div className={`absolute -inset-4 rounded-full border border-slate-200 opacity-50`}></div>
 
                                     {/* Image */}
-                                    <div className="absolute inset-2 rounded-full overflow-hidden border-4 border-slate-900/50 shadow-2xl">
+                                    <div className="absolute inset-2 rounded-full overflow-hidden border-4 border-white shadow-[0_20px_40px_rgba(0,0,0,0.1)]">
                                         <img
                                             src={currentData.image}
                                             alt={currentData.name}
@@ -156,23 +156,23 @@ const TestimonialSlider = () => {
                                 </div>
 
                                 <div className="mt-8 text-center md:text-left">
-                                    <h4 className="text-white/40 font-mono text-xs uppercase tracking-[0.2em] mb-2">{currentData.course}</h4>
-                                    <h3 className="text-white font-bold text-lg">{currentData.name}</h3>
+                                    <h4 className="text-slate-500 font-mono text-xs uppercase tracking-[0.2em] mb-2">{currentData.course}</h4>
+                                    <h3 className="text-slate-900 font-bold text-lg">{currentData.name}</h3>
                                     <p className={`text-transparent bg-clip-text bg-linear-to-r ${currentData.color} font-medium`}>{currentData.role}</p>
                                 </div>
                             </div>
 
                             {/* Content Section */}
                             <div className="relative flex-1 flex flex-col justify-center">
-                                <Quote className="w-16 h-16 text-white/10 absolute -top-4 -left-4 md:-top-8 md:-left-8" />
+                                <Quote className="w-16 h-16 text-slate-200 absolute -top-4 -left-4 md:-top-8 md:-left-8" />
 
-                                <p className="text-2xl md:text-4xl font-light leading-relaxed text-slate-200 relative z-10 italic">
+                                <p className="text-2xl md:text-4xl font-light leading-relaxed text-slate-700 relative z-10 italic">
                                     "{currentData.quote}"
                                 </p>
 
                                 <div className="mt-12 flex items-center gap-4">
-                                    <div className="h-px w-12 bg-white/20 group-hover:w-24 group-hover:bg-primary transition-all duration-500"></div>
-                                    <span className="text-xs font-bold uppercase tracking-widest text-white/40">Success Story</span>
+                                    <div className="h-px w-12 bg-slate-300 group-hover:w-24 group-hover:bg-primary transition-all duration-500"></div>
+                                    <span className="text-xs font-bold uppercase tracking-widest text-slate-400">Success Story</span>
                                 </div>
                             </div>
 
@@ -183,15 +183,15 @@ const TestimonialSlider = () => {
                 {/* Right Controls (Desktop) */}
                 <button
                     onClick={nextSlide}
-                    className="hidden md:flex w-16 h-16 rounded-full border border-white/10 items-center justify-center text-white/50 hover:text-white hover:bg-white/10 hover:scale-110 transition-all duration-300 backdrop-blur-md z-50 group"
+                    className="hidden md:flex w-16 h-16 rounded-full border border-slate-300 items-center justify-center text-slate-400 hover:text-slate-900 hover:bg-white hover:scale-110 hover:shadow-lg transition-all duration-300 backdrop-blur-md z-50 group bg-white/50"
                 >
                     <ChevronRight className="w-8 h-8 group-hover:translate-x-1 transition-transform" />
                 </button>
 
                 {/* Mobile Controls */}
                 <div className="flex md:hidden gap-8 absolute bottom-4 left-1/2 -translate-x-1/2 z-50">
-                    <button onClick={prevSlide} className="p-4 bg-white/10 rounded-full hover:bg-white/20"><ChevronLeft /></button>
-                    <button onClick={nextSlide} className="p-4 bg-white/10 rounded-full hover:bg-white/20"><ChevronRight /></button>
+                    <button onClick={prevSlide} className="p-4 bg-white/50 rounded-full hover:bg-white text-slate-600 shadow-lg"><ChevronLeft /></button>
+                    <button onClick={nextSlide} className="p-4 bg-white/50 rounded-full hover:bg-white text-slate-600 shadow-lg"><ChevronRight /></button>
                 </div>
 
             </div>

@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Check, ArrowRight, Sparkles, LogIn } from 'lucide-react';
 import { useRegisterModal } from '../context/RegisterModalContext';
+import { useAuth } from '../context/AuthContext';
 
 const RegistrationModal = () => {
     const { isOpen, closeModal } = useRegisterModal();
-    const [authMode, setAuthMode] = useState('register'); // 'register' | 'login'
+    const { register, login } = useAuth();
+    const [authMode, setAuthMode] = useState('register'); // 'register' | 'login' | 'forgot'
+    const [forgotStep, setForgotStep] = useState(1); // 1: Email, 2: Code & New Password
+    const [forgotData, setForgotData] = useState({ email: '', code: '', newPassword: '' });
     const [step, setStep] = useState(1);
     const [formData, setFormData] = useState({
         username: '',
@@ -92,36 +96,15 @@ const RegistrationModal = () => {
         setIsSubmitting(true);
 
         try {
-            const response = await fetch('/api/auth/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'bypass-tunnel-reminder': 'true'
-                },
-                body: JSON.stringify(formData)
-            });
-
-            const contentType = response.headers.get("content-type");
-            let data;
-            if (contentType && contentType.includes("application/json")) {
-                data = await response.json();
-            } else {
-                const text = await response.text();
-                console.error("Non-JSON response received:", text);
-                alert(`Server Error (${response.status}): ${text.substring(0, 100)}`);
-                setIsSubmitting(false);
-                return;
+            const result = await register(formData);
+            if (result.previewURL) {
+                alert('Notice: Google OAuth Credentials failed or missing! \n\nNo worries, we generated a Mock Ethereal Terminal so you can see your real-time Welcome Email: \n' + result.previewURL);
+                window.open(result.previewURL, '_blank');
             }
-
-            if (response.ok) {
-                setIsSuccess(true);
-            } else {
-                console.error("Registration Failed. Status:", response.status, "Data:", data);
-                alert(data.message || "Registration failed (Status " + response.status + ")");
-            }
+            setIsSuccess(true);
         } catch (error) {
-            console.error("Registration Network/Fetch Error:", error);
-            alert("Network Error: " + error.message);
+            console.error("Registration Error:", error);
+            alert(error.message || "Registration failed");
         } finally {
             setIsSubmitting(false);
         }
@@ -130,38 +113,68 @@ const RegistrationModal = () => {
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
+
         try {
-            const response = await fetch('/api/auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'bypass-tunnel-reminder': 'true'
-                },
-                body: JSON.stringify(loginData)
-            });
-
-            const contentType = response.headers.get("content-type");
-            let data;
-            if (contentType && contentType.includes("application/json")) {
-                data = await response.json();
-            } else {
-                const text = await response.text();
-                console.error("Non-JSON login response:", text);
-                alert("Login Server Error: " + text.substring(0, 100));
-                setIsSubmitting(false);
-                return;
-            }
-
-            if (response.ok) {
-                // Store token in localStorage or context (omitted for now)
-                console.log("Login Successful:", data);
-                setIsSuccess(true);
-            } else {
-                alert(data.message || "Login failed (Status " + response.status + ")");
-            }
+            await login(loginData.email, loginData.password);
+            console.log("Login Successful");
+            setIsSuccess(true);
         } catch (error) {
             console.error("Login Error:", error);
-            alert("Login Network Error: " + error.message);
+            alert(error.message || "Login failed");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
+    const handleForgotPasswordRequest = async (e) => {
+        e.preventDefault();
+        if (!forgotData.email) return;
+        setIsSubmitting(true);
+        try {
+            const response = await fetch('/api/auth/forgot-password', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: forgotData.email })
+            });
+            const data = await response.json();
+            if (response.ok) {
+                if (data.previewURL) {
+                    alert('Notice: Google OAuth Credentials failed or missing! \n\nWe generated a Mock Ethereal Terminal so you can see your reset code securely: \n' + data.previewURL);
+                    window.open(data.previewURL, '_blank');
+                } else {
+                    alert(data.message);
+                }
+                setForgotStep(2);
+            } else {
+                alert(data.message || 'Error sending code.');
+            }
+        } catch (error) {
+            alert('Network error requesting code.');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
+    const handlePasswordReset = async (e) => {
+        e.preventDefault();
+        if (!forgotData.code || !forgotData.newPassword) return;
+        setIsSubmitting(true);
+        try {
+            const response = await fetch('/api/auth/reset-password', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: forgotData.email, code: forgotData.code, newPassword: forgotData.newPassword })
+            });
+            const data = await response.json();
+            if (response.ok) {
+                alert(data.message);
+                setAuthMode('login');
+                setForgotStep(1);
+            } else {
+                alert(data.message || 'Error resetting password.');
+            }
+        } catch (error) {
+            alert('Network error resetting password.');
         } finally {
             setIsSubmitting(false);
         }
@@ -171,11 +184,44 @@ const RegistrationModal = () => {
         if (step > 1) setStep(step - 1);
     };
 
-    const toggleComm = (type) => {
+    const toggleComm = async (type) => {
+        const isOptingIn = !formData.communications[type];
+        
         setFormData(prev => ({
             ...prev,
-            communications: { ...prev.communications, [type]: !prev.communications[type] }
+            communications: { ...prev.communications, [type]: isOptingIn }
         }));
+
+        if (isOptingIn && type === 'email' && formData.email) {
+            try {
+                alert('Sending a real-time verification email to ' + formData.email + '...');
+                const response = await fetch('/api/auth/send-test-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: formData.email,
+                        firstName: formData.firstName
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    if (data.previewURL) {
+                        alert(`Message Drafted!\n\nCheck your backend terminal for the link to the mock ethereal inbox, or view it now in the new tab: \n${data.previewURL}\n\nNote: To make it reach a real Gmail, add EMAIL_USER and EMAIL_PASS to backend/.env!`);
+                        window.open(data.previewURL, '_blank');
+                    } else {
+                        alert('Check your inbox! An email has been successfully sent in real-time to ' + formData.email);
+                    }
+                } else {
+                    console.error('Email failed:', data.message);
+                }
+            } catch (error) {
+                console.error("Network Error during email dispatch:", error);
+            }
+        } else if (isOptingIn && type === 'email' && !formData.email) {
+            alert('Please fill out your Email Address in Step 2 first to receive real-time notifications!');
+        }
     };
 
     if (!isOpen) return null;
@@ -229,17 +275,21 @@ const RegistrationModal = () => {
                                             <span>{authMode === 'register' ? 'Join the Elite' : 'Welcome Back'}</span>
                                         </div>
                                         <h2 className="text-2xl md:text-3xl font-black text-white leading-tight">
-                                            {authMode === 'register' ? (
+                                            {authMode === 'register' && (
                                                 <>Begin Your <br /><span className="text-transparent bg-clip-text bg-linear-to-r from-pink-300 to-violet-300">Design Legacy</span></>
-                                            ) : (
+                                            )}
+                                            {authMode === 'login' && (
                                                 <>Access <br /><span className="text-transparent bg-clip-text bg-linear-to-r from-pink-300 to-violet-300">Your Terminal</span></>
+                                            )}
+                                            {authMode === 'forgot' && (
+                                                <>Recover <br /><span className="text-transparent bg-clip-text bg-linear-to-r from-pink-300 to-violet-300">Your Clearance</span></>
                                             )}
                                         </h2>
 
                                     </div>
 
                                     {/* Form Steps */}
-                                    {authMode === 'register' ? (
+                                    {authMode === 'register' && (
                                         <form onSubmit={handleRegisterSubmit} className="flex-1 flex flex-col justify-between">
                                             <div className="space-y-6">
                                                 <AnimatePresence mode="wait">
@@ -499,7 +549,8 @@ const RegistrationModal = () => {
                                                 </button>
                                             </div>
                                         </form>
-                                    ) : (
+                                    )}
+                                    {authMode === 'login' && (
                                         <form onSubmit={handleLoginSubmit} className="flex-1 flex flex-col justify-between">
                                             <div className="space-y-6">
                                                 <div className="space-y-2">
@@ -511,7 +562,7 @@ const RegistrationModal = () => {
                                                     <input type="password" placeholder="••••••••" value={loginData.password} onChange={e => setLoginData({ ...loginData, password: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/30 focus:outline-none focus:bg-black/30 focus:border-pink-500/50 transition-all shadow-inner" />
                                                 </div>
                                                 <div className="flex items-center justify-between">
-                                                    <button type="button" className="text-[10px] uppercase tracking-widest text-slate-400 hover:text-white transition-colors">Forgot Password?</button>
+                                                    <button type="button" onClick={() => setAuthMode('forgot')} className="text-[10px] uppercase tracking-widest text-slate-400 hover:text-white transition-colors">Forgot Password?</button>
                                                     <button
                                                         type="button"
                                                         onClick={() => {
@@ -533,10 +584,53 @@ const RegistrationModal = () => {
                                                         {isSubmitting ? 'Accessing...' : 'Enter System'}
                                                     </span>
                                                 </button>
-
-
                                             </div>
                                         </form>
+                                    )}
+                                    
+                                    {authMode === 'forgot' && (
+                                        <div className="flex-1 flex flex-col justify-between">
+                                            {forgotStep === 1 ? (
+                                                <form onSubmit={handleForgotPasswordRequest} className="space-y-6">
+                                                    <p className="text-sm text-slate-300 mb-6 font-medium">Enter your registered email address to receive a 6-digit verification code.</p>
+                                                    <div className="space-y-2">
+                                                        <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Email Address</label>
+                                                        <input autoFocus type="email" required placeholder="hello@example.com" value={forgotData.email} onChange={e => setForgotData({ ...forgotData, email: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:bg-black/30 focus:border-pink-500/50 transition-all shadow-inner" />
+                                                    </div>
+                                                    
+                                                    <div className="mt-8 pt-6 border-t border-white/10 flex flex-col gap-4">
+                                                        <button type="submit" disabled={isSubmitting} className="w-full group relative px-6 py-4 bg-white text-black rounded-xl font-bold uppercase tracking-wider shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] transition-all overflow-hidden">
+                                                            <div className="absolute inset-0 bg-linear-to-r from-pink-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                                            <span className="relative z-10 group-hover:text-white flex items-center justify-center gap-2">
+                                                                {isSubmitting ? 'Sending Request...' : 'Send Verification Code'}
+                                                            </span>
+                                                        </button>
+                                                        <button type="button" onClick={() => setAuthMode('login')} className="text-[10px] uppercase tracking-widest text-slate-400 hover:text-white transition-colors">Return to Login</button>
+                                                    </div>
+                                                </form>
+                                            ) : (
+                                                <form onSubmit={handlePasswordReset} className="space-y-6">
+                                                    <p className="text-sm text-green-400 mb-6 font-medium bg-green-400/10 p-4 rounded-xl border border-green-500/20">We sent a 6-digit code to {forgotData.email}</p>
+                                                    <div className="space-y-2">
+                                                        <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">6-Digit Code</label>
+                                                        <input autoFocus type="text" maxLength="6" required placeholder="XXXXXX" value={forgotData.code} onChange={e => setForgotData({ ...forgotData, code: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white text-center tracking-[1em] focus:outline-none focus:bg-black/30 focus:border-pink-500/50 transition-all shadow-inner" />
+                                                    </div>
+                                                    <div className="space-y-2">
+                                                        <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">New Password</label>
+                                                        <input type="password" required placeholder="••••••••" value={forgotData.newPassword} onChange={e => setForgotData({ ...forgotData, newPassword: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:bg-black/30 focus:border-pink-500/50 transition-all shadow-inner" />
+                                                    </div>
+
+                                                    <div className="mt-8 pt-6 border-t border-white/10 flex flex-col gap-4">
+                                                        <button type="submit" disabled={isSubmitting} className="w-full group relative px-6 py-4 bg-white text-black rounded-xl font-bold uppercase tracking-wider shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] transition-all overflow-hidden">
+                                                            <div className="absolute inset-0 bg-linear-to-r from-pink-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                                            <span className="relative z-10 group-hover:text-white flex items-center justify-center gap-2">
+                                                                {isSubmitting ? 'Updating...' : 'Set New Password'}
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            )}
+                                        </div>
                                     )}
                                 </div>
                             ) : (

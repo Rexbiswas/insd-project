@@ -78,7 +78,7 @@ const Admission = () => {
 
 
     return (
-        <div ref={containerRef} className="bg-white text-black selection:bg-primary font-sans overflow-hidden">
+        <div ref={containerRef} className="bg-[#f3f3f3] text-slate-900 selection:bg-primary font-sans overflow-hidden border-y border-slate-300">
 
             {/* 1. THE APERTURE HERO */}
             <section ref={apertureRef} className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -135,13 +135,13 @@ const Admission = () => {
                                 className="flex-1 space-y-6 md:space-y-10"
                             >
                                 <span className="text-primary font-mono text-[10px] md:text-xs tracking-widest uppercase">Module_{section.title.replace(' ', '_')}</span>
-                                <h2 className="text-5xl md:text-7xl lg:text-9xl font-black uppercase leading-[0.85] tracking-tighter">
+                                <h2 className="text-5xl md:text-7xl lg:text-9xl font-black uppercase leading-[0.85] tracking-tighter text-slate-900">
                                     {section.title.split(' ')[0]} <br /> <span className="opacity-30 italic">{section.title.split(' ')[1] || 'Core'}</span>
                                 </h2>
-                                <p className="text-slate-400 text-lg md:text-xl font-light leading-relaxed max-w-sm">
+                                <p className="text-slate-600 text-lg md:text-xl font-light leading-relaxed max-w-sm">
                                     A deep dive into high-fidelity execution and conceptual disruption within {section.title}.
                                 </p>
-                                <button className="px-8 md:px-10 py-3 md:py-4 border border-white/10 rounded-full font-bold uppercase tracking-widest text-[10px] md:text-xs hover:bg-white hover:text-black transition-all">
+                                <button className="px-8 md:px-10 py-3 md:py-4 border border-slate-300 rounded-full font-bold uppercase tracking-widest text-[10px] md:text-xs text-slate-700 hover:border-primary hover:text-primary transition-all shadow-sm focus:shadow-md">
                                     View Syllabus
                                 </button>
                             </motion.div>
@@ -152,11 +152,11 @@ const Admission = () => {
             </section>
 
             {/* 3. THE "DECK" STACK (Pure CSS/GSAP Hybrid) */}
-            <section className="py-64 bg-white text-black px-6 rounded-[5rem] -translate-y-20 relative z-20">
+            <section className="py-64 bg-white text-slate-900 px-6 rounded-[5rem] -translate-y-20 relative z-20 shadow-sm border border-slate-200">
                 <div className="max-w-4xl mx-auto">
                     <div className="text-center mb-40">
                         <h2 className="text-[12vw] font-black uppercase leading-none tracking-tighter mb-10">Elite <br /> Access.</h2>
-                        <div className="w-20 h-2 bg-black mx-auto" />
+                        <div className="w-20 h-2 bg-primary mx-auto" />
                     </div>
 
                     <div className="space-y-24 md:space-y-40">
@@ -178,24 +178,24 @@ const Admission = () => {
             </section>
 
             {/* 4. THE EDITORIAL FORM */}
-            <section className="py-64 px-6 bg-[#080808]">
+            <section className="py-64 px-6 bg-[#f3f3f3] border-t border-slate-300">
                 <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-20 items-start">
                     <div className="md:w-1/3">
-                        <h2 className="text-7xl font-black uppercase leading-none tracking-tighter mb-10">Sign <br /> The <br /> Registry.</h2>
-                        <p className="text-slate-500 text-sm font-mono uppercase tracking-[0.2em] leading-relaxed">
+                        <h2 className="text-7xl font-black uppercase leading-none tracking-tighter mb-10 text-slate-900">Sign <br /> The <br /> Registry.</h2>
+                        <p className="text-slate-600 text-sm font-mono uppercase tracking-[0.2em] leading-relaxed">
                             Official application for the 2026 Academic Cycle. Secure your uplink.
                         </p>
                     </div>
 
-                    <div className="md:w-2/3 w-full flex flex-col items-center justify-center border border-white/20 rounded-[4rem] p-12 md:p-32 bg-white/5 backdrop-blur-[50px] shadow-[inset_0_0_50px_rgba(255,255,255,0.05)] group relative overflow-hidden">
+                    <div className="md:w-2/3 w-full flex flex-col items-center justify-center border-2 border-slate-200 rounded-[4rem] p-12 md:p-32 bg-white shadow-xl group relative overflow-hidden">
                         {/* Decorative background element */}
-                        <div className="absolute inset-0 bg-linear-to-br from-primary/20 via-transparent to-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                        <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none mix-blend-multiply" />
 
-                        <h3 className="text-4xl md:text-7xl font-black uppercase mb-12 text-center group-hover:text-primary transition-colors leading-[0.8] tracking-tighter relative z-10">Ready to <br /> Begin?</h3>
+                        <h3 className="text-4xl md:text-7xl font-black uppercase mb-12 text-center text-slate-900 group-hover:text-primary transition-colors leading-[0.8] tracking-tighter relative z-10">Ready to <br /> Begin?</h3>
 
                         <button
                             onClick={openModal}
-                            className="relative z-10 w-full md:w-auto px-12 md:px-20 py-6 md:py-8 bg-white/10 backdrop-blur-xl border border-white/20 text-white font-black uppercase tracking-[0.2em] md:tracking-[0.4em] text-[10px] md:text-sm hover:bg-white hover:text-black transition-all shadow-2xl rounded-full text-center group/btn"
+                            className="relative z-10 w-full md:w-auto px-12 md:px-20 py-6 md:py-8 bg-primary border-primary text-white font-black uppercase tracking-[0.2em] md:tracking-[0.4em] text-[10px] md:text-sm hover:bg-[#a61517] hover:shadow-[0_0_40px_rgba(219,52,54,0.4)] transition-all shadow-md rounded-full text-center group/btn"
                         >
                             <span className="flex items-center justify-center gap-4">
                                 Open Protocol Sequence
@@ -204,10 +204,10 @@ const Admission = () => {
                         </button>
 
 
-                        <div className="mt-12 flex gap-4 opacity-30 relative z-10">
-                            <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                            <div className="w-2 h-2 rounded-full bg-white animate-pulse delay-150" />
-                            <div className="w-2 h-2 rounded-full bg-white animate-pulse delay-300" />
+                        <div className="mt-12 flex gap-4 opacity-50 relative z-10">
+                            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                            <div className="w-2 h-2 rounded-full bg-primary animate-pulse delay-150" />
+                            <div className="w-2 h-2 rounded-full bg-primary animate-pulse delay-300" />
                         </div>
                     </div>
                 </div>

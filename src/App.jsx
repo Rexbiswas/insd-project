@@ -29,6 +29,8 @@ import WhatsappCTA from './components/WhatsappCTA';
 
 import { RegisterModalProvider } from './context/RegisterModalContext';
 import RegistrationModal from './components/RegistrationModal';
+import { AuthProvider } from './context/AuthContext';
+import ProfileDashboard from './pages/ProfileDashboard';
 
 import NotFound from './pages/NotFound';
 
@@ -54,10 +56,11 @@ function App() {
   }, [loading]);
 
   return (
-    <RegisterModalProvider>
-      <AnimatePresence mode="wait">
-        {loading && <Loader key="loader" setLoading={setLoading} />}
-      </AnimatePresence>
+    <AuthProvider>
+      <RegisterModalProvider>
+        <AnimatePresence mode="wait">
+          {loading && <Loader key="loader" setLoading={setLoading} />}
+        </AnimatePresence>
 
       <div className={`transition-opacity duration-1000 ${loading ? 'opacity-0' : 'opacity-100'}`}>
         <RegistrationModal />
@@ -84,6 +87,7 @@ function App() {
               <Route path="/insd-360/blog" element={<Blog />} />
               <Route path="/insd-360/fashion-week" element={<FashionWeek />} />
               <Route path="/insd-360/paris-project" element={<ParisProject />} />
+              <Route path="/profile" element={<ProfileDashboard />} />
 
               <Route path="/test-404" element={<NotFound />} />
               <Route path="*" element={<NotFound />} />
@@ -94,7 +98,8 @@ function App() {
           {/* <AIChatbot /> */}
         </Router>
       </div>
-    </RegisterModalProvider>
+      </RegisterModalProvider>
+    </AuthProvider>
   );
 }
 

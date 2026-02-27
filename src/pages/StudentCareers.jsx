@@ -84,7 +84,7 @@ const StudentCareers = () => {
     ];
 
     return (
-        <div ref={containerRef} className="bg-slate-50 min-h-screen overflow-hidden">
+        <div ref={containerRef} className="bg-[#f3f3f3] min-h-screen overflow-hidden border-y border-slate-300">
 
             {/* 1. Hero Section */}
             <section ref={heroRef} className="relative h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden">
@@ -115,8 +115,8 @@ const StudentCareers = () => {
             </section>
 
             {/* 2. Marquee Section */}
-            <section className="bg-black py-8 overflow-hidden rotate-1 scale-105 border-y-4 border-white z-20 relative">
-                <div ref={marqueeRef} className="flex whitespace-nowrap gap-16 md:gap-32 text-white/80 font-black uppercase text-4xl md:text-6xl tracking-tight">
+            <section className="bg-white py-8 overflow-hidden rotate-1 scale-105 border-y-4 border-slate-300 z-20 relative shadow-sm">
+                <div ref={marqueeRef} className="flex whitespace-nowrap gap-16 md:gap-32 text-slate-900 font-black uppercase text-4xl md:text-6xl tracking-tight">
                     {hiringPartners.map((partner, i) => (
                         <span key={i} className="hover:text-primary transition-colors cursor-default">{partner}</span>
                     ))}
@@ -124,7 +124,7 @@ const StudentCareers = () => {
             </section>
 
             {/* 3. The Career Ecosystem (Bento Grid) */}
-            <section className="reveal-section py-24 md:py-32 px-4 bg-white relative z-10 border-b border-slate-100">
+            <section className="reveal-section py-24 md:py-32 px-4 bg-white relative z-10 border-b border-slate-300">
                 <div className="max-w-7xl mx-auto">
                     <div className="mb-20">
                         <h2 className="reveal-el text-5xl md:text-8xl font-black uppercase tracking-tighter text-slate-900 leading-[0.85]">
@@ -156,7 +156,7 @@ const StudentCareers = () => {
                         </div>
 
                         {/* Card 2: Internship Support (Dark) */}
-                        <div className="reveal-el bg-slate-900 text-white rounded-[2.5rem] p-10 flex flex-col justify-between group hover:bg-slate-950 transition-colors">
+                        <div className="reveal-el bg-white border-2 border-slate-200 text-slate-900 rounded-[2.5rem] p-10 flex flex-col justify-between group hover:shadow-xl hover:border-primary/30 transition-all">
                             <div className="flex justify-between items-start">
                                 <Briefcase size={40} className="text-primary" />
                                 <ArrowUpRight size={24} className="opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -165,12 +165,12 @@ const StudentCareers = () => {
                                 <h3 className="text-4xl font-bold mb-2">100%</h3>
                                 <div className="h-1 w-12 bg-primary mb-4" />
                                 <h4 className="text-xl font-bold uppercase tracking-wide">Internship Support</h4>
-                                <p className="text-slate-400 text-sm mt-2">Guaranteed opportunities with our 500+ corporate partners.</p>
+                                <p className="text-slate-600 text-sm mt-2">Guaranteed opportunities with our 500+ corporate partners.</p>
                             </div>
                         </div>
 
                         {/* Card 3: Global Masterclasses (Light) */}
-                        <div className="reveal-el bg-slate-100 text-slate-900 rounded-[2.5rem] p-10 flex flex-col justify-between group hover:bg-slate-200 transition-colors">
+                        <div className="reveal-el bg-white border border-slate-200 text-slate-900 rounded-[2.5rem] p-10 flex flex-col justify-between group hover:shadow-xl hover:border-secondary/30 transition-all">
                             <div className="flex justify-between items-start">
                                 <Globe size={40} className="text-secondary" />
                                 <div className="px-3 py-1 bg-white rounded-full text-[10px] font-bold uppercase tracking-wider border border-slate-200">Global</div>
@@ -206,10 +206,10 @@ const StudentCareers = () => {
             </section>
 
             {/* 4. Impact Stats */}
-            <section className="reveal-section py-24 md:py-32 px-4 bg-white relative z-10">
+            <section className="reveal-section py-24 md:py-32 px-4 bg-[#f3f3f3] relative z-10 border-b border-slate-300">
                 <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
                     {stats.map((stat, i) => (
-                        <div key={i} className="reveal-el group p-8 rounded-3xl bg-slate-50 hover:bg-black hover:text-white transition-all duration-500 border border-slate-100">
+                        <div key={i} className="reveal-el group p-8 rounded-3xl bg-white hover:bg-primary border-slate-200 hover:shadow-xl hover:text-white transition-all duration-500 border">
                             <div className="mb-6 flex justify-center text-primary group-hover:text-white transition-colors">
                                 {React.cloneElement(stat.icon, { size: 40 })}
                             </div>
@@ -221,13 +221,13 @@ const StudentCareers = () => {
             </section>
 
             {/* 4. Career Paths Grid */}
-            <section className="reveal-section py-24 md:py-32 px-4 bg-slate-50">
+            <section className="reveal-section py-24 md:py-32 px-4 bg-[#f3f3f3]">
                 <div className="max-w-7xl mx-auto">
                     <div className="mb-20 text-center">
                         <h2 className="reveal-el text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6 text-slate-900">
                             Where Can You <span className="text-primary italic font-serif">Go?</span>
                         </h2>
-                        <p className="reveal-el text-slate-500 max-w-xl mx-auto text-lg">
+                        <p className="reveal-el text-slate-600 max-w-xl mx-auto text-lg">
                             The design industry is vast. Here are just a few of the roles our alumni have conquered.
                         </p>
                     </div>
@@ -260,25 +260,25 @@ const StudentCareers = () => {
             </section>
 
             {/* 5. CTA Section */}
-            <section className="reveal-section py-32 bg-slate-900 text-white relative overflow-hidden text-center px-4">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-secondary/20 via-slate-900 to-slate-950 pointer-events-none" />
+            <section className="reveal-section py-32 bg-[#f3f3f3] text-slate-900 relative overflow-hidden text-center px-4 border-t border-slate-300">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-secondary/10 via-[#f3f3f3] to-[#f3f3f3] mix-blend-multiply pointer-events-none" />
 
                 <div className="relative z-10 max-w-4xl mx-auto">
-                    <div className="mb-8 inline-block p-2 px-4 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-primary font-mono text-xs uppercase tracking-widest">
+                    <div className="mb-8 inline-block p-2 px-4 rounded-full border border-slate-300 bg-white shadow-sm font-bold text-primary font-mono text-xs uppercase tracking-widest">
                         Corporate Relations
                     </div>
                     <h2 className="reveal-el text-5xl md:text-8xl font-black uppercase tracking-tighter mb-8 leading-none">
                         Start Your <br />
                         <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary">Career Arc.</span>
                     </h2>
-                    <p className="reveal-el text-slate-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto">
+                    <p className="reveal-el text-slate-600 text-lg md:text-xl mb-12 max-w-2xl mx-auto">
                         Whether you're a student looking for internships or a recruiter looking for talent, we're here to facilitate the next big step.
                     </p>
                     <div className="reveal-el flex flex-col md:flex-row gap-6 justify-center">
-                        <button className="px-10 py-4 bg-white text-black rounded-full font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-colors duration-300">
+                        <button className="px-10 py-4 bg-primary text-white rounded-full font-bold uppercase tracking-widest hover:bg-[#a61517] hover:shadow-lg focus:shadow-md transition-colors duration-300">
                             For Students
                         </button>
-                        <button className="px-10 py-4 border border-white/20 text-white rounded-full font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300">
+                        <button className="px-10 py-4 bg-white text-slate-900 border border-slate-300 rounded-full font-bold uppercase tracking-widest hover:border-primary hover:text-primary focus:shadow-md shadow-sm transition-colors duration-300">
                             For Recruiters
                         </button>
                     </div>

@@ -151,10 +151,10 @@ const About = () => {
     }, []);
 
     return (
-        <div ref={containerRef} className="bg-white text-black selection:bg-primary selection:text-white overflow-hidden">
+        <div ref={containerRef} className="bg-[#f3f3f3] text-slate-900 selection:bg-primary selection:text-white overflow-hidden font-sans border-y border-slate-300">
 
             {/* Background Grain/Noise Overlay */}
-            <div className="fixed inset-0 pointer-events-none opacity-20 z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
+            <div className="fixed inset-0 pointer-events-none opacity-30 z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-multiply" />
 
             {/* Section 1: Zoom-Through Hero */}
             <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -178,7 +178,7 @@ const About = () => {
             </section>
 
             {/* Section 2: Kinetic Statistics */}
-            <section className="relative py-24 md:py-48 bg-white z-10 border-b border-black/5">
+            <section className="relative py-24 md:py-48 bg-[#f3f3f3] z-10 border-b border-slate-300">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-24 items-center">
                         <div className="md:col-span-1">
@@ -194,9 +194,9 @@ const About = () => {
                                 { label: 'Design Awards', val: '100+' },
                                 { label: 'Industry Partners', val: '80+' }
                             ].map((stat, i) => (
-                                <div key={i} className="group border-l border-black/10 pl-6 md:pl-8 hover:border-primary transition-colors duration-500">
-                                    <span className="block text-5xl md:text-7xl font-black mb-1 md:mb-2 text-black">{stat.val}</span>
-                                    <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.3em] text-slate-500 font-mono">{stat.label}</span>
+                                <div key={i} className="group border-l border-slate-300 pl-6 md:pl-8 hover:border-primary transition-colors duration-500">
+                                    <span className="block text-5xl md:text-7xl font-black mb-1 md:mb-2 text-slate-900">{stat.val}</span>
+                                    <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.3em] text-slate-600 font-mono">{stat.label}</span>
                                 </div>
                             ))}
                         </div>
@@ -206,15 +206,15 @@ const About = () => {
 
 
             {/* Section 3: The Horizontal Discovery */}
-            <section ref={horizontalSectionRef} className="h-screen bg-white">
+            <section ref={horizontalSectionRef} className="h-screen bg-[#f3f3f3]">
                 <div ref={horizontalScrollRef} className="h-full flex items-center px-[5vw] md:px-[10vw] gap-12 md:gap-32">
                     {/* Founder Intro */}
                     <div className="min-w-[85vw] md:min-w-[40vw] flex flex-col">
                         <span className="text-primary font-bold uppercase tracking-widest text-[10px] md:text-xs mb-4 md:mb-6 block">— Our Genesis</span>
-                        <h2 className="text-5xl md:text-8xl font-black text-black leading-[0.85] tracking-tighter uppercase mb-6 md:mb-12">
-                            Born from <br /> <span className="text-transparent stroke-text-white stroke-black!">IAS Vision.</span>
+                        <h2 className="text-5xl md:text-8xl font-black text-slate-900 leading-[0.85] tracking-tighter uppercase mb-6 md:mb-12">
+                            Born from <br /> <span className="text-transparent strok-text-black italic">IAS Vision.</span>
                         </h2>
-                        <p className="text-lg md:text-xl text-slate-500 max-w-md">
+                        <p className="text-lg md:text-xl text-slate-600 max-w-md">
                             Co-founded by the 1st Director General of NIFT, INSD isn't just a school—it's a national framework for creative excellence.
                         </p>
                     </div>
@@ -240,7 +240,7 @@ const About = () => {
             </section>
 
             {/* Section 4: The Core Narrative (Type-Reveal) */}
-            <section className="relative py-64 px-6 bg-white">
+            <section className="relative py-64 px-6 bg-[#f3f3f3] border-t border-slate-300">
                 <div className="max-w-6xl mx-auto text-center">
                     <h3 className="type-reveal text-4xl md:text-7xl font-bold leading-[1.1] uppercase tracking-tight text-black/90">
                         In a world of fast fashion and generic interiors, we teach our students to slow down and build things that matter. Our labs are battlegrounds for ideas, where the only rule is to challenge the predictable.
@@ -249,7 +249,7 @@ const About = () => {
             </section>
 
             {/* Section 5: The Pillars (3D Floating Grid) */}
-            <section className="relative pb-64 px-6 bg-white overflow-hidden">
+            <section className="relative pb-64 px-6 bg-[#f3f3f3] overflow-hidden">
                 {/* Floating Parallax Accents */}
                 <div className="parallax-layer absolute top-20 left-[10%] w-64 h-64 bg-primary/10 blur-[120px] rounded-full" />
                 <div className="parallax-layer absolute bottom-20 right-[15%] w-96 h-96 bg-secondary/10 blur-[150px] rounded-full" />
@@ -262,10 +262,10 @@ const About = () => {
                                 { title: 'Precision', desc: 'Where art meets engineering. Every detail is a deliberate choice.' },
                                 { title: 'Impact', desc: 'Design that doesnt move the world is just decoration.' }
                             ].map((pill, i) => (
-                                <div key={i} className="floating-card group bg-black/5 backdrop-blur-xl border border-black/5 p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] hover:bg-black/10 transition-all duration-500">
+                                <div key={i} className="floating-card group bg-white border border-slate-200 shadow-sm p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] hover:shadow-2xl hover:border-primary/20 transition-all duration-500">
                                     <span className="text-primary font-mono text-base md:text-xl block mb-4 md:mb-6 px-3 md:px-4 py-1 border border-primary/40 rounded-full w-fit">0{i + 1}</span>
-                                    <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4 md:mb-6 text-black">{pill.title}</h3>
-                                    <p className="text-black/60 text-base md:text-lg leading-relaxed">{pill.desc}</p>
+                                    <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4 md:mb-6 text-slate-900">{pill.title}</h3>
+                                    <p className="text-slate-600 text-base md:text-lg leading-relaxed">{pill.desc}</p>
                                 </div>
                             ))}
                         </div>
@@ -275,7 +275,7 @@ const About = () => {
                                 <img src={`https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1200`} className="w-full h-full object-cover" loading="lazy" />
                             </div>
 
-                            <div className="absolute -bottom-12 -right-12 w-96 p-12 bg-white text-black rounded-[2rem] shadow-2xl -rotate-6">
+                            <div className="absolute -bottom-12 -right-12 w-96 p-12 bg-primary text-white rounded-[2rem] shadow-xl -rotate-6 border border-primary/50">
                                 <p className="text-2xl font-black italic">"Design is the silent ambassador of your brand."</p>
                             </div>
                         </div>
@@ -284,17 +284,17 @@ const About = () => {
             </section>
 
             {/* Section 6: Next-Level CTA */}
-            <section className="relative h-screen bg-black flex items-center justify-center">
-                <div className="absolute inset-0 opacity-40">
+            <section className="relative h-screen bg-[#f3f3f3] flex items-center justify-center border-t border-slate-300">
+                <div className="absolute inset-0 opacity-20 mix-blend-multiply">
                     <video autoPlay muted loop playsInline className="w-full h-full object-cover" src="https://www.pexels.com/download/video/3129957/" />
                 </div>
                 <div className="relative z-10 text-center px-6">
-                    <h2 className="text-[12vw] font-black uppercase leading-none tracking-tighter mb-12 mix-blend-exclusion">
+                    <h2 className="text-[12vw] font-black uppercase leading-none tracking-tighter mb-12 text-slate-900 drop-shadow-sm">
                         Join The <br /> Revolution.
                     </h2>
-                    <div className="flex flex-col md:flex-row gap-8 justify-center">
-                        <button className="magnetic-btn px-12 py-5 bg-primary text-white font-bold rounded-full uppercase tracking-widest transition-transform">Explore Careers</button>
-                        <button className="magnetic-btn px-12 py-5 bg-white text-black font-bold rounded-full uppercase tracking-widest transition-transform"><a href="https://insdpunepcmc.com/wp-content/uploads/2023/05/Course-booklet-INSD-2022.pdf" download={{}}>Get Prospectus</a></button>
+                    <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
+                        <button className="magnetic-btn px-12 py-5 bg-primary text-white font-bold rounded-full uppercase tracking-widest shadow-md hover:shadow-xl hover:bg-[#a61517] transition-all">Explore Careers</button>
+                        <button className="magnetic-btn px-12 py-5 bg-white text-slate-900 border border-slate-300 font-bold rounded-full uppercase tracking-widest shadow-sm hover:shadow-md hover:border-primary transition-all"><a href="https://insdpunepcmc.com/wp-content/uploads/2023/05/Course-booklet-INSD-2022.pdf" download={{}}>Get Prospectus</a></button>
                     </div>
                 </div>
             </section>

@@ -18,32 +18,18 @@ const PORT = process.env.PORT || 5001;
 app.use(express.json());
 app.use(cors({ origin: '*', credentials: true }));
 
-// Database Connection (pooled for serverless)
-let isConnected = false;
-const connectDB = async () => {
-    if (isConnected) return;
-    try {
-        if (!process.env.MONGO_URI) {
-            console.error('MONGO_URI is missing in environment variables');
-            return;
-        }
-        await mongoose.connect(process.env.MONGO_URI);
-        isConnected = true;
-        console.log('MongoDB Connected');
-    } catch (err) {
-        console.error('MongoDB Connection Error:', err.message);
-    }
-};
+// Database Connection
+mongoose.connect(process.env.MONGO_URI, {
+    serverSelectionTimeoutMS: 5000,
+}).then(() => {
+    console.log('MongoDB Connected successfully');
+}).catch(err => {
+    console.error('MongoDB Initial Connection Error:', err.message);
+});
 
 // Routes
 app.get('/api/health', (req, res) => {
-    res.json({ status: 'active', message: 'INSD Core Backend is running' });
-});
-
-// Middleware to ensure DB is connected before any API call
-app.use(async (req, res, next) => {
-    await connectDB();
-    next();
+    res.json({ status: 'active', message: 'INSD Core Backend is running', dbReady: mongoose.connection.readyState });
 });
 
 app.use('/api/auth', authRoutes);

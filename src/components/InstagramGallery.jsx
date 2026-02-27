@@ -126,30 +126,30 @@ const InstagramGallery = () => {
     }, []);
 
     return (
-        <div ref={containerRef} className="relative bg-black text-white min-h-screen py-32 overflow-hidden cursor-none">
+        <div ref={containerRef} className="relative bg-[#f3f3f3] text-slate-900 min-h-screen py-32 overflow-hidden border-y border-slate-300">
 
             {/* Custom Cursor */}
-            <div ref={cursorRef} className="fixed top-0 left-0 w-32 h-32 bg-pink-500/20 rounded-full blur-2xl pointer-events-none z-50 mix-blend-screen -translate-x-1/2 -translate-y-1/2 border border-white/20 flex items-center justify-center opacity-0 md:opacity-100 transition-opacity">
-                <div className="w-2 h-2 bg-white rounded-full"></div>
+            <div ref={cursorRef} className="fixed top-0 left-0 w-32 h-32 bg-primary/10 rounded-full blur-[20px] pointer-events-none z-50 mix-blend-multiply -translate-x-1/2 -translate-y-1/2 border border-primary/20 flex items-center justify-center opacity-0 md:opacity-100 transition-opacity">
+                <div className="w-2 h-2 bg-primary rounded-full"></div>
             </div>
 
             {/* Background Elements */}
-            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 pointer-events-none"></div>
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-900/30 blur-[120px] rounded-full pointer-events-none"></div>
+            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-30 mix-blend-multiply pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 blur-[120px] mix-blend-multiply rounded-full pointer-events-none"></div>
 
             {/* Header */}
             <div className="container mx-auto px-6 mb-24 relative z-10 flex flex-col md:flex-row justify-between items-end gap-8">
                 <div>
-                    <h4 className="flex items-center gap-3 text-pink-500 font-mono tracking-widest uppercase text-sm mb-4">
+                    <h4 className="flex items-center gap-3 text-primary font-mono tracking-widest uppercase text-sm mb-4">
                         <Instagram className="w-5 h-5" />
                         @INSD_OFFICIAL
                     </h4>
-                    <h2 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.9]">
+                    <h2 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.9] text-slate-900">
                         Life On <br />
-                        <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 via-pink-500 to-red-500">The Feed</span>
+                        <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary">The Feed</span>
                     </h2>
                 </div>
-                <button className="group flex items-center gap-4 px-8 py-4 bg-white/5 border border-white/10 rounded-full backdrop-blur-md hover:bg-white hover:text-black transition-all duration-300">
+                <button className="group flex items-center gap-4 px-8 py-4 bg-white border border-slate-300 rounded-full hover:shadow-xl hover:border-primary/30 hover:text-primary transition-all duration-300">
                     <span className="font-bold tracking-widest uppercase text-sm">Follow Us</span>
                     <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
                 </button>
@@ -162,7 +162,7 @@ const InstagramGallery = () => {
                     {instaPosts.map((post) => (
                         <div
                             key={post.id}
-                            className={`insta-card group relative bg-slate-900 rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer border border-white/5 
+                            className={`insta-card group relative bg-white rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer border border-slate-200 shadow-sm hover:shadow-2xl transition-shadow duration-500
                                 ${post.featured ? 'col-span-2 row-span-2 md:col-span-2 md:row-span-2' : 'col-span-1 row-span-1 md:col-span-1 md:row-span-1'}
                             `}
                         >
@@ -185,14 +185,14 @@ const InstagramGallery = () => {
                                         <span className="font-bold">{post.comments}</span>
                                     </div>
                                 </div>
-                                <p className="text-center px-8 text-sm font-medium opacity-80 line-clamp-2 max-w-xs">{post.caption}</p>
-                                <button className="px-6 py-2 bg-white text-black text-xs font-bold uppercase tracking-widest rounded-full hover:scale-105 transition-transform">
+                                <p className="text-center px-8 text-sm font-medium opacity-90 line-clamp-2 max-w-xs text-white">{post.caption}</p>
+                                <button className="px-6 py-2 bg-primary text-white text-xs font-bold uppercase tracking-widest rounded-full hover:scale-105 hover:shadow-lg transition-transform">
                                     View Post
                                 </button>
                             </div>
 
                             {/* Instagram Icon Watermark */}
-                            <Instagram className="absolute top-4 right-4 text-white/50 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0" />
+                            <Instagram className="absolute top-4 right-4 text-white/80 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0 shadow-sm" />
                         </div>
                     ))}
 
@@ -200,7 +200,7 @@ const InstagramGallery = () => {
             </div>
 
             {/* Floating 'Stories' Ring Decoration */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] h-[120vw] border border-white/5 rounded-full pointer-events-none animate-[spin_60s_linear_infinite]"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] h-[120vw] border border-slate-300/50 rounded-full pointer-events-none animate-[spin_60s_linear_infinite]"></div>
 
         </div>
     );

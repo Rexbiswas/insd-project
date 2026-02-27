@@ -104,17 +104,17 @@ const Undergraduate = () => {
     ));
 
     return (
-        <div ref={containerRef} className="bg-slate-50 min-h-screen">
+        <div ref={containerRef} className="bg-[#f3f3f3] text-slate-900 min-h-screen border-y border-slate-300">
 
             {/* 1. Hero Section */}
-            <section className="relative h-[80vh] flex items-center justify-center overflow-hidden bg-black text-white px-4">
-                <div className="absolute inset-0 z-0 opacity-40">
+            <section className="relative h-[80vh] flex items-center justify-center overflow-hidden bg-white text-slate-900 px-4 border-b border-slate-300">
+                <div className="absolute inset-0 z-0 opacity-20">
                     <img
                         src="https://images.pexels.com/photos/3771088/pexels-photo-3771088.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover grayscale mix-blend-multiply"
                         alt="Hero Background"
                     />
-                    <div className="absolute inset-0 bg-linear-to-b from-black via-transparent to-black" />
+                    <div className="absolute inset-0 bg-linear-to-b from-white via-transparent to-white" />
                 </div>
 
                 <div className="relative z-10 text-center max-w-5xl">
@@ -131,15 +131,15 @@ const Undergraduate = () => {
                         </span>
                     </h1>
 
-                    <p className="hero-subtitle text-lg md:text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
+                    <p className="hero-subtitle text-lg md:text-xl text-slate-600 max-w-2xl mx-auto font-light leading-relaxed">
                         A comprehensive ecosystem for lateral thinkers who always ask 'Why Not'.
                     </p>
                 </div>
 
                 {/* Decorative Scroll Hint */}
-                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50 animate-bounce">
+                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-400 animate-bounce">
                     <span className="text-[10px] font-mono uppercase tracking-widest">Explore Programs</span>
-                    <div className="w-px h-12 bg-white/30" />
+                    <div className="w-px h-12 bg-slate-300" />
                 </div>
             </section>
 
@@ -169,7 +169,7 @@ const Undergraduate = () => {
             </section>
 
             {/* 3. The Course Directory - Grid */}
-            <section className="courses-grid py-20 bg-white px-4">
+            <section className="courses-grid py-20 bg-[#f3f3f3] px-4 border-t border-slate-300">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {courses.map((course, idx) => (
@@ -214,8 +214,8 @@ const Undergraduate = () => {
             </section>
 
             {/* 4. Program Directory List - Enhanced UI */}
-            <section className="py-24 bg-slate-50 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-3xl pointer-events-none" />
+            <section className="py-24 bg-white relative overflow-hidden border-t border-slate-300">
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-3xl mix-blend-multiply pointer-events-none" />
 
                 <div className="max-w-7xl mx-auto px-4 relative z-10">
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
@@ -247,7 +247,7 @@ const Undergraduate = () => {
                                     exit={{ opacity: 0, x: -20 }}
                                     transition={{ duration: 0.3, ease: "easeInOut" }}
                                 >
-                                    <div className="absolute top-8 right-8 text-pink-500 font-mono text-sm uppercase tracking-widest hidden md:block">
+                                    <div className="absolute top-8 right-8 text-primary font-mono text-sm uppercase tracking-widest hidden md:block">
                                         {courseData[activeCategory].description}
                                     </div>
 
@@ -270,11 +270,11 @@ const Undergraduate = () => {
             </section>
 
             {/* 5. Why Choose Undergraduate at INSD? */}
-            <section className="py-24 bg-slate-100">
+            <section className="py-24 bg-[#f3f3f3] border-t border-slate-300">
                 <div className="max-w-7xl mx-auto px-4">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-4">Why Start Here?</h2>
-                        <div className="w-24 h-1 bg-black mx-auto rounded-full" />
+                        <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-4 text-slate-900">Why Start Here?</h2>
+                        <div className="w-24 h-1 bg-primary mx-auto rounded-full" />
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -292,16 +292,19 @@ const Undergraduate = () => {
                 </div>
             </section>
 
-            {/* 5. CTA */}
-            <section className="bg-primary text-white py-24 text-center px-4">
+            {/* 5. Director Profile */}
+            <DirectorProfile />
+
+            {/* 6. CTA */}
+            <section className="bg-black text-white py-24 text-center px-4">
                 <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-8 leading-none">
                     Ready to <br /> Create?
                 </h2>
-                <div className="flex justify-center gap-6">
-                    <button className="px-12 py-4 bg-white text-primary font-bold uppercase tracking-widest rounded-full hover:bg-black hover:text-white transition-colors duration-300">
+                <div className="flex flex-col md:flex-row justify-center items-center gap-6">
+                    <button className="px-12 py-4 bg-primary text-white font-bold uppercase tracking-widest rounded-full hover:bg-[#a61517] shadow-xl hover:-translate-y-1 transition-all duration-300">
                         Apply Now
                     </button>
-                    <button className="px-12 py-4 border border-white text-white font-bold uppercase tracking-widest rounded-full hover:bg-white hover:text-primary transition-colors duration-300">
+                    <button className="px-12 py-4 border border-white text-white font-bold uppercase tracking-widest rounded-full hover:bg-white hover:text-black transition-colors duration-300">
                         Download Brochure
                     </button>
                 </div>

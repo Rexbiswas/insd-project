@@ -129,13 +129,13 @@ const Franchise = () => {
     ];
 
     return (
-        <div ref={containerRef} className="relative z-10 bg-[#050505] text-white min-h-screen selection:bg-pink-500 selection:text-white overflow-hidden">
+        <div ref={containerRef} className="relative z-10 bg-[#f3f3f3] text-slate-900 min-h-screen selection:bg-primary selection:text-white overflow-hidden font-sans border-y border-slate-300">
 
             {/* Background Decorations */}
             <div className="fixed inset-0 pointer-events-none z-0">
-                <div className="bg-element absolute top-[10%] left-[5%] w-[40vw] h-[40vw] bg-pink-600/5 blur-[150px] rounded-full"></div>
-                <div className="bg-element absolute bottom-[20%] right-[10%] w-[35vw] h-[35vw] bg-purple-600/5 blur-[150px] rounded-full"></div>
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
+                <div className="bg-element absolute top-[10%] left-[5%] w-[40vw] h-[40vw] bg-primary/10 blur-[150px] mix-blend-multiply rounded-full"></div>
+                <div className="bg-element absolute bottom-[20%] right-[10%] w-[35vw] h-[35vw] bg-secondary/10 blur-[150px] mix-blend-multiply rounded-full"></div>
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-30 mix-blend-multiply pointer-events-none"></div>
             </div>
 
             {/* Hero Section */}
@@ -147,30 +147,30 @@ const Franchise = () => {
                 >
                     <div className="relative w-[80vw] md:w-[35vw] aspect-square">
                         {/* Glow effect */}
-                        <div className="absolute inset-0 bg-pink-500/20 blur-[120px] rounded-full animate-pulse"></div>
+                        <div className="absolute inset-0 bg-primary/10 blur-[120px] rounded-full animate-pulse pointer-events-none"></div>
                         <img
                             src="https://insd.edu.in/wp-content/uploads/2022/01/1ST-IMAGE-ON-PAGE.png"
                             alt="Distinguished Legacy"
-                            className="w-full h-full object-contain relative z-10 drop-shadow-2xl"
+                            className="w-full h-full object-contain relative z-10 drop-shadow-xl"
                         />
                         {/* Decorative Frame Elements */}
-                        <div className="absolute top-0 right-0 w-24 h-24 border-t-2 border-r-2 border-pink-500/50"></div>
-                        <div className="absolute bottom-0 left-0 w-24 h-24 border-b-2 border-l-2 border-white/20"></div>
+                        <div className="absolute top-0 right-0 w-24 h-24 border-t-2 border-r-2 border-primary/40"></div>
+                        <div className="absolute bottom-0 left-0 w-24 h-24 border-b-2 border-l-2 border-slate-300"></div>
                     </div>
                 </div>
 
                 <div className="text-center relative z-10">
                     <span
-                        className="hero-sub block text-pink-500 font-mono text-sm mb-6 uppercase tracking-[0.5em] opacity-0"
+                        className="hero-sub block text-primary font-mono text-sm mb-6 uppercase tracking-[0.5em] opacity-0 font-bold"
                     >
                         The Future of Design Education
                     </span>
-                    <h1 ref={heroRef} className="text-[10vw] md:text-[8vw] font-black leading-[0.8] uppercase tracking-tighter flex flex-col items-center">
+                    <h1 ref={heroRef} className="text-[10vw] md:text-[8vw] font-black leading-[0.8] uppercase tracking-tighter flex flex-col items-center text-slate-900">
                         <div className="overflow-hidden">
                             <span className="inline-block hero-char">Franchise</span>
                         </div>
                         <div className="overflow-hidden">
-                            <span className="inline-block hero-char text-transparent stroke-text-white italic">Opportunity</span>
+                            <span className="inline-block hero-char text-transparent strok-text-black italic">Opportunity</span>
                         </div>
                     </h1>
                 </div>
@@ -178,11 +178,10 @@ const Franchise = () => {
                 {/* Rotating Seal */}
                 <div
                     ref={sealRef}
-                    className="absolute -bottom-20 -right-20 md:bottom-20 md:right-20 w-80 h-80 flex items-center justify-center p-12 border border-white/10 rounded-full opacity-20 hover:opacity-100 transition-opacity duration-500 group cursor-help z-20"
-                    style={{ background: 'radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, transparent 70%)' }}
+                    className="absolute -bottom-20 -right-20 md:bottom-20 md:right-20 w-80 h-80 flex items-center justify-center p-12 border border-slate-200 rounded-full opacity-40 hover:opacity-100 transition-opacity duration-500 group cursor-help z-20 shadow-sm bg-white/20 backdrop-blur-sm"
                 >
                     <div className="text-center group-hover:scale-110 transition-transform">
-                        <Award className="w-16 h-16 mx-auto mb-4 text-pink-500" />
+                        <Award className="w-16 h-16 mx-auto mb-4 text-primary" />
                         <span className="text-[10px] font-mono uppercase tracking-widest leading-loose">
                             Co-founded by<br />IAS Officer<br />& NIFT DG
                         </span>
@@ -195,13 +194,13 @@ const Franchise = () => {
             </section>
 
             {/* Legacy Section */}
-            <section className="relative py-32 px-6 z-10 border-y border-white/5 bg-white/2 overflow-hidden">
+            <section className="relative py-32 px-6 z-10 border-t border-slate-300 bg-white overflow-hidden">
                 <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
                     <div className="relative">
-                        <h2 className="text-5xl md:text-7xl font-bold leading-tight mb-8">
-                            Built on a <br /><span className="text-pink-500 italic">Visionary</span> Foundation
+                        <h2 className="text-5xl md:text-7xl font-bold leading-tight mb-8 text-slate-900">
+                            Built on a <br /><span className="text-primary italic">Visionary</span> Foundation
                         </h2>
-                        <p className="text-xl text-slate-400 font-light leading-relaxed mb-12">
+                        <p className="text-xl text-slate-600 font-light leading-relaxed mb-12">
                             INSD was co-founded by the IAS Officer and 1st Director General of NIFT, who pioneered design education in India. Today, we are a National Award-Winning brand with a legacy of excellence and innovation.
                         </p>
                         <div className="flex gap-12">
@@ -217,41 +216,41 @@ const Franchise = () => {
                     </div>
 
                     {/* Visual: Floating Blueprint */}
-                    <div className="relative aspect-square bg-slate-900 rounded-[3rem] overflow-hidden border border-white/10 group">
+                    <div className="relative aspect-square bg-white rounded-[3rem] overflow-hidden border border-slate-200 shadow-xl group">
                         <img
                             src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800"
                             alt="Meeting"
                             className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100"
                         />
-                        <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent"></div>
-                        <div className="absolute bottom-12 left-12 right-12 p-8 glass rounded-3xl backdrop-blur-3xl border-white/5">
-                            <Users className="text-pink-500 w-12 h-12 mb-6" />
+                        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent"></div>
+                        <div className="absolute bottom-12 left-12 right-12 p-8 bg-white/90 rounded-3xl backdrop-blur-xl border border-slate-200 shadow-sm text-slate-900">
+                            <Users className="text-primary w-12 h-12 mb-6" />
                             <h4 className="text-2xl font-bold mb-2 uppercase italic tracking-tighter">Community Driven</h4>
-                            <p className="text-sm text-white/60">A ecosystem built for artists, designers, and entrepreneurs.</p>
+                            <p className="text-sm text-slate-600 font-medium">A ecosystem built for artists, designers, and entrepreneurs.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* Bento Grid: Why Join Us */}
-            <section ref={gridRef} className="py-32 px-6 z-10">
+            <section ref={gridRef} className="py-32 px-6 z-10 bg-[#f3f3f3] border-t border-slate-300">
                 <div className="max-w-7xl mx-auto">
                     <div className="mb-24 text-center md:text-left">
-                        <h3 className="text-sm font-mono text-pink-500 tracking-[0.5em] uppercase mb-4">The Model</h3>
-                        <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none">Why Choose <br />INSD?</h2>
+                        <h3 className="text-sm font-mono text-primary font-bold tracking-[0.5em] uppercase mb-4">The Model</h3>
+                        <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none text-slate-900">Why Choose <br />INSD?</h2>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {features.map((f, i) => (
                             <div
                                 key={i}
-                                className="feature-card group relative p-12 bg-white/2 border border-white/5 rounded-[2.5rem] hover:bg-white/5 transition-all duration-500 cursor-pointer overflow-hidden"
+                                className="feature-card group relative p-12 bg-white border border-slate-200 rounded-[2.5rem] hover:shadow-2xl hover:border-slate-300 hover:-translate-y-2 transition-all duration-500 cursor-pointer overflow-hidden text-slate-900"
                             >
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-pink-500/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                <f.icon className="w-12 h-12 text-pink-500 mb-8 transition-transform group-hover:scale-110 group-hover:rotate-12" />
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity mix-blend-multiply pointer-events-none"></div>
+                                <f.icon className="w-12 h-12 text-primary mb-8 transition-transform group-hover:scale-110 group-hover:rotate-12" />
                                 <h4 className="text-2xl font-bold mb-4 uppercase tracking-tight">{f.title}</h4>
-                                <p className="text-slate-400 font-light leading-relaxed">{f.desc}</p>
-                                <div className="mt-8 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-pink-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <p className="text-slate-600 font-light leading-relaxed">{f.desc}</p>
+                                <div className="mt-8 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary opacity-0 group-hover:opacity-100 transition-opacity">
                                     Learn More <span className="text-lg">→</span>
                                 </div>
                             </div>
@@ -261,39 +260,39 @@ const Franchise = () => {
             </section>
 
             {/* CTA Section: The Form */}
-            <section className="relative py-32 px-6 z-10 bg-white">
+            <section className="relative py-32 px-6 z-10 bg-white border-t border-slate-300">
                 <div className="max-w-4xl mx-auto">
-                    <div className="bg-black p-12 md:p-24 rounded-[4rem] text-center shadow-2xl relative overflow-hidden group">
+                    <div className="bg-[#f3f3f3] border-2 border-slate-200 p-12 md:p-24 rounded-[4rem] text-center shadow-lg relative overflow-hidden group">
                         {/* Interactive Background for Form */}
                         <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
-                            <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-pink-500 blur-[150px] animate-pulse"></div>
-                            <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-purple-500 blur-[150px] animate-pulse delay-1000"></div>
+                            <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-primary/20 blur-[150px] mix-blend-multiply animate-pulse"></div>
+                            <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-secondary/20 blur-[150px] mix-blend-multiply animate-pulse delay-1000"></div>
                         </div>
 
-                        <div className="relative z-10">
+                        <div className="relative z-10 text-slate-900">
                             <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8 leading-none italic">
-                                Ready to Lead the <br /><span className="text-transparent stroke-text-white">Design Movement?</span>
+                                Ready to Lead the <br /><span className="text-transparent strok-text-black">Design Movement?</span>
                             </h2>
-                            <p className="text-xl text-slate-400 font-light mb-12 max-w-2xl mx-auto">
+                            <p className="text-xl text-slate-600 font-light mb-12 max-w-2xl mx-auto">
                                 Apply for an authorized center today and become part of India's most prestigious design education network.
                             </p>
 
                             <form className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left max-w-2xl mx-auto">
                                 <div className="col-span-1">
                                     <label className="block text-[10px] uppercase tracking-widest text-slate-500 mb-2 ml-2">Full Name</label>
-                                    <input type="text" className="w-full bg-white/5 border border-white/10 rounded-full px-8 py-4 focus:border-pink-500 outline-none transition-all" placeholder="John Doe" />
+                                    <input type="text" className="w-full bg-white border border-slate-300 rounded-full px-8 py-4 focus:border-primary outline-none transition-all shadow-sm focus:shadow-md" placeholder="John Doe" />
                                 </div>
                                 <div className="col-span-1">
                                     <label className="block text-[10px] uppercase tracking-widest text-slate-500 mb-2 ml-2">Email Address</label>
-                                    <input type="email" className="w-full bg-white/5 border border-white/10 rounded-full px-8 py-4 focus:border-pink-500 outline-none transition-all" placeholder="john@example.com" />
+                                    <input type="email" className="w-full bg-white border border-slate-300 rounded-full px-8 py-4 focus:border-primary outline-none transition-all shadow-sm focus:shadow-md" placeholder="john@example.com" />
                                 </div>
                                 <div className="col-span-2">
                                     <label className="block text-[10px] uppercase tracking-widest text-slate-500 mb-2 ml-2">Location of Interest</label>
-                                    <input type="text" className="w-full bg-white/5 border border-white/10 rounded-full px-8 py-4 focus:border-pink-500 outline-none transition-all" placeholder="Enter City/State" />
+                                    <input type="text" className="w-full bg-white border border-slate-300 rounded-full px-8 py-4 focus:border-primary outline-none transition-all shadow-sm focus:shadow-md" placeholder="Enter City/State" />
                                 </div>
-                                <button className="col-span-2 mt-8 w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-5 rounded-full uppercase tracking-widest transition-all hover:shadow-[0_0_40px_rgba(236,72,153,0.4)] relative group overflow-hidden">
+                                <button className="col-span-2 mt-8 w-full bg-primary hover:bg-[#a61517] text-white font-bold py-5 rounded-full uppercase tracking-widest transition-all hover:shadow-[0_0_40px_rgba(219,52,54,0.4)] relative group overflow-hidden">
                                     <span className="relative z-10">Get Franchise Prospectus</span>
-                                    <div className="absolute inset-0 bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+                                    <div className="absolute inset-0 bg-slate-900 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
                                 </button>
                             </form>
                         </div>
