@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
         let stream = backendUser.academic?.stream || "General";
         let level = backendUser.academic?.level;
         let courseName = stream;
-        
+
         if (level) {
             courseName = `${level} in ${stream.charAt(0).toUpperCase() + stream.slice(1)}`;
         } else {
@@ -51,7 +51,7 @@ export const AuthProvider = ({ children }) => {
                 throw new Error(data.message || "Registration failed");
             }
 
-            return { success: true, message: data.message, previewURL: data.previewURL };
+            return { success: true, message: data.message };
         } catch (error) {
             throw error;
         }
@@ -75,11 +75,11 @@ export const AuthProvider = ({ children }) => {
 
             // Remove password/token logic from user object and format it
             const formattedUser = processBackendUser(data);
-            
+
             localStorage.setItem('insd_user', JSON.stringify(formattedUser));
             localStorage.setItem('insd_token', data.token);
             setUser(formattedUser);
-            
+
             return formattedUser;
         } catch (error) {
             throw error;

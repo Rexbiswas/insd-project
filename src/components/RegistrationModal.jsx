@@ -32,7 +32,6 @@ const RegistrationModal = () => {
         comments: '',
         communications: {
             email: true,
-            post: false,
             sms: false
         },
         privacy: false,
@@ -42,6 +41,7 @@ const RegistrationModal = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const [captcha, setCaptcha] = useState({ num1: 0, num2: 0, answer: 0 });
+    const [errors, setErrors] = useState({});
 
     useEffect(() => {
         if (isOpen) {
@@ -58,9 +58,10 @@ const RegistrationModal = () => {
                     username: '', email: '', password: '', firstName: '', lastName: '',
                     street1: '', street2: '', city: '', state: '', pinCode: '', country: '',
                     phone: '', dob: '', centre: '', level: '', stream: '', scholarship: '',
-                    comments: '', communications: { email: true, post: false, sms: false },
+                    comments: '', communications: { email: true, sms: false },
                     privacy: false, captchaInput: ''
                 });
+                setErrors({});
                 setLoginData({ email: '', password: '' });
                 // Regenerate captcha on reset
                 const r1 = Math.floor(Math.random() * 10);
@@ -72,6 +73,60 @@ const RegistrationModal = () => {
 
     const handleRegisterSubmit = async (e) => {
         e.preventDefault();
+        setErrors({});
+        let newErrors = {};
+
+        // Step-by-Step Form Validation
+        if (step === 1) {
+            if (formData.username.trim().length < 3) {
+                newErrors.username = "Username must be at least 3 characters long.";
+            } else if (!/^[a-zA-Z0-9_]+$/.test(formData.username)) {
+                newErrors.username = "Username can only contain letters, numbers, and underscores.";
+            }
+
+            if (formData.password.length < 8 || formData.password.length > 12) {
+                newErrors.password = "Password must be exactly between 8 to 12 characters long.";
+            } else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(formData.password)) {
+                newErrors.password = "Password must contain at least one uppercase letter, one lowercase letter, and one number.";
+            }
+        }
+
+        if (step === 2) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(formData.email)) {
+                newErrors.email = "Please enter a valid email address.";
+            }
+            const phoneRegex = /^\+?[0-9]{10,15}$/;
+            const cleanPhone = formData.phone.replace(/[\s-]/g, '');
+            if (!phoneRegex.test(cleanPhone)) {
+                newErrors.phone = "Please enter a valid 10-digit phone number.";
+            }
+        }
+
+        if (step === 3) {
+            if (formData.firstName.trim().length < 2) {
+                newErrors.firstName = "First name must be at least 2 characters long.";
+            } else if (!/^[a-zA-Z\s]+$/.test(formData.firstName)) {
+                newErrors.firstName = "First name can only contain alphabetic characters.";
+            }
+
+            if (formData.lastName.trim().length < 2) {
+                newErrors.lastName = "Last name must be at least 2 characters long.";
+            } else if (!/^[a-zA-Z\s]+$/.test(formData.lastName)) {
+                newErrors.lastName = "Last name can only contain alphabetic characters.";
+            }
+        }
+
+        if (step === 7) {
+            if (formData.pinCode && !/^[0-9]{8}$/.test(formData.pinCode.trim())) {
+                newErrors.pinCode = "Please enter a valid 8-digit PIN Code.";
+            }
+        }
+
+        if (Object.keys(newErrors).length > 0) {
+            setErrors(newErrors);
+            return;
+        }
 
         if (step < 10) {
             setStep(step + 1);
@@ -96,11 +151,7 @@ const RegistrationModal = () => {
         setIsSubmitting(true);
 
         try {
-            const result = await register(formData);
-            if (result.previewURL) {
-                alert('Notice: Google OAuth Credentials failed or missing! \n\nNo worries, we generated a Mock Ethereal Terminal so you can see your real-time Welcome Email: \n' + result.previewURL);
-                window.open(result.previewURL, '_blank');
-            }
+            await register(formData);
             setIsSuccess(true);
         } catch (error) {
             console.error("Registration Error:", error);
@@ -138,12 +189,7 @@ const RegistrationModal = () => {
             });
             const data = await response.json();
             if (response.ok) {
-                if (data.previewURL) {
-                    alert('Notice: Google OAuth Credentials failed or missing! \n\nWe generated a Mock Ethereal Terminal so you can see your reset code securely: \n' + data.previewURL);
-                    window.open(data.previewURL, '_blank');
-                } else {
-                    alert(data.message);
-                }
+                alert(data.message);
                 setForgotStep(2);
             } else {
                 alert(data.message || 'Error sending code.');
@@ -186,7 +232,7 @@ const RegistrationModal = () => {
 
     const toggleComm = async (type) => {
         const isOptingIn = !formData.communications[type];
-        
+
         setFormData(prev => ({
             ...prev,
             communications: { ...prev.communications, [type]: isOptingIn }
@@ -203,16 +249,11 @@ const RegistrationModal = () => {
                         firstName: formData.firstName
                     })
                 });
-                
+
                 const data = await response.json();
-                
+
                 if (response.ok) {
-                    if (data.previewURL) {
-                        alert(`Message Drafted!\n\nCheck your backend terminal for the link to the mock ethereal inbox, or view it now in the new tab: \n${data.previewURL}\n\nNote: To make it reach a real Gmail, add EMAIL_USER and EMAIL_PASS to backend/.env!`);
-                        window.open(data.previewURL, '_blank');
-                    } else {
-                        alert('Check your inbox! An email has been successfully sent in real-time to ' + formData.email);
-                    }
+                    alert('Check your inbox! An email has been successfully sent in real-time to ' + formData.email);
                 } else {
                     console.error('Email failed:', data.message);
                 }
@@ -221,6 +262,30 @@ const RegistrationModal = () => {
             }
         } else if (isOptingIn && type === 'email' && !formData.email) {
             alert('Please fill out your Email Address in Step 2 first to receive real-time notifications!');
+        } else if (isOptingIn && type === 'sms' && formData.phone) {
+            try {
+                alert('Sending a test SMS to ' + formData.phone + '...');
+                const response = await fetch('/api/auth/send-test-sms', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        phone: formData.phone,
+                        firstName: formData.firstName
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert('Message triggered! Check your backend terminal to see the Mock SMS delivery to ' + formData.phone + '.');
+                } else {
+                    console.error('SMS failed:', data.message);
+                }
+            } catch (error) {
+                console.error("Network Error during SMS dispatch:", error);
+            }
+        } else if (isOptingIn && type === 'sms' && !formData.phone) {
+            alert('Please fill out your Phone Number in Step 2 first to receive real-time SMS notifications!');
         }
     };
 
@@ -300,11 +365,13 @@ const RegistrationModal = () => {
                                                             <h3 className="text-sm font-bold text-pink-300 uppercase tracking-widest mb-4">Account Setup (1/10)</h3>
                                                             <div className="space-y-2">
                                                                 <label className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Username</label>
-                                                                <input autoFocus type="text" placeholder="Choose a username" value={formData.username} onChange={e => setFormData({ ...formData, username: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-3 md:px-6 md:py-4 text-white focus:border-pink-500/50 transition-all outline-none text-sm md:text-base" />
+                                                                <input autoFocus type="text" placeholder="Choose a username" value={formData.username} onChange={e => { setFormData({ ...formData, username: e.target.value }); setErrors({ ...errors, username: null }); }} className="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-3 md:px-6 md:py-4 text-white focus:border-pink-500/50 transition-all outline-none text-sm md:text-base" />
+                                                                {errors.username && <p className="text-red-400 text-[10px] md:text-xs mt-2 ml-2 font-semibold bg-red-500/10 px-3 py-2 rounded-lg border border-red-500/20">{errors.username}</p>}
                                                             </div>
                                                             <div className="space-y-2">
                                                                 <label className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Password *</label>
-                                                                <input type="password" required placeholder="Create a password" value={formData.password} onChange={e => setFormData({ ...formData, password: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-3 md:px-6 md:py-4 text-white focus:border-pink-500/50 transition-all outline-none text-sm md:text-base" />
+                                                                <input type="password" required placeholder="Create a password" value={formData.password} onChange={e => { setFormData({ ...formData, password: e.target.value }); setErrors({ ...errors, password: null }); }} className="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-3 md:px-6 md:py-4 text-white focus:border-pink-500/50 transition-all outline-none text-sm md:text-base" />
+                                                                {errors.password && <p className="text-red-400 text-[10px] md:text-xs mt-2 ml-2 font-semibold bg-red-500/10 px-3 py-2 rounded-lg border border-red-500/20">{errors.password}</p>}
                                                             </div>
 
                                                         </motion.div>
@@ -316,11 +383,13 @@ const RegistrationModal = () => {
                                                             <h3 className="text-sm font-bold text-pink-300 uppercase tracking-widest mb-4">Contact Info (2/10)</h3>
                                                             <div className="space-y-2">
                                                                 <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Email Address *</label>
-                                                                <input autoFocus type="email" required placeholder="hello@example.com" value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
+                                                                <input autoFocus type="email" required placeholder="hello@example.com" value={formData.email} onChange={e => { setFormData({ ...formData, email: e.target.value }); setErrors({ ...errors, email: null }); }} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
+                                                                {errors.email && <p className="text-red-400 text-xs mt-2 ml-2 font-semibold bg-red-500/10 px-3 py-2 rounded-lg border border-red-500/20">{errors.email}</p>}
                                                             </div>
                                                             <div className="space-y-2">
                                                                 <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Phone *</label>
-                                                                <input type="tel" required placeholder="+91 XXXXX XXXXX" value={formData.phone} onChange={e => setFormData({ ...formData, phone: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
+                                                                <input type="tel" required placeholder="+91 XXXXX XXXXX" value={formData.phone} onChange={e => { setFormData({ ...formData, phone: e.target.value }); setErrors({ ...errors, phone: null }); }} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
+                                                                {errors.phone && <p className="text-red-400 text-xs mt-2 ml-2 font-semibold bg-red-500/10 px-3 py-2 rounded-lg border border-red-500/20">{errors.phone}</p>}
                                                             </div>
                                                         </motion.div>
                                                     )}
@@ -331,11 +400,13 @@ const RegistrationModal = () => {
                                                             <h3 className="text-sm font-bold text-pink-300 uppercase tracking-widest mb-4">Personal Details (3/10)</h3>
                                                             <div className="space-y-2">
                                                                 <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">First Name *</label>
-                                                                <input autoFocus type="text" required placeholder="First Name" value={formData.firstName} onChange={e => setFormData({ ...formData, firstName: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
+                                                                <input autoFocus type="text" required placeholder="First Name" value={formData.firstName} onChange={e => { setFormData({ ...formData, firstName: e.target.value }); setErrors({ ...errors, firstName: null }); }} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
+                                                                {errors.firstName && <p className="text-red-400 text-xs mt-2 ml-2 font-semibold bg-red-500/10 px-3 py-2 rounded-lg border border-red-500/20">{errors.firstName}</p>}
                                                             </div>
                                                             <div className="space-y-2">
                                                                 <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Last Name *</label>
-                                                                <input type="text" required placeholder="Last Name" value={formData.lastName} onChange={e => setFormData({ ...formData, lastName: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
+                                                                <input type="text" required placeholder="Last Name" value={formData.lastName} onChange={e => { setFormData({ ...formData, lastName: e.target.value }); setErrors({ ...errors, lastName: null }); }} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
+                                                                {errors.lastName && <p className="text-red-400 text-xs mt-2 ml-2 font-semibold bg-red-500/10 px-3 py-2 rounded-lg border border-red-500/20">{errors.lastName}</p>}
                                                             </div>
                                                         </motion.div>
                                                     )}
@@ -391,7 +462,8 @@ const RegistrationModal = () => {
                                                             <h3 className="text-sm font-bold text-pink-300 uppercase tracking-widest mb-4">Location & Campus (7/10)</h3>
                                                             <div className="space-y-2">
                                                                 <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">PIN Code</label>
-                                                                <input autoFocus type="text" placeholder="PIN Code" value={formData.pinCode} onChange={e => setFormData({ ...formData, pinCode: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
+                                                                <input autoFocus type="text" placeholder="PIN Code" value={formData.pinCode} onChange={e => { setFormData({ ...formData, pinCode: e.target.value }); setErrors({ ...errors, pinCode: null }); }} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
+                                                                {errors.pinCode && <p className="text-red-400 text-xs mt-2 ml-2 font-semibold bg-red-500/10 px-3 py-2 rounded-lg border border-red-500/20">{errors.pinCode}</p>}
                                                             </div>
                                                             <div className="space-y-2">
                                                                 <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Which Centre?</label>
@@ -460,7 +532,7 @@ const RegistrationModal = () => {
                                                             <div className="space-y-2">
                                                                 <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Your Communications</label>
                                                                 <div className="flex gap-4 px-2">
-                                                                    {['email', 'post', 'sms'].map((type) => (
+                                                                    {['email', 'sms'].map((type) => (
                                                                         <label key={type} className="flex items-center gap-2 cursor-pointer group">
                                                                             <div className={`w-4 h-4 rounded border flex items-center justify-center transition-all ${formData.communications[type] ? 'bg-pink-500 border-pink-500' : 'border-slate-500 group-hover:border-pink-400'}`}>
                                                                                 {formData.communications[type] && <Check size={10} className="text-white" />}
@@ -587,7 +659,7 @@ const RegistrationModal = () => {
                                             </div>
                                         </form>
                                     )}
-                                    
+
                                     {authMode === 'forgot' && (
                                         <div className="flex-1 flex flex-col justify-between">
                                             {forgotStep === 1 ? (
@@ -597,7 +669,7 @@ const RegistrationModal = () => {
                                                         <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Email Address</label>
                                                         <input autoFocus type="email" required placeholder="hello@example.com" value={forgotData.email} onChange={e => setForgotData({ ...forgotData, email: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:bg-black/30 focus:border-pink-500/50 transition-all shadow-inner" />
                                                     </div>
-                                                    
+
                                                     <div className="mt-8 pt-6 border-t border-white/10 flex flex-col gap-4">
                                                         <button type="submit" disabled={isSubmitting} className="w-full group relative px-6 py-4 bg-white text-black rounded-xl font-bold uppercase tracking-wider shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] transition-all overflow-hidden">
                                                             <div className="absolute inset-0 bg-linear-to-r from-pink-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
