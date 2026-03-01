@@ -166,10 +166,12 @@ const Navbar = () => {
             title: 'Campuses',
             path: '/campuses',
             subItems: [
-                { name: 'Delhi', path: '/campuses/delhi' },
-                { name: 'Mumbai', path: '/campuses/mumbai' },
-                { name: 'Bangalore', path: '/campuses/bangalore' },
-                { name: 'Pune', path: '/campuses/pune' }
+                { name: 'South Delhi', path: '/campuses/south-delhi' },
+                { name: 'North Delhi', path: '/campuses/north-delhi' },
+                { name: 'Paris (CDP)', path: '/campuses/paris' },
+                { name: 'Washington (IBSW)', path: '/campuses/washington' },
+                { name: 'Dubai (IBSW)', path: '/campuses/dubai' },
+                { name: 'United Kingdom (UCA)', path: '/campuses/uk' }
             ]
         },
         { title: 'Student Careers', path: '/student-careers' },

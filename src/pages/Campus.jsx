@@ -169,10 +169,12 @@ const Campuses = () => {
     }, []);
 
     const locations = [
-        { city: "Delhi", title: "Creative Capital", desc: "A flagship ecosystem where heritage design meets modern luxury disruption.", img: `https://images.pexels.com/photos/1547637/pexels-photo-1547637.jpeg?auto=compress&cs=tinysrgb&w=${isMobile ? 800 : 1600}`, num: "01" },
-        { city: "Mumbai", title: "Couture Hub", desc: "Based in India's fashion capital, focusing on the future of global brand identities.", img: `https://images.pexels.com/photos/10861113/pexels-photo-10861113.jpeg?auto=compress&cs=tinysrgb&w=${isMobile ? 800 : 1600}`, num: "02" },
-        { city: "Pune", title: "Innovation Lab", desc: "A sprawling center dedicated to the fusion of tech, animation and architecture.", img: `https://images.pexels.com/photos/1531660/pexels-photo-1531660.jpeg?auto=compress&cs=tinysrgb&w=${isMobile ? 800 : 1600}`, num: "03" },
-        { city: "Bangalore", title: "Tech Stitch", desc: "Where software logic meets textile craft in the heart of Silicon Valley India.", img: `https://images.pexels.com/photos/1517618/pexels-photo-1517618.jpeg?auto=compress&cs=tinysrgb&w=${isMobile ? 800 : 1600}`, num: "04" }
+        { city: "South Delhi", title: "Flagship Campus", desc: "Our primary creative ecosystem situated in the cultural heart of India's capital.", img: `https://images.pexels.com/photos/1547637/pexels-photo-1547637.jpeg?auto=compress&cs=tinysrgb&w=${isMobile ? 800 : 1600}`, num: "01" },
+        { city: "North Delhi", title: "Innovation Hub", desc: "A dynamic center focusing on future paradigms of design and technology.", img: `https://images.pexels.com/photos/10861113/pexels-photo-10861113.jpeg?auto=compress&cs=tinysrgb&w=${isMobile ? 800 : 1600}`, num: "02" },
+        { city: "Paris (CDP)", title: "Global Couture", desc: "In the world's fashion capital, defining the bleeding edge of luxury design.", img: `https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=${isMobile ? 800 : 1600}`, num: "03" },
+        { city: "Washington (IBSW)", title: "Strategic Design", desc: "Where design thinking meets international business leadership and strategy.", img: `https://images.pexels.com/photos/1239162/pexels-photo-1239162.jpeg?auto=compress&cs=tinysrgb&w=${isMobile ? 800 : 1600}`, num: "04" },
+        { city: "Dubai (IBSW)", title: "Future Aesthetics", desc: "Positioned in the hub of futuristic architecture and retail innovation.", img: `https://images.pexels.com/photos/1708601/pexels-photo-1708601.jpeg?auto=compress&cs=tinysrgb&w=${isMobile ? 800 : 1600}`, num: "05" },
+        { city: "United Kingdom (UCA)", title: "Creative Arts", desc: "A prestigious partnership nurturing the next generation of visual arts pioneers.", img: `https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg?auto=compress&cs=tinysrgb&w=${isMobile ? 800 : 1600}`, num: "06" }
     ];
 
 

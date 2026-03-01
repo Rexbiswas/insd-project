@@ -12,7 +12,16 @@ import Franchise from './pages/Franchise';
 import Insd360 from './pages/Insd360';
 import Admission from './pages/Admission';
 import InternationalPartner from './pages/InternationalPartner';
+import SouthDelhi from './pages/SouthDelhi';
+import NorthDelhi from './pages/NorthDelhi';
+import ParisCDP from './pages/Paris(CDP)';
+import WashingtonIBSW from './pages/WashingtonIBSW';
+import DubaiIBSW from './pages/DubaiIBSW';
+import UnitedKingdomUCA from './pages/UnitedKingdomUCA';
 import Undergraduate from './pages/Undergraduate';
+import Postgraduate from './pages/Postgraduate';
+import DiplomaAndCertificate from './pages/DiplomaAndCertificate';
+import ShortTermCourse from './pages/ShortTermCourse';
 import Contact from './pages/Contact';
 import GoGlobal from './pages/GoGlobal';
 import MscLuxury from './pages/MscLuxury';
@@ -23,6 +32,7 @@ import OnlineCourse from './pages/OnlineCourse';
 import Blog from './pages/Blog';
 import FashionWeek from './pages/FashionWeek';
 import ParisProject from './pages/ParisProject';
+import Events from './pages/Events';
 import WhatsappCTA from './components/WhatsappCTA';
 // import AIChatbot from './components/AIChatbot';
 
@@ -73,8 +83,17 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/about-us" element={<About />} />
               <Route path="/campuses" element={<Campus />} />
+              <Route path="/campuses/south-delhi" element={<SouthDelhi />} />
+              <Route path="/campuses/north-delhi" element={<NorthDelhi />} />
+              <Route path="/campuses/paris" element={<ParisCDP />} />
+              <Route path="/campuses/washington" element={<WashingtonIBSW />} />
+              <Route path="/campuses/dubai" element={<DubaiIBSW />} />
+              <Route path="/campuses/uk" element={<UnitedKingdomUCA />} />
               <Route path="/courses" element={<Courses />} />
               <Route path="/courses/undergraduate" element={<Undergraduate />} />
+              <Route path="/courses/postgraduate" element={<Postgraduate />} />
+              <Route path="/courses/diploma-and-certificates" element={<DiplomaAndCertificate />} />
+              <Route path="/courses/short-term-courses" element={<ShortTermCourse />} />
               <Route path="/courses/msc-luxury-brand-management" element={<MscLuxury />} />
               <Route path="/student-careers" element={<StudentCareers />} />
               <Route path="/insd-360" element={<Insd360 />} />
@@ -87,6 +106,7 @@ function App() {
               <Route path="/insd-360/blog" element={<Blog />} />
               <Route path="/insd-360/fashion-week" element={<FashionWeek />} />
               <Route path="/insd-360/paris-project" element={<ParisProject />} />
+              <Route path="/insd-360/events" element={<Events />} />
               <Route path="/profile" element={<ProfileDashboard />} />
 
               <Route path="/test-404" element={<NotFound />} />
