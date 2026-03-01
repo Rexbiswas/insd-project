@@ -366,12 +366,12 @@ const RegistrationModal = () => {
                                                             <div className="space-y-2">
                                                                 <label className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Username</label>
                                                                 <input autoFocus type="text" placeholder="Choose a username" value={formData.username} onChange={e => { setFormData({ ...formData, username: e.target.value }); setErrors({ ...errors, username: null }); }} className="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-3 md:px-6 md:py-4 text-white focus:border-pink-500/50 transition-all outline-none text-sm md:text-base" />
-                                                                {errors.username && <p className="text-red-400 text-[10px] md:text-xs mt-2 ml-2 font-semibold bg-red-500/10 px-3 py-2 rounded-lg border border-red-500/20">{errors.username}</p>}
+                                                                {errors.username && <p className="text-red-400 text-[10px] mt-1.5 ml-1 font-semibold bg-red-500/10 px-2 py-1 rounded-md border border-red-500/20">{errors.username}</p>}
                                                             </div>
                                                             <div className="space-y-2">
                                                                 <label className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Password *</label>
                                                                 <input type="password" required placeholder="Create a password" value={formData.password} onChange={e => { setFormData({ ...formData, password: e.target.value }); setErrors({ ...errors, password: null }); }} className="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-3 md:px-6 md:py-4 text-white focus:border-pink-500/50 transition-all outline-none text-sm md:text-base" />
-                                                                {errors.password && <p className="text-red-400 text-[10px] md:text-xs mt-2 ml-2 font-semibold bg-red-500/10 px-3 py-2 rounded-lg border border-red-500/20">{errors.password}</p>}
+                                                                {errors.password && <p className="text-red-400 text-[10px] mt-1.5 ml-1 font-semibold bg-red-500/10 px-2 py-1 rounded-md border border-red-500/20">{errors.password}</p>}
                                                             </div>
 
                                                         </motion.div>
@@ -384,12 +384,12 @@ const RegistrationModal = () => {
                                                             <div className="space-y-2">
                                                                 <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Email Address *</label>
                                                                 <input autoFocus type="email" required placeholder="hello@example.com" value={formData.email} onChange={e => { setFormData({ ...formData, email: e.target.value }); setErrors({ ...errors, email: null }); }} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
-                                                                {errors.email && <p className="text-red-400 text-xs mt-2 ml-2 font-semibold bg-red-500/10 px-3 py-2 rounded-lg border border-red-500/20">{errors.email}</p>}
+                                                                {errors.email && <p className="text-red-400 text-[10px] mt-1.5 ml-1 font-semibold bg-red-500/10 px-2 py-1 rounded-md border border-red-500/20">{errors.email}</p>}
                                                             </div>
                                                             <div className="space-y-2">
                                                                 <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Phone *</label>
                                                                 <input type="tel" required placeholder="+91 XXXXX XXXXX" value={formData.phone} onChange={e => { setFormData({ ...formData, phone: e.target.value }); setErrors({ ...errors, phone: null }); }} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
-                                                                {errors.phone && <p className="text-red-400 text-xs mt-2 ml-2 font-semibold bg-red-500/10 px-3 py-2 rounded-lg border border-red-500/20">{errors.phone}</p>}
+                                                                {errors.phone && <p className="text-red-400 text-[10px] mt-1.5 ml-1 font-semibold bg-red-500/10 px-2 py-1 rounded-md border border-red-500/20">{errors.phone}</p>}
                                                             </div>
                                                         </motion.div>
                                                     )}
@@ -401,12 +401,12 @@ const RegistrationModal = () => {
                                                             <div className="space-y-2">
                                                                 <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">First Name *</label>
                                                                 <input autoFocus type="text" required placeholder="First Name" value={formData.firstName} onChange={e => { setFormData({ ...formData, firstName: e.target.value }); setErrors({ ...errors, firstName: null }); }} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
-                                                                {errors.firstName && <p className="text-red-400 text-xs mt-2 ml-2 font-semibold bg-red-500/10 px-3 py-2 rounded-lg border border-red-500/20">{errors.firstName}</p>}
+                                                                {errors.firstName && <p className="text-red-400 text-[10px] mt-1.5 ml-1 font-semibold bg-red-500/10 px-2 py-1 rounded-md border border-red-500/20">{errors.firstName}</p>}
                                                             </div>
                                                             <div className="space-y-2">
                                                                 <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Last Name *</label>
                                                                 <input type="text" required placeholder="Last Name" value={formData.lastName} onChange={e => { setFormData({ ...formData, lastName: e.target.value }); setErrors({ ...errors, lastName: null }); }} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
-                                                                {errors.lastName && <p className="text-red-400 text-xs mt-2 ml-2 font-semibold bg-red-500/10 px-3 py-2 rounded-lg border border-red-500/20">{errors.lastName}</p>}
+                                                                {errors.lastName && <p className="text-red-400 text-[10px] mt-1.5 ml-1 font-semibold bg-red-500/10 px-2 py-1 rounded-md border border-red-500/20">{errors.lastName}</p>}
                                                             </div>
                                                         </motion.div>
                                                     )}
@@ -463,7 +463,7 @@ const RegistrationModal = () => {
                                                             <div className="space-y-2">
                                                                 <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">PIN Code</label>
                                                                 <input autoFocus type="text" placeholder="PIN Code" value={formData.pinCode} onChange={e => { setFormData({ ...formData, pinCode: e.target.value }); setErrors({ ...errors, pinCode: null }); }} className="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-pink-500/50 transition-all outline-none" />
-                                                                {errors.pinCode && <p className="text-red-400 text-xs mt-2 ml-2 font-semibold bg-red-500/10 px-3 py-2 rounded-lg border border-red-500/20">{errors.pinCode}</p>}
+                                                                {errors.pinCode && <p className="text-red-400 text-[10px] mt-1.5 ml-1 font-semibold bg-red-500/10 px-2 py-1 rounded-md border border-red-500/20">{errors.pinCode}</p>}
                                                             </div>
                                                             <div className="space-y-2">
                                                                 <label className="text-xs font-bold uppercase tracking-wider text-slate-300 ml-2">Which Centre?</label>
@@ -601,12 +601,12 @@ const RegistrationModal = () => {
                                                 <button
                                                     type="submit"
                                                     disabled={isSubmitting}
-                                                    className="group relative px-6 py-3 bg-white text-black rounded-xl font-bold uppercase tracking-wider shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] transition-all overflow-hidden"
+                                                    className="group relative px-4 py-2 text-xs bg-white text-black rounded-lg font-bold uppercase tracking-wider shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:shadow-[0_0_25px_rgba(255,255,255,0.4)] transition-all overflow-hidden"
                                                 >
                                                     <div className="absolute inset-0 bg-linear-to-r from-pink-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                                     <span className="relative z-10 group-hover:text-white flex items-center gap-2">
                                                         {step === 10 ? (isSubmitting ? 'Sending...' : 'Submit Request') : 'Next'}
-                                                        {!isSubmitting && <ArrowRight size={16} />}
+                                                        {!isSubmitting && <ArrowRight size={14} />}
                                                     </span>
                                                 </button>
                                             </div>
