@@ -11,6 +11,7 @@ import InsdBackground from '../components/InsdBackground';
 import ImpactStats from '../components/ImpactStats';
 import TOICertification from '../components/TOICertification';
 import TimesAwards from '../components/TimesAwards';
+import DreamLife from '../components/DreamLife';
 import TestimonialSlider from '../components/TestimonialSlider';
 import FeaturedIn from '../components/FeaturedIn';
 import AdmissionScroller from '../components/AdmissionScroller';
@@ -779,6 +780,8 @@ const Home = () => {
             <TestimonialSlider />
             <TimesAwards />
             <TOICertification />
+            <DreamLife />
+
 
             <DesignLifestyle />
             <SocialProof />

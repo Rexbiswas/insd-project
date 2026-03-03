@@ -256,6 +256,13 @@ const Navbar = () => {
                                 >
                                     <span>Franchise</span>
                                 </RollerLink>
+                                <RollerLink
+                                    to="/contact-us"
+                                    colorClass="group-hover:text-primary"
+                                    baseTextClass={isDarkTheme && !isScrolled ? "text-white" : "text-slate-800"}
+                                >
+                                    <span>Contact Us</span>
+                                </RollerLink>
                             </motion.div>
                         )}
                     </AnimatePresence>
