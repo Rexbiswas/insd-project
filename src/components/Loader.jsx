@@ -14,24 +14,26 @@ const Loader = ({ setLoading }) => {
                 }
             });
 
-            // 1. Counter & Text Synchronization
+            // 1. Counter Animation (0 to 100)
+            // We animate a proxy object to use GSAP's easing on the state update
             const counter = { val: 0 };
             tl.to(counter, {
                 val: 100,
                 duration: 2.6,
                 ease: "power2.inOut",
                 onUpdate: () => {
-                    const val = Math.floor(counter.val);
+                    const progress = Math.floor(counter.val);
                     if (percentRef.current) {
-                        percentRef.current.textContent = val;
+                        percentRef.current.textContent = progress;
                     }
 
-                    // Update words based on percentage progress
+                    // Update words based on specific percentage ranges
                     if (textRef.current) {
-                        if (val <= 20) textRef.current.innerText = "15";
-                        else if (val <= 40) textRef.current.innerText = "years";
-                        else if (val <= 60) textRef.current.innerText = "creative";
-                        else textRef.current.innerText = "excellence";
+                        if (progress <= 20) textRef.current.innerText = "15";
+                        else if (progress <= 40) textRef.current.innerText = "YEARS";
+                        else if (progress <= 60) textRef.current.innerText = "CREATIVE";
+                        else if (progress <= 80) textRef.current.innerText = "OF";
+                        else textRef.current.innerText = "EXCELLENCE";
                     }
                 }
             });
