@@ -19,7 +19,7 @@ const Loader = ({ setLoading }) => {
             const counter = { val: 0 };
             tl.to(counter, {
                 val: 100,
-                duration: 2.5,
+                duration: 2.6,
                 ease: "power2.inOut",
                 onUpdate: () => {
                     if (percentRef.current) {
@@ -29,14 +29,13 @@ const Loader = ({ setLoading }) => {
             });
 
             // 2. Text Reveal / Cycle during count
-            // "Design" -> "Innovation" -> "INSD"
-            const words = ["15", "YEARS", "OF", "CREATIVES", "EXECELLENCE"];
-            const wordDuration = 1.5 / words.length;
+            const words = ["15", "YEARS", "OF", "CREATIVE", "EXCELLENCE"];
+            const wordDuration = 2.0 / words.length;
 
             words.forEach((word, index) => {
-                setTimeout(() => {
+                gsap.delayedCall(index * wordDuration, () => {
                     if (textRef.current) textRef.current.innerText = word;
-                }, index * wordDuration * 1000);
+                });
             });
 
             // 3. The "Unexpected" Reveal
@@ -85,7 +84,7 @@ const Loader = ({ setLoading }) => {
 
                 {/* Flashing Text with Glitch Effect simulation via rapid font weight change or just bold */}
                 <h1 ref={textRef} className="text-5xl md:text-9xl font-black uppercase tracking-tighter mb-2 md:mb-4 min-h-[1.2em] flex items-center justify-center">
-                    INSD
+                    15
                 </h1>
 
                 {/* Progress Bar & Number */}
