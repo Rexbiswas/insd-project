@@ -33,8 +33,8 @@ const HeroSlider = () => {
     }, [slides.length]);
 
     return (
-        <div className="absolute inset-0 w-full h-full bg-black overflow-hidden flex items-center justify-center">
-            {/* Dynamic Ambient Background Glow */}
+        <div className="absolute inset-0 w-full h-full bg-[#f3f3f3] overflow-hidden flex items-center justify-center">
+            {/* Dynamic Ambient Background Glow - Subtle on Light Theme */}
             <AnimatePresence mode="wait">
                 <motion.div
                     key={`bg-${currentIndex}`}
@@ -42,12 +42,12 @@ const HeroSlider = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 1.2 }}
                     transition={{ duration: 3, ease: "easeInOut" }}
-                    className={`absolute inset-0 bg-radial-to-c ${slides[currentIndex].color} opacity-40 blur-[120px]`}
+                    className={`absolute inset-0 bg-radial-to-c ${slides[currentIndex].color} opacity-20 blur-[150px]`}
                 />
             </AnimatePresence>
 
-            {/* Static Grid Overlay for texture */}
-            <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+            {/* Static Grid Overlay for texture - Darker for Light Theme */}
+            <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
 
             <div className="relative z-10 w-full max-w-7xl px-6 md:px-12">
                 <AnimatePresence mode="wait">
@@ -73,7 +73,7 @@ const HeroSlider = () => {
                                 animate={{ y: "0%", opacity: 1 }}
                                 exit={{ y: "-100%", opacity: 0 }}
                                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                                className="text-[18vw] font-black uppercase leading-[0.8] tracking-tighter text-white"
+                                className="text-[18vw] font-black uppercase leading-[0.8] tracking-tighter text-slate-900"
                             >
                                 {slides[currentIndex].stat}
                             </motion.h2>
@@ -86,7 +86,7 @@ const HeroSlider = () => {
                                 animate={{ y: "0%", opacity: 1 }}
                                 exit={{ y: "-100%", opacity: 0 }}
                                 transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                                className="text-2xl md:text-5xl font-bold uppercase tracking-tight text-white/40"
+                                className="text-2xl md:text-5xl font-bold uppercase tracking-tight text-slate-400"
                             >
                                 {slides[currentIndex].text}
                             </motion.p>
@@ -95,33 +95,12 @@ const HeroSlider = () => {
                 </AnimatePresence>
             </div>
 
-            {/* Pagination Indicators */}
-            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-4 z-50">
-                {slides.map((_, i) => (
-                    <div
-                        key={i}
-                        className="relative w-12 md:w-20 h-1 bg-white/10 rounded-full overflow-hidden"
-                    >
-                        {i === currentIndex && (
-                            <motion.div
-                                initial={{ x: "-100%" }}
-                                animate={{ x: "0%" }}
-                                transition={{ duration: 6, ease: "linear" }}
-                                className="absolute inset-0 bg-primary"
-                            />
-                        )}
-                        {i < currentIndex && (
-                            <div className="absolute inset-0 bg-white/20" />
-                        )}
-                    </div>
-                ))}
-            </div>
 
-            {/* Corner Accent Decor */}
-            <div className="absolute top-12 left-12 md:top-24 md:left-24 w-12 h-px bg-white/20" />
-            <div className="absolute top-12 left-12 md:top-24 md:left-24 h-12 w-px bg-white/20" />
-            <div className="absolute bottom-12 right-12 md:bottom-24 md:right-24 w-12 h-px bg-white/20" />
-            <div className="absolute bottom-12 right-12 md:bottom-24 md:right-24 h-12 w-px bg-white/20" />
+            {/* Corner Accent Decor - Dark Accents for Light Theme */}
+            <div className="absolute top-12 left-12 md:top-24 md:left-24 w-12 h-px bg-slate-900/10" />
+            <div className="absolute top-12 left-12 md:top-24 md:left-24 h-12 w-px bg-slate-900/10" />
+            <div className="absolute bottom-12 right-12 md:bottom-24 md:right-24 w-12 h-px bg-slate-900/10" />
+            <div className="absolute bottom-12 right-12 md:bottom-24 md:right-24 h-12 w-px bg-slate-900/10" />
         </div>
     );
 };
