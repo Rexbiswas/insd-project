@@ -150,36 +150,43 @@ const Home = () => {
 
             if (taglineRef.current) {
                 scrollTl.to(taglineRef.current, {
-                    x: -250,
+                    y: -100,
                     opacity: 0,
-                    scale: 0.6,
-                    filter: "blur(30px)",
+                    scale: 0.5,
+                    filter: "blur(40px)",
                     duration: 1,
                     ease: "power2.in"
                 }, 0);
             }
 
 
+            // CINEMATIC PORTAL ZOOM: 
+            // Scaling the text so large that it creates a "zoom-through" effect into the next section
+            scrollTl
+                .to(insdRef.current, {
+                    scale: isMobile ? 8 : 15,
+                    opacity: 0,
+                    filter: "blur(60px)",
+                    transformOrigin: "center center",
+                    duration: 2,
+                    ease: "power2.in"
+                }, 0)
+                .fromTo(fifteenRef.current, {
+                    backgroundPosition: "100% 0%",
+                }, {
+                    backgroundPosition: "0% 0%",
+                    duration: 2,
+                    ease: "power2.inOut"
+                }, 0.2);
+
             if (!isMobile) {
-                scrollTl
-                    .to(insdRef.current, {
-                        y: -80,
-                        opacity: 0.2, // Keep subtle visibility
-                        duration: 1.5,
-                        ease: "power2.inOut"
-                    }, 0)
-                    .fromTo(fifteenRef.current, {
-                        backgroundPosition: "100% 0%"
-                    }, {
-                        backgroundPosition: "0% 0%",
-                        duration: 2,
-                        ease: "power2.inOut"
-                    }, 0.2)
-                    .to([maskRef.current, titleRef.current], {
-                        opacity: 0,
-                        duration: 0.8,
-                        ease: "power2.in"
-                    }, "<+=0.5");
+                scrollTl.to([maskRef.current, titleRef.current], {
+                    scale: 2,
+                    opacity: 0,
+                    filter: "blur(20px)",
+                    duration: 1.5,
+                    ease: "power2.in"
+                }, "<+=0.3");
             }
 
             // 3. Legacy Section - Text Reveal, Magnetic Search & Vertical Carousel
@@ -320,23 +327,6 @@ const Home = () => {
                 ease: "expo.out"
             });
 
-            // Magnetic Small Image
-            const smallImg = document.querySelector(".spotlight-img-small");
-            if (smallImg) {
-                const xToSmall = gsap.quickTo(smallImg, "x", { duration: 0.5, ease: "power3" });
-                const yToSmall = gsap.quickTo(smallImg, "y", { duration: 0.5, ease: "power3" });
-
-                window.addEventListener("mousemove", (e) => {
-                    if (!studentRef.current) return;
-                    const rect = studentRef.current.getBoundingClientRect();
-                    if (e.clientY >= rect.top && e.clientY <= rect.bottom) {
-                        const x = (e.clientX - window.innerWidth / 2) * 0.05;
-                        const y = (e.clientY - window.innerHeight / 2) * 0.05;
-                        xToSmall(x);
-                        yToSmall(y);
-                    }
-                });
-            }
 
 
 
@@ -346,17 +336,7 @@ const Home = () => {
 
         }, containerRef.current);
 
-        const onMouseMove = (e) => {
-            const { clientX, clientY } = e;
-            const x = (clientX / window.innerWidth - 0.5) * 50;
-            const y = (clientY / window.innerHeight - 0.5) * 50;
-
-            gsap.to(insdRef.current, { x: x, y: y, duration: 2, ease: "power2.out" });
-        };
-        window.addEventListener("mousemove", onMouseMove);
-
         return () => {
-            window.removeEventListener("mousemove", onMouseMove);
             ctx.revert();
         };
     }, []);
@@ -423,20 +403,40 @@ const Home = () => {
                     <div className="flex flex-col items-center justify-center w-full px-4 text-center">
 
                         <h1 ref={insdRef} className="text-black text-center flex flex-col items-center justify-center will-change-transform backface-hidden m-0 p-0 relative leading-none tracking-tighter min-h-[40vh]">
-                            <div className="text-[9vw] md:text-[7vw] font-black uppercase mb-2 md:mb-6">
-                                Creative Excellence
+                            <div className="text-[10vw] md:text-[7.5vw] font-black uppercase mb-4 md:mb-8 flex flex-col items-center">
+                                <span className="tracking-tighter">Creative</span>
+                                <span className="text-slate-800 italic font-serif -mt-[1vw] md:-mt-[2vw] lowercase tracking-normal opacity-90">Excellence</span>
                             </div>
-                            <div className="flex items-center justify-center gap-2 md:gap-8">
-                                <span className="text-[3vw] md:text-[1.5vw] font-bold uppercase tracking-[0.4em] opacity-40">Since</span>
-                                <span ref={fifteenRef} className="inline-block bg-linear-to-r from-primary via-secondary to-primary bg-[length:200%_auto] bg-clip-text text-transparent text-[16vw] md:text-[12vw] font-black leading-none px-4">
-                                    15
-                                </span>
-                                <span className="text-[3vw] md:text-[1.5vw] font-bold uppercase tracking-[0.4em] opacity-40">Years</span>
+
+                            <div className="relative flex items-center justify-center">
+                                {/* Anniversary Backdrop Glow */}
+                                <div className="absolute inset-0 bg-white/40 rounded-full blur-3xl -z-10 scale-125 opacity-50"></div>
+
+                                <div className="flex items-center justify-center gap-4 md:gap-12">
+                                    <div className="flex flex-col items-end opacity-40">
+                                        <div className="h-px w-6 md:w-12 bg-black mb-2"></div>
+                                        <span className="text-[3vw] md:text-[1.1vw] font-black uppercase tracking-[0.5em]">Since</span>
+                                    </div>
+
+                                    <div className="relative group">
+                                        <span ref={fifteenRef} className="inline-block bg-linear-to-r from-primary via-secondary to-primary bg-[length:200%_auto] bg-clip-text text-transparent text-[22vw] md:text-[16vw] font-black leading-[0.8] px-2 md:px-6">
+                                            15
+                                        </span>
+                                        <span className="absolute -top-2 -right-4 md:-top-4 md:-right-8 text-[8px] md:text-[10px] font-black text-primary/60 tracking-widest uppercase">
+                                            Est. 2011
+                                        </span>
+                                    </div>
+
+                                    <div className="flex flex-col items-start opacity-40">
+                                        <div className="h-px w-6 md:w-12 bg-black mb-2"></div>
+                                        <span className="text-[3vw] md:text-[1.1vw] font-black uppercase tracking-[0.5em]">Years</span>
+                                    </div>
+                                </div>
                             </div>
                         </h1>
                         {/* Premium Relocated Tagline */}
                         <div ref={taglineRef} className="mt-4 md:mt-12 px-5 py-2 md:px-10 md:py-3 border border-black/10 rounded-full backdrop-blur-xl bg-white/10 will-change-transform shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] flex items-center justify-center overflow-hidden group max-w-[90vw]">
-                            <p className="text-black text-[20px] sm:text-xs md:text-sm font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] md:tracking-[0.6em] whitespace-nowrap flex gap-px px-2">
+                            <p className="text-black text-[18px] sm:text-xs md:text-sm font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] md:tracking-[0.6em] whitespace-nowrap flex gap-px px-2">
                                 {splitText("INSD - India's Skill School", "tagline-char")}
                             </p>
 
