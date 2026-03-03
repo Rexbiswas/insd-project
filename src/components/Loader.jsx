@@ -14,28 +14,26 @@ const Loader = ({ setLoading }) => {
                 }
             });
 
-            // 1. Counter Animation (0 to 100)
-            // We animate a proxy object to use GSAP's easing on the state update
+            // 1. Counter & Text Synchronization
             const counter = { val: 0 };
             tl.to(counter, {
                 val: 100,
                 duration: 2.6,
                 ease: "power2.inOut",
                 onUpdate: () => {
+                    const val = Math.floor(counter.val);
                     if (percentRef.current) {
-                        percentRef.current.textContent = Math.floor(counter.val);
+                        percentRef.current.textContent = val;
+                    }
+
+                    // Update words based on percentage progress
+                    if (textRef.current) {
+                        if (val <= 20) textRef.current.innerText = "15";
+                        else if (val <= 40) textRef.current.innerText = "years";
+                        else if (val <= 60) textRef.current.innerText = "creative";
+                        else textRef.current.innerText = "excellence";
                     }
                 }
-            });
-
-            // 2. Text Reveal / Cycle during count
-            const words = ["15", "YEARS", "OF", "CREATIVE", "EXCELLENCE"];
-            const wordDuration = 2.0 / words.length;
-
-            words.forEach((word, index) => {
-                gsap.delayedCall(index * wordDuration, () => {
-                    if (textRef.current) textRef.current.innerText = word;
-                });
             });
 
             // 3. The "Unexpected" Reveal

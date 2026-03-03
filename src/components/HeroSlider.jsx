@@ -4,22 +4,22 @@ import { motion, AnimatePresence } from 'framer-motion';
 const HeroSlider = () => {
     const slides = [
         {
-            image: "https://ik.imagekit.io/fmldynl4j4/IMG_3440.JPG?updatedAt=1771841966154", // Using their image too as a legacy slide
-            title: "20 Lac Designers",
-            subtitle: "Needed in India",
-            highlight: "The Opportunity"
+            stat: "20 Lac",
+            text: "Designers needed in India",
+            sub: "THE OPPORTUNITY",
+            color: "from-primary/40 to-black"
         },
         {
-            image: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260",
-            title: "$100 Billion",
-            subtitle: "Creative Industry by 2030",
-            highlight: "Market Forecast"
+            stat: "$100 Billion",
+            text: "Creative Industry by 2030",
+            sub: "MARKET FORECAST",
+            color: "from-secondary/40 to-black"
         },
         {
-            image: "https://images.pexels.com/photos/4348404/pexels-photo-4348404.jpeg?auto=compress&cs=tinysrgb&w=1260",
-            title: "India's Skill School",
-            subtitle: "INSD - Creative Excellence",
-            highlight: "The Legacy"
+            stat: "INSD",
+            text: "India’s Skill School",
+            sub: "CREATIVE EXCELLENCE",
+            color: "from-indigo-900/40 to-black"
         }
     ];
 
@@ -28,78 +28,103 @@ const HeroSlider = () => {
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrentIndex((prev) => (prev + 1) % slides.length);
-        }, 5000);
+        }, 6000);
         return () => clearInterval(timer);
-    }, []);
+    }, [slides.length]);
 
     return (
-        <div className="absolute inset-0 w-full h-full overflow-hidden">
+        <div className="absolute inset-0 w-full h-full bg-black overflow-hidden flex items-center justify-center">
+            {/* Dynamic Ambient Background Glow */}
             <AnimatePresence mode="wait">
                 <motion.div
-                    key={currentIndex}
-                    initial={{ opacity: 0, scale: 1.2, filter: "blur(10px)" }}
-                    animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                    exit={{ opacity: 0, scale: 0.9, filter: "blur(20px)" }}
-                    transition={{ duration: 2, ease: "anticipate" }}
-                    className="absolute inset-0"
-                >
-                    <div className="absolute inset-0 bg-linear-to-b from-black/60 via-transparent to-black/60 z-10" />
-                    <img
-                        src={slides[currentIndex].image}
-                        alt={slides[currentIndex].title}
-                        className="w-full h-full object-cover"
-                    />
-                </motion.div>
+                    key={`bg-${currentIndex}`}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 1.2 }}
+                    transition={{ duration: 3, ease: "easeInOut" }}
+                    className={`absolute inset-0 bg-radial-to-c ${slides[currentIndex].color} opacity-40 blur-[120px]`}
+                />
             </AnimatePresence>
 
-            {/* Slider Content Overlay (Outside the blur animation) */}
-            <div className="absolute bottom-[20%] left-0 w-full z-40 pointer-events-none">
-                <div className="max-w-7xl mx-auto px-12 flex flex-col items-start">
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={currentIndex}
-                            initial={{ x: -100, opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            exit={{ x: 100, opacity: 0 }}
-                            transition={{ duration: 0.8, ease: "easeOut" }}
-                            className="bg-black/20 backdrop-blur-xl p-8 rounded-2xl border border-white/10 shadow-2xl"
+            {/* Static Grid Overlay for texture */}
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+
+            <div className="relative z-10 w-full max-w-7xl px-6 md:px-12">
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={currentIndex}
+                        className="flex flex-col items-center text-center"
+                    >
+                        {/* Label */}
+                        <motion.span
+                            initial={{ y: 20, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            exit={{ y: -20, opacity: 0 }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            className="text-[10px] md:text-xs font-black tracking-[0.6em] text-primary mb-8"
                         >
-                            <span className="block text-primary font-mono tracking-[0.5em] uppercase text-xs mb-3">
-                                {slides[currentIndex].highlight}
-                            </span>
-                            <h2 className="text-4xl md:text-6xl font-black text-white leading-none uppercase tracking-tighter mb-4">
-                                {slides[currentIndex].title}
-                            </h2>
-                            <p className="text-lg md:text-xl text-white/60 font-medium uppercase tracking-[0.2em]">
-                                {slides[currentIndex].subtitle}
-                            </p>
-                        </motion.div>
-                    </AnimatePresence>
-                </div>
+                            {slides[currentIndex].sub}
+                        </motion.span>
+
+                        {/* Large Stat/Title */}
+                        <div className="overflow-hidden mb-4">
+                            <motion.h2
+                                initial={{ y: "100%", opacity: 0 }}
+                                animate={{ y: "0%", opacity: 1 }}
+                                exit={{ y: "-100%", opacity: 0 }}
+                                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                                className="text-[15vw] md:text-[10vw] font-black uppercase leading-[0.85] tracking-tighter text-white"
+                            >
+                                {slides[currentIndex].stat}
+                            </motion.h2>
+                        </div>
+
+                        {/* Descriptive Text */}
+                        <div className="overflow-hidden">
+                            <motion.p
+                                initial={{ y: "100%", opacity: 0 }}
+                                animate={{ y: "0%", opacity: 1 }}
+                                exit={{ y: "-100%", opacity: 0 }}
+                                transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                                className="text-xl md:text-4xl font-bold uppercase tracking-tight text-white/40"
+                            >
+                                {slides[currentIndex].text}
+                            </motion.p>
+                        </div>
+                    </motion.div>
+                </AnimatePresence>
             </div>
 
-            {/* Slider Progress Bar - Horizontal */}
-            <div className="absolute bottom-0 left-0 w-full h-1.5 z-50 flex gap-1 px-1">
+            {/* Pagination Indicators */}
+            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-4 z-50">
                 {slides.map((_, i) => (
                     <div
                         key={i}
-                        className="flex-1 h-full relative bg-white/5 backdrop-blur-sm rounded-full overflow-hidden"
+                        className="relative w-12 md:w-20 h-1 bg-white/10 rounded-full overflow-hidden"
                     >
-                        {i === currentIndex ? (
+                        {i === currentIndex && (
                             <motion.div
-                                initial={{ width: "0%" }}
-                                animate={{ width: "100%" }}
-                                transition={{ duration: 5, ease: "linear" }}
-                                className="absolute top-0 left-0 h-full bg-primary shadow-[0_0_15px_rgba(219,52,54,0.6)]"
+                                initial={{ x: "-100%" }}
+                                animate={{ x: "0%" }}
+                                transition={{ duration: 6, ease: "linear" }}
+                                className="absolute inset-0 bg-primary"
                             />
-                        ) : (
-                            <div className={`absolute inset-0 ${i < currentIndex ? 'bg-primary/40' : 'bg-transparent'}`} />
+                        )}
+                        {i < currentIndex && (
+                            <div className="absolute inset-0 bg-white/20" />
                         )}
                     </div>
                 ))}
             </div>
+
+            {/* Corner Accent Decor */}
+            <div className="absolute top-12 left-12 md:top-24 md:left-24 w-12 h-px bg-white/20" />
+            <div className="absolute top-12 left-12 md:top-24 md:left-24 h-12 w-px bg-white/20" />
+            <div className="absolute bottom-12 right-12 md:bottom-24 md:right-24 w-12 h-px bg-white/20" />
+            <div className="absolute bottom-12 right-12 md:bottom-24 md:right-24 h-12 w-px bg-white/20" />
         </div>
     );
 };
 
 export default HeroSlider;
+

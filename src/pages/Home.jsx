@@ -129,38 +129,6 @@ const Home = () => {
                 );
             }
 
-            // Floating movement for the scroll pill
-            const scrollPill = scrollHintRef.current?.querySelector('.scroll-pill');
-            if (scrollPill) {
-                gsap.to(scrollPill, {
-                    y: 5,
-                    duration: 2,
-                    repeat: -1,
-                    yoyo: true,
-                    ease: "sine.inOut"
-                });
-            }
-
-            // Optional Line Animation if it exists (for safety/future-proofing)
-            const scrollLine = scrollHintRef.current?.querySelector('.scroll-line-progress');
-            if (scrollLine) {
-                // Prepend line animation if it existed
-                gsap.fromTo(scrollLine,
-                    { scaleY: 0 },
-                    {
-                        scaleY: 1, duration: 1.2, ease: "expo.inOut", onComplete: () => {
-                            // Loop after entrance
-                            gsap.to(scrollLine, {
-                                yPercent: 100,
-                                duration: 1.5,
-                                repeat: -1,
-                                ease: "power1.inOut",
-                                repeatDelay: 0.5
-                            });
-                        }
-                    }
-                );
-            }
 
             // 2. Infinite Marquee Animation
             gsap.to(marqueeRef.current, {
@@ -191,26 +159,6 @@ const Home = () => {
                 }, 0);
             }
 
-            if (scrollHintRef.current) {
-                const hintLine = scrollHintRef.current.querySelector('.scroll-line-indicator');
-                const scrollExplorer = scrollHintRef.current.querySelector('.scroll-explorer-container');
-
-                scrollTl.to(scrollExplorer, {
-                    x: isMobile ? 0 : -300,
-                    y: isMobile ? 50 : 0,
-                    opacity: 0,
-                    scale: 0.8,
-                    filter: "blur(20px)",
-                    duration: 1,
-                    ease: "power2.in"
-                }, isMobile ? 0.05 : 0.2);
-
-                scrollTl.to(hintLine, {
-                    scaleY: 0,
-                    opacity: 0,
-                    duration: 0.5
-                }, 0.1);
-            }
 
             if (!isMobile) {
                 scrollTl
@@ -504,29 +452,6 @@ const Home = () => {
                     </div>
                 </div>
 
-                {/* Keep Scrolling UI - Fixed at Bottom with Enhanced Mobile Visibility */}
-                <div className="absolute bottom-24 md:bottom-12 left-0 w-full flex flex-col items-center z-50 pointer-events-auto select-none">
-                    <div ref={scrollHintRef} className="flex flex-col items-center group">
-                        <div className="flex flex-col items-center text-[#333] relative">
-                            {/* Premium Scroll Explorer UI */}
-                            <div className="scroll-explorer-container flex flex-col items-center">
-
-
-                                <div className="scroll-pill relative w-10 h-16 rounded-full border border-black/20 flex justify-center p-2 backdrop-blur-xl bg-white/20 shadow-[0_0_20px_rgba(0,0,0,0.1)] hover:border-primary/30 transition-all duration-500 overflow-hidden outline outline-1 outline-white/40 mb-3">
-                                    {/* Animated Scroll Dot */}
-                                    <div className="w-2 h-4 bg-linear-to-b from-primary to-secondary rounded-full animate-bounce shadow-[0_0_10px_rgba(219,52,54,0.3)]"></div>
-
-                                    {/* Glass Highlight */}
-                                    <div className="absolute top-0 left-0 w-full h-full bg-linear-to-br from-white/40 to-transparent pointer-events-none"></div>
-
-                                    {/* Inner Liquid Glow - High Visibility */}
-                                    <div className="absolute -bottom-2 left-0 w-full h-8 bg-primary/20 blur-xl animate-pulse"></div>
-                                </div>
-                                <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-black/60 animate-pulse-soft">Scroll to Explore</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             {/* Marquee Strip */}
