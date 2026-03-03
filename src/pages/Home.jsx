@@ -207,40 +207,24 @@ const Home = () => {
                     }
                 );
 
-                // 2. Text Reveal & Exit 
-                const words = legacyRef.current.querySelectorAll('.legacy-word');
-                const textTl = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: legacyRef.current,
-                        start: "top 80%",
-                        end: "bottom 40%",
-                        scrub: 0.5
-                    }
-                });
-
-                textTl.fromTo(words,
-                    { 
-                        color: "#cbd5e1", // Light slate (slate-300)
-                        filter: "blur(12px)", 
-                        opacity: 0, 
-                        y: 30,
-                        rotateX: -20
-                    },
-                    {
-                        color: "#0f172a", // Dark navy (slate-900)
+                // 2. High-Impact Quote Reveal
+                const quotes = legacyRef.current.querySelectorAll('.legacy-quote');
+                
+                quotes.forEach((quote, i) => {
+                    gsap.to(quote, {
                         filter: "blur(0px)",
                         opacity: 1,
                         y: 0,
-                        rotateX: 0,
-                        stagger: 0.05,
+                        duration: 1.5,
                         ease: "power3.out",
-                        duration: 1.2
-                    }
-                )
-                    .to(words, {
-                        opacity: 1,
-                        duration: 1.5 // Extended hold phase to allow reading
+                        scrollTrigger: {
+                            trigger: quote,
+                            start: "top 90%",
+                            end: "top 40%",
+                            scrub: true,
+                        }
                     });
+                });
 
 
                 // 3. Search Entrance 
@@ -453,14 +437,8 @@ const Home = () => {
                 </div>
 
             </div>
+            <AdmissionScroller />
 
-            {/* Marquee Strip */}
-            <div className="relative z-20 py-4 md:py-12 bg-black text-white overflow-hidden rotate-2 scale-110 border-y-2 md:border-y-8 border-white">
-                <div ref={marqueeRef} className="whitespace-nowrap flex text-3xl md:text-8xl font-black tracking-tighter uppercase line-height-none">
-                    <span className="pr-6 md:pr-12">Fashion • Design • Innovation • Creativity • Future • Style •</span>
-                    <span className="pr-6 md:pr-12">Fashion • Design • Innovation • Creativity • Future • Style •</span>
-                </div>
-            </div>
 
             {/* Unique Vertical Accordion Gallery */}
             <div className="relative z-20 bg-black h-screen md:min-h-screen flex overflow-x-auto md:flex-row md:overflow-hidden snap-x snap-mandatory scroll-smooth">
@@ -506,7 +484,6 @@ const Home = () => {
                 }
             </div >
 
-            <AdmissionScroller />
             <NetworkCounter />
 
             {/* Legacy & Discovery Section - Unexpected Contrast */}
@@ -522,12 +499,24 @@ const Home = () => {
                 {/* Main Content Wrapper */}
                 <div className="legacy-content relative z-20 w-full max-w-6xl mx-auto flex flex-col items-center gap-12 md:gap-24 py-20 md:py-32 px-4 md:px-12 pointer-events-auto">
 
-                    {/* Top: Legacy Text (Centered & Animated) */}
-                    <div className="relative z-10 text-center max-w-5xl mx-auto">
-                        <h3 className="text-lg sm:text-xl md:text-3xl font-bold leading-tight uppercase tracking-tight text-center px-4">
-                            {splitWords("INSD was co-founded by IAS Officer & 1st Director General of NIFT who gave birth to Design Education in India along with Mr Sunjey Aggarwal and Pranav Raj Aggarwal. It is a National Award-Winning Design School that has built a community of artists, designers, and media professionals. Our programs are internationally acclaimed and focus on giving students a global outlook.", "legacy-word transition-all duration-300 will-change-transform inline-block")}
-                        </h3>
-                        <div className="mt-8 md:mt-12 w-20 md:w-32 h-1 md:h-2 bg-black mx-auto rounded-full"></div>
+                    {/* Top: High Impact Quotes (Animated on Scroll) */}
+                    <div className="relative z-10 w-full text-center max-w-5xl mx-auto space-y-8 md:space-y-12">
+                        <div className="quote-wrapper overflow-hidden pb-4">
+                            <h3 className="text-2xl md:text-5xl font-black uppercase tracking-tight legacy-quote blur-[20px] opacity-0 translate-y-20">
+                                15 Years of Transforming <span className="text-primary italic font-serif">Passion</span> into Profession
+                            </h3>
+                        </div>
+                        <div className="quote-wrapper overflow-hidden pb-4">
+                            <h3 className="text-2xl md:text-5xl font-black uppercase tracking-tight legacy-quote blur-[20px] opacity-0 translate-y-20">
+                                Where Creativity Meets <span className="text-secondary italic font-serif">Global</span> Industry Leadership
+                            </h3>
+                        </div>
+                        <div className="quote-wrapper overflow-hidden pb-4">
+                            <h3 className="text-2xl md:text-5xl font-black uppercase tracking-tight legacy-quote blur-[20px] opacity-0 translate-y-20">
+                                India’s Premier <span className="text-primary italic font-serif">Skill</span> School for Designers
+                            </h3>
+                        </div>
+                        <div className="mt-8 md:mt-16 w-16 md:w-24 h-1 md:h-2 bg-slate-900 mx-auto rounded-full"></div>
                     </div>
 
                     {/* Bottom: Unexpected Search Interaction & Carousel */}
@@ -548,7 +537,7 @@ const Home = () => {
                         </div>
 
                         {/* Magnetic & Glassmorphic Search Container */}
-                        <div className="search-container relative w-full max-w-7xl backdrop-blur-xl bg-slate-900/90 text-white p-6 md:p-16 rounded-[2rem] md:rounded-[4rem] shadow-2xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-500 hover:scale-[1.01] cursor-text group overflow-hidden border border-white/10">
+                        <div className="search-container relative w-full max-w-7xl backdrop-blur-xl bg-slate-900/95 text-white p-10 md:p-24 rounded-[3rem] md:rounded-[5rem] shadow-2xl hover:shadow-[0_40px_100px_rgba(0,0,0,0.6)] transition-all duration-700 hover:scale-[1.01] cursor-text group overflow-hidden border border-white/10">
 
                             {/* Animated Gradient Border/Glow */}
                             <div className="absolute -inset-full bg-linear-to-r from-transparent via-white/10 to-transparent rotate-45 translate-x-[-150%] transition-transform duration-1000 group-hover:translate-x-[150%] ease-in-out pointer-events-none"></div>
@@ -566,10 +555,10 @@ const Home = () => {
                                             setSearchQuery(e.target.value);
                                             if (e.target.value) setIsDropdownOpen(true);
                                         }}
-                                        placeholder="Search Courses..."
-                                        className="bg-transparent border-none outline-none text-xl md:text-4xl font-light text-white placeholder-slate-600 w-full"
+                                        placeholder="Type to explore your future..."
+                                        className="bg-transparent border-none outline-none text-2xl md:text-6xl font-black text-white placeholder-slate-700 w-full tracking-tighter"
                                     />
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="opacity-50 group-focus-within:opacity-100 group-focus-within:text-secondary transition-all duration-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-30 group-focus-within:opacity-100 group-focus-within:text-primary group-focus-within:scale-110 transition-all duration-500">
                                         <circle cx="11" cy="11" r="8"></circle>
                                         <path d="m21 21-4.3-4.3"></path>
                                     </svg>

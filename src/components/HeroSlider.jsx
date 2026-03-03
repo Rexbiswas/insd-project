@@ -73,7 +73,7 @@ const HeroSlider = () => {
                                 animate={{ y: "0%", opacity: 1 }}
                                 exit={{ y: "-100%", opacity: 0 }}
                                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                                className="text-[15vw] md:text-[10vw] font-black uppercase leading-[0.85] tracking-tighter text-white"
+                                className="text-[18vw] font-black uppercase leading-[0.8] tracking-tighter text-white"
                             >
                                 {slides[currentIndex].stat}
                             </motion.h2>
@@ -86,7 +86,7 @@ const HeroSlider = () => {
                                 animate={{ y: "0%", opacity: 1 }}
                                 exit={{ y: "-100%", opacity: 0 }}
                                 transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                                className="text-xl md:text-4xl font-bold uppercase tracking-tight text-white/40"
+                                className="text-2xl md:text-5xl font-bold uppercase tracking-tight text-white/40"
                             >
                                 {slides[currentIndex].text}
                             </motion.p>

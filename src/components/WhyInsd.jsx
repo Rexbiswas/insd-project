@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Zap, Target, Briefcase, GraduationCap } from 'lucide-react';
 import PillarCard from './PillarCard';
 
 const WhyInsd = () => {
@@ -9,28 +8,28 @@ const WhyInsd = () => {
     const pillars = [
         {
             title: "Fast-Paced Learning",
-            icon: <Zap className="w-7 h-7" />,
+            image: "https://images.pexels.com/photos/3182761/pexels-photo-3182761.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
             desc: "In the fast-moving world of design, speed is strategy. Our curriculum is compressed for maximum impact, delivering years of technical mastery in a high-intensity format designed for the modern industry pace.",
             tag: "Speed",
             color: "from-blue-500/10 to-transparent"
         },
         {
             title: "Skill-Based Education",
-            icon: <Target className="w-7 h-7" />,
+            image: "https://images.pexels.com/photos/256417/pexels-photo-256417.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
             desc: "Theoretical knowledge is only half the battle. We focus on hard, market-demanded skills and technical precision, ensuring every student graduates with a professional portfolio that speaks for itself.",
             tag: "Mastery",
             color: "from-orange-500/10 to-transparent"
         },
         {
             title: "Placement-Focused Training",
-            icon: <Briefcase className="w-7 h-7" />,
+            image: "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
             desc: "Our ecosystem is built for your arrival. Through direct hiring partnerships and intensive professional grooming, we ensure a seamless transition from the classroom to the world's leading design houses.",
             tag: "Career",
             color: "from-emerald-500/10 to-transparent"
         },
         {
             title: "Career & Entrepreneurship Ready",
-            icon: <GraduationCap className="w-7 h-7" />,
+            image: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
             desc: "Whether you aspire to lead global brands or disrupt the market with your own venture, we provide the leadership mindset and business acumen required to dominate the global design landscape.",
             tag: "Leadership",
             color: "from-purple-500/10 to-transparent"
