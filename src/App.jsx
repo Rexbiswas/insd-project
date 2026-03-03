@@ -41,6 +41,10 @@ import { RegisterModalProvider } from './context/RegisterModalContext';
 import RegistrationModal from './components/RegistrationModal';
 import { AuthProvider } from './context/AuthContext';
 import ProfileDashboard from './pages/ProfileDashboard';
+import Insdian from './pages/Insdian';
+import FashionDesigning from './pages/FashionDesigning';
+import InteriorDesigning from './pages/InteriorDesigning';
+import GraphicDesigning from './pages/GraphicDesigning';
 
 import NotFound from './pages/NotFound';
 
@@ -95,6 +99,9 @@ function App() {
               <Route path="/courses/diploma-and-certificates" element={<DiplomaAndCertificate />} />
               <Route path="/courses/short-term-courses" element={<ShortTermCourse />} />
               <Route path="/courses/msc-luxury-brand-management" element={<MscLuxury />} />
+              <Route path="/courses/fashion-designing" element={<FashionDesigning />} />
+              <Route path="/courses/interior-designing" element={<InteriorDesigning />} />
+              <Route path="/courses/graphic-designing" element={<GraphicDesigning />} />
               <Route path="/student-careers" element={<StudentCareers />} />
               <Route path="/insd-360" element={<Insd360 />} />
               <Route path="/franchise" element={<Franchise />} />
@@ -107,6 +114,7 @@ function App() {
               <Route path="/insd-360/fashion-week" element={<FashionWeek />} />
               <Route path="/insd-360/paris-project" element={<ParisProject />} />
               <Route path="/insd-360/events" element={<Events />} />
+              <Route path="/insdian" element={<Insdian />} />
               <Route path="/profile" element={<ProfileDashboard />} />
 
               <Route path="/test-404" element={<NotFound />} />

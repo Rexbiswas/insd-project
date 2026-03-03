@@ -137,6 +137,18 @@ const Navbar = () => {
             path: '/courses',
             subItems: [
                 {
+                    name: 'Fashion Designing',
+                    path: '/courses/fashion-designing',
+                },
+                {
+                    name: 'Interior Designing',
+                    path: '/courses/interior-designing',
+                },
+                {
+                    name: 'Graphic Designing',
+                    path: '/courses/graphic-designing',
+                },
+                {
                     name: 'Undergraduate',
                     path: '/courses/undergraduate',
                 },
@@ -182,7 +194,7 @@ const Navbar = () => {
                 { name: 'Blog', path: '/insd-360/blog' },
                 { name: 'Events', path: '/insd-360/events' },
                 { name: 'Gallery', path: '/insd-360/gallery' },
-                { name: 'Insdians', path: '/insd-360/insdians' },
+                { name: 'Insdians', path: '/insdian' },
                 { name: 'Fashion Week', path: '/insd-360/fashion-week' },
                 { name: 'The Paris Project', path: '/insd-360/paris-project' }
             ]
@@ -624,9 +636,13 @@ const Navbar = () => {
                                     >
                                         <h3 className="text-white font-bold uppercase tracking-widest text-sm">Follow Us</h3>
                                         <div className="flex gap-4">
-                                            {['Instagram', 'LinkedIn', 'Facebook'].map(social => (
-                                                <a key={social} href="#" className="relative group text-slate-400 hover:text-white transition-colors duration-300 py-1">
-                                                    {social}
+                                            {[
+                                                { name: 'Instagram', link: 'https://www.instagram.com/insd_official' },
+                                                { name: 'LinkedIn', link: 'https://www.linkedin.com/school/international-school-of-design/' },
+                                                { name: 'Facebook', link: 'https://www.facebook.com/share/1CMuRdTV69/' }
+                                            ].map(social => (
+                                                <a key={social.name} href={social.link} target="_blank" rel="noopener noreferrer" className="relative group text-slate-400 hover:text-white transition-colors duration-300 py-1">
+                                                    {social.name}
                                                     <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full" />
                                                 </a>
                                             ))}

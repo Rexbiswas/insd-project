@@ -29,6 +29,22 @@ const Footer = () => {
                 }
             );
 
+            // Sitemap Columns Entrance
+            gsap.fromTo(".sitemap-column",
+                { y: 30, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    stagger: 0.15,
+                    duration: 1.2,
+                    ease: "expo.out",
+                    scrollTrigger: {
+                        trigger: ".sitemap-column",
+                        start: "top 95%"
+                    }
+                }
+            );
+
             // Giant Text Parallax Depth
             gsap.fromTo(".giant-footer-text",
                 { xPercent: -10 },
@@ -74,16 +90,16 @@ const Footer = () => {
     }, []);
 
     const socialLinks = [
-        { icon: Instagram, label: "Instagram", color: "#E4405F" },
-        { icon: Linkedin, label: "LinkedIn", color: "#0A66C2" },
-        { icon: Facebook, label: "Facebook", color: "#1877F2" },
-        { icon: Youtube, label: "YouTube", color: "#FF0000" }
+        { icon: Instagram, label: "Instagram", color: "#E4405F", link: "https://www.instagram.com/insd_official" },
+        { icon: Linkedin, label: "LinkedIn", color: "#0A66C2", link: "https://www.linkedin.com/school/international-school-of-design/" },
+        { icon: Facebook, label: "Facebook", color: "#1877F2", link: "https://www.facebook.com/share/1CMuRdTV69/" },
+        { icon: Youtube, label: "YouTube", color: "#FF0000", link: "https://youtube.com/@insd-internationalschoolof5139?feature=shared" }
     ];
 
     const ctas = [
         {
             label: "Apply Now",
-            icon: Zap,
+            icon: ArrowUpRight,
             desc: "Priority 2026 Admissions",
             color: "from-primary/40 to-primary/5",
             borderColor: "border-primary/20",
@@ -194,7 +210,7 @@ const Footer = () => {
 
                         <div className="flex gap-3">
                             {socialLinks.map((social, idx) => (
-                                <a key={idx} href="#"
+                                <a key={idx} href={social.link} target="_blank" rel="noopener noreferrer"
                                     className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-500 group">
                                     <social.icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
                                 </a>
@@ -202,38 +218,116 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    {/* Quick Channels */}
-                    <div className="lg:col-span-3">
-                        <h5 className="text-xs font-bold uppercase tracking-[0.3em] text-white/30 mb-8 flex items-center gap-2">
-                            Navigation
-                        </h5>
-                        <ul className="space-y-4">
-                            {["Architecture", "The Protocol", "Campus Matrix", "Global Placements"].map((item, i) => (
-                                <li key={i}>
-                                    <a href="#" className="group flex items-center gap-3 text-white/60 hover:text-white transition-all">
-                                        <span className="w-0 group-hover:w-4 h-px bg-primary transition-all"></span>
-                                        {item}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+                    {/* --- THE GLOBAL SITEMAP --- */}
+                    <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-4 gap-12">
+                        {/* Column 1: Courses */}
+                        <div className="sitemap-column">
+                            <h5 className="text-xs font-bold uppercase tracking-[0.3em] text-white/30 mb-8 flex items-center gap-2">
+                                <div className="w-1 h-1 bg-primary rounded-full animate-pulse"></div>
+                                Courses
+                            </h5>
+                            <ul className="space-y-4">
+                                {["Fashion Designing", "Interior Designing", "Graphic Designing", "Animation & VFX"].map((item, i) => (
+                                    <motion.li 
+                                        key={i}
+                                        whileHover={{ x: 5 }}
+                                        transition={{ type: "spring", stiffness: 300 }}
+                                    >
+                                        <a href={item === "Fashion Designing" ? "/courses/fashion-designing" : item === "Interior Designing" ? "/courses/interior-designing" : item === "Graphic Designing" ? "/courses/graphic-designing" : "#"} className="text-sm text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link">
+                                            <span className="w-0 group-hover/link:w-3 h-px bg-primary transition-all duration-300"></span>
+                                            {item}
+                                        </a>
+                                    </motion.li>
+                                ))}
+                            </ul>
+                        </div>
 
-                    {/* Direct Connect */}
-                    <div className="lg:col-span-4">
-                        <h5 className="text-xs font-bold uppercase tracking-[0.3em] text-white/30 mb-8">
-                            Base Communications
-                        </h5>
-                        <div className="space-y-8">
-                            <div className="group cursor-pointer">
-                                <span className="block text-xs uppercase tracking-widest text-primary mb-1">Admissions Elite</span>
-                                <span className="text-xl font-bold border-b border-white/10 group-hover:border-primary transition-all pb-1">+91 98765 43210</span>
-                            </div>
-                            <div className="group cursor-pointer">
-                                <span className="block text-xs uppercase tracking-widest text-white/40 mb-1">Global HQ</span>
-                                <p className="text-white/60 text-sm leading-relaxed max-w-[250px]">
-                                    3rd Floor, Metro Station, INSD Building, Preet Vihar, Delhi 110092
-                                </p>
+                         {/* Column 2: Institute */}
+                         <div className="sitemap-column">
+                            <h5 className="text-xs font-bold uppercase tracking-[0.3em] text-white/30 mb-8 flex items-center gap-2">
+                                <div className="w-1 h-1 bg-secondary rounded-full animate-pulse"></div>
+                                Institute
+                            </h5>
+                            <ul className="space-y-4">
+                                <li>
+                                    <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
+                                        <a href="/about-us" className="text-sm text-white/50 hover:text-white transition-all duration-300 flex items-center gap-2 group/link">
+                                            <span className="w-0 group-hover/link:w-3 h-px bg-white transition-all duration-300"></span>
+                                            About Us
+                                        </a>
+                                    </motion.div>
+                                </li>
+                                <li>
+                                    <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
+                                        <a href="/campuses" className="text-sm text-white/50 hover:text-white transition-all duration-300 flex items-center gap-2 group/link">
+                                            <span className="w-0 group-hover/link:w-3 h-px bg-white transition-all duration-300"></span>
+                                            Campuses
+                                        </a>
+                                    </motion.div>
+                                </li>
+                                <li>
+                                    <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
+                                        <a href="/student-careers" className="text-sm text-white/50 hover:text-white transition-all duration-300 flex items-center gap-2 group/link">
+                                            <span className="w-0 group-hover/link:w-3 h-px bg-white transition-all duration-300"></span>
+                                            Careers
+                                        </a>
+                                    </motion.div>
+                                </li>
+                                <li>
+                                    <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
+                                        <a href="/international-partners" className="text-sm text-white/50 hover:text-white transition-all duration-300 flex items-center gap-2 group/link">
+                                            <span className="w-0 group-hover/link:w-3 h-px bg-white transition-all duration-300"></span>
+                                            Legacy
+                                        </a>
+                                    </motion.div>
+                                </li>
+                            </ul>
+                        </div>
+
+                         {/* Column 3: Lifestyle */}
+                         <div className="sitemap-column">
+                            <h5 className="text-xs font-bold uppercase tracking-[0.3em] text-white/30 mb-8 flex items-center gap-2">
+                                <div className="w-1 h-1 bg-primary rounded-full animate-pulse"></div>
+                                Lifestyle
+                            </h5>
+                            <ul className="space-y-4">
+                                {["Insdians", "Success Stories", "Fashion Shows", "Exhibitions"].map((item, i) => (
+                                    <motion.li 
+                                        key={i}
+                                        whileHover={{ x: 5 }}
+                                        transition={{ type: "spring", stiffness: 300 }}
+                                    >
+                                        <a href="/insdian" className="text-sm text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link">
+                                            <span className="w-0 group-hover/link:w-3 h-px bg-primary transition-all duration-300"></span>
+                                            {item}
+                                        </a>
+                                    </motion.li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        {/* Column 4: Base Connect */}
+                        <div className="sitemap-column">
+                            <h5 className="text-xs font-bold uppercase tracking-[0.3em] text-white/30 mb-8">
+                                Connect
+                            </h5>
+                            <div className="space-y-6">
+                                <motion.div 
+                                    whileHover={{ x: 5 }}
+                                    className="group cursor-pointer"
+                                >
+                                    <span className="block text-[10px] uppercase tracking-widest text-primary mb-1">Admissions</span>
+                                    <span className="text-sm font-bold border-b border-white/5 group-hover:border-primary transition-all pb-1">+91 77019 33935</span>
+                                </motion.div>
+                                <motion.div 
+                                    whileHover={{ x: 5 }}
+                                    className="group"
+                                >
+                                    <span className="block text-[10px] uppercase tracking-widest text-white/40 mb-1">Global HQ</span>
+                                    <p className="text-white/50 text-xs leading-relaxed">
+                                        Preet Vihar, Delhi 110092
+                                    </p>
+                                </motion.div>
                             </div>
                         </div>
                     </div>
@@ -286,7 +380,7 @@ const Footer = () => {
                     </div>
 
                     <a href="https://rishibiswas.dev" className="flex items-center gap-2 hover:text-white transition-colors">
-                        <Zap className="w-3 h-3" />
+                        <ArrowUpRight className="w-3 h-3" />
                         Design By Rishi Biswas
                     </a>
                 </div>
