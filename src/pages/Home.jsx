@@ -362,9 +362,19 @@ const Home = () => {
     }, []);
 
     const galleryItems = [
-        { title: "Industry", img: `https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=${isMobile ? 600 : 1260}&h=750&dpr=1` },
-        { title: "INSD", img: `https://ik.imagekit.io/fmldynl4j4/IMG_3440.JPG?updatedAt=1771841966154` },
-        { title: "Required Professional", img: `https://images.pexels.com/photos/3807277/pexels-photo-3807277.jpeg?auto=compress&cs=tinysrgb&w=${isMobile ? 600 : 1260}&h=750&dpr=1` }
+        { 
+            title: "Industry", 
+            img: `https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_wy3si8wy3si8wy3s.png?tr=w-${isMobile ? 800 : 1800},fo-auto`,
+            link: "https://gemini.google.com/app/8c7751779a34cf52?hl=en-IN"
+        },
+        { 
+            title: "INSD", 
+            img: `https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_u2ubidu2ubidu2ub.png` 
+        },
+        { 
+            title: "Required Professional", 
+            img: `https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_hzzhu5hzzhu5hzzh.png` 
+        }
     ];
 
 
@@ -444,8 +454,11 @@ const Home = () => {
             <div className="relative z-20 bg-black h-screen md:min-h-screen flex overflow-x-auto md:flex-row md:overflow-hidden snap-x snap-mandatory scroll-smooth">
                 {
                     galleryItems.map((item, index) => (
-                        <div
+                        <a
                             key={index}
+                            href={item.link || "#"}
+                            target={item.link ? "_blank" : "_self"}
+                            rel="noopener noreferrer"
                             className="relative min-w-full md:min-w-0 md:flex-1 group transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] hover:flex-3 cursor-pointer grayscale-0 md:grayscale md:hover:grayscale-0 border-r border-white/10 last:border-r-0 snap-center"
                         >
                             {/* Image Background */}
@@ -479,7 +492,7 @@ const Home = () => {
                                     {item.title}
                                 </span>
                             </div>
-                        </div>
+                        </a>
                     ))
                 }
             </div >
