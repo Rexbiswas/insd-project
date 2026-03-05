@@ -45,6 +45,8 @@ import Insdian from './pages/Insdian';
 import FashionDesigning from './pages/FashionDesigning';
 import InteriorDesigning from './pages/InteriorDesigning';
 import GraphicDesigning from './pages/GraphicDesigning';
+import AnimationAndVFX from './pages/AnimationAndVFX';
+import SuccessStory from './pages/SuccessStory';
 
 import NotFound from './pages/NotFound';
 
@@ -76,56 +78,58 @@ function App() {
           {loading && <Loader key="loader" setLoading={setLoading} />}
         </AnimatePresence>
 
-      <div className={`transition-opacity duration-1000 ${loading ? 'opacity-0' : 'opacity-100'}`}>
-        <RegistrationModal />
+        <div className={`transition-opacity duration-1000 ${loading ? 'opacity-0' : 'opacity-100'}`}>
+          <RegistrationModal />
 
-        <Router>
-          <ScrollToTop />
-          <Navbar />
-          <div className="relative z-0 bg-white min-h-screen pb-24 md:pb-0 overflow-x-hidden">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about-us" element={<About />} />
-              <Route path="/campuses" element={<Campus />} />
-              <Route path="/campuses/south-delhi" element={<SouthDelhi />} />
-              <Route path="/campuses/north-delhi" element={<NorthDelhi />} />
-              <Route path="/campuses/paris" element={<ParisCDP />} />
-              <Route path="/campuses/washington" element={<WashingtonIBSW />} />
-              <Route path="/campuses/dubai" element={<DubaiIBSW />} />
-              <Route path="/campuses/uk" element={<UnitedKingdomUCA />} />
-              <Route path="/courses" element={<Courses />} />
-              <Route path="/courses/undergraduate" element={<Undergraduate />} />
-              <Route path="/courses/postgraduate" element={<Postgraduate />} />
-              <Route path="/courses/diploma-and-certificates" element={<DiplomaAndCertificate />} />
-              <Route path="/courses/short-term-courses" element={<ShortTermCourse />} />
-              <Route path="/courses/msc-luxury-brand-management" element={<MscLuxury />} />
-              <Route path="/courses/fashion-designing" element={<FashionDesigning />} />
-              <Route path="/courses/interior-designing" element={<InteriorDesigning />} />
-              <Route path="/courses/graphic-designing" element={<GraphicDesigning />} />
-              <Route path="/student-careers" element={<StudentCareers />} />
-              <Route path="/insd-360" element={<Insd360 />} />
-              <Route path="/franchise" element={<Franchise />} />
-              <Route path="/contact-us" element={<Contact />} />
-              <Route path="/go-global" element={<GoGlobal />} />
-              <Route path="/international-partners" element={<InternationalPartner />} />
-              <Route path="/apply" element={<Admission />} />
-              <Route path="/courses/online-courses" element={<OnlineCourse />} />
-              <Route path="/insd-360/blog" element={<Blog />} />
-              <Route path="/insd-360/fashion-week" element={<FashionWeek />} />
-              <Route path="/insd-360/paris-project" element={<ParisProject />} />
-              <Route path="/insd-360/events" element={<Events />} />
-              <Route path="/insdian" element={<Insdian />} />
-              <Route path="/profile" element={<ProfileDashboard />} />
+          <Router>
+            <ScrollToTop />
+            <Navbar />
+            <div className="relative z-0 bg-white min-h-screen pb-24 md:pb-0 overflow-x-hidden">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about-us" element={<About />} />
+                <Route path="/campuses" element={<Campus />} />
+                <Route path="/campuses/south-delhi" element={<SouthDelhi />} />
+                <Route path="/campuses/north-delhi" element={<NorthDelhi />} />
+                <Route path="/campuses/paris" element={<ParisCDP />} />
+                <Route path="/campuses/washington" element={<WashingtonIBSW />} />
+                <Route path="/campuses/dubai" element={<DubaiIBSW />} />
+                <Route path="/campuses/uk" element={<UnitedKingdomUCA />} />
+                <Route path="/courses" element={<Courses />} />
+                <Route path="/courses/undergraduate" element={<Undergraduate />} />
+                <Route path="/courses/postgraduate" element={<Postgraduate />} />
+                <Route path="/courses/diploma-and-certificates" element={<DiplomaAndCertificate />} />
+                <Route path="/courses/short-term-courses" element={<ShortTermCourse />} />
+                <Route path="/courses/msc-luxury-brand-management" element={<MscLuxury />} />
+                <Route path="/courses/fashion-designing" element={<FashionDesigning />} />
+                <Route path="/courses/interior-designing" element={<InteriorDesigning />} />
+                <Route path="/courses/graphic-designing" element={<GraphicDesigning />} />
+                <Route path="/courses/animation-and-vfx" element={<AnimationAndVFX />} />
+                <Route path="/student-careers" element={<StudentCareers />} />
+                <Route path="/insd-360" element={<Insd360 />} />
+                <Route path="/franchise" element={<Franchise />} />
+                <Route path="/contact-us" element={<Contact />} />
+                <Route path="/go-global" element={<GoGlobal />} />
+                <Route path="/international-partners" element={<InternationalPartner />} />
+                <Route path="/apply" element={<Admission />} />
+                <Route path="/courses/online-courses" element={<OnlineCourse />} />
+                <Route path="/insd-360/blog" element={<Blog />} />
+                <Route path="/insd-360/fashion-week" element={<FashionWeek />} />
+                <Route path="/insd-360/paris-project" element={<ParisProject />} />
+                <Route path="/insd-360/events" element={<Events />} />
+                <Route path="/insdian" element={<Insdian />} />
+                <Route path="/profile" element={<ProfileDashboard />} />
+                <Route path="/success-stories" element={<SuccessStory />} />
 
-              <Route path="/test-404" element={<NotFound />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </div>
-          <WhatsappCTA />
-          <BackToTop />
-          {/* <AIChatbot /> */}
-        </Router>
-      </div>
+                <Route path="/test-404" element={<NotFound />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </div>
+            <WhatsappCTA />
+            <BackToTop />
+            {/* <AIChatbot /> */}
+          </Router>
+        </div>
       </RegisterModalProvider>
     </AuthProvider>
   );

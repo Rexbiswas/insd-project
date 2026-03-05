@@ -170,7 +170,7 @@ const Footer = () => {
                                         <div className="absolute inset-0 bg-gradient-to-tr from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                                         <cta.icon className="w-6 h-6 transition-transform duration-500 group-hover:rotate-12" />
                                     </div>
-                                    
+
                                     <div className="flex flex-col">
                                         <span className="text-xs uppercase tracking-widest text-primary/80 font-bold mb-1 group-hover:text-primary transition-colors">
                                             {cta.tag}
@@ -183,10 +183,10 @@ const Footer = () => {
 
                                 {/* Right Side: Chevron & Status */}
                                 <div className="flex items-center justify-end pr-4">
-                                     <div className="w-10 h-10 shrink-0 rounded-full border border-white/20 flex items-center justify-center group-hover:border-primary group-hover:bg-primary transition-colors duration-500 relative overflow-hidden">
-                                          <ChevronRight className="w-5 h-5 text-white/50 group-hover:text-white transition-all duration-500 absolute group-hover:translate-x-full opacity-100 group-hover:opacity-0" />
-                                          <ChevronRight className="w-5 h-5 text-white transition-all duration-500 absolute -translate-x-full opacity-0 group-hover:translate-x-0 group-hover:opacity-100" />
-                                     </div>
+                                    <div className="w-10 h-10 shrink-0 rounded-full border border-white/20 flex items-center justify-center group-hover:border-primary group-hover:bg-primary transition-colors duration-500 relative overflow-hidden">
+                                        <ChevronRight className="w-5 h-5 text-white/50 group-hover:text-white transition-all duration-500 absolute group-hover:translate-x-full opacity-100 group-hover:opacity-0" />
+                                        <ChevronRight className="w-5 h-5 text-white transition-all duration-500 absolute -translate-x-full opacity-0 group-hover:translate-x-0 group-hover:opacity-100" />
+                                    </div>
                                 </div>
                             </div>
                         </motion.a>
@@ -208,12 +208,54 @@ const Footer = () => {
                             </p>
                         </div>
 
-                        <div className="flex gap-3">
+                        <div className="flex gap-4">
                             {socialLinks.map((social, idx) => (
-                                <a key={idx} href={social.link} target="_blank" rel="noopener noreferrer"
-                                    className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-500 group">
-                                    <social.icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                                </a>
+                                <motion.a
+                                    key={idx}
+                                    href={social.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    whileHover="hover"
+                                    initial="initial"
+                                    className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-500 relative group overflow-hidden"
+                                >
+                                    {/* Hover Background Accent */}
+                                    <motion.div
+                                        variants={{
+                                            hover: { opacity: 1, scale: 1.2 }
+                                        }}
+                                        transition={{ duration: 0.4 }}
+                                        className="absolute inset-0 bg-white opacity-0"
+                                    />
+
+                                    {/* Brand Color Glow */}
+                                    <motion.div
+                                        variants={{
+                                            hover: { opacity: 0.2, scale: 1.2 }
+                                        }}
+                                        className="absolute inset-0 blur-xl pointer-events-none"
+                                        style={{ backgroundColor: social.color, opacity: 0 }}
+                                    />
+
+                                    <motion.div
+                                        variants={{
+                                            hover: {
+                                                scale: 1.2,
+                                                color: social.color,
+                                                rotate: [0, -10, 10, 0]
+                                            }
+                                        }}
+                                        transition={{
+                                            type: "spring",
+                                            stiffness: 400,
+                                            damping: 25,
+                                            rotate: { duration: 0.4 }
+                                        }}
+                                        className="relative z-10 text-white/80"
+                                    >
+                                        <social.icon className="w-6 h-6" />
+                                    </motion.div>
+                                </motion.a>
                             ))}
                         </div>
                     </div>
@@ -228,13 +270,13 @@ const Footer = () => {
                             </h5>
                             <ul className="space-y-4">
                                 {["Fashion Designing", "Interior Designing", "Graphic Designing", "Animation & VFX"].map((item, i) => (
-                                    <motion.li 
+                                    <motion.li
                                         key={i}
                                         whileHover={{ x: 5 }}
                                         transition={{ type: "spring", stiffness: 300 }}
                                     >
-                                        <a href={item === "Fashion Designing" ? "/courses/fashion-designing" : item === "Interior Designing" ? "/courses/interior-designing" : item === "Graphic Designing" ? "/courses/graphic-designing" : "#"} className="text-sm text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link">
-                                            <span className="w-0 group-hover/link:w-3 h-px bg-primary transition-all duration-300"></span>
+                                        <a href={item === "Fashion Designing" ? "/courses/fashion-designing" : item === "Interior Designing" ? "/courses/interior-designing" : item === "Graphic Designing" ? "/courses/graphic-designing" : item === "Animation & VFX" ? "/courses/animation-and-vfx" : "#"} className="text-sm text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
+                                            <span className="w-0 group-hover/link:w-2 h-px bg-primary transition-all duration-300 shrink-0"></span>
                                             {item}
                                         </a>
                                     </motion.li>
@@ -242,8 +284,8 @@ const Footer = () => {
                             </ul>
                         </div>
 
-                         {/* Column 2: Institute */}
-                         <div className="sitemap-column">
+                        {/* Column 2: Institute */}
+                        <div className="sitemap-column">
                             <h5 className="text-xs font-bold uppercase tracking-[0.3em] text-white/30 mb-8 flex items-center gap-2">
                                 <div className="w-1 h-1 bg-secondary rounded-full animate-pulse"></div>
                                 Institute
@@ -251,32 +293,32 @@ const Footer = () => {
                             <ul className="space-y-4">
                                 <li>
                                     <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
-                                        <a href="/about-us" className="text-sm text-white/50 hover:text-white transition-all duration-300 flex items-center gap-2 group/link">
-                                            <span className="w-0 group-hover/link:w-3 h-px bg-white transition-all duration-300"></span>
+                                        <a href="/about-us" className="text-sm text-white/50 hover:text-white transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
+                                            <span className="w-0 group-hover/link:w-2 h-px bg-white transition-all duration-300 shrink-0"></span>
                                             About Us
                                         </a>
                                     </motion.div>
                                 </li>
                                 <li>
                                     <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
-                                        <a href="/campuses" className="text-sm text-white/50 hover:text-white transition-all duration-300 flex items-center gap-2 group/link">
-                                            <span className="w-0 group-hover/link:w-3 h-px bg-white transition-all duration-300"></span>
+                                        <a href="/campuses" className="text-sm text-white/50 hover:text-white transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
+                                            <span className="w-0 group-hover/link:w-2 h-px bg-white transition-all duration-300 shrink-0"></span>
                                             Campuses
                                         </a>
                                     </motion.div>
                                 </li>
                                 <li>
                                     <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
-                                        <a href="/student-careers" className="text-sm text-white/50 hover:text-white transition-all duration-300 flex items-center gap-2 group/link">
-                                            <span className="w-0 group-hover/link:w-3 h-px bg-white transition-all duration-300"></span>
+                                        <a href="/student-careers" className="text-sm text-white/50 hover:text-white transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
+                                            <span className="w-0 group-hover/link:w-2 h-px bg-white transition-all duration-300 shrink-0"></span>
                                             Careers
                                         </a>
                                     </motion.div>
                                 </li>
                                 <li>
                                     <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
-                                        <a href="/international-partners" className="text-sm text-white/50 hover:text-white transition-all duration-300 flex items-center gap-2 group/link">
-                                            <span className="w-0 group-hover/link:w-3 h-px bg-white transition-all duration-300"></span>
+                                        <a href="/international-partners" className="text-sm text-white/50 hover:text-white transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
+                                            <span className="w-0 group-hover/link:w-2 h-px bg-white transition-all duration-300 shrink-0"></span>
                                             Legacy
                                         </a>
                                     </motion.div>
@@ -284,25 +326,45 @@ const Footer = () => {
                             </ul>
                         </div>
 
-                         {/* Column 3: Lifestyle */}
-                         <div className="sitemap-column">
+                        {/* Column 3: Lifestyle */}
+                        <div className="sitemap-column">
                             <h5 className="text-xs font-bold uppercase tracking-[0.3em] text-white/30 mb-8 flex items-center gap-2">
                                 <div className="w-1 h-1 bg-primary rounded-full animate-pulse"></div>
                                 Lifestyle
                             </h5>
                             <ul className="space-y-4">
-                                {["Insdians", "Success Stories", "Fashion Shows", "Exhibitions"].map((item, i) => (
-                                    <motion.li 
-                                        key={i}
-                                        whileHover={{ x: 5 }}
-                                        transition={{ type: "spring", stiffness: 300 }}
-                                    >
-                                        <a href="/insdian" className="text-sm text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link">
-                                            <span className="w-0 group-hover/link:w-3 h-px bg-primary transition-all duration-300"></span>
-                                            {item}
+                                <li>
+                                    <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
+                                        <a href="/insdian" className="text-sm text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
+                                            <span className="w-0 group-hover/link:w-2 h-px bg-primary transition-all duration-300 shrink-0"></span>
+                                            Insdians
                                         </a>
-                                    </motion.li>
-                                ))}
+                                    </motion.div>
+                                </li>
+                                <li>
+                                    <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
+                                        <a href="/success-stories" className="text-sm text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
+                                            <span className="w-0 group-hover/link:w-2 h-px bg-primary transition-all duration-300 shrink-0"></span>
+                                            Success Stories
+                                        </a>
+                                    </motion.div>
+                                </li>
+                                <li>
+                                    <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
+                                        <a href="/insd-360/fashion-week" className="text-sm text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
+                                            <span className="w-0 group-hover/link:w-2 h-px bg-primary transition-all duration-300 shrink-0"></span>
+                                            Fashion Shows
+                                        </a>
+                                    </motion.div>
+                                </li>
+                                <li>
+                                    <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
+                                        <a href="/insd-360/events" className="text-sm text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
+                                            <span className="w-0 group-hover/link:w-2 h-px bg-primary transition-all duration-300 shrink-0"></span>
+                                            Exhibitions
+                                        </a>
+                                    </motion.div>
+                                </li>
                             </ul>
                         </div>
 
@@ -312,14 +374,14 @@ const Footer = () => {
                                 Connect
                             </h5>
                             <div className="space-y-6">
-                                <motion.div 
+                                <motion.div
                                     whileHover={{ x: 5 }}
                                     className="group cursor-pointer"
                                 >
                                     <span className="block text-[10px] uppercase tracking-widest text-primary mb-1">Admissions</span>
                                     <span className="text-sm font-bold border-b border-white/5 group-hover:border-primary transition-all pb-1">+91 77019 33935</span>
                                 </motion.div>
-                                <motion.div 
+                                <motion.div
                                     whileHover={{ x: 5 }}
                                     className="group"
                                 >

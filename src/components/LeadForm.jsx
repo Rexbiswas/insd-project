@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, ArrowRight, User, Phone, Mail, MapPin } from 'lucide-react';
+import { CheckCircle2, ArrowRight, ArrowLeft, User, Phone, Mail, MapPin, PartyPopper, Sparkles } from 'lucide-react';
 
 const LeadForm = () => {
     const [step, setStep] = useState(1);
+    const [isSubmitted, setIsSubmitted] = useState(false);
     const [formData, setFormData] = useState({
         readyToStart: '',
         industry: '',
@@ -15,7 +16,7 @@ const LeadForm = () => {
     });
 
     const industries = [
-        "Fashion Design", "Graphic Design", "Interior Design", 
+        "Fashion Design", "Graphic Design", "Interior Design",
         "Jewellery Design", "Animation & VFX", "UIUX"
     ];
 
@@ -50,7 +51,7 @@ const LeadForm = () => {
                 <div className="max-w-4xl mx-auto">
                     {/* Header */}
                     <div className="text-center mb-16">
-                        <motion.h1 
+                        <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -59,7 +60,7 @@ const LeadForm = () => {
                             INSD - India's Skill School <br className="hidden md:block" />
                             <span className="text-primary">Building Job-Ready Professionals.</span>
                         </motion.h1>
-                        <motion.h2 
+                        <motion.h2
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -144,6 +145,17 @@ const LeadForm = () => {
                                             </button>
                                         ))}
                                     </div>
+                                    <div className="pt-8 flex justify-start">
+                                        <button
+                                            onClick={handleBack}
+                                            className="group flex items-center gap-2 text-slate-400 font-bold uppercase tracking-widest text-xs hover:text-slate-900 transition-colors"
+                                        >
+                                            <div className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-slate-100 transition-colors">
+                                                <ArrowLeft size={15} />
+                                            </div>
+                                            Back
+                                        </button>
+                                    </div>
                                 </motion.div>
                             )}
 
@@ -166,8 +178,8 @@ const LeadForm = () => {
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div className="relative">
                                             <User className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-                                            <input 
-                                                type="text" 
+                                            <input
+                                                type="text"
                                                 placeholder="Full Name"
                                                 value={formData.fullName}
                                                 onChange={(e) => updateData('fullName', e.target.value)}
@@ -176,8 +188,8 @@ const LeadForm = () => {
                                         </div>
                                         <div className="relative">
                                             <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-                                            <input 
-                                                type="tel" 
+                                            <input
+                                                type="tel"
                                                 placeholder="Phone Number"
                                                 value={formData.phone}
                                                 onChange={(e) => updateData('phone', e.target.value)}
@@ -186,8 +198,8 @@ const LeadForm = () => {
                                         </div>
                                         <div className="relative">
                                             <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-                                            <input 
-                                                type="email" 
+                                            <input
+                                                type="email"
                                                 placeholder="Email Address"
                                                 value={formData.email}
                                                 onChange={(e) => updateData('email', e.target.value)}
@@ -196,8 +208,8 @@ const LeadForm = () => {
                                         </div>
                                         <div className="relative">
                                             <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-                                            <input 
-                                                type="text" 
+                                            <input
+                                                type="text"
                                                 placeholder="City"
                                                 value={formData.city}
                                                 onChange={(e) => updateData('city', e.target.value)}
@@ -205,8 +217,17 @@ const LeadForm = () => {
                                             />
                                         </div>
                                     </div>
-                                    <div className="pt-4 flex justify-end">
-                                        <button 
+                                    <div className="pt-8 flex items-center justify-between">
+                                        <button
+                                            onClick={handleBack}
+                                            className="group flex items-center gap-2 text-slate-400 font-bold uppercase tracking-widest text-xs hover:text-slate-900 transition-colors"
+                                        >
+                                            <div className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-slate-100 transition-colors">
+                                                <ArrowLeft size={15} />
+                                            </div>
+                                            Back
+                                        </button>
+                                        <button
                                             disabled={!isStep3Valid}
                                             onClick={handleNext}
                                             className={`px-10 py-4 rounded-full font-black uppercase tracking-widest transition-all duration-300 flex items-center gap-2 ${isStep3Valid ? 'bg-primary text-white hover:scale-105 active:scale-95 shadow-xl shadow-primary/30' : 'bg-slate-200 text-slate-400 cursor-not-allowed'}`}
@@ -246,58 +267,137 @@ const LeadForm = () => {
                                         ))}
                                     </div>
 
-                                    {formData.qualification && (
-                                        <motion.div 
-                                            initial={{ opacity: 0, scale: 0.9 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            className="pt-8"
+                                    <div className="pt-8 flex items-center justify-between gap-4">
+                                        <button
+                                            onClick={handleBack}
+                                            className="group flex items-center gap-2 text-slate-400 font-bold uppercase tracking-widest text-xs hover:text-slate-900 transition-colors"
                                         >
-                                            <button 
+                                            <div className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-slate-100 transition-colors">
+                                                <ArrowLeft size={15} />
+                                            </div>
+                                            Back
+                                        </button>
+
+                                        {formData.qualification && (
+                                            <motion.button
+                                                initial={{ opacity: 0, scale: 0.9 }}
+                                                animate={{ opacity: 1, scale: 1 }}
                                                 onClick={() => {
                                                     console.log('Form Submitted:', formData);
-                                                    alert('Application Sent Successfully! Our Counsellors will contact you soon.');
+                                                    setIsSubmitted(true);
                                                 }}
-                                                className="w-full py-6 rounded-2xl bg-slate-900 text-white font-black uppercase tracking-[0.3em] hover:bg-slate-800 transition-all duration-300 shadow-2xl flex items-center justify-center gap-4 group"
+                                                className="w-auto px-6 md:px-10 py-5 md:py-6 rounded-2xl bg-slate-900 text-white font-black uppercase tracking-[0.1em] md:tracking-[0.2em] hover:bg-slate-800 transition-all duration-300 shadow-2xl flex items-center justify-center gap-3 md:gap-4 group text-[10px] md:text-sm"
                                             >
                                                 Submit Application
                                                 <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center group-hover:translate-x-2 transition-transform">
                                                     <ArrowRight size={18} />
                                                 </div>
-                                            </button>
-                                        </motion.div>
-                                    )}
+                                            </motion.button>
+                                        )}
+                                    </div>
                                 </motion.div>
                             )}
                         </AnimatePresence>
 
-                        {/* Back Button */}
-                        {step > 1 && (
-                            <button 
-                                onClick={handleBack}
-                                className="absolute bottom-12 left-12 text-slate-400 font-bold uppercase tracking-widest text-xs hover:text-slate-900 transition-colors"
-                            >
-                                ← Back
-                            </button>
-                        )}
+
                     </div>
 
                     {/* Footer Info */}
-                    <div className="mt-12 flex flex-col md:flex-row items-center justify-center gap-8 opacity-60">
+                    <div className="mt-12 flex flex-col md:flex-row items-center justify-center gap-12">
                         <div className="flex items-center gap-2">
                             <CheckCircle2 size={16} className="text-secondary" />
-                            <span className="text-[10px] uppercase font-bold tracking-widest">Industry Recognized</span>
+                            <span className="text-sm uppercase font-bold tracking-widest text-slate-900">Industry Recognized</span>
                         </div>
                         <div className="flex items-center gap-2">
                             <CheckCircle2 size={16} className="text-secondary" />
-                            <span className="text-[10px] uppercase font-bold tracking-widest">Global Curriculum</span>
+                            <span className="text-sm uppercase font-bold tracking-widest text-slate-900">Global Curriculum</span>
                         </div>
                         <div className="flex items-center gap-2">
                             <CheckCircle2 size={16} className="text-secondary" />
-                            <span className="text-[10px] uppercase font-bold tracking-widest">Portfolio Focused</span>
+                            <span className="text-sm uppercase font-bold tracking-widest text-slate-900">Portfolio Focused</span>
                         </div>
                     </div>
                 </div>
             </div>
+
+            {/* Success Modal */}
+            <AnimatePresence>
+                {isSubmitted && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-100 flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-xl"
+                    >
+                        <motion.div
+                            initial={{ scale: 0.9, y: 20, opacity: 0 }}
+                            animate={{ scale: 1, y: 0, opacity: 1 }}
+                            exit={{ scale: 0.9, y: 20, opacity: 0 }}
+                            className="bg-white rounded-[2.5rem] p-8 md:p-12 max-w-lg w-full shadow-2xl relative overflow-hidden text-center"
+                        >
+                            {/* Decorative Sparkles */}
+                            <motion.div
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                                className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-10"
+                            >
+                                <Sparkles className="absolute top-10 left-10 text-primary" size={40} />
+                                <Sparkles className="absolute bottom-10 right-10 text-secondary" size={30} />
+                                <Sparkles className="absolute top-1/2 right-4 text-primary" size={20} />
+                            </motion.div>
+
+                            <div className="relative z-10">
+                                <motion.div
+                                    initial={{ scale: 0 }}
+                                    animate={{ scale: 1 }}
+                                    transition={{ type: "spring", damping: 12, delay: 0.2 }}
+                                    className="w-24 h-24 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl shadow-green-200"
+                                >
+                                    <CheckCircle2 size={48} className="text-white" />
+                                </motion.div>
+
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.4 }}
+                                >
+                                    <h3 className="text-3xl md:text-4xl font-black text-slate-900 uppercase tracking-tighter mb-4">
+                                        Application <br /> <span className="text-primary">Submitted!</span>
+                                    </h3>
+                                    <p className="text-slate-500 font-bold text-lg mb-8 leading-relaxed">
+                                        Thank you for choosing INSD. Your future in design starts here! Our career counsellors will contact you within 24 hours.
+                                    </p>
+
+                                    <div className="space-y-4">
+                                        <button
+                                            onClick={() => {
+                                                setIsSubmitted(false);
+                                                setStep(1);
+                                                setFormData({
+                                                    readyToStart: '',
+                                                    industry: '',
+                                                    fullName: '',
+                                                    phone: '',
+                                                    email: '',
+                                                    city: '',
+                                                    qualification: ''
+                                                });
+                                            }}
+                                            className="w-full py-5 rounded-2xl bg-slate-900 text-white font-black uppercase tracking-widest hover:bg-slate-800 transition-all flex items-center justify-center gap-3 group"
+                                        >
+                                            Awesome, Got it!
+                                        </button>
+
+                                        <div className="flex items-center justify-center gap-2 text-primary font-black uppercase text-xs tracking-widest animate-pulse">
+                                            Check your email for more details
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     );
 };

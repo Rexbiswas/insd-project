@@ -402,10 +402,10 @@ const Home = () => {
                     </div>
                     <div className="flex flex-col items-center justify-center w-full px-4 text-center">
 
-                        <h1 ref={insdRef} className="text-black text-center flex flex-col items-center justify-center will-change-transform backface-hidden m-0 p-0 relative leading-none tracking-tighter min-h-[40vh]">
-                            <div className="text-[10vw] md:text-[7.5vw] font-black uppercase mb-4 md:mb-8 flex flex-col items-center">
+                        <h1 ref={insdRef} className="text-black text-center flex flex-col items-center justify-center will-change-transform backface-hidden m-0 p-0 relative leading-none tracking-tighter min-h-[30vh] md:min-h-[40vh]">
+                            <div className="text-[12vw] sm:text-[10vw] md:text-[7.5vw] font-black uppercase mb-3 md:mb-8 flex flex-col items-center">
                                 <span className="tracking-tighter">Creative</span>
-                                <span className="text-slate-800 italic font-serif -mt-[1vw] md:-mt-[2vw] lowercase tracking-normal opacity-90">Excellence</span>
+                                <span className="text-slate-800 italic font-serif -mt-[1.5vw] md:-mt-[2vw] lowercase tracking-normal opacity-90">Excellence</span>
                             </div>
 
                             <div className="relative flex items-center justify-center">
@@ -414,29 +414,29 @@ const Home = () => {
 
                                 <div className="flex items-center justify-center gap-4 md:gap-12">
                                     <div className="flex flex-col items-end opacity-40">
-                                        <div className="h-px w-6 md:w-12 bg-black mb-2"></div>
-                                        <span className="text-[3vw] md:text-[1.1vw] font-black uppercase tracking-[0.5em]">Since</span>
+                                        <div className="h-px w-6 md:w-12 bg-black mb-1 md:mb-2"></div>
+                                        <span className="text-[2.5vw] md:text-[1.1vw] font-black uppercase tracking-[0.3em] md:tracking-[0.5em]">Since</span>
                                     </div>
 
                                     <div className="relative group">
-                                        <span ref={fifteenRef} className="inline-block bg-linear-to-r from-primary via-secondary to-primary bg-[length:200%_auto] bg-clip-text text-transparent text-[22vw] md:text-[16vw] font-black leading-[0.8] px-2 md:px-6">
+                                        <span ref={fifteenRef} className="inline-block bg-linear-to-r from-primary via-secondary to-primary bg-[length:200%_auto] bg-clip-text text-transparent text-[24vw] md:text-[16vw] font-black leading-[0.8] px-1 md:px-6">
                                             15
                                         </span>
-                                        <span className="absolute -top-2 -right-4 md:-top-4 md:-right-8 text-[8px] md:text-[10px] font-black text-primary/60 tracking-widest uppercase">
+                                        <span className="absolute -top-1 -right-2 md:-top-4 md:-right-8 text-[6px] md:text-[10px] font-black text-primary/60 tracking-widest uppercase">
                                             Est. 2011
                                         </span>
                                     </div>
 
                                     <div className="flex flex-col items-start opacity-40">
-                                        <div className="h-px w-6 md:w-12 bg-black mb-2"></div>
-                                        <span className="text-[3vw] md:text-[1.1vw] font-black uppercase tracking-[0.5em]">Years</span>
+                                        <div className="h-px w-6 md:w-12 bg-black mb-1 md:mb-2"></div>
+                                        <span className="text-[2.5vw] md:text-[1.1vw] font-black uppercase tracking-[0.3em] md:tracking-[0.5em]">Years</span>
                                     </div>
                                 </div>
                             </div>
                         </h1>
                         {/* Premium Relocated Tagline */}
-                        <div ref={taglineRef} className="mt-4 md:mt-12 px-5 py-2 md:px-10 md:py-3 border border-black/10 rounded-full backdrop-blur-xl bg-white/10 will-change-transform shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] flex items-center justify-center overflow-hidden group max-w-[90vw]">
-                            <p className="text-black text-[18px] sm:text-xs md:text-sm font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] md:tracking-[0.6em] whitespace-nowrap flex gap-px px-2">
+                        <div ref={taglineRef} className="mt-6 md:mt-12 px-4 py-2 md:px-10 md:py-3 border border-black/10 rounded-full backdrop-blur-xl bg-white/10 will-change-transform shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] flex items-center justify-center overflow-hidden group max-w-[95vw]">
+                            <p className="text-black text-[9px] sm:text-xs md:text-sm font-black uppercase tracking-[0.25em] sm:tracking-[0.4em] md:tracking-[0.6em] whitespace-nowrap flex gap-px px-1">
                                 {splitText("INSD - India's Skill School", "tagline-char")}
                             </p>
 
@@ -451,7 +451,7 @@ const Home = () => {
 
 
             {/* Unique Vertical Accordion Gallery */}
-            <div className="relative z-20 bg-black h-screen md:min-h-screen flex overflow-x-auto md:flex-row md:overflow-hidden snap-x snap-mandatory scroll-smooth">
+            <div className="relative z-20 bg-black min-h-[80vh] md:h-screen md:min-h-screen flex flex-col md:flex-row overflow-hidden border-t border-white/10">
                 {
                     galleryItems.map((item, index) => (
                         <a
@@ -459,7 +459,7 @@ const Home = () => {
                             href={item.link || "#"}
                             target={item.link ? "_blank" : "_self"}
                             rel="noopener noreferrer"
-                            className="relative min-w-full md:min-w-0 md:flex-1 group transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] hover:flex-3 cursor-pointer grayscale-0 md:grayscale md:hover:grayscale-0 border-r border-white/10 last:border-r-0 snap-center"
+                            className="relative flex-1 group transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] hover:flex-3 cursor-pointer grayscale-0 md:grayscale md:hover:grayscale-0 border-b md:border-b-0 md:border-r border-white/10 last:border-b-0 last:border-r-0"
                         >
                             {/* Image Background */}
                             <div className="absolute inset-0 z-0 overflow-hidden">
@@ -500,7 +500,7 @@ const Home = () => {
             <NetworkCounter />
 
             {/* Legacy & Discovery Section - Unexpected Contrast */}
-            <div ref={legacyRef} className="relative min-h-screen bg-white text-black py-0 px-0 flex flex-col items-center justify-center overflow-hidden -mt-[20vh] z-10 rounded-t-[4rem] shadow-2xl will-change-transform backface-hidden">
+            <div ref={legacyRef} className="relative min-h-screen bg-white text-black py-0 px-0 flex flex-col items-center justify-center overflow-hidden -mt-[10vh] md:-mt-[20vh] z-10 rounded-t-[2.5rem] md:rounded-t-[4rem] shadow-2xl will-change-transform backface-hidden">
 
                 {/* Next Level Background - Holographic Orbs (Optimized) */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-50">
@@ -513,23 +513,23 @@ const Home = () => {
                 <div className="legacy-content relative z-20 w-full max-w-6xl mx-auto flex flex-col items-center gap-12 md:gap-24 py-20 md:py-32 px-4 md:px-12 pointer-events-auto">
 
                     {/* Top: High Impact Quotes (Animated on Scroll) */}
-                    <div className="relative z-10 w-full text-center max-w-5xl mx-auto space-y-8 md:space-y-12">
-                        <div className="quote-wrapper overflow-hidden pb-4">
-                            <h3 className="text-2xl md:text-5xl font-black uppercase tracking-tight legacy-quote blur-[20px] opacity-0 translate-y-20">
+                    <div className="relative z-10 w-full text-center max-w-5xl mx-auto space-y-6 md:space-y-12">
+                        <div className="quote-wrapper overflow-hidden pb-2 md:pb-4">
+                            <h3 className="text-xl sm:text-2xl md:text-5xl font-black uppercase tracking-tight legacy-quote blur-[20px] opacity-0 translate-y-20">
                                 15 Years of Transforming <span className="text-primary italic font-serif">Passion</span> into Profession
                             </h3>
                         </div>
-                        <div className="quote-wrapper overflow-hidden pb-4">
-                            <h3 className="text-2xl md:text-5xl font-black uppercase tracking-tight legacy-quote blur-[20px] opacity-0 translate-y-20">
+                        <div className="quote-wrapper overflow-hidden pb-2 md:pb-4">
+                            <h3 className="text-xl sm:text-2xl md:text-5xl font-black uppercase tracking-tight legacy-quote blur-[20px] opacity-0 translate-y-20">
                                 Where Creativity Meets <span className="text-secondary italic font-serif">Global</span> Industry Leadership
                             </h3>
                         </div>
-                        <div className="quote-wrapper overflow-hidden pb-4">
-                            <h3 className="text-2xl md:text-5xl font-black uppercase tracking-tight legacy-quote blur-[20px] opacity-0 translate-y-20">
+                        <div className="quote-wrapper overflow-hidden pb-2 md:pb-4">
+                            <h3 className="text-xl sm:text-2xl md:text-5xl font-black uppercase tracking-tight legacy-quote blur-[20px] opacity-0 translate-y-20">
                                 India’s Premier <span className="text-primary italic font-serif">Skill</span> School for Designers
                             </h3>
                         </div>
-                        <div className="mt-8 md:mt-16 w-16 md:w-24 h-1 md:h-2 bg-slate-900 mx-auto rounded-full"></div>
+                        <div className="mt-6 md:mt-16 w-12 md:w-24 h-1 md:h-2 bg-slate-900 mx-auto rounded-full"></div>
                     </div>
 
                     {/* Bottom: Unexpected Search Interaction & Carousel */}
