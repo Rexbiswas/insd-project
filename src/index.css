@@ -172,7 +172,20 @@
     }
   }
 
+  /* Marquee fix for seamless looping */
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.5; filter: blur(40px); }
+    50% { opacity: 0.8; filter: blur(60px); }
+  }
+
+  --animate-marquee-slow: marquee 40s linear infinite;
   --animate-marquee-fast: marquee 20s linear infinite;
+  --animate-pulse-glow: pulse-glow 4s ease-in-out infinite;
   --animate-scan: scan 4s linear infinite;
   --animate-spin-slow: spin-slow 12s linear infinite;
   --animate-flicker: flicker 0.1s infinite;
@@ -277,30 +290,61 @@ body {
 
 /* Stroke Text Utilities */
 .stroke-text-white,
-.strok-text-white,
 .stroke-text {
   -webkit-text-stroke: 0.5px white;
   color: transparent;
 }
 
-.stroke-text-black,
-.strok-text-black {
+.stroke-text-black {
   -webkit-text-stroke: 0.5px #000000;
   color: transparent;
 }
 
-@media (min-width: 768px) {
+.stroke-text-slate {
+  -webkit-text-stroke: 1px #475569;
+  color: transparent;
+}
 
+@media (min-width: 768px) {
   .stroke-text-white,
-  .strok-text-white,
   .stroke-text {
     -webkit-text-stroke: 1.5px white;
   }
 
-  .stroke-text-black,
-  .strok-text-black {
+  .stroke-text-black {
     -webkit-text-stroke: 1.5px #000000;
   }
+  
+  .stroke-text-slate {
+    -webkit-text-stroke: 2px #475569;
+  }
+}
+
+/* Premium Background Effects */
+.cyber-grid {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.noise-bg {
+  position: relative;
+}
+
+.noise-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.05;
+  filter: contrast(120%) brightness(120%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.mask-linear-fade {
+  mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
 }
 
 /* Glassmorphism Utility */
