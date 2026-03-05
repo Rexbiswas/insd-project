@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, ArrowRight, ArrowLeft, User, Phone, Mail, MapPin, PartyPopper, Sparkles } from 'lucide-react';
+import axios from 'axios';
 
 const LeadForm = () => {
     const [step, setStep] = useState(1);
@@ -282,9 +283,15 @@ const LeadForm = () => {
                                             <motion.button
                                                 initial={{ opacity: 0, scale: 0.9 }}
                                                 animate={{ opacity: 1, scale: 1 }}
-                                                onClick={() => {
-                                                    console.log('Form Submitted:', formData);
-                                                    setIsSubmitted(true);
+                                                onClick={async () => {
+                                                    try {
+                                                        const response = await axios.post('http://localhost:5001/api/leads/submit', formData);
+                                                        console.log('Lead Submitted Successfully:', response.data);
+                                                        setIsSubmitted(true);
+                                                    } catch (error) {
+                                                        console.error('Submission Error:', error);
+                                                        alert("Submission failed. Please try again.");
+                                                    }
                                                 }}
                                                 className="w-auto px-6 md:px-10 py-5 md:py-6 rounded-2xl bg-slate-900 text-white font-black uppercase tracking-[0.1em] md:tracking-[0.2em] hover:bg-slate-800 transition-all duration-300 shadow-2xl flex items-center justify-center gap-3 md:gap-4 group text-[10px] md:text-sm"
                                             >
