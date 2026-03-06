@@ -193,12 +193,12 @@ const Navbar = () => {
             subItems: [
                 { name: 'Blog', path: '/insd-360/blog' },
                 { name: 'Events', path: '/insd-360/events' },
-                { name: 'Gallery', path: '/insd-360/gallery' },
                 { name: 'Insdians', path: '/insdian' },
                 { name: 'Fashion Week', path: '/insd-360/fashion-week' },
                 { name: 'The Paris Project', path: '/insd-360/paris-project' }
             ]
         },
+        { title: 'Gallery', path: '/gallery' },
         { title: 'Franchise', path: '/franchise' },
         { title: 'Apply', path: '/apply' },
         { title: 'Contact Us', path: '/contact-us' },
@@ -486,7 +486,7 @@ const Navbar = () => {
                                                                 const isPathActive = location.pathname === link.path ||
                                                                     (link.subItems && link.subItems.some(sub => location.pathname === sub.path));
 
-                                                                return `relative inline-flex items-center text-lg md:text-xl lg:text-2xl font-black tracking-tighter uppercase transition-colors duration-300 ${isPathActive ? 'text-white' : 'text-slate-600 hover:text-white'}`;
+                                                                return `relative inline-flex items-center text-base md:text-lg lg:text-xl font-bold tracking-tight uppercase transition-colors duration-300 ${isPathActive ? 'text-white' : 'text-slate-600 hover:text-white'}`;
                                                             }}
                                                         >
                                                             <span className="absolute -left-12 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300 text-primary text-3xl hidden lg:block">
@@ -527,7 +527,7 @@ const Navbar = () => {
                                                                                             to={subItem.path}
                                                                                             onClick={() => setIsOpen(false)}
                                                                                             className={({ isActive }) =>
-                                                                                                `relative flex items-center text-base md:text-lg font-bold transition-all duration-300 uppercase tracking-tight ${isActive ? 'text-primary' : 'text-slate-400 hover:text-white'}`
+                                                                                                `relative flex items-center text-sm md:text-base font-bold transition-all duration-300 uppercase tracking-tight ${isActive ? 'text-primary' : 'text-slate-400 hover:text-white'}`
                                                                                             }
                                                                                         >
                                                                                             <span className="w-0 h-[2px] bg-primary mr-0 transition-all duration-300 group-hover/sub:w-4 group-hover/sub:mr-3" />
@@ -562,7 +562,7 @@ const Navbar = () => {
                                                                                                         to={nestedItem.path}
                                                                                                         onClick={() => setIsOpen(false)}
                                                                                                         className={({ isActive }) =>
-                                                                                                            `block text-sm font-medium transition-all duration-300 uppercase tracking-wide ${isActive ? 'text-primary' : 'text-slate-500 hover:text-slate-300'}`
+                                                                                                            `block text-xs md:text-sm font-medium transition-all duration-300 uppercase tracking-wide ${isActive ? 'text-primary' : 'text-slate-500 hover:text-slate-300'}`
                                                                                                         }
                                                                                                     >
                                                                                                         {nestedItem.name}
@@ -577,7 +577,7 @@ const Navbar = () => {
                                                                                     to={subItem.path}
                                                                                     onClick={() => setIsOpen(false)}
                                                                                     className={({ isActive }) =>
-                                                                                        `group/sub relative flex items-center text-base md:text-lg font-bold transition-all duration-300 uppercase tracking-tight ${isActive ? 'text-primary' : 'text-slate-400 hover:text-white'}`
+                                                                                        `group/sub relative flex items-center text-sm md:text-base font-bold transition-all duration-300 uppercase tracking-tight ${isActive ? 'text-primary' : 'text-slate-400 hover:text-white'}`
                                                                                     }
                                                                                 >
                                                                                     <span className="w-0 h-[2px] bg-primary mr-0 transition-all duration-300 group-hover/sub:w-4 group-hover/sub:mr-3" />

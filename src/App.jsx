@@ -47,6 +47,7 @@ import InteriorDesigning from './pages/InteriorDesigning';
 import GraphicDesigning from './pages/GraphicDesigning';
 import AnimationAndVFX from './pages/AnimationAndVFX';
 import SuccessStory from './pages/SuccessStory';
+import Gallery from './pages/Gallery';
 
 import NotFound from './pages/NotFound';
 
@@ -120,6 +121,7 @@ function App() {
                 <Route path="/insdian" element={<Insdian />} />
                 <Route path="/profile" element={<ProfileDashboard />} />
                 <Route path="/success-stories" element={<SuccessStory />} />
+                <Route path="/gallery" element={<Gallery />} />
 
                 <Route path="/test-404" element={<NotFound />} />
                 <Route path="*" element={<NotFound />} />

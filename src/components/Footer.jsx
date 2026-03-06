@@ -365,6 +365,14 @@ const Footer = () => {
                                         </a>
                                     </motion.div>
                                 </li>
+                                <li>
+                                    <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
+                                        <a href="/gallery" className="text-sm text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
+                                            <span className="w-0 group-hover/link:w-2 h-px bg-primary transition-all duration-300 shrink-0"></span>
+                                            Gallery
+                                        </a>
+                                    </motion.div>
+                                </li>
                             </ul>
                         </div>
 
