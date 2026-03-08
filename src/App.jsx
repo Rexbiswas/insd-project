@@ -2,6 +2,8 @@ import React, { useState, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 // Lazy load pages
 const Home = lazy(() => import('./pages/Home'));
@@ -133,6 +135,8 @@ function App() {
                         <BackToTop />
                         <AIChatbot />
                     </Router>
+                    <Analytics />
+                    <SpeedInsights />
                 </div>
             </RegisterModalProvider>
         </AuthProvider>
