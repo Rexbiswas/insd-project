@@ -18,6 +18,7 @@ import {
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -134,6 +135,11 @@ const SuccessStory = () => {
 
     return (
         <div ref={containerRef} className="bg-[#f3f3f3] text-slate-900 font-sans overflow-hidden">
+            <SEO 
+                title="Student Success Stories & Placements - INSD Alumni"
+                description="Read about the transformational journeys of INSD students. From classroom projects to global fashion weeks and top-tier placements at Vogue, LVMH, and more."
+                keywords="design student success stories, INSD alumni, fashion design placement stories, interior design success, graphic design careers"
+            />
             
             {/* --- HERO SECTION --- */}
             <section className="relative pt-32 pb-16 md:pt-48 md:pb-24 overflow-hidden">

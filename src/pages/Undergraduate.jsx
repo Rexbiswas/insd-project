@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight, Palette, PenTool, Layout, Monitor, Scissors, Home, Camera, Video } from 'lucide-react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -105,6 +106,11 @@ const Undergraduate = () => {
 
     return (
         <div ref={containerRef} className="bg-[#f3f3f3] text-slate-900 min-h-screen border-y border-slate-300">
+            <SEO 
+                title="Undergraduate Design Degrees | B.Des India - Fashion, Interior, Graphic"
+                description="Elevate your creative career with INSD's world-class B.Des and undergraduate degrees. Master your craft in India's top design college with industry-standard protocols."
+                keywords="undergraduate design courses, B.Des India, bachelor of design India, fashion design degree, interior design degree, top design colleges India"
+            />
 
             {/* 1. Hero Section */}
             <section className="relative h-[80vh] flex items-center justify-center overflow-hidden bg-white text-slate-900 px-4 border-b border-slate-300">

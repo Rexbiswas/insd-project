@@ -33,6 +33,7 @@ import GlobalIndustryNetwork from '../components/GlobalIndustryNetwork';
 import FinalCTA from '../components/FinalCTA';
 import HeroSlider from '../components/HeroSlider';
 import LeadForm from '../components/LeadForm';
+import SEO from '../components/SEO';
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -234,32 +235,7 @@ const Home = () => {
                 });
 
 
-                // 3. Search Entrance 
-                gsap.fromTo(searchContainer,
-                    {
-                        rotationX: 80,
-                        y: 150,
-                        z: -500,
-                        opacity: 0,
-                        scale: 0.6,
-                        boxShadow: "0 0 0px rgba(124, 58, 237, 0)"
-                    },
-                    {
-                        rotationX: 0,
-                        y: 0,
-                        z: 0,
-                        opacity: 1,
-                        scale: 1,
-                        boxShadow: "0 25px 50px -12px rgba(124, 58, 237, 0.25)",
-                        ease: "back.out(1.2)", // Bouncy reveal
-                        scrollTrigger: {
-                            trigger: searchContainer,
-                            start: "top 90%",
-                            end: "top 40%",
-                            scrub: 0.5
-                        }
-                    }
-                );
+
 
                 // 4. Carousel
                 gsap.to(carouselTrack, {
@@ -382,6 +358,11 @@ const Home = () => {
 
     return (
         <div ref={containerRef} className="min-h-screen text-slate-900 relative overflow-x-hidden">
+            <SEO 
+                title="Best Design Institute in Delhi | Fashion, Interior & Graphic Design Courses - INSD"
+                description="Join INSD Delhi, India's leading National Award-Winning Design School. Offering premium courses in Fashion, Interior, Graphic, and Animation design. Enroll for 2026 admissions today."
+                keywords="best design institute in Delhi, top design colleges India, fashion designing courses Delhi, interior design degree India, graphic design school, animation institute India, B.Des India, design admissions 2026, INSD Delhi"
+            />
 
             <div className="fixed inset-0 pointer-events-none z-0">
                 <HeroSlider />
@@ -550,7 +531,13 @@ const Home = () => {
                         </div>
 
                         {/* Magnetic & Glassmorphic Search Container */}
-                        <div className="search-container relative w-full max-w-7xl backdrop-blur-xl bg-slate-900/95 text-white p-10 md:p-24 rounded-[3rem] md:rounded-[5rem] shadow-2xl hover:shadow-[0_40px_100px_rgba(0,0,0,0.6)] transition-all duration-700 hover:scale-[1.01] cursor-text group overflow-hidden border border-white/10">
+                        <motion.div 
+                            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                            className="search-container relative w-full max-w-7xl backdrop-blur-xl bg-slate-900/95 text-white p-10 md:p-24 rounded-[3rem] md:rounded-[5rem] shadow-2xl hover:shadow-[0_40px_100px_rgba(0,0,0,0.6)] transition-all duration-700 hover:scale-[1.01] cursor-text group overflow-hidden border border-white/10"
+                        >
 
                             {/* Animated Gradient Border/Glow */}
                             <div className="absolute -inset-full bg-linear-to-r from-transparent via-white/10 to-transparent rotate-45 translate-x-[-150%] transition-transform duration-1000 group-hover:translate-x-[150%] ease-in-out pointer-events-none"></div>
@@ -697,7 +684,7 @@ const Home = () => {
                                     </AnimatePresence>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </div>

@@ -19,6 +19,7 @@ import {
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -115,6 +116,11 @@ const GraphicDesigning = () => {
 
     return (
         <div ref={containerRef} className="bg-white text-slate-900 overflow-hidden font-sans">
+            <SEO 
+                title="Graphic Designing Courses in Delhi - Best UI/UX Design School"
+                description="Master visual communication, UI/UX, and branding. INSD's graphic designing institute in India provides high-fidelity training for the digital-first creative economy."
+                keywords="graphic design courses India, graphic designing institute India, best graphic design colleges India, UI/UX design courses India, visual communication design India, branding and design courses India"
+            />
             
             {/* --- DYNAMIC HERO SECTION --- */}
             <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden">

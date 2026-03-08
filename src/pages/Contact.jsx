@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { MapPin, Phone, Mail, Send, ArrowRight, MessageSquare, Clock, Globe, Instagram, Facebook, Linkedin, Twitter, CheckCircle2 } from 'lucide-react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 const Contact = () => {
     const { scrollYProgress } = useScroll();
@@ -54,6 +55,11 @@ const Contact = () => {
 
     return (
         <div className="min-h-screen bg-slate-50 relative overflow-hidden">
+            <SEO 
+                title="Contact US - Reach Out to INSD"
+                description="Have questions about our programs or admissions? Get in touch with our expert counselors today. Visit our main campus in Delhi or contact us via phone or email."
+                keywords="INSD contact, design school admission help, INSD Delhi address, contact design institute"
+            />
             {/* Background Abstract Elements */}
             <div className="fixed inset-0 pointer-events-none z-0">
                 <div className="absolute top-[-10%] left-[-10%] w-[40rem] h-[40rem] bg-secondary/20 rounded-full blur-[100px] mix-blend-multiply opacity-70 animate-blob" />

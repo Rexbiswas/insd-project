@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -180,6 +181,11 @@ const Campuses = () => {
 
     return (
         <div ref={containerRef} className="bg-white text-black selection:bg-primary selection:text-white overflow-hidden font-sans">
+            <SEO 
+                title="Our Global Campus Network - Delhi, Paris, London, Dubai"
+                description="International School of Design (INSD) has a strong presence across India and international locations. Explore our flagship campuses in South Delhi, Paris, Washington, and more."
+                keywords="INSD campuses, design school locations, South Delhi campus, INSD Paris, INSD Dubai, international design school"
+            />
 
             {/* Top Navigation Progress */}
             <div className="fixed top-0 left-0 w-full h-[2px] bg-black/10 z-100 origin-left">

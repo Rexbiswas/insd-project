@@ -18,6 +18,7 @@ import {
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -110,6 +111,11 @@ const FashionDesigning = () => {
 
     return (
         <div ref={containerRef} className="bg-white text-slate-900 overflow-hidden font-sans">
+            <SEO 
+                title="Fashion Designing Courses in Delhi - Best Fashion Institute in India"
+                description="Master couture, textile design, and fashion technology at INSD. Enroll in India's top-rated fashion designing degree and launch your career with global placements at Vogue and LVMH."
+                keywords="fashion design courses India, fashion designing institute India, best fashion design colleges India, top fashion design schools India, BSc fashion designing India, fashion design degree India"
+            />
             
             {/* --- HERO SECTION --- */}
             <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden">

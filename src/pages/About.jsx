@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -152,6 +153,11 @@ const About = () => {
 
     return (
         <div ref={containerRef} className="bg-[#f3f3f3] text-slate-900 selection:bg-primary selection:text-white overflow-hidden font-sans border-y border-slate-300">
+            <SEO 
+                title="About INSD | Best Design School in India - Our Legacy"
+                description="Discover the legacy of INSD, India's leading National Award-Winning Design School. Co-founded by a former NIFT DG, we offer world-class fashion, interior, and graphic design education."
+                keywords="best design schools India, top design colleges India, creative education India, INSD legacy, design admissions India, design degrees India"
+            />
 
             {/* Background Grain/Noise Overlay */}
             <div className="fixed inset-0 pointer-events-none opacity-30 z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-multiply" />

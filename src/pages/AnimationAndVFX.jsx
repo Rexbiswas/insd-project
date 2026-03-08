@@ -19,6 +19,7 @@ import {
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -109,6 +110,11 @@ const AnimationAndVFX = () => {
 
     return (
         <div ref={containerRef} className="bg-[#1d1d1f] text-slate-900 overflow-hidden font-sans">
+            <SEO 
+                title="Animation and VFX Courses in Delhi - Best Animation Institute in India"
+                description="Master 3D character animation, advanced VFX compositing, and game engine mechanics. INSD's animation institute in India prepares you for global studios and the metaverse."
+                keywords="animation courses India, animation institute India, best animation colleges India, 3D animation courses India, VFX courses India, motion graphics courses India"
+            />
 
             {/* --- CINEMATIC HERO --- */}
             <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden">

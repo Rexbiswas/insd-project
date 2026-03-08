@@ -108,7 +108,7 @@ const TestimonialSlider = () => {
                 </button>
 
                 {/* Main Card Area */}
-                <div className="flex-1 w-full relative perspective-[2000px] min-h-[600px] flex items-center">
+                <div className="flex-1 w-full relative perspective-[2000px] min-h-[500px] md:min-h-[600px] flex items-center">
                     <AnimatePresence initial={false} custom={direction} mode="wait">
                         <motion.div
                             key={current}
@@ -189,9 +189,37 @@ const TestimonialSlider = () => {
                 </button>
 
                 {/* Mobile Controls */}
-                <div className="flex md:hidden gap-8 absolute bottom-4 left-1/2 -translate-x-1/2 z-50">
-                    <button onClick={prevSlide} className="p-4 bg-white/50 rounded-full hover:bg-white text-slate-600 shadow-lg"><ChevronLeft /></button>
-                    <button onClick={nextSlide} className="p-4 bg-white/50 rounded-full hover:bg-white text-slate-600 shadow-lg"><ChevronRight /></button>
+                <div className="flex md:hidden items-center justify-center gap-6 absolute bottom-10 left-0 right-0 z-50">
+                    <motion.button 
+                        whileTap={{ scale: 0.8 }}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            prevSlide();
+                        }} 
+                        className="w-14 h-14 bg-white border border-slate-200 rounded-full flex items-center justify-center text-slate-800 shadow-xl active:bg-slate-50 transition-colors"
+                    >
+                        <ChevronLeft size={24} />
+                    </motion.button>
+                    
+                    <div className="flex gap-2">
+                        {testimonials.map((_, i) => (
+                            <div 
+                                key={i}
+                                className={`w-2 h-2 rounded-full transition-all duration-300 ${current === i ? 'w-6 bg-primary' : 'bg-slate-300'}`}
+                            />
+                        ))}
+                    </div>
+
+                    <motion.button 
+                        whileTap={{ scale: 0.8 }}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            nextSlide();
+                        }} 
+                        className="w-14 h-14 bg-white border border-slate-200 rounded-full flex items-center justify-center text-slate-800 shadow-xl active:bg-slate-50 transition-colors"
+                    >
+                        <ChevronRight size={24} />
+                    </motion.button>
                 </div>
 
             </div>

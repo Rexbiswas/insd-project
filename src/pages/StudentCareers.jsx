@@ -2,9 +2,50 @@ import React, { useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, Briefcase, Award, TrendingUp, Users, Zap, Globe } from 'lucide-react';
+import { motion, useInView, animate } from 'framer-motion';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const StatCounter = ({ endValue, suffix, label, icon, delay }) => {
+    const [count, setCount] = React.useState(0);
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+    React.useEffect(() => {
+        if (isInView && typeof endValue === 'number') {
+            const controls = animate(0, endValue, {
+                duration: 2,
+                delay: delay,
+                ease: "easeOut",
+                onUpdate: (value) => setCount(Math.floor(value))
+            });
+            return () => controls.stop();
+        }
+    }, [isInView, endValue, delay]);
+
+    return (
+        <motion.div 
+            ref={ref}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: delay }}
+            className="group p-8 rounded-3xl bg-white hover:bg-primary border-slate-200 hover:shadow-2xl hover:text-white transition-all duration-500 border"
+        >
+            <div className="mb-6 flex justify-center text-primary group-hover:text-white transition-colors">
+                {React.cloneElement(icon, { size: 40 })}
+            </div>
+            <div className="text-5xl md:text-6xl font-black mb-2 tracking-tighter">
+                {typeof endValue === 'number' ? `${count}${suffix}` : suffix}
+            </div>
+            <div className="text-[10px] md:text-xs font-mono uppercase tracking-[0.3em] font-bold opacity-60 group-hover:opacity-100 transition-opacity">
+                {label}
+            </div>
+        </motion.div>
+    );
+};
 
 const StudentCareers = () => {
     const containerRef = useRef(null);
@@ -39,21 +80,7 @@ const StudentCareers = () => {
                 ease: "linear",
             });
 
-            // Reveal Sections
-            const sections = gsap.utils.toArray('.reveal-section');
-            sections.forEach(section => {
-                gsap.from(section.querySelectorAll('.reveal-el'), {
-                    scrollTrigger: {
-                        trigger: section,
-                        start: "top 80%",
-                    },
-                    y: 50,
-                    opacity: 0,
-                    stagger: 0.2,
-                    duration: 1,
-                    ease: "power3.out"
-                });
-            });
+            // Reveal Sections (Removed GSAP reveal for stats cards to use Framer Motion)
 
             // Card Hover Effect (Parallax tilt logic handled via CSS/simple transforms if needed, keeping it light here)
 
@@ -72,10 +99,10 @@ const StudentCareers = () => {
     ];
 
     const stats = [
-        { val: "99%", label: "Placement Assistance", icon: <Briefcase /> },
-        { val: "500+", label: "Hiring Partners", icon: <Users /> },
-        { val: "12L", label: "Highest Package", icon: <TrendingUp /> },
-        { val: "Global", label: "Alumni Network", icon: <Globe /> },
+        { value: 99, suffix: "%", label: "Placement Assistance", icon: <Briefcase /> },
+        { value: 500, suffix: "+", label: "Hiring Partners", icon: <Users /> },
+        { value: 12, suffix: "L", label: "Highest Package", icon: <TrendingUp /> },
+        { value: "Global", suffix: "Global", label: "Alumni Network", icon: <Globe /> },
     ];
 
     const hiringPartners = [
@@ -85,6 +112,11 @@ const StudentCareers = () => {
 
     return (
         <div ref={containerRef} className="bg-[#f3f3f3] min-h-screen overflow-hidden border-y border-slate-300">
+            <SEO 
+                title="Student Careers & Placements - Launch Your Design Career"
+                description="Explore career opportunities and placement assistance at INSD. We bridge the gap from campus to corporate with 500+ hiring partners and 99% placement support."
+                keywords="design placements, fashion career opportunities, interior design jobs, design school placements, INSD recruitment"
+            />
 
             {/* 1. Hero Section */}
             <section ref={heroRef} className="relative h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden">
@@ -205,17 +237,17 @@ const StudentCareers = () => {
                 </div>
             </section>
 
-            {/* 4. Impact Stats */}
-            <section className="reveal-section py-24 md:py-32 px-4 bg-[#f3f3f3] relative z-10 border-b border-slate-300">
-                <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+            <section className="py-24 md:py-32 px-4 bg-[#f3f3f3] relative z-10 border-b border-slate-300">
+                <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 text-center">
                     {stats.map((stat, i) => (
-                        <div key={i} className="reveal-el group p-8 rounded-3xl bg-white hover:bg-primary border-slate-200 hover:shadow-xl hover:text-white transition-all duration-500 border">
-                            <div className="mb-6 flex justify-center text-primary group-hover:text-white transition-colors">
-                                {React.cloneElement(stat.icon, { size: 40 })}
-                            </div>
-                            <div className="text-5xl md:text-6xl font-black mb-2">{stat.val}</div>
-                            <div className="text-sm font-mono uppercase tracking-widest opacity-60">{stat.label}</div>
-                        </div>
+                        <StatCounter 
+                            key={i} 
+                            endValue={stat.value} 
+                            suffix={stat.suffix} 
+                            label={stat.label} 
+                            icon={stat.icon} 
+                            delay={i * 0.1} 
+                        />
                     ))}
                 </div>
             </section>

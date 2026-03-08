@@ -19,6 +19,7 @@ import {
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -114,6 +115,11 @@ const InteriorDesigning = () => {
 
     return (
         <div ref={containerRef} className="bg-[#f3f3f3] text-slate-900 overflow-hidden font-sans">
+            <SEO 
+                title="Interior Designing Courses in Delhi - Best Interior Design College"
+                description="Study spatial engineering, luxury residential design, and sustainable architecture. Join INSD's top-tier interior design institute in India for a professional creative career."
+                keywords="interior design courses India, interior design institute India, best interior design colleges India, residential interior design training, luxury interior design education India, interior architecture courses India"
+            />
 
             {/* --- ARCHITECTURAL HERO --- */}
             <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden">

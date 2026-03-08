@@ -77,12 +77,12 @@ const DesignLifestyle = () => {
     const lifestyles = [
         {
             title: "Shows",
-            image: "https://images.pexels.com/photos/2012435/pexels-photo-2012435.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            image: "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_1ms50w1ms50w1ms5.png",
             desc: "Command the runway. Present your vision on the world's most prestigious stages."
         },
         {
             title: "Studios",
-            image: "https://images.pexels.com/photos/3182743/pexels-photo-3182743.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            image: "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_epq9o5epq9o5epq9.png",
             desc: "Innovate in high-tech creative hubs where ideas become reality."
         },
         {

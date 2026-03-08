@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { ArrowRight } from 'lucide-react';
 import { useRegisterModal } from '../context/RegisterModalContext';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -79,6 +80,11 @@ const Admission = () => {
 
     return (
         <div ref={containerRef} className="bg-[#f3f3f3] text-slate-900 selection:bg-primary font-sans overflow-hidden border-y border-slate-300">
+            <SEO 
+                title="Design Admissions 2026 India | Apply for Fashion & Interior - INSD"
+                description="Secure your seat at INSD, India's top-rated design school. Admissions open for 2026 Batch in Fashion, Interior, Graphic, and Animation. Apply online and launch your creative career."
+                keywords="design admissions 2026, design school admission Delhi, apply for fashion design India, NIFT alternative, design course application, creative education 2026, design entrance exams India"
+            />
 
             {/* 1. THE APERTURE HERO */}
             <section ref={apertureRef} className="relative h-screen flex items-center justify-center overflow-hidden">

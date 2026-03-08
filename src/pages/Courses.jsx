@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import { Filter, Search, ArrowUpRight, CheckCircle2, LayoutGrid, List, Sparkles } from 'lucide-react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -56,11 +57,55 @@ const CourseCard = ({ course, index }) => {
     );
 };
 
+const CourseListCard = ({ course, index }) => {
+    return (
+        <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: index * 0.05 }}
+            className="group relative w-full apple-glass-dark border-white/5 hover:border-pink-500/30 rounded-3xl p-6 flex flex-col md:flex-row items-center gap-8 transition-all hover:bg-slate-900/80"
+        >
+            <div className="w-full md:w-64 h-48 rounded-2xl overflow-hidden shrink-0">
+                <img
+                    src={course.image}
+                    alt={course.title}
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                />
+            </div>
+            
+            <div className="flex-1 space-y-4 text-center md:text-left">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <span className="text-pink-500 font-mono text-[10px] uppercase tracking-widest mb-2 block">
+                            {course.duration} • {course.category}
+                        </span>
+                        <h3 className="text-3xl font-black uppercase tracking-tighter group-hover:text-pink-500 transition-colors">
+                            {course.title}
+                        </h3>
+                    </div>
+                    <button className="self-center md:self-auto px-6 py-3 bg-white/5 hover:bg-white text-white hover:text-black border border-white/10 rounded-full font-bold text-[10px] uppercase tracking-widest transition-all">
+                        View Syllabus
+                    </button>
+                </div>
+                <p className="text-slate-400 text-sm font-light leading-relaxed max-w-2xl">
+                    {course.description}
+                </p>
+            </div>
+            
+            <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                <ArrowUpRight className="text-pink-500" size={24} />
+            </div>
+        </motion.div>
+    );
+};
+
 const Courses = () => {
     const containerRef = useRef(null);
     const heroRef = useRef(null);
     const [activeFilter, setActiveFilter] = useState("All");
     const [searchQuery, setSearchQuery] = useState("");
+    const [viewMode, setViewMode] = useState("grid"); // 'grid' or 'list'
 
     const courses = [
         {
@@ -152,6 +197,11 @@ const Courses = () => {
 
     return (
         <div ref={containerRef} className="bg-[#050505] text-white selection:bg-pink-600 font-sans overflow-hidden">
+            <SEO 
+                title="Design Courses in India | B.Des, M.Des, Diploma Programs - INSD"
+                description="Choose from top-rated B.Des, M.Des, and diploma programs in Fashion, Interior, and Graphic Design. INSD offers industry-standard creative education with 500+ placement partners."
+                keywords="design courses India, design admissions India, top design colleges India, fashion design courses India, interior design courses India, graphic design courses India, UI/UX design courses India"
+            />
 
             {/* 1. CINEMATIC HERO */}
             <section ref={heroRef} className="relative h-[95vh] flex flex-col items-center justify-center px-6 overflow-hidden">
@@ -239,17 +289,49 @@ const Courses = () => {
                                 Available Nodes ({filteredCourses.length})
                             </h2>
                         </div>
-                        <div className="hidden md:flex items-center gap-2 text-slate-600">
-                            <List size={20} className="hover:text-white cursor-pointer" />
-                            <LayoutGrid size={20} className="text-white cursor-pointer" />
+                        <div className="hidden md:flex items-center gap-3 p-1 rounded-2xl bg-white/5 border border-white/10">
+                            <button 
+                                onClick={() => setViewMode('list')}
+                                className={`p-2 rounded-xl transition-all ${viewMode === 'list' ? 'bg-white text-black shadow-lg scale-110' : 'text-slate-500 hover:text-white'}`}
+                            >
+                                <List size={18} />
+                            </button>
+                            <button 
+                                onClick={() => setViewMode('grid')}
+                                className={`p-2 rounded-xl transition-all ${viewMode === 'grid' ? 'bg-white text-black shadow-lg scale-110' : 'text-slate-500 hover:text-white'}`}
+                            >
+                                <LayoutGrid size={18} />
+                            </button>
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-                        {filteredCourses.map((course, i) => (
-                            <CourseCard key={i} course={course} index={i} />
-                        ))}
-                    </div>
+                    <AnimatePresence mode="wait">
+                        {viewMode === 'grid' ? (
+                            <motion.div 
+                                key="grid"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8"
+                            >
+                                {filteredCourses.map((course, i) => (
+                                    <CourseCard key={i} course={course} index={i} />
+                                ))}
+                            </motion.div>
+                        ) : (
+                            <motion.div 
+                                key="list"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                className="flex flex-col gap-6"
+                            >
+                                {filteredCourses.map((course, i) => (
+                                    <CourseListCard key={i} course={course} index={i} />
+                                ))}
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
 
                     {filteredCourses.length === 0 && (
                         <div className="h-[400px] flex flex-col items-center justify-center text-center space-y-6">

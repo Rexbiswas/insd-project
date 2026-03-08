@@ -39,7 +39,7 @@ const WhatsappCTA = () => {
                     exit={{ opacity: 0, scale: 0.5, x: 50 }}
                     whileHover={{ scale: 1.1, x: -10 }}
                     whileTap={{ scale: 0.9 }}
-                    className="fixed bottom-40 md:bottom-28 right-6 md:right-10 z-[1000] group flex items-center justify-center"
+                    className="fixed bottom-44 md:bottom-28 right-6 md:right-10 z-[1000] group flex items-center justify-center"
                 >
                     {/* Tooltip */}
                     <div className="absolute right-full mr-4 px-4 py-2 bg-slate-900 text-white text-[10px] font-black uppercase tracking-widest rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none translate-x-4 group-hover:translate-x-0 whitespace-nowrap shadow-2xl">

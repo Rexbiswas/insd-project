@@ -7,12 +7,12 @@ import gsap from 'gsap';
 
 const RollerLink = ({ to, children, colorClass, baseTextClass = "text-slate-800" }) => {
     return (
-        <Link to={to} className="relative block h-[20px] overflow-hidden group">
-            <div className="relative transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
-                <span className={`block text-sm font-bold ${baseTextClass} uppercase tracking-wider ${colorClass} transition-colors`}>
+        <Link to={to} className="relative block h-[24px] group overflow-hidden">
+            <div className="flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-1/2">
+                <span className={`flex items-center justify-center h-[24px] text-sm font-bold ${baseTextClass} uppercase tracking-wider transition-all duration-300 leading-none`}>
                     {children}
                 </span>
-                <span className={`block text-sm font-bold uppercase tracking-wider ${colorClass} absolute top-full left-0`}>
+                <span className={`flex items-center justify-center h-[24px] text-sm font-bold uppercase tracking-wider ${colorClass} transition-all duration-300 leading-none`}>
                     {children}
                 </span>
             </div>
@@ -31,10 +31,10 @@ const RegisterButton = ({ className = "", isDarkTheme = false, isScrolled = fals
     return (
         <button
             onClick={openModal}
-            className={`group relative overflow-hidden shadow-lg transition-all duration-300 rounded-full ${isLightMode ? 'bg-slate-900/5 hover:bg-slate-900 border-slate-900/10' : 'bg-white/10 hover:bg-white/20 border-white/20'} backdrop-blur-xl border ${className}`}
+            className={`group relative overflow-hidden shadow-lg transition-all duration-300 rounded-full ${isLightMode ? 'bg-slate-900/5 border-slate-900/10' : 'bg-white/10 hover:bg-white/20 border-white/20'} backdrop-blur-xl border ${className} flex items-center justify-center`}
         >
             {/* Animated Gradient Background */}
-            <div className="absolute inset-0 bg-linear-to-r from-primary to-secondary opacity-0 group-hover:opacity-100 transition-all duration-500" />
+            <div className="absolute inset-0 bg-linear-to-r from-primary to-secondary translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
 
             {/* Shimmer Effect */}
             <div className="absolute inset-0 pointer-events-none">
@@ -44,8 +44,8 @@ const RegisterButton = ({ className = "", isDarkTheme = false, isScrolled = fals
             {/* Glowing Border Animation */}
             <div className="absolute inset-0 border border-white/20 group-hover:border-primary/50 rounded-full transition-colors duration-500" />
 
-            <div className="relative z-10 flex items-center justify-center gap-1.5 md:gap-2">
-                <span className={`text-[10px] md:text-xs font-black tracking-widest uppercase transition-colors duration-300 ${isLightMode ? 'text-slate-900 group-hover:text-white' : 'text-white'}`}>
+            <div className="relative z-10 flex items-center justify-center gap-1.5 md:gap-2 h-full">
+                <span className={`text-[10px] md:text-xs font-black tracking-widest uppercase transition-all duration-300 leading-none ${isLightMode ? 'text-slate-900 group-hover:text-white' : 'text-white'}`}>
                     Register
                 </span>
                 <ArrowRight size={14} className={`transition-all duration-300 group-hover:translate-x-1 ${isLightMode ? 'text-slate-900 group-hover:text-white' : 'text-white'}`} />
@@ -256,24 +256,24 @@ const Navbar = () => {
                             >
                                 <RollerLink
                                     to="/apply"
-                                    colorClass="group-hover:text-primary"
+                                    colorClass="nav-hover-gradient"
                                     baseTextClass={isDarkTheme && !isScrolled ? "text-white" : "text-slate-800"}
                                 >
-                                    <span>Admission</span>
+                                    Admission
                                 </RollerLink>
                                 <RollerLink
                                     to="/franchise"
-                                    colorClass="group-hover:text-secondary"
+                                    colorClass="nav-hover-gradient"
                                     baseTextClass={isDarkTheme && !isScrolled ? "text-white" : "text-slate-800"}
                                 >
-                                    <span>Franchise</span>
+                                    Franchise
                                 </RollerLink>
                                 <RollerLink
                                     to="/contact-us"
-                                    colorClass="group-hover:text-primary"
+                                    colorClass="nav-hover-gradient"
                                     baseTextClass={isDarkTheme && !isScrolled ? "text-white" : "text-slate-800"}
                                 >
-                                    <span>Contact Us</span>
+                                    Contact Us
                                 </RollerLink>
                             </motion.div>
                         )}
@@ -300,15 +300,15 @@ const Navbar = () => {
 
                     {/* Profile Component */}
                     {user ? (
-                        <Link 
-                            to="/profile" 
+                        <Link
+                            to="/profile"
                             className={`hidden md:flex items-center justify-center w-10 h-10 rounded-full border transition-all duration-300 font-black text-sm ${isDarkTheme && !isScrolled ? 'border-primary bg-primary text-white hover:scale-105' : 'border-primary bg-primary text-white hover:scale-105'} shadow-xl`}
                             title="Profile Dashboard"
                         >
                             {user.username.charAt(0).toUpperCase()}
                         </Link>
                     ) : (
-                        <button 
+                        <button
                             onClick={openModal}
                             className={`hidden md:flex items-center justify-center w-10 h-10 rounded-full border transition-all duration-300 ${isDarkTheme && !isScrolled ? 'border-white/20 text-white hover:bg-white hover:text-slate-900' : 'border-slate-200 text-slate-800 bg-white hover:bg-slate-900 hover:border-slate-900 hover:text-white'} shadow-sm`}
                         >

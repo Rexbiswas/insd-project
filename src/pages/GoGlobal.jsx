@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Globe, Plane, GraduationCap, Building2, ArrowRight, MapPin, Award, BookOpen, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -80,6 +81,11 @@ const GoGlobal = () => {
 
     return (
         <div className="min-h-screen bg-slate-50 overflow-hidden" ref={containerRef}>
+            <SEO 
+                title="Go Global - International Design Exposure & Study Abroad"
+                description="Expand your design horizons with INSD's Go Global program. International internships, study abroad opportunities, and dual certifications from UK and France partners."
+                keywords="study design abroad, international design internships, global fashion education, INSD go global, design exchange programs"
+            />
             {/* Hero Section */}
             <div className="relative h-[90vh] flex items-center justify-center bg-[#0f172b] text-white overflow-hidden">
                 <div className="absolute inset-0 bg-black/40 z-1"></div>

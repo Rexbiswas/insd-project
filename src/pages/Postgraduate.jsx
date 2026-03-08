@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight, BookOpen, GraduationCap, Briefcase, Globe } from 'lucide-react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 const programs = [
     {
@@ -115,6 +116,11 @@ const Postgraduate = () => {
 
     return (
         <div className="bg-[#fcfcfc] min-h-screen font-sans selection:bg-black selection:text-white">
+            <SEO 
+                title="Postgraduate Design Degrees | M.Des India - Masters in Fashion, Interior, MBA"
+                description="Advance your expertise with INSD's M.Des and specialized postgraduate programs. Join India's top design school for M.Sc in Fashion, Interior, and MBA in Luxury Brand Management."
+                keywords="postgraduate design courses, M.Des India, master of design India, MBA luxury brand management, fashion management courses India, design research programs"
+            />
             
             {/* Elegant Hero Section */}
             <section ref={heroRef} className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-[#111]">

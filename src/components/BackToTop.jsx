@@ -41,7 +41,7 @@ const BackToTop = () => {
                     whileHover={{ scale: 1.1, y: -5 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={scrollToTop}
-                    className="fixed bottom-24 md:bottom-8 right-6 md:right-10 z-999 group flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full shadow-2xl bg-white/90 backdrop-blur-xl border border-slate-200/50 hover:border-primary/50 hover:shadow-primary/20 transition-all duration-300"
+                    className="fixed bottom-60 md:bottom-44 right-6 md:right-10 z-999 group flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full shadow-2xl bg-white/90 backdrop-blur-xl border border-slate-200/50 hover:border-primary/50 hover:shadow-primary/20 transition-all duration-300"
                     aria-label="Back to top"
                 >
                     <div className="absolute inset-0 rounded-full bg-linear-to-tr from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

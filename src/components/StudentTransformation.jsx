@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useInView, animate } from 'framer-motion';
 import { ArrowRight, User, Briefcase, Star, Sparkles } from 'lucide-react';
 
 const TransformationCard = ({ student, index }) => {
@@ -102,6 +102,33 @@ const TransformationCard = ({ student, index }) => {
     );
 };
 
+const MetricCounter = ({ value, suffix, label, delay }) => {
+    const [count, setCount] = useState(0);
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+    useEffect(() => {
+        if (isInView && typeof value === 'number') {
+            const controls = animate(0, value, {
+                duration: 2,
+                delay: delay,
+                ease: "easeOut",
+                onUpdate: (value) => setCount(Math.floor(value))
+            });
+            return () => controls.stop();
+        }
+    }, [isInView, value, delay]);
+
+    return (
+        <div ref={ref} className="flex flex-col items-center">
+            <div className="text-4xl md:text-5xl font-black text-slate-900 mb-2 leading-none">
+                {typeof value === 'number' ? `${count}${suffix}` : value}
+            </div>
+            <div className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-primary">{label}</div>
+        </div>
+    );
+};
+
 const StudentTransformation = () => {
     const sectionRef = useRef(null);
 
@@ -177,27 +204,7 @@ const StudentTransformation = () => {
                     ))}
                 </div>
 
-                {/* Visual Narrative Grid (Portfolios & Studios) */}
-                <div className="mt-24 md:mt-32 grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 group">
-                    {[
-                        "https://images.pexels.com/photos/1036808/pexels-photo-1036808.jpeg?auto=compress&cs=tinysrgb&w=800",
-                        "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800",
-                        "https://images.pexels.com/photos/4348404/pexels-photo-4348404.jpeg?auto=compress&cs=tinysrgb&w=800",
-                        "https://images.pexels.com/photos/7005481/pexels-photo-7005481.jpeg?auto=compress&cs=tinysrgb&w=800"
-                    ].map((img, i) => (
-                        <motion.div
-                            key={i}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: i * 0.1 }}
-                            className="aspect-square rounded-4xl overflow-hidden relative border border-slate-100 shadow-sm hover:translate-y-[-10px] transition-all duration-700"
-                        >
-                            <img src={img} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
-                            <div className="absolute inset-0 bg-slate-950/20 opacity-0 hover:opacity-100 transition-opacity" />
-                        </motion.div>
-                    ))}
-                </div>
+
 
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
@@ -206,6 +213,19 @@ const StudentTransformation = () => {
                     transition={{ duration: 0.8, delay: 0.4 }}
                     className="mt-20 text-center"
                 >
+                    <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-8">Success Record</p>
+                    
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12 mb-20 bg-white/50 backdrop-blur-sm p-10 md:p-16 rounded-[4rem] border border-white/50 shadow-sm">
+                        {[
+                            { value: 99, suffix: "%", label: "Placement Assistance" },
+                            { value: 500, suffix: "+", label: "Hiring Partners" },
+                            { value: 12, suffix: "L", label: "Highest Package" },
+                            { value: "Global", suffix: "", label: "Alumni Network" }
+                        ].map((metric, i) => (
+                            <MetricCounter key={i} {...metric} delay={i * 0.1} />
+                        ))}
+                    </div>
+
                     <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-8">Ready to write your own story?</p>
                     <button className="px-12 py-5 bg-slate-900 text-white rounded-full font-black uppercase tracking-widest hover:bg-primary transition-all duration-500 shadow-xl">
                         Start Your Evolution
