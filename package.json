@@ -8,8 +8,7 @@
     "server": "nodemon backend/server.js",
     "dev:all": "concurrently \"npm run dev\" \"npm run server\"",
     "tunnel": "lt --port 5173",
-    "build": "vite build",
-    "postbuild": "node scripts/generate-sitemap.js",
+    "build": "vite build && node scripts/generate-sitemap.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },

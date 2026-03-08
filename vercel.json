@@ -1,7 +1,15 @@
 {
     "version": 2,
-    "cleanUrls": true,
-    "trailingSlash": false,
+    "rewrites": [
+        {
+            "source": "/api/(.*)",
+            "destination": "/api/index.js"
+        },
+        {
+            "source": "/((?!api|sitemap|robots|.*\\.).*)",
+            "destination": "/index.html"
+        }
+    ],
     "headers": [
         {
             "source": "/sitemap.xml",
@@ -20,25 +28,6 @@
                     "value": "text/xsl"
                 }
             ]
-        },
-        {
-            "source": "/robots.txt",
-            "headers": [
-                {
-                    "key": "Content-Type",
-                    "value": "text/plain"
-                }
-            ]
-        }
-    ],
-    "rewrites": [
-        {
-            "source": "/api/(.*)",
-            "destination": "/api/index.js"
-        },
-        {
-            "source": "/((?!api|sitemap|robots|favicon|assets|.*\\.).*)",
-            "destination": "/index.html"
         }
     ]
 }
