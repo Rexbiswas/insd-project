@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight, MapPin, ShieldCheck, Gem, Globe2, Briefcase, Sun, Building2, Palmtree } from 'lucide-react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 const DubaiIBSW = () => {
     const heroRef = useRef(null);
@@ -15,6 +16,11 @@ const DubaiIBSW = () => {
 
     return (
         <div className="bg-[#0a0a0a] min-h-screen font-sans selection:bg-[#d4af37] selection:text-[#111] text-white overflow-hidden">
+            <SEO 
+                title="Study Design in Dubai | INSD & IBSW International Campus"
+                description="Join INSD's Dubai campus at Tiffany Tower, JLT. Master design in the heart of futuristic architecture and retail innovation with world-class facilities and global exposure."
+                keywords="study design Dubai, design school Dubai, INSD Dubai campus, IBSW Dubai, fashion design Dubai, interior design school UAE"
+            />
             
             {/* Ultra-Luxury Hero Section */}
             <section ref={heroRef} className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-[#111]">

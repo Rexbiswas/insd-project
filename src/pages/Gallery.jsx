@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Maximize2, X, Camera, Image as ImageIcon } from 'lucide-react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 // Register GSAP plugins
 if (typeof window !== 'undefined') {
@@ -50,6 +51,11 @@ const Gallery = () => {
 
     return (
         <div ref={containerRef} className="min-h-screen bg-[#0a0a0b] text-white overflow-x-hidden">
+            <SEO 
+                title="Design Portfolios & Campus Gallery - INSD Showcase"
+                description="Explore the visual creative journey at INSD. Our gallery showcases the best in fashion, interior design, and student portfolios from across our global campuses."
+                keywords="INSD gallery, design portfolios, fashion design showcase, interior design student work, campus gallery"
+            />
             {/* --- HERO SECTION --- */}
             <section className="gallery-hero relative h-[60vh] md:h-[70vh] flex flex-col items-center justify-center overflow-hidden border-b border-white/5">
                 <div className="absolute inset-0 z-0">

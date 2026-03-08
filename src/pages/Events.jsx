@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
 import { Calendar, MapPin, ArrowUpRight, Sparkles, MoveRight, Clock } from 'lucide-react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 // Sample Event Data
 const events = [
@@ -73,6 +74,11 @@ const Events = () => {
 
     return (
         <div ref={containerRef} className="relative min-h-screen bg-[#f3f3f3] text-[#333333] selection:bg-[#333333] selection:text-[#f3f3f3] overflow-hidden">
+            <SEO 
+                title="Design Events, Expos & Fashion Shows - INSD Events"
+                description="Experience the culture of design at INSD's exclusive events. From international design expos and Paris fashion week previews to digital art workshops and architecture summits."
+                keywords="design events India, fashion shows Delhi, design expo 2026, INSD events, Paris fashion week preview, design masterclass"
+            />
             <NoiseOverlay />
 
 

@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, Award, Clock, Star, ShieldCheck, Zap } from 'lucide-react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 const programs = [
     {
@@ -53,6 +54,11 @@ const DiplomaAndCertificate = () => {
 
     return (
         <div className="bg-[#f2f2f2] min-h-screen font-sans selection:bg-[#111] selection:text-white">
+            <SEO 
+                title="Diploma & Certificate Courses in Design - Fashion, Interior, Graphic"
+                description="Fast-track your creative career with INSD's professional diplomas and certificates. Intensive 3-month to 1-year programs in fashion, interior design, and graphic design."
+                keywords="design diploma Delhi, design certificate courses, fast track design course, fashion design diploma, interior design certification, graphic design short course"
+            />
             
             {/* Super Elite Hero Section */}
             <section ref={heroRef} className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-[#fcfcfc]">

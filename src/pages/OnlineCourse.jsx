@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Play, Pause, Clock, Globe, Sparkles, Star, BookOpen, CheckCircle2 } from 'lucide-react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -99,6 +100,11 @@ const OnlineCourse = () => {
 
     return (
         <div ref={containerRef} className="bg-white text-slate-900 overflow-x-hidden selection:bg-primary selection:text-white font-sans">
+            <SEO 
+                title="Online Design Courses - Study Fashion & Interior Anywhere"
+                description="Join INSD's elite online design ecosystem. Our 'Education 5.0' platform offers industry-recognized certificates in luxury brand management and design disruptor masterclasses."
+                keywords="online design courses India, fashion design online, interior design online course, luxury brand management online, virtual design school, remote creative education"
+            />
 
             {/* --- NEXT LEVEL HERO SECTION --- */}
             <section ref={heroRef} className="relative min-h-[110vh] flex flex-col justify-center items-center overflow-hidden py-24 md:py-0 px-4 md:px-12 bg-slate-950">

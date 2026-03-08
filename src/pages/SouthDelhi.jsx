@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
     import { ArrowUpRight, MapPin, Navigation, Compass, Box, Layers, Scissors, Monitor, Mic, Camera, Coffee } from 'lucide-react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 const facilities = [
     {
@@ -89,6 +90,11 @@ const SouthDelhi = () => {
 
     return (
         <div className="bg-[#fcfcfc] min-h-screen font-sans selection:bg-black selection:text-white">
+            <SEO 
+                title="INSD South Delhi Campus | Best Design Institute in South Delhi"
+                description="Experience world-class design education at INSD South Delhi. Our flagship campus in the heart of Delhi's luxury and design hub offers premium infrastructure for aspiring creators."
+                keywords="INSD South Delhi, design institute South Delhi, fashion designing South Delhi, interior design school Delhi, best design campus"
+            />
 
             {/* Cinematic Hero */}
             <section ref={heroRef} className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-[#e5e5e5]">

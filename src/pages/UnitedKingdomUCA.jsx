@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight, MapPin, Palette, Aperture, Paintbrush, Globe2, BookOpen, Castle, Crown } from 'lucide-react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 const UnitedKingdomUCA = () => {
     const heroRef = useRef(null);
@@ -15,6 +16,11 @@ const UnitedKingdomUCA = () => {
 
     return (
         <div className="bg-[#f4f4f6] min-h-screen font-sans selection:bg-[#cc0000] selection:text-white overflow-hidden text-[#111]">
+            <SEO 
+                title="Study Design in UK | INSD & UCA Global Partnership"
+                description="Experience British design heritage at the University for the Creative Arts (UCA). INSD's partnership with UCA provides students access to top-tier UK design studios and global networking."
+                keywords="study design UK, UCA partnership, INSD international campus, fashion design UK, creative arts London, study interior design England"
+            />
             
             {/* Heritage & Editorial Hero */}
             <section ref={heroRef} className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-[#e5e5e5]">

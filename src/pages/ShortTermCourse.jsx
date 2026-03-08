@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight, Target, Flame, Sparkles, Zap } from 'lucide-react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 const shortCourses = [
     {
@@ -84,6 +85,11 @@ const ShortTermCourse = () => {
 
     return (
         <div ref={containerRef} className="bg-[#fcfcfc] min-h-screen font-sans selection:bg-[#e1f021] selection:text-black text-[#111]">
+            <SEO 
+                title="Short Term Design Courses & Bootcamps in Delhi - INSD"
+                description="Master industry tools like Clo3D, Rhino, and Unreal Engine in just 6-12 weeks. INSD's intensive short-term courses focus on rapid upskilling and portfolio development."
+                keywords="short term design courses, design bootcamps Delhi, Clo3D course India, Rhino 3D training, luxury brand strategy course, creative coding bootcamp"
+            />
             
             {/* Kinetic Type Hero Section */}
             <section className="relative min-h-[90vh] flex flex-col justify-end pt-32 pb-16 px-6 overflow-hidden">

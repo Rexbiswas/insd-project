@@ -5,6 +5,7 @@ import {
     Camera, Monitor, Coffee, Mic, Library, Cpu, MapPin 
 } from 'lucide-react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 const stats = [
     { label: "Students", value: "750+", icon: <Users size={20} className="text-[#d4af37]" /> },
@@ -35,6 +36,11 @@ const ParisCDP = () => {
 
     return (
         <div className="bg-[#111] min-h-screen font-sans selection:bg-[#d4af37] selection:text-[#111] text-white overflow-hidden">
+            <SEO 
+                title="Study Design in Paris | INSD & CDP International Campus"
+                description="Join INSD's Paris campus at Grande Arche, La Défense. Experience the fusion of European heritage and futuristic design technology in the world's fashion capital."
+                keywords="study design Paris, design school France, INSD Paris campus, CDP Paris, fashion design Paris, study interior design Europe"
+            />
             
             {/* Parisian Elegant Hero */}
             <section ref={heroRef} className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-black">

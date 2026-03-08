@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Search, Clock, User, ChevronRight, Share2, Heart } from 'lucide-react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -97,6 +98,11 @@ const Blog = () => {
 
     return (
         <div ref={containerRef} className="bg-slate-50 min-h-screen font-sans selection:bg-slate-900 selection:text-white">
+            <SEO 
+                title="Design Insights & Trends Blog - INSD Journal"
+                description="Stay updated with the latest in design, fashion, and interior trends. The INSD blog features expert insights, alumni stories, and industry news from the global design ecosystem."
+                keywords="design blog India, fashion trends 2026, interior design insights, graphic design news, luxury branding blog, design career advice"
+            />
 
             {/* --- HERO SECTION --- */}
             <section className="relative pt-32 pb-20 px-6 md:px-12 bg-white overflow-hidden">

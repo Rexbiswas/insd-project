@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, Globe, Zap, Users, Trophy, Sparkles, Cpu, Feather, Box, Maximize } from 'lucide-react';
 
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -181,6 +182,11 @@ const Insd360 = () => {
 
     return (
         <div ref={containerRef}>
+            <SEO 
+                title="INSD Global Stage - International Fashion & Design Events"
+                description="Experience INSD's global impact at London, New York, and Lakme Fashion Weeks. Explore our students' journey on the world stage from Paris to Dubai."
+                keywords="London Fashion Week, Lakme Fashion Week, INSD global events, New York Fashion Week student showcase, international design events"
+            />
             <section ref={triggerRef} className="relative h-screen bg-slate-950 overflow-hidden flex flex-col justify-center">
 
                 {/* Background Atmosphere */}

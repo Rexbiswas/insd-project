@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight, MapPin, Building, TreePine, Calendar, TrainFront, Utensils, Music, GraduationCap } from 'lucide-react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 const WashingtonIBSW = () => {
     const heroRef = useRef(null);
@@ -15,6 +16,11 @@ const WashingtonIBSW = () => {
 
     return (
         <div className="bg-[#fcfcfc] min-h-screen font-sans selection:bg-[#002b5c] selection:text-white overflow-hidden text-[#111]">
+            <SEO 
+                title="Study Design in Washington DC | INSD & IBSW Partnership"
+                description="Expand your design horizons at the International Business School of Washington (IBSW). Study in the cultural and political hub of the USA with INSD's global partnership."
+                keywords="study design USA, Washington design school, IBSW Washington, INSD international campus, design education America"
+            />
             
             {/* Monumental Hero Section */}
             <section ref={heroRef} className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-[#e0e4e8]">

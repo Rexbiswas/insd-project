@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight, Compass, Hexagon, Anchor, Fingerprint, Aperture } from 'lucide-react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 const ParallaxImage = ({ src, alt, className, speed = 0.2 }) => {
     const ref = useRef(null);
@@ -32,6 +33,11 @@ const NorthDelhi = () => {
 
     return (
         <div className="bg-[#fcfcfc] min-h-screen font-sans selection:bg-[#111] selection:text-white">
+            <SEO 
+                title="INSD North Delhi Campus | Top Design Institute in GTB Nagar"
+                description="Study fashion, interior, and graphic design at INSD North Delhi. Located in the vibrant heart of North Campus, we offer avant-garde creative training and state-of-the-art labs."
+                keywords="INSD North Delhi, design school GTB Nagar, fashion designing North Delhi, interior design institute Delhi, creative hub North Campus"
+            />
             
             {/* Architectural Hero */}
             <section ref={heroRef} className="relative w-full h-screen overflow-hidden flex items-center justify-center bg-[#f6f6f6]">

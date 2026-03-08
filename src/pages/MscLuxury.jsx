@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Check, Briefcase, Award } from 'lucide-react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -86,6 +87,11 @@ const MscLuxury = () => {
 
     return (
         <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-black selection:text-white" ref={containerRef}>
+            <SEO 
+                title="M.Sc. Luxury Brand Management - INSD Master's Degree"
+                description="Elevate your expertise with INSD's M.Sc. in Luxury Brand Management. Decode the DNA of heritage brands, luxury retail, and digital premium narratives in this globally recognized program."
+                keywords="MSc luxury brand management India, luxury management master degree, study luxury brand management Delhi, fashion branding masters, premium marketing education"
+            />
 
             {/* Hero Section */}
             <div className="relative h-[90vh] flex flex-col md:flex-row overflow-hidden bg-[#fdfdfd]">

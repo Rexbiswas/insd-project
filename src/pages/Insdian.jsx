@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Users, Star, Globe, Award, Heart, MousePointer2 } from 'lucide-react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -67,6 +68,11 @@ const Insdian = () => {
 
     return (
         <div ref={mainRef} className="bg-white text-slate-900 overflow-x-hidden pt-20 min-h-screen">
+            <SEO 
+                title="The INSDian Life - Student Stories & Global Community"
+                description="What does it mean to be an INSDian? Explore the culture of innovation, student success stories, and our global network of designers and creative disruptors."
+                keywords="INSD students, design school life, student success stories, design community India, alumni network, life at INSD"
+            />
             {/* 1. Cinematic Hero Section */}
             <section ref={heroRef} className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-[#f3f3f3] rounded-b-[4rem]">
                 <div className="absolute inset-0 z-0">
