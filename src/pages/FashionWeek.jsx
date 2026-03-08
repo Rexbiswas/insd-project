@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -53,6 +54,11 @@ const FashionWeek = () => {
 
   return (
     <div ref={containerRef} className="bg-[#f3f3f3] min-h-screen text-slate-900 overflow-hidden relative font-sans">
+      <SEO 
+          title="INSD Fashion Week - Haute Couture & Avant Garde Runway"
+          description="Experience the pinnacle of fashion at INSD Fashion Week. Explore avant-garde collections, street luxury, and sustainable couture from the next generation of global designers."
+          keywords="INSD fashion week, runway show India, fashion design collection, haute couture runway, sustainable fashion show"
+      />
       {/* Noise overlay for premium raw vibe */}
       <div className="pointer-events-none fixed inset-0 z-50 h-full w-full opacity-[0.03]" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/stardust.png")' }}></div>
 

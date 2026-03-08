@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -64,6 +65,11 @@ const ParisProject = () => {
 
   return (
     <div ref={containerRef} className="bg-[#f3f3f3] min-h-screen text-slate-900 overflow-hidden font-sans">
+      <SEO 
+          title="The Paris Project - Global Exposure Program | INSD"
+          description="Join INSD's exclusive global exposure program in Paris. A month-long intensive design journey in the fashion capital of the world, collaborating with luxury houses."
+          keywords="Paris design program, global exposure design, study in Paris, fashion design Paris, INSD global programs"
+      />
       
 
 

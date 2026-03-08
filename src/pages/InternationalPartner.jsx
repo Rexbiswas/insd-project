@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'fram
 import { ArrowUpRight, Globe, MapPin, ExternalLink, Zap } from 'lucide-react';
 import gsap from 'gsap';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 // Partner Data
 const partners = [
@@ -96,6 +97,11 @@ const InternationalPartner = () => {
 
     return (
         <div ref={containerRef} className="bg-slate-950 min-h-screen relative overflow-hidden text-white cursor-none-md">
+            <SEO 
+                title="International Partners & Global Design Network - INSD"
+                description="Explore INSD's exclusive global partnerships with world-renowned design institutions like University of Arts London and Parsons. Unlock international exchange and study abroad opportunities."
+                keywords="international design partners, study abroad design, global design network, Parsons School of Design partnership, UAL partner school"
+            />
 
             <CustomCursor hoveredPartner={hoveredPartner} />
 
