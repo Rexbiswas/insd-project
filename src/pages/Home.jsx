@@ -73,7 +73,6 @@ const Home = () => {
     const marqueeRef = useRef(null);
     const studentRef = useRef(null);
     const scrollHintRef = useRef(null);
-    const taglineRef = useRef(null);
     const legacyRef = useRef(null);
     const [isMobile, setIsMobile] = React.useState(false);
 
@@ -117,16 +116,6 @@ const Home = () => {
         let ctx = gsap.context(() => {
             const tl = gsap.timeline({ delay: 1 }); // Reduced from 3.8 for snappier feel
 
-            // Tagline Reveal - Staggered Characters
-            const taglineChars = taglineRef.current?.querySelectorAll('.tagline-char');
-            if (taglineChars) {
-                tl.fromTo(taglineChars,
-                    { opacity: 0, y: 20, scale: 0.5, filter: "blur(10px)" },
-                    { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 1.2, stagger: 0.02, ease: "back.out(1.7)" },
-                    0.2
-                );
-            }
-
 
             // 2. Infinite Marquee Animation
             gsap.to(marqueeRef.current, {
@@ -145,17 +134,6 @@ const Home = () => {
                     scrub: 0.5,
                 }
             });
-
-            if (taglineRef.current) {
-                scrollTl.to(taglineRef.current, {
-                    y: -100,
-                    opacity: 0,
-                    scale: 0.5,
-                    filter: "blur(40px)",
-                    duration: 1,
-                    ease: "power2.in"
-                }, 0);
-            }
 
 
             // CINEMATIC PORTAL ZOOM: 
@@ -400,7 +378,7 @@ const Home = () => {
                                         <span ref={fifteenRef} className="inline-block bg-linear-to-r from-primary via-secondary to-primary bg-[length:200%_auto] bg-clip-text text-transparent text-[24vw] md:text-[16vw] font-black leading-[0.8] px-1 md:px-6">
                                             15
                                         </span>
-                                        <span className="absolute -top-1 -right-2 md:-top-4 md:-right-8 text-[6px] md:text-[10px] font-black text-primary/60 tracking-widest uppercase">
+                                        <span className="absolute -top-1 -right-4 md:-top-8 md:-right-16 text-[11px] md:text-2xl font-black text-primary tracking-widest uppercase">
                                             Est. 2011
                                         </span>
                                     </div>
@@ -412,15 +390,6 @@ const Home = () => {
                                 </div>
                             </div>
                         </h1>
-                        {/* Premium Relocated Tagline */}
-                        <div ref={taglineRef} className="mt-6 md:mt-12 px-4 py-2 md:px-10 md:py-3 border border-black/10 rounded-full backdrop-blur-xl bg-white/10 will-change-transform shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] flex items-center justify-center overflow-hidden group max-w-[95vw]">
-                            <p className="text-black text-[9px] sm:text-xs md:text-sm font-black uppercase tracking-[0.25em] sm:tracking-[0.4em] md:tracking-[0.6em] whitespace-nowrap flex gap-px px-1">
-                                {splitText("INSD - India's Skill School", "tagline-char")}
-                            </p>
-
-                            {/* Inner Shine Effect */}
-                            <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                        </div>
                     </div>
                 </div>
 
