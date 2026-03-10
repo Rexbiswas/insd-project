@@ -10,19 +10,19 @@ const SocialProof = () => {
             title: "National Awards",
             icon: <Medal className="w-8 h-8 text-primary" />,
             desc: "Multiple winner of 'Best Design Institute' at national summits.",
-            image: "https://images.pexels.com/photos/7005474/pexels-photo-7005474.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            image: "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_ejp2fiejp2fiejp2.png"
         },
         {
             title: "Official Certificates",
             icon: <FileCheck className="w-8 h-8 text-primary" />,
             desc: "UGC recognised and globally validated design curriculum.",
-            image: "https://images.pexels.com/photos/7005481/pexels-photo-7005481.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            image: "https://ik.imagekit.io/fmldynl4j4/insd-awards/Award%20-%20International%20College%20of%20the%20Year%202021_page-0001.jpg?updatedAt=1772091967595"
         },
         {
             title: "Global Affiliations",
             icon: <Landmark className="w-8 h-8 text-primary" />,
             desc: "Partnerships with premium international design bodies and universities.",
-            image: "https://images.pexels.com/photos/5926382/pexels-photo-5926382.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            image: "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_tr3y8tr3y8tr3y8t.png"
         },
         {
             title: "Industry Recognition",

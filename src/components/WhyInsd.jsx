@@ -83,23 +83,6 @@ const WhyInsd = () => {
                     ))}
                 </div>
 
-                {/* Bottom Stats or CTA Strip */}
-                <div className="mt-32 pt-16 border-t border-slate-100 flex flex-col md:flex-row justify-between items-end gap-12 opacity-80">
-                    <div className="max-w-md">
-                        <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-4">India's Design Powerhouse</p>
-                        <h4 className="text-2xl font-black text-slate-900">National Award-Winning Industry Disruptors.</h4>
-                    </div>
-                    <div className="flex gap-16">
-                        <div className="text-center md:text-left">
-                            <p className="text-4xl font-black text-slate-900 tracking-tighter mb-1">99%</p>
-                            <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Career Success</p>
-                        </div>
-                        <div className="text-center md:text-left">
-                            <p className="text-4xl font-black text-slate-900 tracking-tighter mb-1">500+</p>
-                            <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Global Partners</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
     );

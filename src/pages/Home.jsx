@@ -8,9 +8,7 @@ import Lenis from 'lenis';
 
 import InsdBackground from '../components/InsdBackground';
 
-import ImpactStats from '../components/ImpactStats';
 import TOICertification from '../components/TOICertification';
-import TimesAwards from '../components/TimesAwards';
 import DreamLife from '../components/DreamLife';
 import TestimonialSlider from '../components/TestimonialSlider';
 import FeaturedIn from '../components/FeaturedIn';
@@ -22,7 +20,6 @@ import InsdiansByDesign from '../components/InsdiansByDesign';
 import Footer from '../components/Footer';
 import NetworkCounter from '../components/NetworkCounter';
 import BackToTop from '../components/BackToTop';
-import DesignLifestyle from '../components/DesignLifestyle';
 import SocialProof from '../components/SocialProof';
 import WhyInsd from '../components/WhyInsd';
 import AiFutureDesign from '../components/AiFutureDesign';
@@ -217,7 +214,7 @@ const Home = () => {
 
                 // 2. High-Impact Quote Reveal
                 const quotes = legacyRef.current.querySelectorAll('.legacy-quote');
-                
+
                 quotes.forEach((quote, i) => {
                     gsap.to(quote, {
                         filter: "blur(0px)",
@@ -318,18 +315,18 @@ const Home = () => {
     }, []);
 
     const galleryItems = [
-        { 
-            title: "Industry", 
+        {
+            title: "Industry",
             img: `https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_wy3si8wy3si8wy3s.png?tr=w-${isMobile ? 800 : 1800},fo-auto`,
             link: "https://gemini.google.com/app/8c7751779a34cf52?hl=en-IN"
         },
-        { 
-            title: "INSD", 
-            img: `https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_u2ubidu2ubidu2ub.png?tr=w-${isMobile ? 800 : 1800},fo-auto` 
+        {
+            title: "INSD",
+            img: `https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_u2ubidu2ubidu2ub.png?tr=w-${isMobile ? 800 : 1800},fo-auto`
         },
-        { 
-            title: "Required Professional", 
-            img: `https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_hzzhu5hzzhu5hzzh.png?tr=w-${isMobile ? 800 : 1800},fo-auto` 
+        {
+            title: "Required Professional",
+            img: `https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_hzzhu5hzzhu5hzzh.png?tr=w-${isMobile ? 800 : 1800},fo-auto`
         }
     ];
 
@@ -358,7 +355,7 @@ const Home = () => {
 
     return (
         <div ref={containerRef} className="min-h-screen text-slate-900 relative overflow-x-hidden">
-            <SEO 
+            <SEO
                 title="Best Design Institute in Delhi | Fashion, Interior & Graphic Design Courses - INSD"
                 description="Join INSD Delhi, India's leading National Award-Winning Design School. Offering premium courses in Fashion, Interior, Graphic, and Animation design. Enroll for 2026 admissions today."
                 keywords="best design institute in Delhi, top design colleges India, fashion designing courses Delhi, interior design degree India, graphic design school, animation institute India, B.Des India, design admissions 2026, INSD Delhi"
@@ -531,7 +528,7 @@ const Home = () => {
                         </div>
 
                         {/* Magnetic & Glassmorphic Search Container */}
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, y: 50, scale: 0.95 }}
                             whileInView={{ opacity: 1, y: 0, scale: 1 }}
                             viewport={{ once: true, margin: "-100px" }}
@@ -692,19 +689,16 @@ const Home = () => {
             <LeadForm />
             <AiFutureDesign />
             <TestimonialSlider />
-            <TimesAwards />
             <TOICertification />
             <DreamLife />
 
 
-            <DesignLifestyle />
             <SocialProof />
             <GlobalDesignEconomy />
             <GovernmentValidation />
             <StudentTransformation />
             <FinalCTA />
             <StepVisual />
-            <ImpactStats />
             <GlobalIndustryNetwork />
 
             {/* Student Spotlight Section - High Fashion Editorial Style */}

@@ -123,9 +123,6 @@ const GlobalDesignEconomy = () => {
                                     <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all duration-500">
                                         {item.icon}
                                     </div>
-                                    <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-100 md:opacity-40 group-hover:opacity-100 transition-opacity duration-500">
-                                        / 0{idx + 1}
-                                    </span>
                                 </div>
 
                                 <div className="max-w-md">

@@ -49,7 +49,7 @@ const TOICertification = () => {
                     Official Recognition
                 </span>
                 <h2 className="text-[8vw] md:text-[4vw] font-black uppercase leading-[0.9] tracking-tighter text-slate-900">
-                    Recognitions & <br className="md:hidden" /> award <br className="hidden md:block" /> certification badges
+                    Recognitions & <br className="md:hidden" /> Award <br className="hidden md:block" /> Certification Badges
                 </h2>
             </div>
 

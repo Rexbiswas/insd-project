@@ -67,11 +67,32 @@ const Navbar = () => {
     const location = useLocation();
 
     // Pages that have a dark background/theme or high-impact gradient hero sections
-    const darkPages = ['/franchise', '/apply', '/courses'];
-    const isDarkTheme = darkPages.includes(location.pathname);
+    // Updated detection: Pages with permanent dark themes or sections
+    const darkPages = ['/franchise', '/apply', '/courses', '/student-careers'];
+    const [isHeaderDark, setIsHeaderDark] = useState(darkPages.includes(location.pathname));
 
     // Scroll values
     const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const checkColor = () => {
+            const currentScroll = window.scrollY;
+            setIsScrolled(currentScroll > 50);
+
+            // On Home page, we might want to detect specific dark sections
+            // For now, let's use the route logic + extra detection if needed
+            if (darkPages.includes(location.pathname)) {
+                setIsHeaderDark(true);
+            } else {
+                // Dynamic detection for sections like AiFutureDesign or LeadForm (dark)
+                // If scroll is in certain ranges or we detect background
+                setIsHeaderDark(currentScroll > 1200 && currentScroll < 4000); // Approximate LeadForm/AI sections range
+            }
+        };
+
+        window.addEventListener('scroll', checkColor);
+        return () => window.removeEventListener('scroll', checkColor);
+    }, [location.pathname]);
     // Responsive check
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     useEffect(() => {
@@ -237,7 +258,7 @@ const Navbar = () => {
                     <motion.img
                         whileHover={{ scale: 1.1, rotate: 2 }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                        className="h-10 w-auto object-contain drop-shadow-sm"
+                        className={`h-10 w-auto object-contain transition-all duration-500 ${isHeaderDark && !isScrolled ? 'brightness-0 invert' : 'drop-shadow-sm'}`}
                         src="https://insd.edu.in/wp-content/uploads/2022/02/Final-Logo.png"
                         alt="INSD Logo"
                     />
@@ -257,21 +278,21 @@ const Navbar = () => {
                                 <RollerLink
                                     to="/apply"
                                     colorClass="nav-hover-gradient"
-                                    baseTextClass={isDarkTheme && !isScrolled ? "text-white" : "text-slate-800"}
+                                    baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
                                 >
                                     Admission
                                 </RollerLink>
                                 <RollerLink
                                     to="/franchise"
                                     colorClass="nav-hover-gradient"
-                                    baseTextClass={isDarkTheme && !isScrolled ? "text-white" : "text-slate-800"}
+                                    baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
                                 >
                                     Franchise
                                 </RollerLink>
                                 <RollerLink
                                     to="/contact-us"
                                     colorClass="nav-hover-gradient"
-                                    baseTextClass={isDarkTheme && !isScrolled ? "text-white" : "text-slate-800"}
+                                    baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
                                 >
                                     Contact Us
                                 </RollerLink>
@@ -281,7 +302,7 @@ const Navbar = () => {
 
                     <RegisterButton
                         className="hidden md:block px-6 py-2"
-                        isDarkTheme={isDarkTheme}
+                        isDarkTheme={isHeaderDark}
                         isScrolled={isScrolled}
                     />
 
@@ -290,10 +311,10 @@ const Navbar = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => setIsOpen(!isOpen)}
-                        className="group relative hidden md:flex items-center gap-3 px-5 py-2.5 bg-slate-900 text-white rounded-full overflow-hidden shadow-lg shadow-slate-900/20"
+                        className={`group relative hidden md:flex items-center gap-3 px-5 py-2.5 rounded-full overflow-hidden shadow-lg transition-all duration-300 ${isHeaderDark && !isScrolled ? 'bg-white text-slate-900 shadow-white/10' : 'bg-slate-900 text-white shadow-slate-900/20'}`}
                     >
                         <div className="absolute inset-0 bg-linear-to-r from-primary to-secondary translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                        <span className="relative z-10 font-bold text-sm hidden sm:inline-block tracking-wide">
+                        <span className={`relative z-10 font-bold text-sm hidden sm:inline-block tracking-wide transition-colors duration-300 ${isHeaderDark && !isScrolled ? 'group-hover:text-white' : ''}`}>
                             {isOpen ? "CLOSE" : "MENU"}
                         </span>
                     </motion.button>
@@ -310,7 +331,7 @@ const Navbar = () => {
                     ) : (
                         <button
                             onClick={openModal}
-                            className={`hidden md:flex items-center justify-center w-10 h-10 rounded-full border transition-all duration-300 ${isDarkTheme && !isScrolled ? 'border-white/20 text-white hover:bg-white hover:text-slate-900' : 'border-slate-200 text-slate-800 bg-white hover:bg-slate-900 hover:border-slate-900 hover:text-white'} shadow-sm`}
+                            className={`hidden md:flex items-center justify-center w-10 h-10 rounded-full border transition-all duration-300 ${isHeaderDark && !isScrolled ? 'border-white/20 text-white hover:bg-white hover:text-slate-900' : 'border-slate-200 text-slate-800 bg-white hover:bg-slate-900 hover:border-slate-900 hover:text-white'} shadow-sm`}
                         >
                             <User size={18} strokeWidth={2.5} />
                         </button>
@@ -342,7 +363,7 @@ const Navbar = () => {
 
                     <Link to="/" onClick={() => setIsOpen(false)} className="h-full flex items-center justify-center mx-auto">
                         <img
-                            className="h-7 md:h-8 w-auto object-contain drop-shadow-sm"
+                            className={`h-7 md:h-8 w-auto object-contain transition-all duration-500 ${isHeaderDark && !isScrolled ? 'brightness-0 invert' : 'drop-shadow-sm'}`}
                             src="https://insd.edu.in/wp-content/uploads/2022/02/Final-Logo.png"
                             alt="INSD Logo"
                         />
@@ -353,12 +374,12 @@ const Navbar = () => {
             </motion.div >
 
             {/* Mobile Bottom Navigation Bar - iPhone Style */}
-            <div className={`fixed bottom-2 left-2 right-2 h-20 flex items-center justify-around px-4 border z-50 md:hidden rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500 ${isOpen || (isDarkTheme && !isScrolled) ? 'apple-glass-dark bg-slate-900/40!' : 'apple-glass'}`}>
+            <div className={`fixed bottom-2 left-2 right-2 h-20 flex items-center justify-around px-4 border z-50 md:hidden rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500 ${isOpen || (isHeaderDark && !isScrolled) ? 'apple-glass-dark bg-slate-900/40!' : 'apple-glass'}`}>
                 <NavLink
                     to="/"
                     onClick={() => setIsOpen(false)}
                     className={({ isActive }) =>
-                        `relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${isActive ? 'text-primary' : (isDarkTheme && !isScrolled) || isOpen ? 'text-white/40 hover:text-white' : 'text-slate-900/40 hover:text-slate-900'}`
+                        `relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${isActive ? 'text-primary' : (isHeaderDark && !isScrolled) || isOpen ? 'text-white/40 hover:text-white' : 'text-slate-900/40 hover:text-slate-900'}`
                     }
                 >
                     {({ isActive }) => (
@@ -374,7 +395,7 @@ const Navbar = () => {
                     to="/courses"
                     onClick={() => setIsOpen(false)}
                     className={({ isActive }) =>
-                        `relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${isActive ? 'text-secondary' : (isDarkTheme && !isScrolled) || isOpen ? 'text-white/40 hover:text-white' : 'text-slate-900/40 hover:text-slate-900'}`
+                        `relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${isActive ? 'text-secondary' : (isHeaderDark && !isScrolled) || isOpen ? 'text-white/40 hover:text-white' : 'text-slate-900/40 hover:text-slate-900'}`
                     }
                 >
                     {({ isActive }) => (
@@ -391,7 +412,7 @@ const Navbar = () => {
                         setIsOpen(false);
                         openModal();
                     }}
-                    className={`relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${(isDarkTheme && !isScrolled) || isOpen ? 'text-white/40 hover:text-white' : 'text-slate-900/40 hover:text-slate-900'}`}
+                    className={`relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${(isHeaderDark && !isScrolled) || isOpen ? 'text-white/40 hover:text-white' : 'text-slate-900/40 hover:text-slate-900'}`}
                 >
                     <GraduationCap size={24} strokeWidth={2} />
                     <span className="text-[10px] font-black mt-1 uppercase tracking-tighter opacity-40">Apply</span>
@@ -399,7 +420,7 @@ const Navbar = () => {
 
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className={`relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${isOpen ? 'text-primary bg-primary/5' : (isDarkTheme && !isScrolled) ? 'text-white/40 hover:text-white' : 'text-slate-900/40 hover:text-slate-900'}`}
+                    className={`relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${isOpen ? 'text-primary bg-primary/5' : (isHeaderDark && !isScrolled) ? 'text-white/40 hover:text-white' : 'text-slate-900/40 hover:text-slate-900'}`}
                 >
                     {isOpen ? <X size={26} strokeWidth={2} /> : <LayoutGrid size={24} strokeWidth={2} />}
                     <span className={`text-[10px] font-black mt-1 uppercase tracking-tighter ${isOpen ? 'opacity-100' : 'opacity-40'}`}>{isOpen ? 'Close' : 'Menu'}</span>

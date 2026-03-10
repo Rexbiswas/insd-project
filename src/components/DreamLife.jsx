@@ -103,7 +103,7 @@ const DreamLife = () => {
                                     {item.subtitle}
                                 </span>
                                 
-                                <h3 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter leading-none mb-6">
+                                <h3 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tighter leading-none mb-6 break-words overflow-hidden">
                                     {item.title}
                                 </h3>
                                 

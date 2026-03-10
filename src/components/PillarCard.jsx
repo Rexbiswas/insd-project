@@ -8,8 +8,9 @@ const PillarCard = ({ pillar, index }) => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            whileHover={{ y: -5 }}
             transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="pillar-card-premium group relative h-full min-h-[500px] rounded-[3rem] p-8 md:p-12 bg-white border border-slate-100/80 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.02)] hover:shadow-[0_60px_100px_-20px_rgba(0,0,0,0.08)] hover:border-primary/10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] overflow-hidden cursor-default flex flex-col justify-between"
+            className="pillar-card-premium group relative h-full min-h-[420px] rounded-[3rem] px-4 py-8 bg-white border border-slate-100/80 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.02)] hover:shadow-[0_60px_100px_-20px_rgba(0,0,0,0.08)] hover:border-primary/10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] overflow-hidden cursor-default flex flex-col justify-between"
         >
             {/* 1. Dynamic Gradient Background (Holographic feel) */}
             <div className={`absolute inset-0 bg-linear-to-br ${pillar.color} opacity-0 group-hover:opacity-100 transition-opacity duration-1000`} />
@@ -18,16 +19,11 @@ const PillarCard = ({ pillar, index }) => {
             <div className="absolute inset-0 opacity-[0.01] group-hover:opacity-[0.03] transition-opacity duration-700 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] pointer-events-none" />
 
             <div className="relative z-10 w-full">
-                {/* 3. Header: Centered Image Focal Point */}
-                <div className="flex flex-col items-center mb-14">
-                    <div className="w-full flex justify-end mb-6">
-                        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-200 group-hover:text-primary/30 transition-colors duration-500">
-                            / 0{index + 1}
-                        </span>
-                    </div>
+                {/* 3. Header: Full Width Image Focal Point */}
+                <div className="flex flex-col mb-6 px-2">
                     <motion.div
-                        whileHover={{ scale: 1.05 }}
-                        className="w-40 h-40 rounded-[2.5rem] bg-slate-50 border-4 border-white overflow-hidden shadow-2xl shadow-black/10 group-hover:border-primary/20 transition-all duration-700 relative z-10"
+                        whileHover={{ scale: 1.02 }}
+                        className="w-full aspect-square rounded-[2rem] bg-slate-50 border border-slate-100 overflow-hidden shadow-xl group-hover:border-primary/20 transition-all duration-700 relative z-10"
                     >
                         <img 
                             src={pillar.image} 
@@ -35,37 +31,34 @@ const PillarCard = ({ pillar, index }) => {
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                         />
                     </motion.div>
-                    <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-200 group-hover:text-primary/30 transition-colors duration-500">
-                        / 0{index + 1}
-                    </span>
                 </div>
 
                 {/* 4. Identity: Centered Tag & Title */}
-                <div className="space-y-4 mb-8 text-center flex flex-col items-center">
+                <div className="space-y-3 mb-6 text-center flex flex-col items-center">
                     <div className="flex items-center gap-2 overflow-hidden">
                         <motion.div
                             initial={{ y: 20, opacity: 0 }}
                             whileInView={{ y: 0, opacity: 1 }}
-                            className="bg-primary/10 px-3 py-1 rounded-full"
+                            className="bg-primary/10 px-4 py-1.5 rounded-full flex items-center justify-center"
                         >
-                            <span className="text-[9px] font-black uppercase tracking-widest text-primary">{pillar.tag}</span>
+                            <span className="text-[10px] font-black uppercase tracking-widest text-primary leading-none">{pillar.tag}</span>
                         </motion.div>
                     </div>
 
-                    <h3 className="text-3xl md:text-3xl font-black text-slate-900 leading-[1.1] tracking-tighter flex flex-col items-center">
-                        <span className="text-primary text-xl mb-1 group-hover:scale-150 transition-transform duration-500">●</span>
+                    <h3 className="text-2xl md:text-2xl font-black text-slate-900 leading-[1.1] tracking-tighter flex flex-col items-center">
+                        <span className="text-primary text-lg mb-1 group-hover:scale-150 transition-transform duration-500">●</span>
                         {pillar.title}
                     </h3>
                 </div>
 
                 {/* 5. Content: Centered Description */}
-                <p className="text-slate-500 text-base md:text-lg font-medium leading-[1.6] group-hover:text-slate-600 transition-colors duration-500 text-center">
+                <p className="text-slate-500 text-sm md:text-base font-medium leading-relaxed group-hover:text-slate-600 transition-colors duration-500 text-center px-2">
                     {pillar.desc}
                 </p>
             </div>
 
-            {/* 6. Footer: Interactive Element */}
-            <div className="relative z-10 mt-12 pt-8 border-t border-slate-50 flex items-center justify-center gap-4 group-hover:border-primary/10 transition-colors">
+            {/* 6. Footer: Interactive Element - Visible on Hover Only */}
+            <div className="relative z-10 max-h-0 opacity-0 group-hover:max-h-24 group-hover:opacity-100 group-hover:mt-8 pt-8 border-t border-slate-50 flex items-center justify-center gap-4 group-hover:border-primary/10 transition-all duration-500 ease-in-out">
                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 group-hover:text-slate-900 transition-colors">
                     Path to Excellence
                 </span>

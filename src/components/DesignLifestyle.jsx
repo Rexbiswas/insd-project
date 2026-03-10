@@ -119,7 +119,7 @@ const DesignLifestyle = () => {
                                 <img
                                     src={item.image}
                                     alt={item.title}
-                                    className="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 ease-in-out"
+                                    className="w-full h-full object-cover grayscale brightness-[0.6] group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 ease-in-out"
                                 />
                                 {/* Dynamic Gradient Overlay */}
                                 <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent opacity-90 group-hover:opacity-70 transition-opacity duration-700"></div>
@@ -129,28 +129,31 @@ const DesignLifestyle = () => {
                             </div>
 
                             {/* Content Layer */}
-                            <div className="absolute inset-0 z-10 flex flex-col justify-end p-10 md:p-14 transition-transform duration-500 ease-out group-hover:-translate-y-2">
-                                <div className="mb-2">
-                                    <span className="inline-block text-primary font-bold tracking-[0.3em] uppercase text-[10px] mb-2">
+                            <div className="absolute inset-0 z-10 flex flex-col justify-end p-8 md:p-12 transition-transform duration-500 ease-out group-hover:-translate-y-2">
+                                <div className="mb-1">
+                                    <span className="text-white font-black uppercase tracking-tighter text-2xl mb-1 block opacity-100">
+                                        {item.title}
+                                    </span>
+                                    <span className="inline-block text-primary font-bold tracking-[0.3em] uppercase text-[10px] mb-1">
                                         Perspective {index + 1}
                                     </span>
                                 </div>
 
-                                <div className="mb-6">
-                                    <h3 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter group-hover:text-primary transition-colors duration-500">
+                                <div className="mb-4">
+                                    <h3 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter group-hover:text-primary transition-colors duration-500 leading-none">
                                         {item.title}
                                     </h3>
                                 </div>
 
                                 <div className="relative">
-                                    <p className="text-white/70 text-base md:text-lg font-medium max-w-sm mb-8 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-700 delay-100 leading-relaxed">
+                                    <p className="text-white/80 text-sm md:text-base font-medium max-w-sm mb-6 opacity-80 group-hover:opacity-100 transition-all duration-700 leading-relaxed translate-y-0">
                                         {item.desc}
                                     </p>
 
                                     {/* Action Bar */}
                                     <div className="flex items-center gap-4">
                                         <div className="h-[2px] w-12 bg-primary group-hover:w-32 transition-all duration-700 ease-in-out"></div>
-                                        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300">
+                                        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white opacity-100 transition-opacity duration-500">
                                             Explore
                                         </span>
                                     </div>
