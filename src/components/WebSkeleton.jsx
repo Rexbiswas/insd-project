@@ -22,8 +22,20 @@ const WebSkeleton = () => {
                 `}
             </style>
 
+            {/* Navbar Skeleton Placeholder */}
+            <div className="w-full h-16 md:h-20 flex items-center justify-between px-8 md:px-16 border-b border-slate-50 relative z-10 bg-white/50 backdrop-blur-sm">
+                <div className="h-8 w-32 md:w-40 shimmer rounded-lg"></div>
+                <div className="hidden md:flex items-center gap-10">
+                    <div className="h-4 w-20 shimmer rounded-md"></div>
+                    <div className="h-4 w-24 shimmer rounded-md"></div>
+                    <div className="h-4 w-20 shimmer rounded-md"></div>
+                    <div className="h-4 w-24 shimmer rounded-md"></div>
+                </div>
+                <div className="h-10 w-24 md:w-32 shimmer rounded-full"></div>
+            </div>
+
             {/* Hero Section Skeleton */}
-            <div className="w-full h-[60vh] md:h-[80vh] shimmer mb-12"></div>
+            <div className="w-full h-[60vh] md:h-[80vh] shimmer -mt-16 md:-mt-20"></div>
 
             {/* Content Container */}
             <div className="max-w-7xl mx-auto px-6 py-12 space-y-12">

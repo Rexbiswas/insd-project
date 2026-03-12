@@ -55,14 +55,11 @@ const AdmissionScroller = () => {
         <div className="flex items-center gap-12 md:gap-24 px-6 md:px-12 py-2">
             <div className="flex items-center gap-8">
                 <span className="text-white font-black text-3xl md:text-5xl uppercase tracking-tighter leading-none">
-                    Admissions 2026 <span className="text-transparent stroke-text-white opacity-30 italic">Open Now</span>
+                    ADMISSION OPEN 2026
                 </span>
                 <div className="w-4 h-4 rounded-full bg-primary shadow-[0_0_20px_#db3436] animate-pulse" />
             </div>
-            <div className="flex flex-col border-l border-white/20 pl-8">
-                <span className="text-white/40 font-mono text-[10px] uppercase tracking-[0.4em] mb-1">Batch Intake</span>
-                <span className="text-white font-bold text-lg md:text-2xl italic tracking-tight">Jan <span className="text-primary">&</span> June</span>
-            </div>
+
             <div className="h-2 w-32 bg-linear-to-r from-primary to-secondary rounded-full opacity-30" />
         </div>
     );

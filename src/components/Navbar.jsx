@@ -116,7 +116,7 @@ const Navbar = () => {
     const navRadius = useTransform(scrollProgress, transitionRange, ["0px", "50px"]);
 
     // Frosted Glass Effect Transformations
-    const navBackground = useTransform(scrollProgress, transitionRange, ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.4)"]);
+    const navBackground = useTransform(scrollProgress, transitionRange, ["rgba(255, 255, 255, 0.8)", "rgba(255, 255, 255, 0.8)"]);
     const navBackdrop = useTransform(scrollProgress, transitionRange, ["blur(0px) saturate(100%)", "blur(25px) saturate(180%)"]);
     const navBorderColor = useTransform(scrollProgress, transitionRange, ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.4)"]);
     const navShadow = useTransform(scrollProgress, transitionRange, ["none", "0 10px 40px -10px rgba(0, 0, 0, 0.1)"]);
@@ -134,14 +134,7 @@ const Navbar = () => {
     const navRef = useRef(null);
     const mobileNavRef = useRef(null);
 
-    useEffect(() => {
-        // Delayed reveal to wait for Home loading animation
-        // We use xPercent: -50 to maintain centering since we remove the CSS translate class to avoid conflicts
-        gsap.fromTo([navRef.current, mobileNavRef.current],
-            { yPercent: -100, xPercent: -50, autoAlpha: 0 },
-            { yPercent: 0, xPercent: -50, autoAlpha: 1, duration: 1.5, ease: "expo.out", delay: 3.8 }
-        );
-    }, []);
+
 
     const menuItems = [
         {
@@ -249,6 +242,7 @@ const Navbar = () => {
                     boxShadow: navShadow,
                     borderWidth: "1px",
                     borderStyle: "solid",
+                    x: "-50%",
                 }}
                 ref={navRef}
                 className="hidden md:flex fixed left-1/2 z-100 px-6 py-4 items-center justify-between transition-all duration-300 pointer-events-auto w-full"
@@ -353,6 +347,7 @@ const Navbar = () => {
                     borderColor: isOpen ? "transparent" : mobileBorder,
                     borderWidth: "1px",
                     borderStyle: "solid",
+                    x: "-50%",
                 }}
                 ref={mobileNavRef}
                 className="md:hidden fixed left-1/2 z-50 flex items-center pointer-events-none"

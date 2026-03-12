@@ -1,6 +1,6 @@
-import React, { useState, lazy, Suspense } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
+
 import Navbar from './components/Navbar';
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/react"
@@ -44,7 +44,6 @@ const Gallery = lazy(() => import('./pages/Gallery'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Components
-import Loader from './components/Loader';
 import BackToTop from './components/BackToTop';
 import WhatsappCTA from './components/WhatsappCTA';
 import WebSkeleton from './components/WebSkeleton';
@@ -56,39 +55,30 @@ import { AuthProvider } from './context/AuthContext';
 const ScrollToTop = () => {
     const { pathname } = useLocation();
     React.useEffect(() => {
-        window.scrollTo(0, 0);
+        window.scrollTo(0,0);
     }, [pathname]);
     return null;
 };
 
 function App() {
-    const [loading, setLoading] = useState(true);
-
     React.useEffect(() => {
-        if (!loading) {
-            setTimeout(() => {
-                import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
-                    ScrollTrigger.refresh();
-                });
-            }, 500);
-        }
-    }, [loading]);
+        setTimeout(() => {
+            import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
+                ScrollTrigger.refresh();
+            });
+        }, 500);
+    }, []);
 
     return (
         <AuthProvider>
             <RegisterModalProvider>
-                <AnimatePresence mode="wait">
-                    {loading && <Loader key="loader" setLoading={setLoading} />}
-                </AnimatePresence>
-
-                <div className={`transition-opacity duration-1000 ${loading ? 'opacity-0' : 'opacity-100'}`}>
-                    <RegistrationModal />
-
-                    <Router>
-                        <ScrollToTop />
+                <Router>
+                    <Suspense fallback={<WebSkeleton />}>
                         <Navbar />
-                        <div className="relative z-0 bg-white min-h-screen pb-24 md:pb-0 overflow-x-hidden">
-                            <Suspense fallback={<WebSkeleton />}>
+                        <div className="transition-opacity duration-1000 opacity-100">
+                            <RegistrationModal />
+                            <ScrollToTop />
+                            <div className="relative z-0 bg-white min-h-screen pb-24 md:pb-0 overflow-x-hidden">
                                 <Routes>
                                     <Route path="/" element={<Home />} />
                                     <Route path="/about-us" element={<About />} />
@@ -129,15 +119,15 @@ function App() {
                                     <Route path="/test-404" element={<NotFound />} />
                                     <Route path="*" element={<NotFound />} />
                                 </Routes>
-                            </Suspense>
+                            </div>
+                            <WhatsappCTA />
+                            <BackToTop />
+                            <AIChatbot />
+                            <Analytics />
+                            <SpeedInsights />
                         </div>
-                        <WhatsappCTA />
-                        <BackToTop />
-                        <AIChatbot />
-                    </Router>
-                    <Analytics />
-                    <SpeedInsights />
-                </div>
+                    </Suspense>
+                </Router>
             </RegisterModalProvider>
         </AuthProvider>
     );

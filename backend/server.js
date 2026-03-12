@@ -6,6 +6,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import authRoutes from './routes/auth.js';
 import leadRoutes from './routes/leadauth.js';
+import stepLeadRoutes from './routes/stepleads.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -35,6 +36,7 @@ app.get('/api/health', (req, res) => {
 
 app.use('/api/auth', authRoutes);
 app.use('/api/leads', leadRoutes);
+app.use('/api/step-leads', stepLeadRoutes);
 
 // Start Server locally
 if (process.env.NODE_ENV !== 'production') {

@@ -6,8 +6,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 
 
-import InsdBackground from '../components/InsdBackground';
 
+import NationalAwards from '../components/NationalAwards';
+import StepLeadForm from '../components/StepLeadForm';
+import ProgramSearch from '../components/ProgramSearch';
 import TOICertification from '../components/TOICertification';
 import DreamLife from '../components/DreamLife';
 import TestimonialSlider from '../components/TestimonialSlider';
@@ -28,7 +30,7 @@ import GovernmentValidation from '../components/GovernmentValidation';
 import StudentTransformation from '../components/StudentTransformation';
 import GlobalIndustryNetwork from '../components/GlobalIndustryNetwork';
 import FinalCTA from '../components/FinalCTA';
-import HeroSlider from '../components/HeroSlider';
+
 import LeadForm from '../components/LeadForm';
 import SEO from '../components/SEO';
 
@@ -42,38 +44,15 @@ const Home = () => {
 
     const insdRef = useRef(null);
     const fifteenRef = useRef(null);
-    const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
-    const [activeFilter, setActiveFilter] = React.useState(null);
-    const [searchQuery, setSearchQuery] = React.useState("");
-
-    const programs = {
-        masters: ["Luxury Brand Management", "Fashion Design", "Graphic Design", "Jewellery Design", "Textile Design", "Interior Design", "Animation"],
-        bachelors: ["Fashion Design", "Interior Design", "Communication Design", "Textile Design", "Product Design", "Strategic Innovation & Design"],
-        diploma_two: ["Fashion Design & Tech", "Interior Design & Tech", "Animation & VFX", "Graphic Design", "Textile Design"],
-        diploma_one: ["Fashion Design", "Interior Design", "Graphic Design", "Photography"],
-        short: ["Fashion Styling", "Luxury Brand Management", "Jewellery Design", "Photography"]
-    };
-
-    // Filter Logic Helper
-    const filterPrograms = (list) => {
-        return list.filter(item => {
-            const matchesFilter = !activeFilter || item.includes(activeFilter);
-            const matchesSearch = item.toLowerCase().includes(searchQuery.toLowerCase());
-            return matchesFilter && matchesSearch;
-        });
-    };
-
-    // Check if any items exist for a category after filter
-    const hasItems = (list) => filterPrograms(list).length > 0;
+    const galleryContainerRef = useRef(null);
     const subTitleRef = useRef(null);
     const maskRef = useRef(null);
-
     const heroRef = useRef(null);
     const shutterRef = useRef(null);
     const marqueeRef = useRef(null);
     const studentRef = useRef(null);
     const scrollHintRef = useRef(null);
-    const legacyRef = useRef(null);
+
     const [isMobile, setIsMobile] = React.useState(false);
 
 
@@ -164,6 +143,16 @@ const Home = () => {
                     ease: "power2.in"
                 }, "<+=0.3");
             }
+
+            // Gallery Reveal Integration
+            scrollTl.fromTo(galleryContainerRef.current,
+                { opacity: 0, scale: 1.2 },
+                {
+                    opacity: 1,
+                    scale: 1,
+                    duration: 2,
+                    ease: "power2.out"
+                }, "-=1.5");
 
             // 3. Legacy Section - Text Reveal, Magnetic Search & Vertical Carousel
             const searchContainer = document.querySelector('.search-container');
@@ -309,9 +298,7 @@ const Home = () => {
     ];
 
 
-    const carouselTerms = [
-        "Fashion", "Innovation", "Luxury", "Design", "Future", "Creative", "Global", "Digital", "Textile", "Art"
-    ];
+
 
     // Helper to split text by characters
     const splitText = (text, className) => {
@@ -339,12 +326,53 @@ const Home = () => {
                 keywords="best design institute in Delhi, top design colleges India, fashion designing courses Delhi, interior design degree India, graphic design school, animation institute India, B.Des India, design admissions 2026, INSD Delhi"
             />
 
-            <div className="fixed inset-0 pointer-events-none z-0">
-                <HeroSlider />
-            </div>
-
             {/* Hero Section - Pinned Wrapper relative to Viewport */}
             <div ref={heroRef} className="relative z-10 h-screen w-full flex flex-col justify-center items-center perspective-[1000px]">
+
+                {/* Unique Vertical Accordion Gallery - Integrated as Hero Background Reveal */}
+                <div ref={galleryContainerRef} className="absolute inset-0 z-0 bg-black overflow-hidden flex flex-col md:flex-row pointer-events-auto opacity-0">
+                    {
+                        galleryItems.map((item, index) => (
+                            <a
+                                key={index}
+                                href={item.link || "#"}
+                                target={item.link ? "_blank" : "_self"}
+                                rel="noopener noreferrer"
+                                className="relative flex-1 group transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] hover:flex-3 cursor-pointer grayscale-0 md:grayscale md:hover:grayscale-0 border-b md:border-b-0 md:border-r border-white/10 last:border-b-0 last:border-r-0"
+                            >
+                                {/* Image Background */}
+                                <div className="absolute inset-0 z-0 overflow-hidden">
+                                    <img
+                                        src={item.img}
+                                        alt={item.title}
+                                        className="w-full h-full object-cover opacity-80 md:opacity-60 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110"
+                                    />
+                                    <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent md:bg-black/60 md:group-hover:bg-black/20 transition-colors duration-700 pointer-events-none" />
+                                </div>
+
+                                {/* Content */}
+                                <div className="absolute inset-0 z-10 flex flex-col justify-end p-6 md:p-8 pb-32 md:pb-12">
+                                    <div className="overflow-hidden">
+                                        <h3 className="text-5xl md:text-7xl lg:text-9xl font-black text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary translate-y-0 md:translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-100 uppercase tracking-tighter leading-none">
+                                            {item.title}
+                                        </h3>
+                                    </div>
+                                    <div className="overflow-hidden mt-2 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                                        <p className="text-white/80 text-[10px] md:text-sm font-bold tracking-widest uppercase border-t border-primary/50 pt-3 inline-block">
+                                            Explore Program
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 opacity-0 md:opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none hidden md:block">
+                                    <span className="text-white/50 font-bold uppercase tracking-widest text-xl whitespace-nowrap">
+                                        {item.title}
+                                    </span>
+                                </div>
+                            </a>
+                        ))
+                    }
+                </div>
 
                 {/* Mask Layer: Mix-Blend-Screen handles the cutout effect */}
                 <div ref={maskRef} className="absolute inset-0 flex flex-col justify-center items-center bg-white md:bg-white mix-blend-screen pointer-events-none select-none z-10 w-full overflow-hidden">
@@ -396,266 +424,16 @@ const Home = () => {
             </div>
             <AdmissionScroller />
 
-
-            {/* Unique Vertical Accordion Gallery */}
-            <div className="relative z-20 bg-black min-h-[80vh] md:h-screen md:min-h-screen flex flex-col md:flex-row overflow-hidden border-t border-white/10">
-                {
-                    galleryItems.map((item, index) => (
-                        <a
-                            key={index}
-                            href={item.link || "#"}
-                            target={item.link ? "_blank" : "_self"}
-                            rel="noopener noreferrer"
-                            className="relative flex-1 group transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] hover:flex-3 cursor-pointer grayscale-0 md:grayscale md:hover:grayscale-0 border-b md:border-b-0 md:border-r border-white/10 last:border-b-0 last:border-r-0"
-                        >
-                            {/* Image Background */}
-                            <div className="absolute inset-0 z-0 overflow-hidden">
-                                <img
-                                    src={item.img}
-                                    alt={item.title}
-                                    className="w-full h-full object-cover opacity-80 md:opacity-60 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110"
-                                />
-                                {/* Dark Overlay - Pointer Events None to allow LiquidHover interaction */}
-                                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent md:bg-black/60 md:group-hover:bg-black/20 transition-colors duration-700 pointer-events-none" />
-                            </div>
-
-                            {/* Content */}
-                            <div className="absolute inset-0 z-10 flex flex-col justify-end p-6 md:p-8 pb-32 md:pb-12">
-                                <div className="overflow-hidden">
-                                    <h3 className="text-5xl md:text-7xl lg:text-9xl font-black text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary translate-y-0 md:translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-100 uppercase tracking-tighter leading-none">
-                                        {item.title}
-                                    </h3>
-                                </div>
-                                <div className="overflow-hidden mt-2 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
-                                    <p className="text-white/80 text-[10px] md:text-sm font-bold tracking-widest uppercase border-t border-primary/50 pt-3 inline-block">
-                                        Explore Program
-                                    </p>
-                                </div>
-                            </div>
-
-                            {/* Collapsed State Title (Desktop Only) */}
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 opacity-0 md:opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none hidden md:block">
-                                <span className="text-white/50 font-bold uppercase tracking-widest text-xl whitespace-nowrap">
-                                    {item.title}
-                                </span>
-                            </div>
-                        </a>
-                    ))
-                }
-            </div >
-
             <NetworkCounter />
-
-            {/* Legacy & Discovery Section - Unexpected Contrast */}
-            <div ref={legacyRef} className="relative min-h-screen bg-white text-black py-0 px-0 flex flex-col items-center justify-center overflow-hidden -mt-[10vh] md:-mt-[20vh] z-10 rounded-t-[2.5rem] md:rounded-t-[4rem] shadow-2xl will-change-transform backface-hidden">
-
-                {/* Next Level Background - Holographic Orbs (Optimized) */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-50">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-linear-to-b from-secondary/30 to-transparent blur-[80px] rounded-full mix-blend-multiply"></div>
-                    <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-secondary/20 blur-[80px] rounded-full mix-blend-multiply"></div>
-                    <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-primary/20 blur-[60px] rounded-full mix-blend-multiply"></div>
-                </div>
-
-                {/* Main Content Wrapper */}
-                <div className="legacy-content relative z-20 w-full max-w-6xl mx-auto flex flex-col items-center gap-12 md:gap-24 py-20 md:py-32 px-4 md:px-12 pointer-events-auto">
-
-                    {/* Top: High Impact Quotes (Animated on Scroll) */}
-                    <div className="relative z-10 w-full text-center max-w-5xl mx-auto space-y-6 md:space-y-12">
-                        <div className="quote-wrapper overflow-hidden pb-2 md:pb-4">
-                            <h3 className="text-xl sm:text-2xl md:text-5xl font-black uppercase tracking-tight legacy-quote blur-[20px] opacity-0 translate-y-20">
-                                15 Years of Transforming <span className="text-primary italic font-serif">Passion</span> into Profession
-                            </h3>
-                        </div>
-                        <div className="quote-wrapper overflow-hidden pb-2 md:pb-4">
-                            <h3 className="text-xl sm:text-2xl md:text-5xl font-black uppercase tracking-tight legacy-quote blur-[20px] opacity-0 translate-y-20">
-                                Where Creativity Meets <span className="text-secondary italic font-serif">Global</span> Industry Leadership
-                            </h3>
-                        </div>
-                        <div className="quote-wrapper overflow-hidden pb-2 md:pb-4">
-                            <h3 className="text-xl sm:text-2xl md:text-5xl font-black uppercase tracking-tight legacy-quote blur-[20px] opacity-0 translate-y-20">
-                                India’s Premier <span className="text-primary italic font-serif">Skill</span> School for Designers
-                            </h3>
-                        </div>
-                        <div className="mt-6 md:mt-16 w-12 md:w-24 h-1 md:h-2 bg-slate-900 mx-auto rounded-full"></div>
-                    </div>
-
-                    {/* Bottom: Unexpected Search Interaction & Carousel */}
-                    <div className="relative w-full h-full flex items-center justify-center perspective-[1000px] min-h-[500px] md:min-h-[600px]">
-
-                        {/* Mixed Blend Mode Overlay for 'Future' feel */}
-                        <div className="absolute inset-0 bg-linear-to-b from-transparent to-slate-50 opacity-50 pointer-events-none"></div>
-
-                        {/* Vertical Infinite Carousel Background */}
-                        <div className="absolute inset-0 overflow-hidden flex justify-center items-center opacity-[0.08] select-none pointer-events-none mix-blend-multiply mask-linear-fade">
-                            <div className="carousel-track flex flex-col gap-8 text-center" style={{ transform: "rotate(-5deg) scale(1.2)" }}>
-                                {[...carouselTerms, ...carouselTerms, ...carouselTerms, ...carouselTerms].map((term, i) => (
-                                    <span key={i} className="text-[8rem] md:text-[10rem] font-black uppercase text-slate-900 leading-none">
-                                        {term}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Magnetic & Glassmorphic Search Container */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 50, scale: 0.95 }}
-                            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                            className="search-container relative w-full max-w-7xl backdrop-blur-xl bg-slate-900/95 text-white p-10 md:p-24 rounded-[3rem] md:rounded-[5rem] shadow-2xl hover:shadow-[0_40px_100px_rgba(0,0,0,0.6)] transition-all duration-700 hover:scale-[1.01] cursor-text group overflow-hidden border border-white/10"
-                        >
-
-                            {/* Animated Gradient Border/Glow */}
-                            <div className="absolute -inset-full bg-linear-to-r from-transparent via-white/10 to-transparent rotate-45 translate-x-[-150%] transition-transform duration-1000 group-hover:translate-x-[150%] ease-in-out pointer-events-none"></div>
-
-                            <div className="relative z-10">
-                                <label className="block text-xs font-mono uppercase tracking-widest text-slate-400 mb-6">Find your path</label>
-
-                                {/* Input Area */}
-                                <div className="flex items-center gap-6 border-b border-white/20 pb-4 mb-10 group-focus-within:border-secondary transition-colors duration-300">
-                                    <div className="w-4 h-4 rounded-full bg-secondary animate-pulse"></div>
-                                    <input
-                                        type="search"
-                                        value={searchQuery}
-                                        onChange={(e) => {
-                                            setSearchQuery(e.target.value);
-                                            if (e.target.value) setIsDropdownOpen(true);
-                                        }}
-                                        placeholder="Type to explore your future..."
-                                        className="bg-transparent border-none outline-none text-2xl md:text-6xl font-black text-white placeholder-slate-700 w-full tracking-tighter"
-                                    />
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-30 group-focus-within:opacity-100 group-focus-within:text-primary group-focus-within:scale-110 transition-all duration-500">
-                                        <circle cx="11" cy="11" r="8"></circle>
-                                        <path d="m21 21-4.3-4.3"></path>
-                                    </svg>
-                                </div>
-
-                                {/* Expanded Program Explorer */}
-                                <div className="mt-8 transition-all duration-500 ease-in-out">
-                                    <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:items-center mb-6 w-full">
-                                        <button
-                                            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                                            className="flex items-center justify-between md:justify-start w-full md:w-auto gap-3 text-sm font-bold uppercase tracking-widest text-slate-300 hover:text-white transition-colors group/btn"
-                                        >
-                                            <div className="flex items-center gap-3">
-                                                <span className={`h-px bg-current transition-all duration-300 ${isDropdownOpen ? 'w-12 bg-secondary' : 'w-6'}`}></span>
-                                                {isDropdownOpen ? 'Close Programs' : 'Browse All Programs'}
-                                            </div>
-                                            {/* Mobile Arrow Hint */}
-                                            <span className="md:hidden text-lg rotate-90 opacity-50">›</span>
-                                        </button>
-
-                                        <motion.div
-                                            initial={{ opacity: 0 }}
-                                            animate={{ opacity: 1 }}
-                                            className="flex gap-2 w-full md:w-auto overflow-x-auto custom-scrollbar pb-2 md:pb-0"
-                                        >
-                                            <span
-                                                onClick={() => { setActiveFilter(null); setIsDropdownOpen(true); }}
-                                                className={`px-4 py-2 md:px-3 md:py-1 whitespace-nowrap rounded-full border text-xs font-medium transition-colors duration-300 cursor-pointer ${activeFilter === null ? 'bg-white text-black border-white' : 'border-white/20 text-slate-300 bg-white/5 hover:bg-white hover:text-black'}`}
-                                            >
-                                                All
-                                            </span>
-                                            {["Fashion", "Interior", "Luxury", "Graphic", "Animation"].map((tag, i) => (
-                                                <span
-                                                    key={i}
-                                                    onClick={() => { setActiveFilter(activeFilter === tag ? null : tag); setIsDropdownOpen(true); }}
-                                                    className={`px-4 py-2 md:px-3 md:py-1 whitespace-nowrap rounded-full border text-xs font-medium transition-colors duration-300 cursor-pointer ${activeFilter === tag ? 'bg-white text-black border-white' : 'border-white/20 text-slate-300 bg-white/5 hover:bg-white hover:text-black'}`}
-                                                >
-                                                    {tag}
-                                                </span>
-                                            ))}
-                                        </motion.div>
-                                    </div>
-
-                                    <AnimatePresence>
-                                        {isDropdownOpen && (
-                                            <motion.div
-                                                initial={{ height: 0, opacity: 0 }}
-                                                animate={{ height: "auto", opacity: 1 }}
-                                                exit={{ height: 0, opacity: 0 }}
-                                                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                                                className="overflow-hidden"
-                                            >
-                                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 pt-4 pb-2 border-t border-white/10">
-
-                                                    {/* Masters */}
-                                                    {hasItems(programs.masters) && (
-                                                        <div>
-                                                            <h4 className="text-secondary font-mono text-xs uppercase tracking-widest mb-4">Masters (2 Years)</h4>
-                                                            <ul className="space-y-2">
-                                                                {filterPrograms(programs.masters).map((item, i) => (
-                                                                    <li key={i} className="text-slate-400 hover:text-white hover:translate-x-2 transition-all duration-300 cursor-pointer text-sm">{item}</li>
-                                                                ))}
-                                                            </ul>
-                                                        </div>
-                                                    )}
-                                                    {/* Bachelors */}
-                                                    {hasItems(programs.bachelors) && (
-                                                        <div>
-                                                            <h4 className="text-primary font-mono text-xs uppercase tracking-widest mb-4">Bachelors (3/4 Years)</h4>
-                                                            <ul className="space-y-2">
-                                                                {filterPrograms(programs.bachelors).map((item, i) => (
-                                                                    <li key={i} className="text-slate-400 hover:text-white hover:translate-x-2 transition-all duration-300 cursor-pointer text-sm">{item}</li>
-                                                                ))}
-                                                            </ul>
-                                                        </div>
-                                                    )}
-                                                    {/* Diploma (2 Year) */}
-                                                    {hasItems(programs.diploma_two) && (
-                                                        <div>
-                                                            <h4 className="text-secondary font-mono text-xs uppercase tracking-widest mb-4">Diploma (2 Year)</h4>
-                                                            <ul className="space-y-2">
-                                                                {filterPrograms(programs.diploma_two).map((item, i) => (
-                                                                    <li key={i} className="text-slate-400 hover:text-white hover:translate-x-2 transition-all duration-300 cursor-pointer text-sm">{item}</li>
-                                                                ))}
-                                                            </ul>
-                                                        </div>
-                                                    )}
-                                                    {/* Diploma (1 Year) */}
-                                                    {hasItems(programs.diploma_one) && (
-                                                        <div>
-                                                            <h4 className="text-secondary font-mono text-xs uppercase tracking-widest mb-4">Diploma (1 Year)</h4>
-                                                            <ul className="space-y-2">
-                                                                {filterPrograms(programs.diploma_one).map((item, i) => (
-                                                                    <li key={i} className="text-slate-400 hover:text-white hover:translate-x-2 transition-all duration-300 cursor-pointer text-sm">{item}</li>
-                                                                ))}
-                                                            </ul>
-                                                        </div>
-                                                    )}
-                                                    {/* Short Courses */}
-                                                    {hasItems(programs.short) && (
-                                                        <div>
-                                                            <h4 className="text-primary font-mono text-xs uppercase tracking-widest mb-4">Short Courses</h4>
-                                                            <ul className="space-y-2">
-                                                                {filterPrograms(programs.short).map((item, i) => (
-                                                                    <li key={i} className="text-slate-400 hover:text-white hover:translate-x-2 transition-all duration-300 cursor-pointer text-sm">{item}</li>
-                                                                ))}
-                                                            </ul>
-                                                        </div>
-                                                    )}
-                                                </div>
-
-                                                {/* No Results Message */}
-                                                {!hasItems(programs.masters) && !hasItems(programs.bachelors) &&
-                                                    !hasItems(programs.diploma_two) && !hasItems(programs.diploma_one) &&
-                                                    !hasItems(programs.short) && (
-                                                        <div className="col-span-full py-10 text-center text-slate-400">
-                                                            <p className="text-xl italic">No programs found matching "{searchQuery}"</p>
-                                                            {activeFilter && <p className="text-sm mt-2">Try removing the "{activeFilter}" filter</p>}
-                                                        </div>
-                                                    )}
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </div>
-                </div>
-            </div>
             <WhyInsd />
+            <StepLeadForm />
+            <ProgramSearch />
+            
             <LeadForm />
+
+
+
+
             <AiFutureDesign />
             <TestimonialSlider />
             <TOICertification />
@@ -729,7 +507,7 @@ const Home = () => {
             </div>
 
 
-            {/* Separate Impact Stats Section - Moved up */}
+
             <FeaturedIn />
             <EventBlogs />
             <InstagramGallery />
