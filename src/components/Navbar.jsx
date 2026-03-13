@@ -2,7 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { Menu as MenuIcon, X, ArrowRight, Home, Sparkles, GraduationCap, LayoutGrid, User } from 'lucide-react';
+import {
+    Menu as MenuIcon, X, ArrowRight, Home, Sparkles, GraduationCap, LayoutGrid, User,
+    Search, Folder, Users, CreditCard, Box, HelpCircle, Settings, LogOut, ChevronLeft, ChevronsLeft, Store
+} from 'lucide-react';
 import gsap from 'gsap';
 
 const RollerLink = ({ to, children, colorClass, baseTextClass = "text-slate-800" }) => {
@@ -144,7 +147,43 @@ const Navbar = () => {
 
 
 
-    const menuItems = [];
+    const menuItems = [
+        { title: 'Dashboard', path: '/', icon: LayoutGrid, section: 'OVERVIEW' },
+        {
+            title: 'About INSD',
+            path: '/about-us',
+            icon: Folder,
+            section: 'OVERVIEW',
+            subItems: [
+                { name: 'Industry Potential', path: '/industry-potential' },
+                { name: 'Award Recognise', path: '/awards' },
+                { name: 'Insdian', path: '/insdian' },
+                { name: 'Student Career', path: '/student-careers' },
+                { name: 'Campus', path: '/campuses' },
+                { name: 'Placement', path: '/placement' },
+            ]
+        },
+        {
+            title: 'Our Courses',
+            path: '/courses',
+            icon: GraduationCap,
+            section: 'OVERVIEW',
+            subItems: [
+                { name: 'Fashion Design', path: '/fashion-design' },
+                { name: 'Interior Design', path: '/interior-design' },
+                { name: 'Graphic Design', path: '/graphic-design' },
+                { name: 'Animation VFX', path: '/animation-vfx' },
+                { name: 'Jewellery Design', path: '/jewellery-design' },
+                { name: 'UI/UX Design', path: '/ui-ux-design' },
+                { name: 'Beauty and Makeup', path: '/beauty-and-makeup' },
+                { name: 'Photography', path: '/photography' },
+                { name: 'Textile Design', path: '/textile-design' },
+            ]
+        },
+        { title: 'Admissions', path: '/apply', icon: CreditCard, section: 'OVERVIEW' },
+        { title: 'Franchise', path: '/franchise', icon: Store, section: 'OVERVIEW' },
+        { title: 'Settings', path: '/profile', icon: Settings, section: 'OTHER' },
+    ];
 
     // Logic to lock body scroll when menu is open
     useEffect(() => {
@@ -173,7 +212,7 @@ const Navbar = () => {
                     x: "-50%",
                 }}
                 ref={navRef}
-                className="hidden md:flex fixed left-1/2 z-[1000] px-6 lg:px-8 xl:px-10 py-4 items-center justify-between transition-all duration-300 pointer-events-auto w-full"
+                className="hidden md:flex fixed left-1/2 z-1000 px-6 lg:px-8 xl:px-10 py-4 items-center justify-between transition-all duration-300 pointer-events-auto w-full"
             >
                 {/* Left: Logo */}
                 <Link to="/" className="nav-logo relative z-50 shrink-0 block h-10 overflow-hidden" onClick={() => setIsOpen(false)}>
@@ -369,320 +408,223 @@ const Navbar = () => {
                 ref={mobileNavRef}
                 className="md:hidden fixed left-1/2 z-50 flex items-center pointer-events-none"
             >
-                <div className="relative w-full h-full flex items-center justify-between px-4 pointer-events-auto">
-                    {/* Ghost spacer to keep logo centered */}
-                    <div className="w-20 hidden md:block" />
-
-                    <Link to="/" onClick={() => setIsOpen(false)} className="h-full flex items-center justify-center mx-auto">
+                <div className="relative w-full h-full flex items-center justify-center px-4 pointer-events-auto">
+                    <Link to="/" onClick={() => setIsOpen(false)} className="h-full flex items-center justify-center">
                         <img
                             className={`h-7 md:h-8 w-auto object-contain transition-all duration-500 ${isHeaderDark && !isScrolled ? 'brightness-0 invert' : 'drop-shadow-sm'}`}
                             src="https://insd.edu.in/wp-content/uploads/2022/02/Final-Logo.png"
                             alt="INSD Logo"
                         />
                     </Link>
-
-                    {/* Register button removed from here for cleaner mobile look */}
                 </div>
             </motion.div >
 
-            {/* Mobile Bottom Navigation Bar - iPhone Style */}
-            <div className={`fixed bottom-2 left-2 right-2 h-20 flex items-center justify-around px-4 border z-50 md:hidden rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500 ${isOpen || (isHeaderDark && !isScrolled) ? 'apple-glass-dark bg-slate-900/40!' : 'apple-glass'}`}>
-                <NavLink
-                    to="/"
-                    onClick={() => setIsOpen(false)}
-                    className={({ isActive }) =>
-                        `relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${isActive ? 'text-primary' : (isHeaderDark && !isScrolled) || isOpen ? 'text-white/40 hover:text-white' : 'text-slate-900/40 hover:text-slate-900'}`
-                    }
-                >
-                    {({ isActive }) => (
-                        <>
-                            {isActive && <motion.div layoutId="activePill" className="absolute inset-2 bg-primary/20 rounded-full shadow-[0_0_20px_rgba(236,72,153,0.2)]" />}
-                            <Home size={24} strokeWidth={isActive ? 2.5 : 2} />
-                            <span className={`text-[10px] font-black mt-1 uppercase tracking-tighter ${isActive ? 'opacity-100' : 'opacity-40'}`}>Home</span>
-                        </>
-                    )}
-                </NavLink>
-
-                <NavLink
-                    to="/courses"
-                    onClick={() => setIsOpen(false)}
-                    className={({ isActive }) =>
-                        `relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${isActive ? 'text-secondary' : (isHeaderDark && !isScrolled) || isOpen ? 'text-white/40 hover:text-white' : 'text-slate-900/40 hover:text-slate-900'}`
-                    }
-                >
-                    {({ isActive }) => (
-                        <>
-                            {isActive && <motion.div layoutId="activePill" className="absolute inset-2 bg-secondary/20 rounded-full shadow-[0_0_20px_rgba(139,92,246,0.2)]" />}
-                            <Sparkles size={24} strokeWidth={isActive ? 2.5 : 2} />
-                            <span className={`text-[10px] font-black mt-1 uppercase tracking-tighter ${isActive ? 'opacity-100' : 'opacity-40'}`}>Courses</span>
-                        </>
-                    )}
-                </NavLink>
-
-                <button
-                    onClick={() => {
-                        setIsOpen(false);
-                        openModal();
-                    }}
-                    className={`relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${(isHeaderDark && !isScrolled) || isOpen ? 'text-white/40 hover:text-white' : 'text-slate-900/40 hover:text-slate-900'}`}
-                >
-                    <GraduationCap size={24} strokeWidth={2} />
-                    <span className="text-[10px] font-black mt-1 uppercase tracking-tighter opacity-40">Apply</span>
-                </button>
-
-                <button
-                    onClick={() => setIsOpen(!isOpen)}
-                    className={`relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${isOpen ? 'text-primary bg-primary/5' : (isHeaderDark && !isScrolled) ? 'text-white/40 hover:text-white' : 'text-slate-900/40 hover:text-slate-900'}`}
-                >
-                    {isOpen ? <X size={26} strokeWidth={2} /> : <LayoutGrid size={24} strokeWidth={2} />}
-                    <span className={`text-[10px] font-black mt-1 uppercase tracking-tighter ${isOpen ? 'opacity-100' : 'opacity-40'}`}>{isOpen ? 'Close' : 'Menu'}</span>
-                </button>
-            </div>
-
-            {/* Full Screen Menu Overlay */}
-            < AnimatePresence >
-                {isOpen && (
-                    <motion.div
-                        initial={isMobile ? { y: "100%", borderRadius: "2rem 2rem 0 0" } : { clipPath: "circle(0% at 95% 40px)" }}
-                        animate={isMobile ? { y: 0, borderRadius: "0 0 0 0" } : { clipPath: "circle(150% at 95% 40px)" }}
-                        transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-                        exit={isMobile ? { y: "100%", borderRadius: "2rem 2rem 0 0" } : { clipPath: "circle(0% at 95% 40px)", transition: { duration: 0.8, ease: "circIn" } }}
-                        className="fixed inset-0 z-39 bg-[#0f172b] text-white overflow-hidden shadow-2xl"
+            {/* Mobile Bottom Navigation Bar - Pill Glass Style */}
+            <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[400px] h-20 z-50 md:hidden">
+                <div className={`w-full h-full flex items-center justify-around px-6 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition-all duration-500 border ${isOpen || (isHeaderDark && !isScrolled) ? 'bg-slate-900/40 backdrop-blur-2xl border-white/10' : 'bg-white/40 backdrop-blur-2xl border-white/30'}`}>
+                    
+                    {/* HOME */}
+                    <NavLink
+                        to="/"
+                        onClick={() => setIsOpen(false)}
+                        className={({ isActive }) =>
+                            `relative flex flex-col items-center justify-center w-16 h-16 transition-all duration-500 scale-90 active:scale-75 ${isActive ? 'text-primary' : (isHeaderDark && !isScrolled) || isOpen ? 'text-white/40' : 'text-slate-900/40'}`
+                        }
                     >
-                        {/* Background shapes */}
-                        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                            <div className="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-primary/30 rounded-full blur-[120px] mix-blend-screen animate-pulse" />
-                            <div className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-secondary/30 rounded-full blur-[120px] mix-blend-screen animate-pulse delay-1000" />
-                            <div className="absolute top-[40%] left-[40%] w-[40vw] h-[40vw] bg-indigo-600/20 rounded-full blur-[100px] mix-blend-screen animate-pulse delay-2000" />
+                        {({ isActive }) => (
+                            <>
+                                {isActive && (
+                                    <motion.div 
+                                        layoutId="activeBubble" 
+                                        className="absolute inset-0 bg-primary/10 rounded-full border border-primary/20 shadow-[0_0_20px_rgba(219,52,54,0.1)]"
+                                        transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
+                                    />
+                                )}
+                                <Home size={22} strokeWidth={isActive ? 2.5 : 2} className="relative z-10" />
+                                <span className={`text-[9px] font-bold mt-1.5 uppercase tracking-widest relative z-10 ${isActive ? 'opacity-100' : 'opacity-60'}`}>Home</span>
+                            </>
+                        )}
+                    </NavLink>
+
+                    {/* APPLY */}
+                    <button
+                        onClick={() => {
+                            setIsOpen(false);
+                            openModal();
+                        }}
+                        className={`relative flex flex-col items-center justify-center w-16 h-16 transition-all duration-500 scale-90 active:scale-75 ${(isHeaderDark && !isScrolled) || isOpen ? 'text-white/40 hover:text-white' : 'text-slate-900/40 hover:text-slate-900'}`}
+                    >
+                        <GraduationCap size={22} strokeWidth={2} />
+                        <span className="text-[9px] font-bold mt-1.5 uppercase tracking-widest opacity-60">Apply</span>
+                    </button>
+
+                    {/* MENU */}
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        className={`relative flex flex-col items-center justify-center w-16 h-16 transition-all duration-500 scale-90 active:scale-75 ${isOpen ? 'text-primary' : (isHeaderDark && !isScrolled) ? 'text-white/40 hover:text-white' : 'text-slate-900/40 hover:text-slate-900'}`}
+                    >
+                        {isOpen && (
+                            <motion.div 
+                                layoutId="activeBubble" 
+                                className="absolute inset-0 bg-primary/10 rounded-full border border-primary/20 shadow-[0_0_20px_rgba(219,52,54,0.1)]"
+                                transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
+                            />
+                        )}
+                        <div className="relative z-10">
+                            {isOpen ? <X size={24} strokeWidth={2.5} /> : <LayoutGrid size={22} strokeWidth={2} />}
                         </div>
+                        <span className={`text-[9px] font-bold mt-1.5 uppercase tracking-widest relative z-10 ${isOpen ? 'opacity-100' : 'opacity-60'}`}>{isOpen ? 'Close' : 'Menu'}</span>
+                    </button>
+                </div>
+            </div >
 
-                        <div className="relative z-10 w-full h-full max-w-7xl mx-auto px-6 py-24 flex items-center">
-                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 w-full h-full">
+            {/* Navigation Menu Sidebar/Overlay */}
+            <AnimatePresence>
+                {isOpen && (
+                    <>
+                        {/* Backdrop Overlay - Mobile Only */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setIsOpen(false)}
+                            className="fixed inset-0 z-1000 bg-slate-950/60 backdrop-blur-sm md:hidden"
+                        />
 
-                                {/* Navigation Links Area (Main focus) */}
-                                <div className="lg:col-span-8 flex flex-col justify-start md:justify-center space-y-2 h-full overflow-y-auto no-scrollbar pb-32 pt-12 md:pt-0">
-
-                                    {/* Search Bar - Mobile/Menu Responsive */}
-                                    <motion.div
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: 0.3 }}
-                                        className="mb-8 w-full max-w-md shrink-0 flex flex-col gap-4"
-                                    >
-                                        {/* Register CTA for Mobile Drawer - Forced Dark for dark menu */}
-                                        <div className="md:hidden">
-                                            <RegisterButton
-                                                className="w-full py-4 rounded-2xl! flex justify-center items-center"
-                                                theme="dark"
-                                            />
-                                        </div>
-                                    </motion.div>
-
-                                    {menuItems.map((link, index) => (
-                                        <div key={link.title} className="group perspective-[1000px] shrink-0">
-                                            <motion.div
-                                                initial={{ y: "100%", rotateX: -90, opacity: 0 }}
-                                                animate={{ y: "0%", rotateX: 0, opacity: 1 }}
-                                                exit={{ y: "-100%", rotateX: 90, opacity: 0 }}
-                                                transition={{
-                                                    delay: 0.2 + index * 0.08,
-                                                    duration: 0.8,
-                                                    ease: [0.215, 0.61, 0.355, 1]
-                                                }}
-                                                className="origin-bottom"
-                                            >
-                                                <div className="flex flex-col">
-                                                    <div className="flex items-center justify-between group/link">
-                                                        <NavLink
-                                                            to={link.subItems ? '#' : (link.title === 'Apply' || link.title === 'Register' ? '#' : link.path)}
-                                                            onClick={(e) => {
-                                                                if (link.subItems) {
-                                                                    e.preventDefault();
-                                                                    setExpandedItem(expandedItem === link.title ? null : link.title);
-                                                                } else if (link.title === 'Apply' || link.title === 'Register') {
-                                                                    e.preventDefault();
-                                                                    setIsOpen(false);
-                                                                    openModal();
-                                                                } else {
-                                                                    setIsOpen(false);
-                                                                }
-                                                            }}
-                                                            className={({ isActive }) => {
-                                                                const isPathActive = location.pathname === link.path ||
-                                                                    (link.subItems && link.subItems.some(sub => location.pathname === sub.path));
-
-                                                                return `relative inline-flex items-center text-base md:text-lg lg:text-xl font-bold tracking-tight uppercase transition-colors duration-300 ${isPathActive ? 'text-white' : 'text-slate-600 hover:text-white'}`;
-                                                            }}
-                                                        >
-                                                            <span className="absolute -left-12 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300 text-primary text-3xl hidden lg:block">
-                                                                <ArrowRight />
-                                                            </span>
-                                                            <span className="relative z-10 group-hover/link:translate-x-4 transition-transform duration-300">
-                                                                {link.title}
-                                                            </span>
-                                                        </NavLink>
-
-                                                        {link.subItems && (
-                                                            <motion.button
-                                                                animate={{ rotate: expandedItem === link.title ? 180 : 0 }}
-                                                                onClick={() => setExpandedItem(expandedItem === link.title ? null : link.title)}
-                                                                className={`p-4 transition-colors rounded-full hover:bg-white/5 ${expandedItem === link.title ? 'text-primary' : 'text-slate-500 hover:text-white'}`}
-                                                            >
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
-                                                            </motion.button>
-                                                        )}
-                                                    </div>
-
-                                                    {link.subItems && (
-                                                        <AnimatePresence>
-                                                            {expandedItem === link.title && (
-                                                                <motion.div
-                                                                    initial={{ height: 0, opacity: 0 }}
-                                                                    animate={{ height: "auto", opacity: 1 }}
-                                                                    exit={{ height: 0, opacity: 0 }}
-                                                                    transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
-                                                                    className="overflow-hidden flex flex-col pl-4 md:pl-8 mt-4 space-y-4 border-l-2 border-primary/30 ml-2"
-                                                                >
-                                                                    {link.subItems.map((subItem) => (
-                                                                        <div key={subItem.name} className="flex flex-col">
-                                                                            {subItem.subItems ? (
-                                                                                <>
-                                                                                    <div className="flex items-center justify-between group/sub w-full">
-                                                                                        <NavLink
-                                                                                            to={subItem.subItems ? '#' : subItem.path}
-                                                                                            onClick={(e) => {
-                                                                                                if (subItem.subItems) {
-                                                                                                    e.preventDefault();
-                                                                                                    setExpandedSubItem(expandedSubItem === subItem.name ? null : subItem.name);
-                                                                                                } else {
-                                                                                                    setIsOpen(false);
-                                                                                                }
-                                                                                            }}
-                                                                                            className={({ isActive }) =>
-                                                                                                `relative flex items-center text-sm md:text-base font-bold transition-all duration-300 uppercase tracking-tight ${isActive ? 'text-primary' : 'text-slate-400 hover:text-white'}`
-                                                                                            }
-                                                                                        >
-                                                                                            <span className="w-0 h-[2px] bg-primary mr-0 transition-all duration-300 group-hover/sub:w-4 group-hover/sub:mr-3" />
-                                                                                            <span className="group-hover/sub:translate-x-1 transition-transform duration-300">
-                                                                                                {subItem.name}
-                                                                                            </span>
-                                                                                        </NavLink>
-                                                                                        <motion.button
-                                                                                            animate={{ rotate: expandedSubItem === subItem.name ? 180 : 0 }}
-                                                                                            onClick={(e) => {
-                                                                                                e.preventDefault();
-                                                                                                e.stopPropagation();
-                                                                                                setExpandedSubItem(expandedSubItem === subItem.name ? null : subItem.name);
-                                                                                            }}
-                                                                                            className={`p-1 transition-colors rounded-full hover:bg-white/5 ${expandedSubItem === subItem.name ? 'text-primary' : 'text-slate-500 hover:text-white'}`}
-                                                                                        >
-                                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
-                                                                                        </motion.button>
-                                                                                    </div>
-                                                                                    <AnimatePresence>
-                                                                                        {expandedSubItem === subItem.name && (
-                                                                                            <motion.div
-                                                                                                initial={{ height: 0, opacity: 0 }}
-                                                                                                animate={{ height: "auto", opacity: 1 }}
-                                                                                                exit={{ height: 0, opacity: 0 }}
-                                                                                                transition={{ duration: 0.3, ease: [0.76, 0, 0.24, 1] }}
-                                                                                                className="overflow-hidden flex flex-col pl-4 mt-2 space-y-2 border-l border-primary/20 ml-2"
-                                                                                            >
-                                                                                                {subItem.subItems.map((nestedItem) => (
-                                                                                                    <NavLink
-                                                                                                        key={nestedItem.name}
-                                                                                                        to={nestedItem.path}
-                                                                                                        onClick={() => setIsOpen(false)}
-                                                                                                        className={({ isActive }) =>
-                                                                                                            `block text-xs md:text-sm font-medium transition-all duration-300 uppercase tracking-wide ${isActive ? 'text-primary' : 'text-slate-500 hover:text-slate-300'}`
-                                                                                                        }
-                                                                                                    >
-                                                                                                        {nestedItem.name}
-                                                                                                    </NavLink>
-                                                                                                ))}
-                                                                                            </motion.div>
-                                                                                        )}
-                                                                                    </AnimatePresence>
-                                                                                </>
-                                                                            ) : (
-                                                                                <NavLink
-                                                                                    to={subItem.path}
-                                                                                    onClick={() => setIsOpen(false)}
-                                                                                    className={({ isActive }) =>
-                                                                                        `group/sub relative flex items-center text-sm md:text-base font-bold transition-all duration-300 uppercase tracking-tight ${isActive ? 'text-primary' : 'text-slate-400 hover:text-white'}`
-                                                                                    }
-                                                                                >
-                                                                                    <span className="w-0 h-[2px] bg-primary mr-0 transition-all duration-300 group-hover/sub:w-4 group-hover/sub:mr-3" />
-                                                                                    <span className="group-hover/sub:translate-x-1 transition-transform duration-300">
-                                                                                        {subItem.name}
-                                                                                    </span>
-                                                                                </NavLink>
-                                                                            )}
-                                                                        </div>
-                                                                    ))}
-                                                                </motion.div>
-                                                            )}
-                                                        </AnimatePresence>
-                                                    )}
+                        <motion.div
+                            initial={isMobile ? { x: "-100%" } : { clipPath: "circle(0% at 95% 40px)" }}
+                            animate={isMobile ? { x: 0 } : { clipPath: "circle(150% at 95% 40px)" }}
+                            transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
+                            exit={isMobile ? { x: "-100%" } : { clipPath: "circle(0% at 95% 40px)", transition: { duration: 0.5 } }}
+                            className={`fixed z-1001 text-white overflow-hidden shadow-2xl ${isMobile ? 'top-0 left-0 bottom-0 w-[85vw] max-w-[320px] bg-[#0a0a0a]/80 backdrop-blur-2xl border-r border-white/10 flex flex-col' : 'fixed inset-0 bg-slate-950/95'}`}
+                        >
+                            {/* Profile Header Block */}
+                            <div className="p-6 flex items-center justify-between shrink-0">
+                                <div className="flex items-center gap-3">
+                                    <div className="relative">
+                                        <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden">
+                                            {user ? (
+                                                <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${user.username}`} alt="Avatar" className="w-full h-full object-cover" />
+                                            ) : (
+                                                <div className="w-full h-full bg-primary/20 flex items-center justify-center text-primary">
+                                                    <User size={20} strokeWidth={2.5} />
                                                 </div>
-                                            </motion.div>
+                                            )}
                                         </div>
-                                    ))}
+                                        <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-green-500 border-2 border-[#111] rounded-full" />
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <span className="text-sm font-bold text-white tracking-tight leading-tight">
+                                            {user ? user.username : 'Welcome!'}
+                                        </span>
+                                        <span className="text-[10px] text-white/30 uppercase font-black tracking-widest">Student Hub</span>
+                                    </div>
                                 </div>
 
-                                {/* Side Info (Visible on large screens) */}
-                                <div className="hidden lg:flex lg:col-span-4 flex-col justify-center space-y-12 border-l border-white/10 pl-12">
-                                    <motion.div
-                                        initial={{ opacity: 0, x: 20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: 0.5 }}
-                                        className="space-y-4"
-                                    >
-                                        <h3 className="text-primary font-bold uppercase tracking-widest text-sm">Contact</h3>
-                                        <div className="space-y-2 text-base text-slate-300">
-                                            <a href="tel:+917701933935">+91 7701933935</a>
-                                            <br />
-                                            <a href="tel:+917827066618">+91 7827066618</a>
-                                        </div>
-                                    </motion.div>
+                                <button
+                                    onClick={() => setIsOpen(false)}
+                                    className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-white/40 hover:text-white transition-all shadow-sm active:scale-90"
+                                >
+                                    <ChevronsLeft size={18} />
+                                </button>
+                            </div>
 
-                                    <motion.div
-                                        initial={{ opacity: 0, x: 20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: 0.6 }}
-                                        className="space-y-4"
-                                    >
-                                        <div className="space-y-2 text-base text-slate-300">
-                                            <h1 className="text-xl font-bold">INSD CORPORATE CENTRES</h1>
-                                        </div>
-                                    </motion.div>
 
-                                    <motion.div
-                                        initial={{ opacity: 0, x: 20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: 0.7 }}
-                                        className="space-y-4"
+
+                            {/* Scrollable Nav Area */}
+                            <div className="flex-1 overflow-y-auto min-h-0 custom-scrollbar px-4 space-y-6 pb-10">
+                                {/* OVERVIEW SECTION */}
+                                <div className="space-y-1">
+                                    <h3 className="px-4 text-[10px] font-bold tracking-[0.2em] text-white/20 uppercase mb-3">Overview</h3>
+                                    <div className="space-y-1">
+                                        {menuItems.filter(item => item.section === 'OVERVIEW').map((item) => {
+                                            const isActive = location.pathname === item.path;
+                                            const Icon = item.icon;
+
+                                            return (
+                                                <div key={item.title}>
+                                                    <NavLink
+                                                        to={item.subItems ? '#' : item.path}
+                                                        onClick={(e) => {
+                                                            if (item.subItems) {
+                                                                e.preventDefault();
+                                                                setExpandedItem(expandedItem === item.title ? null : item.title);
+                                                            } else {
+                                                                setIsOpen(false);
+                                                            }
+                                                        }}
+                                                        className={`flex items-center gap-3.5 px-4 py-3 rounded-xl transition-all duration-300 group ${isActive ? 'bg-primary/10 text-primary shadow-[inset_0_0_20px_rgba(219,52,54,0.05)]' : 'text-white/50 hover:bg-white/5 hover:text-white'}`}
+                                                    >
+                                                        <Icon size={18} className={`${isActive ? 'text-primary' : 'text-white/30 group-hover:text-primary transition-colors'}`} strokeWidth={isActive ? 2.5 : 2} />
+                                                        <span className="text-[13px] font-bold tracking-tight">{item.title}</span>
+
+                                                        {item.title === 'Franchise' && (
+                                                            <div className="ml-auto flex items-center gap-1.5">
+                                                                <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse shadow-[0_0_8px_rgba(219,52,54,0.6)]" />
+                                                            </div>
+                                                        )}
+
+                                                        {item.subItems && (
+                                                            <ChevronLeft
+                                                                size={14}
+                                                                className={`ml-auto transition-transform duration-300 ${expandedItem === item.title ? '-rotate-90' : ''}`}
+                                                            />
+                                                        )}
+                                                    </NavLink>
+
+                                                    {/* Sub-items dropdown */}
+                                                    <AnimatePresence>
+                                                        {item.subItems && expandedItem === item.title && (
+                                                            <motion.div
+                                                                initial={{ height: 0, opacity: 0 }}
+                                                                animate={{ height: 'auto', opacity: 1 }}
+                                                                exit={{ height: 0, opacity: 0 }}
+                                                                transition={{ duration: 0.3, ease: "easeOut" }}
+                                                                className="overflow-hidden bg-white/2 border-l border-white/5 ml-6 mt-1 rounded-br-xl"
+                                                            >
+                                                                {item.subItems.map(sub => (
+                                                                    <NavLink
+                                                                        key={sub.name}
+                                                                        to={sub.path}
+                                                                        onClick={() => setIsOpen(false)}
+                                                                        className="block px-6 py-2.5 text-[11px] font-bold text-white/30 hover:text-primary hover:bg-white/5 transition-all uppercase tracking-wider"
+                                                                    >
+                                                                        {sub.name}
+                                                                    </NavLink>
+                                                                ))}
+                                                            </motion.div>
+                                                        )}
+                                                    </AnimatePresence>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+
+                                {/* Account Section */}
+                                <div className="mt-auto pt-6 border-t border-white/5 space-y-2">
+                                    <button 
+                                        onClick={() => {
+                                            setIsOpen(false);
+                                            // Handle logout here (e.g., clear localStorage, redirect, etc.)
+                                            console.log("User logged out");
+                                        }}
+                                        className="w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-white/50 hover:bg-red-500/10 hover:text-red-500 transition-all group group"
                                     >
-                                        <h3 className="text-white font-bold uppercase tracking-widest text-sm">Follow Us</h3>
-                                        <div className="flex gap-4">
-                                            {[
-                                                { name: 'Instagram', link: 'https://www.instagram.com/insd_official' },
-                                                { name: 'LinkedIn', link: 'https://www.linkedin.com/school/international-school-of-design/' },
-                                                { name: 'Facebook', link: 'https://www.facebook.com/share/1CMuRdTV69/' }
-                                            ].map(social => (
-                                                <a key={social.name} href={social.link} target="_blank" rel="noopener noreferrer" className="relative group text-slate-400 hover:text-white transition-colors duration-300 py-1">
-                                                    {social.name}
-                                                    <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full" />
-                                                </a>
-                                            ))}
+                                        <div className="w-8 h-8 flex items-center justify-center rounded-lg bg-red-500/10 text-red-500 group-hover:bg-red-500 group-hover:text-white transition-all shadow-sm">
+                                            <LogOut size={16} />
                                         </div>
-                                    </motion.div>
+                                        <span className="text-[13px] font-bold tracking-tight">Sign Out</span>
+                                        <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <ArrowRight size={14} className="text-red-500" />
+                                        </div>
+                                    </button>
                                 </div>
                             </div>
-                        </div>
-                    </motion.div>
+                        </motion.div>
+                    </>
                 )}
-            </AnimatePresence >
+            </AnimatePresence>
         </>
     );
 };
