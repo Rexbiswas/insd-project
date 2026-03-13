@@ -9,10 +9,10 @@ const RollerLink = ({ to, children, colorClass, baseTextClass = "text-slate-800"
     return (
         <Link to={to} className="relative block h-[24px] group overflow-hidden">
             <div className="flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-1/2">
-                <span className={`flex items-center justify-center h-[24px] text-[10px] xl:text-[11px] font-bold ${baseTextClass} uppercase tracking-wider whitespace-nowrap transition-all duration-300 leading-none`}>
+                <span className={`flex items-center justify-center h-[24px] text-[10px] lg:text-[11px] xl:text-xs 2xl:text-[13px] font-bold ${baseTextClass} uppercase tracking-wider whitespace-nowrap transition-all duration-300 leading-none px-1`}>
                     {children}
                 </span>
-                <span className={`flex items-center justify-center h-[24px] text-[10px] xl:text-[11px] font-bold uppercase tracking-wider whitespace-nowrap ${colorClass} transition-all duration-300 leading-none`}>
+                <span className={`flex items-center justify-center h-[24px] text-[10px] lg:text-[11px] xl:text-xs 2xl:text-[13px] font-bold uppercase tracking-wider whitespace-nowrap ${colorClass} transition-all duration-300 leading-none px-1`}>
                     {children}
                 </span>
             </div>
@@ -258,7 +258,7 @@ const Navbar = () => {
                     />
                 </Link>
                 {/* Right: Actions */}
-                <div className="flex items-center gap-2 md:gap-6 lg:gap-10">
+                <div className="flex items-center gap-2 md:gap-4 lg:gap-6 2xl:gap-8">
                     {/* Quick Links - Visible on Desktop */}
                     <AnimatePresence>
                         {!isOpen && (
@@ -266,7 +266,7 @@ const Navbar = () => {
                                 initial={{ opacity: 0, x: 20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: 20 }}
-                                className="hidden lg:flex items-center gap-2 xl:gap-6"
+                                className="hidden lg:flex items-center gap-2 lg:gap-3 xl:gap-5 2xl:gap-6"
                             >
                                 <RollerLink
                                     to="/about-us"
@@ -317,15 +317,24 @@ const Navbar = () => {
                                 >
                                     Placement
                                 </RollerLink>
+                                <RollerLink
+                                    to="/apply"
+                                    colorClass="nav-hover-gradient"
+                                    baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
+                                >
+                                    Admission
+                                </RollerLink>
+                                <RollerLink
+                                    to="/franchise"
+                                    colorClass="nav-hover-gradient"
+                                    baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
+                                >
+                                    Franchise
+                                </RollerLink>
                             </motion.div>
                         )}
                     </AnimatePresence>
 
-                    <RegisterButton
-                        className="hidden md:block px-6 py-2"
-                        isDarkTheme={isHeaderDark}
-                        isScrolled={isScrolled}
-                    />
 
                     {/* Menu Toggle - Desktop Only */}
                     <motion.button
