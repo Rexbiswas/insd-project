@@ -111,7 +111,7 @@ const Navbar = () => {
     const scrollProgress = scrollY;
     const transitionRange = [0, 50]; // Quicker transition range
 
-    const navWidth = useTransform(scrollProgress, transitionRange, ["100%", "90%"]);
+    const navWidth = useTransform(scrollProgress, transitionRange, ["100%", "96%"]);
     const navTop = useTransform(scrollProgress, transitionRange, ["0px", "20px"]);
     const navRadius = useTransform(scrollProgress, transitionRange, ["0px", "50px"]);
 
@@ -245,7 +245,7 @@ const Navbar = () => {
                     x: "-50%",
                 }}
                 ref={navRef}
-                className="hidden md:flex fixed left-1/2 z-100 px-6 py-4 items-center justify-between transition-all duration-300 pointer-events-auto w-full"
+                className="hidden md:flex fixed left-1/2 z-100 px-6 lg:px-8 xl:px-10 py-4 items-center justify-between transition-all duration-300 pointer-events-auto w-full"
             >
                 {/* Left: Logo */}
                 <Link to="/" className="nav-logo relative z-50 shrink-0 block h-10 overflow-hidden" onClick={() => setIsOpen(false)}>
@@ -258,7 +258,7 @@ const Navbar = () => {
                     />
                 </Link>
                 {/* Right: Actions */}
-                <div className="flex items-center gap-2 md:gap-4 lg:gap-6 2xl:gap-8">
+                <div className="flex items-center gap-2 md:gap-3 lg:gap-4 2xl:gap-6">
                     {/* Quick Links - Visible on Desktop */}
                     <AnimatePresence>
                         {!isOpen && (
@@ -266,7 +266,7 @@ const Navbar = () => {
                                 initial={{ opacity: 0, x: 20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: 20 }}
-                                className="hidden lg:flex items-center gap-2 lg:gap-3 xl:gap-5 2xl:gap-6"
+                                className="hidden lg:flex items-center gap-1.5 lg:gap-2 xl:gap-3 2xl:gap-4"
                             >
                                 <RollerLink
                                     to="/about-us"
