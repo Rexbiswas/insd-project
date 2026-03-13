@@ -204,10 +204,12 @@ const Navbar = () => {
                                     <div className="absolute top-12 left-1/2 -translate-x-1/2 pt-6 w-64 opacity-0 invisible translate-y-4 group-hover/dropdown:opacity-100 group-hover/dropdown:visible group-hover/dropdown:translate-y-0 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] z-50">
                                         <div className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-2xl border border-slate-200/50 dark:border-white/10 rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] overflow-hidden p-2 relative before:content-[''] before:absolute before:inset-0 before:bg-linear-to-b before:from-white/40 before:to-transparent before:pointer-events-none after:content-[''] after:absolute after:-top-px after:left-10 after:right-10 after:h-[1px] after:bg-linear-to-r after:from-transparent after:via-primary/30 after:to-transparent">
                                             {[
-                                                { title: 'About Us', path: '/about-us', icon: 'info', desc: 'Learn about our journey' },
                                                 { title: 'Industry Potential', path: '/industry-potential', icon: 'zap', desc: 'Explore industry trends' },
                                                 { title: 'Award Recognise', path: '/awards', icon: 'award', desc: 'Our achievements' },
                                                 { title: 'Insdian', path: '/insdian', icon: 'users', desc: 'Meet our community' },
+                                                { title: 'Student Career', path: '/student-careers', icon: 'briefcase', desc: 'Career opportunities' },
+                                                { title: 'Campus', path: '/campuses', icon: 'map-pin', desc: 'Our locations' },
+                                                { title: 'Placement', path: '/placement', icon: 'trending-up', desc: 'Placement records' },
                                             ].map((item, i) => (
                                                 <Link
                                                     key={i}
@@ -233,27 +235,6 @@ const Navbar = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <RollerLink
-                                    to="/student-careers"
-                                    colorClass="nav-hover-gradient"
-                                    baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
-                                >
-                                    Student Career
-                                </RollerLink>
-                                <RollerLink
-                                    to="/campuses"
-                                    colorClass="nav-hover-gradient"
-                                    baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
-                                >
-                                    Campus
-                                </RollerLink>
-                                <RollerLink
-                                    to="/placement"
-                                    colorClass="nav-hover-gradient"
-                                    baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
-                                >
-                                    Placement
-                                </RollerLink>
                                 <RollerLink
                                     to="/apply"
                                     colorClass="nav-hover-gradient"

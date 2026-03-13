@@ -78,7 +78,7 @@ const StepLeadForm = () => {
 
             <div className="container mx-auto px-6 relative z-10">
                 <div className="max-w-4xl mx-auto">
-                    
+
                     <AnimatePresence mode="wait">
                         {step === 1 && (
                             <motion.div
@@ -99,19 +99,20 @@ const StepLeadForm = () => {
                                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-8">
                                     <button
                                         onClick={() => handleChoice('yes')}
-                                        className="group relative w-full sm:w-64 h-20 bg-slate-950 text-white rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95"
+                                        className="group relative w-full sm:w-64 h-20 bg-transparent border-2 border-slate-950 text-slate-950 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] hover:text-white active:scale-95"
                                     >
-                                        <div className="absolute inset-0 bg-linear-to-r from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                        <span className="relative z-10 text-2xl font-black uppercase tracking-widest flex items-center justify-center gap-3">
+                                        <div className="absolute inset-0 bg-slate-950 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" />
+                                        <span className="relative z-10 text-2xl font-black uppercase tracking-widest inline-block transition-transform duration-300 group-hover:scale-110">
                                             Yes
                                         </span>
                                     </button>
 
                                     <button
                                         onClick={() => handleChoice('no')}
-                                        className="group relative w-full sm:w-64 h-20 bg-white border-2 border-slate-200 text-slate-400 rounded-2xl overflow-hidden transition-all duration-300 hover:border-slate-950 hover:text-slate-950 hover:scale-105 active:scale-95"
+                                        className="group relative w-full sm:w-64 h-20 bg-white border-2 border-slate-200 text-slate-400 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-slate-800 hover:text-slate-900 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] active:scale-95"
                                     >
-                                        <span className="relative z-10 text-2xl font-black uppercase tracking-widest">
+                                        <div className="absolute inset-0 bg-slate-50 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" />
+                                        <span className="relative z-10 text-2xl font-black uppercase tracking-widest inline-block transition-transform duration-300 group-hover:scale-110">
                                             No
                                         </span>
                                     </button>
@@ -130,7 +131,7 @@ const StepLeadForm = () => {
                             >
                                 {/* Form Sidebar Message - Rounded specific to side */}
                                 <div className="w-full md:w-2/5 p-12 bg-linear-to-br from-slate-950 to-slate-900 flex flex-col justify-center border-b md:border-b-0 md:border-r border-white/10 rounded-t-[2.5rem] md:rounded-t-none md:rounded-l-[3rem]">
-                                    
+
                                     <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center mb-8">
                                         {choice === 'yes' ? <MessageSquare className="text-primary" /> : <Sparkles className="text-secondary" />}
                                     </div>
@@ -138,12 +139,12 @@ const StepLeadForm = () => {
                                         {choice === 'yes' ? "Talk to Expert" : "Let us Career Decide"}
                                     </h3>
                                     <p className="text-slate-400 text-sm md:text-base font-medium leading-relaxed">
-                                        {choice === 'yes' 
+                                        {choice === 'yes'
                                             ? "Our industry mentors are ready to guide you through your design journey. Share your details to schedule a call."
                                             : "Unsure about your path? Our career counselors will help identify your creative strengths and the perfect program for you."
                                         }
                                     </p>
-                                    
+
 
                                 </div>
 
@@ -159,7 +160,7 @@ const StepLeadForm = () => {
                                                     placeholder="Full Name"
                                                     className="w-full h-14 bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 text-white placeholder-slate-600 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all font-medium"
                                                     value={formData.name}
-                                                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                                                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                                 />
                                             </div>
 
@@ -171,12 +172,12 @@ const StepLeadForm = () => {
                                                     placeholder="Mobile Number"
                                                     className="w-full h-14 bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 text-white placeholder-slate-600 focus:outline-none focus:border-secondary/50 focus:bg-white/10 transition-all font-medium"
                                                     value={formData.mobile}
-                                                    onChange={(e) => setFormData({...formData, mobile: e.target.value})}
+                                                    onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
                                                 />
                                             </div>
 
                                             <div className="relative">
-                                                <div 
+                                                <div
                                                     onClick={() => setIsCityDropdownOpen(!isCityDropdownOpen)}
                                                     className="w-full h-14 bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 text-white flex items-center justify-between cursor-pointer focus-within:border-primary/50 hover:bg-white/10 transition-all font-medium group"
                                                 >
@@ -198,7 +199,7 @@ const StepLeadForm = () => {
                                                     {isCityDropdownOpen && (
                                                         <div className="absolute inset-0 z-[100]">
                                                             {/* Local Backdrop to focus on dropdown */}
-                                                            <motion.div 
+                                                            <motion.div
                                                                 initial={{ opacity: 0 }}
                                                                 animate={{ opacity: 1 }}
                                                                 exit={{ opacity: 0 }}
@@ -214,7 +215,7 @@ const StepLeadForm = () => {
                                                             >
                                                                 <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 mb-2">
                                                                     <span className="text-[10px] uppercase font-black tracking-widest text-primary">Choose your Location</span>
-                                                                    <button 
+                                                                    <button
                                                                         type="button"
                                                                         onClick={() => setIsCityDropdownOpen(false)}
                                                                         className="text-white/40 hover:text-white transition-colors"
@@ -224,7 +225,7 @@ const StepLeadForm = () => {
                                                                 </div>
                                                                 <div className="max-h-64 overflow-y-auto custom-scrollbar pr-1">
                                                                     {isOtherSelected ? (
-                                                                        <motion.div 
+                                                                        <motion.div
                                                                             initial={{ opacity: 0, x: 20 }}
                                                                             animate={{ opacity: 1, x: 0 }}
                                                                             className="p-2 space-y-4"
@@ -317,14 +318,14 @@ const StepLeadForm = () => {
                                             ) : "Submit Request"}
                                         </button>
 
-                                        <button 
+                                        <button
                                             type="button"
-                                            onClick={() => {setStep(1); setChoice(null);}}
+                                            onClick={() => { setStep(1); setChoice(null); }}
                                             className="w-full flex items-center justify-center gap-2 text-white/40 hover:text-white transition-colors text-xs font-bold uppercase tracking-widest group pt-2"
                                         >
                                             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Change your mind? Go Back
                                         </button>
-                                        
+
 
                                     </form>
                                 </div>
@@ -347,8 +348,8 @@ const StepLeadForm = () => {
                                     <p className="text-slate-400 text-lg mb-8 max-w-md mx-auto">
                                         Thank you, {formData.name.split(' ')[0]}! Our mentor will connect with you within 24 business hours.
                                     </p>
-                                    <button 
-                                        onClick={() => {setStep(1); setSubmitted(false); setChoice(null);}}
+                                    <button
+                                        onClick={() => { setStep(1); setSubmitted(false); setChoice(null); }}
                                         className="px-8 py-4 bg-white/10 hover:bg-white/20 rounded-full text-xs font-bold uppercase tracking-[0.2em] transition-all"
                                     >
                                         Go Back
