@@ -188,34 +188,51 @@ const Navbar = () => {
                                 exit={{ opacity: 0, x: 20 }}
                                 className="hidden lg:flex items-center gap-1.5 lg:gap-2 xl:gap-3 2xl:gap-4"
                             >
-                                <RollerLink
-                                    to="/about-us"
-                                    colorClass="nav-hover-gradient"
-                                    baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
-                                >
-                                    About
-                                </RollerLink>
-                                <RollerLink
-                                    to="/industry-potential"
-                                    colorClass="nav-hover-gradient"
-                                    baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
-                                >
-                                    Industry Potential
-                                </RollerLink>
-                                <RollerLink
-                                    to="/awards"
-                                    colorClass="nav-hover-gradient"
-                                    baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
-                                >
-                                    Award Recognise
-                                </RollerLink>
-                                <RollerLink
-                                    to="/insdian"
-                                    colorClass="nav-hover-gradient"
-                                    baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
-                                >
-                                    Insdian
-                                </RollerLink>
+                                <div className="relative group/dropdown">
+                                    <div className="flex items-center gap-1 cursor-pointer py-4">
+                                        <RollerLink
+                                            to="/about-us"
+                                            colorClass="nav-hover-gradient"
+                                            baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
+                                        >
+                                            About
+                                        </RollerLink>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`transition-transform duration-300 group-hover/dropdown:rotate-180 ${isHeaderDark && !isScrolled ? 'text-white/70' : 'text-slate-500'}`}><path d="m6 9 6 6 6-6" /></svg>
+                                    </div>
+
+                                    {/* Dropdown Menu */}
+                                    <div className="absolute top-12 left-1/2 -translate-x-1/2 pt-6 w-64 opacity-0 invisible translate-y-4 group-hover/dropdown:opacity-100 group-hover/dropdown:visible group-hover/dropdown:translate-y-0 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] z-50">
+                                        <div className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-2xl border border-slate-200/50 dark:border-white/10 rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] overflow-hidden p-2 relative before:content-[''] before:absolute before:inset-0 before:bg-linear-to-b before:from-white/40 before:to-transparent before:pointer-events-none after:content-[''] after:absolute after:-top-px after:left-10 after:right-10 after:h-[1px] after:bg-linear-to-r after:from-transparent after:via-primary/30 after:to-transparent">
+                                            {[
+                                                { title: 'About Us', path: '/about-us', icon: 'info', desc: 'Learn about our journey' },
+                                                { title: 'Industry Potential', path: '/industry-potential', icon: 'zap', desc: 'Explore industry trends' },
+                                                { title: 'Award Recognise', path: '/awards', icon: 'award', desc: 'Our achievements' },
+                                                { title: 'Insdian', path: '/insdian', icon: 'users', desc: 'Meet our community' },
+                                            ].map((item, i) => (
+                                                <Link
+                                                    key={i}
+                                                    to={item.path}
+                                                    className="flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 group/item transition-all duration-300 relative overflow-hidden"
+                                                >
+                                                    <div className="absolute inset-0 bg-linear-to-r from-primary/5 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-300" />
+                                                    <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-white/5 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover/item:bg-primary group-hover/item:text-white group-hover/item:scale-110 transition-all duration-400 shadow-sm relative z-10">
+                                                        {item.icon === 'info' && <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" /></svg>}
+                                                        {item.icon === 'zap' && <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>}
+                                                        {item.icon === 'award' && <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="7" /><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" /></svg>}
+                                                        {item.icon === 'users' && <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>}
+                                                        {item.icon === 'briefcase' && <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg>}
+                                                        {item.icon === 'map-pin' && <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>}
+                                                        {item.icon === 'trending-up' && <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></svg>}
+                                                    </div>
+                                                    <div className="flex flex-col relative z-10">
+                                                        <span className="font-bold text-sm text-slate-800 dark:text-slate-200 group-hover/item:text-primary dark:group-hover/item:text-white transition-colors">{item.title}</span>
+                                                        <span className="text-[11px] font-medium text-slate-400 group-hover/item:text-slate-500 transition-colors uppercase tracking-wider">{item.desc}</span>
+                                                    </div>
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
                                 <RollerLink
                                     to="/student-careers"
                                     colorClass="nav-hover-gradient"
@@ -265,7 +282,7 @@ const Navbar = () => {
                     >
                         <div className="absolute inset-0 bg-linear-to-r from-primary to-secondary translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                         <span className={`relative z-10 font-bold text-sm hidden sm:inline-block tracking-wide transition-colors duration-300 ${isHeaderDark && !isScrolled ? 'group-hover:text-white' : ''}`}>
-                            {isOpen ? "CLOSE" : "MENU"}
+                            {isOpen ? "CLOSE" : "CONTACT"}
                         </span>
                     </motion.button>
 
