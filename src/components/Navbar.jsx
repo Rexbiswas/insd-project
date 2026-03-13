@@ -169,15 +169,13 @@ const Navbar = () => {
             icon: GraduationCap,
             section: 'OVERVIEW',
             subItems: [
-                { name: 'Fashion Design', path: '/fashion-design' },
-                { name: 'Interior Design', path: '/interior-design' },
-                { name: 'Graphic Design', path: '/graphic-design' },
-                { name: 'Animation VFX', path: '/animation-vfx' },
-                { name: 'Jewellery Design', path: '/jewellery-design' },
-                { name: 'UI/UX Design', path: '/ui-ux-design' },
-                { name: 'Beauty and Makeup', path: '/beauty-and-makeup' },
-                { name: 'Photography', path: '/photography' },
-                { name: 'Textile Design', path: '/textile-design' },
+                { name: 'Fashion Designing', path: '/courses/fashion-designing' },
+                { name: 'Interior Designing', path: '/courses/interior-designing' },
+                { name: 'Graphic Designing', path: '/courses/graphic-designing' },
+                { name: 'Animation & VFX', path: '/courses/animation-and-vfx' },
+                { name: 'Online Courses', path: '/courses/online-courses' },
+                { name: 'Undergraduate', path: '/courses/undergraduate' },
+                { name: 'Postgraduate', path: '/courses/postgraduate' },
             ]
         },
         { title: 'Admissions', path: '/apply', icon: CreditCard, section: 'OVERVIEW' },
@@ -300,15 +298,13 @@ const Navbar = () => {
                                         <div className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-2xl border border-slate-200/50 dark:border-white/10 rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] overflow-hidden p-2 relative before:content-[''] before:absolute before:inset-0 before:bg-linear-to-b before:from-white/40 before:to-transparent before:pointer-events-none">
                                             <div className="max-h-[400px] overflow-y-auto dropdown-scrollbar pr-1 overscroll-contain">
                                                 {[
-                                                    { title: 'Fashion Design', path: '/fashion-design', icon: 'fashion', desc: 'Couture & Apparel Design' },
-                                                    { title: 'Interior Design', path: '/interior-design', icon: 'interior', desc: 'Spatial & Interior Styling' },
-                                                    { title: 'Graphic Design', path: '/graphic-design', icon: 'graphic', desc: 'Visual Branding & Media' },
-                                                    { title: 'Animation VFX', path: '/animation-vfx', icon: 'animation', desc: '3D Motion & Visual Effects' },
-                                                    { title: 'Jewellery Design', path: '/jewellery-design', icon: 'jewellery', desc: 'Gems & Accessory Crafts' },
-                                                    { title: 'UI/UX Design', path: '/ui-ux-design', icon: 'uiux', desc: 'User Experience & Digital' },
-                                                    { title: 'Beauty and Makeup', path: '/beauty-and-makeup', icon: 'beauty', desc: 'Styling & Professional Artistry' },
-                                                    { title: 'Photography', path: '/photography', icon: 'photography', desc: 'Visual Storytelling & Imaging' },
-                                                    { title: 'Textile Design', path: '/textile-design', icon: 'textile', desc: 'Fabric Art & Pattern Design' },
+                                                    { title: 'Fashion Designing', path: '/courses/fashion-designing', icon: 'fashion', desc: 'Couture & Apparel Design' },
+                                                    { title: 'Interior Designing', path: '/courses/interior-designing', icon: 'interior', desc: 'Spatial & Interior Styling' },
+                                                    { title: 'Graphic Designing', path: '/courses/graphic-designing', icon: 'graphic', desc: 'Visual Branding & Media' },
+                                                    { title: 'Animation & VFX', path: '/courses/animation-and-vfx', icon: 'animation', desc: '3D Motion & Visual Effects' },
+                                                    { title: 'Online Course', path: '/courses/online-courses', icon: 'uiux', desc: 'Flexible Learning Digital' },
+                                                    { title: 'Undergraduate', path: '/courses/undergraduate', icon: 'award', desc: 'Bachelors Degree Programs' },
+                                                    { title: 'Postgraduate', path: '/courses/postgraduate', icon: 'briefcase', desc: 'Masters Degree Programs' },
                                                 ].map((item, i) => (
                                                     <Link
                                                         key={i}
@@ -587,8 +583,9 @@ const Navbar = () => {
                                                                         key={sub.name}
                                                                         to={sub.path}
                                                                         onClick={() => setIsOpen(false)}
-                                                                        className="block px-6 py-2.5 text-[11px] font-bold text-white/30 hover:text-primary hover:bg-white/5 transition-all uppercase tracking-wider"
+                                                                        className="flex items-center gap-3 px-6 py-3 text-[11px] font-bold text-white/30 hover:text-primary hover:bg-white/5 transition-all uppercase tracking-wider group/sub"
                                                                     >
+                                                                        <div className="w-1.5 h-[1px] bg-white/10 group-hover/sub:w-3 group-hover/sub:bg-primary transition-all" />
                                                                         {sub.name}
                                                                     </NavLink>
                                                                 ))}
