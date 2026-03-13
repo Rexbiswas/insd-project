@@ -269,37 +269,97 @@ const AnimationAndVFX = () => {
                 </div>
             </section>
 
-            <section className="py-40 relative overflow-hidden bg-[#1d1d1f]">
-                <div className="container mx-auto px-6 relative z-10 text-center">
-                    <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase mb-20 leading-none text-white">
-                        Your Future <br /> <span className="text-primary">Pipeline</span>
-                    </h2>
+            {/* --- INDUSTRY LEVEL STANDARDS --- */}
+            <section className="py-24 md:py-40 bg-slate-950 relative overflow-hidden">
+                <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+                <div className="container mx-auto px-6 relative z-10">
+                    <div className="text-center mb-24">
+                        <span className="text-primary font-black text-xs uppercase tracking-[0.5em] mb-4 block">Professional Grade</span>
+                        <h2 className="text-6xl md:text-8xl font-black text-white uppercase tracking-tighter">Industry <span className="text-transparent stroke-text-white opacity-20">Level</span></h2>
+                    </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div className="p-12 rounded-[3.5rem] bg-white/5 text-white shadow-xl border border-white/5 space-y-6 hover:translate-y-[-10px] transition-all">
-                            <TrendingUp className="mx-auto w-12 h-12 text-primary" />
-                            <h4 className="text-3xl font-black uppercase tracking-tighter">High ROI</h4>
-                            <p className="text-white/40 font-light leading-relaxed">Starting salaries in VFX are 40% higher than traditional design roles due to massive global demand.</p>
-                        </div>
-                        <div className="p-12 rounded-[3.5rem] bg-white text-slate-900 border border-white space-y-6 shadow-2xl hover:translate-y-[-10px] transition-all">
-                            <Globe className="mx-auto w-12 h-12 text-secondary" />
-                            <h4 className="text-3xl font-black uppercase tracking-tighter">Work Remotely</h4>
-                            <p className="text-slate-500 font-light leading-relaxed">Collaborate with global studios from anywhere. Pixel-perfect data is the only commute needed.</p>
-                        </div>
-                        <div className="p-12 rounded-[3.5rem] bg-white/5 text-white shadow-xl border border-white/5 space-y-6 hover:translate-y-[-10px] transition-all">
-                            <Cpu className="mx-auto w-12 h-12 text-blue-500" />
-                            <h4 className="text-3xl font-black uppercase tracking-tighter">Future Proof</h4>
-                            <p className="text-white/40 font-light leading-relaxed">As AR/VR dominates the next decade, your 3D assets will be the foundation of the Metaverse.</p>
-                        </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {[
+                            { title: "AAA Pipeline", desc: "Master the exact technical workflows used in top-tier gaming and film studios like Pixar and Rockstar Games.", icon: Cpu },
+                            { title: "Real-time Rendering", desc: "Specialized training in Unreal Engine 5 and Unity for the next generation of interactive cinema.", icon: Layers },
+                            { title: "Studio Protocol", desc: "Simulation of professional studio environments, deadlines, and multi-disciplinary collaboration.", icon: Users },
+                        ].map((item, i) => (
+                            <div key={i} className="p-10 rounded-[3rem] bg-white/5 border border-white/10 backdrop-blur-xl group hover:bg-white/10 transition-all duration-500">
+                                <item.icon className="w-12 h-12 text-primary mb-8 group-hover:scale-110 transition-transform" />
+                                <h4 className="text-2xl font-black text-white uppercase mb-4 tracking-tighter">{item.title}</h4>
+                                <p className="text-white/40 font-light leading-relaxed">{item.desc}</p>
+                            </div>
+                        ))}
                     </div>
                 </div>
-
-                {/* Ambient Animation */}
-                <div className="absolute top-1/2 left-0 w-full h-[500px] bg-primary/10 blur-[200px] -translate-y-1/2 opacity-20 pointer-events-none" />
             </section>
 
-            {/* --- CALL TO ACTION --- */}
-            <section className="py-40">
+            {/* --- PROGRAM PATHWAYS (Image UI Style) --- */}
+            <section className="py-24 md:py-40 bg-slate-900/50 border-y border-white/5 relative">
+                <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                    <div>
+                        <h2 className="text-6xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none mb-10">Program <br /> <span className="text-primary italic">Pathways</span></h2>
+                        <p className="text-white/40 max-w-sm font-light leading-relaxed">Select the track that aligns with your academic standing and professional ambitions. From foundation to mastery.</p>
+                    </div>
+                    <div className="space-y-8">
+                        {[
+                            { label: "Undergraduate", active: true },
+                            { label: "Postgraduate", active: false },
+                            { label: "Advanced Diploma", active: false },
+                            { label: "Diploma", active: false },
+                            { label: "Short Term Courses", active: false },
+                        ].map((path, i) => (
+                            <div key={i} className="flex items-center group cursor-pointer">
+                                <div className={`h-[1px] transition-all duration-700 ${path.active ? 'w-32 bg-primary' : 'w-0 bg-white/20 group-hover:w-16'}`} />
+                                <span className={`text-3xl md:text-5xl font-bold uppercase tracking-tighter transition-all duration-300 ml-6 ${path.active ? 'text-primary' : 'text-white/20 group-hover:text-white'}`}>{path.label}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* --- CAREER OPPORTUNITIES --- */}
+            <section className="py-24 md:py-40 bg-white">
+                <div className="container mx-auto px-6">
+                    <div className="flex flex-col lg:flex-row justify-between items-center mb-24 gap-12 text-center lg:text-left">
+                        <div className="max-w-2xl">
+                            <h2 className="text-6xl md:text-8xl font-black text-slate-950 uppercase tracking-tighter leading-none mb-6">Global <br /> <span className="text-primary italic">Opportunities</span></h2>
+                            <p className="text-slate-500 text-lg md:text-xl font-light">The demand for digital architects is exploding. Your skills will translate across industries from film and gaming to medicine and engineering.</p>
+                        </div>
+                        <div className="flex items-center gap-4 py-8 px-12 rounded-[2.5rem] bg-slate-50 border border-slate-100">
+                            <div className="text-center">
+                                <span className="block text-4xl font-black text-slate-950">40%</span>
+                                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Growth Rate</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        {[
+                            { role: "CGI Supervisor", salary: "$120k+", demand: "High" },
+                            { role: "VFX Compositor", salary: "$95k+", demand: "Critical" },
+                            { role: "Technical Director", salary: "$140k+", demand: "Moderate" },
+                            { role: "3D Environment Artist", salary: "$85k+", demand: "Very High" },
+                            { role: "Motion Designer", salary: "$75k+", demand: "Stable" },
+                            { role: "Lighting Lead", salary: "$110k+", demand: "High" },
+                            { role: "Character Animator", salary: "$90k+", demand: "High" },
+                            { role: "Game Level Designer", salary: "$100k+", demand: "Explosive" },
+                        ].map((path, i) => (
+                            <div key={i} className="p-8 rounded-[2rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:scale-[1.02] transition-all duration-500">
+                                <span className="text-[10px] font-black text-primary uppercase tracking-[0.3em] mb-4 block">{path.salary}</span>
+                                <h4 className="text-xl font-black text-slate-900 uppercase tracking-tighter mb-2">{path.role}</h4>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{path.demand} Demand</span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* --- FINAL CALL TO ACTION --- */}
+            <section className="py-24 md:py-40">
                 <div className="container mx-auto px-6">
                     <div className="relative rounded-[4rem] overflow-hidden bg-slate-900 p-12 md:p-32 text-center group">
                         <div className="absolute inset-0 z-0">

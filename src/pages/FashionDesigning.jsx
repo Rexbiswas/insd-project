@@ -344,31 +344,126 @@ const FashionDesigning = () => {
                 </div>
             </section>
 
-            {/* --- FINAL CALL TO ACTION --- */}
-            <section className="relative h-[80vh] flex items-center justify-center overflow-hidden bg-slate-950">
-                <div className="absolute inset-0 z-0 opacity-40">
-                    <img 
-                        src="/fashion_runway_career_insd_1772561678538.png" 
-                        alt="Runway Call to Action" 
-                        className="w-full h-full object-cover"
-                    />
+            {/* --- PROGRAM PATHWAYS (Image UI Style) --- */}
+            <section className="py-24 md:py-40 bg-white border-y border-slate-100 relative">
+                <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                    <div>
+                        <span className="text-primary font-black text-[10px] uppercase tracking-[0.5em] mb-4 block">The Academic Matrix</span>
+                        <h2 className="text-6xl md:text-8xl font-black text-slate-950 uppercase tracking-tighter leading-none mb-10">Program <br /> <span className="text-primary italic">Pathways</span></h2>
+                        <p className="text-slate-500 max-w-sm font-light leading-relaxed">Tailored academic tracks designed for every level of expertise. Launch your legacy here.</p>
+                    </div>
+                    <div className="space-y-8">
+                        {[
+                            { label: "Undergraduate", active: true },
+                            { label: "Postgraduate", active: false },
+                            { label: "Advanced Diploma", active: false },
+                            { label: "Diploma", active: false },
+                            { label: "Short Term Courses", active: false },
+                        ].map((path, i) => (
+                            <div key={i} className="flex items-center group cursor-pointer">
+                                <div className={`h-[2px] transition-all duration-700 ${path.active ? 'w-24 bg-primary' : 'w-0 bg-slate-200 group-hover:w-12'}`} />
+                                <span className={`text-3xl md:text-5xl font-bold uppercase tracking-tighter transition-all duration-300 ml-6 ${path.active ? 'text-primary' : 'text-slate-300 group-hover:text-slate-950'}`}>{path.label}</span>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-                <div className="relative z-10 text-center container mx-auto px-6">
-                    <motion.div
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        transition={{ duration: 1 }}
-                    >
-                        <h2 className="text-6xl md:text-9xl font-black text-white uppercase tracking-tighter leading-none mb-12">
-                            Ready to <br /> <span className="text-primary italic">Lead?</span>
-                        </h2>
-                        <div className="max-w-md mx-auto relative group">
-                            <div className="absolute -inset-1 bg-linear-to-r from-primary to-secondary rounded-full blur opacity-40 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-                            <button className="relative px-12 py-6 bg-white rounded-full text-slate-950 font-black uppercase text-sm tracking-widest flex items-center justify-center gap-4 w-full">
-                                Start Your Application <ArrowRight className="w-5 h-5 fill-primary text-primary" />
-                            </button>
+            </section>
+
+            {/* --- INDUSTRY LEVEL STANDARDS --- */}
+            <section className="py-24 md:py-40 bg-slate-50 relative overflow-hidden">
+                <div className="container mx-auto px-6 relative z-10">
+                    <div className="text-center mb-24">
+                        <span className="text-primary font-black text-xs uppercase tracking-[0.5em] mb-4 block">Professional Grade</span>
+                        <h2 className="text-6xl md:text-8xl font-black text-slate-950 uppercase tracking-tighter leading-none">Industry <span className="text-slate-200">Level</span></h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {[
+                            { title: "Atelier Protocol", desc: "Train in professional-standard construction labs with master tailors and industry-grade machinery.", icon: Scissors },
+                            { title: "Textile R&D", desc: "Scientific approach to fabric manipulation, sustainable dyeing, and material innovation.", icon: Layers },
+                            { title: "Global Merchandising", desc: "Understanding the commercial spine of fashion from supply chain to retail psychology.", icon: Globe },
+                        ].map((item, i) => (
+                            <div key={i} className="p-10 rounded-[3rem] bg-white border border-slate-100 shadow-xl group hover:border-primary/30 transition-all duration-500">
+                                <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-all">
+                                    <item.icon className="w-8 h-8" />
+                                </div>
+                                <h4 className="text-2xl font-black text-slate-900 uppercase mb-4 tracking-tighter">{item.title}</h4>
+                                <p className="text-slate-500 font-light leading-relaxed">{item.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* --- CAREER OPPORTUNITIES --- */}
+            <section className="py-24 md:py-40 bg-white">
+                <div className="container mx-auto px-6">
+                    <div className="flex flex-col lg:flex-row justify-between items-center mb-24 gap-12 text-center lg:text-left">
+                        <div className="max-w-2xl">
+                            <h2 className="text-6xl md:text-8xl font-black text-slate-950 uppercase tracking-tighter leading-none mb-6">Global <br /> <span className="text-primary italic">Opportunities</span></h2>
+                            <p className="text-slate-500 text-lg md:text-xl font-light">The global fashion economy is a multi-trillion dollar engine. We prepare you to take high-impact roles in the world's most prestigious design houses.</p>
                         </div>
-                    </motion.div>
+                        <div className="flex items-center gap-4 py-8 px-12 rounded-[2.5rem] bg-slate-50 border border-slate-100">
+                            <div className="text-center">
+                                <span className="block text-4xl font-black text-slate-950">98%</span>
+                                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Placement Rate</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        {[
+                            { role: "Creative Director", salary: "$150k+", demand: "High" },
+                            { role: "Senior Designer", salary: "$90k+", demand: "Critical" },
+                            { role: "Fashion Buyer", salary: "$85k+", demand: "Stable" },
+                            { role: "Textile Consultant", salary: "$70k+", demand: "Moderate" },
+                            { role: "Couturier", salary: "$110k+", demand: "Premium" },
+                            { role: "Brand Manager", salary: "$95k+", demand: "High" },
+                            { role: "Stylist", salary: "$65k+", demand: "Stable" },
+                            { role: "Production Lead", salary: "$80k+", demand: "Critical" },
+                        ].map((path, i) => (
+                            <div key={i} className="p-8 rounded-[2rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:scale-[1.02] transition-all duration-500">
+                                <span className="text-[10px] font-black text-primary uppercase tracking-[0.3em] mb-4 block">{path.salary}</span>
+                                <h4 className="text-xl font-black text-slate-900 uppercase tracking-tighter mb-2">{path.role}</h4>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{path.demand} Demand</span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* --- FINAL CALL TO ACTION --- */}
+            <section className="py-24 md:py-40 px-6">
+                <div className="container mx-auto">
+                    <div className="relative rounded-[4rem] overflow-hidden bg-slate-950 p-12 md:p-32 text-center group">
+                        <div className="absolute inset-0 z-0 opacity-40">
+                            <img 
+                                src="/fashion_runway_career_insd_1772561678538.png" 
+                                alt="Runway Call to Action" 
+                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[3s]"
+                            />
+                        </div>
+                        <div className="relative z-10 text-center container mx-auto px-6">
+                            <motion.div
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                transition={{ duration: 1 }}
+                            >
+                                <h2 className="text-6xl md:text-9xl font-black text-white uppercase tracking-tighter leading-none mb-12">
+                                    Ready to <br /> <span className="text-primary italic">Lead?</span>
+                                </h2>
+                                <div className="max-w-md mx-auto relative group">
+                                    <div className="absolute -inset-1 bg-linear-to-r from-primary to-secondary rounded-full blur opacity-40 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                                    <button className="relative px-12 py-8 bg-white rounded-full text-slate-950 font-black uppercase text-sm tracking-widest flex items-center justify-center gap-4 w-full">
+                                        Start Your Application <ArrowRight className="w-5 h-5 fill-primary text-primary" />
+                                    </button>
+                                </div>
+                            </motion.div>
+                        </div>
+                    </div>
                 </div>
             </section>
 

@@ -276,55 +276,101 @@ const InteriorDesigning = () => {
                 </div>
             </section>
 
-            {/* --- PLACEMENT INFRASTRUCTURE --- */}
-            <section className="py-48 bg-white overflow-hidden">
-                <div className="container mx-auto px-6">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
-                        <div className="lg:col-span-12 mb-20 text-center reveal-up">
-                            <h2 className="text-6xl md:text-[6.5rem] font-black tracking-tighter uppercase leading-none text-slate-950">
-                                Global <br /> <span className="text-secondary italic">Career Matrix</span>
-                            </h2>
-                        </div>
+            {/* --- INDUSTRY LEVEL STANDARDS --- */}
+            <section className="py-24 md:py-40 bg-slate-100 relative overflow-hidden">
+                <div className="container mx-auto px-6 relative z-10">
+                    <div className="text-center mb-24">
+                        <span className="text-primary font-black text-xs uppercase tracking-[0.5em] mb-4 block">Professional Grade</span>
+                        <h2 className="text-6xl md:text-8xl font-black text-slate-950 uppercase tracking-tighter leading-none">Industry <span className="text-slate-300">Level</span></h2>
+                    </div>
 
-                        <div className="lg:col-span-5 space-y-12 order-2 lg:order-1 reveal-up">
-                            <p className="text-xl text-slate-500 font-light leading-relaxed">
-                                We bridge the gap between creative ambition and industry requirement. Our placement cells operate in Milan, Paris, and Singapore to ensure your trajectory is global.
-                            </p>
-
-                            <div className="space-y-8">
-                                {[
-                                    { title: "Architectural Alliances", desc: "Collaborate with over 450+ global design consultancies and developer firms." },
-                                    { title: "Design Incubation", desc: "Seed funding and mentorship for graduates launching independent design labels." },
-                                    { title: "Luxury Exposure", desc: "Direct access to high-end furniture markets in Italy and Northern Europe." }
-                                ].map((item, idx) => (
-                                    <div key={idx} className="flex gap-8 group cursor-default">
-                                        <div className="w-1.5 h-16 bg-slate-50 rounded-full overflow-hidden">
-                                            <div className="w-full h-0 group-hover:h-full bg-secondary transition-all duration-700" />
-                                        </div>
-                                        <div>
-                                            <h5 className="text-xl font-black uppercase tracking-tight mb-2 text-slate-950">{item.title}</h5>
-                                            <p className="text-sm text-slate-500 font-light">{item.desc}</p>
-                                        </div>
-                                    </div>
-                                ))}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {[
+                            { title: "BIM Integration", desc: "Master Building Information Modeling (BIM) workflows preferred by world-class architectural firms.", icon: Box },
+                            { title: "Sustainable Tech", desc: "Advanced training in energy-efficient lighting, acoustics, and bio-philic spatial planning.", icon: Layers },
+                            { title: "Project Protocol", desc: "End-to-end execution modeling, from material sourcing to client management and site ethics.", icon: Layout },
+                        ].map((item, i) => (
+                            <div key={i} className="p-10 rounded-[3rem] bg-white border border-slate-200 group hover:border-primary/30 transition-all duration-500 shadow-sm hover:shadow-xl">
+                                <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-all">
+                                    <item.icon className="w-8 h-8" />
+                                </div>
+                                <h4 className="text-2xl font-black text-slate-900 uppercase mb-4 tracking-tighter">{item.title}</h4>
+                                <p className="text-slate-500 font-light leading-relaxed">{item.desc}</p>
                             </div>
-                        </div>
-
-                        <div className="lg:col-span-7 relative order-1 lg:order-2 reveal-up">
-                            <div className="grid grid-cols-2 gap-8 h-[650px]">
-                                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover rounded-[3rem] shadow-2xl translate-y-12" alt="Ind 1" />
-                                <img src="https://images.unsplash.com/photo-1540317580384-e5d43616b9aa?auto=format&fit=crop&q=80&w=800" className="w-full h-[85%] object-cover rounded-[3rem] shadow-2xl" alt="Ind 2" />
-                            </div>
-                            <div className="absolute -z-10 -bottom-10 -right-10 w-64 h-64 bg-secondary/5 blur-[100px] rounded-full" />
-                        </div>
+                        ))}
                     </div>
                 </div>
             </section>
 
-            {/* --- ADMISSION CTA --- */}
-            <section className="py-40">
+            {/* --- PROGRAM PATHWAYS (Image UI Style) --- */}
+            <section className="py-24 md:py-40 bg-white border-y border-slate-200 relative">
+                <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                    <div>
+                        <span className="text-primary font-black text-[10px] uppercase tracking-[0.5em] mb-4 block">The Academic Matrix</span>
+                        <h2 className="text-6xl md:text-8xl font-black text-slate-950 uppercase tracking-tighter leading-none mb-10">Program <br /> <span className="text-primary italic">Pathways</span></h2>
+                        <p className="text-slate-500 max-w-sm font-light leading-relaxed">Tailored academic tracks designed for every level of spatial mastery. Your legacy begins here.</p>
+                    </div>
+                    <div className="space-y-8">
+                        {[
+                            { label: "Undergraduate", active: true },
+                            { label: "Postgraduate", active: false },
+                            { label: "Advanced Diploma", active: false },
+                            { label: "Diploma", active: false },
+                            { label: "Short Term Courses", active: false },
+                        ].map((path, i) => (
+                            <div key={i} className="flex items-center group cursor-pointer">
+                                <div className={`h-[2px] transition-all duration-700 ${path.active ? 'w-24 bg-primary' : 'w-0 bg-slate-200 group-hover:w-12'}`} />
+                                <span className={`text-3xl md:text-5xl font-bold uppercase tracking-tighter transition-all duration-300 ml-6 ${path.active ? 'text-primary' : 'text-slate-300 group-hover:text-slate-950'}`}>{path.label}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* --- CAREER OPPORTUNITIES --- */}
+            <section className="py-24 md:py-40 bg-slate-50 stats-section">
                 <div className="container mx-auto px-6">
-                    <div className="relative rounded-[5rem] overflow-hidden bg-slate-950 p-12 md:p-32 text-center group shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)]">
+                    <div className="flex flex-col lg:flex-row justify-between items-center mb-24 gap-12 text-center lg:text-left">
+                        <div className="max-w-2xl">
+                            <h2 className="text-6xl md:text-8xl font-black text-slate-950 uppercase tracking-tighter leading-none mb-6">Global <br /> <span className="text-primary italic">Opportunities</span></h2>
+                            <p className="text-slate-500 text-lg md:text-xl font-light">The demand for specialized interior architects is at an all-time high. We prepare you to dominate the luxury residential and commercial markets.</p>
+                        </div>
+                        <div className="flex items-center gap-4 py-8 px-12 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm">
+                            <div className="text-center">
+                                <span className="block text-4xl font-black text-slate-950">97%</span>
+                                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Industry Placement</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        {[
+                            { role: "Interior Architect", salary: "$130k+", demand: "High" },
+                            { role: "Luxury Stylist", salary: "$85k+", demand: "Premium" },
+                            { role: "BIM Manager", salary: "$110k+", demand: "Critical" },
+                            { role: "Sustainability Lead", salary: "$95k+", demand: "Growing" },
+                            { role: "Retail Consultant", salary: "$75k+", demand: "Stable" },
+                            { role: "Lighting Designer", salary: "$90k+", demand: "Technical" },
+                            { role: "Set Designer", salary: "$80k+", demand: "Creative" },
+                            { role: "Visual Merchandiser", salary: "$70k+", demand: "Stable" },
+                        ].map((path, i) => (
+                            <div key={i} className="p-8 rounded-[2rem] bg-white border border-slate-100 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500">
+                                <span className="text-[10px] font-black text-primary uppercase tracking-[0.3em] mb-4 block">{path.salary}</span>
+                                <h4 className="text-xl font-black text-slate-900 uppercase tracking-tighter mb-2">{path.role}</h4>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{path.demand} Demand</span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* --- FINAL CALL TO ACTION --- */}
+            <section className="py-24 md:py-40">
+                <div className="container mx-auto px-6">
+                    <div className="relative rounded-[5rem] overflow-hidden bg-slate-950 p-12 md:p-32 text-center group shadow-2xl">
                         <div className="absolute inset-0 z-0 opacity-40">
                             <img
                                 src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=2000"
@@ -338,14 +384,14 @@ const InteriorDesigning = () => {
                             <h2 className="text-5xl md:text-[9.5rem] font-black text-white uppercase tracking-tighter leading-none mb-4">
                                 Space <span className="text-transparent stroke-text-white italic">Defined.</span>
                             </h2>
-                            <p className="text-white/60 text-lg md:text-2xl font-light uppercase tracking-[0.4em] max-w-2xl mx-auto">Limited seats available for the institutional batch of 2026</p>
+                            <p className="text-white/60 text-lg md:text-2xl font-light uppercase tracking-[0.4em]">Apply for institutional batch of 2026</p>
 
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="inline-flex items-center gap-6 px-20 py-8 bg-white text-slate-950 rounded-full font-black uppercase text-sm tracking-[0.5em] shadow-2xl hover:bg-primary hover:text-white transition-all duration-700"
+                                className="inline-flex items-center gap-6 px-14 py-7 bg-white text-slate-950 rounded-full font-black uppercase text-sm tracking-[0.4em] shadow-2xl hover:bg-primary hover:text-white transition-all duration-700"
                             >
-                                START YOUR APPLICATION <ArrowRight />
+                                SECURE YOUR SEAT <ArrowRight />
                             </motion.button>
                         </div>
                     </div>

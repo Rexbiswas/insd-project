@@ -39,6 +39,11 @@ const FashionDesigning = lazy(() => import('./pages/FashionDesigning'));
 const InteriorDesigning = lazy(() => import('./pages/InteriorDesigning'));
 const GraphicDesigning = lazy(() => import('./pages/GraphicDesigning'));
 const AnimationAndVFX = lazy(() => import('./pages/AnimationAndVFX'));
+const JewelleryDesigning = lazy(() => import('./pages/JewelleryDesigning'));
+const UIUXDesigning = lazy(() => import('./pages/UIUXDesigning'));
+const BeautyAndMakeup = lazy(() => import('./pages/BeautyAndMakeup'));
+const Photography = lazy(() => import('./pages/Photography'));
+const TextileDesigning = lazy(() => import('./pages/TextileDesigning'));
 const SuccessStory = lazy(() => import('./pages/SuccessStory'));
 const Gallery = lazy(() => import('./pages/Gallery'));
 const NotFound = lazy(() => import('./pages/NotFound'));
@@ -100,6 +105,11 @@ function App() {
                                     <Route path="/courses/interior-designing" element={<InteriorDesigning />} />
                                     <Route path="/courses/graphic-designing" element={<GraphicDesigning />} />
                                     <Route path="/courses/animation-and-vfx" element={<AnimationAndVFX />} />
+                                    <Route path="/courses/jewellery-designing" element={<JewelleryDesigning />} />
+                                    <Route path="/courses/uiux-designing" element={<UIUXDesigning />} />
+                                    <Route path="/courses/beauty-and-makeup" element={<BeautyAndMakeup />} />
+                                    <Route path="/courses/photography" element={<Photography />} />
+                                    <Route path="/courses/textile-designing" element={<TextileDesigning />} />
                                     <Route path="/student-careers" element={<StudentCareers />} />
                                     <Route path="/insd-360" element={<Insd360 />} />
                                     <Route path="/franchise" element={<Franchise />} />

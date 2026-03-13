@@ -277,41 +277,136 @@ const GraphicDesigning = () => {
                 </div>
             </section>
 
-            {/* --- FINAL CALL TO ACTION --- */}
-            <section className="relative h-[85vh] flex items-center justify-center overflow-hidden bg-slate-950">
-                <div className="absolute inset-0 z-0">
-                    <div className="absolute inset-0 bg-linear-to-r from-primary/30 to-secondary/30 mix-blend-overlay z-10" />
-                    <img 
-                        src="https://images.unsplash.com/photo-1614850523296-e8c041de4398?auto=format&fit=crop&q=80&w=2000" 
-                        alt="Final CTA Graphic" 
-                        className="w-full h-full object-cover blur-sm opacity-40 grayscale"
-                    />
+            {/* --- INDUSTRY LEVEL STANDARDS --- */}
+            <section className="py-24 md:py-40 bg-slate-50 relative overflow-hidden">
+                <div className="container mx-auto px-6 relative z-10">
+                    <div className="text-center mb-24">
+                        <span className="text-primary font-black text-xs uppercase tracking-[0.5em] mb-4 block">Professional Grade</span>
+                        <h2 className="text-6xl md:text-8xl font-black text-slate-950 uppercase tracking-tighter leading-none">Industry <span className="text-slate-200">Level</span></h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {[
+                            { title: "Design Sprint Protocol", desc: "Master the exact collaborative methodology used by Google and IDEO for rapid problem-solving.", icon: Zap },
+                            { title: "High-Fidelity Stack", desc: "Professional mastery of the Adobe Enterprise suite combined with Figma and advanced prototyping tools.", icon: Layers },
+                            { title: "Visual Engineering", desc: "A scientific approach to color theory, typography, and human-centered design systems.", icon: Palette },
+                        ].map((item, i) => (
+                            <div key={i} className="p-10 rounded-[3rem] bg-white border border-slate-100 shadow-xl group hover:border-primary/30 transition-all duration-500">
+                                <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-all">
+                                    <item.icon className="w-8 h-8" />
+                                </div>
+                                <h4 className="text-2xl font-black text-slate-900 uppercase mb-4 tracking-tighter">{item.title}</h4>
+                                <p className="text-slate-500 font-light leading-relaxed">{item.desc}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-                
-                <div className="relative z-20 text-center container mx-auto px-6">
-                    <motion.div
-                        whileInView={{ opacity: 1, y: 0 }}
-                        initial={{ opacity: 0, y: 50 }}
-                        transition={{ duration: 1 }}
-                    >
-                        <h2 className="text-6xl md:text-[10rem] font-black text-white uppercase tracking-tighter leading-[0.85] mb-12">
-                            Define The <br /> <span className="text-transparent stroke-text-white italic">Future?</span>
-                        </h2>
-                        <div className="max-w-md mx-auto relative group">
-                            <div className="absolute -inset-1 bg-linear-to-r from-primary to-secondary rounded-full blur-2xl opacity-40 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-                            <button className="relative px-12 py-7 bg-white rounded-full text-slate-950 font-black uppercase text-xs tracking-[0.3em] flex items-center justify-center gap-4 w-full group">
-                                Apply for Session 2026 
-                                <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-2 transition-transform" />
-                            </button>
+            </section>
+
+            {/* --- PROGRAM PATHWAYS (Image UI Style) --- */}
+            <section className="py-24 md:py-40 bg-slate-50 border-y border-slate-200 relative">
+                <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                    <div>
+                        <span className="text-primary font-black text-[10px] uppercase tracking-[0.5em] mb-4 block">Full Stack Learning</span>
+                        <h2 className="text-6xl md:text-8xl font-black text-slate-950 uppercase tracking-tighter leading-none mb-10">Program <br /> <span className="text-primary italic">Pathways</span></h2>
+                        <p className="text-slate-500 max-w-sm font-light leading-relaxed">The INSD graphic design methodology is adapted for every stage of your creative career. Architecture your future now.</p>
+                    </div>
+                    <div className="space-y-8">
+                        {[
+                            { label: "Undergraduate", active: true },
+                            { label: "Postgraduate", active: false },
+                            { label: "Advanced Diploma", active: false },
+                            { label: "Diploma", active: false },
+                            { label: "Short Term Courses", active: false },
+                        ].map((path, i) => (
+                            <div key={i} className="flex items-center group cursor-pointer">
+                                <div className={`h-[2px] transition-all duration-700 ${path.active ? 'w-24 bg-primary' : 'w-0 bg-slate-200 group-hover:w-12'}`} />
+                                <span className={`text-3xl md:text-5xl font-bold uppercase tracking-tighter transition-all duration-300 ml-6 ${path.active ? 'text-primary' : 'text-slate-300 group-hover:text-slate-950'}`}>{path.label}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* --- CAREER OPPORTUNITIES --- */}
+            <section className="py-24 md:py-40 bg-white">
+                <div className="container mx-auto px-6">
+                    <div className="flex flex-col lg:flex-row justify-between items-center mb-24 gap-12 text-center lg:text-left">
+                        <div className="max-w-2xl">
+                            <h2 className="text-6xl md:text-8xl font-black text-slate-950 uppercase tracking-tighter leading-none mb-6">Global <br /> <span className="text-primary italic">Opportunities</span></h2>
+                            <p className="text-slate-500 text-lg md:text-xl font-light">Every industry requires a visual voice. From Silicon Valley startups to Fortune 500 giants, your role is pivotal in the digital-first era.</p>
                         </div>
-                        <div className="mt-16 flex flex-wrap justify-center items-center gap-12 text-[10px] font-black text-white/30 tracking-[0.5em]">
-                           <span>PORTFOLIO FIRST</span>
-                           <div className="w-1 h-1 bg-white/20 rounded-full" />
-                           <span>INDUSTRY LED</span>
-                           <div className="w-1 h-1 bg-white/20 rounded-full" />
-                           <span>GLOBAL SCOPE</span>
+                        <div className="flex items-center gap-4 py-8 px-12 rounded-[2.5rem] bg-slate-50 border border-slate-100">
+                            <div className="text-center">
+                                <span className="block text-4xl font-black text-slate-950">99%</span>
+                                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Employability</span>
+                            </div>
                         </div>
-                    </motion.div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        {[
+                            { role: "Art Director", salary: "$110k+", demand: "High" },
+                            { role: "Brand Identity Lead", salary: "$95k+", demand: "Critical" },
+                            { role: "UI/UX Designer", salary: "$105k+", demand: "Explosive" },
+                            { role: "Motion Artist", salary: "$85k+", demand: "Stable" },
+                            { role: "Creative Strategist", salary: "$130k+", demand: "Moderate" },
+                            { role: "Packaging Designer", salary: "$70k+", demand: "Stable" },
+                            { role: "Visual Researcher", salary: "$75k+", demand: "Developing" },
+                            { role: "Product Designer", salary: "$115k+", demand: "Very High" },
+                        ].map((path, i) => (
+                            <div key={i} className="p-8 rounded-[2rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:scale-[1.02] transition-all duration-500">
+                                <span className="text-[10px] font-black text-primary uppercase tracking-[0.3em] mb-4 block">{path.salary}</span>
+                                <h4 className="text-xl font-black text-slate-900 uppercase tracking-tighter mb-2">{path.role}</h4>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{path.demand} Demand</span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* --- FINAL CALL TO ACTION --- */}
+            <section className="py-24 md:py-40 px-6">
+                <div className="container mx-auto">
+                    <div className="relative rounded-[4rem] overflow-hidden bg-slate-950 p-12 md:p-32 text-center group">
+                        <div className="absolute inset-0 z-0">
+                            <div className="absolute inset-0 bg-linear-to-r from-primary/30 to-secondary/30 mix-blend-overlay z-10" />
+                            <img 
+                                src="https://images.unsplash.com/photo-1614850523296-e8c041de4398?auto=format&fit=crop&q=80&w=2000" 
+                                alt="Final CTA Graphic" 
+                                className="w-full h-full object-cover blur-sm opacity-40 grayscale group-hover:scale-110 transition-transform duration-[3s]"
+                            />
+                        </div>
+                        
+                        <div className="relative z-20 text-center container mx-auto px-6">
+                            <motion.div
+                                whileInView={{ opacity: 1, y: 0 }}
+                                initial={{ opacity: 0, y: 50 }}
+                                transition={{ duration: 1 }}
+                            >
+                                <h2 className="text-6xl md:text-[10rem] font-black text-white uppercase tracking-tighter leading-[0.85] mb-12">
+                                    Define The <br /> <span className="text-transparent stroke-text-white italic">Future?</span>
+                                </h2>
+                                <div className="max-w-md mx-auto relative group">
+                                    <div className="absolute -inset-1 bg-linear-to-r from-primary to-secondary rounded-full blur-2xl opacity-40 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                                    <button className="relative px-12 py-8 bg-white rounded-full text-slate-950 font-black uppercase text-xs tracking-[0.3em] flex items-center justify-center gap-4 w-full group">
+                                        Apply for Session 2026 
+                                        <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-2 transition-transform" />
+                                    </button>
+                                </div>
+                                <div className="mt-16 flex flex-wrap justify-center items-center gap-12 text-[10px] font-black text-white/30 tracking-[0.5em]">
+                                   <span>PORTFOLIO FIRST</span>
+                                   <div className="w-1 h-1 bg-white/20 rounded-full" />
+                                   <span>INDUSTRY LED</span>
+                                   <div className="w-1 h-1 bg-white/20 rounded-full" />
+                                   <span>GLOBAL SCOPE</span>
+                                </div>
+                            </motion.div>
+                        </div>
+                    </div>
                 </div>
             </section>
 

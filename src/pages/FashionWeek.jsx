@@ -152,20 +152,122 @@ const FashionWeek = () => {
       </section>
 
       {/* Footer Teaser */}
-      <section className="py-40 flex items-center justify-center text-center px-6 relative overflow-hidden">
-        {/* Decorative background text */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-40 pointer-events-none overflow-hidden select-none">
-             <span className="text-[30vw] font-black uppercase tracking-tighter text-transparent" style={{ WebkitTextStroke: '2px #e2e8f0' }}>INSD</span>
+      {/* --- INDUSTRY STANDARDS --- */}
+      <section className="py-24 md:py-40 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
+            <div className="max-w-2xl">
+              <span className="text-primary font-black text-[10px] uppercase tracking-[0.5em] mb-4 block">The Showcase Protocol</span>
+              <h2 className="text-5xl md:text-8xl font-black text-slate-900 uppercase tracking-tighter leading-none">Global <br /> <span className="text-slate-300">Standards</span></h2>
+            </div>
+            <p className="max-w-xs text-slate-500 text-sm leading-relaxed mb-2 font-light italic">
+              Production excellence that rivals the elite runways of Paris and Milan.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {[
+              { title: "Curation", desc: "Rigorous designer selection process ensuring only the most innovative and technical collections hit the runway." },
+              { title: "Production", desc: "Cinematic lighting, immersive soundscapes, and state-of-the-art stage engineering for maximum impact." },
+              { title: "Press & Media", desc: "Direct exposure to global fashion editors, influencers, and industry buyers from around the world." },
+            ].map((std, i) => (
+              <div key={i} className="space-y-6">
+                <div className="w-12 h-[1px] bg-primary" />
+                <h4 className="text-2xl font-black text-slate-900 uppercase tracking-tighter">{std.title}</h4>
+                <p className="text-slate-500 font-light leading-relaxed text-sm">{std.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
-        
-        <div className="relative z-10 w-full max-w-2xl mx-auto flex flex-col items-center">
-            <h2 className="text-5xl md:text-7xl font-serif text-slate-900 mb-8">
-              Shape The <br/> <span className="italic text-slate-400">Industry</span>
-            </h2>
-            <p className="text-slate-500 mb-10 tracking-wide font-light">Join the ranks of elite designers starting their journey at the INSD School of Design. Applications currently open for the upcoming cohort.</p>
-            <button className="bg-slate-900 text-white px-12 py-5 text-sm tracking-[0.2em] font-bold uppercase hover:bg-primary transition-colors duration-300">
-              Enroll Now
-            </button>
+      </section>
+
+      {/* --- PARTICIPATION PATHS (Image UI Style) --- */}
+      <section className="py-24 md:py-40 bg-[#f9f9f9] border-y border-slate-200">
+        <div className="container mx-auto px-6 flex flex-col md:flex-row gap-20">
+          <div className="md:w-1/2">
+            <h2 className="text-5xl md:text-7xl font-black text-slate-950 uppercase tracking-tighter leading-none mb-10">Participation <br /> <span className="text-primary italic">Paths</span></h2>
+            <p className="text-slate-500 max-w-sm font-light">Whether you are a creator, a performer, or a strategist, there is a place for your vision on our stage.</p>
+          </div>
+          <div className="md:w-1/2 space-y-6">
+            {[
+              { label: "Designer Showcase", active: true },
+              { label: "Modeling Cohort", active: false },
+              { label: "Backstage Production", active: false },
+              { label: "Styling & Makeup Crew", active: false },
+              { label: "Fashion Journalism", active: false },
+            ].map((path, i) => (
+              <div key={i} className="flex items-center group cursor-pointer">
+                <div className={`h-[2px] transition-all duration-500 ${path.active ? 'w-24 bg-primary' : 'w-0 bg-slate-300 group-hover:w-12'}`} />
+                <span className={`text-2xl md:text-4xl font-bold uppercase tracking-tighter transition-all duration-300 ml-4 ${path.active ? 'text-primary' : 'text-slate-400 group-hover:text-slate-900'}`}>{path.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- GLOBAL OPPORTUNITIES --- */}
+      <section className="py-24 md:py-40 bg-slate-950 text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 blur-3xl bg-primary/20 -translate-y-1/2 rounded-full" />
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div>
+              <h2 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-8">Career <br /> <span className="text-transparent stroke-text-white">Impact</span></h2>
+              <p className="text-white/40 text-lg font-light leading-relaxed max-w-lg mb-12">Participating in INSD Fashion Week isn't just a highlight on your resume; it's a launchpad for your global career.</p>
+              <div className="flex flex-wrap gap-8">
+                <div>
+                  <span className="block text-4xl font-black">500+</span>
+                  <span className="text-[10px] font-bold text-white/30 uppercase tracking-widest">Industry Guests</span>
+                </div>
+                <div>
+                  <span className="block text-4xl font-black">10M+</span>
+                  <span className="text-[10px] font-bold text-white/30 uppercase tracking-widest">Digital Reach</span>
+                </div>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                { role: "Brand Founder", impact: "Direct Launch" },
+                { role: "Creative Director", impact: "Portfolio Boost" },
+                { role: "Show Strategist", impact: "Technical Exp" },
+                { role: "Social Influencer", impact: "Max Exposure" },
+              ].map((item, i) => (
+                <div key={i} className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                  <h4 className="text-xl font-bold uppercase tracking-tighter mb-2">{item.role}</h4>
+                  <span className="text-[10px] font-black text-primary uppercase tracking-widest">{item.impact}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- FINAL CALL TO ACTION --- */}
+      <section className="py-24 md:py-40">
+        <div className="container mx-auto px-6">
+          <div className="relative rounded-[4rem] overflow-hidden bg-slate-100 p-12 md:p-32 text-center group">
+            <div className="absolute inset-0 z-0">
+              <img 
+                src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=2000" 
+                alt="Final CTA" 
+                className="w-full h-full object-cover opacity-10 group-hover:scale-110 transition-transform duration-[3s] grayscale"
+              />
+            </div>
+            
+            <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
+              <h2 className="text-5xl md:text-8xl font-black text-slate-900 uppercase tracking-tighter leading-none mb-10">
+                Witness The <br/> <span className="italic text-primary">Evolution.</span>
+              </h2>
+              <p className="text-slate-500 mb-12 text-lg md:text-xl font-light uppercase tracking-widest">Session 2026 Admissions Open</p>
+              <div className="flex flex-col sm:flex-row gap-6 w-full max-w-md">
+                <button className="flex-1 bg-slate-900 text-white px-10 py-6 text-xs tracking-[0.3em] font-black uppercase hover:bg-primary transition-all duration-300 rounded-full">
+                  Apply Now
+                </button>
+                <button className="flex-1 border border-slate-300 text-slate-900 px-10 py-6 text-xs tracking-[0.3em] font-black uppercase hover:bg-slate-900 hover:text-white transition-all duration-300 rounded-full">
+                  Learn More
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

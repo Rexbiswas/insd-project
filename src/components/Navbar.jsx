@@ -173,9 +173,11 @@ const Navbar = () => {
                 { name: 'Interior Designing', path: '/courses/interior-designing' },
                 { name: 'Graphic Designing', path: '/courses/graphic-designing' },
                 { name: 'Animation & VFX', path: '/courses/animation-and-vfx' },
-                { name: 'Online Courses', path: '/courses/online-courses' },
-                { name: 'Undergraduate', path: '/courses/undergraduate' },
-                { name: 'Postgraduate', path: '/courses/postgraduate' },
+                { name: 'Jewellery Designing', path: '/courses/jewellery-designing' },
+                { name: 'UI/UX Design', path: '/courses/uiux-designing' },
+                { name: 'Beauty & Makeup', path: '/courses/beauty-and-makeup' },
+                { name: 'Photography', path: '/courses/photography' },
+                { name: 'Textile Design', path: '/courses/textile-designing' },
             ]
         },
         { title: 'Admissions', path: '/apply', icon: CreditCard, section: 'OVERVIEW' },
@@ -302,9 +304,11 @@ const Navbar = () => {
                                                     { title: 'Interior Designing', path: '/courses/interior-designing', icon: 'interior', desc: 'Spatial & Interior Styling' },
                                                     { title: 'Graphic Designing', path: '/courses/graphic-designing', icon: 'graphic', desc: 'Visual Branding & Media' },
                                                     { title: 'Animation & VFX', path: '/courses/animation-and-vfx', icon: 'animation', desc: '3D Motion & Visual Effects' },
-                                                    { title: 'Online Course', path: '/courses/online-courses', icon: 'uiux', desc: 'Flexible Learning Digital' },
-                                                    { title: 'Undergraduate', path: '/courses/undergraduate', icon: 'award', desc: 'Bachelors Degree Programs' },
-                                                    { title: 'Postgraduate', path: '/courses/postgraduate', icon: 'briefcase', desc: 'Masters Degree Programs' },
+                                                    { title: 'Jewellery Designing', path: '/courses/jewellery-designing', icon: 'jewellery', desc: 'Gems & Jewelry Craft' },
+                                                    { title: 'UI/UX Design', path: '/courses/uiux-designing', icon: 'uiux', desc: 'User Experience & Interface' },
+                                                    { title: 'Beauty & Makeup', path: '/courses/beauty-and-makeup', icon: 'beauty', desc: 'Professional Esthetics' },
+                                                    { title: 'Photography', path: '/courses/photography', icon: 'photography', desc: 'Visual Storytelling Art' },
+                                                    { title: 'Textile Design', path: '/courses/textile-designing', icon: 'textile', desc: 'Material Science Arts' },
                                                 ].map((item, i) => (
                                                     <Link
                                                         key={i}
