@@ -136,87 +136,7 @@ const Navbar = () => {
 
 
 
-    const menuItems = [
-        {
-            title: 'About Us',
-            path: '/about-us',
-            subItems: [
-                { name: 'About Us', path: '/about-us' },
-                { name: 'International Partners', path: '/international-partners' },
-                { name: 'Go Global', path: '/go-global' }
-            ]
-        },
-        {
-            title: 'Courses',
-            path: '/courses',
-            subItems: [
-                {
-                    name: 'Fashion Designing',
-                    path: '/courses/fashion-designing',
-                },
-                {
-                    name: 'Interior Designing',
-                    path: '/courses/interior-designing',
-                },
-                {
-                    name: 'Graphic Designing',
-                    path: '/courses/graphic-designing',
-                },
-                {
-                    name: 'Undergraduate',
-                    path: '/courses/undergraduate',
-                },
-                {
-                    name: 'Postgraduate',
-                    path: '/courses/postgraduate',
-                },
-                {
-                    name: 'MSc In Luxury Brand Management',
-                    path: '/courses/msc-luxury-brand-management'
-                },
-                {
-                    name: 'Diploma & Certificates',
-                    path: '/courses/diploma-and-certificates',
-                },
-                {
-                    name: 'Short Term Courses',
-                    path: '/courses/short-term-courses',
-                },
-                {
-                    name: 'Online Courses',
-                    path: '/courses/online-courses',
-                }
-            ]
-        },
-        {
-            title: 'Campuses',
-            path: '/campuses',
-            subItems: [
-                { name: 'South Delhi', path: '/campuses/south-delhi' },
-                { name: 'North Delhi', path: '/campuses/north-delhi' },
-                { name: 'Paris (CDP)', path: '/campuses/paris' },
-                { name: 'Washington (IBSW)', path: '/campuses/washington' },
-                { name: 'Dubai (IBSW)', path: '/campuses/dubai' },
-                { name: 'United Kingdom (UCA)', path: '/campuses/uk' }
-            ]
-        },
-        { title: 'Student Careers', path: '/student-careers' },
-        {
-            title: 'INSD 360',
-            path: '/insd-360',
-            subItems: [
-                { name: 'Blog', path: '/insd-360/blog' },
-                { name: 'Events', path: '/insd-360/events' },
-                { name: 'Insdians', path: '/insdian' },
-                { name: 'Fashion Week', path: '/insd-360/fashion-week' },
-                { name: 'The Paris Project', path: '/insd-360/paris-project' }
-            ]
-        },
-        { title: 'Gallery', path: '/gallery' },
-        { title: 'Franchise', path: '/franchise' },
-        { title: 'Apply', path: '/apply' },
-        { title: 'Contact Us', path: '/contact-us' },
-    ];
+    const menuItems = [];
 
     // Logic to lock body scroll when menu is open
     useEffect(() => {
@@ -488,17 +408,6 @@ const Navbar = () => {
                                         transition={{ delay: 0.3 }}
                                         className="mb-8 w-full max-w-md shrink-0 flex flex-col gap-4"
                                     >
-                                        <div className="relative group">
-                                            <input
-                                                type="text"
-                                                placeholder="Search programs, campuses..."
-                                                className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-4 text-white placeholder:text-slate-500 focus:outline-none focus:border-primary focus:bg-white/10 transition-all font-mono text-sm tracking-wide"
-                                            />
-                                            <div className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-primary transition-colors">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                                            </div>
-                                        </div>
-
                                         {/* Register CTA for Mobile Drawer - Forced Dark for dark menu */}
                                         <div className="md:hidden">
                                             <RegisterButton
@@ -524,9 +433,12 @@ const Navbar = () => {
                                                 <div className="flex flex-col">
                                                     <div className="flex items-center justify-between group/link">
                                                         <NavLink
-                                                            to={link.title === 'Apply' || link.title === 'Register' ? '#' : link.path}
+                                                            to={link.subItems ? '#' : (link.title === 'Apply' || link.title === 'Register' ? '#' : link.path)}
                                                             onClick={(e) => {
-                                                                if (link.title === 'Apply' || link.title === 'Register') {
+                                                                if (link.subItems) {
+                                                                    e.preventDefault();
+                                                                    setExpandedItem(expandedItem === link.title ? null : link.title);
+                                                                } else if (link.title === 'Apply' || link.title === 'Register') {
                                                                     e.preventDefault();
                                                                     setIsOpen(false);
                                                                     openModal();
@@ -576,8 +488,15 @@ const Navbar = () => {
                                                                                 <>
                                                                                     <div className="flex items-center justify-between group/sub w-full">
                                                                                         <NavLink
-                                                                                            to={subItem.path}
-                                                                                            onClick={() => setIsOpen(false)}
+                                                                                            to={subItem.subItems ? '#' : subItem.path}
+                                                                                            onClick={(e) => {
+                                                                                                if (subItem.subItems) {
+                                                                                                    e.preventDefault();
+                                                                                                    setExpandedSubItem(expandedSubItem === subItem.name ? null : subItem.name);
+                                                                                                } else {
+                                                                                                    setIsOpen(false);
+                                                                                                }
+                                                                                            }}
                                                                                             className={({ isActive }) =>
                                                                                                 `relative flex items-center text-sm md:text-base font-bold transition-all duration-300 uppercase tracking-tight ${isActive ? 'text-primary' : 'text-slate-400 hover:text-white'}`
                                                                                             }
@@ -672,11 +591,8 @@ const Navbar = () => {
                                         transition={{ delay: 0.6 }}
                                         className="space-y-4"
                                     >
-                                        <h3 className="text-secondary font-bold uppercase tracking-widest text-sm">Address</h3>
                                         <div className="space-y-2 text-base text-slate-300">
                                             <h1 className="text-xl font-bold">INSD CORPORATE CENTRES</h1>
-                                            <p>INSD North: A11, Gujranwala Town,</p>
-                                            <p>Block A, New Delhi, Delhi 110009</p>
                                         </div>
                                     </motion.div>
 
