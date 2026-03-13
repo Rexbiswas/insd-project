@@ -19,5 +19,3 @@ react-router-dom
 react-icons
 react-scroll
 
-
-    const navWidth = useTransform(scrollProgress, transitionRange, ["100%", "96%"]);
