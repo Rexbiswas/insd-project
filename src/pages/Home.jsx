@@ -31,7 +31,6 @@ import StudentTransformation from '../components/StudentTransformation';
 import GlobalIndustryNetwork from '../components/GlobalIndustryNetwork';
 import FinalCTA from '../components/FinalCTA';
 
-import LeadForm from '../components/LeadForm';
 import SEO from '../components/SEO';
 
 
@@ -428,8 +427,8 @@ const Home = () => {
             <WhyInsd />
             <StepLeadForm />
             <ProgramSearch />
-            
-            <LeadForm />
+
+            <NationalAwards />
 
 
 
