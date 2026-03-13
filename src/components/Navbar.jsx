@@ -68,7 +68,7 @@ const Navbar = () => {
 
     // Pages that have a dark background/theme or high-impact gradient hero sections
     // Updated detection: Pages with permanent dark themes or sections
-    const darkPages = ['/franchise', '/apply', '/courses', '/student-careers'];
+    const darkPages = ['/franchise', '/apply'];
     const [isHeaderDark, setIsHeaderDark] = useState(darkPages.includes(location.pathname));
 
     // Scroll values
@@ -79,17 +79,25 @@ const Navbar = () => {
             const currentScroll = window.scrollY;
             setIsScrolled(currentScroll > 50);
 
-            // On Home page, we might want to detect specific dark sections
-            // For now, let's use the route logic + extra detection if needed
-            if (darkPages.includes(location.pathname)) {
+            const is404 = document.body.classList.contains('is-404-page');
+
+            if (location.pathname === '/') {
+                // At the very top of Home, it's light (dark text). 
+                // Between 1200 and 4000, it hits dark sections (AiFuture, LeadForm).
+                setIsHeaderDark(currentScroll > 1200 && currentScroll < 4000);
+            } else if (is404) {
+                // 404 page is always dark, needs white text
                 setIsHeaderDark(true);
+            } else if (darkPages.includes(location.pathname)) {
+                // Specialized dark pages transition to light header as you scroll
+                setIsHeaderDark(currentScroll < 500);
             } else {
-                // Dynamic detection for sections like AiFutureDesign or LeadForm (dark)
-                // If scroll is in certain ranges or we detect background
-                setIsHeaderDark(currentScroll > 1200 && currentScroll < 4000); // Approximate LeadForm/AI sections range
+                // All other internal pages (Services, Courses, etc) are light at top
+                setIsHeaderDark(false);
             }
         };
 
+        checkColor(); // Initialize on mount and route change
         window.addEventListener('scroll', checkColor);
         return () => window.removeEventListener('scroll', checkColor);
     }, [location.pathname]);
@@ -116,7 +124,7 @@ const Navbar = () => {
     const navRadius = useTransform(scrollProgress, transitionRange, ["0px", "50px"]);
 
     // Frosted Glass Effect Transformations
-    const navBackground = useTransform(scrollProgress, transitionRange, ["rgba(255, 255, 255, 0.6)", "rgba(255, 255, 255, 0.6)"]);
+    const navBackground = useTransform(scrollProgress, transitionRange, ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.75)"]);
     const navBackdrop = useTransform(scrollProgress, transitionRange, ["blur(0px) saturate(100%)", "blur(25px) saturate(180%)"]);
     const navBorderColor = useTransform(scrollProgress, transitionRange, ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.4)"]);
     const navShadow = useTransform(scrollProgress, transitionRange, ["none", "0 10px 40px -10px rgba(0, 0, 0, 0.1)"]);
@@ -165,7 +173,7 @@ const Navbar = () => {
                     x: "-50%",
                 }}
                 ref={navRef}
-                className="hidden md:flex fixed left-1/2 z-100 px-6 lg:px-8 xl:px-10 py-4 items-center justify-between transition-all duration-300 pointer-events-auto w-full"
+                className="hidden md:flex fixed left-1/2 z-[1000] px-6 lg:px-8 xl:px-10 py-4 items-center justify-between transition-all duration-300 pointer-events-auto w-full"
             >
                 {/* Left: Logo */}
                 <Link to="/" className="nav-logo relative z-50 shrink-0 block h-10 overflow-hidden" onClick={() => setIsOpen(false)}>
@@ -203,7 +211,7 @@ const Navbar = () => {
                                     {/* Dropdown Menu */}
                                     <div className="absolute top-12 left-1/2 -translate-x-1/2 pt-6 w-64 opacity-0 invisible translate-y-4 group-hover/dropdown:opacity-100 group-hover/dropdown:visible group-hover/dropdown:translate-y-0 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] z-50">
                                         <div className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-2xl border border-slate-200/50 dark:border-white/10 rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] overflow-hidden p-2 relative before:content-[''] before:absolute before:inset-0 before:bg-linear-to-b before:from-white/40 before:to-transparent before:pointer-events-none after:content-[''] after:absolute after:-top-px after:left-10 after:right-10 after:h-[1px] after:bg-linear-to-r after:from-transparent after:via-primary/30 after:to-transparent">
-                                            <div className="max-h-[70vh] overflow-y-auto dropdown-scrollbar pr-1">
+                                            <div className="max-h-[400px] overflow-y-auto dropdown-scrollbar pr-1 overscroll-contain">
                                                 {[
                                                     { title: 'Industry Potential', path: '/industry-potential', icon: 'zap', desc: 'Explore industry trends' },
                                                     { title: 'Award Recognise', path: '/awards', icon: 'award', desc: 'Our achievements' },
@@ -249,10 +257,9 @@ const Navbar = () => {
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`transition-transform duration-300 group-hover/dropdown:rotate-180 ${isHeaderDark && !isScrolled ? 'text-white/70' : 'text-slate-500'}`}><path d="m6 9 6 6 6-6" /></svg>
                                     </div>
 
-                                    {/* Courses Dropdown */}
                                     <div className="absolute top-12 left-1/2 -translate-x-1/2 pt-6 w-80 opacity-0 invisible translate-y-4 group-hover/dropdown:opacity-100 group-hover/dropdown:visible group-hover/dropdown:translate-y-0 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] z-50">
-                                        <div className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-2xl border border-slate-200/50 dark:border-white/10 rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] overflow-hidden p-2 relative before:content-[''] before:absolute before:inset-0 before:bg-linear-to-b before:from-white/40 before:to-transparent">
-                                            <div className="max-h-[70vh] overflow-y-auto dropdown-scrollbar pr-1">
+                                        <div className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-2xl border border-slate-200/50 dark:border-white/10 rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] overflow-hidden p-2 relative before:content-[''] before:absolute before:inset-0 before:bg-linear-to-b before:from-white/40 before:to-transparent before:pointer-events-none">
+                                            <div className="max-h-[400px] overflow-y-auto dropdown-scrollbar pr-1 overscroll-contain">
                                                 {[
                                                     { title: 'Fashion Design', path: '/fashion-design', icon: 'fashion', desc: 'Couture & Apparel Design' },
                                                     { title: 'Interior Design', path: '/interior-design', icon: 'interior', desc: 'Spatial & Interior Styling' },

@@ -71,28 +71,7 @@ const SocialProof = () => {
                         <div className="h-1.5 w-32 bg-primary rounded-full"></div>
                     </div>
 
-                    <div className="flex items-center gap-8 group bg-slate-50 p-6 md:p-10 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-md transition-shadow duration-500">
-                        <div className="text-right flex items-baseline">
-                            <motion.span
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.8 }}
-                                className="text-8xl md:text-10xl font-black text-slate-800 leading-none"
-                            >
-                                15
-                            </motion.span>
-                            <span className="text-5xl md:text-7xl font-black text-primary ml-1">+</span>
-                        </div>
-                        <div className="text-left max-w-[180px]">
-                            <p className="text-sm md:text-xl font-black uppercase tracking-tight leading-none text-slate-900 mb-1">
-                                Years
-                            </p>
-                            <p className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-400">
-                                OF ACADEMIC LEGACY
-                            </p>
-                        </div>
-                    </div>
+
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -184,23 +163,7 @@ const SocialProof = () => {
                     </div>
                 </div>
 
-                {/* Refined Trust Bar */}
-                <div className="mt-32 pt-16 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-8">
-                    <div className="flex flex-col gap-2">
-                        <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400 text-center md:text-left">
-                            Institutional Authority
-                        </p>
-                        <p className="text-sm font-black text-slate-900">
-                            International School of Design © 2026
-                        </p>
-                    </div>
 
-                    <div className="flex items-center gap-12 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-                        <div className="font-serif italic text-xl font-bold tracking-tight">Academic Council</div>
-                        <div className="h-10 w-[1px] bg-slate-200 hidden md:block"></div>
-                        <div className="text-xs font-black uppercase tracking-[0.6em]">Excellence</div>
-                    </div>
-                </div>
             </div>
         </section>
     );

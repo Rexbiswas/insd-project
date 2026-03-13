@@ -52,10 +52,13 @@ const NotFound = () => {
                 .to(".glitch-text", { x: 0, y: 0, color: "inherit", duration: 0.05 });
         }, containerRef);
 
+        document.body.classList.add('is-404-page');
+
         return () => {
             window.removeEventListener('online', handleOnline);
             window.removeEventListener('offline', handleOffline);
             window.removeEventListener('keydown', handleKeyPress);
+            document.body.classList.remove('is-404-page');
             ctx.revert();
         };
     }, []);
