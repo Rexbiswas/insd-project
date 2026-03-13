@@ -69,7 +69,7 @@ const StepLeadForm = () => {
     };
 
     return (
-        <section className="relative py-24 md:py-32 bg-white overflow-hidden selection:bg-primary selection:text-white">
+        <section id="step-lead-form" className="relative py-24 md:py-32 bg-white overflow-hidden selection:bg-primary selection:text-white">
             {/* Background Decorations */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-40">
                 <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2" />

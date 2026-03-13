@@ -257,7 +257,6 @@ const Navbar = () => {
                         alt="INSD Logo"
                     />
                 </Link>
-
                 {/* Right: Actions */}
                 <div className="flex items-center gap-2 md:gap-6 lg:gap-10">
                     {/* Quick Links - Visible on Desktop */}

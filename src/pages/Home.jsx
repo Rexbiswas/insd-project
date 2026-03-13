@@ -379,7 +379,7 @@ const Home = () => {
                     {/* Watermark Logo - Inside mask for participation in blend */}
                     <div className="absolute inset-0 flex items-center justify-center opacity-30 md:opacity-40 z-0 overflow-hidden">
                         <img
-                            src="https://insd.edu.in/wp-content/uploads/2019/11/INSD-circle-Logo_black_100pxl.png"
+                            src="https://insd.edu.in/wp-content/uploads/2022/02/Final-Logo.png"
                             alt="INSD Watermark"
                             className="w-[60vw] md:w-[20vw] h-auto object-contain grayscale brightness-0 opacity-40 mix-blend-multiply"
                         />

@@ -269,7 +269,7 @@ const AIChatbot = () => {
                                 whileHover={{ scale: 1.1, y: -5 }}
                                 whileTap={{ scale: 0.9 }}
                                 onClick={() => setIsOpen(!isOpen)}
-                                className={`relative flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-2xl shadow-2xl transition-all duration-500 overflow-hidden ${isOpen
+                                className={`relative flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full shadow-2xl transition-all duration-500 overflow-hidden ${isOpen
                                     ? 'bg-slate-900 border-slate-800 rotate-90'
                                     : 'bg-white/90 backdrop-blur-xl border-slate-100 hover:border-primary/30'
                                     } border shadow-[0_10px_30px_rgba(0,0,0,0.1)]`}
@@ -328,7 +328,7 @@ const AIChatbot = () => {
 
                                 {/* Pulse Ring */}
                                 {!isOpen && (
-                                    <div className="absolute inset-0 rounded-2xl border-2 border-primary/20 animate-ping opacity-0 group-hover:opacity-100" />
+                                <div className="absolute inset-0 rounded-full border-2 border-primary/20 animate-ping opacity-0 group-hover:opacity-100" />
                                 )}
                             </motion.button>
                         </div>

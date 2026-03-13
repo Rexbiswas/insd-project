@@ -46,6 +46,7 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 // Components
 import BackToTop from './components/BackToTop';
 import WhatsappCTA from './components/WhatsappCTA';
+import StepLeadCTA from './components/StepLeadCTA';
 import WebSkeleton from './components/WebSkeleton';
 import RegistrationModal from './components/RegistrationModal';
 import AIChatbot from './components/AIChatbot';
@@ -121,6 +122,7 @@ function App() {
                                 </Routes>
                             </div>
                             <WhatsappCTA />
+                            <StepLeadCTA />
                             <BackToTop />
                             <AIChatbot />
                             <Analytics />
