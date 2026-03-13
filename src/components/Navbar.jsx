@@ -9,10 +9,10 @@ const RollerLink = ({ to, children, colorClass, baseTextClass = "text-slate-800"
     return (
         <Link to={to} className="relative block h-[24px] group overflow-hidden">
             <div className="flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-1/2">
-                <span className={`flex items-center justify-center h-[24px] text-sm font-bold ${baseTextClass} uppercase tracking-wider transition-all duration-300 leading-none`}>
+                <span className={`flex items-center justify-center h-[24px] text-[10px] xl:text-[11px] font-bold ${baseTextClass} uppercase tracking-wider whitespace-nowrap transition-all duration-300 leading-none`}>
                     {children}
                 </span>
-                <span className={`flex items-center justify-center h-[24px] text-sm font-bold uppercase tracking-wider ${colorClass} transition-all duration-300 leading-none`}>
+                <span className={`flex items-center justify-center h-[24px] text-[10px] xl:text-[11px] font-bold uppercase tracking-wider whitespace-nowrap ${colorClass} transition-all duration-300 leading-none`}>
                     {children}
                 </span>
             </div>
@@ -266,28 +266,56 @@ const Navbar = () => {
                                 initial={{ opacity: 0, x: 20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: 20 }}
-                                className="hidden md:flex items-center gap-6"
+                                className="hidden lg:flex items-center gap-2 xl:gap-6"
                             >
                                 <RollerLink
-                                    to="/apply"
+                                    to="/about-us"
                                     colorClass="nav-hover-gradient"
                                     baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
                                 >
-                                    Admission
+                                    About
                                 </RollerLink>
                                 <RollerLink
-                                    to="/franchise"
+                                    to="/industry-potential"
                                     colorClass="nav-hover-gradient"
                                     baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
                                 >
-                                    Franchise
+                                    Industry Potential
                                 </RollerLink>
                                 <RollerLink
-                                    to="/contact-us"
+                                    to="/awards"
                                     colorClass="nav-hover-gradient"
                                     baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
                                 >
-                                    Contact Us
+                                    Award Recognise
+                                </RollerLink>
+                                <RollerLink
+                                    to="/insdian"
+                                    colorClass="nav-hover-gradient"
+                                    baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
+                                >
+                                    Insdian
+                                </RollerLink>
+                                <RollerLink
+                                    to="/student-careers"
+                                    colorClass="nav-hover-gradient"
+                                    baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
+                                >
+                                    Student Career
+                                </RollerLink>
+                                <RollerLink
+                                    to="/campuses"
+                                    colorClass="nav-hover-gradient"
+                                    baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
+                                >
+                                    Campus
+                                </RollerLink>
+                                <RollerLink
+                                    to="/placement"
+                                    colorClass="nav-hover-gradient"
+                                    baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
+                                >
+                                    Placement
                                 </RollerLink>
                             </motion.div>
                         )}

@@ -141,24 +141,7 @@ const GlobalDesignEconomy = () => {
                     ))}
                 </div>
 
-                {/* Economic Impact Footer */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.3 }}
-                    className="mt-16 md:mt-20 p-10 md:p-16 rounded-[3.5rem] bg-slate-950 text-white relative overflow-hidden group"
-                >
-                    <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
-                        <div className="max-w-xl">
-                            <h5 className="text-xl md:text-3xl font-black uppercase tracking-tight mb-4">Become an Economic Catalyst.</h5>
-                            <p className="text-slate-400 font-medium">Global creative spending is projected to reach $2.5 trillion by 2026. Position yourself at the center of the value chain.</p>
-                        </div>
-                        <button className="px-10 py-5 bg-white text-slate-900 rounded-full font-black uppercase tracking-widest hover:bg-primary hover:text-white transition-all duration-500 shadow-2xl">
-                            Master the Economy
-                        </button>
-                    </div>
-                </motion.div>
+
             </div>
         </section>
     );

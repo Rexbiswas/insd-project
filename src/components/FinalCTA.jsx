@@ -42,28 +42,6 @@ const FinalCTA = () => {
                     Start your design journey today.
                 </motion.p>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-                >
-                    <a
-                        href="/admission"
-                        className="group relative inline-flex items-center gap-6 px-10 py-5 bg-white text-slate-950 rounded-full overflow-hidden hover:scale-105 transition-transform duration-500 shadow-[0_0_40px_rgba(255,255,255,0.2)] hover:shadow-[0_0_60px_rgba(255,255,255,0.4)]"
-                    >
-                        {/* Button Hover Expansion Background */}
-                        <div className="absolute inset-0 bg-primary translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out" />
-
-                        <span className="relative z-10 text-sm md:text-base font-black uppercase tracking-[0.2em] group-hover:text-white transition-colors duration-500">
-                            Apply Now
-                        </span>
-
-                        <div className="relative z-10 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-white/20 transition-colors duration-500">
-                            <ArrowRight size={18} className="text-slate-900 group-hover:text-white group-hover:translate-x-1 transition-all duration-500" />
-                        </div>
-                    </a>
-                </motion.div>
             </div>
         </section>
     );
