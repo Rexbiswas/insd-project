@@ -300,6 +300,7 @@ const Navbar = () => {
                                                     { title: 'Student Career', path: '/student-careers', icon: 'briefcase', desc: 'Career opportunities' },
                                                     { title: 'Campus', path: '/campuses', icon: 'map-pin', desc: 'Our locations' },
                                                     { title: 'Placement', path: '/placement', icon: 'trending-up', desc: 'Placement records' },
+                                                    { title: 'Paris Project', path: '/paris-project', icon: 'trending-up', desc: 'Placement records' },
                                                 ].map((item, i) => (
                                                     <Link
                                                         key={i}

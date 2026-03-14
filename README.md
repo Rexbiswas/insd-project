@@ -19,3 +19,4 @@ react-router-dom
 react-icons
 react-scroll
 
+now create paris projoct in about drop down and link @beautifulMention

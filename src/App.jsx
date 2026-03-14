@@ -65,7 +65,7 @@ import { AuthProvider } from './context/AuthContext';
 const ScrollToTop = () => {
     const { pathname } = useLocation();
     React.useEffect(() => {
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
     }, [pathname]);
     return null;
 };
