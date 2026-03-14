@@ -75,6 +75,10 @@ const Navbar = () => {
     const darkPages = ['/franchise', '/apply'];
     const [isHeaderDark, setIsHeaderDark] = useState(darkPages.includes(location.pathname));
 
+    // GSAP SVG Animation REfs
+    const svgRef = useRef(null);
+    const pathRef = useRef(null);
+
     // Scroll values
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -525,8 +529,8 @@ const Navbar = () => {
                             </div>
 
                             {/* LEFT COLUMN: NAVIGATION CTAs */}
-                            <div className="w-full md:w-[65%] p-6 md:p-20 lg:pd-32 flex flex-col justify-center relative z-10">
-                                <div className="space-y-4 md:space-y-8">
+                            <div className="w-full md:w-[65%] p-6 md:p-12 lg:p-20 flex flex-col justify-center relative z-10 overflow-y-auto dropdown-scrollbar">
+                                <div className="space-y-4 md:space-y-6">
                                     {[
                                         { title: 'Call Us Now', sub: '+91 7701933935', icon: Phone, href: 'tel:+917701933935' },
                                         { title: 'Apply Now', sub: 'Admission Cycle 2026', icon: UserPlus, href: '/apply' },
@@ -535,7 +539,7 @@ const Navbar = () => {
                                     ].map((cta, i) => (
                                         <motion.div
                                             key={i}
-                                            initial={{ x: -30, opacity: 0 }}
+                                            initial={{ x: -20, opacity: 0 }}
                                             animate={{ x: 0, opacity: 1 }}
                                             transition={{ delay: 0.1 + i * 0.1, duration: 0.5 }}
                                             className="group relative"
@@ -545,14 +549,14 @@ const Navbar = () => {
                                                     onClick={() => { setIsOpen(false); openModal(); }}
                                                     className="flex items-center gap-6 md:gap-8 text-left w-full"
                                                 >
-                                                    <div className="w-10 h-10 md:w-16 md:h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-primary group-hover:scale-110 group-hover:rotate-6 group-hover:border-primary shadow-xl">
-                                                        <cta.icon className="w-5 h-5 md:w-8 md:h-8 text-white" />
+                                                    <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-primary group-hover:scale-110 group-hover:rotate-6 group-hover:border-primary shadow-xl">
+                                                        <cta.icon className="w-5 h-5 md:w-7 md:h-7 text-white" />
                                                     </div>
                                                     <div>
-                                                        <h3 className="text-xl md:text-4xl lg:text-5xl font-black uppercase tracking-tighter leading-none group-hover:text-primary transition-colors">
+                                                        <h3 className="text-lg md:text-3xl lg:text-4xl font-black uppercase tracking-tighter leading-none group-hover:text-primary transition-colors">
                                                             {cta.title}
                                                         </h3>
-                                                        <p className="text-[9px] md:text-xs font-bold tracking-[0.2em] text-white/30 uppercase mt-2 group-hover:text-white/60 transition-colors">
+                                                        <p className="text-[8px] md:text-[10px] font-bold tracking-[0.2em] text-white/30 uppercase mt-1.5 group-hover:text-white/60 transition-colors">
                                                             {cta.sub}
                                                         </p>
                                                     </div>
@@ -585,16 +589,13 @@ const Navbar = () => {
                             <div className="hidden md:block w-px bg-white/10 h-[60%] my-auto" />
 
                             {/* RIGHT COLUMN: CONTACT DETAILS */}
-                            <div className="w-full md:w-[35%] p-6 md:p-20 flex flex-col justify-center space-y-12 relative z-10">
+                            <div className="w-full md:w-[35%] p-6 md:p-12 lg:p-20 flex flex-col justify-center space-y-8 relative z-10 overflow-y-auto dropdown-scrollbar">
                                 <div>
                                     <h4 className="text-[8px] md:text-[9px] font-black tracking-[0.4em] text-primary uppercase mb-4 md:mb-5">Contact</h4>
                                     <div className="space-y-2.5">
                                         <a href="tel:+917701933935" className="block text-base md:text-lg font-bold hover:text-primary transition-colors">+91 7701933935</a>
                                         <a href="tel:+917827066618" className="block text-base md:text-lg font-bold hover:text-primary transition-colors">+91 7827066618</a>
-                                        <a href="mailto:info@insd.edu.in" className="flex items-center gap-2.5 text-white/40 hover:text-white transition-colors pt-1">
-                                            <Mail size={12} className="text-primary" />
-                                            <span className="text-xs font-medium tracking-tight">info@insd.edu.in</span>
-                                        </a>
+                                        
                                     </div>
                                 </div>
 
@@ -602,11 +603,6 @@ const Navbar = () => {
                                     <h4 className="text-[8px] md:text-[9px] font-black tracking-[0.4em] text-secondary uppercase mb-4 md:mb-5">Address</h4>
                                     <div className="space-y-2.5 max-w-xs">
                                         <h5 className="font-black text-[10px] uppercase tracking-wider">INSD Corporate Centres</h5>
-                                        <p className="text-white/40 text-[11px] md:text-xs leading-relaxed tracking-tight">
-                                            A11, Gujranwala Town, <br />
-                                            Block A, New Delhi, <br />
-                                            Delhi 110009
-                                        </p>
                                         <button className="flex items-center gap-2 text-[9px] font-bold text-primary group">
                                             VIEW ON MAPS <ArrowRight size={10} className="group-hover:translate-x-2 transition-transform" />
                                         </button>
@@ -614,8 +610,8 @@ const Navbar = () => {
                                 </div>
 
                                 <div>
-                                    <h4 className="text-[10px] md:text-xs font-black tracking-[0.4em] text-white/20 uppercase mb-6 md:mb-10">Follow Us</h4>
-                                    <div className="flex gap-6">
+                                    <h4 className="text-[8px] md:text-[9px] font-black tracking-[0.4em] text-white/20 uppercase mb-4 md:mb-6">Follow Us</h4>
+                                    <div className="flex gap-4">
                                         {[
                                             { icon: Instagram, href: '#' },
                                             { icon: Facebook, href: '#' },
@@ -624,11 +620,11 @@ const Navbar = () => {
                                         ].map((soc, i) => (
                                             <motion.a
                                                 key={i}
-                                                whileHover={{ y: -5, scale: 1.1 }}
+                                                whileHover={{ y: -3, scale: 1.05 }}
                                                 href={soc.href}
-                                                className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-primary hover:border-primary/30 transition-all shadow-lg"
+                                                className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-primary hover:border-primary/30 transition-all shadow-lg"
                                             >
-                                                <soc.icon size={20} />
+                                                <soc.icon size={18} />
                                             </motion.a>
                                         ))}
                                     </div>
