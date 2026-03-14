@@ -365,7 +365,7 @@ const Navbar = () => {
                         className={`group relative hidden md:flex items-center gap-3 px-5 py-2.5 rounded-full overflow-hidden shadow-lg transition-all duration-300 ${isHeaderDark && !isScrolled ? 'bg-white text-slate-900 shadow-white/10' : 'bg-slate-900 text-white shadow-slate-900/20'}`}
                     >
                         <div className="absolute inset-0 bg-linear-to-r from-primary to-secondary translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                        <span className={`relative z-10 font-bold text-sm hidden sm:inline-block tracking-wide transition-colors duration-300 ${isHeaderDark && !isScrolled ? 'group-hover:text-white' : ''}`}>
+                        <span className={`relative z-10 font-bold text-[10px] md:text-xs hidden sm:inline-block tracking-widest transition-colors duration-300 ${isHeaderDark && !isScrolled ? 'group-hover:text-white' : ''}`}>
                             {isOpen ? "CLOSE" : "CONTACT"}
                         </span>
                     </motion.button>
@@ -498,25 +498,21 @@ const Navbar = () => {
                                 />
                             </Link>
 
-                            <div className="flex items-center gap-4 md:gap-8">
+                            <div className="flex items-center gap-4 md:gap-6">
                                 <button
                                     onClick={() => { setIsOpen(false); openModal(); }}
-                                    className="hidden md:flex items-center gap-2 px-6 py-2.5 rounded-full border border-white/20 hover:bg-white hover:text-slate-950 transition-all font-black text-[10px] tracking-[0.2em] uppercase"
+                                    className="hidden md:flex items-center gap-2 px-5 py-2 rounded-full border border-white/20 hover:bg-white hover:text-slate-950 transition-all font-black text-[9px] md:text-[10px] tracking-[0.2em] uppercase"
                                 >
-                                    Register <ArrowRight size={14} />
+                                    Register <ArrowRight size={12} />
                                 </button>
 
                                 <button
                                     onClick={() => setIsOpen(false)}
-                                    className="flex items-center gap-3 px-6 py-2.5 rounded-full bg-slate-900 border border-white/20 hover:bg-white hover:text-slate-950 transition-all shadow-xl group"
+                                    className="flex items-center gap-2.5 px-5 py-2 rounded-full bg-slate-900 border border-white/20 hover:bg-white hover:text-slate-950 transition-all shadow-xl group"
                                 >
-                                    <span className="font-bold text-xs tracking-widest uppercase">CLOSE</span>
-                                    <X size={18} className="group-hover:rotate-90 transition-transform" />
+                                    <span className="font-bold text-[10px] md:text-xs tracking-widest uppercase">CLOSE</span>
+                                    <X size={16} className="group-hover:rotate-90 transition-transform" />
                                 </button>
-
-                                <div className="hidden md:flex w-10 h-10 rounded-full bg-white/10 border border-white/20 items-center justify-center">
-                                    <User size={18} />
-                                </div>
                             </div>
                         </div>
 
@@ -567,14 +563,14 @@ const Navbar = () => {
                                                     onClick={() => setIsOpen(false)}
                                                     className="flex items-center gap-6 md:gap-8 text-left"
                                                 >
-                                                    <div className="w-10 h-10 md:w-16 md:h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-primary group-hover:scale-110 group-hover:rotate-6 group-hover:border-primary shadow-xl">
-                                                        <cta.icon className="w-5 h-5 md:w-8 md:h-8 text-white" />
+                                                    <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-primary group-hover:scale-110 group-hover:rotate-6 group-hover:border-primary shadow-xl">
+                                                        <cta.icon className="w-5 h-5 md:w-7 md:h-7 text-white" />
                                                     </div>
                                                     <div>
-                                                        <h3 className="text-xl md:text-4xl lg:text-5xl font-black uppercase tracking-tighter leading-none group-hover:text-primary transition-colors">
+                                                        <h3 className="text-lg md:text-3xl lg:text-4xl font-black uppercase tracking-tighter leading-none group-hover:text-primary transition-colors">
                                                             {cta.title}
                                                         </h3>
-                                                        <p className="text-[9px] md:text-xs font-bold tracking-[0.2em] text-white/30 uppercase mt-2 group-hover:text-white/60 transition-colors">
+                                                        <p className="text-[8px] md:text-[10px] font-bold tracking-[0.2em] text-white/30 uppercase mt-1.5 group-hover:text-white/60 transition-colors">
                                                             {cta.sub}
                                                         </p>
                                                     </div>
@@ -591,28 +587,28 @@ const Navbar = () => {
                             {/* RIGHT COLUMN: CONTACT DETAILS */}
                             <div className="w-full md:w-[35%] p-6 md:p-20 flex flex-col justify-center space-y-12 relative z-10">
                                 <div>
-                                    <h4 className="text-[9px] md:text-[10px] font-black tracking-[0.4em] text-primary uppercase mb-4 md:mb-6">Contact</h4>
-                                    <div className="space-y-3">
-                                        <a href="tel:+917701933935" className="block text-lg md:text-xl font-bold hover:text-primary transition-colors">+91 7701933935</a>
-                                        <a href="tel:+917827066618" className="block text-lg md:text-xl font-bold hover:text-primary transition-colors">+91 7827066618</a>
-                                        <a href="mailto:info@insd.edu.in" className="flex items-center gap-3 text-white/50 hover:text-white transition-colors pt-1">
-                                            <Mail size={14} className="text-primary" />
-                                            <span className="text-sm font-medium">info@insd.edu.in</span>
+                                    <h4 className="text-[8px] md:text-[9px] font-black tracking-[0.4em] text-primary uppercase mb-4 md:mb-5">Contact</h4>
+                                    <div className="space-y-2.5">
+                                        <a href="tel:+917701933935" className="block text-base md:text-lg font-bold hover:text-primary transition-colors">+91 7701933935</a>
+                                        <a href="tel:+917827066618" className="block text-base md:text-lg font-bold hover:text-primary transition-colors">+91 7827066618</a>
+                                        <a href="mailto:info@insd.edu.in" className="flex items-center gap-2.5 text-white/40 hover:text-white transition-colors pt-1">
+                                            <Mail size={12} className="text-primary" />
+                                            <span className="text-xs font-medium tracking-tight">info@insd.edu.in</span>
                                         </a>
                                     </div>
                                 </div>
 
                                 <div>
-                                    <h4 className="text-[9px] md:text-[10px] font-black tracking-[0.4em] text-secondary uppercase mb-4 md:mb-6">Address</h4>
-                                    <div className="space-y-3 max-w-xs">
-                                        <h5 className="font-black text-xs uppercase tracking-wider">INSD Corporate Centres</h5>
-                                        <p className="text-white/40 text-xs md:text-sm leading-relaxed">
+                                    <h4 className="text-[8px] md:text-[9px] font-black tracking-[0.4em] text-secondary uppercase mb-4 md:mb-5">Address</h4>
+                                    <div className="space-y-2.5 max-w-xs">
+                                        <h5 className="font-black text-[10px] uppercase tracking-wider">INSD Corporate Centres</h5>
+                                        <p className="text-white/40 text-[11px] md:text-xs leading-relaxed tracking-tight">
                                             A11, Gujranwala Town, <br />
                                             Block A, New Delhi, <br />
                                             Delhi 110009
                                         </p>
-                                        <button className="flex items-center gap-2 text-[10px] font-bold text-primary group">
-                                            VIEW ON MAPS <ArrowRight size={12} className="group-hover:translate-x-2 transition-transform" />
+                                        <button className="flex items-center gap-2 text-[9px] font-bold text-primary group">
+                                            VIEW ON MAPS <ArrowRight size={10} className="group-hover:translate-x-2 transition-transform" />
                                         </button>
                                     </div>
                                 </div>
