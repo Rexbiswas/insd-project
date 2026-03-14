@@ -73,7 +73,7 @@ const CourseListCard = ({ course, index }) => {
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
                 />
             </div>
-            
+
             <div className="flex-1 space-y-4 text-center md:text-left">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
@@ -92,7 +92,7 @@ const CourseListCard = ({ course, index }) => {
                     {course.description}
                 </p>
             </div>
-            
+
             <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
                 <ArrowUpRight className="text-pink-500" size={24} />
             </div>
@@ -197,7 +197,7 @@ const Courses = () => {
 
     return (
         <div ref={containerRef} className="bg-[#050505] text-white selection:bg-pink-600 font-sans overflow-hidden">
-            <SEO 
+            <SEO
                 title="Design Courses in India | B.Des, M.Des, Diploma Programs - INSD"
                 description="Choose from top-rated B.Des, M.Des, and diploma programs in Fashion, Interior, and Graphic Design. INSD offers industry-standard creative education with 500+ placement partners."
                 keywords="design courses India, design admissions India, top design colleges India, fashion design courses India, interior design courses India, graphic design courses India, UI/UX design courses India"
@@ -250,8 +250,8 @@ const Courses = () => {
                                 key={cat}
                                 onClick={() => setActiveFilter(cat)}
                                 className={`px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest border transition-all ${activeFilter === cat
-                                        ? "bg-white text-black border-white"
-                                        : "bg-white/5 text-slate-400 border-white/10 hover:border-white/40"
+                                    ? "bg-white text-black border-white"
+                                    : "bg-white/5 text-slate-400 border-white/10 hover:border-white/40"
                                     }`}
                             >
                                 {cat}
@@ -290,13 +290,13 @@ const Courses = () => {
                             </h2>
                         </div>
                         <div className="hidden md:flex items-center gap-3 p-1 rounded-2xl bg-white/5 border border-white/10">
-                            <button 
+                            <button
                                 onClick={() => setViewMode('list')}
                                 className={`p-2 rounded-xl transition-all ${viewMode === 'list' ? 'bg-white text-black shadow-lg scale-110' : 'text-slate-500 hover:text-white'}`}
                             >
                                 <List size={18} />
                             </button>
-                            <button 
+                            <button
                                 onClick={() => setViewMode('grid')}
                                 className={`p-2 rounded-xl transition-all ${viewMode === 'grid' ? 'bg-white text-black shadow-lg scale-110' : 'text-slate-500 hover:text-white'}`}
                             >
@@ -307,7 +307,7 @@ const Courses = () => {
 
                     <AnimatePresence mode="wait">
                         {viewMode === 'grid' ? (
-                            <motion.div 
+                            <motion.div
                                 key="grid"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -319,7 +319,7 @@ const Courses = () => {
                                 ))}
                             </motion.div>
                         ) : (
-                            <motion.div 
+                            <motion.div
                                 key="list"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}

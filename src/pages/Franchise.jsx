@@ -131,7 +131,7 @@ const Franchise = () => {
 
     return (
         <div ref={containerRef} className="relative z-10 bg-[#f3f3f3] text-slate-900 min-h-screen selection:bg-primary selection:text-white overflow-hidden font-sans border-y border-slate-300">
-            <SEO 
+            <SEO
                 title="Design School Franchise Opportunity India - Open Your INSD Campus"
                 description="Join India's leading National Award-Winning design school network. Explore high ROI franchise opportunities in education with INSD. Partner with the best in design education."
                 keywords="design school franchise, education business opportunity India, best education franchise, INSD franchise, open fashion institute, interior design school franchise, profitable franchise models"

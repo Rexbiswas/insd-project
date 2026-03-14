@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import StudentTransformation from '../components/StudentTransformation';
+import GlobalIndustryNetwork from '../components/GlobalIndustryNetwork';
+import Footer from '../components/Footer';
 
 const Placement = () => {
     useEffect(() => {
@@ -16,7 +18,7 @@ const Placement = () => {
                     <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-bl from-primary/5 to-transparent blur-3xl opacity-60 mix-blend-multiply" />
                     <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-linear-to-tr from-slate-200/60 to-transparent blur-2xl opacity-50" />
                 </div>
-                
+
                 <div className="container mx-auto px-6 relative z-10 text-center max-w-5xl">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -44,6 +46,8 @@ const Placement = () => {
             >
                 <StudentTransformation />
             </motion.div>
+
+            <GlobalIndustryNetwork />
         </main>
     );
 };

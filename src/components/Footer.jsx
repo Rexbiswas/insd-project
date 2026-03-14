@@ -96,102 +96,14 @@ const Footer = () => {
         { icon: Youtube, label: "YouTube", color: "#FF0000", link: "https://youtube.com/@insd-internationalschoolof5139?feature=shared" }
     ];
 
-    const ctas = [
-        {
-            label: "Apply Now",
-            icon: ArrowUpRight,
-            desc: "Priority 2026 Admissions",
-            color: "from-primary/40 to-primary/5",
-            borderColor: "border-primary/20",
-            glow: "bg-primary/20",
-            link: "/apply",
-            tag: "ACTIVATE"
-        },
-        {
-            label: "Call Now",
-            icon: Phone,
-            desc: "+91 77019 33935",
-            color: "from-secondary/40 to-secondary/5",
-            borderColor: "border-secondary/20",
-            glow: "bg-secondary/20",
-            link: "tel:+917701933935",
-            tag: "CONNECT"
-        },
-        {
-            label: "Book Counselling",
-            icon: MessageSquare,
-            desc: "1-on-1 Expert Session",
-            color: "from-indigo-500/40 to-indigo-500/5",
-            borderColor: "border-indigo-500/20",
-            glow: "bg-indigo-500/20",
-            link: "#",
-            tag: "ADVISE"
-        },
-        {
-            label: "Brochure",
-            icon: Download,
-            desc: "Digital 2026 Prospectus",
-            color: "from-orange-500/40 to-orange-500/5",
-            borderColor: "border-orange-500/20",
-            glow: "bg-orange-500/20",
-            link: "#",
-            tag: "EXPLORE"
-        }
-    ];
-
     return (
-        <footer ref={footerRef} className="relative bg-gradient-to-br from-[#801e20] to-[#0a2746] text-white pt-32 pb-12 overflow-hidden">
+        <footer ref={footerRef} className="relative bg-linear-to-br from-[#801e20] to-[#0a2746] text-white pt-32 pb-12 overflow-hidden">
 
             {/* Atmospheric Orbs */}
             <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/10 blur-[150px] -translate-y-1/2 translate-x-1/2 rounded-full pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/10 blur-[150px] translate-y-1/2 -translate-x-1/2 rounded-full pointer-events-none" />
 
             <div className="relative z-10 container mx-auto px-6 lg:px-12">
-
-
-
-                {/* --- THE NEXUS ADMISSION COCKPIT --- */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-40">
-                    {ctas.map((cta, i) => (
-                        <motion.a
-                            key={i}
-                            href={cta.link}
-                            whileHover={{ y: -5, scale: 1.02 }}
-                            transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                            className="group relative h-24 rounded-full bg-white/5 backdrop-blur-md border border-white/10 overflow-hidden transition-all duration-500 flex items-center px-4 hover:bg-white/10 hover:border-white/20 hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] shadow-xl cursor-pointer"
-                        >
-                            {/* Accent Glow hidden inside */}
-                            <div className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700 ${cta.glow} blur-2xl pointer-events-none`} />
-
-                            <div className="relative z-10 flex items-center justify-between w-full">
-                                {/* Left Side: Icon & Text */}
-                                <div className="flex items-center gap-5">
-                                    <div className="w-16 h-16 shrink-0 rounded-full bg-white text-slate-900 flex items-center justify-center shadow-inner group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-500 overflow-hidden relative">
-                                        <div className="absolute inset-0 bg-gradient-to-tr from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                        <cta.icon className="w-6 h-6 transition-transform duration-500 group-hover:rotate-12" />
-                                    </div>
-
-                                    <div className="flex flex-col">
-                                        <span className="text-xs uppercase tracking-widest text-primary/80 font-bold mb-1 group-hover:text-primary transition-colors">
-                                            {cta.tag}
-                                        </span>
-                                        <h4 className="text-xl md:text-2xl font-bold tracking-tight text-white leading-none">
-                                            {cta.label}
-                                        </h4>
-                                    </div>
-                                </div>
-
-                                {/* Right Side: Chevron & Status */}
-                                <div className="flex items-center justify-end pr-4">
-                                    <div className="w-10 h-10 shrink-0 rounded-full border border-white/20 flex items-center justify-center group-hover:border-primary group-hover:bg-primary transition-colors duration-500 relative overflow-hidden">
-                                        <ChevronRight className="w-5 h-5 text-white/50 group-hover:text-white transition-all duration-500 absolute group-hover:translate-x-full opacity-100 group-hover:opacity-0" />
-                                        <ChevronRight className="w-5 h-5 text-white transition-all duration-500 absolute -translate-x-full opacity-0 group-hover:translate-x-0 group-hover:opacity-100" />
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.a>
-                    ))}
-                </div>
 
                 {/* Secondary Links & Info */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 mb-32 pt-16 border-t border-white/5">
@@ -454,8 +366,8 @@ const Footer = () => {
                         Design By Rishi Biswas
                     </a>
                 </div>
-            </div>
-        </footer>
+            </div >
+        </footer >
     );
 };
 

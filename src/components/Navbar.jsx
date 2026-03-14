@@ -5,7 +5,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import {
     Menu as MenuIcon, X, ArrowRight, Home, Sparkles, GraduationCap, LayoutGrid, User,
     Search, Folder, Users, CreditCard, Box, HelpCircle, Settings, LogOut, ChevronLeft, ChevronsLeft, Store,
-    Phone, Calendar, UserPlus, FileDown, Instagram, Linkedin, Facebook, MapPin, Mail, MessageSquare
+    Phone, Calendar, UserPlus, FileDown, Instagram, Linkedin, Facebook, MapPin, Mail, MessageSquare, Globe
 } from 'lucide-react';
 import gsap from 'gsap';
 
@@ -85,27 +85,25 @@ const Navbar = () => {
     useEffect(() => {
         const checkColor = () => {
             const currentScroll = window.scrollY;
-            setIsScrolled(currentScroll > 50);
+            setIsScrolled(currentScroll > 20);
 
             const is404 = document.body.classList.contains('is-404-page');
 
             if (location.pathname === '/') {
-                // At the very top of Home, it's light (dark text). 
-                // Between 1200 and 4000, it hits dark sections (AiFuture, LeadForm).
                 setIsHeaderDark(currentScroll > 1200 && currentScroll < 4000);
             } else if (is404) {
-                // 404 page is always dark, needs white text
                 setIsHeaderDark(true);
             } else if (darkPages.includes(location.pathname)) {
-                // Specialized dark pages transition to light header as you scroll
                 setIsHeaderDark(currentScroll < 500);
             } else {
-                // All other internal pages (Services, Courses, etc) are light at top
                 setIsHeaderDark(false);
             }
         };
 
-        checkColor(); // Initialize on mount and route change
+        // Reset state on route change before attaching listener
+        setIsScrolled(window.scrollY > 20);
+        checkColor();
+
         window.addEventListener('scroll', checkColor);
         return () => window.removeEventListener('scroll', checkColor);
     }, [location.pathname]);
@@ -254,7 +252,7 @@ const Navbar = () => {
                     x: "-50%",
                 }}
                 ref={navRef}
-                className="hidden md:flex fixed left-1/2 z-1000 px-6 lg:px-8 xl:px-10 py-4 items-center justify-between transition-all duration-300 pointer-events-auto w-full"
+                className="hidden md:flex fixed left-1/2 z-1000 px-6 lg:px-8 xl:px-10 py-4 items-center justify-between pointer-events-auto w-full"
             >
                 {/* Left: Logo */}
                 <Link to="/" className="nav-logo relative z-50 shrink-0 block h-10 overflow-hidden" onClick={() => setIsOpen(false)}>
@@ -275,7 +273,7 @@ const Navbar = () => {
                                 initial={{ opacity: 0, x: 20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: 20 }}
-                                className="hidden lg:flex items-center gap-1.5 lg:gap-2 xl:gap-3 2xl:gap-4"
+                                className="hidden md:flex items-center gap-1 lg:gap-2 xl:gap-3 2xl:gap-4"
                             >
                                 <div className="relative group/dropdown">
                                     <div className="flex items-center gap-1 cursor-pointer py-4">
@@ -300,7 +298,9 @@ const Navbar = () => {
                                                     { title: 'Student Career', path: '/student-careers', icon: 'briefcase', desc: 'Career opportunities' },
                                                     { title: 'Campus', path: '/campuses', icon: 'map-pin', desc: 'Our locations' },
                                                     { title: 'Placement', path: '/placement', icon: 'trending-up', desc: 'Placement records' },
-                                                    { title: 'Paris Project', path: '/paris-project', icon: 'trending-up', desc: 'Placement records' },
+                                                    { title: 'Paris Project', path: '/insd-360/paris-project', icon: 'globe', desc: 'International design showcase', badge: 'Featured' },
+                                                    { title: 'Blogs', path: '/Blogs', icon: 'globe', desc: 'International design showcase', badge: 'Featured' },
+                                                    { title: 'Events', path: '/Events', icon: 'globe', desc: 'International design showcase', badge: 'Featured' },
                                                 ].map((item, i) => (
                                                     <Link
                                                         key={i}
@@ -316,9 +316,17 @@ const Navbar = () => {
                                                             {item.icon === 'briefcase' && <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg>}
                                                             {item.icon === 'map-pin' && <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>}
                                                             {item.icon === 'trending-up' && <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></svg>}
+                                                            {item.icon === 'globe' && <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>}
                                                         </div>
                                                         <div className="flex flex-col relative z-10">
-                                                            <span className="font-bold text-sm text-slate-800 dark:text-slate-200 group-hover/item:text-primary dark:group-hover/item:text-white transition-colors">{item.title}</span>
+                                                            <div className="flex items-center gap-2">
+                                                                <span className="font-bold text-sm text-slate-800 dark:text-slate-200 group-hover/item:text-primary dark:group-hover/item:text-white transition-colors">{item.title}</span>
+                                                                {item.badge && (
+                                                                    <span className="px-1.5 py-0.5 rounded-md bg-primary/10 text-primary text-[8px] font-black uppercase tracking-widest animate-pulse border border-primary/20">
+                                                                        {item.badge}
+                                                                    </span>
+                                                                )}
+                                                            </div>
                                                             <span className="text-[11px] font-medium text-slate-400 group-hover/item:text-slate-500 transition-colors uppercase tracking-wider">{item.desc}</span>
                                                         </div>
                                                     </Link>
@@ -528,7 +536,7 @@ const Navbar = () => {
                         animate="open"
                         exit="closed"
                         variants={menuVariants}
-                        className="fixed inset-0 z-1001 bg-[#0a0a0a] text-white overflow-hidden flex flex-col"
+                        className="fixed inset-0 z-1001 bg-linear-to-br from-primary to-secondary text-white overflow-hidden flex flex-col"
                     >
                         {/* 0. PREMIUM TEXTURE OVERLAY */}
                         <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] brightness-100 contrast-150" />
@@ -547,19 +555,12 @@ const Navbar = () => {
                             </Link>
 
                             <div className="flex items-center gap-4 md:gap-6">
-                                <button
-                                    onClick={() => { setIsOpen(false); openModal(); }}
-                                    className="hidden md:flex items-center gap-2 px-5 py-2 rounded-full border border-white/20 hover:bg-white hover:text-slate-950 transition-all font-black text-[9px] md:text-[10px] tracking-[0.2em] uppercase"
-                                >
-                                    Register <ArrowRight size={12} />
-                                </button>
 
                                 <button
                                     onClick={() => setIsOpen(false)}
                                     className="flex items-center gap-2.5 px-5 py-2 rounded-full bg-slate-900 border border-white/20 hover:bg-white hover:text-slate-950 transition-all shadow-xl group"
                                 >
                                     <span className="font-bold text-[10px] md:text-xs tracking-widest uppercase">CLOSE</span>
-                                    <X size={16} className="group-hover:rotate-90 transition-transform" />
                                 </button>
                             </div>
                         </motion.div>
@@ -576,6 +577,7 @@ const Navbar = () => {
                             <div className="w-full md:w-[65%] p-6 md:p-8 lg:p-12 flex flex-col justify-center relative z-10 overflow-y-auto dropdown-scrollbar">
                                 <div className="space-y-4 md:space-y-6">
                                     {[
+                                        { title: 'Paris Project', sub: 'Global Exposure 2026', icon: Globe, href: '/insd-360/paris-project' },
                                         { title: 'Call Us Now', sub: '+91 7701933935', icon: Phone, href: 'tel:+917701933935' },
                                         { title: 'Apply Now', sub: 'Admission Cycle 2026', icon: UserPlus, href: '/apply' },
                                         { title: 'Book Counselling', sub: 'Free Expert Session', icon: Calendar, action: 'modal' },

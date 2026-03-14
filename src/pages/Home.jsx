@@ -22,7 +22,7 @@ import NetworkCounter from '../components/NetworkCounter';
 import BackToTop from '../components/BackToTop';
 import WhyInsd from '../components/WhyInsd';
 import AiFutureDesign from '../components/AiFutureDesign';
-import GlobalIndustryNetwork from '../components/GlobalIndustryNetwork';
+
 
 import SEO from '../components/SEO';
 
@@ -428,7 +428,7 @@ const Home = () => {
 
             <AiFutureDesign />
             <TestimonialSlider />
-            <GlobalIndustryNetwork />
+
 
             {/* Student Spotlight Section - High Fashion Editorial Style */}
             <div ref={studentRef} className="relative min-h-screen py-20 md:py-32 px-4 md:px-12 overflow-hidden transition-colors duration-700">
