@@ -200,6 +200,43 @@ const Navbar = () => {
         }
     }, [isOpen]);
 
+    // Higher-end variants for the curtain reveal
+    const menuVariants = {
+        closed: {
+            clipPath: "circle(0% at 90% 40px)",
+            transition: {
+                type: "spring",
+                stiffness: 400,
+                damping: 40,
+                staggerChildren: 0.05,
+                staggerDirection: -1
+            }
+        },
+        open: {
+            clipPath: "circle(150% at 90% 40px)",
+            transition: {
+                type: "spring",
+                stiffness: 20,
+                restDelta: 2,
+                staggerChildren: 0.1,
+                delayChildren: 0.2
+            }
+        }
+    };
+
+    const itemVariants = {
+        closed: { opacity: 0, y: 30, filter: "blur(10px)" },
+        open: {
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+            transition: {
+                duration: 0.8,
+                ease: [0.16, 1, 0.3, 1]
+            }
+        }
+    };
+
     return (
         <>
             <motion.nav
@@ -483,17 +520,23 @@ const Navbar = () => {
                 </div>
             </div >
 
-            <AnimatePresence>
+            <AnimatePresence mode="wait">
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                        className="fixed inset-0 z-1001 bg-slate-950 text-white overflow-hidden flex flex-col"
+                        initial="closed"
+                        animate="open"
+                        exit="closed"
+                        variants={menuVariants}
+                        className="fixed inset-0 z-1001 bg-[#0a0a0a] text-white overflow-hidden flex flex-col"
                     >
+                        {/* 0. PREMIUM TEXTURE OVERLAY */}
+                        <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] brightness-100 contrast-150" />
+
                         {/* 1. PREMIUM HEADER */}
-                        <div className="flex items-center justify-between px-6 md:px-12 py-8 relative z-10">
+                        <motion.div
+                            variants={itemVariants}
+                            className="flex items-center justify-between px-6 md:px-12 py-8 relative z-10"
+                        >
                             <Link to="/" onClick={() => setIsOpen(false)} className="h-10">
                                 <img
                                     src="https://insd.edu.in/wp-content/uploads/2022/02/Final-Logo.png"
@@ -518,18 +561,18 @@ const Navbar = () => {
                                     <X size={16} className="group-hover:rotate-90 transition-transform" />
                                 </button>
                             </div>
-                        </div>
+                        </motion.div>
 
                         {/* 2. DUAL COLUMN CONTENT */}
                         <div className="flex-1 flex flex-col md:flex-row relative">
                             {/* Abstract Background Decoration */}
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-10 pointer-events-none">
-                                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/20 blur-[150px] rounded-full translate-x-1/3 -translate-y-1/3" />
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-20 pointer-events-none">
+                                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/20 blur-[150px] rounded-full translate-x-1/3 -translate-y-1/3 animate-pulse" />
                                 <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-secondary/20 blur-[150px] rounded-full -translate-x-1/3 translate-y-1/3" />
                             </div>
 
                             {/* LEFT COLUMN: NAVIGATION CTAs */}
-                            <div className="w-full md:w-[65%] p-6 md:p-12 lg:p-20 flex flex-col justify-center relative z-10 overflow-y-auto dropdown-scrollbar">
+                            <div className="w-full md:w-[65%] p-6 md:p-8 lg:p-12 flex flex-col justify-center relative z-10 overflow-y-auto dropdown-scrollbar">
                                 <div className="space-y-4 md:space-y-6">
                                     {[
                                         { title: 'Call Us Now', sub: '+91 7701933935', icon: Phone, href: 'tel:+917701933935' },
@@ -539,9 +582,7 @@ const Navbar = () => {
                                     ].map((cta, i) => (
                                         <motion.div
                                             key={i}
-                                            initial={{ x: -20, opacity: 0 }}
-                                            animate={{ x: 0, opacity: 1 }}
-                                            transition={{ delay: 0.1 + i * 0.1, duration: 0.5 }}
+                                            variants={itemVariants}
                                             className="group relative"
                                         >
                                             {cta.action === 'modal' ? (
@@ -549,14 +590,15 @@ const Navbar = () => {
                                                     onClick={() => { setIsOpen(false); openModal(); }}
                                                     className="flex items-center gap-6 md:gap-8 text-left w-full"
                                                 >
-                                                    <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-primary group-hover:scale-110 group-hover:rotate-6 group-hover:border-primary shadow-xl">
-                                                        <cta.icon className="w-5 h-5 md:w-7 md:h-7 text-white" />
+                                                    <div className="w-10 h-10 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-primary group-hover:scale-110 group-hover:rotate-6 group-hover:border-primary shadow-2xl overflow-hidden relative">
+                                                        <div className="absolute inset-0 bg-linear-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                                        <cta.icon className="w-5 h-5 md:w-7 md:h-7 text-white relative z-10" />
                                                     </div>
                                                     <div>
-                                                        <h3 className="text-lg md:text-3xl lg:text-4xl font-black uppercase tracking-tighter leading-none group-hover:text-primary transition-colors">
+                                                        <h3 className="text-xl md:text-3xl lg:text-4xl font-black uppercase tracking-tighter leading-none group-hover:text-primary transition-all duration-500 group-hover:translate-x-4">
                                                             {cta.title}
                                                         </h3>
-                                                        <p className="text-[8px] md:text-[10px] font-bold tracking-[0.2em] text-white/30 uppercase mt-1.5 group-hover:text-white/60 transition-colors">
+                                                        <p className="text-[8px] md:text-[10px] font-bold tracking-[0.3em] text-white/20 uppercase mt-1.5 group-hover:text-white/60 transition-all duration-500 group-hover:translate-x-2">
                                                             {cta.sub}
                                                         </p>
                                                     </div>
@@ -567,14 +609,15 @@ const Navbar = () => {
                                                     onClick={() => setIsOpen(false)}
                                                     className="flex items-center gap-6 md:gap-8 text-left"
                                                 >
-                                                    <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-primary group-hover:scale-110 group-hover:rotate-6 group-hover:border-primary shadow-xl">
-                                                        <cta.icon className="w-5 h-5 md:w-7 md:h-7 text-white" />
+                                                    <div className="w-10 h-10 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-primary group-hover:scale-110 group-hover:rotate-6 group-hover:border-primary shadow-2xl overflow-hidden relative">
+                                                        <div className="absolute inset-0 bg-linear-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                                        <cta.icon className="w-5 h-5 md:w-7 md:h-7 text-white relative z-10" />
                                                     </div>
                                                     <div>
-                                                        <h3 className="text-lg md:text-3xl lg:text-4xl font-black uppercase tracking-tighter leading-none group-hover:text-primary transition-colors">
+                                                        <h3 className="text-xl md:text-3xl lg:text-4xl font-black uppercase tracking-tighter leading-none group-hover:text-primary transition-all duration-500 group-hover:translate-x-4">
                                                             {cta.title}
                                                         </h3>
-                                                        <p className="text-[8px] md:text-[10px] font-bold tracking-[0.2em] text-white/30 uppercase mt-1.5 group-hover:text-white/60 transition-colors">
+                                                        <p className="text-[8px] md:text-[10px] font-bold tracking-[0.3em] text-white/20 uppercase mt-1.5 group-hover:text-white/60 transition-all duration-500 group-hover:translate-x-2">
                                                             {cta.sub}
                                                         </p>
                                                     </div>
@@ -586,31 +629,42 @@ const Navbar = () => {
                             </div>
 
                             {/* VERTICAL DIVIDER */}
-                            <div className="hidden md:block w-px bg-white/10 h-[60%] my-auto" />
+                            <motion.div
+                                initial={{ scaleY: 0 }}
+                                animate={{ scaleY: 1 }}
+                                transition={{ duration: 1, delay: 0.5 }}
+                                className="hidden md:block w-px bg-white/10 h-[60%] my-auto"
+                            />
 
                             {/* RIGHT COLUMN: CONTACT DETAILS */}
-                            <div className="w-full md:w-[35%] p-6 md:p-12 lg:p-20 flex flex-col justify-center space-y-8 relative z-10 overflow-y-auto dropdown-scrollbar">
-                                <div>
-                                    <h4 className="text-[8px] md:text-[9px] font-black tracking-[0.4em] text-primary uppercase mb-4 md:mb-5">Contact</h4>
-                                    <div className="space-y-2.5">
-                                        <a href="tel:+917701933935" className="block text-base md:text-lg font-bold hover:text-primary transition-colors">+91 7701933935</a>
-                                        <a href="tel:+917827066618" className="block text-base md:text-lg font-bold hover:text-primary transition-colors">+91 7827066618</a>
-                                        
+                            <div className="w-full md:w-[35%] p-6 md:p-8 lg:p-12 flex flex-col justify-center space-y-6 md:space-y-8 relative z-10 overflow-y-auto dropdown-scrollbar">
+                                <motion.div variants={itemVariants}>
+                                    <h4 className="text-[9px] md:text-[10px] font-black tracking-[0.4em] text-primary uppercase mb-4 md:mb-6">Direct Lines</h4>
+                                    <div className="space-y-3">
+                                        <a href="tel:+917701933935" className="block text-lg md:text-xl lg:text-2xl font-bold hover:text-primary transition-all group">
+                                            <span className="inline-block group-hover:translate-x-2 transition-transform">+91 7701933935</span>
+                                        </a>
+                                        <a href="tel:+917827066618" className="block text-lg md:text-xl lg:text-2xl font-bold hover:text-primary transition-all group">
+                                            <span className="inline-block group-hover:translate-x-2 transition-transform">+91 7827066618</span>
+                                        </a>
                                     </div>
-                                </div>
+                                </motion.div>
 
-                                <div>
-                                    <h4 className="text-[8px] md:text-[9px] font-black tracking-[0.4em] text-secondary uppercase mb-4 md:mb-5">Address</h4>
-                                    <div className="space-y-2.5 max-w-xs">
-                                        <h5 className="font-black text-[10px] uppercase tracking-wider">INSD Corporate Centres</h5>
-                                        <button className="flex items-center gap-2 text-[9px] font-bold text-primary group">
-                                            VIEW ON MAPS <ArrowRight size={10} className="group-hover:translate-x-2 transition-transform" />
+                                <motion.div variants={itemVariants}>
+                                    <h4 className="text-[9px] md:text-[10px] font-black tracking-[0.4em] text-secondary uppercase mb-4 md:mb-6">Location</h4>
+                                    <div className="space-y-3 max-w-xs">
+                                        <h5 className="font-black text-[10px] md:text-xs uppercase tracking-wider text-white/80">INSD Corporate Centres</h5>
+                                        <button className="flex items-center gap-3 text-[10px] md:text-xs font-bold text-primary group">
+                                            VIEW ON MAPS
+                                            <div className="w-5 h-5 rounded-full border border-primary/30 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
+                                                <ArrowRight size={10} className="group-hover:translate-x-0.5 transition-transform" />
+                                            </div>
                                         </button>
                                     </div>
-                                </div>
+                                </motion.div>
 
-                                <div>
-                                    <h4 className="text-[8px] md:text-[9px] font-black tracking-[0.4em] text-white/20 uppercase mb-4 md:mb-6">Follow Us</h4>
+                                <motion.div variants={itemVariants}>
+                                    <h4 className="text-[9px] md:text-[10px] font-black tracking-[0.4em] text-white/20 uppercase mb-4 md:mb-6">Connect</h4>
                                     <div className="flex gap-4">
                                         {[
                                             { icon: Instagram, href: '#' },
@@ -620,22 +674,20 @@ const Navbar = () => {
                                         ].map((soc, i) => (
                                             <motion.a
                                                 key={i}
-                                                whileHover={{ y: -3, scale: 1.05 }}
+                                                whileHover={{ y: -5, scale: 1.1, backgroundColor: "rgba(255,255,255,0.1)" }}
+                                                whileTap={{ scale: 0.9 }}
                                                 href={soc.href}
-                                                className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-primary hover:border-primary/30 transition-all shadow-lg"
+                                                className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/30 hover:text-white hover:border-white/30 transition-all shadow-xl group"
                                             >
-                                                <soc.icon size={18} />
+                                                <soc.icon size={20} className="group-hover:rotate-12 transition-transform" />
                                             </motion.a>
                                         ))}
                                     </div>
-                                </div>
+                                </motion.div>
                             </div>
                         </div>
 
-                        {/* BOTTOM FOOTER MARKER */}
-                        <div className="p-8 hidden md:flex items-center justify-center border-t border-white/5 opacity-20 select-none pointer-events-none">
-                            <span className="text-[10px] font-black tracking-[1em] uppercase">International School of Design 2026</span>
-                        </div>
+
                     </motion.div>
                 )}
             </AnimatePresence>
