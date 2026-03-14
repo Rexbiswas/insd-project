@@ -5,6 +5,8 @@ import Lenis from 'lenis';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { useRegisterModal } from '../context/RegisterModalContext';
+import AdmissionStepForm from '../components/AdmissionStepForm';
+import FinalCTA from '../components/FinalCTA';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 
@@ -218,6 +220,9 @@ const Admission = () => {
                     </div>
                 </div>
             </section>
+
+            <AdmissionStepForm />
+            <FinalCTA />
 
             <Footer />
         </div>

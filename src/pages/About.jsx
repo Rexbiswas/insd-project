@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
+import SocialProof from '../components/SocialProof';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 
@@ -210,6 +211,8 @@ const About = () => {
                 </div>
             </section>
 
+            {/* Section 2.5: Trust & Recognition */}
+            <SocialProof />
 
             {/* Section 3: The Horizontal Discovery */}
             <section ref={horizontalSectionRef} className="h-screen bg-[#f3f3f3]">

@@ -9,6 +9,10 @@ import { SpeedInsights } from "@vercel/speed-insights/react"
 const Home = lazy(() => import('./pages/Home'));
 const Courses = lazy(() => import('./pages/Courses'));
 const About = lazy(() => import('./pages/About'));
+const Awards = lazy(() => import('./pages/Awards'));
+const Student = lazy(() => import('./pages/Student'));
+const IndustryPotential = lazy(() => import('./pages/IndustryPotential'));
+const Placement = lazy(() => import('./pages/Placement'));
 const Campus = lazy(() => import('./pages/Campus'));
 const Franchise = lazy(() => import('./pages/Franchise'));
 const Insd360 = lazy(() => import('./pages/Insd360'));
@@ -88,6 +92,10 @@ function App() {
                                 <Routes>
                                     <Route path="/" element={<Home />} />
                                     <Route path="/about-us" element={<About />} />
+                                    <Route path="/awards" element={<Awards />} />
+                                    <Route path="/student" element={<Student />} />
+                                    <Route path="/industry-potential" element={<IndustryPotential />} />
+                                    <Route path="/placement" element={<Placement />} />
                                     <Route path="/campuses" element={<Campus />} />
                                     <Route path="/campuses/south-delhi" element={<SouthDelhi />} />
                                     <Route path="/campuses/north-delhi" element={<NorthDelhi />} />

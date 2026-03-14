@@ -10,8 +10,6 @@ import Lenis from 'lenis';
 import NationalAwards from '../components/NationalAwards';
 import StepLeadForm from '../components/StepLeadForm';
 import ProgramSearch from '../components/ProgramSearch';
-import TOICertification from '../components/TOICertification';
-import DreamLife from '../components/DreamLife';
 import TestimonialSlider from '../components/TestimonialSlider';
 import FeaturedIn from '../components/FeaturedIn';
 import AdmissionScroller from '../components/AdmissionScroller';
@@ -22,14 +20,9 @@ import InsdiansByDesign from '../components/InsdiansByDesign';
 import Footer from '../components/Footer';
 import NetworkCounter from '../components/NetworkCounter';
 import BackToTop from '../components/BackToTop';
-import SocialProof from '../components/SocialProof';
 import WhyInsd from '../components/WhyInsd';
 import AiFutureDesign from '../components/AiFutureDesign';
-import GlobalDesignEconomy from '../components/GlobalDesignEconomy';
-import GovernmentValidation from '../components/GovernmentValidation';
-import StudentTransformation from '../components/StudentTransformation';
 import GlobalIndustryNetwork from '../components/GlobalIndustryNetwork';
-import FinalCTA from '../components/FinalCTA';
 
 import SEO from '../components/SEO';
 
@@ -435,16 +428,6 @@ const Home = () => {
 
             <AiFutureDesign />
             <TestimonialSlider />
-            <TOICertification />
-            <DreamLife />
-
-
-            <SocialProof />
-            <GlobalDesignEconomy />
-            <GovernmentValidation />
-            <StudentTransformation />
-            <FinalCTA />
-            <StepVisual />
             <GlobalIndustryNetwork />
 
             {/* Student Spotlight Section - High Fashion Editorial Style */}
@@ -514,7 +497,7 @@ const Home = () => {
             <div className="relative z-50">
                 <Footer />
             </div>
-        </div >
+        </div>
     );
 };
 
