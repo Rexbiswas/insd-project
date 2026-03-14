@@ -4,7 +4,8 @@ import { NavLink, Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import {
     Menu as MenuIcon, X, ArrowRight, Home, Sparkles, GraduationCap, LayoutGrid, User,
-    Search, Folder, Users, CreditCard, Box, HelpCircle, Settings, LogOut, ChevronLeft, ChevronsLeft, Store
+    Search, Folder, Users, CreditCard, Box, HelpCircle, Settings, LogOut, ChevronLeft, ChevronsLeft, Store,
+    Phone, Calendar, UserPlus, FileDown, Instagram, Linkedin, Facebook, MapPin, Mail, MessageSquare
 } from 'lucide-react';
 import gsap from 'gsap';
 
@@ -422,7 +423,7 @@ const Navbar = () => {
             {/* Mobile Bottom Navigation Bar - Pill Glass Style */}
             <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[400px] h-20 z-50 md:hidden">
                 <div className={`w-full h-full flex items-center justify-around px-6 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition-all duration-500 border ${isOpen || (isHeaderDark && !isScrolled) ? 'bg-slate-900/40 backdrop-blur-2xl border-white/10' : 'bg-white/40 backdrop-blur-2xl border-white/30'}`}>
-                    
+
                     {/* HOME */}
                     <NavLink
                         to="/"
@@ -434,8 +435,8 @@ const Navbar = () => {
                         {({ isActive }) => (
                             <>
                                 {isActive && (
-                                    <motion.div 
-                                        layoutId="activeBubble" 
+                                    <motion.div
+                                        layoutId="activeBubble"
                                         className="absolute inset-0 bg-primary/10 rounded-full border border-primary/20 shadow-[0_0_20px_rgba(219,52,54,0.1)]"
                                         transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
                                     />
@@ -464,8 +465,8 @@ const Navbar = () => {
                         className={`relative flex flex-col items-center justify-center w-16 h-16 transition-all duration-500 scale-90 active:scale-75 ${isOpen ? 'text-primary' : (isHeaderDark && !isScrolled) ? 'text-white/40 hover:text-white' : 'text-slate-900/40 hover:text-slate-900'}`}
                     >
                         {isOpen && (
-                            <motion.div 
-                                layoutId="activeBubble" 
+                            <motion.div
+                                layoutId="activeBubble"
                                 className="absolute inset-0 bg-primary/10 rounded-full border border-primary/20 shadow-[0_0_20px_rgba(219,52,54,0.1)]"
                                 transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
                             />
@@ -478,152 +479,172 @@ const Navbar = () => {
                 </div>
             </div >
 
-            {/* Navigation Menu Sidebar/Overlay */}
             <AnimatePresence>
                 {isOpen && (
-                    <>
-                        {/* Backdrop Overlay - Mobile Only */}
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            onClick={() => setIsOpen(false)}
-                            className="fixed inset-0 z-1000 bg-slate-950/60 backdrop-blur-sm md:hidden"
-                        />
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                        className="fixed inset-0 z-1001 bg-slate-950 text-white overflow-hidden flex flex-col"
+                    >
+                        {/* 1. PREMIUM HEADER */}
+                        <div className="flex items-center justify-between px-6 md:px-12 py-8 relative z-10">
+                            <Link to="/" onClick={() => setIsOpen(false)} className="h-10">
+                                <img
+                                    src="https://insd.edu.in/wp-content/uploads/2022/02/Final-Logo.png"
+                                    alt="INSD"
+                                    className="h-full w-auto brightness-0 invert"
+                                />
+                            </Link>
 
-                        <motion.div
-                            initial={isMobile ? { x: "-100%" } : { clipPath: "circle(0% at 95% 40px)" }}
-                            animate={isMobile ? { x: 0 } : { clipPath: "circle(150% at 95% 40px)" }}
-                            transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
-                            exit={isMobile ? { x: "-100%" } : { clipPath: "circle(0% at 95% 40px)", transition: { duration: 0.5 } }}
-                            className={`fixed z-1001 text-white overflow-hidden shadow-2xl ${isMobile ? 'top-0 left-0 bottom-0 w-[85vw] max-w-[320px] bg-[#0a0a0a]/80 backdrop-blur-2xl border-r border-white/10 flex flex-col' : 'fixed inset-0 bg-slate-950/95'}`}
-                        >
-                            {/* Profile Header Block */}
-                            <div className="p-6 flex items-center justify-between shrink-0">
-                                <div className="flex items-center gap-3">
-                                    <div className="relative">
-                                        <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden">
-                                            {user ? (
-                                                <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${user.username}`} alt="Avatar" className="w-full h-full object-cover" />
-                                            ) : (
-                                                <div className="w-full h-full bg-primary/20 flex items-center justify-center text-primary">
-                                                    <User size={20} strokeWidth={2.5} />
-                                                </div>
-                                            )}
-                                        </div>
-                                        <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-green-500 border-2 border-[#111] rounded-full" />
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <span className="text-sm font-bold text-white tracking-tight leading-tight">
-                                            {user ? user.username : 'Welcome!'}
-                                        </span>
-                                        <span className="text-[10px] text-white/30 uppercase font-black tracking-widest">Student Hub</span>
-                                    </div>
-                                </div>
+                            <div className="flex items-center gap-4 md:gap-8">
+                                <button
+                                    onClick={() => { setIsOpen(false); openModal(); }}
+                                    className="hidden md:flex items-center gap-2 px-6 py-2.5 rounded-full border border-white/20 hover:bg-white hover:text-slate-950 transition-all font-black text-[10px] tracking-[0.2em] uppercase"
+                                >
+                                    Register <ArrowRight size={14} />
+                                </button>
 
                                 <button
                                     onClick={() => setIsOpen(false)}
-                                    className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-white/40 hover:text-white transition-all shadow-sm active:scale-90"
+                                    className="flex items-center gap-3 px-6 py-2.5 rounded-full bg-slate-900 border border-white/20 hover:bg-white hover:text-slate-950 transition-all shadow-xl group"
                                 >
-                                    <ChevronsLeft size={18} />
+                                    <span className="font-bold text-xs tracking-widest uppercase">CLOSE</span>
+                                    <X size={18} className="group-hover:rotate-90 transition-transform" />
                                 </button>
+
+                                <div className="hidden md:flex w-10 h-10 rounded-full bg-white/10 border border-white/20 items-center justify-center">
+                                    <User size={18} />
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* 2. DUAL COLUMN CONTENT */}
+                        <div className="flex-1 flex flex-col md:flex-row relative">
+                            {/* Abstract Background Decoration */}
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-10 pointer-events-none">
+                                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/20 blur-[150px] rounded-full translate-x-1/3 -translate-y-1/3" />
+                                <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-secondary/20 blur-[150px] rounded-full -translate-x-1/3 translate-y-1/3" />
                             </div>
 
+                            {/* LEFT COLUMN: NAVIGATION CTAs */}
+                            <div className="w-full md:w-[65%] p-6 md:p-20 lg:pd-32 flex flex-col justify-center relative z-10">
+                                <div className="space-y-4 md:space-y-8">
+                                    {[
+                                        { title: 'Call Us Now', sub: '+91 7701933935', icon: Phone, href: 'tel:+917701933935' },
+                                        { title: 'Apply Now', sub: 'Admission Cycle 2026', icon: UserPlus, href: '/apply' },
+                                        { title: 'Book Counselling', sub: 'Free Expert Session', icon: Calendar, action: 'modal' },
+                                        { title: 'Download Brochure', sub: 'Detailed Course Guide', icon: FileDown, href: '#' },
+                                    ].map((cta, i) => (
+                                        <motion.div
+                                            key={i}
+                                            initial={{ x: -30, opacity: 0 }}
+                                            animate={{ x: 0, opacity: 1 }}
+                                            transition={{ delay: 0.1 + i * 0.1, duration: 0.5 }}
+                                            className="group relative"
+                                        >
+                                            {cta.action === 'modal' ? (
+                                                <button
+                                                    onClick={() => { setIsOpen(false); openModal(); }}
+                                                    className="flex items-center gap-6 md:gap-8 text-left w-full"
+                                                >
+                                                    <div className="w-10 h-10 md:w-16 md:h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-primary group-hover:scale-110 group-hover:rotate-6 group-hover:border-primary shadow-xl">
+                                                        <cta.icon className="w-5 h-5 md:w-8 md:h-8 text-white" />
+                                                    </div>
+                                                    <div>
+                                                        <h3 className="text-xl md:text-4xl lg:text-5xl font-black uppercase tracking-tighter leading-none group-hover:text-primary transition-colors">
+                                                            {cta.title}
+                                                        </h3>
+                                                        <p className="text-[9px] md:text-xs font-bold tracking-[0.2em] text-white/30 uppercase mt-2 group-hover:text-white/60 transition-colors">
+                                                            {cta.sub}
+                                                        </p>
+                                                    </div>
+                                                </button>
+                                            ) : (
+                                                <Link
+                                                    to={cta.href}
+                                                    onClick={() => setIsOpen(false)}
+                                                    className="flex items-center gap-6 md:gap-8 text-left"
+                                                >
+                                                    <div className="w-10 h-10 md:w-16 md:h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-primary group-hover:scale-110 group-hover:rotate-6 group-hover:border-primary shadow-xl">
+                                                        <cta.icon className="w-5 h-5 md:w-8 md:h-8 text-white" />
+                                                    </div>
+                                                    <div>
+                                                        <h3 className="text-xl md:text-4xl lg:text-5xl font-black uppercase tracking-tighter leading-none group-hover:text-primary transition-colors">
+                                                            {cta.title}
+                                                        </h3>
+                                                        <p className="text-[9px] md:text-xs font-bold tracking-[0.2em] text-white/30 uppercase mt-2 group-hover:text-white/60 transition-colors">
+                                                            {cta.sub}
+                                                        </p>
+                                                    </div>
+                                                </Link>
+                                            )}
+                                        </motion.div>
+                                    ))}
+                                </div>
+                            </div>
 
+                            {/* VERTICAL DIVIDER */}
+                            <div className="hidden md:block w-px bg-white/10 h-[60%] my-auto" />
 
-                            {/* Scrollable Nav Area */}
-                            <div className="flex-1 overflow-y-auto min-h-0 custom-scrollbar px-4 space-y-6 pb-10">
-                                {/* OVERVIEW SECTION */}
-                                <div className="space-y-1">
-                                    <h3 className="px-4 text-[10px] font-bold tracking-[0.2em] text-white/20 uppercase mb-3">Overview</h3>
-                                    <div className="space-y-1">
-                                        {menuItems.filter(item => item.section === 'OVERVIEW').map((item) => {
-                                            const isActive = location.pathname === item.path;
-                                            const Icon = item.icon;
-
-                                            return (
-                                                <div key={item.title}>
-                                                    <NavLink
-                                                        to={item.subItems ? '#' : item.path}
-                                                        onClick={(e) => {
-                                                            if (item.subItems) {
-                                                                e.preventDefault();
-                                                                setExpandedItem(expandedItem === item.title ? null : item.title);
-                                                            } else {
-                                                                setIsOpen(false);
-                                                            }
-                                                        }}
-                                                        className={`flex items-center gap-3.5 px-4 py-3 rounded-xl transition-all duration-300 group ${isActive ? 'bg-primary/10 text-primary shadow-[inset_0_0_20px_rgba(219,52,54,0.05)]' : 'text-white/50 hover:bg-white/5 hover:text-white'}`}
-                                                    >
-                                                        <Icon size={18} className={`${isActive ? 'text-primary' : 'text-white/30 group-hover:text-primary transition-colors'}`} strokeWidth={isActive ? 2.5 : 2} />
-                                                        <span className="text-[13px] font-bold tracking-tight">{item.title}</span>
-
-                                                        {item.title === 'Franchise' && (
-                                                            <div className="ml-auto flex items-center gap-1.5">
-                                                                <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse shadow-[0_0_8px_rgba(219,52,54,0.6)]" />
-                                                            </div>
-                                                        )}
-
-                                                        {item.subItems && (
-                                                            <ChevronLeft
-                                                                size={14}
-                                                                className={`ml-auto transition-transform duration-300 ${expandedItem === item.title ? '-rotate-90' : ''}`}
-                                                            />
-                                                        )}
-                                                    </NavLink>
-
-                                                    {/* Sub-items dropdown */}
-                                                    <AnimatePresence>
-                                                        {item.subItems && expandedItem === item.title && (
-                                                            <motion.div
-                                                                initial={{ height: 0, opacity: 0 }}
-                                                                animate={{ height: 'auto', opacity: 1 }}
-                                                                exit={{ height: 0, opacity: 0 }}
-                                                                transition={{ duration: 0.3, ease: "easeOut" }}
-                                                                className="overflow-hidden bg-white/2 border-l border-white/5 ml-6 mt-1 rounded-br-xl"
-                                                            >
-                                                                {item.subItems.map(sub => (
-                                                                    <NavLink
-                                                                        key={sub.name}
-                                                                        to={sub.path}
-                                                                        onClick={() => setIsOpen(false)}
-                                                                        className="flex items-center gap-3 px-6 py-3 text-[11px] font-bold text-white/30 hover:text-primary hover:bg-white/5 transition-all uppercase tracking-wider group/sub"
-                                                                    >
-                                                                        <div className="w-1.5 h-[1px] bg-white/10 group-hover/sub:w-3 group-hover/sub:bg-primary transition-all" />
-                                                                        {sub.name}
-                                                                    </NavLink>
-                                                                ))}
-                                                            </motion.div>
-                                                        )}
-                                                    </AnimatePresence>
-                                                </div>
-                                            );
-                                        })}
+                            {/* RIGHT COLUMN: CONTACT DETAILS */}
+                            <div className="w-full md:w-[35%] p-6 md:p-20 flex flex-col justify-center space-y-12 relative z-10">
+                                <div>
+                                    <h4 className="text-[9px] md:text-[10px] font-black tracking-[0.4em] text-primary uppercase mb-4 md:mb-6">Contact</h4>
+                                    <div className="space-y-3">
+                                        <a href="tel:+917701933935" className="block text-lg md:text-xl font-bold hover:text-primary transition-colors">+91 7701933935</a>
+                                        <a href="tel:+917827066618" className="block text-lg md:text-xl font-bold hover:text-primary transition-colors">+91 7827066618</a>
+                                        <a href="mailto:info@insd.edu.in" className="flex items-center gap-3 text-white/50 hover:text-white transition-colors pt-1">
+                                            <Mail size={14} className="text-primary" />
+                                            <span className="text-sm font-medium">info@insd.edu.in</span>
+                                        </a>
                                     </div>
                                 </div>
 
-                                {/* Account Section */}
-                                <div className="mt-auto pt-6 border-t border-white/5 space-y-2">
-                                    <button 
-                                        onClick={() => {
-                                            setIsOpen(false);
-                                            // Handle logout here (e.g., clear localStorage, redirect, etc.)
-                                            console.log("User logged out");
-                                        }}
-                                        className="w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-white/50 hover:bg-red-500/10 hover:text-red-500 transition-all group group"
-                                    >
-                                        <div className="w-8 h-8 flex items-center justify-center rounded-lg bg-red-500/10 text-red-500 group-hover:bg-red-500 group-hover:text-white transition-all shadow-sm">
-                                            <LogOut size={16} />
-                                        </div>
-                                        <span className="text-[13px] font-bold tracking-tight">Sign Out</span>
-                                        <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">
-                                            <ArrowRight size={14} className="text-red-500" />
-                                        </div>
-                                    </button>
+                                <div>
+                                    <h4 className="text-[9px] md:text-[10px] font-black tracking-[0.4em] text-secondary uppercase mb-4 md:mb-6">Address</h4>
+                                    <div className="space-y-3 max-w-xs">
+                                        <h5 className="font-black text-xs uppercase tracking-wider">INSD Corporate Centres</h5>
+                                        <p className="text-white/40 text-xs md:text-sm leading-relaxed">
+                                            A11, Gujranwala Town, <br />
+                                            Block A, New Delhi, <br />
+                                            Delhi 110009
+                                        </p>
+                                        <button className="flex items-center gap-2 text-[10px] font-bold text-primary group">
+                                            VIEW ON MAPS <ArrowRight size={12} className="group-hover:translate-x-2 transition-transform" />
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <h4 className="text-[10px] md:text-xs font-black tracking-[0.4em] text-white/20 uppercase mb-6 md:mb-10">Follow Us</h4>
+                                    <div className="flex gap-6">
+                                        {[
+                                            { icon: Instagram, href: '#' },
+                                            { icon: Facebook, href: '#' },
+                                            { icon: Linkedin, href: '#' },
+                                            { icon: MessageSquare, href: '#' }
+                                        ].map((soc, i) => (
+                                            <motion.a
+                                                key={i}
+                                                whileHover={{ y: -5, scale: 1.1 }}
+                                                href={soc.href}
+                                                className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-primary hover:border-primary/30 transition-all shadow-lg"
+                                            >
+                                                <soc.icon size={20} />
+                                            </motion.a>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
-                        </motion.div>
-                    </>
+                        </div>
+
+                        {/* BOTTOM FOOTER MARKER */}
+                        <div className="p-8 hidden md:flex items-center justify-center border-t border-white/5 opacity-20 select-none pointer-events-none">
+                            <span className="text-[10px] font-black tracking-[1em] uppercase">International School of Design 2026</span>
+                        </div>
+                    </motion.div>
                 )}
             </AnimatePresence>
         </>

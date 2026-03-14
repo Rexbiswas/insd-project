@@ -48,6 +48,12 @@ const AdmissionStepForm = () => {
         setFormData(prev => ({ ...prev, [field]: value }));
         if (autoAdvance) {
             setTimeout(() => {
+                // If user clicks "No" on step 1, jump to submittion state as requested
+                if (field === 'readyToStart' && value === 'No') {
+                    handleSubmit();
+                    return;
+                }
+
                 if (step === TOTAL_STEPS) {
                     handleSubmit();
                 } else {
@@ -360,7 +366,7 @@ const AdmissionStepForm = () => {
                                 <div className="absolute inset-0 rounded-full border border-primary animate-ping opacity-20" />
                             </div>
                             <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6 leading-[0.9]">
-                                Application <br /> <span className="text-primary italic font-serif">Received</span>
+                                APPLICATION <br /> <span className="text-primary italic font-serif">RECEIVED</span>
                             </h2>
                             <p className="text-lg md:text-xl text-slate-400 max-w-xl mx-auto mb-12 leading-relaxed">
                                 Thank you, <span className="text-white font-bold">{formData.name || 'Future Insdian'}</span>! Your details have been submitted. Our admission counselor will contact you shortly to guide you through the next steps.
@@ -373,7 +379,7 @@ const AdmissionStepForm = () => {
                                 }}
                                 className="px-10 py-5 bg-white text-slate-900 hover:bg-primary hover:text-white rounded-full font-black uppercase tracking-[0.2em] text-xs transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-primary/30 active:scale-95 flex items-center gap-3"
                             >
-                                <ArrowLeft size={16} /> Return to Start
+                                <ArrowLeft size={16} /> RETURN TO START
                             </button>
                         </div>
                     </motion.div>
