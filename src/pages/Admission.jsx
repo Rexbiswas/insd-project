@@ -101,7 +101,7 @@ const Admission = () => {
                         <div key={i} className="relative flex flex-col md:flex-row items-center gap-10 md:gap-20">
                             {/* Sticky Year/Tag */}
                             <div className="hidden md:block absolute -left-20 top-0 rotate-180 [writing-mode:vertical-lr] font-mono text-[10px] tracking-[1em] opacity-20">
-                                PHASE_0{i + 1}_TRANSITION_2026
+                                {i + 1}
                             </div>
 
                             <motion.div
