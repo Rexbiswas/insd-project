@@ -18,12 +18,7 @@ const Franchise = lazy(() => import('./pages/Franchise'));
 const Insd360 = lazy(() => import('./pages/Insd360'));
 const Admission = lazy(() => import('./pages/Admission'));
 const InternationalPartner = lazy(() => import('./pages/InternationalPartner'));
-const SouthDelhi = lazy(() => import('./pages/SouthDelhi'));
-const NorthDelhi = lazy(() => import('./pages/NorthDelhi'));
 const ParisCDP = lazy(() => import('./pages/Paris(CDP)'));
-const WashingtonIBSW = lazy(() => import('./pages/WashingtonIBSW'));
-const DubaiIBSW = lazy(() => import('./pages/DubaiIBSW'));
-const UnitedKingdomUCA = lazy(() => import('./pages/UnitedKingdomUCA'));
 const Undergraduate = lazy(() => import('./pages/Undergraduate'));
 const Postgraduate = lazy(() => import('./pages/Postgraduate'));
 const DiplomaAndCertificate = lazy(() => import('./pages/DiplomaAndCertificate'));
@@ -97,12 +92,8 @@ function App() {
                                     <Route path="/industry-potential" element={<IndustryPotential />} />
                                     <Route path="/placement" element={<Placement />} />
                                     <Route path="/campuses" element={<Campus />} />
-                                    <Route path="/campuses/south-delhi" element={<SouthDelhi />} />
-                                    <Route path="/campuses/north-delhi" element={<NorthDelhi />} />
-                                    <Route path="/campuses/paris" element={<ParisCDP />} />
-                                    <Route path="/campuses/washington" element={<WashingtonIBSW />} />
-                                    <Route path="/campuses/dubai" element={<DubaiIBSW />} />
-                                    <Route path="/campuses/uk" element={<UnitedKingdomUCA />} />
+                                    <Route path="/campuses/:campusId" element={<Campus />} />
+                                    <Route path="/campuses/paris-cdp" element={<ParisCDP />} />
                                     <Route path="/courses" element={<Courses />} />
                                     <Route path="/courses/undergraduate" element={<Undergraduate />} />
                                     <Route path="/courses/postgraduate" element={<Postgraduate />} />

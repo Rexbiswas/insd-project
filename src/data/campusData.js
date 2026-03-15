@@ -1,98 +1,214 @@
-import React, {
-    Users, Layers, Maximize, BookOpen, Pipette, Camera, Monitor,
-    Coffee, Mic, Library, Cpu, Scissors, MapPin, Building, TreePine,
-    TrainFront, Utensils, Music, GraduationCap, ShieldCheck, Gem,
-    Globe2, Briefcase, Sun, Building2, Palmtree, Compass, Hexagon,
-    Anchor, Fingerprint, Aperture, Palette, Paintbrush, Castle, Crown,
-    Navigation, Box, ArrowUpRight
-} from 'lucide-react';
-
 export const campusData = {
     "south-delhi": {
-        slug: "south-delhi",
+        id: "south-delhi",
         city: "South Delhi",
-        fullName: "South Delhi Flagship Campus",
         tagline: "The Flagship Node",
-        intro: "Positioned strategically in the heart of the Design and Luxury Hub, our South Delhi campus acts as the premier incubator for creative talent. This massive ecosystem is perfect for students to rigorously learn and study Indian design and luxury on a systemic global level.",
-        size: "35,000 sq. ft",
+        fullTitle: "South Delhi.",
+        description: "Positioned strategically in the heart of the Design and Luxury Hub, our South Delhi campus acts as the premier incubator for creative talent. This massive ecosystem is perfect for students to rigorously learn and study Indian design and luxury on a systemic global level.",
+        heroImage: "https://images.pexels.com/photos/2731535/pexels-photo-2731535.jpeg?auto=compress&cs=tinysrgb&w=2670",
         stats: [
-            { label: "Design Labs", value: "12+", icon: <Layers size={20} /> },
-            { label: "Incubators", value: "4", icon: <Cpu size={20} /> },
-            { label: "Placement", value: "98%", icon: <Users size={20} /> }
+            { label: "Space", value: "35,000+ sq. ft." },
+            { label: "Connectivity", value: "Metro Hub" }
         ],
-        facilities: [
-            { title: "Mini Amphitheater", desc: "State-of-the-art space for presentations and guest lectures.", icon: <Mic size={24} />, img: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=800" },
-            { title: "Fashion & Beauty Labs", desc: "Industrial sewing machines and dedicated beauty rooms.", icon: <Scissors size={24} />, img: "https://images.pexels.com/photos/1015568/pexels-photo-1015568.jpeg?auto=compress&cs=tinysrgb&w=800" },
-            { title: "Creative Incubator", desc: "Meeting rooms and a specialized creative library.", icon: <Monitor size={24} />, img: "https://images.pexels.com/photos/3184306/pexels-photo-3184306.jpeg?auto=compress&cs=tinysrgb&w=800" },
-            { title: "Photography Studio", desc: "Professional setups with advanced lighting rigs.", icon: <Camera size={24} />, img: "https://images.pexels.com/photos/3379961/pexels-photo-3379961.jpeg?auto=compress&cs=tinysrgb&w=800" }
+        infrastructure: [
+            {
+                title: "Mini Amphitheater",
+                desc: "State-of-the-art space for presentations, guest lectures, and student showcases.",
+                icon: "Mic",
+                img: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=800"
+            },
+            {
+                title: "Fashion & Beauty Labs",
+                desc: "Equipped with industrial sewing machines, alongside dedicated makeup and beauty rooms.",
+                icon: "Scissors",
+                img: "https://images.pexels.com/photos/1015568/pexels-photo-1015568.jpeg?auto=compress&cs=tinysrgb&w=800"
+            },
+            {
+                title: "Creative Incubator",
+                desc: "A sprawling accelerator space featuring meeting rooms, computer labs, and a creative library.",
+                icon: "Monitor",
+                img: "https://images.pexels.com/photos/3184306/pexels-photo-3184306.jpeg?auto=compress&cs=tinysrgb&w=800"
+            },
+            {
+                title: "Photography Studio",
+                desc: "Professional setups with advanced lighting rigs and backdrops.",
+                icon: "Camera",
+                img: "https://images.pexels.com/photos/3379961/pexels-photo-3379961.jpeg?auto=compress&cs=tinysrgb&w=800"
+            },
+            {
+                title: "Recreation & Cafeteria",
+                desc: "Multiple game rooms and a bustling cafeteria for networking and relaxation.",
+                icon: "Coffee",
+                img: "https://images.pexels.com/photos/3052243/pexels-photo-3052243.jpeg?auto=compress&cs=tinysrgb&w=800"
+            }
         ],
-        heroImg: "https://images.pexels.com/photos/2731535/pexels-photo-2731535.jpeg?auto=compress&cs=tinysrgb&w=2000",
-        theme: "light"
+        visuals: [
+            "https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg?auto=compress&cs=tinysrgb&w=1200",
+            "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=1200",
+            "https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg?auto=compress&cs=tinysrgb&w=1200",
+            "https://images.pexels.com/photos/2085831/pexels-photo-2085831.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        ],
+        seo: {
+            title: "INSD South Delhi Campus | Best Design Institute in South Delhi",
+            description: "Experience world-class design education at INSD South Delhi. Our flagship campus in the heart of Delhi's luxury and design hub offers premium infrastructure for aspiring creators.",
+            keywords: "INSD South Delhi, design institute South Delhi, fashion designing South Delhi, interior design school Delhi, best design campus"
+        }
     },
     "north-delhi": {
-        slug: "north-delhi",
+        id: "north-delhi",
         city: "North Delhi",
-        fullName: "North Delhi Innovation Hub",
-        tagline: "The Epicenter of Avant-Garde",
-        intro: "The North Delhi campus is a vibrant and creative hub in the heart of the North Campus area of Delhi University, nestled amongst ruins, cafes, and bars. It's an intoxicating blend of heritage and contemporary fashion atmosphere.",
-        size: "10,000 sq. ft",
-        facilities: [
-            { title: "Couture & Textile Lab", icon: <Palette size={24} />, img: "https://images.pexels.com/photos/3862624/pexels-photo-3862624.jpeg?auto=compress&cs=tinysrgb&w=1000" },
-            { title: "Spatial Design Studio", icon: <Building2 size={24} />, img: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1000" }
-        ],
-        heroImg: "https://images.pexels.com/photos/2916814/pexels-photo-2916814.jpeg?auto=compress&cs=tinysrgb&w=2000",
-        theme: "light"
-    },
-    "paris": {
-        slug: "paris",
-        city: "Paris",
-        fullName: "Campus De Paris (CDP)",
-        tagline: "Global Couture & Scale",
-        intro: "Positioned within the iconic Grande Arche structure, our Paris Campus operates at the bleeding edge of the world's fashion capital. We merge historical luxury with hyper-scale infrastructure.",
-        size: "2,500 sq. m",
+        tagline: "Innovation Hub",
+        fullTitle: "North Delhi.",
+        description: "The epicenter of avant-garde fashion design, cutting-edge interior architecture, and disruptive graphic methodology in Northern India. Located in the vibrant heart of North Campus area of Delhi University.",
+        heroImage: "https://images.pexels.com/photos/2916814/pexels-photo-2916814.jpeg?auto=compress&cs=tinysrgb&w=2000",
         stats: [
-            { label: "Students", value: "750+", icon: <Users size={20} /> },
-            { label: "Floors", value: "3", icon: <Layers size={20} /> },
-            { label: "Rooms", value: "16", icon: <BookOpen size={20} /> }
+            { label: "Campus size", value: "10,000+ sq. ft." },
+            { label: "Atmosphere", value: "Vibrant Hub" }
         ],
-        heroImg: "https://images.pexels.com/photos/1125212/pexels-photo-1125212.jpeg?auto=compress&cs=tinysrgb&w=2000",
-        theme: "dark"
-    },
-    "washington": {
-        slug: "washington",
-        city: "Washington",
-        fullName: "IBSW Washington Campus",
-        tagline: "Strategic Design Hub",
-        intro: "Located in Herndon, Virginia, centrally in the cultural and political heart of the United States. This state-of-the-art campus hosts vibrant meeting rooms and classrooms.",
-        heroImg: "https://images.pexels.com/photos/1796715/pexels-photo-1796715.jpeg?auto=compress&cs=tinysrgb&w=2000",
-        theme: "light",
-        bento: [
-            { title: "Global Cuisine", desc: "Over 100 restaurants offering international cuisine.", icon: <Utensils size={32} /> },
-            { title: "Connectivity", desc: "Shuttle services to museums and express Metrorail access.", icon: <TrainFront size={32} /> },
-            { title: "Parks & Trails", desc: "W&OD Trail running through the heart of downtown.", icon: <TreePine size={32} /> }
-        ]
+        infrastructure: [
+            {
+                title: "Couture & Textile Lab",
+                desc: "Equipped with high-performance industrial machinery and textile tools.",
+                icon: "Hexagon",
+                img: "https://images.pexels.com/photos/3862624/pexels-photo-3862624.jpeg?auto=compress&cs=tinysrgb&w=1000"
+            },
+            {
+                title: "Spatial Design Studio",
+                desc: "Dedicated labs for interior architecture and spatial engineering.",
+                icon: "Hexagon",
+                img: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1000"
+            }
+        ],
+        highlights: ['Classrooms', 'Design Labs', 'Student Zones', 'Meeting Rooms', 'Machinery Rooms', 'Computer Labs', 'Conference Rooms', 'Admin Offices'],
+        visuals: [
+            "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        ],
+        seo: {
+            title: "INSD North Delhi Campus | Top Design Institute in GTB Nagar",
+            description: "Study fashion, interior, and graphic design at INSD North Delhi. Located in the vibrant heart of North Campus, we offer avant-garde creative training and state-of-the-art labs.",
+            keywords: "INSD North Delhi, design school GTB Nagar, fashion designing North Delhi, interior design institute Delhi, creative hub North Campus"
+        }
     },
     "dubai": {
-        slug: "dubai",
+        id: "dubai",
         city: "Dubai",
-        fullName: "Dubai International Campus",
         tagline: "Future Aesthetics",
-        intro: "Located at Tiffany Tower in the JLT area, a very popular place for Dubai’s ex-pat community. Dubai is known for luxury shopping and ultramodern architecture.",
-        heroImg: "https://images.pexels.com/photos/32870/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=2000",
-        theme: "dark",
-        bento: [
-            { title: "Luxury & Architecture", icon: <Gem size={32} />, desc: "Shopping, ultramodern architecture, and lively culture." },
-            { title: "Unmatched Safety", icon: <ShieldCheck size={32} />, desc: "One of the safest cities in the world with 24-hour security." },
-            { title: "Global Community", icon: <Globe2 size={32} />, desc: "Home to over 150 nationalities, 80% ex-pats." }
-        ]
+        fullTitle: "Dubai IBSW.",
+        description: "Positioned in the hub of futuristic architecture and retail innovation. Owned and operated by our International Partner– International Business School of Washington.",
+        heroImage: "https://images.pexels.com/photos/32870/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=2670",
+        stats: [
+            { label: "Population", value: "80% Ex-pats" },
+            { label: "Safety", value: "Global Standard" }
+        ],
+        infrastructure: [
+            {
+                title: "Luxury & Architecture",
+                desc: "Master design in the heart of futuristic architecture and retail innovation.",
+                icon: "Gem",
+                img: "https://images.pexels.com/photos/3787839/pexels-photo-3787839.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            },
+            {
+                title: "Corporate Excellence",
+                desc: "Partnered with IBSW to provide unique international business exposure.",
+                icon: "Briefcase",
+                img: "https://images.pexels.com/photos/10121703/pexels-photo-10121703.jpeg?auto=compress&cs=tinysrgb&w=2670"
+            }
+        ],
+        visuals: [
+            "https://images.pexels.com/photos/32870/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=2670"
+        ],
+        seo: {
+            title: "Study Design in Dubai | INSD & IBSW International Campus",
+            description: "Join INSD's Dubai campus at Tiffany Tower, JLT. Master design in the heart of futuristic architecture and retail innovation with world-class facilities and global exposure.",
+            keywords: "study design Dubai, design school Dubai, INSD Dubai campus, IBSW Dubai, fashion design Dubai, interior design school UAE"
+        },
+        theme: {
+            primary: "#d4af37",
+            secondary: "#000000"
+        }
     },
-    "uk": {
-        slug: "uk",
+    "washington": {
+        id: "washington",
+        city: "Washington",
+        tagline: "Strategic Design",
+        fullTitle: "Washington IBSW.",
+        description: "Where design thinking meets international business leadership and strategy. Centrally located in the cultural and political heart of the United States.",
+        heroImage: "https://images.pexels.com/photos/1796715/pexels-photo-1796715.jpeg?auto=compress&cs=tinysrgb&w=2670",
+        stats: [
+            { label: "Location", value: "Herndon, Virginia" },
+            { label: "Distance", value: "22 miles from D.C." }
+        ],
+        infrastructure: [
+            {
+                title: "Global Cuisine Hub",
+                desc: "Over 100 restaurants offering international cuisine nearby.",
+                icon: "Utensils",
+                img: "https://images.pexels.com/photos/221532/pexels-photo-221532.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            }
+        ],
+        visuals: [
+            "https://images.pexels.com/photos/14605963/pexels-photo-14605963.jpeg?auto=compress&cs=tinysrgb&w=2000"
+        ],
+        seo: {
+            title: "Study Design in Washington DC | INSD & IBSW Partnership",
+            description: "Expand your design horizons at the International Business School of Washington (IBSW). Study in the cultural and political hub of the USA with INSD's global partnership.",
+            keywords: "study design USA, Washington design school, IBSW Washington, INSD international campus, design education America"
+        }
+    },
+    "united-kingdom": {
+        id: "united-kingdom",
         city: "United Kingdom",
-        fullName: "UCA Partnership Campus",
-        tagline: "Creative Arts Heritage",
-        intro: "Our alliance with UCA offers INSD students an unprecedented bridge to British design heritage. Positioned consistently as one of the UK's top creative universities.",
-        heroImg: "https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg?auto=compress&cs=tinysrgb&w=2000",
-        theme: "light"
+        tagline: "Creative Arts",
+        fullTitle: "United Kingdom.",
+        description: "A prestigious partnership nurturing the next generation of visual arts pioneers. Experience British design heritage at the University for the Creative Arts (UCA).",
+        heroImage: "https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg?auto=compress&cs=tinysrgb&w=2670",
+        stats: [
+            { label: "Partnership", value: "UCA Network" },
+            { label: "Status", value: "Tier-One Creative" }
+        ],
+        infrastructure: [
+            {
+                title: "Fashion & Textiles Hub",
+                desc: "Equipped with massive pattern cutting studios and elite labs.",
+                icon: "Palette",
+                img: "https://images.unsplash.com/photo-14035985-7b95d4ebf0b8?q=80&w=1200"
+            }
+        ],
+        visuals: [
+            "https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg?auto=compress&cs=tinysrgb&w=2670"
+        ],
+        seo: {
+            title: "Study Design in UK | INSD & UCA Global Partnership",
+            description: "Experience British design heritage at the University for the Creative Arts (UCA). INSD's partnership with UCA provides students access to top-tier UK design studios and global networking.",
+            keywords: "study design UK, UCA partnership, INSD international campus, fashion design UK, creative arts London, study interior design England"
+        }
+    },
+    "paris": {
+        id: "paris",
+        city: "Paris",
+        tagline: "Global Couture",
+        fullTitle: "The Paris Project.",
+        description: "In the world's fashion capital, defining the bleeding edge of luxury design. A month-long intensive design journey collaborating with luxury houses.",
+        heroImage: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=1000",
+        stats: [
+            { label: "Duration", value: "30 Days" },
+            { label: "Cohort Size", value: "Min. 25" }
+        ],
+        infrastructure: [
+            {
+                title: "Haute Couture Exposure",
+                desc: "Private tours of legendary ateliers and museum archives.",
+                icon: "Palette",
+                img: "https://images.unsplash.com/photo-1550614000-4b95d4ebf0b8?q=80&w=800"
+            }
+        ],
+        visuals: [
+            "https://images.unsplash.com/photo-1548624313-0396c75e4b1a?q=80&w=800"
+        ],
+        seo: {
+            title: "The Paris Project - Global Exposure Program | INSD",
+            description: "Join INSD's exclusive global exposure program in Paris. A month-long intensive design journey in the fashion capital of the world, collaborating with luxury houses.",
+            keywords: "Paris design program, global exposure design, study in Paris, fashion design Paris, INSD global programs"
+        }
     }
 };
