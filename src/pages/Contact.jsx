@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { MapPin, Phone, Mail, Send, ArrowRight, MessageSquare, Clock, Globe, Instagram, Facebook, Linkedin, Twitter, CheckCircle2 } from 'lucide-react';
+import { MapPin, Phone, Mail, Send, ArrowRight, MessageSquare, Clock, Globe, Instagram, Facebook, Linkedin, Twitter, CheckCircle2, Youtube } from 'lucide-react';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 
@@ -159,9 +159,20 @@ const Contact = () => {
                                 <div className="relative z-10">
                                     <h3 className="text-xl font-bold mb-6">Connect With Us</h3>
                                     <div className="flex gap-4">
-                                        {[Instagram, Facebook, Linkedin, Twitter].map((Icon, idx) => (
-                                            <a key={idx} href="#" className="w-12 h-12 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all hover:scale-110 hover:shadow-lg hover:shadow-primary/20">
-                                                <Icon size={20} />
+                                        {[
+                                            { icon: Instagram, href: "https://www.instagram.com/insd_official" },
+                                            { icon: Facebook, href: "https://www.facebook.com/share/1CMuRdTV69/" },
+                                            { icon: Linkedin, href: "https://www.linkedin.com/school/international-school-of-design/" },
+                                            { icon: Youtube, href: "https://youtube.com/@insd-internationalschoolof5139?feature=shared" }
+                                        ].map((soc, idx) => (
+                                            <a 
+                                                key={idx} 
+                                                href={soc.href} 
+                                                target="_blank" 
+                                                rel="noopener noreferrer" 
+                                                className="w-12 h-12 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
+                                            >
+                                                <soc.icon size={20} />
                                             </a>
                                         ))}
                                     </div>

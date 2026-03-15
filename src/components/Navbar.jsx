@@ -5,7 +5,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import {
     Menu as MenuIcon, X, ArrowRight, Home, Sparkles, GraduationCap, LayoutGrid, User,
     Search, Folder, Users, CreditCard, Box, HelpCircle, Settings, LogOut, ChevronLeft, ChevronsLeft, Store,
-    Phone, Calendar, UserPlus, FileDown, Instagram, Linkedin, Facebook, MapPin, Mail, MessageSquare, Globe
+    Phone, Calendar, UserPlus, FileDown, Instagram, Linkedin, Facebook, MapPin, Mail, MessageSquare, Globe, BookOpen, Youtube
 } from 'lucide-react';
 import gsap from 'gsap';
 
@@ -299,8 +299,8 @@ const Navbar = () => {
                                                     { title: 'Campus', path: '/campuses', icon: 'map-pin', desc: 'Our locations' },
                                                     { title: 'Placement', path: '/placement', icon: 'trending-up', desc: 'Placement records' },
                                                     { title: 'Paris Project', path: '/insd-360/paris-project', icon: 'globe', desc: 'International design showcase', badge: 'Featured' },
-                                                    { title: 'Blogs', path: '/Blogs', icon: 'globe', desc: 'International design showcase', badge: 'Featured' },
-                                                    { title: 'Events', path: '/Events', icon: 'globe', desc: 'International design showcase', badge: 'Featured' },
+                                                    { title: 'Blogs', path: '/insd-360/blog', icon: 'globe', desc: 'Read our latest design stories'},
+                                                    { title: 'Events', path: '/insd-360/events', icon: 'globe', desc: 'Upcoming showcases & exhibitions'},
                                                 ].map((item, i) => (
                                                     <Link
                                                         key={i}
@@ -578,6 +578,8 @@ const Navbar = () => {
                                 <div className="space-y-4 md:space-y-6">
                                     {[
                                         { title: 'Paris Project', sub: 'Global Exposure 2026', icon: Globe, href: '/insd-360/paris-project' },
+                                        { title: 'Blogs', sub: 'Design Journal', icon: BookOpen, href: '/insd-360/blog' },
+                                        { title: 'Events', sub: 'Experience Culture', icon: Calendar, href: '/insd-360/events' },
                                         { title: 'Call Us Now', sub: '+91 7701933935', icon: Phone, href: 'tel:+917701933935' },
                                         { title: 'Apply Now', sub: 'Admission Cycle 2026', icon: UserPlus, href: '/apply' },
                                         { title: 'Book Counselling', sub: 'Free Expert Session', icon: Calendar, action: 'modal' },
@@ -670,16 +672,18 @@ const Navbar = () => {
                                     <h4 className="text-[9px] md:text-[10px] font-black tracking-[0.4em] text-white/20 uppercase mb-4 md:mb-6">Connect</h4>
                                     <div className="flex gap-4">
                                         {[
-                                            { icon: Instagram, href: '#' },
-                                            { icon: Facebook, href: '#' },
-                                            { icon: Linkedin, href: '#' },
-                                            { icon: MessageSquare, href: '#' }
+                                            { icon: Instagram, href: "https://www.instagram.com/insd_official" },
+                                            { icon: Linkedin, href: "https://www.linkedin.com/school/international-school-of-design/" },
+                                            { icon: Facebook, href: "https://www.facebook.com/share/1CMuRdTV69/" },
+                                            { icon: Youtube, href: "https://youtube.com/@insd-internationalschoolof5139?feature=shared" }
                                         ].map((soc, i) => (
                                             <motion.a
                                                 key={i}
+                                                href={soc.href}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
                                                 whileHover={{ y: -5, scale: 1.1, backgroundColor: "rgba(255,255,255,0.1)" }}
                                                 whileTap={{ scale: 0.9 }}
-                                                href={soc.href}
                                                 className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/30 hover:text-white hover:border-white/30 transition-all shadow-xl group"
                                             >
                                                 <soc.icon size={20} className="group-hover:rotate-12 transition-transform" />

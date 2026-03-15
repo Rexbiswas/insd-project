@@ -149,10 +149,15 @@ const InstagramGallery = () => {
                         <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary">The Feed</span>
                     </h2>
                 </div>
-                <button className="group flex items-center gap-4 px-8 py-4 bg-white border border-slate-300 rounded-full hover:shadow-xl hover:border-primary/30 hover:text-primary transition-all duration-300">
+                <a 
+                    href="https://www.instagram.com/insd_official" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="group flex items-center gap-4 px-8 py-4 bg-white border border-slate-300 rounded-full hover:shadow-xl hover:border-primary/30 hover:text-primary transition-all duration-300"
+                >
                     <span className="font-bold tracking-widest uppercase text-sm">Follow Us</span>
                     <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
-                </button>
+                </a>
             </div>
 
             {/* Bento Grid Gallery */}
@@ -186,9 +191,14 @@ const InstagramGallery = () => {
                                     </div>
                                 </div>
                                 <p className="text-center px-8 text-sm font-medium opacity-90 line-clamp-2 max-w-xs text-white">{post.caption}</p>
-                                <button className="px-6 py-2 bg-primary text-white text-xs font-bold uppercase tracking-widest rounded-full hover:scale-105 hover:shadow-lg transition-transform">
+                                <a 
+                                    href="https://www.instagram.com/insd_official" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="px-6 py-2 bg-primary text-white text-xs font-bold uppercase tracking-widest rounded-full hover:scale-105 hover:shadow-lg transition-transform"
+                                >
                                     View Post
-                                </button>
+                                </a>
                             </div>
 
                             {/* Instagram Icon Watermark */}

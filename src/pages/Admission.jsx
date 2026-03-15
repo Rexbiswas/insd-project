@@ -88,31 +88,11 @@ const Admission = () => {
                 keywords="design admissions 2026, design school admission Delhi, apply for fashion design India, NIFT alternative, design course application, creative education 2026, design entrance exams India"
             />
 
+
             {/* 1. THE APERTURE HERO */}
-            <section ref={apertureRef} className="relative h-screen flex items-center justify-center overflow-hidden">
-                {/* Background Video (Revealed by Aperture) */}
-                <div className="absolute inset-0 z-0">
-                    <video autoPlay muted loop playsInline className="w-full h-full object-cover grayscale" src="https://assets.mixkit.co/videos/preview/mixkit-abstract-fast-and-bright-neon-lines-20377-large.mp4" />
-                </div>
 
-                {/* The Masking Layer */}
-                <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
-                    <div className="aperture-mask w-40 h-40 bg-white rounded-full scale-[20]" style={{ boxShadow: '0 0 0 500vmax #ffffff' }}></div>
-                </div>
-
-                <div className="relative z-20 text-center px-6">
-                    <h2 className="text-primary font-mono tracking-[0.5em] md:tracking-[1em] text-[9px] md:text-[10px] uppercase mb-8">System_Initiate</h2>
-                    <h1 className="aperture-title text-5xl md:text-8xl lg:text-[14rem] font-black uppercase leading-[0.85] tracking-tighter italic">
-                        The Core <br /> <span className="text-transparent strok-text-black opacity-40">Protocol.</span>
-                    </h1>
-                </div>
-
-
-                <div className="absolute bottom-10 left-10 z-30 font-mono text-[10px] opacity-30 flex items-center gap-4">
-                    <div className="w-8 h-8 rounded-full border border-white flex items-center justify-center animate-spin-slow">×</div>
-                    <span>REVEAL_SEQUENCE_ACTIVE</span>
-                </div>
-            </section>
+            <FinalCTA />
+            <AdmissionStepForm />
 
             {/* 2. THE STACKED EDITORIAL SECTIONS */}
             <section className="relative z-10 px-6 py-20">
@@ -221,8 +201,6 @@ const Admission = () => {
                 </div>
             </section>
 
-            <AdmissionStepForm />
-            <FinalCTA />
 
             <Footer />
         </div>
