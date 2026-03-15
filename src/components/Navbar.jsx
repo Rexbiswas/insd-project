@@ -48,12 +48,7 @@ const RegisterButton = ({ className = "", isDarkTheme = false, isScrolled = fals
             {/* Glowing Border Animation */}
             <div className="absolute inset-0 border border-white/20 group-hover:border-primary/50 rounded-full transition-colors duration-500" />
 
-            <div className="relative z-10 flex items-center justify-center gap-1.5 md:gap-2 h-full">
-                <span className={`text-[10px] md:text-xs font-black tracking-widest uppercase transition-all duration-300 leading-none ${isLightMode ? 'text-slate-900 group-hover:text-white' : 'text-white'}`}>
-                    Register
-                </span>
-                <ArrowRight size={14} className={`transition-all duration-300 group-hover:translate-x-1 ${isLightMode ? 'text-slate-900 group-hover:text-white' : 'text-white'}`} />
-            </div>
+            
 
             {/* Outer Glow Halo */}
             <div className="absolute -inset-[2px] bg-linear-to-r from-primary to-secondary rounded-full blur-md opacity-0 group-hover:opacity-40 transition-opacity duration-500 -z-10" />
