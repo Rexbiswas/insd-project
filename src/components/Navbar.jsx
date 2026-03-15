@@ -48,8 +48,6 @@ const RegisterButton = ({ className = "", isDarkTheme = false, isScrolled = fals
             {/* Glowing Border Animation */}
             <div className="absolute inset-0 border border-white/20 group-hover:border-primary/50 rounded-full transition-colors duration-500" />
 
-            
-
             {/* Outer Glow Halo */}
             <div className="absolute -inset-[2px] bg-linear-to-r from-primary to-secondary rounded-full blur-md opacity-0 group-hover:opacity-40 transition-opacity duration-500 -z-10" />
         </button>
