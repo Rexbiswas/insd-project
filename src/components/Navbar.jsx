@@ -570,9 +570,6 @@ const Navbar = () => {
                             <div className="w-full md:w-[65%] p-6 md:p-8 lg:p-12 flex flex-col justify-center relative z-10 overflow-y-auto dropdown-scrollbar">
                                 <div className="space-y-4 md:space-y-6">
                                     {[
-                                        { title: 'Paris Project', sub: 'Global Exposure 2026', icon: Globe, href: '/insd-360/paris-project' },
-                                        { title: 'Blogs', sub: 'Design Journal', icon: BookOpen, href: '/insd-360/blog' },
-                                        { title: 'Events', sub: 'Experience Culture', icon: Calendar, href: '/insd-360/events' },
                                         { title: 'Call Us Now', sub: '+91 7701933935', icon: Phone, href: 'tel:+917701933935' },
                                         { title: 'Apply Now', sub: 'Admission Cycle 2026', icon: UserPlus, href: '/apply' },
                                         { title: 'Book Counselling', sub: 'Free Expert Session', icon: Calendar, action: 'modal' },
