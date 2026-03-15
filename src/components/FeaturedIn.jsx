@@ -11,23 +11,13 @@ const FeaturedIn = () => {
     // Highly optimized brand list with fashion-forward press addition
     const brands = [
         {
-            name: "Vogue",
-            url: "https://upload.wikimedia.org/wikipedia/commons/1/13/Vogue_India_logo.svg",
-            w: "w-32 md:w-48"
-        },
-        {
-            name: "Elle",
-            url: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Elle-Logo.svg",
-            w: "w-24 md:w-36"
-        },
-        {
             name: "India Today",
             url: "https://insd.edu.in/wp-content/uploads/2021/04/India_Today_Group_Logo.png",
             w: "w-32 md:w-48"
         },
         {
             name: "The Hindu",
-            url: "https://upload.wikimedia.org/wikipedia/commons/4/41/The_Hindu_logo.svg",
+            url: "https://insd.edu.in/wp-content/uploads/2021/04/TheHindu-Logo.png",
             w: "w-40 md:w-60"
         },
         {
@@ -37,17 +27,12 @@ const FeaturedIn = () => {
         },
         {
             name: "Harper's Bazaar",
-            url: "https://upload.wikimedia.org/wikipedia/commons/1/17/Harper%27s_Bazaar_logo.svg",
+            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Harper%27s_Bazaar_Logo.svg/1280px-Harper%27s_Bazaar_Logo.svg.png",
             w: "w-48 md:w-72"
         },
         {
-            name: "Education Times",
-            url: "https://www.educationtimes.com/newassets/images/ET_Logo.svg",
-            w: "w-40 md:w-56"
-        },
-        {
             name: "Times of India",
-            url: "https://upload.wikimedia.org/wikipedia/commons/7/7b/The_times_of_india.svg",
+            url: "https://www.vhv.rs/dpng/d/588-5881296_times-of-india-newspaper-logo-hd-png-download.png",
             w: "w-40 md:w-60"
         }
     ];
@@ -59,7 +44,7 @@ const FeaturedIn = () => {
             tl.to(marqueeContent, {
                 xPercent: -50, // Seamlessly jumps back at halfway point since we double the rendered array
                 ease: "none",
-                duration: 40 
+                duration: 40
             });
         }, containerRef);
         return () => ctx.revert();
@@ -70,7 +55,7 @@ const FeaturedIn = () => {
 
     return (
         <section ref={containerRef} className="w-full bg-[#f3f3f3] py-24 md:py-32 overflow-hidden relative border-y border-slate-300">
-            
+
             {/* Dynamic Background Noise */}
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-30 mix-blend-multiply pointer-events-none"></div>
 
@@ -83,7 +68,7 @@ const FeaturedIn = () => {
 
             {/* Seamless Marquee Track */}
             <div className="relative w-full overflow-hidden mask-linear-fade-wide bg-white/50 border-y border-slate-300/80 backdrop-blur-sm shadow-[inset_0_0_20px_rgba(0,0,0,0.02)]">
-                
+
                 <div ref={marqueeRef} className="flex items-center w-max py-12 md:py-16 gap-16 md:gap-32 px-8">
                     {/* Render sequence multiple times heavily to ensure the screen is always filled */}
                     {[...marqueeItems, ...marqueeItems].map((brand, i) => (
@@ -103,9 +88,9 @@ const FeaturedIn = () => {
                         </div>
                     ))}
                 </div>
-                
+
             </div>
-            
+
         </section>
     );
 };
