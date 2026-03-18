@@ -159,11 +159,11 @@ const Navbar = () => {
             icon: Folder,
             section: 'OVERVIEW',
             subItems: [
-                { title: '15 Years Legacy', path: '#', icon: 'zap', desc: 'Explore industry trends' },
-                { title: 'Mentors', path: '#', icon: 'users', desc: 'Meet our community' },
-                { title: 'Academic Alliances', path: '#', icon: 'briefcase', desc: 'Career opportunities' },
-                { title: 'Global Exposure', path: '/goglobal', icon: 'map-pin', desc: 'Our locations' },
-                { title: 'Center Across India', path: '#', icon: 'trending-up', desc: 'Placement records' },
+                { title: '15 Years Legacy', path: '/about-us', icon: 'zap', desc: 'Our national award-winning history' },
+                { title: 'Mentors', path: '/about-us', icon: 'users', desc: 'Expert creative leadership' },
+                { title: 'Academic Alliances', path: '/international-partners', icon: 'briefcase', desc: 'Global design partnerships' },
+                { title: 'Global Exposure', path: '/go-global', icon: 'map-pin', desc: 'Study across the world' },
+                { title: 'Center Across India', path: '/campuses', icon: 'trending-up', desc: 'Our regional network' },
                 { title: 'Paris Project', path: '/insd-360/paris-project', icon: 'globe', desc: 'International design showcase', badge: 'Featured' }
             ]
         },
@@ -182,24 +182,38 @@ const Navbar = () => {
                 { title: 'Beauty & Makeup', path: '/courses/beauty-and-makeup', icon: 'beauty', desc: 'Professional Esthetics' },
                 { title: 'Photography', path: '/courses/photography', icon: 'photography', desc: 'Visual Storytelling Art' },
                 { title: 'Textile Design', path: '/courses/textile-designing', icon: 'textile', desc: 'Material Science Arts' },
-                { title: 'INSD Luxe', path: '/insdluxe', icon: 'sparkles', desc: 'Premium Luxury Arts', badge: 'New' }
+                { title: 'INSD Luxe', path: '/courses/msc-luxury-brand-management', icon: 'sparkles', desc: 'Premium Luxury Arts', badge: 'New' }
             ]
         },
         { title: 'Admissions', path: '/apply', icon: CreditCard, section: 'OVERVIEW' },
         { title: 'Franchise', path: '/franchise', icon: Store, section: 'OVERVIEW' },
         {
             title: 'Careers & Exposure',
-            path: '#',
+            path: '/placement',
             icon: Sparkles,
             section: 'OVERVIEW',
             subItems: [
-                { title: 'Life at INSD', path: '/life-at-insd', icon: 'users', desc: 'Campus life & community' },
+                { title: 'Life at INSD', path: '/student', icon: 'users', desc: 'Campus life & community' },
                 { title: 'Placements', path: '/placement', icon: 'briefcase', desc: 'Career opportunities' },
-                { title: 'Entrepreneurs', path: '/entrepreneurship', icon: 'zap', desc: 'Startup incubation' },
-                { title: 'Industry Visits', path: '/industry-visits', icon: 'map-pin', desc: 'Real-world exposure' },
-                { title: 'Industry Interaction', path: '/industry-interaction', icon: 'users', desc: 'Expert sessions' },
-                { title: 'Placement & Training Partners', path: '/placement-partners', icon: 'award', desc: 'Our corporate network' },
-                { title: 'Future of Design', path: '/future-of-design', icon: 'sparkles', desc: 'Trends & innovations' },
+                { title: 'Entrepreneurs', path: '/industry-potential', icon: 'zap', desc: 'Startup incubation' },
+                { title: 'Industry Visits', path: '/industry-potential', icon: 'map-pin', desc: 'Real-world exposure' },
+                { title: 'Industry Interaction', path: '/industry-potential', icon: 'users', desc: 'Expert sessions' },
+                { title: 'Placement & Training Partners', path: '/placement', icon: 'award', desc: 'Our corporate network' },
+                { title: 'Future of Design', path: '/', icon: 'sparkles', desc: 'Trends & innovations' },
+            ]
+        },
+        { title: 'Events', path: '/insd-360/events', icon: Calendar, section: 'OVERVIEW' },
+        { title: 'Blogs', path: '/insd-360/blog', icon: BookOpen, section: 'OVERVIEW' },
+        {
+            title: 'Contact Us',
+            path: '/contact-us',
+            icon: Phone,
+            section: 'OVERVIEW',
+            subItems: [
+                { title: 'Call Us Now', path: 'tel:+917701933935', icon: Phone, desc: 'Direct support line' },
+                { title: 'Apply Now', path: '/apply', icon: UserPlus, desc: 'Start your application' },
+                { title: 'Career Counselling', path: '/apply', icon: Calendar, desc: 'Book a session' },
+                { title: 'Download Brochure', path: '#', icon: FileDown, desc: 'Course catalogues' }
             ]
         },
     ];
@@ -665,9 +679,10 @@ const Navbar = () => {
                                                         title={item.title}
                                                         icon={
                                                             item.title.includes('About') ? <InfoIcon sx={{ color: '#db3436' }} /> :
-                                                                item.title.includes('Courses') ? <SchoolIcon sx={{ color: '#db3436' }} /> :
-                                                                    item.title.includes('Careers') ? <RocketLaunchIcon sx={{ color: '#db3436' }} /> :
-                                                                        <DashboardIcon sx={{ color: '#db3436' }} />
+                                                            item.title.includes('Courses') ? <SchoolIcon sx={{ color: '#db3436' }} /> :
+                                                            item.title.includes('Careers') ? <RocketLaunchIcon sx={{ color: '#db3436' }} /> :
+                                                            item.title.includes('Contact') ? <Phone size={20} style={{ color: '#db3436' }} /> :
+                                                            <DashboardIcon sx={{ color: '#db3436' }} />
                                                         }
                                                     >
                                                         {item.subItems.map((sub, sIdx) => (
@@ -676,7 +691,8 @@ const Navbar = () => {
                                                                 component={Link}
                                                                 link={sub.path}
                                                                 onClick={() => setIsOpen(false)}
-                                                                style={{ fontSize: '13px', paddingTop: '8px', paddingBottom: '8px' }}
+                                                                icon={sub.icon && <sub.icon size={16} style={{ color: '#134a84', opacity: 0.7 }} />}
+                                                                style={{ fontSize: '13px', paddingTop: '10px', paddingBottom: '10px' }}
                                                             >
                                                                 {sub.title}
                                                             </MenuItem>
