@@ -11,12 +11,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
     const containerRef = useRef(null);
-    const horizontalSectionRef = useRef(null);
-    const horizontalScrollRef = useRef(null);
     const heroRef = useRef(null);
     const heroTextRef = useRef(null);
-    const scrollSectionRef = useRef(null);
-    const lensRef = useRef(null);
     const [isMobile, setIsMobile] = React.useState(window.innerWidth < 768);
 
     useEffect(() => {
@@ -76,76 +72,6 @@ const About = () => {
                 });
             });
 
-            // 3. Horizontal Scroll with "Lens" Reveal
-            if (horizontalScrollRef.current) {
-                const scrollAmount = horizontalScrollRef.current.scrollWidth - window.innerWidth;
-                gsap.to(horizontalScrollRef.current, {
-                    x: -scrollAmount,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: horizontalSectionRef.current,
-                        start: "top top",
-                        end: () => `+=${scrollAmount}`,
-                        pin: true,
-                        scrub: 1,
-                        invalidateOnRefresh: true,
-                    }
-                });
-            }
-
-            // 4. Floating Perspective Cards
-            gsap.utils.toArray(".floating-card").forEach((card, i) => {
-                gsap.from(card, {
-                    y: 100,
-                    opacity: 0,
-                    rotateY: 45,
-                    scrollTrigger: {
-                        trigger: card,
-                        start: "top 90%",
-                        toggleActions: "play none none reverse"
-                    }
-                });
-            });
-
-            // 5. Text Splitting & Reveal
-            const typeReveals = document.querySelectorAll(".type-reveal");
-            typeReveals.forEach(text => {
-                const chars = text.textContent.split("");
-                text.innerHTML = chars.map(c => `<span class="inline-block char">${c === " " ? "&nbsp;" : c}</span>`).join("");
-
-                gsap.from(text.querySelectorAll(".char"), {
-                    opacity: 0.2,
-                    filter: "blur(8px)",
-                    stagger: 0.02,
-                    scrollTrigger: {
-                        trigger: text,
-                        start: "top 80%",
-                        end: "top 40%",
-                        scrub: true,
-                    }
-                });
-            });
-
-            // 6. Magnetic Buttons
-            const magneticButtons = document.querySelectorAll(".magnetic-btn");
-            magneticButtons.forEach(btn => {
-                const xTo = gsap.quickTo(btn, "x", { duration: 1, ease: "elastic.out(1, 0.3)" });
-                const yTo = gsap.quickTo(btn, "y", { duration: 1, ease: "elastic.out(1, 0.3)" });
-
-                btn.addEventListener("mousemove", (e) => {
-                    const { clientX, clientY } = e;
-                    const { left, top, width, height } = btn.getBoundingClientRect();
-                    const x = (clientX - (left + width / 2)) * 0.5;
-                    const y = (clientY - (top + height / 2)) * 0.5;
-                    xTo(x);
-                    yTo(y);
-                });
-
-                btn.addEventListener("mouseleave", () => {
-                    xTo(0);
-                    yTo(0);
-                });
-            });
 
         }, containerRef);
 
@@ -214,99 +140,6 @@ const About = () => {
             {/* Section 2.5: Trust & Recognition */}
             <SocialProof />
 
-            {/* Section 3: The Horizontal Discovery */}
-            <section ref={horizontalSectionRef} className="h-screen bg-[#f3f3f3]">
-                <div ref={horizontalScrollRef} className="h-full flex items-center px-[5vw] md:px-[10vw] gap-12 md:gap-32">
-                    {/* Founder Intro */}
-                    <div className="min-w-[85vw] md:min-w-[40vw] flex flex-col">
-                        <span className="text-primary font-bold uppercase tracking-widest text-[10px] md:text-xs mb-4 md:mb-6 block">— Our Genesis</span>
-                        <h2 className="text-5xl md:text-8xl font-black text-slate-900 leading-[0.85] tracking-tighter uppercase mb-6 md:mb-12">
-                            Born from <br /> <span className="text-transparent strok-text-black italic">IAS Vision.</span>
-                        </h2>
-                        <p className="text-lg md:text-xl text-slate-600 max-w-md">
-                            Co-founded by the 1st Director General of NIFT, INSD isn't just a school—it's a national framework for creative excellence.
-                        </p>
-                    </div>
-
-
-                    {/* Interactive Showcase */}
-                    {[
-                        { title: 'Global Outlook', img: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg' },
-                        { title: 'Industry Core', img: 'https://images.pexels.com/photos/2041005/pexels-photo-2041005.jpeg' },
-                        { title: 'Future Tech', img: 'https://images.pexels.com/photos/8145203/pexels-photo-8145203.jpeg' }
-                    ].map((item, i) => (
-                        <div key={i} className="min-w-[70vw] md:min-w-[50vw] h-[70vh] relative group overflow-hidden rounded-[2rem] shadow-2xl">
-                            <img src={`${item.img}?auto=compress&cs=tinysrgb&w=${isMobile ? 800 : 1200}`} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100" loading="lazy" />
-                            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-12">
-                                <span className="text-primary font-mono mb-2">Pillar 0{i + 1}</span>
-                                <h3 className="text-5xl md:text-7xl font-black uppercase text-white tracking-tighter leading-none">{item.title}</h3>
-                            </div>
-                        </div>
-                    ))}
-
-
-                </div>
-            </section>
-
-            {/* Section 4: The Core Narrative (Type-Reveal) */}
-            <section className="relative py-64 px-6 bg-[#f3f3f3] border-t border-slate-300">
-                <div className="max-w-6xl mx-auto text-center">
-                    <h3 className="type-reveal text-4xl md:text-7xl font-bold leading-[1.1] uppercase tracking-tight text-black/90">
-                        In a world of fast fashion and generic interiors, we teach our students to slow down and build things that matter. Our labs are battlegrounds for ideas, where the only rule is to challenge the predictable.
-                    </h3>
-                </div>
-            </section>
-
-            {/* Section 5: The Pillars (3D Floating Grid) */}
-            <section className="relative pb-64 px-6 bg-[#f3f3f3] overflow-hidden">
-                {/* Floating Parallax Accents */}
-                <div className="parallax-layer absolute top-20 left-[10%] w-64 h-64 bg-primary/10 blur-[120px] rounded-full" />
-                <div className="parallax-layer absolute bottom-20 right-[15%] w-96 h-96 bg-secondary/10 blur-[150px] rounded-full" />
-
-                <div className="max-w-7xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
-                        <div className="space-y-12 md:space-y-32">
-                            {[
-                                { title: 'Authenticity', desc: 'True design cannot be faked. We prioritize raw, unfiltered expression.' },
-                                { title: 'Precision', desc: 'Where art meets engineering. Every detail is a deliberate choice.' },
-                                { title: 'Impact', desc: 'Design that doesnt move the world is just decoration.' }
-                            ].map((pill, i) => (
-                                <div key={i} className="floating-card group bg-white border border-slate-200 shadow-sm p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] hover:shadow-2xl hover:border-primary/20 transition-all duration-500">
-                                    <span className="text-primary font-mono text-base md:text-xl block mb-4 md:mb-6 px-3 md:px-4 py-1 border border-primary/40 rounded-full w-fit">0{i + 1}</span>
-                                    <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4 md:mb-6 text-slate-900">{pill.title}</h3>
-                                    <p className="text-slate-600 text-base md:text-lg leading-relaxed">{pill.desc}</p>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="hidden md:block relative">
-                            <div className="reveal-img-container aspect-3/4 rounded-[3rem] overflow-hidden rotate-3 shadow-primary/10 shadow-2xl">
-                                <img src={`https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1200`} className="w-full h-full object-cover" loading="lazy" />
-                            </div>
-
-                            <div className="absolute -bottom-12 -right-12 w-96 p-12 bg-primary text-white rounded-[2rem] shadow-xl -rotate-6 border border-primary/50">
-                                <p className="text-2xl font-black italic">"Design is the silent ambassador of your brand."</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Section 6: Next-Level CTA */}
-            <section className="relative h-screen bg-[#f3f3f3] flex items-center justify-center border-t border-slate-300">
-                <div className="absolute inset-0 opacity-20 mix-blend-multiply">
-                    <video autoPlay muted loop playsInline className="w-full h-full object-cover" src="https://www.pexels.com/download/video/3129957/" />
-                </div>
-                <div className="relative z-10 text-center px-6">
-                    <h2 className="text-[12vw] font-black uppercase leading-none tracking-tighter mb-12 text-slate-900 drop-shadow-sm">
-                        Join The <br /> Revolution.
-                    </h2>
-                    <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
-                        <button className="magnetic-btn px-12 py-5 bg-primary text-white font-bold rounded-full uppercase tracking-widest shadow-md hover:shadow-xl hover:bg-[#a61517] transition-all">Explore Careers</button>
-                        <button className="magnetic-btn px-12 py-5 bg-white text-slate-900 border border-slate-300 font-bold rounded-full uppercase tracking-widest shadow-sm hover:shadow-md hover:border-primary transition-all"><a href="https://insdpunepcmc.com/wp-content/uploads/2023/05/Course-booklet-INSD-2022.pdf" download={{}}>Get Prospectus</a></button>
-                    </div>
-                </div>
-            </section>
 
             <Footer />
         </div>

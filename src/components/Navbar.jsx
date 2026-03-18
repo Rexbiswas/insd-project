@@ -8,8 +8,17 @@ import {
     Phone, Calendar, UserPlus, FileDown, Instagram, Linkedin, Facebook, MapPin, Mail, MessageSquare, Globe, BookOpen, Youtube
 } from 'lucide-react';
 import gsap from 'gsap';
+import { Sidebar, Menu, MenuItem, Submenu, Logo } from "react-mui-sidebar";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import InfoIcon from "@mui/icons-material/Info";
+import SchoolIcon from "@mui/icons-material/School";
+import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
+import BusinessIcon from "@mui/icons-material/Business";
+import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
+import SettingsIcon from "@mui/icons-material/Settings";
+import CloseIcon from "@mui/icons-material/Close";
 
-const RollerLink = ({ to, children, colorClass, baseTextClass = "text-slate-800" }) => {
+const RollerLink = ({ to, children, colorClass = "text-primary", baseTextClass = "text-slate-800" }) => {
     return (
         <Link to={to} className="relative block h-[24px] group overflow-hidden">
             <div className="flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-1/2">
@@ -151,12 +160,12 @@ const Navbar = () => {
             icon: Folder,
             section: 'OVERVIEW',
             subItems: [
-                { name: 'Industry Potential', path: '/industry-potential' },
-                { name: 'Award Recognise', path: '/awards' },
-                { name: 'Insdian', path: '/insdian' },
-                { name: 'Student Career', path: '/student-careers' },
-                { name: 'Campus', path: '/campuses' },
-                { name: 'Placement', path: '/placement' },
+                { title: '15 Years Legacy', path: '#', icon: 'zap', desc: 'Explore industry trends' },
+                { title: 'Mentors', path: '#', icon: 'users', desc: 'Meet our community' },
+                { title: 'Academic Alliances', path: '#', icon: 'briefcase', desc: 'Career opportunities' },
+                { title: 'Global Exposure', path: '/goglobal', icon: 'map-pin', desc: 'Our locations' },
+                { title: 'Center Across India', path: '#', icon: 'trending-up', desc: 'Placement records' },
+                { title: 'Paris Project', path: '/insd-360/paris-project', icon: 'globe', desc: 'International design showcase', badge: 'Featured' }
             ]
         },
         {
@@ -165,15 +174,16 @@ const Navbar = () => {
             icon: GraduationCap,
             section: 'OVERVIEW',
             subItems: [
-                { name: 'Fashion Designing', path: '/courses/fashion-designing' },
-                { name: 'Interior Designing', path: '/courses/interior-designing' },
-                { name: 'Graphic Designing', path: '/courses/graphic-designing' },
-                { name: 'Animation & VFX', path: '/courses/animation-and-vfx' },
-                { name: 'Jewellery Designing', path: '/courses/jewellery-designing' },
-                { name: 'UI/UX Design', path: '/courses/uiux-designing' },
-                { name: 'Beauty & Makeup', path: '/courses/beauty-and-makeup' },
-                { name: 'Photography', path: '/courses/photography' },
-                { name: 'Textile Design', path: '/courses/textile-designing' },
+                { title: 'Fashion Designing', path: '/courses/fashion-designing', icon: 'fashion', desc: 'Couture & Apparel Design' },
+                { title: 'Interior Designing', path: '/courses/interior-designing', icon: 'interior', desc: 'Spatial & Interior Styling' },
+                { title: 'Graphic Designing', path: '/courses/graphic-designing', icon: 'graphic', desc: 'Visual Branding & Media' },
+                { title: 'Animation & VFX', path: '/courses/animation-and-vfx', icon: 'animation', desc: '3D Motion & Visual Effects' },
+                { title: 'Jewellery Designing', path: '/courses/jewellery-designing', icon: 'jewellery', desc: 'Gems & Jewelry Craft' },
+                { title: 'UI/UX Design', path: '/courses/uiux-designing', icon: 'uiux', desc: 'User Experience & Interface' },
+                { title: 'Beauty & Makeup', path: '/courses/beauty-and-makeup', icon: 'beauty', desc: 'Professional Esthetics' },
+                { title: 'Photography', path: '/courses/photography', icon: 'photography', desc: 'Visual Storytelling Art' },
+                { title: 'Textile Design', path: '/courses/textile-designing', icon: 'textile', desc: 'Material Science Arts' },
+                { title: 'INSD Luxe', path: '/insdluxe', icon: 'sparkles', desc: 'Premium Luxury Arts', badge: 'New' }
             ]
         },
         { title: 'Admissions', path: '/apply', icon: CreditCard, section: 'OVERVIEW' },
@@ -184,13 +194,13 @@ const Navbar = () => {
             icon: Sparkles,
             section: 'OVERVIEW',
             subItems: [
-                { name: 'Life at INSD', path: '/life-at-insd' },
-                { name: 'Placements', path: '/placement' },
-                { name: 'Entrepreneurs', path: '/entrepreneurship' },
-                { name: 'Industry Visits', path: '/industry-visits' },
-                { name: 'Industry Interaction', path: '/industry-interaction' },
-                { name: 'Placement & Training Partners', path: '/placement-partners' },
-                { name: 'Future of Design', path: '/future-of-design' },
+                { title: 'Life at INSD', path: '/life-at-insd', icon: 'users', desc: 'Campus life & community' },
+                { title: 'Placements', path: '/placement', icon: 'briefcase', desc: 'Career opportunities' },
+                { title: 'Entrepreneurs', path: '/entrepreneurship', icon: 'zap', desc: 'Startup incubation' },
+                { title: 'Industry Visits', path: '/industry-visits', icon: 'map-pin', desc: 'Real-world exposure' },
+                { title: 'Industry Interaction', path: '/industry-interaction', icon: 'users', desc: 'Expert sessions' },
+                { title: 'Placement & Training Partners', path: '/placement-partners', icon: 'award', desc: 'Our corporate network' },
+                { title: 'Future of Design', path: '/future-of-design', icon: 'sparkles', desc: 'Trends & innovations' },
             ]
         },
         { title: 'Settings', path: '/profile', icon: Settings, section: 'OTHER' },
@@ -300,12 +310,12 @@ const Navbar = () => {
                                         <div className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-2xl border border-slate-200/50 dark:border-white/10 rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] overflow-hidden p-2 relative before:content-[''] before:absolute before:inset-0 before:bg-linear-to-b before:from-white/40 before:to-transparent before:pointer-events-none after:content-[''] after:absolute after:-top-px after:left-10 after:right-10 after:h-px after:bg-linear-to-r after:from-transparent after:via-primary/30 after:to-transparent">
                                             <div className="max-h-[400px] overflow-y-auto dropdown-scrollbar pr-1 overscroll-contain">
                                                 {[
-                                                    { title: '15 Years Legacy', path: '/industry-potential', icon: 'zap', desc: 'Explore industry trends' },
-                                                    { title: 'Mentors', path: '', icon: 'users', desc: 'Meet our community' },
-                                                    { title: 'Acadamic Alliances', path: '', icon: 'briefcase', desc: 'Career opportunities' },
-                                                    { title: 'Global Exposure', path: '', icon: 'map-pin', desc: 'Our locations' },
-                                                    { title: 'Center Across India', path: '', icon: 'trending-up', desc: 'Placement records' },
-                                                    { title: 'Paris Project', path: '/insd-360/paris-project', icon: 'globe', desc: 'International design showcase', badge: 'Featured' },
+                                                    { title: '15 Years Legacy', path: '#', icon: 'zap', desc: 'Explore industry trends' },
+                                                    { title: 'Mentors', path: '#', icon: 'users', desc: 'Meet our community' },
+                                                    { title: 'Academic Alliances', path: '#', icon: 'briefcase', desc: 'Career opportunities' },
+                                                    { title: 'Global Exposure', path: '/goglobal', icon: 'map-pin', desc: 'Our locations' },
+                                                    { title: 'Center Across India', path: '#', icon: 'trending-up', desc: 'Placement records' },
+                                                    { title: 'Paris Project', path: '/insd-360/paris-project', icon: 'globe', desc: 'International design showcase', badge: 'Featured' }
 
                                                 ].map((item, i) => (
                                                     <Link
@@ -600,168 +610,259 @@ const Navbar = () => {
 
             <AnimatePresence mode="wait">
                 {isOpen && (
-                    <motion.div
-                        initial="closed"
-                        animate="open"
-                        exit="closed"
-                        variants={menuVariants}
-                        className="fixed inset-0 z-1001 bg-linear-to-br from-primary to-secondary text-white overflow-hidden flex flex-col"
-                    >
-                        {/* 0. PREMIUM TEXTURE OVERLAY */}
-                        <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] brightness-100 contrast-150" />
-
-                        {/* 1. PREMIUM HEADER */}
+                    isMobile ? (
                         <motion.div
-                            variants={itemVariants}
-                            className="flex items-center justify-between px-6 md:px-12 py-8 relative z-10"
+                            initial={{ x: "-100%" }}
+                            animate={{ x: 0 }}
+                            exit={{ x: "-100%" }}
+                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                            className="fixed inset-y-0 left-0 z-1001 shadow-[20px_0_60px_-15px_rgba(0,0,0,0.3)] bg-white mobile-sidebar-container"
                         >
-                            <Link to="/" onClick={() => setIsOpen(false)} className="h-10">
-                                <img
-                                    src="https://insd.edu.in/wp-content/uploads/2022/02/Final-Logo.png"
-                                    alt="INSD"
-                                    className="h-full w-auto brightness-0 invert"
-                                />
-                            </Link>
+                            <Sidebar width={"280px"} backgroundColor="#ffffff">
+                                <div className="p-4 flex items-center justify-between border-b border-slate-100 mb-4 bg-linear-to-r from-[#db3436] to-[#134a84]">
+                                    <Logo
+                                        component={Link}
+                                        href="/"
+                                        img="https://insd.edu.in/wp-content/uploads/2022/02/Final-Logo.png"
+                                    >
+                                        <span className="text-white font-black tracking-tighter">INSD</span>
+                                    </Logo>
+                                    <button 
+                                        onClick={() => setIsOpen(false)}
+                                        className="w-10 h-10 flex items-center justify-center bg-white/20 rounded-full text-white"
+                                    >
+                                        <CloseIcon />
+                                    </button>
+                                </div>
 
-                            <div className="flex items-center gap-4 md:gap-6">
-
-                                <button
-                                    onClick={() => setIsOpen(false)}
-                                    className="flex items-center gap-2.5 px-5 py-2 rounded-full bg-slate-900 border border-white/20 hover:bg-white hover:text-slate-950 transition-all shadow-xl group"
-                                >
-                                    <span className="font-bold text-[10px] md:text-xs tracking-widest uppercase">CLOSE</span>
-                                </button>
-                            </div>
-                        </motion.div>
-
-                        {/* 2. DUAL COLUMN CONTENT */}
-                        <div className="flex-1 flex flex-col md:flex-row relative">
-                            {/* Abstract Background Decoration */}
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-20 pointer-events-none">
-                                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/20 blur-[150px] rounded-full translate-x-1/3 -translate-y-1/3 animate-pulse" />
-                                <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-secondary/20 blur-[150px] rounded-full -translate-x-1/3 translate-y-1/3" />
-                            </div>
-
-                            {/* LEFT COLUMN: NAVIGATION CTAs */}
-                            <div className="w-full md:w-[65%] p-6 md:p-8 lg:p-12 flex flex-col justify-center relative z-10 overflow-y-auto dropdown-scrollbar">
-                                <div className="space-y-4 md:space-y-6">
-                                    {[
-                                        { title: 'Call Us Now', sub: '+91 7701933935', icon: Phone, href: 'tel:+917701933935' },
-                                        { title: 'Apply Now', sub: 'Admission Cycle 2026', icon: UserPlus, href: '/apply' },
-                                        { title: 'Book Counselling', sub: 'Free Expert Session', icon: Calendar, action: 'modal' },
-                                        { title: 'Download Brochure', sub: 'Detailed Course Guide', icon: FileDown, href: '#' },
-                                    ].map((cta, i) => (
-                                        <motion.div
-                                            key={i}
-                                            variants={itemVariants}
-                                            className="group relative"
-                                        >
-                                            {cta.action === 'modal' ? (
-                                                <button
-                                                    onClick={() => { setIsOpen(false); openModal(); }}
-                                                    className="flex items-center gap-6 md:gap-8 text-left w-full"
-                                                >
-                                                    <div className="w-10 h-10 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-primary group-hover:scale-110 group-hover:rotate-6 group-hover:border-primary shadow-2xl overflow-hidden relative">
-                                                        <div className="absolute inset-0 bg-linear-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                                                        <cta.icon className="w-5 h-5 md:w-7 md:h-7 text-white relative z-10" />
-                                                    </div>
-                                                    <div>
-                                                        <h3 className="text-xl md:text-3xl lg:text-4xl font-black uppercase tracking-tighter leading-none group-hover:text-primary transition-all duration-500 group-hover:translate-x-4">
-                                                            {cta.title}
-                                                        </h3>
-                                                        <p className="text-[8px] md:text-[10px] font-bold tracking-[0.3em] text-white/20 uppercase mt-1.5 group-hover:text-white/60 transition-all duration-500 group-hover:translate-x-2">
-                                                            {cta.sub}
-                                                        </p>
-                                                    </div>
-                                                </button>
-                                            ) : (
-                                                <Link
-                                                    to={cta.href}
+                                <div className="overflow-y-auto max-h-[calc(100vh-100px)] px-2">
+                                    <Menu subHeading="NAVIGATION">
+                                        {menuItems.map((item, idx) => {
+                                            if (item.subItems) {
+                                                return (
+                                                    <Submenu 
+                                                        key={idx} 
+                                                        title={item.title} 
+                                                        icon={
+                                                            item.title.includes('About') ? <InfoIcon sx={{ color: '#db3436' }} /> :
+                                                            item.title.includes('Courses') ? <SchoolIcon sx={{ color: '#db3436' }} /> :
+                                                            item.title.includes('Careers') ? <RocketLaunchIcon sx={{ color: '#db3436' }} /> :
+                                                            <DashboardIcon sx={{ color: '#db3436' }} />
+                                                        }
+                                                    >
+                                                        {item.subItems.map((sub, sIdx) => (
+                                                            <MenuItem 
+                                                                key={sIdx} 
+                                                                component={Link} 
+                                                                link={sub.path}
+                                                                onClick={() => setIsOpen(false)}
+                                                                style={{ fontSize: '13px', paddingTop: '8px', paddingBottom: '8px' }}
+                                                            >
+                                                                {sub.title}
+                                                            </MenuItem>
+                                                        ))}
+                                                    </Submenu>
+                                                )
+                                            }
+                                            return (
+                                                <MenuItem 
+                                                    key={idx} 
+                                                    component={Link} 
+                                                    link={item.path}
                                                     onClick={() => setIsOpen(false)}
-                                                    className="flex items-center gap-6 md:gap-8 text-left"
+                                                    icon={
+                                                        item.title === 'Dashboard' ? <DashboardIcon sx={{ color: '#134a84' }} /> :
+                                                        item.title === 'Admissions' ? <AssignmentIndIcon sx={{ color: '#134a84' }} /> :
+                                                        item.title === 'Franchise' ? <BusinessIcon sx={{ color: '#134a84' }} /> :
+                                                        item.title === 'Settings' ? <SettingsIcon sx={{ color: '#134a84' }} /> :
+                                                        <DashboardIcon sx={{ color: '#134a84' }} />
+                                                    }
                                                 >
-                                                    <div className="w-10 h-10 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-primary group-hover:scale-110 group-hover:rotate-6 group-hover:border-primary shadow-2xl overflow-hidden relative">
-                                                        <div className="absolute inset-0 bg-linear-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                                                        <cta.icon className="w-5 h-5 md:w-7 md:h-7 text-white relative z-10" />
-                                                    </div>
-                                                    <div>
-                                                        <h3 className="text-xl md:text-3xl lg:text-4xl font-black uppercase tracking-tighter leading-none group-hover:text-primary transition-all duration-500 group-hover:translate-x-4">
-                                                            {cta.title}
-                                                        </h3>
-                                                        <p className="text-[8px] md:text-[10px] font-bold tracking-[0.3em] text-white/20 uppercase mt-1.5 group-hover:text-white/60 transition-all duration-500 group-hover:translate-x-2">
-                                                            {cta.sub}
-                                                        </p>
-                                                    </div>
-                                                </Link>
-                                            )}
-                                        </motion.div>
-                                    ))}
+                                                    {item.title}
+                                                </MenuItem>
+                                            )
+                                        })}
+                                    </Menu>
+                                    
+                                    <div className="mt-8 p-4 bg-slate-50 rounded-2xl mx-2 border border-slate-100">
+                                        <h4 className="text-[10px] font-black tracking-widest text-[#134a84] uppercase mb-4">Direct Contact</h4>
+                                        <a href="tel:+917701933935" className="flex items-center gap-3 text-sm font-bold text-slate-700 mb-3 hover:text-primary">
+                                            <Phone size={16} /> +91 7701933935
+                                        </a>
+                                        <button 
+                                            onClick={() => { setIsOpen(false); openModal(); }}
+                                            className="w-full py-3 bg-[#db3436] text-white rounded-xl font-bold text-xs uppercase tracking-widest shadow-lg shadow-primary/20"
+                                        >
+                                            Enquire Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </Sidebar>
+                        </motion.div>
+                    ) : (
+                        <motion.div
+                            initial="closed"
+                            animate="open"
+                            exit="closed"
+                            variants={menuVariants}
+                            className="fixed inset-0 z-1001 bg-linear-to-br from-primary to-secondary text-white overflow-hidden flex flex-col"
+                        >
+                            {/* 0. PREMIUM TEXTURE OVERLAY */}
+                            <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] brightness-100 contrast-150" />
+
+                            {/* 1. PREMIUM HEADER */}
+                            <motion.div
+                                variants={itemVariants}
+                                className="flex items-center justify-between px-6 md:px-12 py-8 relative z-10"
+                            >
+                                <Link to="/" onClick={() => setIsOpen(false)} className="h-10">
+                                    <img
+                                        src="https://insd.edu.in/wp-content/uploads/2022/02/Final-Logo.png"
+                                        alt="INSD"
+                                        className="h-full w-auto brightness-0 invert"
+                                    />
+                                </Link>
+
+                                <div className="flex items-center gap-4 md:gap-6">
+
+                                    <button
+                                        onClick={() => setIsOpen(false)}
+                                        className="flex items-center gap-2.5 px-5 py-2 rounded-full bg-slate-900 border border-white/20 hover:bg-white hover:text-slate-950 transition-all shadow-xl group"
+                                    >
+                                        <span className="font-bold text-[10px] md:text-xs tracking-widest uppercase">CLOSE</span>
+                                    </button>
+                                </div>
+                            </motion.div>
+
+                            {/* 2. MAIN CONTENT AREA */}
+                            <div className="flex-1 flex flex-col md:flex-row relative overflow-hidden">
+                                {/* Abstract Background Decoration */}
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-20 pointer-events-none">
+                                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/20 blur-[150px] rounded-full translate-x-1/3 -translate-y-1/3 animate-pulse" />
+                                    <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-secondary/20 blur-[150px] rounded-full -translate-x-1/3 translate-y-1/3" />
+                                </div>
+
+                                {/* LEFT COLUMN: NAVIGATION CTAs */}
+                                <div className="hidden md:flex w-full md:w-[65%] p-6 md:p-8 lg:p-12 md:flex-col justify-center relative z-10 overflow-y-auto dropdown-scrollbar">
+                                    <div className="space-y-4 md:space-y-6">
+                                        {[
+                                            { title: 'Call Us Now', sub: '+91 7701933935', icon: Phone, href: 'tel:+917701933935' },
+                                            { title: 'Apply Now', sub: 'Admission Cycle 2026', icon: UserPlus, href: '/apply' },
+                                            { title: 'Book Counselling', sub: 'Free Expert Session', icon: Calendar, action: 'modal' },
+                                            { title: 'Download Brochure', sub: 'Detailed Course Guide', icon: FileDown, href: '#' },
+                                        ].map((cta, i) => (
+                                            <motion.div
+                                                key={i}
+                                                variants={itemVariants}
+                                                className="group relative"
+                                            >
+                                                {cta.action === 'modal' ? (
+                                                    <button
+                                                        onClick={() => { setIsOpen(false); openModal(); }}
+                                                        className="flex items-center gap-6 md:gap-8 text-left w-full"
+                                                    >
+                                                        <div className="w-10 h-10 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-primary group-hover:scale-110 group-hover:rotate-6 group-hover:border-primary shadow-2xl overflow-hidden relative">
+                                                            <div className="absolute inset-0 bg-linear-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                                            <cta.icon className="w-5 h-5 md:w-7 md:h-7 text-white relative z-10" />
+                                                        </div>
+                                                        <div>
+                                                            <h3 className="text-xl md:text-3xl lg:text-4xl font-black uppercase tracking-tighter leading-none group-hover:text-primary transition-all duration-500 group-hover:translate-x-4">
+                                                                {cta.title}
+                                                            </h3>
+                                                            <p className="text-[8px] md:text-[10px] font-bold tracking-[0.3em] text-white/20 uppercase mt-1.5 group-hover:text-white/60 transition-all duration-500 group-hover:translate-x-2">
+                                                                {cta.sub}
+                                                            </p>
+                                                        </div>
+                                                    </button>
+                                                ) : (
+                                                    <Link
+                                                        to={cta.href}
+                                                        onClick={() => setIsOpen(false)}
+                                                        className="flex items-center gap-6 md:gap-8 text-left"
+                                                    >
+                                                        <div className="w-10 h-10 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-primary group-hover:scale-110 group-hover:rotate-6 group-hover:border-primary shadow-2xl overflow-hidden relative">
+                                                            <div className="absolute inset-0 bg-linear-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                                            <cta.icon className="w-5 h-5 md:w-7 md:h-7 text-white relative z-10" />
+                                                        </div>
+                                                        <div>
+                                                            <h3 className="text-xl md:text-3xl lg:text-4xl font-black uppercase tracking-tighter leading-none group-hover:text-primary transition-all duration-500 group-hover:translate-x-4">
+                                                                {cta.title}
+                                                            </h3>
+                                                            <p className="text-[8px] md:text-[10px] font-bold tracking-[0.3em] text-white/20 uppercase mt-1.5 group-hover:text-white/60 transition-all duration-500 group-hover:translate-x-2">
+                                                                {cta.sub}
+                                                            </p>
+                                                        </div>
+                                                    </Link>
+                                                )}
+                                            </motion.div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* VERTICAL DIVIDER */}
+                                <motion.div
+                                    initial={{ scaleY: 0 }}
+                                    animate={{ scaleY: 1 }}
+                                    transition={{ duration: 1, delay: 0.5 }}
+                                    className="hidden md:block w-px bg-white/10 h-[60%] my-auto"
+                                />
+
+                                {/* RIGHT COLUMN: CONTACT DETAILS */}
+                                <div className="w-full md:w-[35%] p-6 md:p-8 lg:p-12 flex flex-col justify-center space-y-6 md:space-y-8 relative z-10 overflow-y-auto dropdown-scrollbar">
+                                    <motion.div variants={itemVariants}>
+                                        <h4 className="text-[9px] md:text-[10px] font-black tracking-[0.4em] text-primary uppercase mb-4 md:mb-6">Direct Lines</h4>
+                                        <div className="space-y-3">
+                                            <a href="tel:+917701933935" className="block text-lg md:text-xl lg:text-2xl font-bold hover:text-primary transition-all group">
+                                                <span className="inline-block group-hover:translate-x-2 transition-transform">+91 7701933935</span>
+                                            </a>
+                                            <a href="tel:+917827066618" className="block text-lg md:text-xl lg:text-2xl font-bold hover:text-primary transition-all group">
+                                                <span className="inline-block group-hover:translate-x-2 transition-transform">+91 7827066618</span>
+                                            </a>
+                                        </div>
+                                    </motion.div>
+
+                                    <motion.div variants={itemVariants}>
+                                        <h4 className="text-[9px] md:text-[10px] font-black tracking-[0.4em] text-secondary uppercase mb-4 md:mb-6">Location</h4>
+                                        <div className="space-y-3 max-w-xs">
+                                            <h5 className="font-black text-[10px] md:text-xs uppercase tracking-wider text-white/80">INSD Corporate Centres</h5>
+                                            <button className="flex items-center gap-3 text-[10px] md:text-xs font-bold text-primary group">
+                                                VIEW ON MAPS
+                                                <div className="w-5 h-5 rounded-full border border-primary/30 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
+                                                    <ArrowRight size={10} className="group-hover:translate-x-0.5 transition-transform" />
+                                                </div>
+                                            </button>
+                                        </div>
+                                    </motion.div>
+
+                                    <motion.div variants={itemVariants}>
+                                        <h4 className="text-[9px] md:text-[10px] font-black tracking-[0.4em] text-white/20 uppercase mb-4 md:mb-6">Connect</h4>
+                                        <div className="flex gap-4">
+                                            {[
+                                                { icon: Instagram, href: "https://www.instagram.com/insd_official" },
+                                                { icon: Linkedin, href: "https://www.linkedin.com/school/international-school-of-design/" },
+                                                { icon: Facebook, href: "https://www.facebook.com/share/1CMuRdTV69/" },
+                                                { icon: Youtube, href: "https://youtube.com/@insd-internationalschoolof5139?feature=shared" }
+                                            ].map((soc, i) => (
+                                                <motion.a
+                                                    key={i}
+                                                    href={soc.href}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    whileHover={{ y: -5, scale: 1.1, backgroundColor: "rgba(255,255,255,0.1)" }}
+                                                    whileTap={{ scale: 0.9 }}
+                                                    className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/30 hover:text-white hover:border-white/30 transition-all shadow-xl group"
+                                                >
+                                                    <soc.icon size={20} className="group-hover:rotate-12 transition-transform" />
+                                                </motion.a>
+                                            ))}
+                                        </div>
+                                    </motion.div>
                                 </div>
                             </div>
 
-                            {/* VERTICAL DIVIDER */}
-                            <motion.div
-                                initial={{ scaleY: 0 }}
-                                animate={{ scaleY: 1 }}
-                                transition={{ duration: 1, delay: 0.5 }}
-                                className="hidden md:block w-px bg-white/10 h-[60%] my-auto"
-                            />
 
-                            {/* RIGHT COLUMN: CONTACT DETAILS */}
-                            <div className="w-full md:w-[35%] p-6 md:p-8 lg:p-12 flex flex-col justify-center space-y-6 md:space-y-8 relative z-10 overflow-y-auto dropdown-scrollbar">
-                                <motion.div variants={itemVariants}>
-                                    <h4 className="text-[9px] md:text-[10px] font-black tracking-[0.4em] text-primary uppercase mb-4 md:mb-6">Direct Lines</h4>
-                                    <div className="space-y-3">
-                                        <a href="tel:+917701933935" className="block text-lg md:text-xl lg:text-2xl font-bold hover:text-primary transition-all group">
-                                            <span className="inline-block group-hover:translate-x-2 transition-transform">+91 7701933935</span>
-                                        </a>
-                                        <a href="tel:+917827066618" className="block text-lg md:text-xl lg:text-2xl font-bold hover:text-primary transition-all group">
-                                            <span className="inline-block group-hover:translate-x-2 transition-transform">+91 7827066618</span>
-                                        </a>
-                                    </div>
-                                </motion.div>
-
-                                <motion.div variants={itemVariants}>
-                                    <h4 className="text-[9px] md:text-[10px] font-black tracking-[0.4em] text-secondary uppercase mb-4 md:mb-6">Location</h4>
-                                    <div className="space-y-3 max-w-xs">
-                                        <h5 className="font-black text-[10px] md:text-xs uppercase tracking-wider text-white/80">INSD Corporate Centres</h5>
-                                        <button className="flex items-center gap-3 text-[10px] md:text-xs font-bold text-primary group">
-                                            VIEW ON MAPS
-                                            <div className="w-5 h-5 rounded-full border border-primary/30 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
-                                                <ArrowRight size={10} className="group-hover:translate-x-0.5 transition-transform" />
-                                            </div>
-                                        </button>
-                                    </div>
-                                </motion.div>
-
-                                <motion.div variants={itemVariants}>
-                                    <h4 className="text-[9px] md:text-[10px] font-black tracking-[0.4em] text-white/20 uppercase mb-4 md:mb-6">Connect</h4>
-                                    <div className="flex gap-4">
-                                        {[
-                                            { icon: Instagram, href: "https://www.instagram.com/insd_official" },
-                                            { icon: Linkedin, href: "https://www.linkedin.com/school/international-school-of-design/" },
-                                            { icon: Facebook, href: "https://www.facebook.com/share/1CMuRdTV69/" },
-                                            { icon: Youtube, href: "https://youtube.com/@insd-internationalschoolof5139?feature=shared" }
-                                        ].map((soc, i) => (
-                                            <motion.a
-                                                key={i}
-                                                href={soc.href}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                whileHover={{ y: -5, scale: 1.1, backgroundColor: "rgba(255,255,255,0.1)" }}
-                                                whileTap={{ scale: 0.9 }}
-                                                className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/30 hover:text-white hover:border-white/30 transition-all shadow-xl group"
-                                            >
-                                                <soc.icon size={20} className="group-hover:rotate-12 transition-transform" />
-                                            </motion.a>
-                                        ))}
-                                    </div>
-                                </motion.div>
-                            </div>
-                        </div>
-
-
-                    </motion.div>
+                        </motion.div>
+                    )
                 )}
             </AnimatePresence>
         </>
