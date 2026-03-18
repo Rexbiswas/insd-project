@@ -639,7 +639,7 @@ const Navbar = () => {
                                         )}
                                         <div className="flex flex-col min-w-0">
                                             <span className="text-white font-black text-sm tracking-tight leading-none truncate pr-2 uppercase">
-                                                {user ? user.username : 'ACCESS TERMINAL'}
+                                                {user ? user.username : 'USER LOGIN'}
                                             </span>
                                             <span className="text-white/60 text-[10px] uppercase font-bold tracking-[0.2em] mt-1.5 flex items-center gap-1.5">
                                                 <div className={`w-1 h-1 rounded-full ${user ? 'bg-green-400 animate-pulse' : 'bg-pink-400'}`} />
