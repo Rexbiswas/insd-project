@@ -202,7 +202,8 @@ const Navbar = () => {
                 { title: 'Future of Design', path: '/', icon: 'sparkles', desc: 'Trends & innovations' },
             ]
         },
-        { title: 'Events', path: '/insd-360/events', icon: Calendar, section: 'OVERVIEW' },
+
+        { title: 'Events', path: '/events', icon: Calendar, section: 'OVERVIEW' },
         { title: 'Blogs', path: '/insd-360/blog', icon: BookOpen, section: 'OVERVIEW' },
         {
             title: 'Contact Us',
@@ -473,7 +474,7 @@ const Navbar = () => {
                                     Events
                                 </RollerLink>
                                 <RollerLink
-                                    to="/events"
+                                    to="/insd-360/blog"
                                     colorClass="nav-hover-gradient"
                                     baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
                                 >
@@ -689,7 +690,7 @@ const Navbar = () => {
                                                             <MenuItem
                                                                 key={sIdx}
                                                                 component={Link}
-                                                                link={sub.path}
+                                                                to={sub.path}
                                                                 onClick={() => setIsOpen(false)}
                                                                 icon={sub.icon && <sub.icon size={16} style={{ color: '#134a84', opacity: 0.7 }} />}
                                                                 style={{ fontSize: '13px', paddingTop: '10px', paddingBottom: '10px' }}
@@ -704,7 +705,7 @@ const Navbar = () => {
                                                 <MenuItem
                                                     key={idx}
                                                     component={Link}
-                                                    link={item.path}
+                                                    to={item.path}
                                                     onClick={() => setIsOpen(false)}
                                                     icon={
                                                         item.title === 'Dashboard' ? <DashboardIcon sx={{ color: '#134a84' }} /> :

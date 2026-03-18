@@ -227,14 +227,6 @@ const Footer = () => {
                                         </a>
                                     </motion.div>
                                 </li>
-                                <li>
-                                    <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
-                                        <a href="/international-partners" className="text-sm text-white/50 hover:text-white transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
-                                            <span className="w-0 group-hover/link:w-2 h-px bg-white transition-all duration-300 shrink-0"></span>
-                                            Legacy
-                                        </a>
-                                    </motion.div>
-                                </li>
                             </ul>
                         </div>
 
@@ -245,14 +237,6 @@ const Footer = () => {
                                 Lifestyle
                             </h5>
                             <ul className="space-y-4">
-                                <li>
-                                    <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
-                                        <a href="/insdian" className="text-sm text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
-                                            <span className="w-0 group-hover/link:w-2 h-px bg-primary transition-all duration-300 shrink-0"></span>
-                                            Insdians
-                                        </a>
-                                    </motion.div>
-                                </li>
                                 <li>
                                     <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
                                         <a href="/success-stories" className="text-sm text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
@@ -266,14 +250,6 @@ const Footer = () => {
                                         <a href="/insd-360/fashion-week" className="text-sm text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
                                             <span className="w-0 group-hover/link:w-2 h-px bg-primary transition-all duration-300 shrink-0"></span>
                                             Fashion Shows
-                                        </a>
-                                    </motion.div>
-                                </li>
-                                <li>
-                                    <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
-                                        <a href="/insd-360/events" className="text-sm text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
-                                            <span className="w-0 group-hover/link:w-2 h-px bg-primary transition-all duration-300 shrink-0"></span>
-                                            Exhibitions
                                         </a>
                                     </motion.div>
                                 </li>
@@ -301,15 +277,7 @@ const Footer = () => {
                                     <span className="block text-[10px] uppercase tracking-widest text-primary mb-1">Admissions</span>
                                     <span className="text-sm font-bold border-b border-white/5 group-hover:border-primary transition-all pb-1">+91 77019 33935</span>
                                 </motion.div>
-                                <motion.div
-                                    whileHover={{ x: 5 }}
-                                    className="group"
-                                >
-                                    <span className="block text-[10px] uppercase tracking-widest text-white/40 mb-1">Global HQ</span>
-                                    <p className="text-white/50 text-xs leading-relaxed">
-                                        Preet Vihar, Delhi 110092
-                                    </p>
-                                </motion.div>
+
                             </div>
                         </div>
                     </div>
