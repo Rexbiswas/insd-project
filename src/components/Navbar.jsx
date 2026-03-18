@@ -178,6 +178,21 @@ const Navbar = () => {
         },
         { title: 'Admissions', path: '/apply', icon: CreditCard, section: 'OVERVIEW' },
         { title: 'Franchise', path: '/franchise', icon: Store, section: 'OVERVIEW' },
+        {
+            title: 'Careers & Exposure',
+            path: '#',
+            icon: Sparkles,
+            section: 'OVERVIEW',
+            subItems: [
+                { name: 'Life at INSD', path: '/life-at-insd' },
+                { name: 'Placements', path: '/placement' },
+                { name: 'Entrepreneurs', path: '/entrepreneurship' },
+                { name: 'Industry Visits', path: '/industry-visits' },
+                { name: 'Industry Interaction', path: '/industry-interaction' },
+                { name: 'Placement & Training Partners', path: '/placement-partners' },
+                { name: 'Future of Design', path: '/future-of-design' },
+            ]
+        },
         { title: 'Settings', path: '/profile', icon: Settings, section: 'OTHER' },
     ];
 
@@ -282,18 +297,16 @@ const Navbar = () => {
 
                                     {/* Dropdown Menu */}
                                     <div className="absolute top-12 left-1/2 -translate-x-1/2 pt-6 w-64 opacity-0 invisible translate-y-4 group-hover/dropdown:opacity-100 group-hover/dropdown:visible group-hover/dropdown:translate-y-0 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] z-50">
-                                        <div className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-2xl border border-slate-200/50 dark:border-white/10 rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] overflow-hidden p-2 relative before:content-[''] before:absolute before:inset-0 before:bg-linear-to-b before:from-white/40 before:to-transparent before:pointer-events-none after:content-[''] after:absolute after:-top-px after:left-10 after:right-10 after:h-[1px] after:bg-linear-to-r after:from-transparent after:via-primary/30 after:to-transparent">
+                                        <div className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-2xl border border-slate-200/50 dark:border-white/10 rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] overflow-hidden p-2 relative before:content-[''] before:absolute before:inset-0 before:bg-linear-to-b before:from-white/40 before:to-transparent before:pointer-events-none after:content-[''] after:absolute after:-top-px after:left-10 after:right-10 after:h-px after:bg-linear-to-r after:from-transparent after:via-primary/30 after:to-transparent">
                                             <div className="max-h-[400px] overflow-y-auto dropdown-scrollbar pr-1 overscroll-contain">
                                                 {[
-                                                    { title: 'Industry Potential', path: '/industry-potential', icon: 'zap', desc: 'Explore industry trends' },
-                                                    { title: 'Award Recognise', path: '/awards', icon: 'award', desc: 'Our achievements' },
-                                                    { title: 'Insdian', path: '/insdian', icon: 'users', desc: 'Meet our community' },
-                                                    { title: 'Student Career', path: '/student-careers', icon: 'briefcase', desc: 'Career opportunities' },
-                                                    { title: 'Campus', path: '/campuses', icon: 'map-pin', desc: 'Our locations' },
-                                                    { title: 'Placement', path: '/placement', icon: 'trending-up', desc: 'Placement records' },
+                                                    { title: '15 Years Legacy', path: '/industry-potential', icon: 'zap', desc: 'Explore industry trends' },
+                                                    { title: 'Mentors', path: '', icon: 'users', desc: 'Meet our community' },
+                                                    { title: 'Acadamic Alliances', path: '', icon: 'briefcase', desc: 'Career opportunities' },
+                                                    { title: 'Global Exposure', path: '', icon: 'map-pin', desc: 'Our locations' },
+                                                    { title: 'Center Across India', path: '', icon: 'trending-up', desc: 'Placement records' },
                                                     { title: 'Paris Project', path: '/insd-360/paris-project', icon: 'globe', desc: 'International design showcase', badge: 'Featured' },
-                                                    { title: 'Blogs', path: '/insd-360/blog', icon: 'globe', desc: 'Read our latest design stories'},
-                                                    { title: 'Events', path: '/insd-360/events', icon: 'globe', desc: 'Upcoming showcases & exhibitions'},
+
                                                 ].map((item, i) => (
                                                     <Link
                                                         key={i}
@@ -353,6 +366,7 @@ const Navbar = () => {
                                                     { title: 'Beauty & Makeup', path: '/courses/beauty-and-makeup', icon: 'beauty', desc: 'Professional Esthetics' },
                                                     { title: 'Photography', path: '/courses/photography', icon: 'photography', desc: 'Visual Storytelling Art' },
                                                     { title: 'Textile Design', path: '/courses/textile-designing', icon: 'textile', desc: 'Material Science Arts' },
+                                                    { title: 'INSD Luxe', path: '/courses/textile-designing', icon: 'textile', desc: 'Material Science Arts' },
                                                 ].map((item, i) => (
                                                     <Link
                                                         key={i}
@@ -381,6 +395,68 @@ const Navbar = () => {
                                         </div>
                                     </div>
                                 </div>
+                                <div className="relative group/dropdown">
+                                    <div className="flex items-center gap-1 cursor-pointer py-4">
+                                        <RollerLink
+                                            to="#"
+                                            colorClass="nav-hover-gradient"
+                                            baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
+                                        >
+                                            Careers & Exposure
+                                        </RollerLink>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`transition-transform duration-300 group-hover/dropdown:rotate-180 ${isHeaderDark && !isScrolled ? 'text-white/70' : 'text-slate-500'}`}><path d="m6 9 6 6 6-6" /></svg>
+                                    </div>
+
+                                    <div className="absolute top-12 left-1/2 -translate-x-1/2 pt-6 w-80 opacity-0 invisible translate-y-4 group-hover/dropdown:opacity-100 group-hover/dropdown:visible group-hover/dropdown:translate-y-0 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] z-50">
+                                        <div className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-2xl border border-slate-200/50 dark:border-white/10 rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] overflow-hidden p-2 relative before:content-[''] before:absolute before:inset-0 before:bg-linear-to-b before:from-white/40 before:to-transparent before:pointer-events-none after:content-[''] after:absolute after:-top-px after:left-10 after:right-10 after:h-px after:bg-linear-to-r after:from-transparent after:via-primary/30 after:to-transparent">
+                                            <div className="max-h-[400px] overflow-y-auto dropdown-scrollbar pr-1 overscroll-contain">
+                                                {[
+                                                    { title: 'Life at INSD', path: '/life-at-insd', icon: 'users', desc: 'Campus life & community' },
+                                                    { title: 'Placements', path: '/placement', icon: 'briefcase', desc: 'Career opportunities' },
+                                                    { title: 'Entrepreneurs', path: '/entrepreneurship', icon: 'zap', desc: 'Startup incubation' },
+                                                    { title: 'Industry Visits', path: '/industry-visits', icon: 'map-pin', desc: 'Real-world exposure' },
+                                                    { title: 'Industry Interaction', path: '/industry-interaction', icon: 'users', desc: 'Expert sessions' },
+                                                    { title: 'Placement & Training Partners', path: '/placement-partners', icon: 'award', desc: 'Our corporate network' },
+                                                    { title: 'Future of Design', path: '/future-of-design', icon: 'sparkles', desc: 'Trends & innovations' },
+                                                ].map((item, i) => (
+                                                    <Link
+                                                        key={i}
+                                                        to={item.path}
+                                                        className="flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 group/item transition-all duration-300 relative overflow-hidden"
+                                                    >
+                                                        <div className="absolute inset-0 bg-linear-to-r from-primary/5 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-300" />
+                                                        <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-white/5 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover/item:bg-primary group-hover/item:text-white group-hover/item:scale-110 transition-all duration-400 shadow-sm relative z-10">
+                                                            {item.icon === 'users' && <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>}
+                                                            {item.icon === 'briefcase' && <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg>}
+                                                            {item.icon === 'zap' && <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>}
+                                                            {item.icon === 'map-pin' && <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>}
+                                                            {item.icon === 'award' && <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="7" /><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" /></svg>}
+                                                            {item.icon === 'sparkles' && <Sparkles size={18} />}
+                                                        </div>
+                                                        <div className="flex flex-col relative z-10">
+                                                            <span className="font-bold text-sm text-slate-800 dark:text-slate-200 group-hover/item:text-primary dark:group-hover/item:text-white transition-colors">{item.title}</span>
+                                                            <span className="text-[11px] font-medium text-slate-400 group-hover/item:text-slate-500 transition-colors uppercase tracking-wider">{item.desc}</span>
+                                                        </div>
+                                                    </Link>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <RollerLink
+                                    to="/events"
+                                    colorClass="nav-hover-gradient"
+                                    baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
+                                >
+                                    Events 
+                                </RollerLink>
+                                <RollerLink
+                                    to="/events"
+                                    colorClass="nav-hover-gradient"
+                                    baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
+                                >
+                                    Blogs
+                                </RollerLink>
                                 <RollerLink
                                     to="/apply"
                                     colorClass="nav-hover-gradient"
