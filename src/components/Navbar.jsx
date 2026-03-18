@@ -16,6 +16,7 @@ import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import BusinessIcon from "@mui/icons-material/Business";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 import SettingsIcon from "@mui/icons-material/Settings";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CloseIcon from "@mui/icons-material/Close";
 
 const RollerLink = ({ to, children, colorClass = "text-primary", baseTextClass = "text-slate-800" }) => {
@@ -204,6 +205,7 @@ const Navbar = () => {
             ]
         },
         { title: 'Settings', path: '/profile', icon: Settings, section: 'OTHER' },
+        { title: 'Student Dashboard', path: '/student-dashboard', icon: User, section: 'OTHER' },
     ];
 
     // Logic to lock body scroll when menu is open
@@ -675,6 +677,7 @@ const Navbar = () => {
                                                         item.title === 'Admissions' ? <AssignmentIndIcon sx={{ color: '#134a84' }} /> :
                                                         item.title === 'Franchise' ? <BusinessIcon sx={{ color: '#134a84' }} /> :
                                                         item.title === 'Settings' ? <SettingsIcon sx={{ color: '#134a84' }} /> :
+                                                        item.title === 'Student Dashboard' ? <AccountCircleIcon sx={{ color: '#134a84' }} /> :
                                                         <DashboardIcon sx={{ color: '#134a84' }} />
                                                     }
                                                 >
