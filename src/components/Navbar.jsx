@@ -4,7 +4,7 @@ import { NavLink, Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import {
     Menu as MenuIcon, X, ArrowRight, Home, Sparkles, GraduationCap, LayoutGrid, User,
-    Search, Folder, Users, CreditCard, Box, HelpCircle, Settings, LogOut, ChevronLeft, ChevronsLeft, Store,
+    Search, Folder, Users, CreditCard, Box, HelpCircle, LogOut, ChevronLeft, ChevronsLeft, Store,
     Phone, Calendar, UserPlus, FileDown, Instagram, Linkedin, Facebook, MapPin, Mail, MessageSquare, Globe, BookOpen, Youtube
 } from 'lucide-react';
 import gsap from 'gsap';
@@ -15,8 +15,6 @@ import SchoolIcon from "@mui/icons-material/School";
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import BusinessIcon from "@mui/icons-material/Business";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
-import SettingsIcon from "@mui/icons-material/Settings";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CloseIcon from "@mui/icons-material/Close";
 
 const RollerLink = ({ to, children, colorClass = "text-primary", baseTextClass = "text-slate-800" }) => {
@@ -204,8 +202,6 @@ const Navbar = () => {
                 { title: 'Future of Design', path: '/future-of-design', icon: 'sparkles', desc: 'Trends & innovations' },
             ]
         },
-        { title: 'Settings', path: '/profile', icon: Settings, section: 'OTHER' },
-        { title: 'Student Dashboard', path: '/student-dashboard', icon: User, section: 'OTHER' },
     ];
 
     // Logic to lock body scroll when menu is open
@@ -460,7 +456,7 @@ const Navbar = () => {
                                     colorClass="nav-hover-gradient"
                                     baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
                                 >
-                                    Events 
+                                    Events
                                 </RollerLink>
                                 <RollerLink
                                     to="/events"
@@ -620,18 +616,40 @@ const Navbar = () => {
                             transition={{ type: "spring", stiffness: 300, damping: 30 }}
                             className="fixed inset-y-0 left-0 z-1001 shadow-[20px_0_60px_-15px_rgba(0,0,0,0.3)] bg-white mobile-sidebar-container"
                         >
-                            <Sidebar width={"280px"} backgroundColor="#ffffff">
-                                <div className="p-4 flex items-center justify-between border-b border-slate-100 mb-4 bg-linear-to-r from-[#db3436] to-[#134a84]">
-                                    <Logo
-                                        component={Link}
-                                        href="/"
-                                        img="https://insd.edu.in/wp-content/uploads/2022/02/Final-Logo.png"
-                                    >
-                                        <span className="text-white font-black tracking-tighter">INSD</span>
-                                    </Logo>
-                                    <button 
+                            <Sidebar width={"280px"} backgroundColor="#ffffff" showProfile={false}>
+                                <div className="p-4 flex items-center justify-between border-b border-white/10 mb-4 bg-linear-to-r from-primary to-secondary shadow-xl">
+                                    <div className="flex-1 flex items-center gap-3">
+                                        {user ? (
+                                            <Link
+                                                to="/profile"
+                                                onClick={() => setIsOpen(false)}
+                                                className="w-12 h-12 rounded-full border-2 border-white/30 bg-white/10 flex items-center justify-center text-white font-black text-xl shadow-lg backdrop-blur-md transition-all hover:scale-105 active:scale-95 group relative overflow-hidden shrink-0"
+                                            >
+                                                <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                                {user.username.charAt(0).toUpperCase()}
+                                            </Link>
+                                        ) : (
+                                            <button
+                                                onClick={() => { setIsOpen(false); openModal(); }}
+                                                className="w-12 h-12 rounded-full border-2 border-white/30 bg-white/10 flex items-center justify-center text-white shadow-lg backdrop-blur-md transition-all hover:scale-105 active:scale-95 group relative overflow-hidden shrink-0"
+                                            >
+                                                <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                                <User size={24} strokeWidth={2.5} />
+                                            </button>
+                                        )}
+                                        <div className="flex flex-col min-w-0">
+                                            <span className="text-white font-black text-sm tracking-tight leading-none truncate pr-2 uppercase">
+                                                {user ? user.username : 'ACCESS TERMINAL'}
+                                            </span>
+                                            <span className="text-white/60 text-[10px] uppercase font-bold tracking-[0.2em] mt-1.5 flex items-center gap-1.5">
+                                                <div className={`w-1 h-1 rounded-full ${user ? 'bg-green-400 animate-pulse' : 'bg-pink-400'}`} />
+                                                {user ? 'Verified Member' : 'Guest Member'}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <button
                                         onClick={() => setIsOpen(false)}
-                                        className="w-10 h-10 flex items-center justify-center bg-white/20 rounded-full text-white"
+                                        className="w-10 h-10 flex items-center justify-center bg-white/20 rounded-full text-white hover:bg-white/30 transition-all active:scale-90 shadow-inner border border-white/10"
                                     >
                                         <CloseIcon />
                                     </button>
@@ -642,20 +660,20 @@ const Navbar = () => {
                                         {menuItems.map((item, idx) => {
                                             if (item.subItems) {
                                                 return (
-                                                    <Submenu 
-                                                        key={idx} 
-                                                        title={item.title} 
+                                                    <Submenu
+                                                        key={idx}
+                                                        title={item.title}
                                                         icon={
                                                             item.title.includes('About') ? <InfoIcon sx={{ color: '#db3436' }} /> :
-                                                            item.title.includes('Courses') ? <SchoolIcon sx={{ color: '#db3436' }} /> :
-                                                            item.title.includes('Careers') ? <RocketLaunchIcon sx={{ color: '#db3436' }} /> :
-                                                            <DashboardIcon sx={{ color: '#db3436' }} />
+                                                                item.title.includes('Courses') ? <SchoolIcon sx={{ color: '#db3436' }} /> :
+                                                                    item.title.includes('Careers') ? <RocketLaunchIcon sx={{ color: '#db3436' }} /> :
+                                                                        <DashboardIcon sx={{ color: '#db3436' }} />
                                                         }
                                                     >
                                                         {item.subItems.map((sub, sIdx) => (
-                                                            <MenuItem 
-                                                                key={sIdx} 
-                                                                component={Link} 
+                                                            <MenuItem
+                                                                key={sIdx}
+                                                                component={Link}
                                                                 link={sub.path}
                                                                 onClick={() => setIsOpen(false)}
                                                                 style={{ fontSize: '13px', paddingTop: '8px', paddingBottom: '8px' }}
@@ -667,18 +685,16 @@ const Navbar = () => {
                                                 )
                                             }
                                             return (
-                                                <MenuItem 
-                                                    key={idx} 
-                                                    component={Link} 
+                                                <MenuItem
+                                                    key={idx}
+                                                    component={Link}
                                                     link={item.path}
                                                     onClick={() => setIsOpen(false)}
                                                     icon={
                                                         item.title === 'Dashboard' ? <DashboardIcon sx={{ color: '#134a84' }} /> :
-                                                        item.title === 'Admissions' ? <AssignmentIndIcon sx={{ color: '#134a84' }} /> :
-                                                        item.title === 'Franchise' ? <BusinessIcon sx={{ color: '#134a84' }} /> :
-                                                        item.title === 'Settings' ? <SettingsIcon sx={{ color: '#134a84' }} /> :
-                                                        item.title === 'Student Dashboard' ? <AccountCircleIcon sx={{ color: '#134a84' }} /> :
-                                                        <DashboardIcon sx={{ color: '#134a84' }} />
+                                                            item.title === 'Admissions' ? <AssignmentIndIcon sx={{ color: '#134a84' }} /> :
+                                                                item.title === 'Franchise' ? <BusinessIcon sx={{ color: '#134a84' }} /> :
+                                                                    <DashboardIcon sx={{ color: '#134a84' }} />
                                                     }
                                                 >
                                                     {item.title}
@@ -686,18 +702,13 @@ const Navbar = () => {
                                             )
                                         })}
                                     </Menu>
-                                    
+
                                     <div className="mt-8 p-4 bg-slate-50 rounded-2xl mx-2 border border-slate-100">
-                                        <h4 className="text-[10px] font-black tracking-widest text-[#134a84] uppercase mb-4">Direct Contact</h4>
+                                        <h4 className="text-[10px] font-black tracking-widest text-secondary uppercase mb-4">Direct Contact</h4>
                                         <a href="tel:+917701933935" className="flex items-center gap-3 text-sm font-bold text-slate-700 mb-3 hover:text-primary">
                                             <Phone size={16} /> +91 7701933935
                                         </a>
-                                        <button 
-                                            onClick={() => { setIsOpen(false); openModal(); }}
-                                            className="w-full py-3 bg-[#db3436] text-white rounded-xl font-bold text-xs uppercase tracking-widest shadow-lg shadow-primary/20"
-                                        >
-                                            Enquire Now
-                                        </button>
+
                                     </div>
                                 </div>
                             </Sidebar>
