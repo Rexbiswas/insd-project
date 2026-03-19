@@ -671,7 +671,7 @@ const Navbar = () => {
                                 </div>
 
                                 <div className="overflow-y-auto max-h-[calc(100vh-100px)] px-2">
-                                    <Menu subHeading="NAVIGATION">
+                                    <Menu>
                                         {menuItems.map((item, idx) => {
                                             if (item.subItems) {
                                                 return (
