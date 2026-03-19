@@ -1,5 +1,6 @@
 import React, { useRef, useLayoutEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Twitter, Linkedin, Youtube, ArrowUpRight, ChevronRight, Mail, Phone, MapPin, Download, MessageSquare, MessageCircle, ShieldCheck, Globe, Zap } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -187,10 +188,10 @@ const Footer = () => {
                                         whileHover={{ x: 5 }}
                                         transition={{ type: "spring", stiffness: 300 }}
                                     >
-                                        <a href={item === "Fashion Designing" ? "/courses/fashion-designing" : item === "Interior Designing" ? "/courses/interior-designing" : item === "Graphic Designing" ? "/courses/graphic-designing" : item === "Animation & VFX" ? "/courses/animation-and-vfx" : "#"} className="text-sm text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
+                                        <Link to={item === "Fashion Designing" ? "/courses/fashion-designing" : item === "Interior Designing" ? "/courses/interior-designing" : item === "Graphic Designing" ? "/courses/graphic-designing" : item === "Animation & VFX" ? "/courses/animation-and-vfx" : "#"} className="text-sm text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
                                             <span className="w-0 group-hover/link:w-2 h-px bg-primary transition-all duration-300 shrink-0"></span>
                                             {item}
-                                        </a>
+                                        </Link>
                                     </motion.li>
                                 ))}
                             </ul>
@@ -205,26 +206,26 @@ const Footer = () => {
                             <ul className="space-y-4">
                                 <li>
                                     <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
-                                        <a href="/about-us" className="text-sm text-white/50 hover:text-white transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
+                                        <Link to="/about-us" className="text-sm text-white/50 hover:text-white transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
                                             <span className="w-0 group-hover/link:w-2 h-px bg-white transition-all duration-300 shrink-0"></span>
                                             About Us
-                                        </a>
+                                        </Link>
                                     </motion.div>
                                 </li>
                                 <li>
                                     <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
-                                        <a href="/campuses" className="text-sm text-white/50 hover:text-white transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
+                                        <Link to="/campuses" className="text-sm text-white/50 hover:text-white transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
                                             <span className="w-0 group-hover/link:w-2 h-px bg-white transition-all duration-300 shrink-0"></span>
                                             Campuses
-                                        </a>
+                                        </Link>
                                     </motion.div>
                                 </li>
                                 <li>
                                     <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
-                                        <a href="/student-careers" className="text-sm text-white/50 hover:text-white transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
+                                        <Link to="/student-careers" className="text-sm text-white/50 hover:text-white transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
                                             <span className="w-0 group-hover/link:w-2 h-px bg-white transition-all duration-300 shrink-0"></span>
                                             Careers
-                                        </a>
+                                        </Link>
                                     </motion.div>
                                 </li>
                             </ul>
@@ -239,26 +240,26 @@ const Footer = () => {
                             <ul className="space-y-4">
                                 <li>
                                     <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
-                                        <a href="/success-stories" className="text-sm text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
+                                        <Link to="/success-stories" className="text-sm text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
                                             <span className="w-0 group-hover/link:w-2 h-px bg-primary transition-all duration-300 shrink-0"></span>
                                             Success Stories
-                                        </a>
+                                        </Link>
                                     </motion.div>
                                 </li>
                                 <li>
                                     <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
-                                        <a href="/insd-360/fashion-week" className="text-sm text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
+                                        <Link to="/insd-360/fashion-week" className="text-sm text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
                                             <span className="w-0 group-hover/link:w-2 h-px bg-primary transition-all duration-300 shrink-0"></span>
                                             Fashion Shows
-                                        </a>
+                                        </Link>
                                     </motion.div>
                                 </li>
                                 <li>
                                     <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
-                                        <a href="/gallery" className="text-sm text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
+                                        <Link to="/gallery" className="text-sm text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
                                             <span className="w-0 group-hover/link:w-2 h-px bg-primary transition-all duration-300 shrink-0"></span>
                                             Gallery
-                                        </a>
+                                        </Link>
                                     </motion.div>
                                 </li>
                             </ul>
