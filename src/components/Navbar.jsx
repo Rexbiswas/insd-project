@@ -204,6 +204,7 @@ const Navbar = () => {
         },
 
         { title: 'Events', path: '/events', icon: Calendar, section: 'OVERVIEW' },
+        { title: 'Mentors', path: '/mentors', icon: User, section: 'OVERVIEW' },
         { title: 'Blogs', path: '/insd-360/blog', icon: BookOpen, section: 'OVERVIEW' },
         {
             title: 'Contact Us',
@@ -323,10 +324,10 @@ const Navbar = () => {
                                         <div className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-2xl border border-slate-200/50 dark:border-white/10 rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] overflow-hidden p-2 relative before:content-[''] before:absolute before:inset-0 before:bg-linear-to-b before:from-white/40 before:to-transparent before:pointer-events-none after:content-[''] after:absolute after:-top-px after:left-10 after:right-10 after:h-px after:bg-linear-to-r after:from-transparent after:via-primary/30 after:to-transparent">
                                             <div className="max-h-[400px] overflow-y-auto dropdown-scrollbar pr-1 overscroll-contain">
                                                 {[
-                                                    { title: '15 Years Legacy', path: '#', icon: 'zap', desc: 'Explore industry trends' },
-                                                    { title: 'Mentors', path: '#', icon: 'users', desc: 'Meet our community' },
-                                                    { title: 'Academic Alliances', path: '#', icon: 'briefcase', desc: 'Career opportunities' },
-                                                    { title: 'Global Exposure', path: '/goglobal', icon: 'map-pin', desc: 'Our locations' },
+                                                    { title: '15 Years Legacy', path: '/15-years-legacy', icon: 'zap', desc: 'Explore industry trends' },
+                                                    { title: 'Mentors', path: '/mentors', icon: 'users', desc: 'Meet our community' },
+                                                    { title: 'Academic Alliances', path: '/academic-alliances', icon: 'briefcase', desc: 'Career opportunities' },
+                                                    { title: 'Global Exposure', path: '/go-global', icon: 'map-pin', desc: 'Our locations' },
                                                     { title: 'Center Across India', path: '#', icon: 'trending-up', desc: 'Placement records' },
                                                     { title: 'Paris Project', path: '/insd-360/paris-project', icon: 'globe', desc: 'International design showcase', badge: 'Featured' }
 
@@ -434,13 +435,13 @@ const Navbar = () => {
                                         <div className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-2xl border border-slate-200/50 dark:border-white/10 rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] overflow-hidden p-2 relative before:content-[''] before:absolute before:inset-0 before:bg-linear-to-b before:from-white/40 before:to-transparent before:pointer-events-none after:content-[''] after:absolute after:-top-px after:left-10 after:right-10 after:h-px after:bg-linear-to-r after:from-transparent after:via-primary/30 after:to-transparent">
                                             <div className="max-h-[400px] overflow-y-auto dropdown-scrollbar pr-1 overscroll-contain">
                                                 {[
-                                                    { title: 'Life at INSD', path: '/life-at-insd', icon: 'users', desc: 'Campus life & community' },
+                                                    { title: 'Life at INSD', path: '/student', icon: 'users', desc: 'Campus life & community' },
                                                     { title: 'Placements', path: '/placement', icon: 'briefcase', desc: 'Career opportunities' },
-                                                    { title: 'Entrepreneurs', path: '/entrepreneurship', icon: 'zap', desc: 'Startup incubation' },
-                                                    { title: 'Industry Visits', path: '/industry-visits', icon: 'map-pin', desc: 'Real-world exposure' },
-                                                    { title: 'Industry Interaction', path: '/industry-interaction', icon: 'users', desc: 'Expert sessions' },
-                                                    { title: 'Placement & Training Partners', path: '/placement-partners', icon: 'award', desc: 'Our corporate network' },
-                                                    { title: 'Future of Design', path: '/future-of-design', icon: 'sparkles', desc: 'Trends & innovations' },
+                                                    { title: 'Entrepreneurs', path: '/industry-potential', icon: 'zap', desc: 'Startup incubation' },
+                                                    { title: 'Industry Visits', path: '/industry-potential', icon: 'map-pin', desc: 'Real-world exposure' },
+                                                    { title: 'Industry Interaction', path: '/industry-potential', icon: 'users', desc: 'Expert sessions' },
+                                                    { title: 'Placement & Training Partners', path: '/placement', icon: 'award', desc: 'Our corporate network' },
+                                                    { title: 'Future of Design', path: '/', icon: 'sparkles', desc: 'Trends & innovations' },
                                                 ].map((item, i) => (
                                                     <Link
                                                         key={i}
@@ -473,6 +474,7 @@ const Navbar = () => {
                                 >
                                     Events
                                 </RollerLink>
+                                
                                 <RollerLink
                                     to="/insd-360/blog"
                                     colorClass="nav-hover-gradient"

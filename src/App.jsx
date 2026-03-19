@@ -32,7 +32,9 @@ const Blog = lazy(() => import('./pages/Blog'));
 const FashionWeek = lazy(() => import('./pages/FashionWeek'));
 const ParisProject = lazy(() => import('./pages/ParisProject'));
 const Events = lazy(() => import('./pages/Events'));
-
+import Mentors from './pages/Mentors';
+import Legacy from './pages/Legacy';
+import AcademicAlliances from './pages/AcademicAlliances';
 const ProfileDashboard = lazy(() => import('./pages/ProfileDashboard'));
 const Insdian = lazy(() => import('./pages/Insdian'));
 const FashionDesigning = lazy(() => import('./pages/FashionDesigning'));
@@ -122,6 +124,9 @@ function App() {
                                     <Route path="/insd-360/fashion-week" element={<FashionWeek />} />
                                     <Route path="/insd-360/paris-project" element={<ParisProject />} />
                                     <Route path="/events" element={<Events />} />
+                                    <Route path="/mentors" element={<Mentors />} />
+                                    <Route path="/15-years-legacy" element={<Legacy />} />
+                                    <Route path="/academic-alliances" element={<AcademicAlliances />} />
                                     <Route path="/insdian" element={<Insdian />} />
                                     <Route path="/profile" element={<ProfileDashboard />} />
                                     <Route path="/success-stories" element={<SuccessStory />} />
