@@ -8,7 +8,10 @@ import {
     Zap, 
     Play, 
     ArrowRight,
-    Sparkles
+    Sparkles,
+    Globe,
+    Award,
+    Target
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
@@ -227,6 +230,117 @@ const AnimationAndVFX = () => {
                     </div>
                 </div>
             </section>
+                       {/* --- WHY CHOOSE INSD --- */}
+            <section className="py-24 px-6 md:px-12 lg:px-24 bg-slate-50 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
+                
+                <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
+                    <div className="w-full lg:w-1/2 space-y-12">
+                        <div className="space-y-4 text-center lg:text-left">
+                            <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">The INSD Advantage</span>
+                            <h2 className="text-5xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none">
+                                WHY <br /> <span className="text-slate-300">CHOOSE</span> <br /> INSD?
+                            </h2>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            {[
+                                { title: "15+ Years Legacy", desc: "A national award-winning institution with a proven track record of excellence.", icon: Sparkles },
+                                { title: "Global Network", desc: "Placements and collaborations across 30+ countries worldwide.", icon: Globe },
+                                { title: "Elite Mentorship", desc: "Learn directly from industry veterans and global design leaders.", icon: Award },
+                                { title: "100% Assistance", desc: "Comprehensive career support and placement guidance for every student.", icon: Target },
+                            ].map((item, idx) => (
+                                <div key={idx} className="space-y-4 group">
+                                    <div className="w-14 h-14 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm relative z-10 mx-auto lg:mx-0">
+                                        <item.icon size={28} />
+                                    </div>
+                                    <div className="space-y-2 text-center lg:text-left">
+                                        <h4 className="text-xl font-black text-slate-900 uppercase tracking-tighter">{item.title}</h4>
+                                        <p className="text-slate-500 font-bold text-[10px] md:text-xs uppercase leading-relaxed tracking-tight">{item.desc}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="w-full lg:w-1/2 relative group">
+                        <div className="relative aspect-square rounded-[3.5rem] overflow-hidden">
+                           <img 
+                               src="https://images.unsplash.com/photo-1536243298747-ea8874136d64?auto=format&fit=crop&q=80&w=800"
+                               alt="Why Choose INSD"
+                               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                           />
+                           <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+                           <div className="absolute bottom-12 left-12 right-12 p-8 md:p-12 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl">
+                               <p className="text-white font-bold text-sm md:text-base leading-relaxed italic text-center">
+                                   "INSD focuses on the technical precision and creative freedom that drive global VFX studios. It was the perfect platform for my career."
+                               </p>
+                               <div className="mt-8 flex items-center justify-center gap-4">
+                                   <div className="h-px w-8 bg-white/30" />
+                                   <span className="text-white/60 text-[10px] font-black uppercase tracking-widest leading-none">ALUMNI 2024</span>
+                                   <div className="h-px w-8 bg-white/30" />
+                               </div>
+                           </div>
+                        </div>
+                        <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                        <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-secondary/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    </div>
+                </div>
+            </section>
+            
+            {/* --- CAREER PATHS GRID --- */}
+            <section className="py-24 px-6 md:px-12 lg:px-24 bg-white">
+                <div className="max-w-7xl mx-auto space-y-12">
+                    <div className="space-y-4">
+                        <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase">
+                            Career Paths
+                        </h2>
+                        <p className="text-slate-500 font-bold max-w-2xl">
+                            Unlock your potential and pursue diverse career opportunities in Animation & VFX with INSD Global.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+                        {[
+                            { title: "3D Modeler", desc: "Crafting detailed 3D assets, environments, and characters for films and gaming.", img: "https://images.unsplash.com/photo-1616440830467-31735ec00713?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Character Animator", desc: "Bringing characters to life through complex movement and emotional storytelling.", img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800" },
+                            { title: "VFX Supervisor", desc: "Overseeing the technical and creative execution of visual effects on film sets.", img: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Compositor", desc: "Seamlessly blending live-action footage with CGI to create final cinematic frames.", img: "https://images.unsplash.com/photo-1478720143907-29bd9484b9df?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Game Artist", desc: "Developing immersive environments and interactive assets for the global gaming industry.", img: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Texture Artist", desc: "Applying surface details and realistic materials to 3D models for depth and realism.", img: "https://images.unsplash.com/photo-1558591710-4b4a1ad0f04d?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Lighting Artist", desc: "Setting the mood and atmosphere of digital scenes through advanced virtual lighting.", img: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Storyboard Artist", desc: "Translating scripts into visual sequences to guide directors and animators.", img: "https://images.unsplash.com/photo-1512496015851-a90fb38ba496?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Roto Artist", desc: "Defining the foundation of VFX shots through precise rotoscoping and prep work.", img: "https://images.unsplash.com/photo-1520633215439-d49eec2030ca?auto=format&fit=crop&q=80&w=800" },
+                        ].map((role, idx) => (
+                            <motion.div 
+                                key={idx}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: idx * 0.05 }}
+                                className="relative aspect-square md:aspect-4/3 overflow-hidden group border border-white/10"
+                            >
+                                <img 
+                                    src={role.img} 
+                                    alt={role.title} 
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                />
+                                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-8 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                                    <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter leading-none mb-2">
+                                        {role.title.split(' ').map((word, i) => (
+                                            <span key={i} className="block">{word}</span>
+                                        ))}
+                                    </h3>
+                                    <p className="text-white/60 text-[10px] md:text-xs font-bold leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                        {role.desc}
+                                    </p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+      
 
             {/* --- CORE MODULES SHOWCASE --- */}
             <section className="py-24 px-6 md:px-12 lg:px-24 bg-slate-50 relative overflow-hidden">

@@ -197,11 +197,11 @@ const Navbar = () => {
             subItems: [
                 { title: 'Life at INSD', path: '/student', icon: 'users', desc: 'Campus life & community' },
                 { title: 'Placements', path: '/placement', icon: 'briefcase', desc: 'Career opportunities' },
-                { title: 'Entrepreneurs', path: '/industry-potential', icon: 'zap', desc: 'Startup incubation' },
+                { title: 'Entrepreneurs', path: '/entrepreneur', icon: 'zap', desc: 'Startup incubation' },
                 { title: 'Industry Visits', path: '/industry-potential', icon: 'map-pin', desc: 'Real-world exposure' },
-                { title: 'Industry Interaction', path: '/industry-potential', icon: 'users', desc: 'Expert sessions' },
-                { title: 'Placement & Training Partners', path: '/placement', icon: 'award', desc: 'Our corporate network' },
-                { title: 'Future of Design', path: '/', icon: 'sparkles', desc: 'Trends & innovations' },
+                { title: 'Industry Interaction', path: '/industry-interaction', icon: 'users', desc: 'Expert sessions' },
+                { title: 'Placement & Training Partners', path: '/placementandtraining', icon: 'award', desc: 'Our corporate network' },
+                { title: 'Future of Design', path: '/future-of-design', icon: 'sparkles', desc: 'Trends & innovations' },
             ]
         },
 
@@ -439,11 +439,11 @@ const Navbar = () => {
                                                 {[
                                                     { title: 'Life at INSD', path: '/student', icon: 'users', desc: 'Campus life & community' },
                                                     { title: 'Placements', path: '/placement', icon: 'briefcase', desc: 'Career opportunities' },
-                                                    { title: 'Entrepreneurs', path: '/industry-potential', icon: 'zap', desc: 'Startup incubation' },
+                                                    { title: 'Entrepreneurs', path: '/entrepreneur', icon: 'zap', desc: 'Startup incubation' },
                                                     { title: 'Industry Visits', path: '/industry-potential', icon: 'map-pin', desc: 'Real-world exposure' },
-                                                    { title: 'Industry Interaction', path: '/industry-potential', icon: 'users', desc: 'Expert sessions' },
-                                                    { title: 'Placement & Training Partners', path: '/placement', icon: 'award', desc: 'Our corporate network' },
-                                                    { title: 'Future of Design', path: '/', icon: 'sparkles', desc: 'Trends & innovations' },
+                                                    { title: 'Industry Interaction', path: '/industry-interaction', icon: 'users', desc: 'Expert sessions' },
+                                                    { title: 'Placement & Training Partners', path: '/placementandtraining', icon: 'award', desc: 'Our corporate network' },
+                                                    { title: 'Future of Design', path: '/future-of-design', icon: 'sparkles', desc: 'Trends & innovations' },
                                                 ].map((item, i) => (
                                                     <Link
                                                         key={i}
@@ -630,6 +630,7 @@ const Navbar = () => {
                     isMobile ? (
                         <>
                             {/* Backdrop */}
+
                             <motion.div
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
@@ -637,7 +638,9 @@ const Navbar = () => {
                                 onClick={() => setIsOpen(false)}
                                 className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-1000"
                             />
+
                             {/* Sidebar Panel */}
+
                             <motion.div
                                 initial={{ x: "-100%" }}
                                 animate={{ x: 0 }}
@@ -646,6 +649,7 @@ const Navbar = () => {
                                 className="fixed inset-y-0 left-0 w-[85%] max-w-[320px] bg-white z-1001 shadow-[20px_0_60px_-15px_rgba(0,0,0,0.2)] flex flex-col"
                             >
                                 {/* Header */}
+                                
                                 <div className="p-5 flex items-center justify-between bg-linear-to-r from-primary to-secondary text-white">
                                     <div className="flex items-center gap-3">
                                         <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center border border-white/30 backdrop-blur-md">

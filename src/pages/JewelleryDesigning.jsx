@@ -8,7 +8,10 @@ import {
     Scissors, 
     Layers, 
     ArrowRight,
-    Palette
+    Palette,
+    Globe,
+    Award,
+    Target
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
@@ -224,6 +227,116 @@ const JewelleryDesigning = () => {
                                 </AnimatePresence>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+                       {/* --- WHY CHOOSE INSD --- */}
+            <section className="py-24 px-6 md:px-12 lg:px-24 bg-slate-50 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
+                
+                <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
+                    <div className="w-full lg:w-1/2 space-y-12">
+                        <div className="space-y-4 text-center lg:text-left">
+                            <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">The INSD Advantage</span>
+                            <h2 className="text-5xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none">
+                                WHY <br /> <span className="text-slate-300">CHOOSE</span> <br /> INSD?
+                            </h2>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            {[
+                                { title: "15+ Years Legacy", desc: "A national award-winning institution with a proven track record of excellence.", icon: Sparkles },
+                                { title: "Global Network", desc: "Placements and collaborations across 30+ countries worldwide.", icon: Globe },
+                                { title: "Elite Mentorship", desc: "Learn directly from industry veterans and global design leaders.", icon: Award },
+                                { title: "100% Assistance", desc: "Comprehensive career support and placement guidance for every student.", icon: Target },
+                            ].map((item, idx) => (
+                                <div key={idx} className="space-y-4 group">
+                                    <div className="w-14 h-14 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm relative z-10 mx-auto lg:mx-0">
+                                        <item.icon size={28} />
+                                    </div>
+                                    <div className="space-y-2 text-center lg:text-left">
+                                        <h4 className="text-xl font-black text-slate-900 uppercase tracking-tighter">{item.title}</h4>
+                                        <p className="text-slate-500 font-bold text-[10px] md:text-xs uppercase leading-relaxed tracking-tight">{item.desc}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="w-full lg:w-1/2 relative group">
+                        <div className="relative aspect-square rounded-[3.5rem] overflow-hidden">
+                           <img 
+                               src="https://images.unsplash.com/photo-1573408302185-1dffcc7442ca?auto=format&fit=crop&q=80&w=800"
+                               alt="Why Choose INSD"
+                               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                           />
+                           <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+                           <div className="absolute bottom-12 left-12 right-12 p-8 md:p-12 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl">
+                               <p className="text-white font-bold text-sm md:text-base leading-relaxed italic text-center">
+                                   "INSD focuses on the technical precision and luxury styling needed for the global market. It truly prepared me for my jewelry career."
+                               </p>
+                               <div className="mt-8 flex items-center justify-center gap-4">
+                                   <div className="h-px w-8 bg-white/30" />
+                                   <span className="text-white/60 text-[10px] font-black uppercase tracking-widest leading-none">ALUMNI 2024</span>
+                                   <div className="h-px w-8 bg-white/30" />
+                               </div>
+                           </div>
+                        </div>
+                        <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                        <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-secondary/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    </div>
+                </div>
+            </section>
+            
+            {/* --- CAREER PATHS GRID --- */}
+            <section className="py-24 px-6 md:px-12 lg:px-24 bg-white">
+                <div className="max-w-7xl mx-auto space-y-12">
+                    <div className="space-y-4">
+                        <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase">
+                            Career Paths
+                        </h2>
+                        <p className="text-slate-500 font-bold max-w-2xl">
+                            Unlock your potential and pursue diverse career opportunities in Jewellery Designing with INSD Global.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+                        {[
+                            { title: "High-Jewellery Designer", desc: "Designing exclusive, one-of-a-kind masterpieces for luxury international heritage brands.", img: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Gemologist", desc: "Expertly identifying and grading diamonds and precious gemstones based on the 4Cs.", img: "https://images.unsplash.com/photo-1598560917541-4043969b4a4d?auto=format&fit=crop&q=80&w=800" },
+                            { title: "CAD Jewellery Designer", desc: "Using advanced 3D software to create high-precision digital models for production.", img: "https://images.unsplash.com/photo-1588444839799-eb0c797b00c8?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Product Head", desc: "Managing the end-to-end design and manufacturing lifecycle of jewellery collections.", img: "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Visual Merchandiser", desc: "Designing high-impact storefronts and displays for luxury jewellery boutiques.", img: "https://images.unsplash.com/photo-1610492421943-8347fa65e236?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Brand Consultant", desc: "Setting the strategic identity and market positioning for global gem houses.", img: "https://images.unsplash.com/photo-1534073828943-f801091bb18c?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Quality Assurance", desc: "Inspecting every piece for structural integrity, plating quality, and stone setting.", img: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Auction Specialist", desc: "Curating and valuing rare vintage jewellery for prestigious international auction houses.", img: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Luxury Entrepreneur", desc: "Launching and managing your own independent bespoke jewellery label and atelier.", img: "https://images.unsplash.com/photo-1467043237213-65f2da53396f?auto=format&fit=crop&q=80&w=800" },
+                        ].map((role, idx) => (
+                            <motion.div 
+                                key={idx}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: idx * 0.05 }}
+                                className="relative aspect-square md:aspect-4/3 overflow-hidden group border border-white/10"
+                            >
+                                <img 
+                                    src={role.img} 
+                                    alt={role.title} 
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                />
+                                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-8 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                                    <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter leading-none mb-2">
+                                        {role.title.split(' ').map((word, i) => (
+                                            <span key={i} className="block">{word}</span>
+                                        ))}
+                                    </h3>
+                                    <p className="text-white/60 text-[10px] md:text-xs font-bold leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                        {role.desc}
+                                    </p>
+                                </div>
+                            </motion.div>
+                        ))}
                     </div>
                 </div>
             </section>

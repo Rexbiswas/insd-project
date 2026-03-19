@@ -8,7 +8,9 @@ import {
     Zap, 
     Layers, 
     ArrowRight,
-    Sparkles
+    Sparkles,
+    Award,
+    Target
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
@@ -224,6 +226,117 @@ const UIUXDesigning = () => {
                                 </AnimatePresence>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+            
+            {/* --- WHY CHOOSE INSD --- */}
+            <section className="py-24 px-6 md:px-12 lg:px-24 bg-slate-50 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
+                
+                <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
+                    <div className="w-full lg:w-1/2 space-y-12">
+                        <div className="space-y-4 text-center lg:text-left">
+                            <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">The INSD Advantage</span>
+                            <h2 className="text-5xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none">
+                                WHY <br /> <span className="text-slate-300">CHOOSE</span> <br /> INSD?
+                            </h2>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            {[
+                                { title: "15+ Years Legacy", desc: "A national award-winning institution with a proven track record of excellence.", icon: Sparkles },
+                                { title: "Global Network", desc: "Placements and collaborations across 30+ countries worldwide.", icon: Globe },
+                                { title: "Elite Mentorship", desc: "Learn directly from industry veterans and global design leaders.", icon: Award },
+                                { title: "100% Assistance", desc: "Comprehensive career support and placement guidance for every student.", icon: Target },
+                            ].map((item, idx) => (
+                                <div key={idx} className="space-y-4 group">
+                                    <div className="w-14 h-14 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm relative z-10 mx-auto lg:mx-0">
+                                        <item.icon size={28} />
+                                    </div>
+                                    <div className="space-y-2 text-center lg:text-left">
+                                        <h4 className="text-xl font-black text-slate-900 uppercase tracking-tighter">{item.title}</h4>
+                                        <p className="text-slate-500 font-bold text-[10px] md:text-xs uppercase leading-relaxed tracking-tight">{item.desc}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="w-full lg:w-1/2 relative group">
+                        <div className="relative aspect-square rounded-[3.5rem] overflow-hidden">
+                           <img 
+                               src="https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&q=80&w=800"
+                               alt="Why Choose INSD"
+                               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                           />
+                           <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+                           <div className="absolute bottom-12 left-12 right-12 p-8 md:p-12 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl">
+                               <p className="text-white font-bold text-sm md:text-base leading-relaxed italic text-center">
+                                   "INSD focuses on the digital precision and user-centric strategy that drive tech giants. It transformed the way I think about design."
+                               </p>
+                               <div className="mt-8 flex items-center justify-center gap-4">
+                                   <div className="h-px w-8 bg-white/30" />
+                                   <span className="text-white/60 text-[10px] font-black uppercase tracking-widest leading-none">ALUMNI 2024</span>
+                                   <div className="h-px w-8 bg-white/30" />
+                               </div>
+                           </div>
+                        </div>
+                        <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                        <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-secondary/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    </div>
+                </div>
+            </section>
+            
+            {/* --- CAREER PATHS GRID --- */}
+            <section className="py-24 px-6 md:px-12 lg:px-24 bg-white">
+                <div className="max-w-7xl mx-auto space-y-12">
+                    <div className="space-y-4">
+                        <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase">
+                            Career Paths
+                        </h2>
+                        <p className="text-slate-500 font-bold max-w-2xl">
+                            Unlock your potential and pursue diverse career opportunities in UI/UX Design with INSD Global.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+                        {[
+                            { title: "UX Researcher", desc: "Conducting user interviews and data analysis to uncover deep behavioral insights and pain points.", img: "https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Visual Designer", desc: "Crafting beautiful and high-fidelity interfaces that align with brand aesthetics and UI patterns.", img: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Product Designer", desc: "Solving complex business problems through end-to-end digital product design and strategy.", img: "https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Information Architect", desc: "Organizing complex data structures and navigation systems for intuitive user discovery.", img: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Interaction Designer", desc: "Defining how users interact with digital products through motion, feedback, and transitions.", img: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Usability Analyst", desc: "Testing and refining digital products to ensure the highest standards of user accessibility.", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Content Strategist", desc: "Planning and managing the verbal narrative and information hierarchy within digital products.", img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" },
+                            { title: "UX Director", desc: "Leading large-scale design teams and defining the user vision for global digital products.", img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Design Strategist", desc: "Bridging the gap between business objectives and user needs to drive digital innovation.", img: "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&q=80&w=800" },
+                        ].map((role, idx) => (
+                            <motion.div 
+                                key={idx}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: idx * 0.05 }}
+                                className="relative aspect-square md:aspect-4/3 overflow-hidden group border border-white/10"
+                            >
+                                <img 
+                                    src={role.img} 
+                                    alt={role.title} 
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                />
+                                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-8 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                                    <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter leading-none mb-2">
+                                        {role.title.split(' ').map((word, i) => (
+                                            <span key={i} className="block">{word}</span>
+                                        ))}
+                                    </h3>
+                                    <p className="text-white/60 text-[10px] md:text-xs font-bold leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                        {role.desc}
+                                    </p>
+                                </div>
+                            </motion.div>
+                        ))}
                     </div>
                 </div>
             </section>

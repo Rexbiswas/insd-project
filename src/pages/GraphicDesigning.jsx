@@ -8,7 +8,10 @@ import {
     Layout, 
     Sparkles, 
     ArrowRight,
-    Palette
+    Palette,
+    Globe,
+    Award,
+    Target
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
@@ -224,6 +227,116 @@ const GraphicDesigning = () => {
                                 </AnimatePresence>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+                       {/* --- WHY CHOOSE INSD --- */}
+            <section className="py-24 px-6 md:px-12 lg:px-24 bg-slate-50 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
+                
+                <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
+                    <div className="w-full lg:w-1/2 space-y-12">
+                        <div className="space-y-4 text-center lg:text-left">
+                            <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">The INSD Advantage</span>
+                            <h2 className="text-5xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none">
+                                WHY <br /> <span className="text-slate-300">CHOOSE</span> <br /> INSD?
+                            </h2>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            {[
+                                { title: "15+ Years Legacy", desc: "A national award-winning institution with a proven track record of excellence.", icon: Sparkles },
+                                { title: "Global Network", desc: "Placements and collaborations across 30+ countries worldwide.", icon: Globe },
+                                { title: "Elite Mentorship", desc: "Learn directly from industry veterans and global design leaders.", icon: Award },
+                                { title: "100% Assistance", desc: "Comprehensive career support and placement guidance for every student.", icon: Target },
+                            ].map((item, idx) => (
+                                <div key={idx} className="space-y-4 group">
+                                    <div className="w-14 h-14 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm relative z-10 mx-auto lg:mx-0">
+                                        <item.icon size={28} />
+                                    </div>
+                                    <div className="space-y-2 text-center lg:text-left">
+                                        <h4 className="text-xl font-black text-slate-900 uppercase tracking-tighter">{item.title}</h4>
+                                        <p className="text-slate-500 font-bold text-[10px] md:text-xs uppercase leading-relaxed tracking-tight">{item.desc}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="w-full lg:w-1/2 relative group">
+                        <div className="relative aspect-square rounded-[3.5rem] overflow-hidden">
+                           <img 
+                               src="https://images.unsplash.com/photo-1572044162444-ad60f128bde2?auto=format&fit=crop&q=80&w=800"
+                               alt="Why Choose INSD"
+                               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                           />
+                           <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+                           <div className="absolute bottom-12 left-12 right-12 p-8 md:p-12 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl">
+                               <p className="text-white font-bold text-sm md:text-base leading-relaxed italic text-center">
+                                   "INSD focuses on the creative thinking and branding strategies that drive global agencies. It was the perfect platform for my career."
+                               </p>
+                               <div className="mt-8 flex items-center justify-center gap-4">
+                                   <div className="h-px w-8 bg-white/30" />
+                                   <span className="text-white/60 text-[10px] font-black uppercase tracking-widest leading-none">ALUMNI 2024</span>
+                                   <div className="h-px w-8 bg-white/30" />
+                               </div>
+                           </div>
+                        </div>
+                        <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                        <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-secondary/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    </div>
+                </div>
+            </section>
+            
+            {/* --- CAREER PATHS GRID --- */}
+            <section className="py-24 px-6 md:px-12 lg:px-24 bg-white">
+                <div className="max-w-7xl mx-auto space-y-12">
+                    <div className="space-y-4">
+                        <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase">
+                            Career Paths
+                        </h2>
+                        <p className="text-slate-500 font-bold max-w-2xl">
+                            Unlock your potential and pursue diverse career opportunities in Graphic Design with INSD Global.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+                        {[
+                            { title: "Brand Identity Designer", desc: "Crafting unique visual identities, logos, and brand guidelines for global businesses.", img: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=800" },
+                            { title: "UI/UX Designer", desc: "Designing intuitive digital interfaces and seamless user experiences for apps and web.", img: "https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Art Director", desc: "Leading the creative vision for advertising campaigns, editorial shoots, and digital media.", img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Package Designer", desc: "Creating impactful and functional packaging solutions that define product presence on shelves.", img: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Motion Graphics Artist", desc: "Bringing static designs to life through animation for film, social media, and broadcast.", img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Advertising Creative", desc: "Developing persuasive visual concepts and designs for high-impact marketing campaigns.", img: "https://images.unsplash.com/photo-1557838923-29852e44cb23?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Publication Designer", desc: "Designing layouts for magazines, books, and digital journals with a focus on typography.", img: "https://images.unsplash.com/photo-1544640808-32ca72ac7f67?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Web Designer", desc: "Architecting responsive and high-performance websites that blend aesthetics with utility.", img: "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Environmental Designer", desc: "Designing visual graphics for physical spaces, wayfinding, and large-scale exhibitions.", img: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=800" },
+                        ].map((role, idx) => (
+                            <motion.div 
+                                key={idx}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: idx * 0.05 }}
+                                className="relative aspect-square md:aspect-4/3 overflow-hidden group border border-white/10"
+                            >
+                                <img 
+                                    src={role.img} 
+                                    alt={role.title} 
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                />
+                                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-8 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                                    <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter leading-none mb-2">
+                                        {role.title.split(' ').map((word, i) => (
+                                            <span key={i} className="block">{word}</span>
+                                        ))}
+                                    </h3>
+                                    <p className="text-white/60 text-[10px] md:text-xs font-bold leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                        {role.desc}
+                                    </p>
+                                </div>
+                            </motion.div>
+                        ))}
                     </div>
                 </div>
             </section>

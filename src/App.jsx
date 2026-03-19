@@ -11,7 +11,11 @@ const Courses = lazy(() => import('./pages/Courses'));
 const About = lazy(() => import('./pages/About'));
 const Awards = lazy(() => import('./pages/Awards'));
 const Student = lazy(() => import('./pages/Student'));
+const Entrepreneur = lazy(() => import('./pages/Entrepreneur'));
+const IndustryInteraction = lazy(() => import('./pages/IndustryInteraction'));
 const IndustryPotential = lazy(() => import('./pages/IndustryPotential'));
+const PlacementAndTraining = lazy(() => import('./pages/PlacementAndTraining'));
+const FutureOfDesign = lazy(() => import('./pages/FutureOfDesign'));
 const Placement = lazy(() => import('./pages/Placement'));
 const Campus = lazy(() => import('./pages/Campus'));
 const Franchise = lazy(() => import('./pages/Franchise'));
@@ -92,8 +96,12 @@ function App() {
                                     <Route path="/about-us" element={<About />} />
                                     <Route path="/awards" element={<Awards />} />
                                     <Route path="/student" element={<Student />} />
+                                    <Route path="/entrepreneur" element={<Entrepreneur />} />
+                                    <Route path="/industry-interaction" element={<IndustryInteraction />} />
                                     <Route path="/industry-potential" element={<IndustryPotential />} />
+                                    <Route path="/placementandtraining" element={<PlacementAndTraining />} />
                                     <Route path="/placement" element={<Placement />} />
+                                    <Route path="/future-of-design" element={<FutureOfDesign />} />
                                     <Route path="/campuses" element={<Campus />} />
                                     <Route path="/campuses/:campusId" element={<Campus />} />
                                     <Route path="/campuses/paris-cdp" element={<ParisCDP />} />

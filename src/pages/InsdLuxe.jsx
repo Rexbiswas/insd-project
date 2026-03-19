@@ -1,10 +1,27 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { PlayCircle, ArrowRight, Star, Globe, ShieldCheck } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { PlayCircle, ArrowRight, Star, Globe, ShieldCheck, Plus, ChevronRight } from 'lucide-react';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
 
 const InsdLuxe = () => {
+    const [openFaq, setOpenFaq] = useState(null);
+
+    const faqs = [
+        {
+            question: "What programs or courses does INSD Luxe offer?",
+            answer: "INSD Luxe offers elite programs in Luxury Brand Management, Fashion Design Management, and specialized courses focusing on Indian craftsmanship and Parisian luxury standards."
+        },
+        {
+            question: "How do i apply for admission to INSD Luxe?",
+            answer: "You can apply through our online portal or by visiting our flagship campus. The selection process involves a portfolio review and a personal interview to assess your potential in the luxury sector."
+        },
+        {
+            question: "Are Scholarships or Financial Aids available for students at INSD Luxe?",
+            answer: "Yes, INSD Luxe provides merit-based scholarships for high-potential transformation artists. Details can be requested during the application process or through our academic counselors."
+        }
+    ];
+
     return (
         <div className="bg-white min-h-screen font-sans selection:bg-secondary selection:text-white">
             <SEO 
@@ -167,6 +184,89 @@ const InsdLuxe = () => {
                             <div className="text-4xl font-black">2026</div>
                             <div className="text-[10px] uppercase font-black tracking-widest">Global Admissions</div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* --- PROGRAM INTEREST SECTION --- */}
+            <section className="py-24 px-6 md:px-12 lg:px-24 bg-[#c5a059]">
+                <div className="max-w-7xl mx-auto space-y-16 text-center">
+                    <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight">
+                        Choose Your Program of Interest
+                    </h2>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+                        {[
+                            { title: "Master Programs", img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Bachelor Programs", img: "https://images.unsplash.com/photo-1523240795204-d940bb4b5b70?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Diploma Programs", img: "https://images.unsplash.com/photo-1513364233989-4826b0a1d6e1?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Certificate Programs", img: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=800" },
+                        ].map((program, idx) => (
+                            <motion.div 
+                                key={idx}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: idx * 0.1 }}
+                                className="space-y-6 group cursor-pointer"
+                            >
+                                <div className="relative aspect-3/2 rounded-[2.5rem] overflow-hidden shadow-2xl">
+                                    <img 
+                                        src={program.img} 
+                                        alt={program.title} 
+                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                    />
+                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500" />
+                                </div>
+                                <h3 className="text-2xl md:text-3xl font-black text-slate-800 uppercase tracking-tighter transition-colors group-hover:text-white">
+                                    {program.title}
+                                </h3>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* --- FAQ SECTION --- */}
+            <section className="py-24 px-6 md:px-12 lg:px-24 bg-white">
+                <div className="max-w-6xl mx-auto">
+                    <h2 className="text-4xl md:text-6xl font-black text-slate-800 mb-16 tracking-tight">
+                        Frequently Asked Questions (FAQs)
+                    </h2>
+
+                    <div className="space-y-4">
+                        {faqs.map((faq, idx) => (
+                            <div key={idx} className="border-b border-slate-100 last:border-0">
+                                <button 
+                                    onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                                    className="w-full flex items-center justify-between p-6 bg-slate-50 hover:bg-slate-100 transition-colors group text-left"
+                                >
+                                    <div className="flex items-center gap-6">
+                                        <Plus className={`w-5 h-5 text-slate-400 group-hover:text-slate-900 transition-transform duration-500 ${openFaq === idx ? 'rotate-45' : ''}`} />
+                                        <span className="text-lg md:text-xl font-bold text-slate-700 tracking-tight leading-tight">
+                                            {faq.question}
+                                        </span>
+                                    </div>
+                                    <ChevronRight className={`w-5 h-5 text-slate-400 group-hover:text-slate-900 transition-transform duration-500 ${openFaq === idx ? 'rotate-90' : ''}`} />
+                                </button>
+                                
+                                <AnimatePresence>
+                                    {openFaq === idx && (
+                                        <motion.div
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: 'auto', opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.4, ease: [0.33, 1, 0.68, 1] }}
+                                            className="overflow-hidden bg-slate-50"
+                                        >
+                                            <p className="px-16 pb-8 text-slate-500 font-medium leading-relaxed max-w-4xl">
+                                                {faq.answer}
+                                            </p>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
