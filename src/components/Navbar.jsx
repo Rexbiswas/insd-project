@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { NavLink, Link, useLocation } from 'react-router-dom';
+import { NavLink, Link, useLocation, useNavigate } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import {
@@ -16,6 +16,7 @@ import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import BusinessIcon from "@mui/icons-material/Business";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 import CloseIcon from "@mui/icons-material/Close";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const RollerLink = ({ to, children, colorClass = "text-primary", baseTextClass = "text-slate-800" }) => {
     return (
@@ -71,6 +72,7 @@ const Navbar = () => {
     const { scrollY } = useScroll();
     const location = useLocation();
 
+    const navigate = useNavigate();
     // Pages that have a dark background/theme or high-impact gradient hero sections
     // Updated detection: Pages with permanent dark themes or sections
     const darkPages = ['/franchise', '/apply'];
@@ -390,7 +392,7 @@ const Navbar = () => {
                                                     { title: 'Beauty & Makeup', path: '/courses/beauty-and-makeup', icon: 'beauty', desc: 'Professional Esthetics' },
                                                     { title: 'Photography', path: '/courses/photography', icon: 'photography', desc: 'Visual Storytelling Art' },
                                                     { title: 'Textile Design', path: '/courses/textile-designing', icon: 'textile', desc: 'Material Science Arts' },
-                                                     { title: 'INSD Luxe', path: '/insd-luxe', icon: 'textile', desc: 'Premium Luxury Arts' },
+                                                    { title: 'INSD Luxe', path: '/insd-luxe', icon: 'textile', desc: 'Premium Luxury Arts' },
                                                 ].map((item, i) => (
                                                     <Link
                                                         key={i}
@@ -626,112 +628,139 @@ const Navbar = () => {
             <AnimatePresence mode="wait">
                 {isOpen && (
                     isMobile ? (
-                        <motion.div
-                            initial={{ x: "-100%" }}
-                            animate={{ x: 0 }}
-                            exit={{ x: "-100%" }}
-                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                            className="fixed inset-y-0 left-0 z-1001 shadow-[20px_0_60px_-15px_rgba(0,0,0,0.3)] bg-white mobile-sidebar-container"
-                        >
-                            <Sidebar width={"280px"} backgroundColor="#ffffff" showProfile={false}>
-                                <div className="p-4 flex items-center justify-between border-b border-white/10 mb-4 bg-linear-to-r from-primary to-secondary shadow-xl">
-                                    <div className="flex-1 flex items-center gap-3">
-                                        {user ? (
-                                            <Link
-                                                to="/profile"
-                                                onClick={() => setIsOpen(false)}
-                                                className="w-12 h-12 rounded-full border-2 border-white/30 bg-white/10 flex items-center justify-center text-white font-black text-xl shadow-lg backdrop-blur-md transition-all hover:scale-105 active:scale-95 group relative overflow-hidden shrink-0"
-                                            >
-                                                <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                                {user.username.charAt(0).toUpperCase()}
-                                            </Link>
-                                        ) : (
-                                            <button
-                                                onClick={() => { setIsOpen(false); openModal(); }}
-                                                className="w-12 h-12 rounded-full border-2 border-white/30 bg-white/10 flex items-center justify-center text-white shadow-lg backdrop-blur-md transition-all hover:scale-105 active:scale-95 group relative overflow-hidden shrink-0"
-                                            >
-                                                <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                                <User size={24} strokeWidth={2.5} />
-                                            </button>
-                                        )}
-                                        <div className="flex flex-col min-w-0">
-                                            <span className="text-white font-black text-sm tracking-tight leading-none truncate pr-2 uppercase">
-                                                {user ? user.username : 'USER LOGIN'}
-                                            </span>
-                                            <span className="text-white/60 text-[10px] uppercase font-bold tracking-[0.2em] mt-1.5 flex items-center gap-1.5">
-                                                <div className={`w-1 h-1 rounded-full ${user ? 'bg-green-400 animate-pulse' : 'bg-pink-400'}`} />
-                                                {user ? 'Verified Member' : 'Guest Member'}
-                                            </span>
+                        <>
+                            {/* Backdrop */}
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                onClick={() => setIsOpen(false)}
+                                className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-1000"
+                            />
+                            {/* Sidebar Panel */}
+                            <motion.div
+                                initial={{ x: "-100%" }}
+                                animate={{ x: 0 }}
+                                exit={{ x: "-100%" }}
+                                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                                className="fixed inset-y-0 left-0 w-[85%] max-w-[320px] bg-white z-1001 shadow-[20px_0_60px_-15px_rgba(0,0,0,0.2)] flex flex-col"
+                            >
+                                {/* Header */}
+                                <div className="p-5 flex items-center justify-between bg-linear-to-r from-primary to-secondary text-white">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center border border-white/30 backdrop-blur-md">
+                                            <User size={20} />
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <span className="text-xs font-black uppercase tracking-widest">{user ? user.username : 'Guest'}</span>
+                                            <span className="text-[8px] font-bold text-white/60 tracking-widest">INSD STUDENT</span>
                                         </div>
                                     </div>
-                                    <button
-                                        onClick={() => setIsOpen(false)}
-                                        className="w-10 h-10 flex items-center justify-center bg-white/20 rounded-full text-white hover:bg-white/30 transition-all active:scale-90 shadow-inner border border-white/10"
-                                    >
-                                        <CloseIcon />
+                                    <button onClick={() => setIsOpen(false)} className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all">
+                                        <X size={20} />
                                     </button>
                                 </div>
 
-                                <div className="overflow-y-auto max-h-[calc(100vh-100px)] px-2">
-                                    <Menu>
+                                {/* Menu Items */}
+                                <div className="flex-1 overflow-y-auto py-6 px-4 dropdown-scrollbar">
+                                    <div className="space-y-2">
                                         {menuItems.map((item, idx) => {
-                                            if (item.subItems) {
-                                                return (
-                                                    <Submenu
-                                                        key={idx}
-                                                        title={item.title}
-                                                        icon={
-                                                            item.title.includes('About') ? <InfoIcon sx={{ color: '#db3436' }} /> :
-                                                            item.title.includes('Courses') ? <SchoolIcon sx={{ color: '#db3436' }} /> :
-                                                            item.title.includes('Careers') ? <RocketLaunchIcon sx={{ color: '#db3436' }} /> :
-                                                            item.title.includes('Contact') ? <Phone size={20} style={{ color: '#db3436' }} /> :
-                                                            <DashboardIcon sx={{ color: '#db3436' }} />
-                                                        }
-                                                    >
-                                                        {item.subItems.map((sub, sIdx) => (
-                                                            <MenuItem
-                                                                key={sIdx}
-                                                                component={Link}
-                                                                to={sub.path}
-                                                                onClick={() => setIsOpen(false)}
-                                                                icon={sub.icon && <sub.icon size={16} style={{ color: '#134a84', opacity: 0.7 }} />}
-                                                                style={{ fontSize: '13px', paddingTop: '10px', paddingBottom: '10px' }}
-                                                            >
-                                                                {sub.title}
-                                                            </MenuItem>
-                                                        ))}
-                                                    </Submenu>
-                                                )
-                                            }
+                                            const hasSubItems = item.subItems && item.subItems.length > 0;
+                                            const isExpanded = expandedItem === idx;
+
                                             return (
-                                                <MenuItem
-                                                    key={idx}
-                                                    component={Link}
-                                                    to={item.path}
-                                                    onClick={() => setIsOpen(false)}
-                                                    icon={
-                                                        item.title === 'Dashboard' ? <DashboardIcon sx={{ color: '#134a84' }} /> :
-                                                            item.title === 'Admissions' ? <AssignmentIndIcon sx={{ color: '#134a84' }} /> :
-                                                                item.title === 'Franchise' ? <BusinessIcon sx={{ color: '#134a84' }} /> :
-                                                                    <DashboardIcon sx={{ color: '#134a84' }} />
-                                                    }
-                                                >
-                                                    {item.title}
-                                                </MenuItem>
-                                            )
+                                                <div key={idx} className="space-y-1">
+                                                    {hasSubItems ? (
+                                                        <>
+                                                            <button
+                                                                onClick={() => setExpandedItem(isExpanded ? null : idx)}
+                                                                className={`w-full flex items-center justify-between p-4 rounded-2xl transition-all ${isExpanded ? 'bg-slate-50 text-primary' : 'text-slate-600 active:bg-slate-50 hover:bg-slate-50/50'}`}
+                                                            >
+                                                                <div className="flex items-center gap-4">
+                                                                    <div className={`p-2 rounded-xl border ${isExpanded ? 'bg-primary/10 border-primary/20 text-primary' : 'bg-slate-50 border-slate-100 text-slate-400'}`}>
+                                                                        <item.icon size={18} />
+                                                                    </div>
+                                                                    <span className="text-sm font-black uppercase tracking-tight">{item.title}</span>
+                                                                </div>
+                                                                <motion.div
+                                                                    animate={{ rotate: isExpanded ? 180 : 0 }}
+                                                                    transition={{ duration: 0.3 }}
+                                                                >
+                                                                    <ExpandMoreIcon fontSize="small" />
+                                                                </motion.div>
+                                                            </button>
+                                                            
+                                                            <AnimatePresence>
+                                                                {isExpanded && (
+                                                                    <motion.div
+                                                                        initial={{ height: 0, opacity: 0 }}
+                                                                        animate={{ height: "auto", opacity: 1 }}
+                                                                        exit={{ height: 0, opacity: 0 }}
+                                                                        className="overflow-hidden pl-12 space-y-1"
+                                                                    >
+                                                                        {item.subItems.map((sub, sIdx) => {
+                                                                            const isExternal = sub.path.startsWith('http') || sub.path.startsWith('tel:');
+                                                                            return isExternal ? (
+                                                                                <a
+                                                                                    key={sIdx}
+                                                                                    href={sub.path}
+                                                                                    className="block p-3 text-xs font-bold text-slate-500 hover:text-primary transition-colors"
+                                                                                >
+                                                                                    {sub.title}
+                                                                                </a>
+                                                                            ) : (
+                                                                                <Link
+                                                                                    key={sIdx}
+                                                                                    to={sub.path}
+                                                                                    onClick={() => setIsOpen(false)}
+                                                                                    className="block p-3 text-xs font-bold text-slate-500 hover:text-primary transition-colors border-l border-slate-100 ml-2"
+                                                                                >
+                                                                                    {sub.title}
+                                                                                </Link>
+                                                                            );
+                                                                        })}
+                                                                    </motion.div>
+                                                                )}
+                                                            </AnimatePresence>
+                                                        </>
+                                                    ) : (
+                                                        <Link
+                                                            to={item.path}
+                                                            onClick={() => setIsOpen(false)}
+                                                            className="flex items-center gap-4 p-4 rounded-2xl text-slate-600 active:bg-slate-50 hover:bg-slate-50/50 transition-all"
+                                                        >
+                                                            <div className="p-2 rounded-xl bg-slate-50 border border-slate-100 text-slate-400">
+                                                                <item.icon size={18} />
+                                                            </div>
+                                                            <span className="text-sm font-black uppercase tracking-tight">{item.title}</span>
+                                                        </Link>
+                                                    )}
+                                                </div>
+                                            );
                                         })}
-                                    </Menu>
+                                    </div>
 
-                                    <div className="mt-8 p-4 bg-slate-50 rounded-2xl mx-2 border border-slate-100">
-                                        <h4 className="text-[10px] font-black tracking-widest text-secondary uppercase mb-4">Direct Contact</h4>
-                                        <a href="tel:+917701933935" className="flex items-center gap-3 text-sm font-bold text-slate-700 mb-3 hover:text-primary">
-                                            <Phone size={16} /> +91 7701933935
-                                        </a>
-
+                                    {/* Footer Section */}
+                                    <div className="mt-12 p-6 rounded-3xl bg-slate-50 border border-slate-100 space-y-6">
+                                        <div className="space-y-4">
+                                            <h4 className="text-[10px] font-black tracking-widest text-slate-400 uppercase">Emergency Help</h4>
+                                            <a href="tel:+917701933935" className="flex items-center gap-4 text-xs font-bold text-slate-800 hover:text-primary transition-colors">
+                                                <div className="w-8 h-8 rounded-lg bg-white border border-slate-100 flex items-center justify-center text-primary shadow-sm">
+                                                    <Phone size={14} />
+                                                </div>
+                                                +91 7701933935
+                                            </a>
+                                        </div>
+                                        <button 
+                                            onClick={() => { setIsOpen(false); openModal(); }}
+                                            className="w-full py-4 bg-slate-900 text-white rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] shadow-xl shadow-slate-900/20 active:scale-95 transition-all"
+                                        >
+                                            Admission Query 2026
+                                        </button>
                                     </div>
                                 </div>
-                            </Sidebar>
-                        </motion.div>
+                            </motion.div>
+                        </>
                     ) : (
                         <motion.div
                             initial="closed"
