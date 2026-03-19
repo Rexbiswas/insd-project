@@ -47,6 +47,7 @@ const Photography = lazy(() => import('./pages/Photography'));
 const TextileDesigning = lazy(() => import('./pages/TextileDesigning'));
 const SuccessStory = lazy(() => import('./pages/SuccessStory'));
 const Gallery = lazy(() => import('./pages/Gallery'));
+const InsdLuxe = lazy(() => import('./pages/InsdLuxe'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Components
@@ -111,6 +112,7 @@ function App() {
                                     <Route path="/courses/beauty-and-makeup" element={<BeautyAndMakeup />} />
                                     <Route path="/courses/photography" element={<Photography />} />
                                     <Route path="/courses/textile-designing" element={<TextileDesigning />} />
+                                    <Route path="/insd-luxe" element={<InsdLuxe />} />
                                     <Route path="/student-careers" element={<StudentCareers />} />
                                     <Route path="/franchise" element={<Franchise />} />
                                     <Route path="/contact-us" element={<Contact />} />

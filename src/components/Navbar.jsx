@@ -390,7 +390,7 @@ const Navbar = () => {
                                                     { title: 'Beauty & Makeup', path: '/courses/beauty-and-makeup', icon: 'beauty', desc: 'Professional Esthetics' },
                                                     { title: 'Photography', path: '/courses/photography', icon: 'photography', desc: 'Visual Storytelling Art' },
                                                     { title: 'Textile Design', path: '/courses/textile-designing', icon: 'textile', desc: 'Material Science Arts' },
-                                                    { title: 'INSD Luxe', path: '/courses/textile-designing', icon: 'textile', desc: 'Material Science Arts' },
+                                                     { title: 'INSD Luxe', path: '/insd-luxe', icon: 'textile', desc: 'Premium Luxury Arts' },
                                                 ].map((item, i) => (
                                                     <Link
                                                         key={i}
