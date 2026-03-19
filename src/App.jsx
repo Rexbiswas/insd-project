@@ -15,7 +15,6 @@ const IndustryPotential = lazy(() => import('./pages/IndustryPotential'));
 const Placement = lazy(() => import('./pages/Placement'));
 const Campus = lazy(() => import('./pages/Campus'));
 const Franchise = lazy(() => import('./pages/Franchise'));
-const Insd360 = lazy(() => import('./pages/Insd360'));
 const Admission = lazy(() => import('./pages/Admission'));
 const InternationalPartner = lazy(() => import('./pages/InternationalPartner'));
 const ParisCDP = lazy(() => import('./pages/Paris(CDP)'));
@@ -35,8 +34,8 @@ const Events = lazy(() => import('./pages/Events'));
 import Mentors from './pages/Mentors';
 import Legacy from './pages/Legacy';
 import AcademicAlliances from './pages/AcademicAlliances';
+import Centers from './pages/Centers';
 const ProfileDashboard = lazy(() => import('./pages/ProfileDashboard'));
-const Insdian = lazy(() => import('./pages/Insdian'));
 const FashionDesigning = lazy(() => import('./pages/FashionDesigning'));
 const InteriorDesigning = lazy(() => import('./pages/InteriorDesigning'));
 const GraphicDesigning = lazy(() => import('./pages/GraphicDesigning'));
@@ -113,7 +112,6 @@ function App() {
                                     <Route path="/courses/photography" element={<Photography />} />
                                     <Route path="/courses/textile-designing" element={<TextileDesigning />} />
                                     <Route path="/student-careers" element={<StudentCareers />} />
-                                    <Route path="/insd-360" element={<Insd360 />} />
                                     <Route path="/franchise" element={<Franchise />} />
                                     <Route path="/contact-us" element={<Contact />} />
                                     <Route path="/go-global" element={<GoGlobal />} />
@@ -127,7 +125,7 @@ function App() {
                                     <Route path="/mentors" element={<Mentors />} />
                                     <Route path="/15-years-legacy" element={<Legacy />} />
                                     <Route path="/academic-alliances" element={<AcademicAlliances />} />
-                                    <Route path="/insdian" element={<Insdian />} />
+                                    <Route path="/centers-across-india" element={<Centers />} />
                                     <Route path="/profile" element={<ProfileDashboard />} />
                                     <Route path="/success-stories" element={<SuccessStory />} />
                                     <Route path="/gallery" element={<Gallery />} />

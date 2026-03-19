@@ -159,11 +159,11 @@ const Navbar = () => {
             icon: Folder,
             section: 'OVERVIEW',
             subItems: [
-                { title: '15 Years Legacy', path: '/about-us', icon: 'zap', desc: 'Our national award-winning history' },
-                { title: 'Mentors', path: '/about-us', icon: 'users', desc: 'Expert creative leadership' },
-                { title: 'Academic Alliances', path: '/international-partners', icon: 'briefcase', desc: 'Global design partnerships' },
+                { title: '15 Years Legacy', path: '/15-years-legacy', icon: 'zap', desc: 'Our national award-winning history' },
+                { title: 'Mentors', path: '/mentors', icon: 'users', desc: 'Expert creative leadership' },
+                { title: 'Academic Alliances', path: '/academic-alliances', icon: 'briefcase', desc: 'Global design partnerships' },
                 { title: 'Global Exposure', path: '/go-global', icon: 'map-pin', desc: 'Study across the world' },
-                { title: 'Center Across India', path: '/campuses', icon: 'trending-up', desc: 'Our regional network' },
+                { title: 'Center Across India', path: '/centers-across-india', icon: 'trending-up', desc: 'Our regional network' },
                 { title: 'Paris Project', path: '/insd-360/paris-project', icon: 'globe', desc: 'International design showcase', badge: 'Featured' }
             ]
         },
@@ -328,7 +328,7 @@ const Navbar = () => {
                                                     { title: 'Mentors', path: '/mentors', icon: 'users', desc: 'Meet our community' },
                                                     { title: 'Academic Alliances', path: '/academic-alliances', icon: 'briefcase', desc: 'Career opportunities' },
                                                     { title: 'Global Exposure', path: '/go-global', icon: 'map-pin', desc: 'Our locations' },
-                                                    { title: 'Center Across India', path: '#', icon: 'trending-up', desc: 'Placement records' },
+                                                    { title: 'Center Across India', path: '/centers-across-india', icon: 'trending-up', desc: 'Our national presence' },
                                                     { title: 'Paris Project', path: '/insd-360/paris-project', icon: 'globe', desc: 'International design showcase', badge: 'Featured' }
 
                                                 ].map((item, i) => (
