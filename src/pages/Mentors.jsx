@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-    User, Award, Globe, Briefcase, 
     ArrowUpRight, ChevronLeft, ChevronRight,
-    Sparkles, Linkedin
+    PlayCircle
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
@@ -51,7 +50,7 @@ const Mentors = () => {
     const handlePrev = () => setCurrentIndex((prev) => (prev - 1 + mentorData.length) % mentorData.length);
 
     return (
-        <div className="bg-white min-h-screen font-sans selection:bg-slate-900 selection:text-white">
+        <div className="bg-white min-h-screen font-sans selection:bg-slate-900 selection:text-white overflow-x-hidden">
             <SEO 
                 title="Industry Mentors | The Visionaries of INSD"
                 description="Learn from the legends. INSD's mentor network includes NID alumni, luxury consultants, and award-winning architects who guide our students."
@@ -62,9 +61,9 @@ const Mentors = () => {
                 <div className="max-w-7xl w-full">
                     <div className="text-center space-y-8 mb-24">
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-slate-100 border border-slate-200 text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary"
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-slate-50 border border-slate-200 text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary"
                         >
                             <span className="relative flex h-2 w-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
@@ -74,7 +73,7 @@ const Mentors = () => {
                         </motion.div>
 
                         <motion.h1 
-                            initial={{ opacity: 0, y: 40 }}
+                            initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             className="text-6xl md:text-[8rem] font-black uppercase tracking-tighter leading-[0.8] text-slate-900"
                         >
@@ -86,61 +85,76 @@ const Mentors = () => {
                         </p>
                     </div>
 
-                    {/* --- MENTOR SLIDER --- */}
-                    <div className="relative group">
+                    {/* --- PREMIUM MENTOR SLIDER --- */}
+                    <div className="relative max-w-6xl mx-auto">
                         
-                        {/* MAIN SLIDE CONTAINER */}
-                        <div className="relative h-[700px] md:h-[750px] w-full rounded-[3.5rem] overflow-hidden shadow-2xl shadow-slate-200/50 bg-slate-50 border border-slate-100">
+                        <div className="relative h-auto min-h-[650px] md:h-[700px] w-full rounded-[3rem] md:rounded-[4rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.15)] bg-white border border-slate-100 flex flex-col lg:flex-row group/card">
                             
                             <AnimatePresence mode="wait">
                                 <motion.div
                                     key={currentIndex}
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 1.05 }}
-                                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                                    className="absolute inset-0 flex flex-col lg:flex-row"
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: -20 }}
+                                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                                    className="flex flex-col lg:flex-row w-full h-full"
                                 >
-                                    {/* Left: Portait */}
-                                    <div className="w-full lg:w-1/2 h-[350px] lg:h-full relative overflow-hidden">
-                                        <div className="absolute inset-0 bg-linear-to-t lg:bg-linear-to-r from-black/40 via-transparent to-transparent z-10" />
+                                    {/* Left: Mentor Visual */}
+                                    <div className="w-full lg:w-1/2 h-[400px] lg:h-full relative overflow-hidden">
+                                        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent z-10" />
                                         <motion.img 
                                             initial={{ scale: 1.1 }}
                                             animate={{ scale: 1 }}
-                                            transition={{ duration: 15, repeat: Infinity, repeatType: "reverse" }}
+                                            transition={{ duration: 1.2 }}
                                             src={mentorData[currentIndex].img}
                                             alt={mentorData[currentIndex].name}
-                                            className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0"
+                                            className="w-full h-full object-cover transition-all duration-700"
                                         />
                                         
-                                        {/* Name Overlay for Mobile/Tablet */}
-                                        <div className="absolute bottom-10 left-10 z-20">
-                                            <div className="text-xs font-black uppercase tracking-[0.3em] text-white/60 mb-2">Expert Portfolio</div>
-                                            <h3 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter leading-none">
+                                        {/* Name Overlay */}
+                                        <div className="absolute bottom-12 left-12 z-20">
+                                            <div className="text-[10px] font-black uppercase tracking-[0.4em] text-white/50 mb-3">Expert Portfolio</div>
+                                            <h3 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter leading-[0.85]">
                                                 {mentorData[currentIndex].name.split(' ')[0]} <br />
                                                 <span className="text-primary">{mentorData[currentIndex].name.split(' ')[1]}</span>
                                             </h3>
                                         </div>
+
+                                        {/* Prev Button Overlay */}
+                                        <button 
+                                            onClick={handlePrev}
+                                            className="absolute top-8 left-8 w-12 h-12 rounded-full bg-white/10 backdrop-blur-xl flex items-center justify-center text-white hover:bg-white hover:text-slate-900 transition-all z-30 group-hover/card:opacity-100 opacity-0 transform -translate-x-4 group-hover/card:translate-x-0"
+                                        >
+                                            <ChevronLeft size={20} />
+                                        </button>
                                     </div>
 
-                                    {/* Right: Content Card */}
-                                    <div className="w-full lg:w-1/2 h-full p-10 md:p-16 lg:p-24 flex flex-col justify-center bg-white relative">
+                                    {/* Right: Mentor Details */}
+                                    <div className="w-full lg:w-1/2 p-10 md:p-16 lg:p-20 flex flex-col justify-center bg-white relative">
                                         
+                                        {/* Next Button Overlay */}
+                                        <button 
+                                            onClick={handleNext}
+                                            className="absolute top-8 right-8 w-12 h-12 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-900 hover:text-white transition-all z-30 group-hover/card:opacity-100 opacity-0 transform translate-x-4 group-hover/card:translate-x-0"
+                                        >
+                                            <ChevronRight size={20} />
+                                        </button>
+
                                         <div className="space-y-10">
                                             <div className="space-y-6">
-                                                <div className="flex flex-wrap gap-2">
+                                                <div className="flex flex-wrap gap-3">
                                                     {mentorData[currentIndex].tags.map((tag, tIdx) => (
-                                                        <span key={tIdx} className="px-4 py-1.5 bg-slate-50 border border-slate-200 rounded-full text-[9px] font-black uppercase tracking-widest text-slate-500 hover:border-primary/30 transition-colors">
+                                                        <span key={tIdx} className="px-5 py-2 border border-slate-100 rounded-full text-[9px] font-black uppercase tracking-widest text-slate-400">
                                                             {tag}
                                                         </span>
                                                     ))}
                                                 </div>
                                                 
-                                                <div className="space-y-3">
-                                                    <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-slate-900 leading-none">
+                                                <div className="space-y-4">
+                                                    <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-slate-900 leading-[0.95]">
                                                         {mentorData[currentIndex].title}
                                                     </h2>
-                                                    <div className="w-12 h-1 bg-primary rounded-full" />
+                                                    <div className="w-16 h-1 bg-primary rounded-full transition-all group-hover/card:w-24" />
                                                 </div>
                                             </div>
 
@@ -148,44 +162,27 @@ const Mentors = () => {
                                                 "{mentorData[currentIndex].desc}"
                                             </p>
 
-                                            {/* Industry Impact Stat */}
-                                            <div className="pt-8 border-t border-slate-50 flex items-center justify-between">
-                                                <div className="space-y-1">
+                                            <div className="pt-10 border-t border-slate-50 flex items-center justify-between">
+                                                <div className="space-y-2">
                                                     <div className="text-[10px] font-black uppercase tracking-widest text-slate-300">Core Expertise</div>
-                                                    <div className="text-lg font-black uppercase tracking-tighter text-slate-900">{mentorData[currentIndex].impact}</div>
+                                                    <div className="text-xl font-black uppercase tracking-tighter text-slate-900">{mentorData[currentIndex].impact}</div>
                                                 </div>
-                                                <a href="#" className="w-14 h-14 rounded-full border border-slate-100 flex items-center justify-center hover:bg-slate-900 hover:text-white transition-all shadow-sm">
-                                                    <ArrowUpRight size={20} />
-                                                </a>
+                                                <button className="w-14 h-14 rounded-full border border-slate-100 flex items-center justify-center text-slate-300 hover:bg-primary hover:text-white hover:border-primary transition-all group/btn active:scale-95">
+                                                    <ArrowUpRight size={24} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
                                 </motion.div>
                             </AnimatePresence>
 
-                            {/* NAVIGATION OVERLAY */}
-                            <div className="absolute top-[50%] -translate-y-1/2 left-6 right-6 flex justify-between z-30 pointer-events-none lg:static lg:translate-y-0 lg:left-0 lg:right-0">
-                                <button 
-                                    onClick={handlePrev}
-                                    className="w-14 h-14 rounded-2xl bg-white/90 backdrop-blur-xl border border-white/50 flex items-center justify-center text-slate-400 hover:text-primary hover:scale-110 transition-all shadow-2xl pointer-events-auto"
-                                >
-                                    <ChevronLeft size={24} />
-                                </button>
-                                <button 
-                                    onClick={handleNext}
-                                    className="w-14 h-14 rounded-2xl bg-white/90 backdrop-blur-xl border border-white/50 flex items-center justify-center text-slate-400 hover:text-primary hover:scale-110 transition-all shadow-2xl pointer-events-auto"
-                                >
-                                    <ChevronRight size={24} />
-                                </button>
-                            </div>
-
-                            {/* PAGINATION DOTS */}
-                            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-30 bg-slate-100/30 backdrop-blur-md p-3 rounded-2xl border border-white/20">
+                            {/* PROGRESS INDICATOR (Positioned at bottom center of the entire card) */}
+                            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl p-3 rounded-full border border-slate-100 dark:border-white/10 shadow-lg">
                                 {mentorData.map((_, i) => (
                                     <button
                                         key={i}
                                         onClick={() => setCurrentIndex(i)}
-                                        className={`h-2.5 rounded-full transition-all duration-500 ${currentIndex === i ? 'w-12 bg-primary' : 'w-2.5 bg-slate-300 hover:bg-slate-400'}`}
+                                        className={`h-2 rounded-full transition-all duration-700 ${currentIndex === i ? 'w-10 bg-primary' : 'w-2 bg-slate-200 hover:bg-slate-300'}`}
                                     />
                                 ))}
                             </div>
@@ -202,13 +199,13 @@ const Mentors = () => {
                             </p>
                         </div>
                         <div className="space-y-4">
-                            <h4 className="text-lg font-black uppercase tracking-tighter text-primary">Join the Protocol</h4>
+                            <h4 className="text-lg font-black uppercase tracking-tighter text-secondary">Join the Protocol</h4>
                             <p className="text-slate-400 text-sm leading-relaxed max-w-xs font-medium">
                                 Become a part of the cohort that learns from these visionaries.
                             </p>
                         </div>
                         <div className="flex md:justify-end gap-6">
-                            <Link to="/apply" className="px-12 py-5 bg-slate-900 text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-primary transition-all shadow-2xl active:scale-95">
+                            <Link to="/apply" className="px-12 py-5 bg-slate-900 text-white rounded-[1.5rem] font-black uppercase text-xs tracking-widest hover:bg-primary transition-all shadow-2xl active:scale-95">
                                 APPLY FOR 2026
                             </Link>
                         </div>
