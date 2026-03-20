@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Maximize2, X, Camera, Image as ImageIcon } from 'lucide-react';
+import { Maximize2, X, Camera, Image as ImageIcon, ArrowRight } from 'lucide-react';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 
@@ -50,53 +50,57 @@ const Gallery = () => {
     }, [filter]);
 
     return (
-        <div ref={containerRef} className="min-h-screen bg-[#0a0a0b] text-white overflow-x-hidden">
+        <div ref={containerRef} className="min-h-screen bg-white text-slate-900 font-sans selection:bg-primary selection:text-white overflow-x-hidden">
             <SEO 
                 title="Design Portfolios & Campus Gallery - INSD Showcase"
                 description="Explore the visual creative journey at INSD. Our gallery showcases the best in fashion, interior design, and student portfolios from across our global campuses."
                 keywords="INSD gallery, design portfolios, fashion design showcase, interior design student work, campus gallery"
             />
             {/* --- HERO SECTION --- */}
-            <section className="gallery-hero relative h-[60vh] md:h-[70vh] flex flex-col items-center justify-center overflow-hidden border-b border-white/5">
+            <section className="gallery-hero relative h-[50vh] md:h-[65vh] flex flex-col items-center justify-center overflow-hidden bg-slate-50 border-b border-slate-100">
                 <div className="absolute inset-0 z-0">
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-[#0a0a0b] z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/40 to-white z-10" />
                     <motion.img 
                         initial={{ scale: 1.1, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 0.3 }}
+                        animate={{ scale: 1, opacity: 0.15 }}
                         transition={{ duration: 1.5 }}
                         src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=2071&auto=format&fit=crop" 
-                        className="w-full h-full object-cover grayscale" 
+                        className="w-full h-full object-cover" 
                         alt="Gallery Background"
                     />
                 </div>
 
                 <div className="relative z-20 text-center px-6">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8 }}
+                        className="space-y-4"
                     >
                         <span className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.6em] mb-4 block">
                             Visual Portfolios
                         </span>
-                        <h1 className="gallery-hero-title text-6xl md:text-[10rem] font-black uppercase tracking-tighter leading-none m-0">
-                            GALLERY<span className="text-transparent stroke-text-white opacity-20">.</span>
+                        <h1 className="gallery-hero-title text-5xl md:text-[11.5rem] font-black uppercase tracking-tighter leading-none m-0 text-slate-900 mix-blend-multiply">
+                            GALLERY<span className="text-transparent stroke-text-slate opacity-10">.</span>
                         </h1>
+                        <p className="text-slate-400 font-bold text-xs md:text-sm uppercase tracking-widest max-w-xl mx-auto">
+                            The definitive collection of avant-garde design across all INSD global verticals.
+                        </p>
                     </motion.div>
                 </div>
             </section>
 
             {/* --- FILTER BAR --- */}
-            <div className="sticky top-0 z-[60] py-6 border-b border-white/5 backdrop-blur-md bg-black/40">
-                <div className="flex flex-wrap justify-center gap-3 px-6">
+            <div className="sticky top-0 z-[60] py-8 border-b border-slate-100 backdrop-blur-xl bg-white/80">
+                <div className="flex flex-wrap justify-center gap-4 px-6 md:px-12">
                     {categories.map((cat) => (
                         <button
                             key={cat}
                             onClick={() => setFilter(cat)}
-                            className={`px-5 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all ${
+                            className={`px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${
                                 filter === cat 
-                                ? 'bg-primary text-white border-primary border' 
-                                : 'bg-white/5 text-white/40 border-white/10 border hover:border-white/30'
+                                ? 'bg-slate-900 text-white shadow-xl shadow-slate-900/20 translate-y-[-2px]' 
+                                : 'bg-slate-50 text-slate-400 border border-slate-100 hover:bg-slate-100 hover:text-slate-600'
                             }`}
                         >
                             {cat}
@@ -106,32 +110,40 @@ const Gallery = () => {
             </div>
 
             {/* --- MASONRY GRID --- */}
-            <main className="py-20 container mx-auto px-6">
+            <main className="py-24 container mx-auto px-6 md:px-12">
                 <motion.div 
                     layout
-                    className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8"
+                    className="columns-1 md:columns-2 lg:columns-3 gap-10 space-y-10"
                 >
                     <AnimatePresence mode="popLayout">
                         {filteredData.map((item) => (
                             <motion.div
                                 key={item.id}
                                 layout
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.95 }}
-                                transition={{ duration: 0.4 }}
-                                className="break-inside-avoid relative group cursor-pointer bg-white/5 rounded-3xl overflow-hidden min-h-[150px]"
+                                transition={{ duration: 0.5 }}
+                                className="break-inside-avoid relative group cursor-crosshair bg-slate-50 rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-700 min-h-[200px]"
                                 onClick={() => setSelectedImage(item)}
                             >
                                 <img 
                                     src={item.image} 
                                     alt={item.title} 
-                                    className="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                                    className="w-full h-auto grayscale md:grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110 ease-out"
                                     loading="lazy"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
-                                    <span className="text-primary text-[10px] font-bold uppercase tracking-widest mb-1">{item.category}</span>
-                                    <h3 className="text-xl font-bold uppercase tracking-tight">{item.title}</h3>
+                                <div className="absolute inset-0 bg-linear-to-t from-slate-900 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 p-8 flex flex-col justify-end">
+                                    <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                        <span className="text-primary text-[10px] font-black uppercase tracking-[0.3em] mb-2 block">{item.category}</span>
+                                        <h3 className="text-2xl font-black text-white uppercase tracking-tighter leading-tight drop-shadow-md">{item.title}</h3>
+                                        <div className="mt-4 flex items-center gap-2 text-white/60 font-bold text-[9px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity delay-200">
+                                            View Project <ArrowRight size={12} className="text-primary" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="absolute top-6 right-6 p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <Maximize2 size={16} />
                                 </div>
                             </motion.div>
                         ))}
@@ -139,41 +151,61 @@ const Gallery = () => {
                 </motion.div>
             </main>
 
-            {/* --- LIGHTBOX --- */}
+            {/* --- LIGHTBOX (MODERN MINIMALIST) --- */}
             <AnimatePresence>
                 {selectedImage && (
                     <motion.div 
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center p-6"
+                        className="fixed inset-0 z-[100] bg-white backdrop-blur-3xl flex items-center justify-center p-4 md:p-12 overflow-y-auto"
                     >
                         <button 
-                            className="absolute top-6 right-6 text-white/40 hover:text-white"
+                            className="fixed top-8 right-8 md:top-12 md:right-12 text-slate-400 hover:text-slate-900 transition-colors z-50 p-4"
                             onClick={() => setSelectedImage(null)}
                         >
-                            <X size={32} />
+                            <X size={40} strokeWidth={1} />
                         </button>
                         
-                        <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                        <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center py-20">
                             <motion.div
-                                initial={{ scale: 0.9, opacity: 0 }}
-                                animate={{ scale: 1, opacity: 1 }}
-                                className="rounded-2xl overflow-hidden border border-white/10"
+                                initial={{ x: -50, opacity: 0 }}
+                                animate={{ x: 0, opacity: 1 }}
+                                transition={{ type: "spring", damping: 25 }}
+                                className="lg:col-span-7 rounded-[3rem] overflow-hidden shadow-3xl bg-slate-50"
                             >
-                                <img src={selectedImage.image} alt={selectedImage.title} className="w-full h-full object-cover" />
+                                <img src={selectedImage.image} alt={selectedImage.title} className="w-full h-auto object-cover" />
                             </motion.div>
                             
-                            <div className="space-y-6">
-                                <span className="text-primary font-bold uppercase tracking-[0.3em]">{selectedImage.category}</span>
-                                <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-tight">{selectedImage.title}</h2>
-                                <p className="text-white/60 leading-relaxed italic">
+                            <motion.div 
+                                initial={{ x: 30, opacity: 0 }}
+                                animate={{ x: 0, opacity: 1 }}
+                                transition={{ delay: 0.2 }}
+                                className="lg:col-span-5 space-y-10 text-center lg:text-left"
+                            >
+                                <div className="space-y-4">
+                                    <span className="text-primary font-black uppercase tracking-[0.4em] text-xs block">{selectedImage.category}</span>
+                                    <h2 className="text-5xl md:text-8xl font-black text-slate-900 uppercase tracking-tighter leading-[0.85]">{selectedImage.title}</h2>
+                                </div>
+                                <p className="text-slate-500 font-bold text-sm md:text-lg uppercase tracking-tight leading-relaxed">
                                     Showcasing the pinnacle of design excellence at INSD. This work represents the intersection of technology, art, and human-centric design.
                                 </p>
-                                <button className="px-8 py-3 bg-white text-black font-black uppercase tracking-widest text-xs rounded-lg hover:bg-primary hover:text-white transition-colors">
-                                    Project Details
-                                </button>
-                            </div>
+                                <div className="space-y-4 pt-4">
+                                    <p className="text-[10px] font-black text-slate-300 uppercase tracking-widest">Global Vertical Impact</p>
+                                    <div className="flex flex-wrap justify-center lg:justify-start gap-4">
+                                        {['Innovation', 'Craftsmanship', 'Industry 4.0'].map((tag, i) => (
+                                            <span key={i} className="px-5 py-2 rounded-full border border-slate-100 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="pt-8">
+                                    <button className="px-12 py-5 bg-slate-900 text-white rounded-full font-black uppercase tracking-[0.2em] text-[10px] hover:bg-primary transition-all shadow-2xl">
+                                        Experience Full Case Study
+                                    </button>
+                                </div>
+                            </motion.div>
                         </div>
                     </motion.div>
                 )}

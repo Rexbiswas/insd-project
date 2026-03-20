@@ -241,32 +241,55 @@ const FashionWeek = () => {
         </div>
       </section>
 
-      {/* --- FINAL CALL TO ACTION --- */}
-      <section className="py-24 md:py-40">
-        <div className="container mx-auto px-6">
-          <div className="relative rounded-[4rem] overflow-hidden bg-slate-100 p-12 md:p-32 text-center group">
-            <div className="absolute inset-0 z-0">
-              <img 
-                src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=2000" 
-                alt="Final CTA" 
-                className="w-full h-full object-cover opacity-10 group-hover:scale-110 transition-transform duration-[3s] grayscale"
-              />
-            </div>
-            
-            <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
-              <h2 className="text-5xl md:text-8xl font-black text-slate-900 uppercase tracking-tighter leading-none mb-10">
-                Witness The <br/> <span className="italic text-primary">Evolution.</span>
-              </h2>
-              <p className="text-slate-500 mb-12 text-lg md:text-xl font-light uppercase tracking-widest">Session 2026 Admissions Open</p>
-              <div className="flex flex-col sm:flex-row gap-6 w-full max-w-md">
-                <button className="flex-1 bg-slate-900 text-white px-10 py-6 text-xs tracking-[0.3em] font-black uppercase hover:bg-primary transition-all duration-300 rounded-full">
-                  Apply Now
-                </button>
-                <button className="flex-1 border border-slate-300 text-slate-900 px-10 py-6 text-xs tracking-[0.3em] font-black uppercase hover:bg-slate-900 hover:text-white transition-all duration-300 rounded-full">
-                  Learn More
-                </button>
-              </div>
-            </div>
+      {/* --- EXTRA DISCOVERY MODULE --- */}
+      <section className="pb-40 px-6">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { 
+                step: "01", 
+                title: "Inspiration", 
+                desc: "Where global trends meet personal vision. Students research and conceptualize their avant-garde themes.",
+                img: "https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=800"
+              },
+              { 
+                step: "02", 
+                title: "Fabrication", 
+                desc: "The technical translation. From pattern making to manual draping and specialized textile engineering.",
+                img: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=800"
+              },
+              { 
+                step: "03", 
+                title: "Fittings", 
+                desc: "Precision adjustments with global models to ensure every silhouette matches the original editorial vision.",
+                img: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800"
+              },
+              { 
+                step: "04", 
+                title: "Showcase", 
+                desc: "The final walk. Professional production, global PR exposure, and industrial recognition.",
+                img: "https://images.unsplash.com/photo-1509631179647-0c114ee3c235?q=80&w=800"
+              }
+            ].map((box, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="group relative overflow-hidden rounded-3xl aspect-[4/5] bg-slate-100"
+              >
+                <img src={box.img} alt={box.title} className="w-full h-full object-cover grayscale opacity-40 group-hover:scale-110 group-hover:grayscale-0 transition-all duration-[1s]" />
+                <div className="absolute inset-0 bg-linear-to-t from-slate-900 via-transparent to-transparent opacity-80" />
+                <div className="absolute inset-0 p-8 flex flex-col justify-between">
+                  <span className="text-4xl font-black text-white/20 select-none">{box.step}</span>
+                  <div>
+                    <h4 className="text-2xl font-black text-white uppercase tracking-tighter mb-2">{box.title}</h4>
+                    <p className="text-white/60 text-xs font-medium leading-relaxed uppercase tracking-widest">{box.desc}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
