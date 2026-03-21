@@ -1,19 +1,7 @@
 import mongoose from 'mongoose';
 
 const AdmissionLeadSchema = new mongoose.Schema({
-    readyToStart: {
-        type: String,
-        required: true
-    },
-    industry: {
-        type: String,
-        required: true
-    },
     name: {
-        type: String,
-        required: true
-    },
-    phone: {
         type: String,
         required: true
     },
@@ -21,14 +9,34 @@ const AdmissionLeadSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    phone: {
+        type: String,
+        required: true
+    },
     city: {
         type: String,
         required: true
     },
-    qualification: {
+    centre: {
         type: String,
         required: true
-    }
+    },
+    program: {
+        type: String,
+        required: true
+    },
+    course: {
+        type: String,
+        required: true
+    },
+    marketingConsent: {
+        type: Boolean,
+        default: false
+    },
+    // Optional compatibility fields 
+    readyToStart: { type: String },
+    industry: { type: String },
+    qualification: { type: String }
 }, { timestamps: true });
 
 export default mongoose.model('AdmissionLead', AdmissionLeadSchema);

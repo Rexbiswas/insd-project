@@ -5,7 +5,7 @@ import Lenis from 'lenis';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { useRegisterModal } from '../context/RegisterModalContext';
-import AdmissionStepForm from '../components/AdmissionStepForm';
+import AdmissionForm from '../components/AdmissionForm';
 import FinalCTA from '../components/FinalCTA';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
@@ -88,11 +88,12 @@ const Admission = () => {
                 keywords="design admissions 2026, design school admission Delhi, apply for fashion design India, NIFT alternative, design course application, creative education 2026, design entrance exams India"
             />
 
-
+            <FinalCTA />
             {/* 1. THE APERTURE HERO */}
 
-            <FinalCTA />
-            <AdmissionStepForm />
+            <div className="py-24 px-6 md:px-12 bg-[#f3f3f3] border-b border-slate-300">
+                <AdmissionForm />
+            </div>
 
             {/* 2. THE STACKED EDITORIAL SECTIONS */}
             <section className="relative z-10 px-6 py-20">
@@ -165,41 +166,6 @@ const Admission = () => {
                 </div>
             </section>
 
-            {/* 4. THE EDITORIAL FORM */}
-            <section className="py-64 px-6 bg-[#f3f3f3] border-t border-slate-300">
-                <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-20 items-start">
-                    <div className="md:w-1/3">
-                        <h2 className="text-7xl font-black uppercase leading-none tracking-tighter mb-10 text-slate-900">Sign <br /> The <br /> Registry.</h2>
-                        <p className="text-slate-600 text-sm font-mono uppercase tracking-[0.2em] leading-relaxed">
-                            Official application for the 2026 Academic Cycle. Secure your uplink.
-                        </p>
-                    </div>
-
-                    <div className="md:w-2/3 w-full flex flex-col items-center justify-center border-2 border-slate-200 rounded-[4rem] p-12 md:p-32 bg-white shadow-xl group relative overflow-hidden">
-                        {/* Decorative background element */}
-                        <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none mix-blend-multiply" />
-
-                        <h3 className="text-4xl md:text-7xl font-black uppercase mb-12 text-center text-slate-900 group-hover:text-primary transition-colors leading-[0.8] tracking-tighter relative z-10">Ready to <br /> Begin?</h3>
-
-                        <button
-                            onClick={openModal}
-                            className="relative z-10 w-full md:w-auto px-12 md:px-20 py-6 md:py-8 bg-primary border-primary text-white font-black uppercase tracking-[0.2em] md:tracking-[0.4em] text-[10px] md:text-sm hover:bg-[#a61517] hover:shadow-[0_0_40px_rgba(219,52,54,0.4)] transition-all shadow-md rounded-full text-center group/btn"
-                        >
-                            <span className="flex items-center justify-center gap-4">
-                                Open Protocol Sequence
-                                <ArrowRight className="group-hover/btn:translate-x-4 transition-transform size-4" />
-                            </span>
-                        </button>
-
-
-                        <div className="mt-12 flex gap-4 opacity-50 relative z-10">
-                            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                            <div className="w-2 h-2 rounded-full bg-primary animate-pulse delay-150" />
-                            <div className="w-2 h-2 rounded-full bg-primary animate-pulse delay-300" />
-                        </div>
-                    </div>
-                </div>
-            </section>
 
 
             <Footer />

@@ -55,22 +55,7 @@ const AcademicAlliances = () => {
             {/* --- HERO SECTION --- */}
             <section className="pt-32 pb-24 px-6 md:px-12 lg:px-24 bg-slate-50 border-b border-slate-100">
                 <div className="max-w-7xl mx-auto flex flex-col items-center text-center space-y-8">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="p-4 bg-white rounded-3xl shadow-xl shadow-slate-200/50"
-                    >
-                        <Globe className="text-secondary" size={32} />
-                    </motion.div>
-                    
-                    <div className="space-y-4">
-                        <motion.span 
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 block"
-                        >
-                            Global Knowledge Protocol
-                        </motion.span>
+                    <div className="space-y-4 pt-12">
                         <motion.h1 
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}

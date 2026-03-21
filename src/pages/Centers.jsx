@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-    MapPin, Globe, ArrowUpRight, Search, 
+    MapPin, Globe, ArrowUpRight, 
     Navigation, Building2, Phone, Mail,
     ChevronRight, Sparkles, Zap, GraduationCap
 } from 'lucide-react';
@@ -10,11 +10,6 @@ import SEO from '../components/SEO';
 import Footer from '../components/Footer';
 
 const Centers = () => {
-    const [searchQuery, setSearchQuery] = useState('');
-    const [activeRegion, setActiveRegion] = useState('All');
-
-    const regions = ['All', 'North', 'South', 'East', 'West', 'Central'];
-    
     const centerList = [
         { city: "New Delhi", location: "South Delhi (Flagship)", region: "North", address: "Okhla Phase III", type: "Flagship" },
         { city: "New Delhi", location: "North Delhi", region: "North", address: "Guptanagar", type: "Innovation Hub" },
@@ -33,12 +28,7 @@ const Centers = () => {
         { city: "Bhopal", location: "Arera Colony", region: "Central", address: "E-3 Colony", type: "Studio Hub" }
     ];
 
-    const filteredCenters = centerList.filter(c => {
-        const matchesSearch = c.city.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                             c.location.toLowerCase().includes(searchQuery.toLowerCase());
-        const matchesRegion = activeRegion === 'All' || c.region === activeRegion;
-        return matchesSearch && matchesRegion;
-    });
+    const filteredCenters = centerList;
 
     return (
         <div className="bg-white min-h-screen font-sans">
@@ -63,40 +53,11 @@ const Centers = () => {
                             animate={{ opacity: 1, y: 0 }}
                             className="text-6xl md:text-[8rem] font-black text-slate-900 tracking-tighter leading-[0.85] uppercase"
                         >
-                            55+ <br /> <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-slate-500 to-secondary">CENTERS.</span>
+                            75+ <br /> <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-slate-500 to-secondary">CENTERS.</span>
                         </motion.h1>
                         <p className="text-slate-500 max-w-xl mx-auto text-lg font-medium tracking-tight">
                             The largest design education network in India. Bridging regional creativity with global standards.
                         </p>
-                    </div>
-
-                    {/* Interactive Filters */}
-                    <div className="flex flex-col md:flex-row items-center justify-between gap-8 pt-12 border-t border-slate-200/60">
-                        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar w-full md:w-auto pb-4 md:pb-0">
-                            {regions.map(r => (
-                                <button
-                                    key={r}
-                                    onClick={() => setActiveRegion(r)}
-                                    className={`px-8 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all duration-300 border ${
-                                        activeRegion === r 
-                                        ? 'bg-slate-900 text-white border-slate-900 shadow-xl' 
-                                        : 'bg-white text-slate-500 border-slate-200 hover:border-slate-400'
-                                    }`}
-                                >
-                                    {r}
-                                </button>
-                            ))}
-                        </div>
-                        <div className="relative w-full md:w-96">
-                            <input 
-                                type="text" 
-                                value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
-                                placeholder="Search by city or area..."
-                                className="w-full bg-white border border-slate-200 rounded-2xl px-14 py-4 text-sm font-medium focus:ring-4 focus:ring-primary/5 outline-none transition-all shadow-sm"
-                            />
-                            <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-300" size={18} />
-                        </div>
                     </div>
                 </div>
             </section>
@@ -184,14 +145,14 @@ const Centers = () => {
                         <div className="flex items-center gap-6 p-6 bg-white/5 border border-white/10 rounded-3xl group-hover:bg-white transition-all group-hover:text-slate-900">
                             <GraduationCap className="text-primary shrink-0" size={32} />
                             <div>
-                                <div className="text-2xl font-black tracking-tighter leading-none">55+</div>
+                                <div className="text-2xl font-black tracking-tighter leading-none">75+</div>
                                 <div className="text-[10px] font-black uppercase tracking-widest opacity-50 group-hover:opacity-100">National Locations</div>
                             </div>
                         </div>
                         <div className="flex items-center gap-6 p-6 bg-white/5 border border-white/10 rounded-3xl group-hover:bg-white transition-all group-hover:text-slate-900 delay-75">
                             <Globe className="text-secondary shrink-0" size={32} />
                             <div>
-                                <div className="text-2xl font-black tracking-tighter leading-none">12+</div>
+                                <div className="text-2xl font-black tracking-tighter leading-none">23+</div>
                                 <div className="text-[10px] font-black uppercase tracking-widest opacity-50 group-hover:opacity-100">International Cities</div>
                             </div>
                         </div>

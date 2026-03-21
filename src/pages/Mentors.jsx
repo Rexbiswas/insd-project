@@ -123,9 +123,10 @@ const Mentors = () => {
                                         {/* Prev Button Overlay */}
                                         <button 
                                             onClick={handlePrev}
-                                            className="absolute top-8 left-8 w-12 h-12 rounded-full bg-white/10 backdrop-blur-xl flex items-center justify-center text-white hover:bg-white hover:text-slate-900 transition-all z-30 group-hover/card:opacity-100 opacity-0 transform -translate-x-4 group-hover/card:translate-x-0"
-                                        >
+                                            className="absolute top-8 left-8 w-24 h-12 rounded-full bg-white/10 backdrop-blur-xl flex items-center justify-center text-white hover:bg-white hover:text-slate-900 transition-all z-30 group-hover/card:opacity-100 opacity-0 transform -translate-x-4 group-hover/card:translate-x-0"
+                                        >   
                                             <ChevronLeft size={20} />
+                                            Previous
                                         </button>
                                     </div>
 
@@ -135,9 +136,10 @@ const Mentors = () => {
                                         {/* Next Button Overlay */}
                                         <button 
                                             onClick={handleNext}
-                                            className="absolute top-8 right-8 w-12 h-12 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-900 hover:text-white transition-all z-30 group-hover/card:opacity-100 opacity-0 transform translate-x-4 group-hover/card:translate-x-0"
+                                            className="absolute top-8 right-8 w-24 h-12 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-900 hover:text-white transition-all z-30 group-hover/card:opacity-100 opacity-0 transform translate-x-4 group-hover/card:translate-x-0"
                                         >
-                                            <ChevronRight size={20} />
+                                            Next
+                                        <ChevronRight size={20} />
                                         </button>
 
                                         <div className="space-y-10">

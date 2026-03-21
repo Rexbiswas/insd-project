@@ -21,14 +21,27 @@ const PORT = process.env.PORT || 5001;
 app.use(express.json());
 app.use(cors({ origin: '*', credentials: true }));
 
+// Graceful Error Handling for Development
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
+process.on('uncaughtException', (err) => {
+    console.error('Uncaught Exception thrown:', err.message);
+    if (process.env.NODE_ENV === 'production') process.exit(1);
+});
+
 // Database Connection
 mongoose.connect(process.env.MONGO_URI, {
-    serverSelectionTimeoutMS: 5000,
+    serverSelectionTimeoutMS: 5000, // Timeout after 5 seconds instead of 30
+    socketTimeoutMS: 45000,
 }).then(() => {
     console.log('MongoDB Connected successfully');
 }).catch(err => {
-    console.error('MongoDB Initial Connection Error:', err.message);
+    console.warn('\n MongoDB Connection Warning:', err.message);
+    console.warn('The server will continue running, but database operations will fail until whitelisted.\n');
 });
+
 
 // Routes
 app.get('/api/health', (req, res) => {

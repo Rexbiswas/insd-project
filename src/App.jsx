@@ -9,7 +9,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react"
 const Home = lazy(() => import('./pages/Home'));
 const Courses = lazy(() => import('./pages/Courses'));
 const About = lazy(() => import('./pages/About'));
-const Awards = lazy(() => import('./pages/Awards'));
+const AwardsRecognition = lazy(() => import('./pages/AwardsRecognition'));
 const Student = lazy(() => import('./pages/Student'));
 const Entrepreneur = lazy(() => import('./pages/Entrepreneur'));
 const IndustryInteraction = lazy(() => import('./pages/IndustryInteraction'));
@@ -27,7 +27,6 @@ const Postgraduate = lazy(() => import('./pages/Postgraduate'));
 const DiplomaAndCertificate = lazy(() => import('./pages/DiplomaAndCertificate'));
 const ShortTermCourse = lazy(() => import('./pages/ShortTermCourse'));
 const Contact = lazy(() => import('./pages/Contact'));
-const GoGlobal = lazy(() => import('./pages/GoGlobal'));
 const MscLuxury = lazy(() => import('./pages/MscLuxury'));
 const StudentCareers = lazy(() => import('./pages/StudentCareers'));
 const OnlineCourse = lazy(() => import('./pages/OnlineCourse'));
@@ -94,7 +93,7 @@ function App() {
                                 <Routes>
                                     <Route path="/" element={<Home />} />
                                     <Route path="/about-us" element={<About />} />
-                                    <Route path="/awards" element={<Awards />} />
+                                    <Route path="/awards-recognition" element={<AwardsRecognition />} />
                                     <Route path="/student" element={<Student />} />
                                     <Route path="/entrepreneur" element={<Entrepreneur />} />
                                     <Route path="/industry-interaction" element={<IndustryInteraction />} />
@@ -124,7 +123,6 @@ function App() {
                                     <Route path="/student-careers" element={<StudentCareers />} />
                                     <Route path="/franchise" element={<Franchise />} />
                                     <Route path="/contact-us" element={<Contact />} />
-                                    <Route path="/go-global" element={<GoGlobal />} />
                                     <Route path="/international-partners" element={<InternationalPartner />} />
                                     <Route path="/apply" element={<Admission />} />
                                     <Route path="/courses/online-courses" element={<OnlineCourse />} />

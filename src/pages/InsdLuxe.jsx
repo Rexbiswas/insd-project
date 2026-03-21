@@ -272,19 +272,19 @@ const InsdLuxe = () => {
             </section>
 
             {/* --- FINAL CTA --- */}
-            <section className="py-24 px-6 md:px-12 lg:px-24 bg-secondary">
+            <section className="py-24 px-6 md:px-12 lg:px-24 bg-white border-t border-slate-100">
                 <div className="max-w-5xl mx-auto text-center space-y-12">
-                    <h2 className="text-4xl md:text-7xl font-black text-white uppercase tracking-tighter">
-                        Join the <span className="text-gold">Elite</span>
+                    <h2 className="text-4xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter">
+                        Join the <span className="text-secondary">Elite</span>
                     </h2>
-                    <p className="text-white/60 font-bold text-lg md:text-xl max-w-2xl mx-auto uppercase tracking-tight">
+                    <p className="text-slate-500 font-bold text-lg md:text-xl max-w-2xl mx-auto uppercase tracking-tight">
                         Experience the convergence of business and design. Apply for the 2026 international exchange program today.
                     </p>
                     <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-                        <button className="px-12 py-5 bg-gold text-white rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-white hover:text-secondary transition-all transform hover:scale-105">
+                        <button className="px-12 py-5 bg-gold text-white rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-secondary hover:text-white transition-all transform hover:scale-105">
                             Start Application
                         </button>
-                        <button className="px-12 py-5 border border-white/20 text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-secondary transition-all">
+                        <button className="px-12 py-5 border border-slate-200 text-slate-900 rounded-full font-black uppercase text-xs tracking-widest hover:bg-slate-900 hover:text-white transition-all">
                             Request Brochure
                         </button>
                     </div>

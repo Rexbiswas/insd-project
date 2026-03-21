@@ -164,7 +164,6 @@ const Navbar = () => {
                 { title: '15 Years Legacy', path: '/15-years-legacy', icon: 'zap', desc: 'Our national award-winning history' },
                 { title: 'Mentors', path: '/mentors', icon: 'users', desc: 'Expert creative leadership' },
                 { title: 'Academic Alliances', path: '/academic-alliances', icon: 'briefcase', desc: 'Global design partnerships' },
-                { title: 'Global Exposure', path: '/go-global', icon: 'map-pin', desc: 'Study across the world' },
                 { title: 'Center Across India', path: '/centers-across-india', icon: 'trending-up', desc: 'Our regional network' },
                 { title: 'Paris Project', path: '/insd-360/paris-project', icon: 'globe', desc: 'International design showcase', badge: 'Featured' }
             ]
@@ -323,13 +322,13 @@ const Navbar = () => {
 
                                     {/* Dropdown Menu */}
                                     <div className="absolute top-12 left-1/2 -translate-x-1/2 pt-6 w-64 opacity-0 invisible translate-y-4 group-hover/dropdown:opacity-100 group-hover/dropdown:visible group-hover/dropdown:translate-y-0 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] z-50">
-                                        <div className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-2xl border border-slate-200/50 dark:border-white/10 rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] overflow-hidden p-2 relative before:content-[''] before:absolute before:inset-0 before:bg-linear-to-b before:from-white/40 before:to-transparent before:pointer-events-none after:content-[''] after:absolute after:-top-px after:left-10 after:right-10 after:h-px after:bg-linear-to-r after:from-transparent after:via-primary/30 after:to-transparent">
+                                        <div className="bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-white/10 rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] overflow-hidden p-2 relative before:content-[''] before:absolute before:inset-0 before:bg-linear-to-b before:from-white/40 before:to-transparent before:pointer-events-none after:content-[''] after:absolute after:-top-px after:left-10 after:right-10 after:h-px after:bg-linear-to-r after:from-transparent after:via-primary/30 after:to-transparent">
                                             <div className="max-h-[400px] overflow-y-auto dropdown-scrollbar pr-1 overscroll-contain">
                                                 {[
                                                     { title: '15 Years Legacy', path: '/15-years-legacy', icon: 'zap', desc: 'Explore industry trends' },
                                                     { title: 'Mentors', path: '/mentors', icon: 'users', desc: 'Meet our community' },
                                                     { title: 'Academic Alliances', path: '/academic-alliances', icon: 'briefcase', desc: 'Career opportunities' },
-                                                    { title: 'Global Exposure', path: '/go-global', icon: 'map-pin', desc: 'Our locations' },
+                                                    { title: 'Awards & Recognition', path: '/awards-recognition', icon: 'map-pin', desc: 'Our locations' },
                                                     { title: 'Center Across India', path: '/centers-across-india', icon: 'trending-up', desc: 'Our national presence' },
                                                     { title: 'Paris Project', path: '/insd-360/paris-project', icon: 'globe', desc: 'International design showcase', badge: 'Featured' }
 
@@ -380,7 +379,7 @@ const Navbar = () => {
                                     </div>
 
                                     <div className="absolute top-12 left-1/2 -translate-x-1/2 pt-6 w-80 opacity-0 invisible translate-y-4 group-hover/dropdown:opacity-100 group-hover/dropdown:visible group-hover/dropdown:translate-y-0 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] z-50">
-                                        <div className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-2xl border border-slate-200/50 dark:border-white/10 rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] overflow-hidden p-2 relative before:content-[''] before:absolute before:inset-0 before:bg-linear-to-b before:from-white/40 before:to-transparent before:pointer-events-none">
+                                        <div className="bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-white/10 rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] overflow-hidden p-2 relative before:content-[''] before:absolute before:inset-0 before:bg-linear-to-b before:from-white/40 before:to-transparent before:pointer-events-none">
                                             <div className="max-h-[400px] overflow-y-auto dropdown-scrollbar pr-1 overscroll-contain">
                                                 {[
                                                     { title: 'Fashion Designing', path: '/courses/fashion-designing', icon: 'fashion', desc: 'Couture & Apparel Design' },
@@ -434,7 +433,7 @@ const Navbar = () => {
                                     </div>
 
                                     <div className="absolute top-12 left-1/2 -translate-x-1/2 pt-6 w-80 opacity-0 invisible translate-y-4 group-hover/dropdown:opacity-100 group-hover/dropdown:visible group-hover/dropdown:translate-y-0 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] z-50">
-                                        <div className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-2xl border border-slate-200/50 dark:border-white/10 rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] overflow-hidden p-2 relative before:content-[''] before:absolute before:inset-0 before:bg-linear-to-b before:from-white/40 before:to-transparent before:pointer-events-none after:content-[''] after:absolute after:-top-px after:left-10 after:right-10 after:h-px after:bg-linear-to-r after:from-transparent after:via-primary/30 after:to-transparent">
+                                        <div className="bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-white/10 rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] overflow-hidden p-2 relative before:content-[''] before:absolute before:inset-0 before:bg-linear-to-b before:from-white/40 before:to-transparent before:pointer-events-none after:content-[''] after:absolute after:-top-px after:left-10 after:right-10 after:h-px after:bg-linear-to-r after:from-transparent after:via-primary/30 after:to-transparent">
                                             <div className="max-h-[400px] overflow-y-auto dropdown-scrollbar pr-1 overscroll-contain">
                                                 {[
                                                     { title: 'Life at INSD', path: '/student', icon: 'users', desc: 'Campus life & community' },

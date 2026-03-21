@@ -174,14 +174,16 @@ const Events = () => {
                                 <div className="flex gap-4 pointer-events-auto">
                                     <button 
                                         onClick={handlePrev}
-                                        className="w-14 h-14 rounded-full border border-slate-200 bg-white/80 backdrop-blur-md flex items-center justify-center text-slate-400 hover:text-slate-900 hover:border-primary transition-all shadow-xl active:scale-90"
+                                        className="w-25 h-14 rounded-full border border-slate-200 bg-white/80 backdrop-blur-md flex items-center justify-center text-slate-400 hover:text-slate-900 hover:border-primary transition-all shadow-xl active:scale-90"
                                     >
                                         <ChevronLeft size={24} />
+                                        Previous
                                     </button>
                                     <button 
                                         onClick={handleNext}
-                                        className="w-14 h-14 rounded-full border border-slate-200 bg-white/80 backdrop-blur-md flex items-center justify-center text-slate-400 hover:text-slate-900 hover:border-primary transition-all shadow-xl active:scale-90"
+                                        className="w-24 h-14 rounded-full border border-slate-200 bg-white/80 backdrop-blur-md flex items-center justify-center text-slate-400 hover:text-slate-900 hover:border-primary transition-all shadow-xl active:scale-90"
                                     >
+                                        Next
                                         <ChevronRight size={24} />
                                     </button>
                                 </div>

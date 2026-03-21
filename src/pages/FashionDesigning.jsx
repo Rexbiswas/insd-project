@@ -167,7 +167,7 @@ const FashionDesigning = () => {
                                                             className="flex items-start gap-4 group"
                                                         >
                                                             <div className="mt-1">
-                                                                <div className="w-5 h-5 rounded-md bg-amber-400 flex items-center justify-center text-white shrink-0 group-hover:scale-110 transition-transform">
+                                                                <div className="w-5 h-5 rounded-md bg-linear-to-br from-primary to-secondary flex items-center justify-center text-white shrink-0 group-hover:scale-110 transition-transform">
                                                                     <CheckCircle2 size={12} className="stroke-3" />
                                                                 </div>
                                                             </div>
@@ -216,7 +216,7 @@ const FashionDesigning = () => {
                                                             className="flex items-start gap-4 group"
                                                         >
                                                             <div className="mt-1">
-                                                                <div className="w-5 h-5 rounded-md bg-amber-400 flex items-center justify-center text-white shrink-0 group-hover:scale-110 transition-transform">
+                                                                <div className="w-5 h-5 rounded-md bg-linear-to-br from-primary to-secondary flex items-center justify-center text-white shrink-0 group-hover:scale-110 transition-transform">
                                                                     <CheckCircle2 size={12} className="stroke-3" />
                                                                 </div>
                                                             </div>
