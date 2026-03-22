@@ -9,6 +9,10 @@ const StepLeadSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    email: {
+        type: String,
+        required: true
+    },
     city: {
         type: String,
         required: true
@@ -21,6 +25,10 @@ const StepLeadSchema = new mongoose.Schema({
     inquiryType: {
         type: String,
         required: true
+    },
+    marketingConsent: {
+        type: Boolean,
+        default: false
     }
 }, { timestamps: true });
 

@@ -31,44 +31,57 @@ export const sendWelcomeEmail = async (email, name, course) => {
     }
 };
 
-/**
- * Sends an SMS via Fast2SMS
- */
 export const sendSMS = async (phone, name) => {
     const API_KEY = process.env.FAST2SMS_API_KEY;
     const phoneNo = phone.replace(/[^0-9]/g, '').slice(-10);
 
     if (!API_KEY) {
-        console.log(`\n[SMS MOCK] To: ${phoneNo}\nMessage: Hello ${name}, thank you for your inquiry at INSD. Our team will contact you soon.\n`);
+        console.warn(`[SMS MOCK] API Key missing. Simulation for: ${phoneNo}`);
         return true;
     }
 
+    if (phoneNo.length !== 10) {
+        console.error(`[SMS Error] Invalid phone number (must be 10 digits): ${phoneNo}`);
+        return false;
+    }
+
     try {
+        const isDLT = !!process.env.FAST2SMS_TEMPLATE_ID;
         const payload = {
-            route: process.env.FAST2SMS_TEMPLATE_ID ? "dlt" : "q",
-            message: process.env.FAST2SMS_TEMPLATE_ID 
-                ? process.env.FAST2SMS_TEMPLATE_ID 
-                : `Hello ${name}, thank you for your inquiry at INSD. Our team will contact you soon. Stay creative!`,
+            route: isDLT ? "dlt" : "v3", // 'v3' is preferred over 'q' for bulkV2 recently
+            message: isDLT ? process.env.FAST2SMS_TEMPLATE_ID : `Hello ${name}, thank you for your inquiry at INSD. Our team will contact you soon. Stay creative!`,
             language: "english",
             flash: 0,
             numbers: phoneNo,
         };
 
-        if (process.env.FAST2SMS_TEMPLATE_ID) {
-            payload.sender_id = "INSDIN";
+        if (isDLT) {
+            payload.sender_id = process.env.FAST2SMS_SENDER_ID || "INSDIN";
             payload.variables_values = name;
         }
 
-        await axios({
+        const response = await axios({
             method: 'POST',
             url: 'https://www.fast2sms.com/dev/bulkV2',
-            headers: { "authorization": API_KEY, "Content-Type": "application/json" },
-            data: payload
+            headers: { 
+                "authorization": API_KEY,
+                "Content-Type": "application/json",
+                "cache-control": "no-cache"
+            },
+            data: payload,
+            timeout: 8000 // 8 second timeout
         });
-        console.log(`[SMS] Message sent to ${phoneNo}`);
-        return true;
+
+        if (response.data.return === true) {
+            console.log(`[SMS] Message successfully queued for ${phoneNo}`);
+            return true;
+        } else {
+            console.error(`[SMS Error] Gateway rejected: ${JSON.stringify(response.data)}`);
+            return false;
+        }
     } catch (err) {
-        console.error(`[SMS Error] Failed to send SMS to ${phoneNo}:`, err?.response?.data || err.message);
+        const errorMsg = err.response?.data ? JSON.stringify(err.response.data) : err.message;
+        console.error(`[SMS Error] Failed to send to ${phoneNo}:`, errorMsg);
         return false;
     }
 };
@@ -79,31 +92,43 @@ export const sendSMS = async (phone, name) => {
 export const sendWhatsApp = async (phone, name) => {
     const API_KEY = process.env.FAST2SMS_API_KEY;
     const phoneNo = phone.replace(/[^0-9]/g, '').slice(-10);
+    const wabaId = process.env.WABA_PHONE_ID;
+    const templateId = process.env.WHATSAPP_TEMPLATE_ID;
 
-    // If we have specific WABA credentials, we'd use those. 
-    // For now, we'll mock it if not configured, or use the Fast2SMS WhatsApp endpoint if available.
-    if (!API_KEY || !process.env.WABA_PHONE_ID) {
-        console.log(`\n[WhatsApp MOCK] To: ${phoneNo}\nMessage: Hello ${name}! 👋 Welcome to INSD. We've received your application. A counselor will reach out shortly.\n`);
+    if (!API_KEY || !wabaId || !templateId) {
+        console.warn(`[WhatsApp MOCK] Credentials missing in .env (WABA_PHONE_ID or WHATSAPP_TEMPLATE_ID). Simulating for: ${phoneNo}`);
+        // Log what would have been sent
+        console.log(`[WhatsApp Payload Draft] To: ${phoneNo}, Name: ${name}, Template: ${templateId || 'N/A'}`);
         return true;
     }
 
     try {
-        // Fast2SMS Send Template Message (Simple)
         const response = await axios({
             method: 'POST',
-            url: `https://www.fast2sms.com/dev/whatsapp/v1/send`, // Example endpoint
-            headers: { "authorization": API_KEY },
+            url: `https://www.fast2sms.com/dev/whatsapp/v1/send`,
+            headers: { 
+                "authorization": API_KEY,
+                "Content-Type": "application/json"
+            },
             data: {
                 numbers: phoneNo,
-                message_id: process.env.WHATSAPP_TEMPLATE_ID, // Required for templates
-                phone_number_id: process.env.WABA_PHONE_ID,
+                message_id: templateId,
+                phone_number_id: wabaId,
                 variables_values: name
-            }
+            },
+            timeout: 10000
         });
-        console.log(`[WhatsApp] Message sent to ${phoneNo}`);
-        return true;
+
+        if (response.data.return === true) {
+            console.log(`[WhatsApp] Success! Message sent to ${phoneNo}`);
+            return true;
+        } else {
+            console.error(`[WhatsApp Error] Gateway rejection: ${JSON.stringify(response.data)}`);
+            return false;
+        }
     } catch (err) {
-        console.error(`[WhatsApp Error] Failed to send WhatsApp to ${phoneNo}:`, err?.response?.data || err.message);
+        const errorMsg = err.response?.data ? JSON.stringify(err.response.data) : err.message;
+        console.error(`[WhatsApp Error] Transmission failed for ${phoneNo}:`, errorMsg);
         return false;
     }
 };

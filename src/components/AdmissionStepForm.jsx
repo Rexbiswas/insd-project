@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { User, Phone, Mail, MapPin, ArrowRight, ArrowLeft, Sparkles, Building, Briefcase, GraduationCap, Monitor, Palette, Hexagon, Star } from 'lucide-react';
+import { User, Phone, Mail, MapPin, ArrowRight, ArrowLeft, CheckCircle2, Sparkles, Building, Briefcase, GraduationCap, Monitor, Palette, Hexagon, Star } from 'lucide-react';
 
 const AdmissionStepForm = () => {
     const sectionRef = useRef(null);
@@ -12,7 +12,8 @@ const AdmissionStepForm = () => {
         phone: '',
         email: '',
         city: '',
-        qualification: ''
+        qualification: '',
+        marketingConsent: false
     });
     const [loading, setLoading] = useState(false);
     const [submitted, setSubmitted] = useState(false);
@@ -306,7 +307,25 @@ const AdmissionStepForm = () => {
                             ))}
                         </div>
 
-                        <div className="max-w-3xl mx-auto pt-10">
+                        <div className="max-w-3xl mx-auto pt-10 space-y-8">
+                            {/* Marketing Consent */}
+                            <div className="flex justify-center">
+                                <label className="flex items-start gap-4 cursor-pointer group/consent max-w-lg">
+                                    <div className={`mt-1 md:mt-0 w-6 h-6 rounded-md border-2 shrink-0 flex items-center justify-center transition-all ${formData.marketingConsent ? 'bg-primary border-primary shadow-[0_0_15px_rgba(219,52,54,0.4)]' : 'border-slate-300 hover:border-slate-500 bg-white'}`}>
+                                        {formData.marketingConsent && <CheckCircle2 className="text-white w-4 h-4" />}
+                                    </div>
+                                    <input 
+                                        type="checkbox" 
+                                        checked={formData.marketingConsent}
+                                        onChange={(e) => setFormData({ ...formData, marketingConsent: e.target.checked })}
+                                        className="hidden" 
+                                    />
+                                    <span className="text-slate-500 text-xs md:text-sm font-medium select-none group-hover/consent:text-slate-900 transition-colors">
+                                        I agree to give my consent to receive updates through SMS/Email*
+                                    </span>
+                                </label>
+                            </div>
+
                             <button
                                 onClick={handleSubmit}
                                 disabled={!formData.qualification || loading}

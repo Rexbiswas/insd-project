@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { User, Phone, MapPin, ArrowRight, ArrowLeft, Sparkles, MessageSquare } from 'lucide-react';
+import { User, Phone, Mail, MapPin, ArrowRight, ArrowLeft, Sparkles, MessageSquare } from 'lucide-react';
 
 const StepLeadForm = () => {
     const sectionRef = useRef(null);
@@ -8,7 +8,9 @@ const StepLeadForm = () => {
     const [formData, setFormData] = useState({
         name: '',
         mobile: '',
-        city: ''
+        email: '',
+        city: '',
+        marketingConsent: false
     });
     const [submitted, setSubmitted] = useState(false);
     const [isCityDropdownOpen, setIsCityDropdownOpen] = useState(false);
@@ -53,7 +55,7 @@ const StepLeadForm = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            const response = await fetch('http://localhost:5001/api/step-leads', {
+            const response = await fetch('/api/step-leads', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -61,7 +63,9 @@ const StepLeadForm = () => {
                 body: JSON.stringify({
                     name: formData.name,
                     mobile: formData.mobile,
+                    email: formData.email,
                     city: formData.city,
+                    marketingConsent: formData.marketingConsent,
                     readyToStart: choice,
                     inquiryType: choice === 'yes' ? "Talk to our Career Expert" : "Let us Career Decide"
                 }),
@@ -200,6 +204,18 @@ const StepLeadForm = () => {
                                                     </div>
                                                 </div>
 
+                                                <div className="relative group">
+                                                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                                                    <input
+                                                        required
+                                                        type="email"
+                                                        placeholder="Email Address"
+                                                        className="w-full h-14 bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 text-white placeholder-slate-600 focus:outline-none focus:border-primary/50 transition-all font-bold text-sm"
+                                                        value={formData.email}
+                                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                                    />
+                                                </div>
+
                                                 <div className="relative">
                                                     <div
                                                         onClick={() => setIsCityDropdownOpen(!isCityDropdownOpen)}
@@ -213,62 +229,24 @@ const StepLeadForm = () => {
                                                             <ArrowRight className="w-4 h-4 rotate-90 opacity-40 hover:opacity-100" />
                                                         </motion.div>
                                                     </div>
+                                                </div>
 
-                                                    <AnimatePresence>
-                                                        {isCityDropdownOpen && (
-                                                            <motion.div
-                                                                initial={{ opacity: 0, y: 10 }}
-                                                                animate={{ opacity: 1, y: 0 }}
-                                                                exit={{ opacity: 0, y: 10 }}
-                                                                className="absolute top-0 left-0 w-full z-[100] bg-slate-900 border border-white/20 rounded-xl overflow-hidden shadow-2xl p-2"
-                                                            >
-                                                                <div className="max-h-56 overflow-y-auto custom-scrollbar pr-1">
-                                                                    {isOtherSelected ? (
-                                                                        <div className="p-2 space-y-3">
-                                                                            <input
-                                                                                autoFocus
-                                                                                type="text"
-                                                                                placeholder="Enter City"
-                                                                                className="w-full h-11 bg-white/5 border border-white/10 rounded-lg px-4 text-white placeholder-slate-600 focus:outline-none focus:border-primary font-bold text-xs"
-                                                                                value={customLocation}
-                                                                                onChange={(e) => setCustomLocation(e.target.value)}
-                                                                            />
-                                                                            <button
-                                                                                type="button"
-                                                                                onClick={() => {
-                                                                                    if (customLocation) {
-                                                                                        setFormData({ ...formData, city: `${customLocation}, India` });
-                                                                                        setIsCityDropdownOpen(false);
-                                                                                        setIsOtherSelected(false);
-                                                                                    }
-                                                                                }}
-                                                                                className="w-full h-11 bg-primary text-white rounded-lg font-black uppercase tracking-widest text-[10px]"
-                                                                            >
-                                                                                Set Location
-                                                                            </button>
-                                                                        </div>
-                                                                    ) : (
-                                                                        locations.map((loc, idx) => (
-                                                                            <div
-                                                                                key={idx}
-                                                                                onClick={() => {
-                                                                                    if (loc.city === "Other") setIsOtherSelected(true);
-                                                                                    else {
-                                                                                        setFormData({ ...formData, city: `${loc.city}, ${loc.state}` });
-                                                                                        setIsCityDropdownOpen(false);
-                                                                                    }
-                                                                                }}
-                                                                                className="px-4 py-3 rounded-lg hover:bg-white/10 cursor-pointer flex justify-between items-center group/item"
-                                                                            >
-                                                                                <span className="text-xs font-black uppercase tracking-tight">{loc.city}</span>
-                                                                                <span className="text-[8px] font-black uppercase opacity-40 group-hover/item:opacity-100 transition-opacity">{loc.state}</span>
-                                                                            </div>
-                                                                        ))
-                                                                    )}
-                                                                </div>
-                                                            </motion.div>
-                                                        )}
-                                                    </AnimatePresence>
+                                                {/* Marketing Consent */}
+                                                <div className="pt-2 pb-2">
+                                                    <label className="flex items-start gap-4 cursor-pointer group/consent">
+                                                        <div className={`mt-1 md:mt-0 w-6 h-6 rounded-md border-2 shrink-0 flex items-center justify-center transition-all ${formData.marketingConsent ? 'bg-primary border-primary shadow-[0_0_15px_rgba(219,52,54,0.4)]' : 'border-white/20 hover:border-white/40 bg-white/5'}`}>
+                                                            {formData.marketingConsent && <ArrowRight className="text-white w-4 h-4" />}
+                                                        </div>
+                                                        <input 
+                                                            type="checkbox" 
+                                                            checked={formData.marketingConsent}
+                                                            onChange={(e) => setFormData({ ...formData, marketingConsent: e.target.checked })}
+                                                            className="hidden" 
+                                                        />
+                                                        <span className="text-slate-400 text-[10px] md:text-xs font-medium select-none group-hover/consent:text-white transition-colors">
+                                                            I agree to give my consent to receive updates through SMS/Email*
+                                                        </span>
+                                                    </label>
                                                 </div>
 
                                                 <div className="flex flex-col sm:flex-row gap-4 pt-2">

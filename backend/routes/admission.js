@@ -63,8 +63,9 @@ router.post('/', async (req, res) => {
             // Fire off notifications async
             Promise.allSettled([
                 sendWelcomeEmail(email, name, course || program || 'Design Course'),
-                sendSMS(phone, name),
-                sendWhatsApp(phone, name)
+                sendSMS(phone, name)
+                // WhatsApp disabled as per UI change
+                // sendWhatsApp(phone, name)
             ]).then(() => {
                 console.log(`[Notifications] Processed for ${name}`);
             });

@@ -59,12 +59,6 @@ const AdmissionForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         
-        if (!formData.marketingConsent) {
-            setErrorMessage("Please agree to receive updates to proceed.");
-            setStatus('error');
-            return;
-        }
-
         setStatus('loading');
         try {
             const response = await fetch('/api/admission', {
@@ -272,7 +266,7 @@ const AdmissionForm = () => {
                             className="hidden" 
                         />
                         <span className="text-white text-sm md:text-lg font-medium select-none group-hover/consent:text-primary/90 transition-colors">
-                            I agree to give my consent to receive updates through SMS/Email & WhatsApp*
+                            I agree to give my consent to receive updates through SMS/Email*
                         </span>
                     </label>
 
