@@ -48,8 +48,9 @@ const AcademicAlliances = () => {
     return (
         <div className="bg-white min-h-screen font-sans">
             <SEO 
-                title="Academic Alliances | Global Design Partnerships"
-                description="Explore INSD's academic alliances with top global institutions in London, Paris, and beyond. Empowering students with international exposure."
+                title="Global Academic Alliances | International Design Degree Partnerships - INSD"
+                description="Explore INSD's academic alliances with top global institutions in London, Paris, and beyond. Providing recognized design degrees with international exposure and placement."
+                keywords="international design alliances, design degree global partnerships, INSD London Paris exchange, recognized design degrees India, global design education network"
             />
 
             {/* --- HERO SECTION --- */}

@@ -67,8 +67,9 @@ const InteriorDesigning = () => {
     return (
         <div className="bg-white min-h-screen font-sans selection:bg-primary selection:text-white">
             <SEO 
-                title="Interior Designing Course | INSD International School of Design"
-                description="Transform spaces and lifestyles with INSD's Interior Design course. Master spatial planning, luxury styling, and sustainable architecture for a global career."
+                title="Interior Design Course in Delhi with Placement | Job-Oriented Degrees at INSD"
+                description="Join INSD's 100% job-oriented Interior Design course in Delhi. Master spatial planning and luxury styling with skill-based diplomas, internships, and placement assistance."
+                keywords="interior design course in Delhi with placement, interior design course after 12th, job oriented interior design institute, best interior design colleges in Delhi, interior design diploma for job"
             />
 
             {/* --- HERO SECTION --- */}
@@ -90,10 +91,10 @@ const InteriorDesigning = () => {
                         className="text-center"
                     >
                         <h1 className="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none mb-6">
-                            Interior Design
+                            Interior Design <br /><span className="text-primary">& Placements</span>
                         </h1>
                         <p className="text-lg md:text-xl text-white/80 font-medium leading-relaxed max-w-4xl mx-auto mb-10">
-                            Engineer spaces that inspire and function. Our Interior Design program bridges the gap between architectural precision and luxury aesthetics, preparing you for the high-end global market.
+                            Engineer spaces that inspire and function. Our Interior Design programs in Delhi bridge the gap between architectural precision and luxury styling, providing 100% placement support and site-visit based practical learning.
                         </p>
                         
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">

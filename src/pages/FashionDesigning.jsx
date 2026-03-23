@@ -67,8 +67,22 @@ const FashionDesigning = () => {
     return (
         <div className="bg-white min-h-screen font-sans selection:bg-primary selection:text-white">
             <SEO 
-                title="Fashion Designing | INSD International School of Design"
-                description="Unlock your creativity and redefine style with INSD's Fashion Design course. A perfect launchpad for aspiring designers to influence trends and embrace the future."
+                title="Fashion Design Course in Delhi with Placement | Job-Ready Skills at INSD"
+                description="Join INSD's 100% job-oriented Fashion Design course in Delhi. Skill-based diplomas & degrees with internship, portfolio building, and placement support for after 12th students."
+                keywords="fashion design course in Delhi with placement, fashion design course after 12th in Delhi, job oriented fashion design diploma, best fashion designing institute in Delhi, skill school design Delhi"
+                courseSchema={{
+                    "@context": "https://schema.org",
+                    "@type": "Course",
+                    "name": "Fashion Design Excellence Program",
+                    "description": "A comprehensive job-oriented fashion design course focusing on couture, textiles, and boutique management with 100% placement support.",
+                    "provider": {
+                        "@type": "EducationalOrganization",
+                        "name": "International School of Design (INSD)",
+                        "sameAs": "https://insd.edu.in"
+                    },
+                    "courseMode": "In-person",
+                    "courseWorkload": "PT15H"
+                }}
             />
 
             {/* --- HERO SECTION --- */}
@@ -91,10 +105,10 @@ const FashionDesigning = () => {
                         className="text-center"
                     >
                         <h1 className="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none mb-6">
-                            Fashion Design
+                            Fashion Design <br /><span className="text-primary">& Placement</span>
                         </h1>
                         <p className="text-lg md:text-xl text-white/80 font-medium leading-relaxed max-w-4xl mx-auto mb-10">
-                            Unlock your creativity and redefine style with INSD's Fashion Design course which is a perfect launchpad for aspiring designers to influence trends and embrace the evolving fashion industry's future through innovation and sustainability.
+                            Join India's Skill School for a job-oriented Fashion Design course in Delhi. Our industry-ready programs combine couture craft with 100% placement support, helping after 12th students launch successful creative careers and boutiques.
                         </p>
                         
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">

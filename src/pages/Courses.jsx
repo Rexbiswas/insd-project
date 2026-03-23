@@ -131,18 +131,39 @@ const Courses = () => {
             description: "From brand logic to motion design, define the visual language of the next digital era."
         },
         {
+            title: "Advanced Graphic Design (Career Change)",
+            category: "VFX",
+            duration: "1 Year Diploma",
+            image: "https://images.pexels.com/photos/251225/pexels-photo-251225.jpeg",
+            description: "An intensive diploma designed specifically for career changers looking to enter the design industry."
+        },
+        {
+            title: "Animation for YouTube & OTT",
+            category: "VFX",
+            duration: "6 Months",
+            image: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg",
+            description: "Focused animation course for YouTube creators and digital content artists."
+        },
+        {
+            title: "Weekend Design Pro",
+            category: "Fashion",
+            duration: "Weekend Batch",
+            image: "https://images.pexels.com/photos/594452/pexels-photo-594452.jpeg",
+            description: "Convenient weekend design courses in Delhi for working professionals."
+        },
+        {
+            title: "Short-Term Design Fast-Track",
+            category: "All",
+            duration: "3 Months",
+            image: "https://images.pexels.com/photos/4050314/pexels-photo-4050314.jpeg",
+            description: "Design certification with job support for quick industry entry."
+        },
+        {
             title: "Luxury Brand Management",
             category: "Fashion",
             duration: "1 Year PG",
             image: "https://images.pexels.com/photos/1183992/pexels-photo-1183992.jpeg",
             description: "Understand the psychology of high-end consumerism and manage global luxury conglomerates."
-        },
-        {
-            title: "Animation & VFX",
-            category: "VFX",
-            duration: "3 Years Bachelors",
-            image: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg",
-            description: "Create hyper-realistic worlds and cinematic narratives using industry-standard rendering farms."
         },
         {
             title: "Jewellery Design",
@@ -199,9 +220,9 @@ const Courses = () => {
     return (
         <div ref={containerRef} className="bg-[#050505] text-white selection:bg-pink-600 font-sans overflow-hidden">
             <SEO
-                title="Design Courses in India | B.Des, M.Des, Diploma Programs - INSD"
-                description="Choose from top-rated B.Des, M.Des, and diploma programs in Fashion, Interior, and Graphic Design. INSD offers industry-standard creative education with 500+ placement partners."
-                keywords="design courses India, design admissions India, top design colleges India, fashion design courses India, interior design courses India, graphic design courses India, UI/UX design courses India"
+                title="Job-Oriented Design Courses in Delhi | INSD India's Skill School"
+                description="Choose from 100% job-oriented B.Des, M.Des, and diploma programs in Fashion, Interior, and Graphic Design. INSD offers skill-based creative education with top placement support."
+                keywords="job oriented design courses in Delhi, design courses in Delhi with 100% placement, skill-based design institute Delhi, design courses after 12th in Delhi"
             />
 
             {/* 1. CINEMATIC HERO */}
@@ -226,11 +247,11 @@ const Courses = () => {
                     >
                         Department_of_Vision
                     </motion.span>
-                    <h1 className="text-[12vw] md:text-[10vw] font-black uppercase leading-none tracking-tighter mb-4">
-                        The <span className="text-transparent stroke-text-white stroke-white!">Curriculum.</span>
+                    <h1 className="text-[8vw] md:text-[6vw] font-black uppercase leading-none tracking-tighter mb-4">
+                        Skill-Based <span className="text-transparent stroke-text-white stroke-white!">Education.</span>
                     </h1>
                     <p className="max-w-2xl mx-auto text-slate-400 font-light text-lg md:text-xl leading-relaxed px-6">
-                        Engineered to break conventions. From haute couture to digital architecture, explore the protocols of global design excellence.
+                        Job-oriented design courses in Delhi at India’s Skill School. Explore practical diplomas in Fashion, Interior, Graphic, and Animation & VFX with 100% placement support.
                     </p>
                 </div>
 

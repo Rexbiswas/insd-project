@@ -5,6 +5,8 @@ import GlobalIndustryNetwork from '../components/GlobalIndustryNetwork';
 import HiringPartnersLogoCloud from '../components/HiringPartnersLogoCloud';
 import Footer from '../components/Footer';
 
+import SEO from '../components/SEO';
+
 const Placement = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -12,6 +14,11 @@ const Placement = () => {
 
     return (
         <main className="min-h-screen bg-[#fafafa]">
+            <SEO 
+                title="Design Courses with 100% Placement in Delhi | INSD Career Success"
+                description="Explore INSD's record of 100% placement assistance for fashion, interior, and graphic design courses in Delhi. From classroom to career with top industry partners."
+                keywords="design courses with 100% placement in Delhi, job oriented design courses in Delhi, placement assistance for fashion design, interior design placement support, graphic design job guarantee"
+            />
             {/* Minimal Hero Section to introduce Placements */}
             <section className="relative pt-32 pb-12 md:pt-48 md:pb-24 overflow-hidden border-b border-slate-200/50">
                 {/* Background Details */}
@@ -29,11 +36,11 @@ const Placement = () => {
                         <span className="inline-block px-4 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-800 font-bold tracking-[0.2em] uppercase text-[10px] md:text-xs mb-8 shadow-sm">
                             Career Outcomes
                         </span>
-                        <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-black uppercase leading-[0.85] tracking-tighter text-slate-900 mb-8">
-                            Placement <span className="text-primary inline-block">Records</span>
+                        <h1 className="text-5xl md:text-7xl lg:text-[5rem] font-black uppercase leading-[0.85] tracking-tighter text-slate-900 mb-8">
+                            From <span className="text-primary">Classroom</span> <br /> to <span className="text-secondary">Career</span>
                         </h1>
                         <p className="max-w-3xl mx-auto text-lg md:text-2xl text-slate-600 font-medium leading-relaxed">
-                            A track record of placing our students in top-tier positions across the global design industry. We don't just teach; we launch careers.
+                            Job-oriented design courses in Delhi with 100% placement assistance. We don't just teach; we launch careers in Fashion, Interior, Graphic, and Animation & VFX.
                         </p>
                     </motion.div>
                 </div>

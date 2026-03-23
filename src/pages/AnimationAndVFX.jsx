@@ -67,8 +67,9 @@ const AnimationAndVFX = () => {
     return (
         <div className="bg-white min-h-screen font-sans selection:bg-primary selection:text-white">
             <SEO 
-                title="Animation & VFX Course | INSD International School of Design"
-                description="Enter the world of cinematic wonder with INSD's Animation & VFX program. Master 3D modeling, compositing, and visual storytelling for the global entertainment industry."
+                title="Animation and VFX Course with Placement in Delhi | INSD Skill School"
+                description="Join INSD's 100% job-oriented Animation & VFX course in Delhi. Master 3D modeling, compositing, and visual storytelling with internship and placement support."
+                keywords="animation and VFX course with placement in Delhi, animation VFX course in Delhi with internship, 3D animation diploma for job, best VFX institute in Delhi"
             />
 
             {/* --- HERO SECTION --- */}
@@ -90,10 +91,10 @@ const AnimationAndVFX = () => {
                         className="text-center"
                     >
                         <h1 className="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none mb-6">
-                            Animation & VFX
+                            Animation & <br /><span className="text-primary">VFX Careers</span>
                         </h1>
                         <p className="text-lg md:text-xl text-white/80 font-medium leading-relaxed max-w-4xl mx-auto mb-10">
-                            Bring the impossible to life. From blockbuster cinematic effects to immersive gaming worlds, master the high-tech craft of visual storytelling and digital artistry.
+                            Bring the impossible to life. From blockbuster cinematic effects to OTT content, master the high-tech craft of visual storytelling. Our Animation & VFX course in Delhi includes 100% placement support and intensive showreel-building internships.
                         </p>
                         
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">

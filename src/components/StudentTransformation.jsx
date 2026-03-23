@@ -152,6 +152,16 @@ const StudentTransformation = () => {
             quote: "The INSD Studio Labs provided the exact ecosystem I needed to transition from amateur floor plans to commercial retail architecture for premium lifestyle brands.",
             placement: "Hafele India",
             portfolio: "#"
+        },
+        {
+            name: "Sneha Kapur",
+            discipline: "Visual Communication",
+            program: "Advanced Diploma",
+            beforeImg: "https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=800",
+            afterImg: "https://images.pexels.com/photos/761963/pexels-photo-761963.jpeg?auto=compress&cs=tinysrgb&w=800",
+            quote: "Switching from a corporate job to a creative career was daunting, but INSD's 1-on-1 mentorship helped me build a world-class portfolio and start my own successful freelance studio.",
+            placement: "Freelance / Global",
+            portfolio: "#"
         }
     ];
 

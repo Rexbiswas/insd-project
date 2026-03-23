@@ -314,9 +314,9 @@ const Home = () => {
     return (
         <div ref={containerRef} className="min-h-screen text-slate-900 relative overflow-x-hidden">
             <SEO
-                title="Best Design Institute in Delhi | Fashion, Interior & Graphic Design Courses - INSD"
-                description="Join INSD Delhi, India's leading National Award-Winning Design School. Offering premium courses in Fashion, Interior, Graphic, and Animation design. Enroll for 2026 admissions today."
-                keywords="best design institute in Delhi, top design colleges India, fashion designing courses Delhi, interior design degree India, graphic design school, animation institute India, B.Des India, design admissions 2026, INSD Delhi"
+                title="Best Design Institute in Delhi | Fashion, Interior & Graphic Courses - INSD"
+                description="Join INSD, the best design institute in Delhi NCR. India's Skill School for creative careers offers job-oriented Fashion, Interior, Graphic Design & Animation courses with 100% placement support."
+                keywords="best design institute in Delhi, skill-based design school Delhi, job-ready design institute, 100% placement design course, fashion design course in Delhi, interior design course in Delhi, graphic design course in Delhi, animation VFX course in Delhi, INSD Delhi placement"
             />
 
             {/* Hero Section - Pinned Wrapper relative to Viewport */}
@@ -381,8 +381,10 @@ const Home = () => {
 
                         <h1 ref={insdRef} className="text-black text-center flex flex-col items-center justify-center will-change-transform backface-hidden m-0 p-0 relative leading-none tracking-tighter min-h-[30vh] md:min-h-[40vh]">
                             <div className="text-[12vw] sm:text-[10vw] md:text-[7.5vw] font-black uppercase mb-3 md:mb-8 flex flex-col items-center">
-                                <span className="tracking-tighter">Creative</span>
-                                <span className="text-slate-800 italic font-serif -mt-[1.5vw] md:-mt-[2vw] lowercase tracking-normal opacity-90">Excellence</span>
+                                <h1 className="tracking-tighter flex flex-col items-center">
+                                    <span className="block">Skill</span>
+                                    <span className="text-slate-800 italic font-serif -mt-[1.5vw] md:-mt-[2vw] lowercase tracking-normal opacity-90">School</span>
+                                </h1>
                             </div>
 
                             <div className="relative flex items-center justify-center">
@@ -411,6 +413,16 @@ const Home = () => {
                                 </div>
                             </div>
                         </h1>
+                        
+                        {/* Strategic H2 for SEO & Clarity */}
+                        <div className="max-w-4xl mx-auto px-6 mt-8 md:mt-12 text-center opacity-0 hero-sub-message">
+                            <h2 className="text-xs md:text-lg font-black uppercase tracking-[0.2em] text-slate-400 mb-4">
+                                India’s Skill School for Creative Careers
+                            </h2>
+                            <p className="text-sm md:text-xl font-bold uppercase tracking-tight text-slate-500 leading-snug">
+                                Skill-based diplomas in Fashion, Interior, Graphic Design, Jewellery, Animation & VFX with strong placement and freelancing support in Delhi NCR and across India.
+                            </p>
+                        </div>
                     </div>
                 </div>
 

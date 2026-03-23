@@ -67,8 +67,9 @@ const GraphicDesigning = () => {
     return (
         <div className="bg-white min-h-screen font-sans selection:bg-primary selection:text-white">
             <SEO 
-                title="Graphic Designing Course | INSD International School of Design"
-                description="Launch your creative career with INSD's Graphic Design program. Master typography, branding, UI/UX, and visual storytelling for the global digital economy."
+                title="Graphic Design Course in Delhi with 100% Job Guarantee | INSD"
+                description="Join INSD's 100% job-oriented Graphic Design course in Delhi. Master branding, UI/UX, and freelancing with skill-based diplomas and guaranteed placement support."
+                keywords="graphic design course in Delhi with 100% job guarantee, freelance graphic designer course in Delhi, graphic design diploma for job, best graphic design institute in Delhi"
             />
 
             {/* --- HERO SECTION --- */}
@@ -90,10 +91,10 @@ const GraphicDesigning = () => {
                         className="text-center"
                     >
                         <h1 className="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none mb-6">
-                            Graphic Design
+                            Graphic Design <br /><span className="text-primary">& Freelancing</span>
                         </h1>
                         <p className="text-lg md:text-xl text-white/80 font-medium leading-relaxed max-w-4xl mx-auto mb-10">
-                            Redefine visual communication. From iconic branding to immersive digital experiences, master the tools and strategies that drive the world's most influential creative agencies.
+                            Redefine visual communication. Our Graphic Design course in Delhi provides a 100% job guarantee and dedicated support for freelancing careers, helping you master the tools and strategies that drive the world's most influential creative agencies.
                         </p>
                         
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">

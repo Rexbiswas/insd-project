@@ -81,9 +81,9 @@ const About = () => {
     return (
         <div ref={containerRef} className="bg-[#f3f3f3] text-slate-900 selection:bg-primary selection:text-white overflow-hidden font-sans border-y border-slate-300">
             <SEO 
-                title="About INSD | Best Design School in India - Our Legacy"
-                description="Discover the legacy of INSD, India's leading National Award-Winning Design School. Co-founded by a former NIFT DG, we offer world-class fashion, interior, and graphic design education."
-                keywords="best design schools India, top design colleges India, creative education India, INSD legacy, design admissions India, design degrees India"
+                title="About INSD – India’s Skill School for Creative Careers"
+                description="Discover INSD, India's leading Skill School for design careers. Focused on practical, industry-ready skills, job-oriented diplomas, and 100% placement support in Delhi NCR and across India."
+                keywords="skill-based education, job-ready skills, design industry projects, design apprenticeships, interior design internships, portfolio plus placement, from classroom to career, INSD legacy, best design school India"
             />
 
             {/* Background Grain/Noise Overlay */}
@@ -104,9 +104,12 @@ const About = () => {
 
                 {/* Sub-content revealed during zoom */}
                 <div className="vision-content absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none">
-                    <h2 className="text-6xl md:text-8xl font-black uppercase tracking-tighter text-center max-w-4xl px-6 leading-[0.9]">
-                        Where <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary">Rebellion</span> <br /> Meets Craft.
+                    <h2 className="text-4xl md:text-6xl lg:text-8xl font-black uppercase tracking-tighter text-center max-w-5xl px-6 leading-[0.9]">
+                        India's <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary">Skill School</span> <br /> for Creative Careers.
                     </h2>
+                    <p className="mt-8 text-sm md:text-xl font-bold uppercase tracking-widest text-[#999] text-center max-w-2xl px-6">
+                        Focused on practical, industry-ready design skills, not just degrees. From classroom to career.
+                    </p>
                 </div>
             </section>
 

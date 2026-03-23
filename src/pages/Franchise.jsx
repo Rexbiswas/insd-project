@@ -132,9 +132,9 @@ const Franchise = () => {
     return (
         <div ref={containerRef} className="relative z-10 bg-[#f3f3f3] text-slate-900 min-h-screen selection:bg-primary selection:text-white overflow-hidden font-sans border-y border-slate-300">
             <SEO
-                title="Design School Franchise Opportunity India - Open Your INSD Campus"
-                description="Join India's leading National Award-Winning design school network. Explore high ROI franchise opportunities in education with INSD. Partner with the best in design education."
-                keywords="design school franchise, education business opportunity India, best education franchise, INSD franchise, open fashion institute, interior design school franchise, profitable franchise models"
+                title="Design Institute Franchise – India’s Skill School Concept"
+                description="Join the pan-India design skill school network. Explore a high ROI design institute franchise with INSD – India’s Skill School for creative careers."
+                keywords="design institute franchise, India's skill school concept, pan India design skill school network, profitable education franchise India, design school business opportunity, skill India design franchise"
             />
 
             {/* Background Decorations */}
@@ -173,10 +173,10 @@ const Franchise = () => {
                     </span>
                     <h1 ref={heroRef} className="text-[10vw] md:text-[8vw] font-black leading-[0.8] uppercase tracking-tighter flex flex-col items-center text-slate-900">
                         <div className="overflow-hidden">
-                            <span className="inline-block hero-char">Franchise</span>
+                            <span className="inline-block hero-char">Skill School</span>
                         </div>
                         <div className="overflow-hidden">
-                            <span className="inline-block hero-char text-transparent strok-text-black italic">Opportunity</span>
+                            <span className="inline-block hero-char text-transparent strok-text-black italic">Franchise</span>
                         </div>
                     </h1>
                 </div>
@@ -252,7 +252,7 @@ const Franchise = () => {
                                 key={i}
                                 className="feature-card group relative p-12 bg-white border border-slate-200 rounded-[2.5rem] hover:shadow-2xl hover:border-slate-300 hover:-translate-y-2 transition-all duration-500 cursor-pointer overflow-hidden text-slate-900"
                             >
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity mix-blend-multiply pointer-events-none"></div>
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity mix-blend-multiply pointer-events-none"></div>
                                 <f.icon className="w-12 h-12 text-primary mb-8 transition-transform group-hover:scale-110 group-hover:rotate-12" />
                                 <h4 className="text-2xl font-bold mb-4 uppercase tracking-tight">{f.title}</h4>
                                 <p className="text-slate-600 font-light leading-relaxed">{f.desc}</p>
