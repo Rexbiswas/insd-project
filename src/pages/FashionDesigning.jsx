@@ -11,7 +11,8 @@ import {
     ArrowRight,
     Globe,
     Award,
-    Target
+    Target,
+    Download
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
@@ -82,18 +83,34 @@ const FashionDesigning = () => {
                     <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
                 </div>
 
-                <div className="relative z-10 max-w-5xl mx-auto space-y-8">
+                <div className="relative z-10 max-w-5xl mx-auto space-y-8 flex flex-col items-center">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1 }}
+                        className="text-center"
                     >
                         <h1 className="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none mb-6">
                             Fashion Design
                         </h1>
-                        <p className="text-lg md:text-xl text-white/80 font-medium leading-relaxed max-w-4xl mx-auto">
+                        <p className="text-lg md:text-xl text-white/80 font-medium leading-relaxed max-w-4xl mx-auto mb-10">
                             Unlock your creativity and redefine style with INSD's Fashion Design course which is a perfect launchpad for aspiring designers to influence trends and embrace the evolving fashion industry's future through innovation and sustainability.
                         </p>
+                        
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                            <button className="px-12 py-5 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest hover:bg-primary hover:text-white transition-all transform hover:scale-105 shadow-2xl">
+                                Join This Course
+                            </button>
+                            <a 
+                                href="https://drive.google.com/drive/folders/1sFS6WXmrkoRTdVopZKOHB4hHxxku1Gz-" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-3 px-12 py-5 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white/20 transition-all transform hover:scale-105"
+                            >
+                                <Download size={16} />
+                                Download Curriculum
+                            </a>
+                        </div>
                     </motion.div>
                 </div>
             </section>

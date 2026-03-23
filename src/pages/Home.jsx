@@ -22,6 +22,7 @@ import NetworkCounter from '../components/NetworkCounter';
 import BackToTop from '../components/BackToTop';
 import WhyInsd from '../components/WhyInsd';
 import AiFutureDesign from '../components/AiFutureDesign';
+import CelebritySlider from '../components/CelebritySlider';
 
 
 import SEO from '../components/SEO';
@@ -395,7 +396,7 @@ const Home = () => {
                                     </div>
 
                                     <div className="relative group">
-                                        <span ref={fifteenRef} className="inline-block bg-linear-to-r from-primary via-secondary to-primary bg-[length:200%_auto] bg-clip-text text-transparent text-[24vw] md:text-[16vw] font-black leading-[0.8] px-1 md:px-6">
+                                        <span ref={fifteenRef} className="inline-block bg-linear-to-r from-primary via-secondary to-primary bg-size-[200%_auto] bg-clip-text text-transparent text-[24vw] md:text-[16vw] font-black leading-[0.8] px-1 md:px-6">
                                             15
                                         </span>
                                         <span className="absolute -top-1 -right-4 md:-top-8 md:-right-16 text-[11px] md:text-2xl font-black text-primary tracking-widest uppercase">
@@ -428,6 +429,7 @@ const Home = () => {
 
             <AiFutureDesign />
             <TestimonialSlider />
+            <CelebritySlider />
 
 
             {/* Student Spotlight Section - High Fashion Editorial Style */}

@@ -5,30 +5,93 @@ import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 const testimonials = [
     {
         id: 1,
-        name: "Vidi Karla",
-        role: "Event Specialist",
-        course: "MiLuxBM, Feb 2021",
-        image: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=800", // Placeholder
-        quote: "I'm glad to have been introduced to the MiLuxBM programme at the International School of Design. I am looking for a position in the Luxury space after three years of experience in events and digital marketing. This program has provided me with the opportunity to interact with numerous industry experts.",
-        color: "from-primary to-secondary"
+        name: "Ankit Khera",
+        role: "Jobs Mall, Chhattarpur",
+        course: "Fashion Design",
+        image: "https://i.pravatar.cc/150?u=ankit",
+        quote: "INSD helped me move from basic sketches to a strong portfolio and a full-time job as a Fashion Designer. The shows, juries and software training made interviews feel easy.",
+        color: "from-blue-600 to-indigo-600"
     },
     {
         id: 2,
-        name: "Aravind Kumar",
-        role: "Fashion Designer",
-        course: "B.Des Fashion, 2022",
-        image: "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=800",
-        quote: "The practical exposure at INSD is unmatched. From fashion weeks to live projects, every day was a new learning curve. The faculty doesn't just teach; they mentor you to become industry-ready professionals.",
-        color: "from-primary to-secondary"
+        name: "Sanchita Pal",
+        role: "Freelance Designer",
+        course: "Graphic Design",
+        image: "https://i.pravatar.cc/150?u=sanchita",
+        quote: "I started taking small freelance graphic design projects in my second year. The feedback on my portfolio and support from faculty gave me the confidence to charge for my skills.",
+        color: "from-orange-500 to-red-600"
     },
     {
         id: 3,
-        name: "Sarah Jenkins",
-        role: "Interior Architect",
-        course: "M.Des Interior, 2020",
-        image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=800",
-        quote: "Designing spaces requires a different perspective, and INSD helped me find mine. The luxury labs and material libraries gave me the freedom to experiment and create designs that stand out.",
-        color: "from-primary to-secondary"
+        name: "Sameer Siddiqui",
+        role: "Gold Mark",
+        course: "Jewellery Design",
+        image: "https://i.pravatar.cc/150?u=sameer",
+        quote: "The hands-on training in Jewellery design and the exposure to industry techniques helped me build strong technical skills. The portfolio development sessions and mentor guidance helped me secure a position with a reputed jewellery brand.",
+        color: "from-yellow-500 to-amber-600"
+    },
+    {
+        id: 4,
+        name: "Nitika Gautam",
+        role: "Virgo Clothing Culture Private",
+        course: "Interior Design",
+        image: "https://i.pravatar.cc/150?u=nitika",
+        quote: "The placement cell connected me with a top interior design firm in Gurgaon. My 3D visualization skills and studio projects made me job-ready from day one.",
+        color: "from-green-600 to-emerald-600"
+    },
+    {
+        id: 5,
+        name: "Sanskriti Jha",
+        role: "Government of India",
+        course: "Graphic Design",
+        image: "https://i.pravatar.cc/150?u=sanskriti",
+        quote: "Learning design software alongside creative concepts made a big difference for me. I was able to confidently apply for jobs because I had practical skills that companies were looking for.",
+        color: "from-indigo-600 to-purple-600"
+    },
+    {
+        id: 6,
+        name: "Preeti Jangra",
+        role: "Shiva Arjun Entertainment House Mumbai",
+        course: "Fashion Design",
+        image: "https://i.pravatar.cc/150?u=preeti",
+        quote: "The exposure through workshops, industry visits, and live projects helped me understand how the design industry really works. By the time I graduated, I already had a strong portfolio and internship experience.",
+        color: "from-pink-600 to-rose-600"
+    },
+    {
+        id: 7,
+        name: "Kajalpriya",
+        role: "Aman Export International",
+        course: "Interior Design",
+        image: "https://i.pravatar.cc/150?u=kajal",
+        quote: "The faculty at INSD constantly pushed us to think creatively and present our ideas professionally. The portfolio reviews and jury feedback prepared me extremely well for client presentations.",
+        color: "from-cyan-600 to-blue-600"
+    },
+    {
+        id: 8,
+        name: "Muskan Singh",
+        role: "Pluck Designs, Gurugram",
+        course: "Fashion Design",
+        image: "https://i.pravatar.cc/150?u=muskan",
+        quote: "My time at INSD helped me discover my unique design style. The guidance from mentors and the opportunity to showcase my work in exhibitions boosted my confidence as a designer.",
+        color: "from-violet-600 to-purple-600"
+    },
+    {
+        id: 9,
+        name: "Anshuman Deb",
+        role: "The Design Atelier",
+        course: "Interior Design",
+        image: "https://i.pravatar.cc/150?u=anshuman",
+        quote: "The course structure balanced creativity with business understanding. I learned how to design, present, and market my work, which helped me start taking independent projects.",
+        color: "from-slate-600 to-slate-900"
+    },
+    {
+        id: 10,
+        name: "Rahul Yadav",
+        role: "Vivier",
+        course: "Interior Design",
+        image: "https://i.pravatar.cc/150?u=rahul",
+        quote: "The studio-based learning and practical assignments helped me build a strong design foundation. I felt prepared to handle real client requirements right after completing my course.",
+        color: "from-emerald-600 to-teal-700"
     }
 ];
 
@@ -138,9 +201,10 @@ const TestimonialSlider = () => {
                                         </div>
                                     </div>
                                     <div>
-                                        <h4 className="text-slate-900 font-bold text-lg leading-tight mb-1">{item.name}</h4>
-                                        <p className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-2">{item.course}</p>
-                                        <div className={`inline-block px-3 py-1 rounded-full bg-linear-to-r ${item.color} text-white text-[9px] font-black uppercase tracking-widest`}>
+                                        <h4 className="text-slate-900 font-bold text-lg leading-tight mb-0.5">{item.name}</h4>
+                                        <p className="text-[10px] font-mono uppercase tracking-widest text-slate-400 mb-1">{item.course}</p>
+                                        <p className="text-xs font-bold text-slate-600 mb-3">{item.role}</p>
+                                        <div className="inline-block px-3 py-1 rounded-full bg-linear-to-r from-primary to-secondary text-white text-[9px] font-black uppercase tracking-widest">
                                             Alumni
                                         </div>
                                     </div>

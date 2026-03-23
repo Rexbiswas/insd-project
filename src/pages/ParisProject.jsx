@@ -79,20 +79,6 @@ const ParisProject = () => {
 
             {/* Hero Section */}
             <section className="relative h-screen w-full flex items-center justify-center pt-20 px-6 z-10 overflow-hidden">
-                {/* Background Video Layer */}
-                <div className="absolute inset-0 z-0">
-                    <video 
-                        autoPlay 
-                        muted 
-                        loop 
-                        playsInline 
-                        className="w-full h-full object-cover grayscale opacity-20 scale-105"
-                    >
-                        <source src="https://player.vimeo.com/external/370331493.sd.mp4?s=d38622c42283921b3699c2b4c19e59f4258d4a75&profile_id=164&oauth2_token_id=57447761" type="video/mp4" />
-                    </video>
-                    <div className="absolute inset-0 bg-linear-to-b from-[#f3f3f3] via-transparent to-[#f3f3f3]" />
-                </div>
-
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vh] h-[60vh] md:w-[80vh] md:h-[80vh] bg-slate-200 rounded-full blur-3xl opacity-50 z-0 mix-blend-multiply"></div>
 
                 <div className="relative z-10 flex flex-col items-center text-center max-w-5xl mx-auto">
@@ -133,7 +119,13 @@ const ParisProject = () => {
                     transition={{ duration: 1.5, delay: 0.8 }}
                     className="absolute bottom-10 right-10 w-64 md:w-96 aspect-3/4 p-2 bg-white shadow-2xl z-20 hidden lg:block"
                 >
-                    <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=1000" alt="Paris Architecture" className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700" />
+                    <div className="w-full h-full relative group overflow-hidden">
+                        <iframe 
+                            src="https://go.screenpal.com/player/cOe0D9nT6Dx?ff=1&ahc=1&dcc=1&tl=1&bg=transparent&share=1&download=1&embed=1&cl=1"
+                            className="absolute inset-0 w-full h-full border-0 grayscale hover:grayscale-0 transition-all duration-1000"
+                            allowFullScreen
+                        />
+                    </div>
                     <div className="absolute -bottom-4 -left-4 bg-slate-900 text-white px-4 py-2 text-xs font-mono uppercase tracking-widest">
                         Paris, France
                     </div>
