@@ -43,9 +43,12 @@ const CourseCard = ({ course, index }) => {
                     </p>
 
                     <div className="flex items-center gap-4 pt-4">
-                        <button className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-bold text-xs uppercase tracking-widest hover:bg-pink-600 hover:text-white transition-all transform hover:scale-105">
+                        <Link 
+                            to={course.path}
+                            className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-bold text-xs uppercase tracking-widest hover:bg-pink-600 hover:text-white transition-all transform hover:scale-105"
+                        >
                             View Syllabus <ArrowUpRight size={16} />
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -85,9 +88,12 @@ const CourseListCard = ({ course, index }) => {
                             {course.title}
                         </h3>
                     </div>
-                    <button className="self-center md:self-auto px-6 py-3 bg-white/5 hover:bg-white text-white hover:text-black border border-white/10 rounded-full font-bold text-[10px] uppercase tracking-widest transition-all">
+                    <Link 
+                        to={course.path}
+                        className="self-center md:self-auto px-6 py-3 bg-white/5 hover:bg-white text-white hover:text-black border border-white/10 rounded-full font-bold text-[10px] uppercase tracking-widest transition-all"
+                    >
                         View Syllabus
-                    </button>
+                    </Link>
                 </div>
                 <p className="text-slate-400 text-sm font-light leading-relaxed max-w-2xl">
                     {course.description}
@@ -114,6 +120,7 @@ const Courses = () => {
             category: "Fashion",
             duration: "3 Years Bachelors",
             image: "https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg",
+            path: "/courses/fashion-designing",
             description: "Master the art of haute couture, drape, and structural design in our state-of-the-art studios."
         },
         {
@@ -121,6 +128,7 @@ const Courses = () => {
             category: "Interior",
             duration: "3 Years Bachelors",
             image: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg",
+            path: "/courses/interior-designing",
             description: "Learn to build immersive environments that blend high-performance luxury with human ergonomics."
         },
         {
@@ -128,6 +136,7 @@ const Courses = () => {
             category: "VFX",
             duration: "2 Years Masters",
             image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg",
+            path: "/courses/graphic-designing",
             description: "From brand logic to motion design, define the visual language of the next digital era."
         },
         {
@@ -135,6 +144,7 @@ const Courses = () => {
             category: "VFX",
             duration: "1 Year Diploma",
             image: "https://images.pexels.com/photos/251225/pexels-photo-251225.jpeg",
+            path: "/courses/graphic-designing",
             description: "An intensive diploma designed specifically for career changers looking to enter the design industry."
         },
         {
@@ -142,6 +152,7 @@ const Courses = () => {
             category: "VFX",
             duration: "6 Months",
             image: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg",
+            path: "/courses/animation-and-vfx",
             description: "Focused animation course for YouTube creators and digital content artists."
         },
         {
@@ -149,6 +160,7 @@ const Courses = () => {
             category: "Fashion",
             duration: "Weekend Batch",
             image: "https://images.pexels.com/photos/594452/pexels-photo-594452.jpeg",
+            path: "/courses", 
             description: "Convenient weekend design courses in Delhi for working professionals."
         },
         {
@@ -156,6 +168,7 @@ const Courses = () => {
             category: "All",
             duration: "3 Months",
             image: "https://images.pexels.com/photos/4050314/pexels-photo-4050314.jpeg",
+            path: "/courses",
             description: "Design certification with job support for quick industry entry."
         },
         {
@@ -163,6 +176,7 @@ const Courses = () => {
             category: "Fashion",
             duration: "1 Year PG",
             image: "https://images.pexels.com/photos/1183992/pexels-photo-1183992.jpeg",
+            path: "/courses/msc-luxury-brand-management",
             description: "Understand the psychology of high-end consumerism and manage global luxury conglomerates."
         },
         {
@@ -170,7 +184,24 @@ const Courses = () => {
             category: "Fashion",
             duration: "2 Years Diploma",
             image: "https://images.pexels.com/photos/1531660/pexels-photo-1531660.jpeg",
+            path: "/courses/jewellery-designing",
             description: "The intersection of material engineering and fine art. Craft the heirlooms of tomorrow."
+        },
+        {
+            title: "Photography",
+            category: "VFX",
+            duration: "2 Years Diploma",
+            image: "https://images.pexels.com/photos/594452/pexels-photo-594452.jpeg",
+            path: "/courses/photography",
+            description: "From editorial high-fashion to cinematic digital storytelling, master the art of the clinical lens."
+        },
+        {
+            title: "Textile Design",
+            category: "Fashion",
+            duration: "3 Years Bachelors",
+            image: "https://images.pexels.com/photos/236102/pexels-photo-236102.jpeg",
+            path: "/courses/textile-designing",
+            description: "The science of fiber and the soul of weave. Design the future of sustainable couture materials."
         }
     ];
 

@@ -90,7 +90,7 @@ const FashionDesigning = () => {
                 {/* Background Image with Overlay */}
                 <div className="absolute inset-0 z-0">
                     <img 
-                        src="/fashion_design_curriculum_studio_1773908996575.png" 
+                        src="https://images.pexels.com/photos/3735641/pexels-photo-3735641.jpeg?auto=compress&cs=tinysrgb&w=1920" 
                         alt="Fashion Design Studio" 
                         className="w-full h-full object-cover scale-105"
                     />

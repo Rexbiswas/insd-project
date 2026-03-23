@@ -73,8 +73,8 @@ const TextileDesigning = () => {
             <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center text-center px-6 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img 
-                        src="/textile_design_hero_luxury_fabrics_1773917052890.png" 
-                        alt="Textile Design Studio" 
+                        src="https://images.pexels.com/photos/236102/pexels-photo-236102.jpeg?auto=compress&cs=tinysrgb&w=1920" 
+                        alt="Textile Design Loom" 
                         className="w-full h-full object-cover scale-105"
                     />
                     <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />

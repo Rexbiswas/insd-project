@@ -73,7 +73,7 @@ const Photography = () => {
             <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center text-center px-6 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img 
-                        src="/photography_hero_modern_studio_1773917031479.png" 
+                        src="https://images.pexels.com/photos/594452/pexels-photo-594452.jpeg?auto=compress&cs=tinysrgb&w=1920" 
                         alt="Photography Studio" 
                         className="w-full h-full object-cover scale-105"
                     />

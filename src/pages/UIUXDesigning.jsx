@@ -74,8 +74,8 @@ const UIUXDesigning = () => {
             <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center text-center px-6 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img 
-                        src="/uiux_design_hero_modern_1773916987060.png" 
-                        alt="UI/UX Design Studio" 
+                        src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1920" 
+                        alt="UI/UX Design Workspace" 
                         className="w-full h-full object-cover scale-105"
                     />
                     <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />

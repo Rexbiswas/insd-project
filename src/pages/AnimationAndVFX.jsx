@@ -76,7 +76,7 @@ const AnimationAndVFX = () => {
             <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center text-center px-6 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img 
-                        src="/animation_vfx_hero_studio_1773916943289.png" 
+                        src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1920" 
                         alt="Animation Studio" 
                         className="w-full h-full object-cover scale-105"
                     />

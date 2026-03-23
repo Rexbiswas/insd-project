@@ -76,7 +76,7 @@ const GraphicDesigning = () => {
             <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center text-center px-6 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img 
-                        src="/graphic_design_hero_modern_1773916922343.png" 
+                        src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1920" 
                         alt="Graphic Design Studio" 
                         className="w-full h-full object-cover scale-105"
                     />

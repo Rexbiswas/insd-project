@@ -76,7 +76,7 @@ const InteriorDesigning = () => {
             <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center text-center px-6 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img 
-                        src="/interior_design_hero_luxury_1773916898508.png" 
+                        src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1920" 
                         alt="Interior Design Studio" 
                         className="w-full h-full object-cover scale-105"
                     />
