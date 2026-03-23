@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import StudentTransformation from '../components/StudentTransformation';
 import GlobalIndustryNetwork from '../components/GlobalIndustryNetwork';
+import HiringPartnersLogoCloud from '../components/HiringPartnersLogoCloud';
 import Footer from '../components/Footer';
 
 const Placement = () => {
@@ -38,6 +39,9 @@ const Placement = () => {
                 </div>
             </section>
 
+            {/* Hiring Partners Logo Cloud */}
+            <HiringPartnersLogoCloud />
+
             {/* StudentTransformation Component */}
             <motion.div
                 initial={{ opacity: 0 }}
@@ -47,7 +51,11 @@ const Placement = () => {
                 <StudentTransformation />
             </motion.div>
 
+            {/* Global Industry Network - Detailed Partner View */}
             <GlobalIndustryNetwork />
+
+
+            <Footer />
         </main>
     );
 };

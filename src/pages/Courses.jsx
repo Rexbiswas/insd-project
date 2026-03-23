@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import { Filter, Search, ArrowUpRight, CheckCircle2, LayoutGrid, List, Sparkles } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 
@@ -366,12 +367,12 @@ const Courses = () => {
                     </div>
 
                     <div className="flex flex-col gap-4 w-full md:w-auto">
-                        <button className="px-12 py-6 bg-pink-600 text-white font-black rounded-full uppercase tracking-widest hover:bg-black transition-all hover:scale-105 shadow-2xl shadow-pink-600/20">
+                        <Link to="/apply" className="px-12 py-6 bg-pink-600 text-white font-black rounded-full uppercase tracking-widest hover:bg-black transition-all hover:scale-105 shadow-2xl shadow-pink-600/20 inline-block text-center whitespace-nowrap">
                             Apply for Admission
-                        </button>
-                        <button className="px-12 py-6 border border-black group-hover:border-white/20 text-black group-hover:text-white font-black rounded-full uppercase tracking-widest transition-all hover:bg-white hover:text-black">
+                        </Link>
+                        <Link to="/INSD Prospectus_2026 01-13.pdf" className="px-12 py-6 border border-black group-hover:border-white/20 text-black group-hover:text-white font-black rounded-full uppercase tracking-widest transition-all hover:bg-white hover:text-black inline-block text-center whitespace-nowrap">
                             Download Prospectus
-                        </button>
+                        </Link>
                     </div>
                 </div>
 

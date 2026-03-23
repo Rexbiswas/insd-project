@@ -217,9 +217,9 @@ const StudentTransformation = () => {
                     
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12 mb-20 bg-white/50 backdrop-blur-sm p-10 md:p-16 rounded-[4rem] border border-white/50 shadow-sm">
                         {[
-                            { value: 99, suffix: "%", label: "Placement Assistance" },
+                            { value: 100, suffix: "%", label: "Placement Assistance" },
                             { value: 500, suffix: "+", label: "Hiring Partners" },
-                            { value: 12, suffix: "L", label: "Highest Package" },
+                            { value: 18, suffix: "L", label: "Highest Package" },
                             { value: "Global", suffix: "", label: "Alumni Network" }
                         ].map((metric, i) => (
                             <MetricCounter key={i} {...metric} delay={i * 0.1} />

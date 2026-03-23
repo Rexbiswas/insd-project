@@ -1,15 +1,17 @@
-import React, { useRef, useLayoutEffect } from 'react';
+import React, { useRef, useLayoutEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
-import { useRegisterModal } from '../context/RegisterModalContext';
+import ParisFormModal from '../components/ParisFormModal';
+import VuittonSlider from '../components/VuittonSlider';
+import IndiaToParisSlider from '../components/IndiaToParisSlider';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ParisProject = () => {
-    const { openModal } = useRegisterModal();
+    const [isParisModalOpen, setIsParisModalOpen] = useState(false);
     const containerRef = useRef(null);
     const horizontalRef = useRef(null);
     const galleryContainerRef = useRef(null);
@@ -69,14 +71,28 @@ const ParisProject = () => {
         <div ref={containerRef} className="bg-[#f3f3f3] min-h-screen text-slate-900 overflow-hidden font-sans">
             <SEO
                 title="The Paris Project - Global Exposure Program | INSD"
-                description="Join INSD's exclusive global exposure program in Paris. A month-long intensive design journey in the fashion capital of the world, collaborating with luxury houses."
+                description="Join INSD's exclusive global exposure program in Paris. A 14-day intensive design journey in the fashion capital of the world, collaborating with luxury houses."
                 keywords="Paris design program, global exposure design, study in Paris, fashion design Paris, INSD global programs"
             />
 
 
 
             {/* Hero Section */}
-            <section className="relative h-screen w-full flex items-center justify-center pt-20 px-6 z-10">
+            <section className="relative h-screen w-full flex items-center justify-center pt-20 px-6 z-10 overflow-hidden">
+                {/* Background Video Layer */}
+                <div className="absolute inset-0 z-0">
+                    <video 
+                        autoPlay 
+                        muted 
+                        loop 
+                        playsInline 
+                        className="w-full h-full object-cover grayscale opacity-20 scale-105"
+                    >
+                        <source src="https://player.vimeo.com/external/370331493.sd.mp4?s=d38622c42283921b3699c2b4c19e59f4258d4a75&profile_id=164&oauth2_token_id=57447761" type="video/mp4" />
+                    </video>
+                    <div className="absolute inset-0 bg-linear-to-b from-[#f3f3f3] via-transparent to-[#f3f3f3]" />
+                </div>
+
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vh] h-[60vh] md:w-[80vh] md:h-[80vh] bg-slate-200 rounded-full blur-3xl opacity-50 z-0 mix-blend-multiply"></div>
 
                 <div className="relative z-10 flex flex-col items-center text-center max-w-5xl mx-auto">
@@ -106,7 +122,7 @@ const ParisProject = () => {
                         transition={{ duration: 1.5, delay: 1 }}
                         className="mt-8 md:mt-12 text-slate-500 max-w-2xl text-lg md:text-xl font-light leading-relaxed tracking-wide"
                     >
-                        Immerse yourself in the fashion capital of the world. A curated, month-long intensive where INSD designers collaborate with European luxury houses.
+                        Immerse yourself in the fashion capital of the world. A curated, 14-day intensive where INSD designers collaborate with European luxury houses.
                     </motion.p>
                 </div>
 
@@ -127,14 +143,14 @@ const ParisProject = () => {
             {/* Intro Stats */}
             <section className="py-20 border-y border-slate-300 relative z-10 bg-[#f3f3f3]">
                 <div className="container mx-auto px-6">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-12 divide-x divide-slate-300">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-y-12 md:gap-y-0">
                         {[
-                            { label: "Duration", value: "30 Days" },
-                            { label: "Industry Visits", value: "15+" },
+                            { label: "Duration", value: "14 Days" },
+                            { label: "Industry Visits", value: "10+" },
                             { label: "Masterclasses", value: "08" },
                             { label: "Cohort Size", value: "Min. 25" }
                         ].map((stat, i) => (
-                            <div key={i} className="pl-6 md:pl-12 reveal-up">
+                            <div key={i} className={`reveal-up text-center px-4 ${i !== 0 ? 'md:border-l border-slate-300' : ''} ${i % 2 !== 0 ? 'border-l border-slate-300 md:border-l-0' : ''}`}>
                                 <h3 className="text-4xl md:text-5xl font-serif text-slate-900 mb-2">{stat.value}</h3>
                                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">{stat.label}</p>
                             </div>
@@ -143,69 +159,42 @@ const ParisProject = () => {
                 </div>
             </section>
 
-            {/* Horizontal Journey Section */}
-            <section id="paris-journey" className="h-[150vh] w-full relative z-10 bg-[#f3f3f3]">
-                <div className="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden">
+            {/* India to Paris Journey Slider */}
+            <IndiaToParisSlider />
 
-                    <div className="absolute top-20 left-6 md:left-20 z-20 reveal-up">
-                        <h2 className="text-4xl md:text-6xl font-serif text-slate-900 leading-none">The <span className="italic text-slate-400">Itinerary</span></h2>
-                    </div>
-
-                    <div ref={horizontalRef} className="flex gap-16 px-6 md:px-20 items-center w-max mt-20">
-
-                        {[
-                            { day: "Week 01", title: "Haute Couture Exposure", img: "https://images.unsplash.com/photo-1550614000-4b95d4ebf0b8?q=80&w=800", desc: "Private tours of legendary ateliers and museum archives." },
-                            { day: "Week 02", title: "Street Luxury & Sourcing", img: "https://images.unsplash.com/photo-1509631179647-0c114ee3c235?q=80&w=800", desc: "Sourcing finest fabrics in Le Marais and studying urban trends." },
-                            { day: "Week 03", title: "Design Sprint", img: "https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=800", desc: "Intensive 48-hour design challenge mentored by Parisian designers." },
-                            { day: "Week 04", title: "The Final Showcase", img: "https://images.unsplash.com/photo-1545291730-faff8ca1d4b0?q=80&w=800", desc: "Presenting capsule collections at a bespoke gallery in Paris." }
-                        ].map((item, i) => (
-                            <div key={i} className="relative w-[85vw] md:w-[40vw] h-[55vh] md:h-[65vh] shrink-0 flex flex-col lg:flex-row gap-8 items-center bg-white p-6 shadow-xl border border-slate-200">
-                                <div className="w-full lg:w-1/2 h-48 lg:h-full overflow-hidden relative">
-                                    <img src={item.img} alt={item.title} className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-1000" />
-                                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-slate-900">
-                                        {item.day}
-                                    </div>
-                                </div>
-                                <div className="w-full lg:w-1/2 flex flex-col justify-center">
-                                    <h3 className="text-3xl md:text-4xl font-serif text-slate-900 mb-4">{item.title}</h3>
-                                    <p className="text-slate-500 font-light leading-relaxed">{item.desc}</p>
-                                    <div className="w-12 h-px bg-slate-300 mt-8"></div>
-                                </div>
-                            </div>
-                        ))}
-
-                    </div>
-                </div>
+            {/* Fondation Louis Vuitton Itinerary Slider */}
+            <section id="paris-journey" className="relative z-10 bg-[#f3f3f3]">
+                <VuittonSlider />
             </section>
 
-            {/* Immersive Parallax Gallery */}
+            {/* Immersive Versailles Parallax Gallery */}
             <section ref={galleryContainerRef} className="relative h-[150vh] bg-[#f3f3f3] overflow-hidden z-10 w-full flex items-center justify-center">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 text-center pointer-events-none mix-blend-difference w-full">
-                    <h2 className="text-7xl md:text-[12rem] font-serif text-white uppercase tracking-tighter leading-none">L'Éternité</h2>
-                    <p className="text-white text-lg md:text-2xl uppercase tracking-[0.5em] mt-4 font-bold stroke-text-white/50">The Archives</p>
+                    <h2 className="text-7xl md:text-[12rem] font-serif text-white uppercase tracking-tighter leading-none">Le Palais</h2>
+                    <p className="text-white text-lg md:text-2xl uppercase tracking-[0.5em] mt-4 font-bold stroke-text-white/50">Versailles</p>
                 </div>
 
                 <div className="flex justify-center gap-4 md:gap-8 h-[200vh] w-full px-4 md:px-12 -rotate-6 scale-110 opacity-80 hover:opacity-100 transition-opacity duration-700">
 
                     {/* Column 1 - Travels Up */}
                     <motion.div style={{ y: y1 }} className="flex flex-col gap-4 md:gap-8 w-1/3 pt-[20vh]">
-                        <img src="https://images.unsplash.com/photo-1548624313-0396c75e4b1a?q=80&w=800" alt="Archive 1" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
-                        <img src="https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?q=80&w=800" alt="Archive 2" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
-                        <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=800" alt="Archive 3" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
+                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.18%20(3).jpeg" alt="Versailles 1" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
+                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.19%20(1).jpeg" alt="Versailles 2" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
+                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.19.jpeg" alt="Versailles 3" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
                     </motion.div>
 
                     {/* Column 2 - Travels Down */}
                     <motion.div style={{ y: y2 }} className="flex flex-col gap-4 md:gap-8 w-1/3">
-                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800" alt="Archive 4" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
-                        <img src="https://images.unsplash.com/photo-1571285227289-5f259ce34cc7?q=80&w=800" alt="Archive 5" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
-                        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=800" alt="Archive 6" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
+                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.21%20(2).jpeg" alt="Versailles 4" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
+                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.21.jpeg" alt="Versailles 5" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
+                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.18%20(3).jpeg" alt="Versailles 6" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
                     </motion.div>
 
                     {/* Column 3 - Travels Up Fast */}
                     <motion.div style={{ y: y3 }} className="flex flex-col gap-4 md:gap-8 w-1/3 pt-[10vh]">
-                        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=800" alt="Archive 7" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
-                        <img src="https://images.unsplash.com/photo-1550614000-4b95d4ebf0b8?q=80&w=800" alt="Archive 8" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
-                        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=800" alt="Archive 9" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
+                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.19%20(1).jpeg" alt="Versailles 7" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
+                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.19.jpeg" alt="Versailles 8" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
+                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.21%20(2).jpeg" alt="Versailles 9" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
                     </motion.div>
 
                 </div>
@@ -271,12 +260,16 @@ const ParisProject = () => {
                                 whileInView={{ x: 0, opacity: 1 }}
                                 transition={{ duration: 1, delay: 0.4 }}
                                 viewport={{ once: true }}
-                                className="relative aspect-video w-full overflow-hidden shadow-xl group border border-slate-200"
+                                className="relative aspect-[9/16] w-full max-w-[350px] mx-auto overflow-hidden shadow-2xl group border border-slate-200 bg-black"
                             >
-                                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200" alt="Backstage" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100" />
-                                <div className="absolute inset-0 bg-linear-to-tr from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-4 py-2 text-[10px] uppercase font-bold tracking-widest text-slate-900 border border-slate-200 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
-                                    Backstage Pass
+                                <iframe 
+                                    src="https://go.screenpal.com/player/cOe0DRnT6Dp?ff=1&ahc=1&dcc=1&tl=1&bg=transparent&share=1&download=1&embed=1&cl=1"
+                                    className="absolute inset-0 w-full h-full border-0 grayscale group-hover:grayscale-0 transition-all duration-1000"
+                                    allowFullScreen
+                                />
+                                <div className="absolute inset-0 bg-linear-to-tr from-slate-900/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+                                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-4 py-2 text-[10px] uppercase font-bold tracking-widest text-slate-900 border border-slate-200 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200 z-10">
+                                    Live Runway Pass
                                 </div>
                             </motion.div>
                         </div>
@@ -285,24 +278,47 @@ const ParisProject = () => {
             </section>
 
             {/* Editorial Footer CTA */}
-            <section className="py-40 flex items-center justify-center text-center px-6 relative z-10 bg-[#f3f3f3]">
-                <div className="max-w-3xl mx-auto">
-                    <h2 className="text-4xl md:text-7xl font-serif text-slate-900 mb-8 leading-[1.1]">
-                        Your Journey to the <span className="italic text-slate-400">Capital</span>
-                    </h2>
-                    <p className="text-slate-500 mb-12 text-lg font-light max-w-xl mx-auto">
-                        Applications for The Paris Project are highly competitive. Secure your interview slot today for the upcoming cohort.
-                    </p>
-                    <motion.button
-                        whileHover={{ scale: 1.05, backgroundColor: "#db3436" }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={openModal}
-                        className="bg-slate-900 text-white px-12 py-5 text-sm tracking-[0.2em] font-bold uppercase transition-all duration-300 shadow-2xl rounded-full"
+            <section className="py-48 md:py-64 flex items-center justify-center text-center px-6 relative z-10 overflow-hidden bg-slate-950">
+                {/* Background Image Layer */}
+                <div className="absolute inset-0 z-0">
+                    <img 
+                        src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?q=80&w=2000" 
+                        alt="Paris Eiffel Tower" 
+                        className="w-full h-full object-cover opacity-30 scale-105"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/20 to-slate-950" />
+                </div>
+                
+                <div className="max-w-4xl mx-auto relative z-10">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1 }}
+                        viewport={{ once: true }}
                     >
-                        Apply for Paris
-                    </motion.button>
+                        <h2 className="text-5xl md:text-8xl lg:text-9xl font-serif text-white mb-8 leading-[0.85] tracking-tighter uppercase whitespace-nowrap">
+                            Your Journey to <br />
+                            <span className="text-transparent stroke-text-white italic font-serif">The Capital.</span>
+                        </h2>
+                        <p className="text-slate-400 mb-16 text-lg md:text-2xl font-light max-w-2xl mx-auto leading-relaxed">
+                            Applications for The Paris Project are highly competitive. <br className="hidden md:block" /> Secure your interview slot today for the upcoming cohort.
+                        </p>
+                        <motion.button
+                            whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(219,52,54,0.4)" }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => setIsParisModalOpen(true)}
+                            className="bg-primary text-white px-20 py-7 text-xs tracking-[0.3em] font-black uppercase transition-all duration-300 shadow-2xl rounded-full"
+                        >
+                            Apply for Paris
+                        </motion.button>
+                    </motion.div>
                 </div>
             </section>
+
+            <ParisFormModal 
+                isOpen={isParisModalOpen} 
+                onClose={() => setIsParisModalOpen(false)} 
+            />
 
             {/* Footer */}
             <Footer />
