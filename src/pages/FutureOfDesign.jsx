@@ -20,7 +20,7 @@ const FutureOfDesign = () => {
         <div className="bg-white min-h-screen font-sans selection:bg-primary selection:text-white overflow-hidden">
             <SEO 
                 title="Future of Design | INSD"
-                description="Explore the next frontier of creativity. From Generative AI to Sustainable Ecosystems, discover how INSD is shaping the designers of 2030 and beyond."
+                description="Explore the next frontier of creativity. From Generative AI to Sustainable Ecosystems, discover how INSD is shaping the designers of 2048 and beyond."
             />
 
             {/* --- FUTURISTIC HERO (WHITE VARIANT) --- */}
@@ -74,7 +74,7 @@ const FutureOfDesign = () => {
                             Explore Innovation Lab
                         </button>
                         <button className="px-12 py-5 border border-slate-200 text-slate-900 rounded-full font-black uppercase text-xs tracking-widest hover:bg-slate-50 transition-all">
-                            View 2030 Roadmap
+                            View 2048 Roadmap
                         </button>
                     </motion.div>
                 </div>
@@ -97,10 +97,10 @@ const FutureOfDesign = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {[
-                            { title: 'Generative XR', icon: Layers, desc: 'Immersive realities built via procedural algorithms and real-time user data.', color: 'bg-blue-500' },
-                            { title: 'Bio-Design', icon: Fingerprint, desc: 'Integrating biological organisms with design to create living, breathing products.', color: 'bg-green-500' },
-                            { title: 'Ethical AI', icon: Database, desc: 'Programming bias-free, inclusive creative agents for global problem solving.', color: 'bg-purple-500' },
-                            { title: 'Sustainable 4.0', icon: Globe, desc: 'Zero-waste circular economy manufacturing using advanced 3D fabrication.', color: 'bg-rose-500' }
+                            { title: 'Generative XR', icon: Layers, desc: 'AI architects creating infinite, adaptive meta-realities that respond instantly to user intent.', color: 'bg-blue-500' },
+                            { title: 'Sentient Bio', icon: Fingerprint, desc: 'Synthesizing AI and molecular biology to grow living, responsive design ecosystems.', color: 'bg-green-500' },
+                            { title: 'AI Governance', icon: Database, desc: 'Embedding ethical AI frameworks to ensure unbiased, inclusive global creative problem solving.', color: 'bg-purple-500' },
+                            { title: 'Circular AI', icon: Globe, desc: 'AI-optimized zero-waste manufacturing pipelines driven by predictive demand synthesis.', color: 'bg-rose-500' }
                         ].map((item, idx) => (
                             <motion.div 
                                 key={idx}
@@ -134,26 +134,28 @@ const FutureOfDesign = () => {
                         </h2>
                     </div>
 
-                    <div className="relative border-l border-white/10 ml-6 md:ml-0 md:border-l-0 md:flex md:justify-between md:items-start gap-12">
+                    <div className="relative border-l border-white/10 ml-6 md:ml-0 md:border-l-0 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-12">
                         {[
-                            { year: '2024', event: 'AI INTEGRATION', desc: 'Neural networks become the core palette for digital and industrial masters.' },
-                            { year: '2026', event: 'SPATIAL WEB', desc: 'The death of the flat screen; design becomes a 3D architectural layer of the city.' },
-                            { year: '2028', event: 'SYNTHETIC MEDIA', desc: 'Automated 3D printing of entire wearable collections based on daily mood data.' },
-                            { year: '2030+', event: 'BEYOND HUMAN', desc: 'Brain-Computer Interfaces (BCI) allowing thought-to-product realization instantly.' }
+                            { year: '2024', event: 'AGENTIC DESIGN', desc: 'AI collaborators evolve from simple tools to active, sentient companions in the creative process.' },
+                            { year: '2026', event: 'GENERATIVE SPACES', desc: 'AI-driven spatial layers that dynamically adapt in real-time to human behavior and intent.' },
+                            { year: '2030', event: 'NEURAL SYMMETRY', desc: 'Direct thought-to-design pipelines powered by AI that interprets subconscious aesthetic vision.' },
+                            { year: '2035', event: 'NANO-SYNTHESIS', desc: 'Autonomous AI molecules constructing self-healing, shapeshifting smart apparel and textures.' },
+                            { year: '2042', event: 'SENTIENT HABITATS', desc: 'AI urban ecosystems that morph their visual and structural DNA based on collective emotions.' },
+                            { year: '2048', event: 'ATOMIC GENERATIVE', desc: 'Quantum AI enabling design at the subatomic level, where matter is curated via algorithmic intent.' }
                         ].map((node, i) => (
                             <motion.div 
                                 key={i}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: i * 0.2 }}
-                                className="relative pl-12 md:pl-0 md:pt-12 mb-16 md:mb-0 md:w-1/4"
+                                transition={{ delay: i * 0.1 }}
+                                className="relative pl-12 md:pl-0 md:pt-12 mb-12 md:mb-0"
                             >
                                 <div className="absolute left-[-5px] top-0 md:left-0 md:top-[-5px] w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_15px_rgba(219,52,54,0.8)]" />
                                 <div className="space-y-3">
-                                    <span className="text-4xl md:text-5xl font-black text-white">{node.year}</span>
+                                    <span className="text-4xl md:text-5xl font-black text-white leading-none inline-block mb-2">{node.year}</span>
                                     <h4 className="text-primary font-black uppercase tracking-[0.3em] text-[10px]">{node.event}</h4>
-                                    <p className="text-slate-400 font-bold text-xs uppercase tracking-widest leading-relaxed max-w-[200px]">
+                                    <p className="text-slate-400 font-bold text-xs uppercase tracking-widest leading-relaxed">
                                         {node.desc}
                                     </p>
                                 </div>
@@ -161,7 +163,7 @@ const FutureOfDesign = () => {
                         ))}
                         
                         {/* Desktop Horizontal Line */}
-                        <div className="hidden md:block absolute top-1.5 left-0 right-0 h-px bg-white/10 -z-10" />
+                        <div className="hidden lg:block absolute top-1.5 left-0 right-0 h-px bg-white/10 -z-10" />
                     </div>
                 </div>
             </section>

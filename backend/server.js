@@ -9,6 +9,7 @@ import leadRoutes from './routes/leadauth.js';
 import stepLeadRoutes from './routes/stepleads.js';
 import admissionRoutes from './routes/admission.js';
 import parisRoutes from './routes/paris.js';
+import partnerRoutes from './routes/partner.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -54,6 +55,7 @@ app.use('/api/leads', leadRoutes);
 app.use('/api/step-leads', stepLeadRoutes);
 app.use('/api/admission', admissionRoutes);
 app.use('/api/paris', parisRoutes);
+app.use('/api/partner', partnerRoutes);
 
 // Start Server locally
 if (process.env.NODE_ENV !== 'production') {

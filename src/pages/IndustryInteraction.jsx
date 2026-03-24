@@ -15,8 +15,10 @@ import {
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
+import PartnerFormModal from '../components/PartnerFormModal';
 
 const IndustryInteraction = () => {
+    const [isFormOpen, setIsFormOpen] = React.useState(false);
     return (
         <div className="bg-white min-h-screen font-sans selection:bg-primary selection:text-white">
             <SEO 
@@ -146,7 +148,7 @@ const IndustryInteraction = () => {
                                 { name: "Creative Directors", role: "Global Ad Agencies", img: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=800" },
                                 { name: "Luxury Brand Managers", role: "European Labels", img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" }
                             ].map((person, idx) => (
-                                <div key={idx} className="relative aspect-[4/5] overflow-hidden group cursor-pointer bg-slate-900">
+                                <div key={idx} className="relative aspect-4/5 overflow-hidden group cursor-pointer bg-slate-900">
                                     <img 
                                         src={person.img} 
                                         alt={person.name} 
@@ -195,15 +197,18 @@ const IndustryInteraction = () => {
                          </p>
                      </div>
                      <div className="flex flex-col sm:flex-row gap-6">
-                        <button className="px-10 py-5 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest hover:bg-primary hover:text-white transition-all transform hover:scale-105 shadow-2xl">
-                            Request Expert Session
-                        </button>
-                        <button className="px-10 py-5 border border-white/20 text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-900 transition-all">
+
+                        <button 
+                            onClick={() => setIsFormOpen(true)}
+                            className="px-10 py-5 border border-white/20 text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-900 transition-all"
+                        >
                             Partner with us
                         </button>
                      </div>
                  </div>
             </section>
+
+            <PartnerFormModal isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
 
             <Footer />
         </div>
