@@ -11,3 +11,14 @@ createRoot(document.getElementById('root')).render(
     </HelmetProvider>
   </StrictMode>,
 )
+
+// Service Worker Registration for PWA Features
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => {
+          console.log('[PWA] Service Worker Registered Successfully', reg.scope);
+      })
+      .catch(err => console.error('[PWA] Service Worker Registration Failed', err));
+  });
+}
