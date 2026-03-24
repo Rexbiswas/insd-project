@@ -7,11 +7,28 @@ import {
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
+import ArchiveSlider from '../components/ArchiveSlider';
 
 const Mentors = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const mentorData = [
+        {
+            name: "Sunjey Aggarwal",
+            title: "Founder & Chairman, INSD",
+            tags: ["Visionary Leader", "Educational Pioneer", "Chairman"],
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Copy%20of%20Sunjey%20sir%20.jpeg",
+            desc: "The visionary behind INSD's global footprint. Sunjey has dedicated decades to revolutionizing design education in India, bridging the gap between local talent and international standards.",
+            impact: "Global Design Vision"
+        },
+        {
+            name: "Pranav Raj Aggarwal",
+            title: "CEO, INSD",
+            tags: ["Global Strategy", "Tech Optimist", "Executive Board"],
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Copy%20of%20pranav%20sir%20.jpeg",
+            desc: "Driving the next wave of innovation at INSD. Pranav focuses on integrating emerging technologies and international alliances into the core curriculum for 21st-century designers.",
+            impact: "Future Tech & Strategy"
+        },
         {
             name: "Chander Shekhar",
             title: "TEDizen & Design Consultant",
@@ -207,13 +224,15 @@ const Mentors = () => {
                             </p>
                         </div>
                         <div className="flex md:justify-end gap-6">
-                            <Link to="/apply" className="px-12 py-5 bg-slate-900 text-white rounded-[1.5rem] font-black uppercase text-xs tracking-widest hover:bg-primary transition-all shadow-2xl active:scale-95">
+                            <Link to="/apply" className="px-12 py-5 bg-slate-900 text-white rounded-3xl font-black uppercase text-xs tracking-widest hover:bg-primary transition-all shadow-2xl active:scale-95">
                                 APPLY FOR 2026
                             </Link>
                         </div>
                     </div>
                 </div>
             </section>
+            
+            <ArchiveSlider />
             
             <Footer />
         </div>

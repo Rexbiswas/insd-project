@@ -163,6 +163,56 @@ const IndustryInteraction = () => {
                             ))}
                         </div>
                     </div>
+
+                    {/* --- VIDEO SHOWCASE: INDUSTRY VISITS --- */}
+                    <div className="pt-32 space-y-16">
+                        <div className="text-center space-y-4">
+                            <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">Live from the Hub</span>
+                            <h2 className="text-4xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none">
+                                INDUSTRY <span className="text-slate-300">EXPOSURE</span>
+                            </h2>
+                            <p className="text-slate-500 font-bold text-xs md:text-sm uppercase tracking-widest max-w-lg mx-auto leading-relaxed">
+                                Experience the raw energy of our industry visits and masterclasses through the lens of our students.
+                            </p>
+                        </div>
+
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            className="relative aspect-video rounded-[3.5rem] overflow-hidden bg-slate-900 group shadow-2xl"
+                        >
+                            <img 
+                                src="https://images.unsplash.com/photo-1540317580384-e5d43616b9aa?auto=format&fit=crop&q=80&w=1600" 
+                                alt="Industry Visit Video Cover" 
+                                className="w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-1000"
+                            />
+                            
+                            {/* Animated Play Button Wrapper */}
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <motion.button
+                                    whileHover={{ scale: 1.1 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className="relative w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center shadow-2xl transition-all group-hover:bg-primary group-hover:text-white"
+                                >
+                                    <ArrowRight size={32} className="ml-2 group-hover:scale-110 transition-transform" />
+                                    
+                                    {/* Pulse Effect */}
+                                    <div className="absolute inset-0 rounded-full border border-white/50 animate-ping opacity-20" />
+                                </motion.button>
+                            </div>
+
+                            <div className="absolute bottom-12 left-12 right-12 flex flex-col md:flex-row justify-between items-end gap-6 pointer-events-none">
+                                <div className="space-y-2">
+                                    <span className="text-white/60 font-black uppercase tracking-[0.4em] text-[10px]">Documentary Series</span>
+                                    <h4 className="text-white text-3xl font-black uppercase tracking-tighter">Day in the life: Paris Fashion Week</h4>
+                                </div>
+                                <div className="px-6 py-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white text-[10px] font-black uppercase tracking-widest">
+                                    12:45 MIN
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
                 </div>
             </section>
 

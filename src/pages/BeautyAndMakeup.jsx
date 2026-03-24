@@ -75,7 +75,7 @@ const BeautyAndMakeup = () => {
             <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center text-center px-6 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="/beauty_makeup_hero_high_fashion_1773917010256.png"
+                        src="https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Copy%20of%20hair%20&%20beauty%20.png"
                         alt="Beauty & Makeup Studio"
                         className="w-full h-full object-cover scale-105"
                     />
