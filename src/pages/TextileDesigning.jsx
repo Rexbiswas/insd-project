@@ -10,7 +10,8 @@ import {
     Globe,
     Award,
     Target,
-    Download
+    Download,
+    Sparkles
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
