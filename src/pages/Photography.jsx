@@ -403,7 +403,6 @@ const Photography = () => {
                     </div>
                 </div>
             </section>
-
             <Footer />
         </div>
     );
