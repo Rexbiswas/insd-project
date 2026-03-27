@@ -7,7 +7,7 @@ import {
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
-import ArchiveSlider from '../components/ArchiveSlider';
+
 
 const Mentors = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -232,8 +232,7 @@ const Mentors = () => {
                 </div>
             </section>
             
-            <ArchiveSlider />
-            
+
             <Footer />
         </div>
     );

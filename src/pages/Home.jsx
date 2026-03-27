@@ -23,6 +23,11 @@ import BackToTop from '../components/BackToTop';
 import WhyInsd from '../components/WhyInsd';
 import AiFutureDesign from '../components/AiFutureDesign';
 import CelebritySlider from '../components/CelebritySlider';
+import MouseImageTrail from '../components/MouseImageTrail';
+import JobReady from '../components/JobReady';
+import EmployabilityPrograms from '../components/EmployabilityPrograms';
+import ProgramGrid from '../components/ProgramGrid';
+import IndustryInsights from '../components/IndustryInsights';
 
 
 import SEO from '../components/SEO';
@@ -32,7 +37,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
     const containerRef = useRef(null);
-    const titleRef = useRef(null);
 
 
     const insdRef = useRef(null);
@@ -97,55 +101,35 @@ const Home = () => {
                 ease: "linear",
             });
 
-            const scrollTl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: heroRef.current,
-                    start: "top top",
-                    end: "+=150%",
-                    pin: !isMobile,
-                    scrub: 0.5,
-                }
+            // Subtle entrance for Creative Excellence
+            gsap.from(insdRef.current, {
+                opacity: 0,
+                y: 30,
+                duration: 1.5,
+                ease: "expo.out",
+                delay: 0.5
             });
 
+            // Modern Floating Animation for the branding
+            gsap.to(insdRef.current, {
+                y: -10,
+                duration: 2,
+                repeat: -1,
+                yoyo: true,
+                ease: "power1.inOut"
+            });
 
-            // CINEMATIC PORTAL ZOOM: 
-            // Scaling the text so large that it creates a "zoom-through" effect into the next section
-            scrollTl
-                .to(insdRef.current, {
-                    scale: isMobile ? 8 : 15,
-                    opacity: 0,
-                    filter: "blur(60px)",
-                    transformOrigin: "center center",
-                    duration: 2,
-                    ease: "power2.in"
-                }, 0)
-                .fromTo(fifteenRef.current, {
-                    backgroundPosition: "100% 0%",
-                }, {
-                    backgroundPosition: "0% 0%",
-                    duration: 2,
-                    ease: "power2.inOut"
-                }, 0.2);
-
-            if (!isMobile) {
-                scrollTl.to([maskRef.current, titleRef.current], {
-                    scale: 2,
-                    opacity: 0,
-                    filter: "blur(20px)",
-                    duration: 1.5,
-                    ease: "power2.in"
-                }, "<+=0.3");
-            }
-
-            // Gallery Reveal Integration
-            scrollTl.fromTo(galleryContainerRef.current,
-                { opacity: 0, scale: 1.2 },
-                {
-                    opacity: 1,
-                    scale: 1,
-                    duration: 2,
-                    ease: "power2.out"
-                }, "-=1.5");
+            // Entrance animation for Gallery items when they come into view
+            gsap.from(".gallery-item", {
+                opacity: 0,
+                y: 50,
+                stagger: 0.2,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: galleryContainerRef.current,
+                    start: "top 80%",
+                }
+            });
 
             // 3. Legacy Section - Text Reveal, Magnetic Search & Vertical Carousel
             const searchContainer = document.querySelector('.search-container');
@@ -320,113 +304,121 @@ const Home = () => {
             />
 
             {/* Hero Section - Pinned Wrapper relative to Viewport */}
-            <div ref={heroRef} className="relative z-10 h-screen w-full flex flex-col justify-center items-center perspective-[1000px]">
-
-                {/* Unique Vertical Accordion Gallery - Integrated as Hero Background Reveal */}
-                <div ref={galleryContainerRef} className="absolute inset-0 z-0 bg-black overflow-hidden flex flex-col md:flex-row pointer-events-auto opacity-0">
-                    {
-                        galleryItems.map((item, index) => (
-                            <a
-                                key={index}
-                                href={item.link || "#"}
-                                target={item.link ? "_blank" : "_self"}
-                                rel="noopener noreferrer"
-                                className="relative flex-1 group transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] hover:flex-3 cursor-pointer grayscale-0 md:grayscale md:hover:grayscale-0 border-b md:border-b-0 md:border-r border-white/10 last:border-b-0 last:border-r-0"
-                            >
-                                {/* Image Background */}
-                                <div className="absolute inset-0 z-0 overflow-hidden">
-                                    <img
-                                        src={item.img}
-                                        alt={item.title}
-                                        className="w-full h-full object-cover opacity-80 md:opacity-60 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110"
-                                    />
-                                    <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent md:bg-black/60 md:group-hover:bg-black/20 transition-colors duration-700 pointer-events-none" />
-                                </div>
-
-                                {/* Content */}
-                                <div className="absolute inset-0 z-10 flex flex-col justify-end p-6 md:p-8 pb-32 md:pb-12">
-                                    <div className="overflow-hidden">
-                                        <h3 className="text-5xl md:text-7xl lg:text-9xl font-black text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary translate-y-0 md:translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-100 uppercase tracking-tighter leading-none">
-                                            {item.title}
-                                        </h3>
-                                    </div>
-                                    <div className="overflow-hidden mt-2 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
-                                        <p className="text-white/80 text-[10px] md:text-sm font-bold tracking-widest uppercase border-t border-primary/50 pt-3 inline-block">
-                                            Explore Program
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 opacity-0 md:opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none hidden md:block">
-                                    <span className="text-white/50 font-bold uppercase tracking-widest text-xl whitespace-nowrap">
-                                        {item.title}
-                                    </span>
-                                </div>
-                            </a>
-                        ))
-                    }
+            {/* Section 1: Creative Excellence */}
+            <div ref={heroRef} className="relative z-10 min-h-screen w-full flex flex-col justify-center items-center bg-white overflow-hidden perspective-[1000px] cursor-default">
+                <MouseImageTrail containerRef={heroRef} />
+                {/* Modern Background Elements */}
+                <div className="absolute inset-0 z-0 overflow-hidden">
+                    <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-primary/5 rounded-full blur-[120px] animate-blob"></div>
+                    <div className="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] bg-secondary/5 rounded-full blur-[120px] animate-blob delay-2000"></div>
                 </div>
 
-                {/* Mask Layer: Mix-Blend-Screen handles the cutout effect */}
-                <div ref={maskRef} className="absolute inset-0 flex flex-col justify-center items-center bg-white md:bg-white mix-blend-screen pointer-events-none select-none z-10 w-full overflow-hidden">
-                    {/* Watermark Logo - Inside mask for participation in blend */}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-30 md:opacity-40 z-0 overflow-hidden">
-                        <img
-                            src="https://insd.edu.in/wp-content/uploads/2022/02/Final-Logo.png"
-                            alt="INSD Watermark"
-                            className="w-[60vw] md:w-[20vw] h-auto object-contain grayscale brightness-0 opacity-40 mix-blend-multiply"
-                        />
-                    </div>
+                {/* Watermark Logo - Refined */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-10 md:opacity-20 z-0 select-none pointer-events-none px-12">
+                    <img
+                        src="https://insd.edu.in/wp-content/uploads/2022/02/Final-Logo.png"
+                        alt="INSD Watermark"
+                        className="w-[70vw] md:w-[35vw] h-auto object-contain grayscale brightness-0 mix-blend-multiply opacity-30"
+                    />
+                </div>
 
-                    {/* Pinned Vertical Center - Containing the brand message and anniversary mark */}
-                    <div className="flex flex-col items-center justify-center w-full px-4 text-center">
-                        <div ref={insdRef} className="text-black text-center flex flex-col items-center justify-center will-change-transform backface-hidden m-0 p-0 relative leading-none tracking-tighter">
-                            <div className="text-[12vw] sm:text-[10vw] md:text-[7.5vw] font-black uppercase mb-3 md:mb-8 flex flex-col items-center">
-                                <h1 className="tracking-tighter flex flex-col items-center">
-                                    <span className="block">creative</span>
-                                    <span className="text-slate-800 italic font-serif -mt-[1.5vw] md:-mt-[2vw] lowercase tracking-normal opacity-90">Excellence</span>
-                                </h1>
-                            </div>
+                <div className="relative z-10 flex flex-col items-center justify-center w-full px-4 text-center">
+                    <div ref={insdRef} className="text-black text-center flex flex-col items-center justify-center m-0 p-0 relative leading-none tracking-tighter">
+                        <div className="text-[12vw] sm:text-[10vw] md:text-[7.5vw] font-black uppercase mb-3 md:mb-8 flex flex-col items-center">
+                            <h1 className="tracking-tighter flex flex-col items-center">
+                                <span className="block">creative</span>
+                                <span className="text-slate-800 italic font-serif mt-[-0.5vw] md:mt-[-0.8vw] lowercase tracking-normal opacity-90">Excellence</span>
+                            </h1>
+                        </div>
 
-                            <div className="relative flex items-center justify-center">
-                                {/* Anniversary Backdrop Glow */}
-                                <div className="absolute inset-0 bg-white/40 rounded-full blur-3xl -z-10 scale-125 opacity-50"></div>
+                        <div className="relative flex items-center justify-center">
+                            <div className="absolute inset-0 bg-white/40 rounded-full blur-3xl -z-10 scale-125 opacity-50"></div>
 
-                                <div className="flex items-center justify-center gap-4 md:gap-12">
-                                    <div className="flex flex-col items-end opacity-40">
-                                        <div className="h-px w-6 md:w-12 bg-black mb-1 md:mb-2"></div>
-                                        <span className="text-[2.5vw] md:text-[1.1vw] font-black uppercase tracking-[0.3em] md:tracking-[0.5em]">Since</span>
-                                    </div>
+                            <div className="flex items-center justify-center gap-4 md:gap-12">
+                                <div className="flex flex-col items-end opacity-40">
+                                    <div className="h-px w-6 md:w-12 bg-black mb-1 md:mb-2"></div>
+                                    <span className="text-[2.5vw] md:text-[1.1vw] font-black uppercase tracking-[0.3em] md:tracking-[0.5em]">Since</span>
+                                </div>
 
-                                    <div className="relative group">
-                                        <span ref={fifteenRef} className="inline-block bg-linear-to-r from-primary via-secondary to-primary bg-size-[200%_auto] bg-clip-text text-transparent text-[24vw] md:text-[16vw] font-black leading-[0.8] px-1 md:px-6">
-                                            15
-                                        </span>
-                                        <span className="absolute -top-1 -right-4 md:-top-8 md:-right-16 text-[11px] md:text-2xl font-black text-primary tracking-widest uppercase">
-                                            Est. 2011
-                                        </span>
-                                    </div>
+                                <div className="relative group">
+                                    <span ref={fifteenRef} className="inline-block bg-linear-to-r from-primary via-secondary to-primary bg-size-[200%_auto] bg-clip-text text-transparent text-[24vw] md:text-[16vw] font-black leading-[0.8] px-1 md:px-6">
+                                        15
+                                    </span>
+                                    <span className="absolute -top-1 -right-4 md:-top-8 md:-right-16 text-[11px] md:text-2xl font-black text-primary tracking-widest uppercase">
+                                        Est. 2011
+                                    </span>
+                                </div>
 
-                                    <div className="flex flex-col items-start opacity-40">
-                                        <div className="h-px w-6 md:w-12 bg-black mb-1 md:mb-2"></div>
-                                        <span className="text-[2.5vw] md:text-[1.1vw] font-black uppercase tracking-[0.3em] md:tracking-[0.5em]">Years</span>
-                                    </div>
+                                <div className="flex flex-col items-start opacity-40">
+                                    <div className="h-px w-6 md:w-12 bg-black mb-1 md:mb-2"></div>
+                                    <span className="text-[2.5vw] md:text-[1.1vw] font-black uppercase tracking-[0.3em] md:tracking-[0.5em]">Years</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Footer-pinned Sub-message for SEO and Clarity */}
-                    <div className="absolute bottom-12 md:bottom-20 left-0 right-0 max-w-4xl mx-auto px-6 text-center opacity-0 hero-sub-message">
-                        <h2 className="text-[10px] md:text-lg font-black uppercase tracking-[0.2em] text-slate-400 mb-2 md:mb-4">
-                            India’s Skill School for Creative Careers
-                        </h2>
-                        <p className="text-xs md:text-xl font-bold uppercase tracking-tight text-slate-500 leading-snug">
-                            Skill-based diplomas in Fashion, Interior, Graphic Design, Jewellery, Animation & VFX with strong placement and freelancing support in Delhi NCR and across India.
-                        </p>
-                    </div>
+
                 </div>
 
+                {/* Modern Mouse-style Scroll Indicator */}
+                <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-70">
+                    <div className="w-6 h-10 border-2 border-slate-300 rounded-full flex justify-center p-1.5 relative overflow-hidden">
+                        <div className="w-1 h-2 bg-primary rounded-full animate-scroll-wheel"></div>
+                        {/* Soft Glow */}
+                        <div className="absolute inset-0 bg-primary/5 blur-lg"></div>
+                    </div>
+                    <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400">Scroll</span>
+                </div>
+            </div>
+
+            <JobReady />
+            <EmployabilityPrograms />
+            <ProgramGrid />
+            <IndustryInsights />
+
+            {/* Section 2: Interactive Gallery */}
+            <div ref={galleryContainerRef} className="relative z-10 h-screen w-full bg-black overflow-hidden flex flex-col md:flex-row pointer-events-auto">
+                {
+                    galleryItems.map((item, index) => (
+                        <a
+                            key={index}
+                            href={item.link || "#"}
+                            target={item.link ? "_blank" : "_self"}
+                            rel="noopener noreferrer"
+                            className="gallery-item relative flex-1 group transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] hover:flex-3 cursor-pointer grayscale-0 md:grayscale md:hover:grayscale-0 border-b md:border-b-0 md:border-r border-white/10 last:border-b-0 last:border-r-0"
+                        >
+                            {/* Image Background */}
+                            <div className="absolute inset-0 z-0 overflow-hidden">
+                                <img
+                                    src={item.img}
+                                    alt={item.title}
+                                    className="w-full h-full object-cover opacity-80 md:opacity-60 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110"
+                                />
+                                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent md:bg-black/60 md:group-hover:bg-black/20 transition-colors duration-700 pointer-events-none" />
+                            </div>
+
+                            {/* Content */}
+                            <div className="absolute inset-0 z-10 flex flex-col justify-end p-6 md:p-8 pb-32 md:pb-12">
+                                <div className="overflow-hidden">
+                                    <h3 className="text-5xl md:text-7xl lg:text-9xl font-black text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary translate-y-0 md:translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-100 uppercase tracking-tighter leading-none">
+                                        {item.title}
+                                    </h3>
+                                </div>
+                                <div className="overflow-hidden mt-2 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                                    <p className="text-white/80 text-[10px] md:text-sm font-bold tracking-widest uppercase border-t border-primary/50 pt-3 inline-block">
+                                        Explore Program
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 opacity-0 md:opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none hidden md:block">
+                                <span className="text-white/50 font-bold uppercase tracking-widest text-xl whitespace-nowrap">
+                                    {item.title}
+                                </span>
+                            </div>
+                        </a>
+                    ))
+                }
             </div>
             <AdmissionScroller />
 
