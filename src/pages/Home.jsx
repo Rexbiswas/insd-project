@@ -299,8 +299,6 @@ const Home = () => {
             {/* Hero Section - Pinned Wrapper relative to Viewport */}
             <div ref={heroRef} className="relative z-10 min-h-screen w-full flex flex-col justify-center items-center bg-white overflow-hidden cursor-default">
                 <MouseImageTrail containerRef={heroRef} />
-
-
                 {/* Watermark Logo - Refined */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-10 md:opacity-20 z-0 select-none pointer-events-none px-12">
                     <img
