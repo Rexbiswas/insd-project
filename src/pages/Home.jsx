@@ -104,20 +104,13 @@ const Home = () => {
             // Subtle entrance for Creative Excellence
             gsap.from(insdRef.current, {
                 opacity: 0,
-                y: 30,
-                duration: 1.5,
-                ease: "expo.out",
-                delay: 0.5
+                y: 10,
+                duration: 1.2,
+                ease: "power2.out",
+                delay: 0.3
             });
 
-            // Modern Floating Animation for the branding
-            gsap.to(insdRef.current, {
-                y: -10,
-                duration: 2,
-                repeat: -1,
-                yoyo: true,
-                ease: "power1.inOut"
-            });
+
 
             // Entrance animation for Gallery items when they come into view
             gsap.from(".gallery-item", {
@@ -305,13 +298,8 @@ const Home = () => {
 
             {/* Hero Section - Pinned Wrapper relative to Viewport */}
             {/* Section 1: Creative Excellence */}
-            <div ref={heroRef} className="relative z-10 min-h-screen w-full flex flex-col justify-center items-center bg-white overflow-hidden perspective-[1000px] cursor-default">
-                <MouseImageTrail containerRef={heroRef} />
-                {/* Modern Background Elements */}
-                <div className="absolute inset-0 z-0 overflow-hidden">
-                    <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-primary/5 rounded-full blur-[120px] animate-blob"></div>
-                    <div className="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] bg-secondary/5 rounded-full blur-[120px] animate-blob delay-2000"></div>
-                </div>
+            <div ref={heroRef} className="relative z-10 min-h-screen w-full flex flex-col justify-center items-center bg-white overflow-hidden cursor-default">
+
 
                 {/* Watermark Logo - Refined */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-10 md:opacity-20 z-0 select-none pointer-events-none px-12">
@@ -341,7 +329,7 @@ const Home = () => {
                                 </div>
 
                                 <div className="relative group">
-                                    <span ref={fifteenRef} className="inline-block bg-linear-to-r from-primary via-secondary to-primary bg-size-[200%_auto] bg-clip-text text-transparent text-[24vw] md:text-[16vw] font-black leading-[0.8] px-1 md:px-6">
+                                    <span ref={fifteenRef} className="inline-block bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent text-[24vw] md:text-[16vw] font-black leading-[0.8] px-1 md:px-6">
                                         15
                                     </span>
                                     <span className="absolute -top-1 -right-4 md:-top-8 md:-right-16 text-[11px] md:text-2xl font-black text-primary tracking-widest uppercase">
