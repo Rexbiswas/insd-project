@@ -166,22 +166,18 @@ const LegacyTimeline = () => {
                             </div>
 
                             {/* Flowing Graphic + Floorplan */}
-                            <div className="relative w-full max-w-sm ml-auto md:ml-0 translate-x-4 md:translate-x-0">
+                            <div className="relative w-full max-w-md ml-auto md:ml-0 translate-x-4 md:translate-x-0 min-h-[1000px] md:min-h-[1200px] flex items-center">
                                 {/* Floorplan Sketch */}
-                                <img 
-                                    src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=50" 
-                                    alt="Sketch"
-                                    className="absolute inset-0 w-full h-full object-contain opacity-10 grayscale mix-blend-multiply -z-10 scale-125 rotate-6"
-                                />
-                                {/* Red Flowing Graphic */}
-                                <div className="relative group perspective-1000">
+                                
+                                {/* Red Flowing Graphic - Extended Height for Parallel 2026 */}
+                                <div className="absolute inset-0 group perspective-3000 w-full h-full overflow-hidden rounded-[3rem]">
                                     <img 
-                                        src="https://images.pexels.com/photos/331684/pexels-photo-331684.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                                        src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=50" 
                                         alt="Flowing Design" 
-                                        className="w-full h-auto object-contain rounded-2xl shadow-[20px_20px_60px_rgba(0,0,0,0.1)] transition-transform duration-700 group-hover:rotate-y-12 group-hover:scale-105"
+                                        className="h-full w-full object-cover shadow-[40px_40px_100px_rgba(0,0,0,0.2)] transition-all duration-[1.5s] ease-in-out group-hover:scale-110 group-hover:rotate-y-4"
                                     />
-                                    {/* Abstract Swirl Overlay (SVG or similar style) */}
-                                    <div className="absolute inset-0 bg-linear-to-tr from-primary/30 to-transparent mix-blend-overlay rounded-2xl"></div>
+                                    {/* Lustrous overlay */}
+                                    <div className="absolute inset-0 bg-linear-to-tr from-white/5 to-transparent mix-blend-overlay"></div>
                                 </div>
                             </div>
                         </div>

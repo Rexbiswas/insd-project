@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
 import Footer from '../components/Footer';
 import LegacyTimeline from '../components/LegacyTimeline';
 import SEO from '../components/SEO';
@@ -8,9 +9,21 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const Legacy = () => {
+    const marqueeRef = React.useRef(null);
+
     // Scroll to top on mount
     useEffect(() => {
         window.scrollTo(0, 0);
+
+        // Jubilee Marquee Animation
+        if (marqueeRef.current) {
+            gsap.to(marqueeRef.current, {
+                xPercent: -50,
+                repeat: -1,
+                duration: 40, // Slower for readability
+                ease: "linear"
+            });
+        }
     }, []);
 
     return (
@@ -21,10 +34,48 @@ const Legacy = () => {
             />
             
             <main className="pt-20">
-                {/* 
-                  Recreated the page to be an exact match for the user's high-end mockup image.
-                  The LegacyTimeline component now contains the full design including hero and stats.
-                */}
+                {/* 15-Year Jubilee Hero Section */}
+                <section className="relative min-h-[80vh] flex flex-col items-center justify-center bg-[#f8f5f0] overflow-hidden px-4 md:px-12">
+                    {/* Massive 15 Watermark */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-[0.05] pointer-events-none select-none">
+                        <span className="text-[40vw] font-black italic font-serif leading-none translate-y-12">15</span>
+                    </div>
+
+                    {/* Floating Design Elements (Parallax) */}
+                    <motion.div 
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1.2, ease: "easeOut" }}
+                        className="relative z-10 text-center max-w-4xl"
+                    >
+                        <span className="inline-block px-6 py-2 rounded-full border border-primary/20 text-primary font-black uppercase tracking-[0.5em] text-[10px] mb-8 bg-white/50 backdrop-blur-sm">A Decade and a Half of Vision</span>
+                        <h1 className="text-[12vw] md:text-8xl font-black uppercase tracking-tighter leading-[0.85] text-slate-900 mb-8">
+                            Fifteen Years <br />
+                            <span className="italic font-serif lowercase tracking-normal text-primary">of</span> Creative <br />
+                            Dynasty
+                        </h1>
+                    </motion.div>
+
+                    {/* Scrolling '15 YEARS' Bar */}
+                    <div className="absolute bottom-0 left-0 w-full overflow-hidden py-6 border-y border-slate-200 bg-white/30 backdrop-blur-md">
+                        <div ref={marqueeRef} className="flex whitespace-nowrap gap-12 items-center w-max">
+                            {[...Array(10)].map((_, i) => (
+                                <div key={i} className="flex items-center gap-12 font-black text-slate-300 text-2xl uppercase tracking-[0.2em] px-6">
+                                    <span>15 Years OF Excellence</span>
+                                    <span className="w-2 h-2 rounded-full bg-primary"></span>
+                                    <span>Legacy 2011 - 2026</span>
+                                    <span className="w-2 h-2 rounded-full bg-primary/30"></span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Decorative Blurs */}
+                    <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary/10 blur-[120px] rounded-full"></div>
+                    <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-secondary/10 blur-[120px] rounded-full"></div>
+                </section>
+
+                {/* The LegacyTimeline component now encompasses the core design from the mockup */}
                 <LegacyTimeline />
             </main>
 
