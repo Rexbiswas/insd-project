@@ -6,37 +6,37 @@ const ProgramGrid = () => {
     const programs = [
         {
             title: "Fashion Design",
-            img: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=600&q=80",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Copy%20of%20Fd%20.png?updatedAt=1774326592482",
             size: "large"
         },
         {
             title: "Interior Design",
-            img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Copy%20of%20ID%20.png?updatedAt=1774326590892",
             size: "small"
         },
         {
             title: "Graphic Design",
-            img: "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?auto=format&fit=crop&w=600&q=80",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Copy%20of%20GD%20.png?updatedAt=1774326590920",
             size: "small"
         },
         {
             title: "Jewellery Design",
-            img: "https://images.unsplash.com/photo-1515562141522-b3dc7305ce35?auto=format&fit=crop&w=600&q=80",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Copy%20of%20JD.PNG?updatedAt=1774326594063",
             size: "small"
         },
         {
             title: "Animation & VFX",
-            img: "https://images.unsplash.com/photo-1550745679-33d01f01888a?auto=format&fit=crop&w=600&q=80",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Copy%20of%20animation%20.png?updatedAt=1774326593242",
             size: "small"
         },
         {
-            title: "Product Design",
-            img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80",
+            title: "Beauty & Makeup",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Copy%20of%20hair%20&%20beauty%20.png?updatedAt=1774326593991",
             size: "small"
         },
         {
             title: "Photography",
-            img: "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=600&q=80",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Copy%20of%20photography%20.png?updatedAt=1774326593691",
             size: "small"
         }
     ];
