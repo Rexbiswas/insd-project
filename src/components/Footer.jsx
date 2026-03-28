@@ -1,9 +1,10 @@
 import React, { useRef, useLayoutEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Twitter, Linkedin, Youtube, ArrowUpRight, ChevronRight, Mail, Phone, MapPin, Download, MessageSquare, MessageCircle, ShieldCheck, Globe, Zap } from 'lucide-react';
+import { ArrowUpRight, Globe } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import SocialIcons from './SocialIcons';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -90,13 +91,6 @@ const Footer = () => {
         return () => ctx.revert();
     }, []);
 
-    const socialLinks = [
-        { icon: Instagram, label: "Instagram", color: "#E4405F", link: "https://www.instagram.com/insd_official" },
-        { icon: Linkedin, label: "LinkedIn", color: "#0A66C2", link: "https://www.linkedin.com/school/international-school-of-design/" },
-        { icon: Facebook, label: "Facebook", color: "#1877F2", link: "https://www.facebook.com/share/1CMuRdTV69/" },
-        { icon: Youtube, label: "YouTube", color: "#FF0000", link: "https://youtube.com/@insd-internationalschoolof5139?feature=shared" }
-    ];
-
     return (
         <footer ref={footerRef} className="relative bg-linear-to-br from-[#801e20] to-[#0a2746] text-white pt-32 pb-12 overflow-hidden">
 
@@ -121,56 +115,7 @@ const Footer = () => {
                             </p>
                         </div>
 
-                        <div className="flex gap-4">
-                            {socialLinks.map((social, idx) => (
-                                <motion.a
-                                    key={idx}
-                                    href={social.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    whileHover="hover"
-                                    initial="initial"
-                                    className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-500 relative group overflow-hidden"
-                                >
-                                    {/* Hover Background Accent */}
-                                    <motion.div
-                                        variants={{
-                                            hover: { opacity: 1, scale: 1.2 }
-                                        }}
-                                        transition={{ duration: 0.4 }}
-                                        className="absolute inset-0 bg-white opacity-0"
-                                    />
-
-                                    {/* Brand Color Glow */}
-                                    <motion.div
-                                        variants={{
-                                            hover: { opacity: 0.2, scale: 1.2 }
-                                        }}
-                                        className="absolute inset-0 blur-xl pointer-events-none"
-                                        style={{ backgroundColor: social.color, opacity: 0 }}
-                                    />
-
-                                    <motion.div
-                                        variants={{
-                                            hover: {
-                                                scale: 1.2,
-                                                color: social.color,
-                                                rotate: [0, -10, 10, 0]
-                                            }
-                                        }}
-                                        transition={{
-                                            type: "spring",
-                                            stiffness: 400,
-                                            damping: 25,
-                                            rotate: { duration: 0.4 }
-                                        }}
-                                        className="relative z-10 text-white/80"
-                                    >
-                                        <social.icon className="w-6 h-6" />
-                                    </motion.div>
-                                </motion.a>
-                            ))}
-                        </div>
+                        <SocialIcons />
                     </div>
 
                     {/* --- THE GLOBAL SITEMAP --- */}

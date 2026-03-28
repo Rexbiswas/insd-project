@@ -139,18 +139,18 @@ const LegacyTimeline = () => {
                     
                     {/* LEFT COLUMN: FIXED CONTENT + GRAPHIC */}
                     <div className="lg:col-span-5 relative">
-                        <div className="sticky top-32">
+                        <div className="lg:sticky lg:top-32 mb-16 lg:mb-0">
                             {/* Logo */}
                             <div className="mb-12">
-                                <h3 className="text-3xl font-black tracking-tighter text-slate-800 leading-none">INSD</h3>
+                                <h3 className="text-2xl md:text-3xl font-black tracking-tighter text-slate-800 leading-none">INSD</h3>
                                 <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-slate-500 mt-1">International School of Design</p>
                             </div>
 
                             {/* Main Title */}
                             <div className="relative mb-8">
-                                <span className="text-[14vw] md:text-[10rem] font-black leading-none text-slate-200/50 absolute -top-12 -left-4 select-none italic font-serif">15</span>
+                                <span className="text-[20vw] lg:text-[10rem] font-black leading-none text-slate-200/50 absolute -top-8 -left-4 select-none italic font-serif">15</span>
                                 <div className="relative z-10">
-                                    <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.85] text-slate-900">
+                                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.85] text-slate-900">
                                         <span className="block text-primary">15</span>
                                         <span className="block italic font-serif lowercase tracking-normal bg-linear-to-r from-slate-900 to-slate-600 bg-clip-text text-transparent">Years of</span>
                                         <span className="block">Legacy</span>
@@ -159,22 +159,20 @@ const LegacyTimeline = () => {
                             </div>
 
                             {/* Slogan */}
-                            <div className="max-w-xs border-l-[3px] border-primary/40 pl-6 py-2 mb-16">
+                            <div className="max-w-xs border-l-[3px] border-primary/40 pl-6 py-2 mb-12 lg:mb-16">
                                 <p className="text-slate-500 text-sm md:text-base font-bold uppercase tracking-widest leading-tight italic">
                                     Nurturing Creative Talent. Shaping Design Futures.
                                 </p>
                             </div>
 
                             {/* Flowing Graphic + Floorplan */}
-                            <div className="relative w-full max-w-md ml-auto md:ml-0 translate-x-4 md:translate-x-0 min-h-[1000px] md:min-h-[1200px] flex items-center">
-                                {/* Floorplan Sketch */}
-                                
+                            <div className="relative w-full max-w-md lg:ml-0 translate-x-4 lg:translate-x-0 h-[400px] lg:min-h-[1200px] flex items-center">
                                 {/* Red Flowing Graphic - Extended Height for Parallel 2026 */}
-                                <div className="absolute inset-0 group perspective-3000 w-full h-full overflow-hidden rounded-[3rem]">
+                                <div className="absolute inset-0 group lg:perspective-3000 w-full h-full overflow-hidden rounded-[2rem] lg:rounded-[3rem]">
                                     <img 
                                         src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=50" 
                                         alt="Flowing Design" 
-                                        className="h-full w-full object-cover shadow-[40px_40px_100px_rgba(0,0,0,0.2)] transition-all duration-[1.5s] ease-in-out group-hover:scale-110 group-hover:rotate-y-4"
+                                        className="h-full w-full object-cover shadow-[20px_20px_60px_rgba(0,0,0,0.1)] lg:shadow-[40px_40px_100px_rgba(0,0,0,0.2)] transition-all duration-[1.5s] ease-in-out lg:group-hover:scale-110 lg:group-hover:rotate-y-4"
                                     />
                                     {/* Lustrous overlay */}
                                     <div className="absolute inset-0 bg-linear-to-tr from-white/5 to-transparent mix-blend-overlay"></div>
@@ -188,27 +186,27 @@ const LegacyTimeline = () => {
                         <div ref={lineRef} className="absolute top-0 w-[2px] h-full bg-slate-200/80"></div>
                     </div>
 
-                    <div className="lg:col-span-6 timeline-items space-y-12">
+                    <div className="lg:col-span-6 timeline-items space-y-8 lg:space-y-12">
                         {timelineData.map((item, index) => (
-                            <div key={index} className="timeline-item relative group pb-12 last:pb-0">
-                                {/* Dot */}
-                                <div className={`absolute left-[-29px] md:left-[-45.5px] lg:left-[-55px] top-1.5 w-4 h-4 rounded-full border-[3px] border-white shadow-lg z-20 ${item.dotColor} group-hover:scale-150 transition-transform duration-300`}></div>
+                            <div key={index} className="timeline-item relative group pb-8 lg:pb-12 last:pb-0">
+                                {/* Dot - Hidden on Mobile, shown on Large */}
+                                <div className={`hidden lg:block absolute left-[-29px] md:left-[-45.5px] lg:left-[-55px] top-1.5 w-4 h-4 rounded-full border-[3px] border-white shadow-lg z-20 ${item.dotColor} group-hover:scale-150 transition-transform duration-300`}></div>
 
-                                <div className="flex flex-col-reverse sm:grid sm:grid-cols-12 gap-6 bg-white/40 hover:bg-white/80 p-6 rounded-3xl border border-white/50 backdrop-blur-sm transition-all duration-500 shadow-sm hover:shadow-xl hover:shadow-primary/5">
+                                <div className="flex flex-col sm:grid sm:grid-cols-12 gap-6 bg-white/40 hover:bg-white/80 p-5 lg:p-6 rounded-2xl lg:rounded-3xl border border-white/50 backdrop-blur-sm transition-all duration-500 shadow-sm hover:shadow-xl hover:shadow-primary/5">
                                     
-                                    <div className="sm:col-span-7">
+                                    <div className="sm:col-span-12 lg:col-span-7 order-2 lg:order-1">
                                         <div className="flex items-center gap-3 mb-3">
-                                            <span className="text-2xl font-black text-slate-800 tracking-tighter">{item.year}</span>
-                                            <div className="h-px w-6 bg-slate-300"></div>
+                                            <span className="text-xl lg:text-2xl font-black text-slate-800 tracking-tighter">{item.year}</span>
+                                            <div className="h-px w-6 bg-slate-200"></div>
                                             <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/80">{item.title}</span>
                                         </div>
-                                        <p className="text-slate-500 text-xs md:text-sm leading-relaxed font-medium line-clamp-4">
+                                        <p className="text-slate-500 text-xs md:text-sm leading-relaxed font-medium">
                                             {item.description}
                                         </p>
                                     </div>
 
-                                    <div className="sm:col-span-5">
-                                        <div className="relative overflow-hidden rounded-2xl aspect-video sm:aspect-square lg:aspect-video shadow-lg">
+                                    <div className="sm:col-span-12 lg:col-span-5 order-1 lg:order-2">
+                                        <div className="relative overflow-hidden rounded-xl lg:rounded-2xl aspect-video sm:aspect-[21/9] lg:aspect-video shadow-lg">
                                             <img 
                                                 src={item.image} 
                                                 className="w-full h-full object-cover transform group-hover:scale-[1.15] transition-transform duration-1000 ease-out" 
@@ -225,22 +223,22 @@ const LegacyTimeline = () => {
                 </div>
 
                 {/* BOTTOM SECTION: STATS & LOGO */}
-                <div className="stats-section mt-32 relative">
+                <div className="stats-section mt-16 md:mt-32 relative">
                     {/* Decorative Background for Stats */}
                     <div className="absolute inset-0 bg-linear-to-b from-transparent via-primary/5 to-transparent -z-10 rounded-full blur-[120px] opacity-30"></div>
                     
-                    <div className="text-center mb-20">
+                    <div className="text-center mb-12 md:mb-20">
                         <span className="inline-block px-4 py-1.5 rounded-full bg-white border border-slate-200 text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-4 shadow-sm">Metrics of Excellence</span>
-                        <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-slate-900 leading-none">
+                        <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-slate-900 leading-none">
                             Our Legacy <span className="text-primary italic font-serif lowercase tracking-normal">in Numbers</span>
                         </h2>
                     </div>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 pb-20">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12 pb-12 lg:pb-20">
                         
                         {/* Years of Excellence Card */}
                         <div className="group relative">
-                            <div className="h-full bg-white/50 backdrop-blur-md border border-white p-8 md:p-12 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.03)] hover:shadow-[0_40px_80px_rgba(var(--primary-rgb),0.1)] transition-all duration-700 hover:-translate-y-4 overflow-hidden">
+                            <div className="h-full bg-white/50 backdrop-blur-md border border-white p-8 lg:p-12 rounded-[2rem] lg:rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.03)] hover:shadow-[0_40px_80px_rgba(var(--primary-rgb),0.1)] transition-all duration-700 hover:-translate-y-4 overflow-hidden">
                                 {/* Abstract Shape in background */}
                                 <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/5 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
                                 
