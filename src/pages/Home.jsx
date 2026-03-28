@@ -347,7 +347,7 @@ const Home = () => {
                 </div>
 
                 {/* Modern Mouse-style Scroll Indicator */}
-                <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-70">
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-70">
                     <div className="w-6 h-10 border-2 border-slate-300 rounded-full flex justify-center p-1.5 relative overflow-hidden">
                         <div className="w-1 h-2 bg-primary rounded-full animate-scroll-wheel"></div>
                         {/* Soft Glow */}

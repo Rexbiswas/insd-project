@@ -68,8 +68,8 @@ const EventBlogs = () => {
                         Insights from the industry experts and highlights from our latest campus events.
                     </p>
                 </div>
-                <Link to="/insd-360/blog" className="group flex items-center gap-2 px-6 py-3 rounded-full border border-white/10 bg-white/5 hover:bg-white hover:text-black transition-all duration-300 shadow-xl">
-                    <span className="uppercase text-[10px] font-black tracking-[0.2em]">Explore All</span>
+                <Link to="/insd-360/blog" className="group flex items-center gap-2 px-6 py-3 rounded-full border border-white/10 bg-white/5 text-white hover:bg-white hover:text-black transition-all duration-300 shadow-xl">
+                    <span className="uppercase text-[10px] font-black tracking-[0.2em] text-white group-hover:text-black transition-colors duration-300">Explore All</span>
                     <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </Link>
             </div>

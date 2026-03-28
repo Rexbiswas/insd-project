@@ -7,15 +7,18 @@ const MouseImageTrail = ({ containerRef }) => {
     const distanceThreshold = 100; // Pixels distance before spawning next image
 
     const trailImages = [
-        "https://images.unsplash.com/photo-1541339907198-e08756ebafe3?auto=format&fit=crop&w=400&q=70", // Campus
-        "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=300&q=70", // Fashion
-        "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=300&q=70", // Interior
-        "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?auto=format&fit=crop&w=300&q=70", // Graphic
-        "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=300&q=70", // Art
-        "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=300&q=70", // Classroom
-        "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=300&q=70", // Design Process
-        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=300&q=70", // Digital Tech
-        "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=300&q=70", // Product Design
+        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=400&q=80", // High Fashion
+        "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=400&q=80", // Luxury Interior
+        "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=400&q=80", // Digital Design
+        "https://images.unsplash.com/photo-1515562141207-7a88fb0ce33e?auto=format&fit=crop&w=400&q=80", // Jewelry Craft
+        "https://images.unsplash.com/photo-1633167606207-d840b5070fc2?auto=format&fit=crop&w=400&q=80", // 3D Animation
+        "https://images.unsplash.com/photo-1558583082-409143c794ca?auto=format&fit=crop&w=400&q=80", // Fashion Sketching
+        "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=400&q=80", // Modern Campus
+        "https://images.unsplash.com/photo-1460661419201-fd4ce186860d?auto=format&fit=crop&w=400&q=80", // Artistic Process
+        "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=400&q=80", // Editorial Fashion
+        "https://images.unsplash.com/photo-1616486341353-c9e0338272ca?auto=format&fit=crop&w=400&q=80", // Architectural Interior
+        "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=400&q=80", // Graphic Layout
+        "https://images.unsplash.com/photo-1576016773322-2616239f1504?auto=format&fit=crop&w=400&q=80", // Luxury Product Design
     ];
 
     useEffect(() => {
