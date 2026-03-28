@@ -297,8 +297,8 @@ const Home = () => {
             />
 
             {/* Hero Section - Pinned Wrapper relative to Viewport */}
-            {/* Section 1: Creative Excellence */}
             <div ref={heroRef} className="relative z-10 min-h-screen w-full flex flex-col justify-center items-center bg-white overflow-hidden cursor-default">
+                <MouseImageTrail containerRef={heroRef} />
 
 
                 {/* Watermark Logo - Refined */}
