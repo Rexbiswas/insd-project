@@ -24,6 +24,7 @@ import WhyInsd from '../components/WhyInsd';
 import AiFutureDesign from '../components/AiFutureDesign';
 import CelebritySlider from '../components/CelebritySlider';
 import MouseImageTrail from '../components/MouseImageTrail';
+import LegacyTimeline from '../components/LegacyTimeline';
 import JobReady from '../components/JobReady';
 import EmployabilityPrograms from '../components/EmployabilityPrograms';
 import ProgramGrid from '../components/ProgramGrid';
@@ -49,6 +50,7 @@ const Home = () => {
     const marqueeRef = useRef(null);
     const studentRef = useRef(null);
     const scrollHintRef = useRef(null);
+    const legacyRef = useRef(null);
 
     const [isMobile, setIsMobile] = React.useState(false);
 
@@ -358,6 +360,7 @@ const Home = () => {
             </div>
 
             <JobReady />
+            <LegacyTimeline />
             <EmployabilityPrograms />
             <ProgramGrid />
             <IndustryInsights />
