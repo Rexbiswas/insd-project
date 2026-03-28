@@ -360,7 +360,6 @@ const Home = () => {
             </div>
 
             <JobReady />
-            <LegacyTimeline />
             <EmployabilityPrograms />
             <ProgramGrid />
             <IndustryInsights />

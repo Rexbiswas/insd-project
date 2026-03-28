@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, Link, useLocation, useNavigate } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import SocialIcons from './SocialIcons';
 import {
     Menu as MenuIcon, X, ArrowRight, Home, Sparkles, GraduationCap, LayoutGrid, User,
     Search, Folder, Users, CreditCard, Box, HelpCircle, LogOut, ChevronLeft, ChevronsLeft, Store,
@@ -754,6 +755,13 @@ const Navbar = () => {
                                                 +91 7701933935
                                             </a>
                                         </div>
+
+                                        {/* SOCIAL ICONS SECTION */}
+                                        <div className="space-y-4 pt-4 border-t border-slate-200/50">
+                                            <h4 className="text-[10px] font-black tracking-widest text-slate-400 uppercase">Connect With Us</h4>
+                                            <SocialIcons dark={true} className="!gap-4 md:!gap-6" />
+                                        </div>
+
                                         <button 
                                             onClick={() => { setIsOpen(false); openModal(); }}
                                             className="w-full py-4 bg-slate-900 text-white rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] shadow-xl shadow-slate-900/20 active:scale-95 transition-all"
@@ -901,26 +909,7 @@ const Navbar = () => {
 
                                     <motion.div variants={itemVariants}>
                                         <h4 className="text-[9px] md:text-[10px] font-black tracking-[0.4em] text-white/20 uppercase mb-4 md:mb-6">Connect</h4>
-                                        <div className="flex gap-4">
-                                            {[
-                                                { icon: Instagram, href: "https://www.instagram.com/insd_official" },
-                                                { icon: Linkedin, href: "https://www.linkedin.com/school/international-school-of-design/" },
-                                                { icon: Facebook, href: "https://www.facebook.com/share/1CMuRdTV69/" },
-                                                { icon: Youtube, href: "https://youtube.com/@insd-internationalschoolof5139?feature=shared" }
-                                            ].map((soc, i) => (
-                                                <motion.a
-                                                    key={i}
-                                                    href={soc.href}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    whileHover={{ y: -5, scale: 1.1, backgroundColor: "rgba(255,255,255,0.1)" }}
-                                                    whileTap={{ scale: 0.9 }}
-                                                    className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/30 hover:text-white hover:border-white/30 transition-all shadow-xl group"
-                                                >
-                                                    <soc.icon size={20} className="group-hover:rotate-12 transition-transform" />
-                                                </motion.a>
-                                            ))}
-                                        </div>
+                                        <SocialIcons />
                                     </motion.div>
                                 </div>
                             </div>
