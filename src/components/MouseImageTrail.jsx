@@ -7,18 +7,16 @@ const MouseImageTrail = ({ containerRef }) => {
     const distanceThreshold = 100; // Pixels distance before spawning next image
 
     const trailImages = [
-        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=400&q=80", // High Fashion
-        "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=400&q=80", // Luxury Interior
-        "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=400&q=80", // Digital Design
-        "https://images.unsplash.com/photo-1515562141207-7a88fb0ce33e?auto=format&fit=crop&w=400&q=80", // Jewelry Craft
-        "https://images.unsplash.com/photo-1633167606207-d840b5070fc2?auto=format&fit=crop&w=400&q=80", // 3D Animation
-        "https://images.unsplash.com/photo-1558583082-409143c794ca?auto=format&fit=crop&w=400&q=80", // Fashion Sketching
-        "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=400&q=80", // Modern Campus
-        "https://images.unsplash.com/photo-1460661419201-fd4ce186860d?auto=format&fit=crop&w=400&q=80", // Artistic Process
-        "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=400&q=80", // Editorial Fashion
-        "https://images.unsplash.com/photo-1616486341353-c9e0338272ca?auto=format&fit=crop&w=400&q=80", // Architectural Interior
-        "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=400&q=80", // Graphic Layout
-        "https://images.unsplash.com/photo-1576016773322-2616239f1504?auto=format&fit=crop&w=400&q=80", // Luxury Product Design
+        "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_wy3si8wy3si8wy3s.png", // Creative Visualization
+        "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_u2ubidu2ubidu2ub.png", // Design Excellence
+        "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_hzzhu5hzzhu5hzzh.png", // Professional Profile
+        "https://ik.imagekit.io/fmldynl4j4/insd-awards/Screenshot%202026-03-10%20162457.png", // AI Future Design
+        "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Copy%20of%20Fd%20.png", // Fashion Studio
+        "https://images.unsplash.com/photo-1539109132332-94a105686730?auto=format&fit=crop&q=80&w=400", // Haute Couture
+        "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=400", // Design Process
+        "https://insd.edu.in/wp-content/uploads/2021/04/India_Today_Group_Logo.png", // Press Recognition
+        "https://insd.edu.in/wp-content/uploads/2021/04/TheHindu-Logo.png", // Press Recognition
+        "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=400", // Luxury Interior
     ];
 
     useEffect(() => {
