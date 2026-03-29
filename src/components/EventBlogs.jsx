@@ -33,11 +33,11 @@ const blogs = [
     },
     {
         id: 4,
-        title: "Future of Luxury Startups",
-        category: "Innovation",
-        image: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800",
-        link: "#",
-        date: "Aug 30, 2025"
+        title: "Building Design Careers at INSD",
+        category: "Campus",
+        image: "https://ik.imagekit.io/fmldynl4j4/IMG_3440.JPG",
+        link: "/insd-360/blog",
+        date: "Mar 20, 2026"
     }
 ];
 

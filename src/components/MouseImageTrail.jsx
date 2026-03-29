@@ -7,16 +7,12 @@ const MouseImageTrail = ({ containerRef }) => {
     const distanceThreshold = 100; // Pixels distance before spawning next image
 
     const trailImages = [
-        "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_wy3si8wy3si8wy3s.png", // Creative Visualization
-        "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_u2ubidu2ubidu2ub.png", // Design Excellence
-        "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_hzzhu5hzzhu5hzzh.png", // Professional Profile
-        "https://ik.imagekit.io/fmldynl4j4/insd-awards/Screenshot%202026-03-10%20162457.png", // AI Future Design
-        "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Copy%20of%20Fd%20.png", // Fashion Studio
-        "https://images.unsplash.com/photo-1539109132332-94a105686730?auto=format&fit=crop&q=80&w=400", // Haute Couture
-        "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=400", // Design Process
-        "https://insd.edu.in/wp-content/uploads/2021/04/India_Today_Group_Logo.png", // Press Recognition
-        "https://insd.edu.in/wp-content/uploads/2021/04/TheHindu-Logo.png", // Press Recognition
-        "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=400", // Luxury Interior
+        "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/AI%20Layout/WhatsApp%20Image%202026-03-28%20at%202.40.03%20PM%20(1).jpeg",
+        "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/AI%20Layout/WhatsApp%20Image%202026-03-28%20at%202.40.03%20PM.jpeg",
+        "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/AI%20Layout/WhatsApp%20Image%202026-03-28%20at%202.40.04%20PM%20(1).jpeg",
+        "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/AI%20Layout/WhatsApp%20Image%202026-03-28%20at%202.40.04%20PM%20(2).jpeg",
+        "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/AI%20Layout/WhatsApp%20Image%202026-03-28%20at%202.40.04%20PM.jpeg",
+        "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/AI%20Layout/WhatsApp%20Image%202026-03-28%20at%202.40.05%20PM.jpeg",
     ];
 
     useEffect(() => {

@@ -89,41 +89,25 @@ const Blog = () => {
             />
 
             {/* --- HERO SECTION --- */}
-            <section className="pt-32 pb-16 px-6 md:px-12 lg:px-24 bg-slate-50 border-b border-slate-100">
-                <div className="max-w-7xl mx-auto space-y-12 text-center">
+            <section className="relative pt-32 pb-24 px-6 md:px-12 lg:px-24 overflow-hidden">
+                {/* Background Image with Overlay */}
+                <div className="absolute inset-0 z-0">
+                    <img 
+                        src="https://ik.imagekit.io/fmldynl4j4/IMG_3440.JPG" 
+                        alt="INSD Campus Life" 
+                        className="w-full h-full object-cover scale-105"
+                    />
+                    <div className="absolute inset-0 bg-slate-950/70 backdrop-blur-[1px]" />
+                </div>
+
+                <div className="max-w-7xl mx-auto space-y-12 text-center relative z-10">
                     <div className="space-y-4">
                         <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em] block">The Official Journal</span>
-                        <h1 className="text-5xl md:text-8xl font-black text-slate-900 tracking-tighter leading-[0.9]">
-                            INSD <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-slate-500 to-secondary">BLOGS.</span>
+                        <h1 className="text-5xl md:text-8xl font-black text-white tracking-tighter leading-[0.9]">
+                            INSD <br /> <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-white/50 to-secondary">BLOGS.</span>
                         </h1>
                     </div>
 
-                    {/* Controls Strip */}
-                    <div className="flex flex-col md:flex-row items-center justify-between gap-8 pt-6">
-                        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar w-full md:w-auto pb-4 md:pb-0">
-                            {categories.map(cat => (
-                                <button
-                                    key={cat}
-                                    onClick={() => setActiveCategory(cat)}
-                                    className={`px-8 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all duration-300 border ${
-                                        activeCategory === cat 
-                                        ? 'bg-slate-900 text-white border-slate-900 shadow-lg' 
-                                        : 'bg-white text-slate-500 border-slate-200 hover:border-slate-400'
-                                    }`}
-                                >
-                                    {cat}
-                                </button>
-                            ))}
-                        </div>
-                        <div className="relative w-full md:w-80">
-                            <input 
-                                type="text" 
-                                placeholder="Search perspectives..."
-                                className="w-full bg-white border border-slate-200 rounded-full px-12 py-4 text-xs font-medium focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                            />
-                            <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300" size={14} />
-                        </div>
-                    </div>
                 </div>
             </section>
 
@@ -136,7 +120,7 @@ const Blog = () => {
                             className="group flex flex-col h-full bg-white border border-slate-100 rounded-[2.5rem] overflow-hidden hover:shadow-2xl hover:shadow-slate-200/50 transition-all duration-500"
                         >
                             {/* Image Wrapper */}
-                            <div className="relative aspect-[16/10] overflow-hidden">
+                            <div className="relative aspect-16/10 overflow-hidden">
                                 <img 
                                     src={post.image} 
                                     alt={post.title}

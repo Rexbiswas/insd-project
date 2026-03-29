@@ -8,7 +8,7 @@ const testimonials = [
         name: "Ankit Khera",
         role: "Jobs Mall, Chhattarpur",
         course: "Fashion Design",
-        image: "https://i.pravatar.cc/150?u=ankit",
+        image: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Ankit%20Khera.jpeg",
         quote: "INSD helped me move from basic sketches to a strong portfolio and a full-time job as a Fashion Designer. The shows, juries and software training made interviews feel easy.",
         color: "from-blue-600 to-indigo-600"
     },
@@ -17,7 +17,7 @@ const testimonials = [
         name: "Sanchita Pal",
         role: "Freelance Designer",
         course: "Graphic Design",
-        image: "https://i.pravatar.cc/150?u=sanchita",
+        image: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Sanchita%20Pal.jfif",
         quote: "I started taking small freelance graphic design projects in my second year. The feedback on my portfolio and support from faculty gave me the confidence to charge for my skills.",
         color: "from-orange-500 to-red-600"
     },
@@ -26,8 +26,8 @@ const testimonials = [
         name: "Sameer Siddiqui",
         role: "Gold Mark",
         course: "Jewellery Design",
-        image: "https://i.pravatar.cc/150?u=sameer",
-        quote: "The hands-on training in Jewellery design and the exposure to industry techniques helped me build strong technical skills. The portfolio development sessions and mentor guidance helped me secure a position with a reputed jewellery brand.",
+        image: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Sameer%20Siddiqui.jpeg",
+        quote: "The hands-on training in jewellery design and the exposure to industry techniques helped me build strong technical skills. The portfolio development sessions and mentor guidance played a key role in helping me secure a position with a reputed jewellery brand.",
         color: "from-yellow-500 to-amber-600"
     },
     {
@@ -35,25 +35,25 @@ const testimonials = [
         name: "Nitika Gautam",
         role: "Virgo Clothing Culture Private",
         course: "Interior Design",
-        image: "https://i.pravatar.cc/150?u=nitika",
-        quote: "The placement cell connected me with a top interior design firm in Gurgaon. My 3D visualization skills and studio projects made me job-ready from day one.",
+        image: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Nitika%20Gautam%20.jpeg",
+        quote: "The placement cell connected me with a top interior design firm in Gurgaon. My 3D visualisation skills and studio projects made me job-ready from day one.",
         color: "from-green-600 to-emerald-600"
     },
     {
         id: 5,
         name: "Sanskriti Jha",
-        role: "Government of India",
+        role: "Graphic Designer at Government of India",
         course: "Graphic Design",
-        image: "https://i.pravatar.cc/150?u=sanskriti",
+        image: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Sanskriti%20Jha%20-%20Testimonial%205%20.jpg",
         quote: "Learning design software alongside creative concepts made a big difference for me. I was able to confidently apply for jobs because I had practical skills that companies were looking for.",
         color: "from-indigo-600 to-purple-600"
     },
     {
         id: 6,
         name: "Preeti Jangra",
-        role: "Shiva Arjun Entertainment House Mumbai",
+        role: "Shiva Arjun Entertainment House (Mumbai)",
         course: "Fashion Design",
-        image: "https://i.pravatar.cc/150?u=preeti",
+        image: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Preeti%20Jangra.png",
         quote: "The exposure through workshops, industry visits, and live projects helped me understand how the design industry really works. By the time I graduated, I already had a strong portfolio and internship experience.",
         color: "from-pink-600 to-rose-600"
     },
@@ -62,16 +62,16 @@ const testimonials = [
         name: "Kajalpriya",
         role: "Aman Export International",
         course: "Interior Design",
-        image: "https://i.pravatar.cc/150?u=kajal",
+        image: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Kajalpriya.jpeg",
         quote: "The faculty at INSD constantly pushed us to think creatively and present our ideas professionally. The portfolio reviews and jury feedback prepared me extremely well for client presentations.",
         color: "from-cyan-600 to-blue-600"
     },
     {
         id: 8,
         name: "Muskan Singh",
-        role: "Pluck Designs, Gurugram",
+        role: "Pluch Designs, Gurugram",
         course: "Fashion Design",
-        image: "https://i.pravatar.cc/150?u=muskan",
+        image: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Muskan%20Singh%20.jpeg",
         quote: "My time at INSD helped me discover my unique design style. The guidance from mentors and the opportunity to showcase my work in exhibitions boosted my confidence as a designer.",
         color: "from-violet-600 to-purple-600"
     },
@@ -80,18 +80,99 @@ const testimonials = [
         name: "Anshuman Deb",
         role: "The Design Atelier",
         course: "Interior Design",
-        image: "https://i.pravatar.cc/150?u=anshuman",
+        image: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Anshuman%20deb.jpeg",
         quote: "The course structure balanced creativity with business understanding. I learned how to design, present, and market my work, which helped me start taking independent projects.",
         color: "from-slate-600 to-slate-900"
     },
     {
         id: 10,
         name: "Rahul Yadav",
-        role: "Vivier",
+        role: "Wriver",
         course: "Interior Design",
-        image: "https://i.pravatar.cc/150?u=rahul",
+        image: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Rahul%20Yadav.jpeg",
         quote: "The studio-based learning and practical assignments helped me build a strong design foundation. I felt prepared to handle real client requirements right after completing my course.",
         color: "from-emerald-600 to-teal-700"
+    },
+    {
+        id: 11,
+        name: "Himani",
+        role: "Virgo Clothing Culture Private",
+        course: "Fashion Design",
+        image: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Himani.jpeg",
+        quote: "From mood boards to final collections, every project helped me improve my design thinking. The constant mentoring helped me refine my portfolio for placements.",
+        color: "from-amber-600 to-orange-700"
+    },
+    {
+        id: 12,
+        name: "Shreya Sinha",
+        role: "TO THE NEW Pvt Ltd",
+        course: "Graphic Design",
+        image: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Shreya%20Sinha.jfif",
+        quote: "INSD gave me the platform to experiment with different styles and techniques. The guidance from experienced faculty helped me turn my passion for design into a professional career.",
+        color: "from-sky-600 to-blue-700"
+    },
+    {
+        id: 13,
+        name: "Chitra",
+        role: "Casamink",
+        course: "Interior Design",
+        image: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Chitra%20.jpeg",
+        quote: "The practical approach to learning at INSD helped me understand design beyond theory. Working on live projects gave me real industry exposure and confidence.",
+        color: "from-lime-600 to-green-700"
+    },
+    {
+        id: 14,
+        name: "Abhinav Rajput",
+        role: "Magiccircle Communication Pvt Ltd",
+        course: "Graphic Design",
+        image: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Abhinav%20Rajput.jfif",
+        quote: "INSD gave me the right platform to explore my creativity. The continuous feedback from faculty helped me improve my work and build a strong portfolio.",
+        color: "from-indigo-600 to-blue-800"
+    },
+    {
+        id: 15,
+        name: "Tamanna Das",
+        role: "Sahil Kocchar, Noida",
+        course: "Fashion Design",
+        image: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Tamanna%20Das.jpeg",
+        quote: "The fashion shows and jury evaluations pushed me to perform better with every project. It really prepared me for the competitive industry outside.",
+        color: "from-rose-600 to-pink-700"
+    },
+    {
+        id: 16,
+        name: "Sarabjeet",
+        role: "Height Buildcon South",
+        course: "Interior Design",
+        image: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Sarabjeet.jpeg",
+        quote: "I learned how to convert ideas into practical designs through hands-on training. The software skills I gained helped me secure my first job quickly.",
+        color: "from-teal-600 to-cyan-700"
+    },
+    {
+        id: 17,
+        name: "Nimit Lakhanpal",
+        role: "GMS Group",
+        course: "Graphic Design",
+        image: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Nimit%20Lakhanpal.jfif",
+        quote: "The faculty support at INSD was incredible. They guided me at every step, from concept development to final portfolio presentation.",
+        color: "from-violet-600 to-indigo-700"
+    },
+    {
+        id: 18,
+        name: "Nausheena Naaz",
+        role: "Freelance Stylist",
+        course: "Fashion Design",
+        image: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Nausheena%20Naaz.jpeg",
+        quote: "The exposure to different design fields helped me discover my strengths. By the end of the course, I had clarity on my career path.",
+        color: "from-fuchsia-600 to-pink-700"
+    },
+    {
+        id: 19,
+        name: "Tamanna Dua",
+        role: "Portray Interior & Decors LLC, Abu dhabi",
+        course: "Interior Design",
+        image: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Tamanna%20Dua%20.jpeg",
+        quote: "INSD helped me build both creative and professional skills. The portfolio preparation and mock interviews made a huge difference during placements.",
+        color: "from-emerald-600 to-blue-700"
     }
 ];
 
@@ -139,8 +220,8 @@ const TestimonialSlider = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             className="text-5xl md:text-8xl font-black text-slate-900 leading-[0.8] tracking-tighter uppercase"
                         >
-                            Student <br />
-                            <span className="italic font-serif font-light text-slate-300">Voices.</span>
+                            From Classroom to Career: <br />
+                            <span className="italic font-serif font-light text-slate-300">Voices of INSDians.</span>
                         </motion.h2>
                     </div>
 
