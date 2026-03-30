@@ -52,7 +52,7 @@ const programs = [
 
 const ProgramGrid = () => {
     return (
-        <section className="py-24 bg-slate-50 overflow-hidden">
+        <section id="programs-grid" className="py-24 bg-slate-50 overflow-hidden">
             <div className="container mx-auto px-4 md:px-6">
                 {/* Header Section */}
                 <div className="max-w-4xl mb-16 px-2">

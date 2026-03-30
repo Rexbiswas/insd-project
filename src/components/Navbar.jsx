@@ -275,7 +275,7 @@ const Navbar = () => {
     return (
         <>
             {/* Top Announcement Bar */}
-            <div className="w-full bg-linear-to-r from-primary to-secondary text-white py-2 px-4 text-center relative z-[1001] flex items-center justify-center gap-3 overflow-hidden shadow-2xl transition-all duration-500">
+            <div className="w-full bg-linear-to-r from-primary to-secondary text-white py-2 px-4 text-center relative z-1001 flex items-center justify-center gap-3 overflow-hidden shadow-2xl transition-all duration-500">
                 {/* Premium Shine Effect */}
                 <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-shimmer" />
                 

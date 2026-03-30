@@ -31,6 +31,9 @@ import ProgramGrid from '../components/ProgramGrid';
 import IndustryInsights from '../components/IndustryInsights';
 import AdmissionForm from '../components/AdmissionForm';
 import HeroSlider from '../components/HeroSlider';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import PlacementPartners from '../components/PlacementPartners';
+import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 
 import SEO from '../components/SEO';
@@ -55,6 +58,7 @@ const Home = () => {
     const legacyRef = useRef(null);
 
     const [isMobile, setIsMobile] = React.useState(false);
+    const { openAdmissionModal } = useAdmissionModal();
 
 
     // Lenis Smooth Scroll Integration
@@ -296,18 +300,101 @@ const Home = () => {
             />
 
             {/* Hero Split Section */}
-            <div ref={heroRef} className="relative z-10 min-h-screen w-full flex flex-col md:flex-row bg-slate-950/2 md:bg-white overflow-hidden pt-20 md:pt-24 cursor-default">
-                {/* Left Side: Carousel (Now Centered) */}
-                <div className="w-full md:w-[45%] h-[60vh] md:h-auto flex flex-col justify-center items-center p-4 md:p-8 relative overflow-hidden">
-                    <HeroSlider isMobile={isMobile} />
+            <div ref={heroRef} className="relative z-10 min-h-screen w-full flex flex-col bg-slate-950/2 md:bg-white overflow-hidden pt-24 md:pt-32 cursor-default">
+                {/* Section Heading */}
+                <div className="w-full text-center px-6 mb-8 md:mb-16 relative z-30">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, ease: "easeOut" }}
+                        className="inline-block"
+                    >
+                        <span className="block text-primary font-black uppercase text-[8px] md:text-[10px] tracking-[0.4em] mb-2 md:mb-4">The INSD Advantage</span>
+                        <h2 className="text-5xl md:text-[6.5vw] font-black text-slate-900 uppercase tracking-tighter leading-[0.85] mb-12">
+                            From <span className="text-slate-400/30">Classroom</span><br />to <span className="text-primary italic">Career</span>
+                        </h2>
+
+                        <div className="space-y-10 max-w-4xl mx-auto md:mx-0">
+                            {/* Value Pillars */}
+                            <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-8 gap-y-4">
+                                {[
+                                    "Skills-based education",
+                                    "Industry preparation",
+                                    "Launching careers"
+                                ].map((pillar, pIdx) => (
+                                    <div key={pIdx} className="flex items-center gap-3 group">
+                                        <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
+                                            <CheckCircle2 size={12} strokeWidth={3} />
+                                        </div>
+                                        <span className="text-slate-500 font-extrabold uppercase text-[10px] md:text-sm tracking-widest leading-none group-hover:text-slate-900 transition-colors">
+                                            {pillar}
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
+                            
+                            {/* Impact Strip */}
+                            <div className="inline-flex flex-col md:flex-row items-center gap-8 md:gap-16 p-8 md:p-12 bg-slate-50 border border-slate-100 rounded-[3.5rem] shadow-2xl shadow-slate-200/40 relative overflow-hidden group">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2" />
+                                
+                                <div className="text-center md:text-left relative z-10 transition-transform duration-500 group-hover:scale-105">
+                                    <span className="block text-[10px] font-black text-primary uppercase tracking-widest mb-1">Highest Package</span>
+                                    <span className="text-3xl md:text-4xl font-black text-slate-900 tracking-tighter uppercase whitespace-nowrap">RS 18 LPA</span>
+                                </div>
+
+                                <div className="hidden md:block w-px h-16 bg-slate-200 self-center" />
+
+                                <div className="text-center md:text-left relative z-10 transition-transform duration-500 group-hover:scale-105">
+                                    <span className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Empowering</span>
+                                    <span className="text-3xl md:text-4xl font-black text-slate-900 tracking-tighter uppercase whitespace-nowrap">2000+ Alumni</span>
+                                </div>
+
+                                <div className="hidden md:block w-px h-16 bg-slate-200 self-center" />
+
+                                <div className="text-center md:text-left relative z-10 transition-transform duration-500 group-hover:scale-105">
+                                    <span className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Assurance</span>
+                                    <span className="text-3xl md:text-4xl font-black text-slate-900 tracking-tighter uppercase whitespace-nowrap flex items-center md:block gap-2">
+                                        100% <span className="text-primary md:block text-xs md:text-base font-black">Placement</span>
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-5 pt-8 md:pt-4">
+                                <button 
+                                    onClick={openAdmissionModal}
+                                    className="w-full sm:w-auto px-10 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-slate-900 transition-all transform hover:scale-105 shadow-2xl shadow-primary/20 flex items-center justify-center gap-3 group"
+                                >
+                                    Book Free Career Counselling
+                                    <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center group-hover:rotate-45 transition-transform">
+                                        <ArrowRight size={14} />
+                                    </span>
+                                </button>
+                                <button 
+                                    onClick={() => document.getElementById('programs-grid')?.scrollIntoView({ behavior: 'smooth' })}
+                                    className="w-full sm:w-auto px-10 py-5 bg-white border border-slate-200 text-slate-900 rounded-full font-black uppercase text-xs tracking-widest hover:bg-slate-50 transition-all font-outfit"
+                                >
+                                    Explore Global Programs
+                                </button>
+                            </div>
+
+                            <PlacementPartners />
+                        </div>
+                    </motion.div>
                 </div>
 
-                {/* Right Side: Admission Form */}
-                <div className="w-full md:w-[55%] flex flex-col justify-center items-center p-4 md:p-8 relative z-20">
-                    <div className="w-full max-w-2xl bg-black rounded-[2.5rem] shadow-3xl overflow-hidden border border-white/5 origin-center">
-                        <AdmissionForm isModal={true} />
+                <div className="w-full flex flex-col md:flex-row items-center justify-center">
+                    {/* Left Side: Carousel (Now Centered) */}
+                    <div className="w-full md:w-[45%] h-[60vh] md:h-auto flex flex-col justify-center items-center p-4 md:p-8 relative overflow-hidden">
+                        <HeroSlider isMobile={isMobile} />
                     </div>
-                </div>                
+
+                    {/* Right Side: Admission Form */}
+                    <div className="w-full md:w-[50%] flex flex-col justify-center items-center p-4 md:p-8 relative z-20">
+                        <div className="w-full max-w-xl bg-black rounded-[2.5rem] shadow-3xl overflow-hidden border border-white/5 origin-center transform md:scale-95 hover:scale-100 transition-transform duration-500">
+                            <AdmissionForm isModal={true} />
+                        </div>
+                    </div>                
+                </div>
             </div>
 
             <JobReady />
