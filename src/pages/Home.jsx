@@ -302,7 +302,7 @@ const Home = () => {
             {/* Hero Split Section */}
             <div ref={heroRef} className="relative z-10 min-h-screen w-full flex flex-col bg-slate-950/2 md:bg-white overflow-hidden pt-24 md:pt-32 cursor-default">
                 {/* Section Heading */}
-                <div className="w-full text-center px-6 mb-8 md:mb-16 relative z-30">
+                <div className="w-full text-center px-4 md:px-6 mb-8 md:mb-16 relative z-30">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -310,23 +310,23 @@ const Home = () => {
                         className="inline-block"
                     >
                         <span className="block text-primary font-black uppercase text-[8px] md:text-[10px] tracking-[0.4em] mb-2 md:mb-4">The INSD Advantage</span>
-                        <h2 className="text-5xl md:text-[6.5vw] font-black text-slate-900 uppercase tracking-tighter leading-[0.85] mb-12">
-                            From <span className="text-slate-400/30">Classroom</span><br />to <span className="text-primary italic">Career</span>
+                        <h2 className="text-4xl md:text-[6.5vw] font-black text-slate-900 uppercase tracking-tighter leading-[0.9] md:leading-[0.85] mb-8 md:mb-12">
+                            From <span className="text-slate-400/30">Classroom</span><br className="hidden md:block" /> to <span className="text-primary italic">Career</span>
                         </h2>
 
-                        <div className="space-y-10 max-w-4xl mx-auto md:mx-0">
+                        <div className="space-y-6 md:space-y-10 max-w-4xl mx-auto md:mx-0">
                             {/* Value Pillars */}
-                            <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-8 gap-y-4">
+                            <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-6 md:gap-x-8 gap-y-3 md:gap-y-4">
                                 {[
                                     "Skills-based education",
                                     "Industry preparation",
                                     "Launching careers"
                                 ].map((pillar, pIdx) => (
-                                    <div key={pIdx} className="flex items-center gap-3 group">
-                                        <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
-                                            <CheckCircle2 size={12} strokeWidth={3} />
+                                    <div key={pIdx} className="flex items-center gap-2 md:gap-3 group">
+                                        <div className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
+                                            <CheckCircle2 size={10} md:size={12} strokeWidth={3} />
                                         </div>
-                                        <span className="text-slate-500 font-extrabold uppercase text-[10px] md:text-sm tracking-widest leading-none group-hover:text-slate-900 transition-colors">
+                                        <span className="text-slate-500 font-extrabold uppercase text-[8px] md:text-sm tracking-widest leading-none group-hover:text-slate-900 transition-colors">
                                             {pillar}
                                         </span>
                                     </div>
@@ -334,32 +334,32 @@ const Home = () => {
                             </div>
                             
                             {/* Impact Strip */}
-                            <div className="inline-flex flex-col md:flex-row items-center gap-8 md:gap-16 p-8 md:p-12 bg-slate-50 border border-slate-100 rounded-[3.5rem] shadow-2xl shadow-slate-200/40 relative overflow-hidden group">
+                            <div className="inline-flex flex-col md:flex-row items-center gap-6 md:gap-16 p-6 md:p-12 bg-slate-50 border border-slate-100 rounded-3xl md:rounded-[3.5rem] shadow-2xl shadow-slate-200/40 relative overflow-hidden group">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2" />
                                 
                                 <div className="text-center md:text-left relative z-10 transition-transform duration-500 group-hover:scale-105">
-                                    <span className="block text-[10px] font-black text-primary uppercase tracking-widest mb-1">Highest Package</span>
-                                    <span className="text-3xl md:text-4xl font-black text-slate-900 tracking-tighter uppercase whitespace-nowrap">RS 18 LPA</span>
+                                    <span className="block text-[8px] md:text-[10px] font-black text-primary uppercase tracking-widest mb-1">Highest Package</span>
+                                    <span className="text-2xl md:text-4xl font-black text-slate-900 tracking-tighter uppercase whitespace-nowrap">RS 18 LPA</span>
                                 </div>
 
                                 <div className="hidden md:block w-px h-16 bg-slate-200 self-center" />
 
                                 <div className="text-center md:text-left relative z-10 transition-transform duration-500 group-hover:scale-105">
-                                    <span className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Empowering</span>
-                                    <span className="text-3xl md:text-4xl font-black text-slate-900 tracking-tighter uppercase whitespace-nowrap">2000+ Alumni</span>
+                                    <span className="block text-[8px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Empowering</span>
+                                    <span className="text-2xl md:text-4xl font-black text-slate-900 tracking-tighter uppercase whitespace-nowrap">2000+ Alumni</span>
                                 </div>
 
                                 <div className="hidden md:block w-px h-16 bg-slate-200 self-center" />
 
                                 <div className="text-center md:text-left relative z-10 transition-transform duration-500 group-hover:scale-105">
-                                    <span className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Assurance</span>
-                                    <span className="text-3xl md:text-4xl font-black text-slate-900 tracking-tighter uppercase whitespace-nowrap flex items-center md:block gap-2">
-                                        100% <span className="text-primary md:block text-xs md:text-base font-black">Placement</span>
+                                    <span className="block text-[8px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Assurance</span>
+                                    <span className="text-2xl md:text-4xl font-black text-slate-900 tracking-tighter uppercase whitespace-nowrap flex items-center md:block gap-2">
+                                        100% <span className="text-primary md:block text-[10px] md:text-base font-black">Placement</span>
                                     </span>
                                 </div>
                             </div>
                             
-                            <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-5 pt-8 md:pt-4">
+                            <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 pt-6 md:pt-4">
                                 <button 
                                     onClick={openAdmissionModal}
                                     className="w-full sm:w-auto px-10 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-slate-900 transition-all transform hover:scale-105 shadow-2xl shadow-primary/20 flex items-center justify-center gap-3 group"
