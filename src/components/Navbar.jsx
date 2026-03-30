@@ -133,7 +133,7 @@ const Navbar = () => {
     const transitionRange = [0, 50]; // Quicker transition range
 
     const navWidth = useTransform(scrollProgress, transitionRange, ["100%", "96%"]);
-    const navTop = useTransform(scrollProgress, transitionRange, ["0px", "20px"]);
+    const navTop = useTransform(scrollProgress, transitionRange, ["40px", "20px"]);
     const navRadius = useTransform(scrollProgress, transitionRange, ["0px", "50px"]);
 
     // Frosted Glass Effect Transformations
@@ -145,7 +145,7 @@ const Navbar = () => {
     // Mobile Dynamic Island Animations
     const mobileWidth = useTransform(scrollProgress, transitionRange, ["100%", "360px"]);
     const mobileHeight = useTransform(scrollProgress, transitionRange, ["64px", "48px"]);
-    const mobileTop = useTransform(scrollProgress, transitionRange, ["0px", "10px"]);
+    const mobileTop = useTransform(scrollProgress, transitionRange, ["40px", "10px"]);
     const mobileRadius = useTransform(scrollProgress, transitionRange, ["0px", "10px"]);
     const mobileBackground = useTransform(scrollProgress, transitionRange, ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.4)"]);
     const mobileBackdrop = useTransform(scrollProgress, transitionRange, ["blur(0px) saturate(100%)", "blur(20px) saturate(180%)"]);
@@ -274,6 +274,27 @@ const Navbar = () => {
 
     return (
         <>
+            {/* Top Announcement Bar */}
+            <div className="w-full bg-linear-to-r from-primary to-secondary text-white py-2 px-4 text-center relative z-[1001] flex items-center justify-center gap-3 overflow-hidden shadow-2xl transition-all duration-500">
+                {/* Premium Shine Effect */}
+                <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-shimmer" />
+                
+                <div className="flex items-center gap-2 relative z-10">
+                    <GraduationCap size={16} className="md:w-5 md:h-5 text-white/90 animate-bounce" />
+                    <span className="text-[10px] md:text-sm font-black tracking-[0.05em] uppercase whitespace-nowrap">
+                        Admission Open 2026, Limited Seat Available
+                    </span>
+                </div>
+
+                <Link 
+                    to="/apply" 
+                    className="relative z-10 px-3 py-1 bg-white/20 hover:bg-white/30 backdrop-blur-md rounded-full text-[9px] md:text-xs font-black uppercase tracking-widest border border-white/30 transition-all duration-300 flex items-center gap-1.5 group/apply"
+                >
+                    Apply Now
+                    <ArrowRight size={12} className="group-hover/apply:translate-x-1 transition-transform" />
+                </Link>
+            </div>
+
             <motion.nav
                 style={{
                     width: navWidth,

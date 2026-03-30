@@ -6,48 +6,47 @@ gsap.registerPlugin(ScrollTrigger);
 
 const AdmissionScroller = () => {
     const trackRef = useRef(null);
+    const containerRef = useRef(null);
 
     useLayoutEffect(() => {
-        const ctx = gsap.context(() => {
-            // 1. Base Infinite Marquee
+        let ctx = gsap.context(() => {
+            // 1. Base Infinite Marquee on the track
             const marquee = gsap.to(trackRef.current, {
                 xPercent: -50,
                 repeat: -1,
-                duration: 12,
-                ease: "linear",
+                duration: 20,
+                ease: "none",
             });
 
-            // 2. Scroll-Linked Horizontal Shift (Parallax Move)
-            gsap.fromTo(trackRef.current, { x: 200 }, {
-                x: -200,
-                scrollTrigger: {
-                    trigger: trackRef.current,
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: 1.2,
+            // 2. Scroll-Linked Horizontal Shift on the track container
+            // This creates the parallax effect as you scroll down
+            gsap.fromTo(trackRef.current, 
+                { x: 100 }, 
+                {
+                    x: -100,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: 1,
+                    }
                 }
-            });
+            );
 
-            // 3. Velocity Reactions (Speed & Skew)
+            // 3. Velocity Reactions
             ScrollTrigger.create({
                 onUpdate: (self) => {
-                    const velocity = self.getVelocity();
-                    const absVelocity = Math.abs(velocity / 200);
-
-                    // Acceleration
+                    const velocity = Math.abs(self.getVelocity() / 300);
                     gsap.to(marquee, {
-                        timeScale: 1 + absVelocity,
-                        duration: 0.5
-                    });
-
-                    // Dynamic Skew
-                    gsap.to(trackRef.current, {
-                        skewX: velocity / 100,
-                        duration: 0.5
+                        timeScale: 1 + velocity,
+                        duration: 0.5,
+                        ease: "power2.out"
                     });
                 }
             });
-        });
+        }, containerRef);
+
         return () => ctx.revert();
     }, []);
 
@@ -59,21 +58,23 @@ const AdmissionScroller = () => {
                 </span>
                 <div className="w-4 h-4 rounded-full bg-primary shadow-[0_0_20px_#db3436] animate-pulse" />
             </div>
-
             <div className="h-2 w-32 bg-linear-to-r from-primary to-secondary rounded-full opacity-30" />
         </div>
     );
 
     return (
-        <div className="relative z-30 py-4 md:py-8 bg-slate-950 overflow-hidden border-y border-white/10">
+        <div ref={containerRef} className="relative z-30 py-6 md:py-12 bg-slate-950 overflow-hidden border-y border-white/10">
             {/* Glossy Gradient Overlays */}
             <div className="absolute inset-y-0 left-0 w-32 md:w-96 bg-linear-to-r from-slate-950 via-slate-950/80 to-transparent z-10 pointer-events-none" />
             <div className="absolute inset-y-0 right-0 w-32 md:w-96 bg-linear-to-l from-slate-950 via-slate-950/80 to-transparent z-10 pointer-events-none" />
 
-            <div ref={trackRef} className="whitespace-nowrap flex items-center will-change-transform">
-                {[...Array(10)].map((_, i) => (
-                    <AdmissionText key={i} />
-                ))}
+            <div className="flex items-center">
+                <div ref={trackRef} className="whitespace-nowrap flex items-center will-change-transform">
+                    {/* We need enough clones to ensure seamless looping at -50% xPercent */}
+                    {[...Array(12)].map((_, i) => (
+                        <AdmissionText key={i} />
+                    ))}
+                </div>
             </div>
 
             {/* Background Atmosphere */}
