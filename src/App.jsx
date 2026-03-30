@@ -61,7 +61,9 @@ import WebSkeleton from './components/WebSkeleton';
 import RegistrationModal from './components/RegistrationModal';
 import AIChatbot from './components/AIChatbot';
 import { RegisterModalProvider } from './context/RegisterModalContext';
+import { AdmissionModalProvider } from './context/AdmissionModalContext';
 import { AuthProvider } from './context/AuthContext';
+import AdmissionFormModal from './components/AdmissionFormModal';
 
 const ScrollToTop = () => {
     const { pathname } = useLocation();
@@ -82,13 +84,15 @@ function App() {
 
     return (
         <AuthProvider>
-            <RegisterModalProvider>
-                <Router>
-                    <Suspense fallback={<WebSkeleton />}>
-                        <Navbar />
-                        <div className="transition-opacity duration-1000 opacity-100">
-                            <RegistrationModal />
-                            <ScrollToTop />
+            <AdmissionModalProvider>
+                <RegisterModalProvider>
+                    <Router>
+                        <Suspense fallback={<WebSkeleton />}>
+                            <Navbar />
+                            <div className="transition-opacity duration-1000 opacity-100">
+                                <RegistrationModal />
+                                <AdmissionFormModal />
+                                <ScrollToTop />
                             <div className="relative z-0 bg-white min-h-screen pb-24 md:pb-0 overflow-x-hidden">
                                 <Routes>
                                     <Route path="/" element={<Home />} />
@@ -150,8 +154,9 @@ function App() {
                             <SpeedInsights />
                         </div>
                     </Suspense>
-                </Router>
-            </RegisterModalProvider>
+                    </Router>
+                </RegisterModalProvider>
+            </AdmissionModalProvider>
         </AuthProvider>
     );
 }

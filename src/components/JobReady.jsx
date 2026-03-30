@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const JobReady = () => {
+    const { openAdmissionModal } = useAdmissionModal();
     return (
         <section className="relative py-24 md:py-32 bg-slate-50 overflow-hidden">
             {/* Background Accent */}
@@ -56,6 +58,7 @@ const JobReady = () => {
                     </motion.div>
                     
                     <motion.button 
+                        onClick={openAdmissionModal}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="bg-linear-to-r from-primary to-secondary text-white px-10 py-5 rounded-full font-black uppercase tracking-widest text-sm shadow-2xl shadow-primary/20 transition-all duration-300"

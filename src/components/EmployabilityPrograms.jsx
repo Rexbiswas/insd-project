@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Users, GraduationCap, Monitor, Briefcase, ArrowRight } from 'lucide-react';
+import { Users, GraduationCap, Monitor, Briefcase, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const EmployabilityPrograms = () => {
+    const { openAdmissionModal } = useAdmissionModal();
     const features = [
         {
             icon: <Briefcase className="w-6 h-6" />,
@@ -53,14 +55,50 @@ const EmployabilityPrograms = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
-                            className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.05] tracking-tighter"
+                            className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.05] tracking-tighter mb-8"
                         >
                             Employability <br />
                             <span className="bg-linear-to-r from-primary via-secondary to-primary bg-size-[200%_auto] bg-clip-text text-transparent animate-marquee-slow whitespace-nowrap">Focused Programs</span>
                         </motion.h2>
+
+                        {/* New Content: Tagline & Bullets */}
+                        <div className="space-y-6">
+                            <motion.p 
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.3 }}
+                                className="text-xl md:text-2xl font-black text-primary/80 uppercase tracking-widest italic"
+                            >
+                                Built for Industry. Designed for Careers.
+                            </motion.p>
+                            
+                            <div className="grid grid-cols-1 gap-4">
+                                {[
+                                    "100% Placement Support",
+                                    "Nationally Recognized & Awarded Institute",
+                                    "15+ Years of Proven Creative Excellence"
+                                ].map((bullet, i) => (
+                                    <motion.div 
+                                        key={i}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: 0.4 + (i * 0.1) }}
+                                        className="flex items-center gap-3 group/bullet"
+                                    >
+                                        <div className="p-1 bg-primary/10 rounded-full text-primary group-hover/bullet:bg-primary group-hover/bullet:text-white transition-colors">
+                                            <CheckCircle2 className="w-5 h-5" />
+                                        </div>
+                                        <span className="text-slate-700 font-bold text-lg md:text-xl tracking-tight">{bullet}</span>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                     
                     <motion.button 
+                        onClick={openAdmissionModal}
                         whileHover={{ scale: 1.05, boxShadow: "0 20px 50px rgba(0, 0, 0, 0.1)" }}
                         whileTap={{ scale: 0.95 }}
                         className="group relative bg-linear-to-r from-primary to-secondary text-white px-14 py-6 rounded-2xl font-black text-sm uppercase tracking-[0.2em] shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden"

@@ -1,0 +1,69 @@
+import React, { useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X } from 'lucide-react';
+import { useAdmissionModal } from '../context/AdmissionModalContext';
+import AdmissionForm from './AdmissionForm';
+
+const AdmissionFormModal = () => {
+    const { isAdmissionOpen, closeAdmissionModal } = useAdmissionModal();
+
+    // Lock body scroll when modal is open
+    useEffect(() => {
+        if (isAdmissionOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, [isAdmissionOpen]);
+
+    if (!isAdmissionOpen) return null;
+
+    return (
+        <AnimatePresence>
+            {isAdmissionOpen && (
+                <div className="fixed inset-0 z-10001 flex items-center justify-center p-4">
+                    {/* Dark Backdrop */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={closeAdmissionModal}
+                        className="absolute inset-0 bg-slate-950/90 backdrop-blur-xl"
+                    />
+
+                    {/* Modal Content container */}
+                    <motion.div
+                        initial={{ scale: 0.9, opacity: 0, y: 30 }}
+                        animate={{ scale: 1, opacity: 1, y: 0 }}
+                        exit={{ scale: 0.9, opacity: 0, y: 30 }}
+                        transition={{ 
+                            type: "spring", 
+                            stiffness: 300, 
+                            damping: 30,
+                            delay: 0.1
+                        }}
+                        className="relative w-full max-w-5xl max-h-[90vh] overflow-y-auto no-scrollbar rounded-[2.5rem] shadow-3xl bg-black border border-white/10"
+                    >
+                        {/* Custom Close Button */}
+                        <button
+                            onClick={closeAdmissionModal}
+                            className="absolute top-6 right-6 p-2 rounded-full bg-white/5 hover:bg-white/10 text-white/50 hover:text-white transition-all backdrop-blur-md z-50 group border border-white/10"
+                        >
+                            <X size={24} className="group-hover:rotate-90 transition-transform duration-300" />
+                        </button>
+
+                        {/* We use the existing AdmissionForm here */}
+                        <div className="md:scale-95 origin-center">
+                            <AdmissionForm isModal={true} />
+                        </div>
+                    </motion.div>
+                </div>
+            )}
+        </AnimatePresence>
+    );
+};
+
+export default AdmissionFormModal;

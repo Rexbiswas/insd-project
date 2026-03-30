@@ -29,6 +29,8 @@ import JobReady from '../components/JobReady';
 import EmployabilityPrograms from '../components/EmployabilityPrograms';
 import ProgramGrid from '../components/ProgramGrid';
 import IndustryInsights from '../components/IndustryInsights';
+import AdmissionForm from '../components/AdmissionForm';
+import HeroSlider from '../components/HeroSlider';
 
 
 import SEO from '../components/SEO';
@@ -241,11 +243,6 @@ const Home = () => {
 
 
 
-
-
-
-
-
         }, containerRef.current);
 
         return () => {
@@ -298,65 +295,19 @@ const Home = () => {
                 keywords="best design institute in Delhi, skill-based design school Delhi, job-ready design institute, 100% placement design course, fashion design course in Delhi, interior design course in Delhi, graphic design course in Delhi, animation VFX course in Delhi, INSD Delhi placement"
             />
 
-            {/* Hero Section - Pinned Wrapper relative to Viewport */}
-            <div ref={heroRef} className="relative z-10 min-h-screen w-full flex flex-col justify-center items-center bg-white overflow-hidden cursor-default">
-                <MouseImageTrail containerRef={heroRef} />
-                {/* Watermark Logo - Refined */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-10 md:opacity-20 z-0 select-none pointer-events-none px-12">
-                    <img
-                        src="https://insd.edu.in/wp-content/uploads/2022/02/Final-Logo.png"
-                        alt="INSD Watermark"
-                        className="w-[70vw] md:w-[35vw] h-auto object-contain grayscale brightness-0 mix-blend-multiply opacity-30"
-                    />
+            {/* Hero Split Section */}
+            <div ref={heroRef} className="relative z-10 min-h-screen w-full flex flex-col md:flex-row bg-slate-950/2 md:bg-white overflow-hidden pt-20 md:pt-24 cursor-default">
+                {/* Left Side: Carousel (Now Centered) */}
+                <div className="w-full md:w-[45%] h-[60vh] md:h-auto flex flex-col justify-center items-center p-4 md:p-8 relative overflow-hidden">
+                    <HeroSlider isMobile={isMobile} />
                 </div>
 
-                <div className="relative z-10 flex flex-col items-center justify-center w-full px-4 text-center">
-                    <div ref={insdRef} className="text-black text-center flex flex-col items-center justify-center m-0 p-0 relative leading-none tracking-tighter">
-                        <div className="text-[12vw] sm:text-[10vw] md:text-[7.5vw] font-black uppercase mb-3 md:mb-8 flex flex-col items-center">
-                            <h1 className="tracking-tighter flex flex-col items-center">
-                                <span className="block">creative</span>
-                                <span className="text-slate-800 italic font-serif mt-[-0.5vw] md:mt-[-0.8vw] lowercase tracking-normal opacity-90">Excellence</span>
-                            </h1>
-                        </div>
-
-                        <div className="relative flex items-center justify-center">
-                            <div className="absolute inset-0 bg-white/40 rounded-full blur-3xl -z-10 scale-125 opacity-50"></div>
-
-                            <div className="flex items-center justify-center gap-4 md:gap-12">
-                                <div className="flex flex-col items-end opacity-40">
-                                    <div className="h-px w-6 md:w-12 bg-black mb-1 md:mb-2"></div>
-                                    <span className="text-[2.5vw] md:text-[1.1vw] font-black uppercase tracking-[0.3em] md:tracking-[0.5em]">Since</span>
-                                </div>
-
-                                <div className="relative group">
-                                    <span ref={fifteenRef} className="inline-block bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent text-[24vw] md:text-[16vw] font-black leading-[0.8] px-1 md:px-6">
-                                        15
-                                    </span>
-                                    <span className="absolute -top-1 -right-4 md:-top-8 md:-right-16 text-[11px] md:text-2xl font-black text-primary tracking-widest uppercase">
-                                        Est. 2011
-                                    </span>
-                                </div>
-
-                                <div className="flex flex-col items-start opacity-40">
-                                    <div className="h-px w-6 md:w-12 bg-black mb-1 md:mb-2"></div>
-                                    <span className="text-[2.5vw] md:text-[1.1vw] font-black uppercase tracking-[0.3em] md:tracking-[0.5em]">Years</span>
-                                </div>
-                            </div>
-                        </div>
+                {/* Right Side: Admission Form */}
+                <div className="w-full md:w-[55%] flex flex-col justify-center items-center p-4 md:p-8 relative z-20">
+                    <div className="w-full max-w-2xl bg-black rounded-[2.5rem] shadow-3xl overflow-hidden border border-white/5 origin-center">
+                        <AdmissionForm isModal={true} />
                     </div>
-
-
-                </div>
-
-                {/* Modern Mouse-style Scroll Indicator */}
-                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-70">
-                    <div className="w-6 h-10 border-2 border-slate-300 rounded-full flex justify-center p-1.5 relative overflow-hidden">
-                        <div className="w-1 h-2 bg-primary rounded-full animate-scroll-wheel"></div>
-                        {/* Soft Glow */}
-                        <div className="absolute inset-0 bg-primary/5 blur-lg"></div>
-                    </div>
-                    <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400">Scroll</span>
-                </div>
+                </div>                
             </div>
 
             <JobReady />
@@ -385,7 +336,6 @@ const Home = () => {
                                 <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent md:bg-black/60 md:group-hover:bg-black/20 transition-colors duration-700 pointer-events-none" />
                             </div>
 
-                            {/* Content */}
                             <div className="absolute inset-0 z-10 flex flex-col justify-end p-6 md:p-8 pb-32 md:pb-12">
                                 <div className="overflow-hidden">
                                     <h3 className="text-5xl md:text-7xl lg:text-9xl font-black text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary translate-y-0 md:translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-100 uppercase tracking-tighter leading-none">

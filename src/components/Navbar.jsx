@@ -35,16 +35,18 @@ const RollerLink = ({ to, children, colorClass = "text-primary", baseTextClass =
 };
 
 import { useRegisterModal } from '../context/RegisterModalContext';
+import { useAdmissionModal } from '../context/AdmissionModalContext';
 import { useAuth } from '../context/AuthContext';
 
 const RegisterButton = ({ className = "", isDarkTheme = false, isScrolled = false, theme = null }) => {
-    const { openModal } = useRegisterModal();
+    const { openAdmissionModal } = useAdmissionModal();
+    const [isHovered, setIsHovered] = useState(false);
     // If theme is 'dark', it's forced dark. If 'light', forced light. Otherwise dynamic.
     const isLightMode = theme === 'dark' ? false : theme === 'light' ? true : (!isDarkTheme || isScrolled);
 
     return (
         <button
-            onClick={openModal}
+            onClick={openAdmissionModal}
             className={`group relative overflow-hidden shadow-lg transition-all duration-300 rounded-full ${isLightMode ? 'bg-slate-900/5 border-slate-900/10' : 'bg-white/10 hover:bg-white/20 border-white/20'} backdrop-blur-xl border ${className} flex items-center justify-center`}
         >
             {/* Animated Gradient Background */}
@@ -66,6 +68,7 @@ const RegisterButton = ({ className = "", isDarkTheme = false, isScrolled = fals
 
 const Navbar = () => {
     const { openModal } = useRegisterModal();
+    const { openAdmissionModal } = useAdmissionModal();
     const { user } = useAuth();
     const [isOpen, setIsOpen] = useState(false);
     const [expandedItem, setExpandedItem] = useState(null);
@@ -597,7 +600,7 @@ const Navbar = () => {
                     <button
                         onClick={() => {
                             setIsOpen(false);
-                            openModal();
+                            openAdmissionModal();
                         }}
                         className={`relative flex flex-col items-center justify-center w-16 h-16 transition-all duration-500 scale-90 active:scale-75 ${(isHeaderDark && !isScrolled) || isOpen ? 'text-white/40 hover:text-white' : 'text-slate-900/40 hover:text-slate-900'}`}
                     >
@@ -763,7 +766,7 @@ const Navbar = () => {
                                         </div>
 
                                         <button 
-                                            onClick={() => { setIsOpen(false); openModal(); }}
+                                            onClick={() => { setIsOpen(false); openAdmissionModal(); }}
                                             className="w-full py-4 bg-slate-900 text-white rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] shadow-xl shadow-slate-900/20 active:scale-95 transition-all"
                                         >
                                             Admission Query 2026
@@ -831,7 +834,25 @@ const Navbar = () => {
                                             >
                                                 {cta.action === 'modal' ? (
                                                     <button
-                                                        onClick={() => { setIsOpen(false); openModal(); }}
+                                                        onClick={() => { setIsOpen(false); openAdmissionModal(); }}
+                                                        className="flex items-center gap-6 md:gap-8 text-left w-full"
+                                                    >
+                                                        <div className="w-10 h-10 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-primary group-hover:scale-110 group-hover:rotate-6 group-hover:border-primary shadow-2xl overflow-hidden relative">
+                                                            <div className="absolute inset-0 bg-linear-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                                            <cta.icon className="w-5 h-5 md:w-7 md:h-7 text-white relative z-10" />
+                                                        </div>
+                                                        <div>
+                                                            <h3 className="text-xl md:text-3xl lg:text-4xl font-black uppercase tracking-tighter leading-none group-hover:text-primary transition-all duration-500 group-hover:translate-x-4">
+                                                                {cta.title}
+                                                            </h3>
+                                                            <p className="text-[8px] md:text-[10px] font-bold tracking-[0.3em] text-white/20 uppercase mt-1.5 group-hover:text-white/60 transition-all duration-500 group-hover:translate-x-2">
+                                                                {cta.sub}
+                                                            </p>
+                                                        </div>
+                                                    </button>
+                                                ) : cta.title === 'Apply Now' ? (
+                                                    <button
+                                                        onClick={() => { setIsOpen(false); openAdmissionModal(); }}
                                                         className="flex items-center gap-6 md:gap-8 text-left w-full"
                                                     >
                                                         <div className="w-10 h-10 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-primary group-hover:scale-110 group-hover:rotate-6 group-hover:border-primary shadow-2xl overflow-hidden relative">
