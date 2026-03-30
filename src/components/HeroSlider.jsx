@@ -65,8 +65,8 @@ const HeroSlider = () => {
     };
 
     return (
-        <div className="relative w-full aspect-[1.3/1] lg:aspect-[1.5/1] overflow-hidden group select-none rounded-2xl md:rounded-[2.5rem]">
-            <div className="relative w-full h-full overflow-hidden shadow-2xl">
+        <div className="relative w-full h-full overflow-hidden group select-none rounded-2xl md:rounded-[2.5rem] shadow-2xl">
+            <div className="relative w-full h-full overflow-hidden">
                 {/* Noise and Particles Overlay */}
                 <div className="absolute inset-0 z-20 pointer-events-none">
                     {/* Artistic Particles */}
@@ -116,12 +116,12 @@ const HeroSlider = () => {
                 {/* Phase Badge */}
                 <motion.div
                     key={`phase-${current}`}
-                    initial={{ opacity: 0, x: -50 }}
+                    initial={{ opacity: 0, x: -30 }} // Reduced shift for smaller screens
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2, duration: 0.6 }}
-                    className="absolute top-12 left-12 z-30 bg-white px-8 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.1)] flex items-center justify-center rounded-sm"
+                    className="absolute top-6 left-6 md:top-12 md:left-12 z-30 bg-white px-5 py-2 md:px-8 md:py-3 shadow-[0_10px_30px_rgba(0,0,0,0.1)] flex items-center justify-center rounded-sm"
                 >
-                    <span className="text-slate-900 text-sm md:text-base font-black uppercase tracking-widest">
+                    <span className="text-slate-900 text-[10px] md:text-sm font-black uppercase tracking-widest whitespace-nowrap">
                         {slides[current].phase}
                     </span>
                 </motion.div>
@@ -134,7 +134,7 @@ const HeroSlider = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5, duration: 0.8 }}
                     >
-                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tighter leading-none mb-4 drop-shadow-xl">
+                        <h2 className="text-3xl md:text-5xl lg:text-7xl font-black text-white uppercase tracking-tighter leading-none mb-4 drop-shadow-xl">
                             {slides[current].title}
                         </h2>
                         <div className="w-12 h-1 bg-white mb-6" />
@@ -142,12 +142,12 @@ const HeroSlider = () => {
                 </div>
 
                 {/* Navigation Controls */}
-                <div className="absolute bottom-12 right-12 flex items-center gap-6 z-40">
+                <div className="absolute bottom-6 right-6 md:bottom-12 md:right-12 flex items-center gap-4 md:gap-6 z-40">
                     {slides.map((_, i) => (
                         <button
                             key={i}
                             onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); }}
-                            className={`w-2 transition-all duration-500 rounded-full cursor-pointer ${i === current ? 'h-8 bg-white' : 'h-2 bg-white/40 hover:bg-white/60'}`}
+                            className={`w-1.5 md:w-2 transition-all duration-500 rounded-full cursor-pointer ${i === current ? 'h-6 md:h-8 bg-white' : 'h-1.5 md:h-2 bg-white/40 hover:bg-white/60'}`}
                         />
                     ))}
                 </div>

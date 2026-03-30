@@ -117,144 +117,144 @@ const AdmissionForm = ({ isModal = false }) => {
             
             <form onSubmit={handleSubmit} className={`relative z-10 ${isModal ? 'p-6 md:p-10' : 'p-8 md:p-16'} space-y-8 md:space-y-12`}>
                 {/* Header Subtitle */}
-                <div className="space-y-4 text-center md:text-left">
-                    <p className="text-slate-400 font-medium text-lg leading-relaxed max-w-2xl">
-                        Take the first step by filling out the form below, and someone from our team will reach back to you within two business days.
-                    </p>
-                    <h2 className="text-primary text-4xl md:text-5xl font-black uppercase tracking-tighter">
-                        Admissions Open 2026
+                <div className="space-y-4 text-center max-w-3xl mx-auto mb-6 md:mb-10">
+                    <div className="flex items-center justify-center gap-4 mb-2">
+                        <div className="w-8 h-px bg-primary/30" />
+                        <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">Official Enquiry</span>
+                        <div className="w-8 h-px bg-primary/30" />
+                    </div>
+                    <h2 className="text-white text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none">
+                        Admissions <span className="text-primary italic">Open</span>
                     </h2>
+                    <p className="text-slate-400 font-medium text-sm md:text-lg leading-relaxed px-4 opacity-70">
+                        Take the first step towards a career in creative excellence.
+                    </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {/* Left Column: Personal Info */}
-                    <div className="space-y-6">
-                        <div className="relative group/field">
+                <div className="flex flex-col space-y-5 max-w-2xl mx-auto">
+                    {/* Personal Info */}
+                    <div className="relative group/field">
+                         <input 
+                            required
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            type="text" 
+                            placeholder="Full Name *" 
+                            className="w-full h-15 bg-white/5 border border-white/10 rounded-2xl pl-12 pr-4 text-white placeholder-slate-500 focus:outline-none focus:border-primary focus:bg-white/10 focus:ring-4 focus:ring-primary/10 transition-all font-bold text-sm md:text-base shadow-inner"
+                         />
+                         <User className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within/field:text-primary transition-colors" size={18} />
+                    </div>
+
+                    <div className="relative group/field">
+                         <input 
+                            required
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            type="email" 
+                            placeholder="Email Address *" 
+                            className="w-full h-15 bg-white/5 border border-white/10 rounded-2xl pl-12 pr-4 text-white placeholder-slate-500 focus:outline-none focus:border-primary focus:bg-white/10 focus:ring-4 focus:ring-primary/10 transition-all font-bold text-sm md:text-base shadow-inner"
+                         />
+                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within/field:text-primary transition-colors" size={18} />
+                    </div>
+
+                    <div className="flex gap-4">
+                        <div className="relative w-28 shrink-0">
+                            <select className="w-full h-15 bg-white/5 border border-white/10 rounded-2xl px-4 text-white font-bold focus:outline-none focus:border-primary appearance-none cursor-pointer text-sm md:text-base shadow-inner">
+                                <option className="bg-slate-900">+91</option>
+                                <option className="bg-slate-900">+971</option>
+                                <option className="bg-slate-900">+1</option>
+                                <option className="bg-slate-900">+44</option>
+                                <option className="bg-slate-900">+33</option>
+                            </select>
+                            <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" size={14} />
+                        </div>
+                        <div className="relative flex-1 group/field">
                              <input 
                                 required
-                                name="name"
-                                value={formData.name}
+                                name="phone"
+                                value={formData.phone}
                                 onChange={handleChange}
-                                type="text" 
-                                placeholder="Full Name *" 
-                                className="w-full h-15 bg-white border-2 border-transparent rounded-xl pl-11 pr-4 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-primary transition-all font-bold text-sm md:text-base"
+                                type="tel" 
+                                placeholder="Mobile Number *" 
+                                className="w-full h-15 bg-white/5 border border-white/10 rounded-2xl pl-12 pr-4 text-white placeholder-slate-500 focus:outline-none focus:border-primary focus:bg-white/10 focus:ring-4 focus:ring-primary/10 transition-all font-bold text-sm md:text-base shadow-inner"
                              />
-                        </div>
-
-                        <div className="relative group/field">
-                             <input 
-                                required
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                type="email" 
-                                placeholder="Email Address *" 
-                                className="w-full h-15 bg-white border-2 border-transparent rounded-xl pl-11 pr-4 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-primary transition-all font-bold text-sm md:text-base"
-                             />
-                            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within/field:text-primary transition-colors" size={20} />
-                        </div>
-
-                        <div className="flex gap-4">
-                            <div className="relative w-24 shrink-0">
-                                <select className="w-full h-15 bg-white border-2 border-transparent rounded-xl px-3 text-slate-900 font-bold focus:outline-none focus:border-primary appearance-none cursor-pointer text-sm md:text-base">
-                                    <option>+91</option>
-                                    <option>+971</option>
-                                    <option>+1</option>
-                                    <option>+44</option>
-                                    <option>+33</option>
-                                </select>
-                                <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" size={14} />
-                            </div>
-                            <div className="relative flex-1 group/field">
-                                 <input 
-                                    required
-                                    name="phone"
-                                    value={formData.phone}
-                                    onChange={handleChange}
-                                    type="tel" 
-                                    placeholder="Mobile Number *" 
-                                    className="w-full h-15 bg-white border-2 border-transparent rounded-xl px-4 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-primary transition-all font-bold text-sm md:text-base"
-                                 />
-                                 <Phone className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within/field:text-primary transition-colors" size={18} />
-                            </div>
+                             <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within/field:text-primary transition-colors" size={18} />
                         </div>
                     </div>
 
-                    {/* Right Column: Preferences */}
-                    <div className="space-y-6">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div className="relative group/field">
-                                <select 
-                                    required
-                                    name="city"
-                                    value={formData.city}
-                                    onChange={handleChange}
-                                    className="w-full h-15 bg-white border-2 border-transparent rounded-xl pl-11 pr-8 text-slate-900 font-bold focus:outline-none focus:border-primary appearance-none cursor-pointer placeholder-slate-400 text-sm md:text-base"
-                                >
-                                    <option value="" disabled>Select City *</option>
-                                    {cities.map(city => <option key={city} value={city}>{city}</option>)}
-                                </select>
-                                <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within/field:text-primary transition-colors" size={20} />
-                                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" size={16} />
-                            </div>
-
-                            <div className="relative group/field">
-                                <select 
-                                    required
-                                    name="centre"
-                                    value={formData.centre}
-                                    onChange={handleChange}
-                                    className="w-full h-15 bg-white border-2 border-transparent rounded-xl pl-11 pr-8 text-slate-900 font-bold focus:outline-none focus:border-primary appearance-none cursor-pointer disabled:opacity-50 text-sm md:text-base"
-                                    disabled={!formData.city}
-                                >
-                                    <option value="" disabled>Select Centre *</option>
-                                    {formData.city && centresByCity[formData.city]?.map(centre => (
-                                        <option key={centre} value={centre}>{centre}</option>
-                                    ))}
-                                </select>
-                                <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within/field:text-primary transition-colors" size={20} />
-                                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" size={16} />
-                            </div>
+                    {/* Preferences Grid - making it two columns for a more professional look if on desktop, or keeping it parallel stack */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div className="relative group/field">
+                            <select 
+                                required
+                                name="city"
+                                value={formData.city}
+                                onChange={handleChange}
+                                className="w-full h-15 bg-white/5 border border-white/10 rounded-2xl pl-12 px-8 text-white font-bold focus:outline-none focus:border-primary appearance-none cursor-pointer placeholder-slate-500 text-sm md:text-base shadow-inner"
+                            >
+                                <option value="" disabled className="bg-slate-900">Select City *</option>
+                                {cities.map(city => <option key={city} value={city} className="bg-slate-900">{city}</option>)}
+                            </select>
+                            <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within/field:text-primary transition-colors" size={18} />
+                            <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" size={14} />
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div className="relative group/field">
-                                <select 
-                                    required
-                                    name="program"
-                                    value={formData.program}
-                                    onChange={handleChange}
-                                    className="w-full h-15 bg-white border-2 border-transparent rounded-xl pl-11 pr-8 text-slate-900 font-bold focus:outline-none focus:border-primary appearance-none cursor-pointer text-sm md:text-base"
-                                >
-                                    <option value="" disabled>Select Program *</option>
-                                    {programs.map(prog => <option key={prog} value={prog}>{prog}</option>)}
-                                </select>
-                                <GraduationCap className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within/field:text-primary transition-colors" size={20} />
-                                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" size={16} />
-                            </div>
+                        <div className="relative group/field">
+                            <select 
+                                required
+                                name="centre"
+                                value={formData.centre}
+                                onChange={handleChange}
+                                className="w-full h-15 bg-white/5 border border-white/10 rounded-2xl pl-12 px-8 text-white font-bold focus:outline-none focus:border-primary appearance-none cursor-pointer disabled:opacity-50 text-sm md:text-base shadow-inner"
+                                disabled={!formData.city}
+                            >
+                                <option value="" disabled className="bg-slate-900">Select Centre *</option>
+                                {formData.city && centresByCity[formData.city]?.map(centre => (
+                                    <option key={centre} value={centre} className="bg-slate-900">{centre}</option>
+                                ))}
+                            </select>
+                            <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within/field:text-primary transition-colors" size={18} />
+                            <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" size={14} />
+                        </div>
 
-                            <div className="relative group/field">
-                                <select 
-                                    required
-                                    name="course"
-                                    value={formData.course}
-                                    onChange={handleChange}
-                                    className="w-full h-15 bg-white border-2 border-transparent rounded-xl pl-11 pr-8 text-slate-900 font-bold focus:outline-none focus:border-primary appearance-none cursor-pointer text-sm md:text-base"
-                                >
-                                    <option value="" disabled>Select Course *</option>
-                                    {courses.map(course => <option key={course} value={course}>{course}</option>)}
-                                </select>
-                                <BookOpen className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within/field:text-primary transition-colors" size={20} />
-                                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" size={16} />
-                            </div>
+                        <div className="relative group/field">
+                            <select 
+                                required
+                                name="program"
+                                value={formData.program}
+                                onChange={handleChange}
+                                className="w-full h-15 bg-white/5 border border-white/10 rounded-2xl pl-12 px-8 text-white font-bold focus:outline-none focus:border-primary appearance-none cursor-pointer text-sm md:text-base shadow-inner"
+                            >
+                                <option value="" disabled className="bg-slate-900">Select Program *</option>
+                                {programs.map(prog => <option key={prog} value={prog} className="bg-slate-900">{prog}</option>)}
+                            </select>
+                            <GraduationCap className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within/field:text-primary transition-colors" size={18} />
+                            <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" size={14} />
+                        </div>
+
+                        <div className="relative group/field">
+                            <select 
+                                required
+                                name="course"
+                                value={formData.course}
+                                onChange={handleChange}
+                                className="w-full h-15 bg-white/5 border border-white/10 rounded-2xl pl-12 px-8 text-white font-bold focus:outline-none focus:border-primary appearance-none cursor-pointer text-sm md:text-base shadow-inner"
+                            >
+                                <option value="" disabled className="bg-slate-900">Select Course *</option>
+                                {courses.map(course => <option key={course} value={course} className="bg-slate-900">{course}</option>)}
+                            </select>
+                            <BookOpen className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within/field:text-primary transition-colors" size={18} />
+                            <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" size={14} />
                         </div>
                     </div>
                 </div>
 
                 {/* Consent Checkbox */}
-                <div className="flex flex-col items-center justify-center space-y-8">
-                    <label className="flex items-start md:items-center gap-4 cursor-pointer group/consent">
-                        <div className={`mt-1 md:mt-0 w-6 h-6 rounded-md border-2 shrink-0 flex items-center justify-center transition-all ${formData.marketingConsent ? 'bg-primary border-primary shadow-[0_0_15px_rgba(219,52,54,0.4)]' : 'border-white/20 hover:border-white/40 bg-white/5'}`}>
+                <div className="flex flex-col items-center justify-center space-y-8 pt-4">
+                    <label className="flex items-start gap-4 cursor-pointer group/consent max-w-xl">
+                        <div className={`mt-1 w-6 h-6 rounded-md border-2 shrink-0 flex items-center justify-center transition-all ${formData.marketingConsent ? 'bg-primary border-primary shadow-[0_0_15px_rgba(219,52,54,0.4)]' : 'border-white/20 hover:border-white/40 bg-white/5'}`}>
                             {formData.marketingConsent && <CheckCircle2 className="text-white w-4 h-4" />}
                         </div>
                         <input 
@@ -264,7 +264,7 @@ const AdmissionForm = ({ isModal = false }) => {
                             onChange={handleChange}
                             className="hidden" 
                         />
-                        <span className="text-white text-sm md:text-lg font-medium select-none group-hover/consent:text-primary/90 transition-colors">
+                        <span className="text-slate-400 text-xs md:text-sm font-medium select-none group-hover/consent:text-white transition-colors">
                             I agree to give my consent to receive updates through SMS/Email*
                         </span>
                     </label>

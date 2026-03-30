@@ -23,7 +23,6 @@ import BackToTop from '../components/BackToTop';
 import WhyInsd from '../components/WhyInsd';
 import AiFutureDesign from '../components/AiFutureDesign';
 import CelebritySlider from '../components/CelebritySlider';
-import MouseImageTrail from '../components/MouseImageTrail';
 import LegacyTimeline from '../components/LegacyTimeline';
 import JobReady from '../components/JobReady';
 import EmployabilityPrograms from '../components/EmployabilityPrograms';
@@ -31,7 +30,7 @@ import ProgramGrid from '../components/ProgramGrid';
 import IndustryInsights from '../components/IndustryInsights';
 import AdmissionForm from '../components/AdmissionForm';
 import HeroSlider from '../components/HeroSlider';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Sparkles, Briefcase, Rocket } from 'lucide-react';
 import PlacementPartners from '../components/PlacementPartners';
 import { useAdmissionModal } from '../context/AdmissionModalContext';
 
@@ -301,101 +300,122 @@ const Home = () => {
 
             {/* Hero Split Section */}
             <div ref={heroRef} className="relative z-10 min-h-screen w-full flex flex-col bg-slate-950/2 md:bg-white overflow-hidden pt-24 md:pt-32 cursor-default">
-                {/* Section Heading */}
-                <div className="w-full text-center md:text-left px-5 md:px-12 mb-6 md:mb-16 relative z-30 pt-16 md:pt-0">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, ease: "easeOut" }}
-                        className="inline-block w-full"
-                    >
-                        <span className="block text-primary font-black uppercase text-[7px] md:text-[10px] tracking-[0.4em] mb-2 md:mb-4">The INSD Advantage</span>
-                        <h2 className="text-[11vw] md:text-[6.5vw] font-black text-slate-900 uppercase tracking-tighter leading-[0.9] md:leading-[0.85] mb-6 md:mb-12">
-                            From <span className="text-slate-400/30">Classroom</span><br className="hidden md:block" /> to <span className="text-primary italic">Career</span>
-                        </h2>
-
-                        <div className="space-y-6 md:space-y-10 w-full max-w-4xl mx-auto md:mx-0">
-                            {/* Value Pillars */}
-                            <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-4 md:gap-x-8 gap-y-2 md:gap-y-4">
-                                {[
-                                    "Skills-based education",
-                                    "Industry preparation",
-                                    "Launching careers"
-                                ].map((pillar, pIdx) => (
-                                    <div key={pIdx} className="flex items-center gap-1.5 md:gap-3 group">
-                                        <div className="w-3.5 h-3.5 md:w-5 md:h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
-                                            <CheckCircle2 size={8} md:size={12} strokeWidth={3} />
-                                        </div>
-                                        <span className="text-slate-500 font-extrabold uppercase text-[7px] md:text-sm tracking-widest leading-none group-hover:text-slate-900 transition-colors">
-                                            {pillar}
-                                        </span>
-                                    </div>
-                                ))}
-                            </div>
-                            
-                            {/* Impact Strip */}
-                            <div className="inline-flex flex-col md:flex-row items-center gap-4 md:gap-16 p-5 md:p-12 bg-slate-50 border border-slate-100 rounded-2xl md:rounded-[3.5rem] shadow-2xl shadow-slate-200/40 relative overflow-hidden group w-full md:w-auto">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2" />
-                                
-                                <div className="text-center md:text-left relative z-10 w-full md:w-auto py-1 md:py-0 transition-transform duration-500 group-hover:scale-105">
-                                    <span className="block text-[7px] md:text-[10px] font-black text-primary uppercase tracking-widest mb-0.5 md:mb-1">Highest Package</span>
-                                    <span className="text-xl md:text-4xl font-black text-slate-900 tracking-tighter uppercase whitespace-nowrap">RS 18 LPA</span>
-                                </div>
-
-                                <div className="hidden md:block w-px h-16 bg-slate-200 self-center" />
-                                <div className="md:hidden w-full h-px bg-slate-100" />
-
-                                <div className="text-center md:text-left relative z-10 w-full md:w-auto py-1 md:py-0 transition-transform duration-500 group-hover:scale-105">
-                                    <span className="block text-[7px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-0.5 md:mb-1">Empowering</span>
-                                    <span className="text-xl md:text-4xl font-black text-slate-900 tracking-tighter uppercase whitespace-nowrap">2000+ Alumni</span>
-                                </div>
-
-                                <div className="hidden md:block w-px h-16 bg-slate-200 self-center" />
-                                <div className="md:hidden w-full h-px bg-slate-100" />
-
-                                <div className="text-center md:text-left relative z-10 w-full md:w-auto py-1 md:py-0 transition-transform duration-500 group-hover:scale-105">
-                                    <span className="block text-[7px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-0.5 md:mb-1">Assurance</span>
-                                    <span className="text-xl md:text-4xl font-black text-slate-900 tracking-tighter uppercase whitespace-nowrap flex items-center justify-center md:block gap-2">
-                                        100% <span className="text-primary md:block text-[8px] md:text-base font-black">Placement</span>
-                                    </span>
-                                </div>
-                            </div>
-                            
-                            <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 pt-4 md:pt-4">
-                                <button 
-                                    onClick={openAdmissionModal}
-                                    className="w-full sm:w-auto px-8 md:px-10 py-4 md:py-5 bg-primary text-white rounded-full font-black uppercase text-[10px] md:text-xs tracking-widest hover:bg-slate-900 transition-all transform hover:scale-105 shadow-2xl shadow-primary/20 flex items-center justify-center gap-3 group"
-                                >
-                                    Book Free Career Counselling
-                                    <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center group-hover:rotate-45 transition-transform">
-                                        <ArrowRight size={14} />
-                                    </span>
-                                </button>
-                                <button 
-                                    onClick={() => document.getElementById('programs-grid')?.scrollIntoView({ behavior: 'smooth' })}
-                                    className="w-full sm:w-auto px-8 md:px-10 py-4 md:py-5 bg-white border border-slate-200 text-slate-900 rounded-full font-black uppercase text-[10px] md:text-xs tracking-widest hover:bg-slate-50 transition-all font-outfit"
-                                >
-                                    Explore Global Programs
-                                </button>
-                            </div>
-
-                            <PlacementPartners />
-                        </div>
-                    </motion.div>
-                </div>
-
-                <div className="w-full flex flex-col md:flex-row items-start justify-center md:px-12">
-                    {/* Left Side: Carousel (Now Centered) */}
-                    <div className="w-full md:w-[45%] h-[40vh] md:h-auto flex flex-col justify-center items-center p-4 md:p-8 relative overflow-hidden">
+                {/* Visual Elements & Form Row */}
+                <div className="w-full flex flex-col md:flex-row md:items-stretch justify-center md:px-12 mb-12">
+                    {/* Left Side: Carousel */}
+                    <div className="w-full md:w-[45%] h-[65vh] md:h-auto flex flex-col justify-center items-center p-4 md:p-8 relative overflow-hidden">
                         <HeroSlider isMobile={isMobile} />
                     </div>
 
                     {/* Right Side: Admission Form */}
                     <div className="w-full md:w-[50%] flex flex-col justify-center items-center p-4 md:p-8 relative z-20">
-                        <div className="w-full max-w-xl bg-black rounded-4xl md:rounded-[2.5rem] shadow-3xl overflow-hidden border border-white/5 origin-center transform md:scale-95 hover:scale-100 transition-transform duration-500">
+                        <div className="w-full h-full max-w-xl bg-black rounded-4xl md:rounded-[2.5rem] shadow-3xl overflow-hidden border border-white/5 origin-center transform md:scale-95 hover:scale-100 transition-transform duration-500">
                             <AdmissionForm isModal={true} />
                         </div>
                     </div>                
+                </div>
+
+                {/* Monumental Centered Heading Section */}
+                <div className="w-full text-center px-5 md:px-12 mb-16 md:mb-24 relative z-30">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, ease: "easeOut" }}
+                        className="flex flex-col items-center justify-center space-y-4 md:space-y-6"
+                    >
+                        {/* Institutional Tagline */}
+                        <div className="flex items-center gap-4 mb-2">
+                            <div className="w-12 h-px bg-slate-200" />
+                            <span className="text-[9px] md:text-xs font-black uppercase tracking-[0.4em] text-slate-400">The INSD Advantage</span>
+                            <div className="w-12 h-px bg-slate-200" />
+                        </div>
+
+                        {/* Centered Monumental Title */}
+                        <h1 className="relative flex flex-col items-center leading-[0.85] uppercase">
+                            <span className="text-[12vw] md:text-[8vw] lg:text-[7vw] font-black tracking-tighter text-slate-950 flex items-center gap-[2vw]">
+                                From <span className="text-slate-300 transition-colors hover:text-primary">Classroom</span>
+                            </span>
+                            <span className="text-[14vw] md:text-[10vw] lg:text-[9vw] font-black italic tracking-tighter text-primary flex items-center justify-center -mt-[2vw] md:-mt-[1.5vw]">
+                                <span className="relative inline-block">
+                                    To Career
+                                    <div className="absolute -bottom-2 left-0 w-full h-[0.15em] bg-linear-to-r from-primary/40 to-transparent blur-sm" />
+                                </span>
+                            </span>
+                        </h1>
+
+                        <div className="flex flex-wrap items-center justify-center gap-x-6 md:gap-x-10 gap-y-3 pt-4 opacity-80">
+                            {[
+                                { icon: Sparkles, label: "Skills-based Education" },
+                                { icon: Briefcase, label: "Industry Preparation" },
+                                { icon: Rocket, label: "Launching Careers" }
+                            ].map((pillar, i) => (
+                                <div key={i} className="flex items-center gap-2 group cursor-default">
+                                    <div className="w-4 h-4 md:w-5 md:h-5 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                                        <pillar.icon size={10} className="md:w-3 md:h-3 text-primary" />
+                                    </div>
+                                    <span className="text-[8px] md:text-[11px] font-black text-slate-500 uppercase tracking-widest group-hover:text-slate-900 transition-colors">{pillar.label}</span>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Compact Centered Impact Strip */}
+                        <div className="w-full max-w-5xl mx-auto mt-12 bg-white border border-slate-100 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] rounded-[2rem] md:rounded-[3.5rem] p-6 md:p-10 relative group overflow-hidden">
+                            <div className="absolute inset-0 bg-linear-to-br from-slate-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                            <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 relative z-10">
+                                <div className="text-center transition-transform duration-500 group-hover:scale-105">
+                                    <span className="block text-[8px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5">Highest Package</span>
+                                    <h3 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tighter leading-none">
+                                        RS 18 <span className="text-primary font-black ml-1">LPA</span>
+                                    </h3>
+                                </div>
+
+                                <div className="hidden md:block w-px h-16 bg-slate-200 self-center" />
+                                <div className="md:hidden w-full h-px bg-slate-100" />
+
+                                <div className="text-center transition-transform duration-500 group-hover:scale-105">
+                                    <span className="block text-[8px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5">Empowering</span>
+                                    <h3 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tighter leading-none">
+                                        2000+ <span className="text-primary italic ml-1">ALUMNI</span>
+                                    </h3>
+                                </div>
+
+                                <div className="hidden md:block w-px h-16 bg-slate-200 self-center" />
+                                <div className="md:hidden w-full h-px bg-slate-100" />
+
+                                <div className="text-center transition-transform duration-500 group-hover:scale-105">
+                                    <span className="block text-[8px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5">Assurance</span>
+                                    <h3 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tighter leading-none">
+                                        100% <span className="text-primary ml-1">PLACEMENT</span>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* CTA Buttons */}
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 md:mt-12 w-full">
+                            <motion.button 
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                onClick={openAdmissionModal}
+                                className="w-full sm:w-auto h-14 md:h-18 px-10 md:px-14 bg-primary text-white rounded-full font-black uppercase tracking-widest text-[10px] md:text-xs shadow-[0_20px_60px_-15px_rgba(219,52,54,0.5)] flex items-center justify-center gap-3 group/cta transition-all hover:bg-slate-950"
+                            >
+                                Book Free Career Counselling
+                                <ArrowRight size={20} className="group-hover/cta:translate-x-2 transition-transform" />
+                            </motion.button>
+                            <motion.button 
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                onClick={() => document.getElementById('programs-grid')?.scrollIntoView({ behavior: 'smooth' })}
+                                className="w-full sm:w-auto h-14 md:h-18 px-10 md:px-14 bg-white border-2 border-slate-100 text-slate-600 rounded-full font-black uppercase tracking-widest text-[10px] md:text-xs hover:border-primary hover:text-primary transition-all flex items-center justify-center"
+                            >
+                                Explore Global Programs
+                            </motion.button>
+                        </div>
+                    </motion.div>
+                    
+                    <div className="mt-20 md:mt-32">
+                        <PlacementPartners />
+                    </div>
                 </div>
             </div>
 
