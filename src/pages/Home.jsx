@@ -343,7 +343,7 @@ const Home = () => {
                                 </div>
 
                                 <div className="hidden md:block w-px h-16 bg-slate-200 self-center" />
-                                <div className="md:hidden w-full h-[1px] bg-slate-100" />
+                                <div className="md:hidden w-full h-px bg-slate-100" />
 
                                 <div className="text-center md:text-left relative z-10 w-full md:w-auto py-1 md:py-0 transition-transform duration-500 group-hover:scale-105">
                                     <span className="block text-[7px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-0.5 md:mb-1">Empowering</span>
@@ -351,7 +351,7 @@ const Home = () => {
                                 </div>
 
                                 <div className="hidden md:block w-px h-16 bg-slate-200 self-center" />
-                                <div className="md:hidden w-full h-[1px] bg-slate-100" />
+                                <div className="md:hidden w-full h-px bg-slate-100" />
 
                                 <div className="text-center md:text-left relative z-10 w-full md:w-auto py-1 md:py-0 transition-transform duration-500 group-hover:scale-105">
                                     <span className="block text-[7px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-0.5 md:mb-1">Assurance</span>
@@ -392,7 +392,7 @@ const Home = () => {
 
                     {/* Right Side: Admission Form */}
                     <div className="w-full md:w-[50%] flex flex-col justify-center items-center p-4 md:p-8 relative z-20">
-                        <div className="w-full max-w-xl bg-black rounded-[2rem] md:rounded-[2.5rem] shadow-3xl overflow-hidden border border-white/5 origin-center transform md:scale-95 hover:scale-100 transition-transform duration-500">
+                        <div className="w-full max-w-xl bg-black rounded-4xl md:rounded-[2.5rem] shadow-3xl overflow-hidden border border-white/5 origin-center transform md:scale-95 hover:scale-100 transition-transform duration-500">
                             <AdmissionForm isModal={true} />
                         </div>
                     </div>                

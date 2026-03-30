@@ -275,23 +275,23 @@ const Navbar = () => {
     return (
         <>
             {/* Top Announcement Bar */}
-            <div className="w-full bg-linear-to-r from-primary to-secondary text-white py-2 px-4 text-center relative z-1001 flex items-center justify-center gap-3 overflow-hidden shadow-2xl transition-all duration-500">
+            <div className="w-full bg-linear-to-r from-primary to-secondary text-white py-1.5 md:py-2.5 px-3 md:px-6 text-center relative z-1001 flex items-center justify-center gap-2 md:gap-4 overflow-hidden shadow-2xl transition-all duration-500">
                 {/* Premium Shine Effect */}
                 <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-shimmer" />
                 
-                <div className="flex items-center gap-2 relative z-10">
-                    <GraduationCap size={16} className="md:w-5 md:h-5 text-white/90 animate-bounce" />
-                    <span className="text-[10px] md:text-sm font-black tracking-[0.05em] uppercase whitespace-nowrap">
-                        Admission Open 2026, Limited Seat Available
+                <div className="flex items-center gap-1.5 md:gap-3 relative z-10 overflow-hidden">
+                    <GraduationCap size={12} className="md:w-5 md:h-5 text-white/90 animate-bounce shrink-0" />
+                    <span className="text-[8px] md:text-xs lg:text-sm font-black tracking-wide md:tracking-widest uppercase whitespace-nowrap">
+                        Admission Open 2026<span className="hidden sm:inline">, Limited Seat Available</span>
                     </span>
                 </div>
 
                 <Link 
                     to="/apply" 
-                    className="relative z-10 px-3 py-1 bg-white/20 hover:bg-white/30 backdrop-blur-md rounded-full text-[9px] md:text-xs font-black uppercase tracking-widest border border-white/30 transition-all duration-300 flex items-center gap-1.5 group/apply"
+                    className="relative z-10 px-2.5 py-0.5 md:px-4 md:py-1.5 bg-white/20 hover:bg-white/30 backdrop-blur-md rounded-full text-[8px] md:text-xs font-black uppercase tracking-widest border border-white/30 transition-all duration-300 flex items-center gap-1 group/apply shadow-lg"
                 >
                     Apply Now
-                    <ArrowRight size={12} className="group-hover/apply:translate-x-1 transition-transform" />
+                    <ArrowRight size={10} className="md:w-3.5 md:h-3.5 group-hover/apply:translate-x-1 transition-transform" />
                 </Link>
             </div>
 
