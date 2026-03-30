@@ -2,25 +2,25 @@ import React from 'react';
 import { Briefcase, Palette } from 'lucide-react';
 
 const hospitalityLogos = [
-    "https://ik.imagekit.io/fmldynl4j4/logos/radisson.png",
-    "https://ik.imagekit.io/fmldynl4j4/logos/taj.png",
-    "https://ik.imagekit.io/fmldynl4j4/logos/hyatt.png",
-    "https://ik.imagekit.io/fmldynl4j4/logos/marriott.png",
-    "https://ik.imagekit.io/fmldynl4j4/logos/itc.png",
-    "https://ik.imagekit.io/fmldynl4j4/logos/hilton.png",
-    "https://ik.imagekit.io/fmldynl4j4/logos/oberoi.png",
-    "https://ik.imagekit.io/fmldynl4j4/logos/le-meridien.png"
+    "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_wy3si8wy3si8wy3s.png?tr=w-400",
+    "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_wy3si8wy3si8wy3s.png?tr=w-400",
+    "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_wy3si8wy3si8wy3s.png?tr=w-400",
+    "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_wy3si8wy3si8wy3s.png?tr=w-400",
+    "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_wy3si8wy3si8wy3s.png?tr=w-400",
+    "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_wy3si8wy3si8wy3s.png?tr=w-400",
+    "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_wy3si8wy3si8wy3s.png?tr=w-400",
+    "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_wy3si8wy3si8wy3s.png?tr=w-400"
 ];
 
 const fashionLogos = [
-    "https://ik.imagekit.io/fmldynl4j4/logos/zara.png",
-    "https://ik.imagekit.io/fmldynl4j4/logos/hm.png",
-    "https://ik.imagekit.io/fmldynl4j4/logos/reliance.png",
-    "https://ik.imagekit.io/fmldynl4j4/logos/aditya-birla.png",
-    "https://ik.imagekit.io/fmldynl4j4/logos/marks-spencer.png",
-    "https://ik.imagekit.io/fmldynl4j4/logos/lifestyle.png",
-    "https://ik.imagekit.io/fmldynl4j4/logos/pantaloons.png",
-    "https://ik.imagekit.io/fmldynl4j4/logos/shoppers-stop.png"
+    "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_wy3si8wy3si8wy3s.png?tr=w-400",
+    "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_wy3si8wy3si8wy3s.png?tr=w-400",
+    "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_wy3si8wy3si8wy3s.png?tr=w-400",
+    "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_wy3si8wy3si8wy3s.png?tr=w-400",
+    "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_wy3si8wy3si8wy3s.png?tr=w-400",
+    "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_wy3si8wy3si8wy3s.png?tr=w-400",
+    "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_wy3si8wy3si8wy3s.png?tr=w-400",
+    "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_wy3si8wy3si8wy3s.png?tr=w-400"
 ];
 
 const PlacementPartners = () => {

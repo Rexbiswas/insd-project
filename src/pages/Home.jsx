@@ -312,7 +312,7 @@ const Home = () => {
                         <div className="w-full h-full max-w-xl bg-black rounded-4xl md:rounded-[2.5rem] shadow-3xl overflow-hidden border border-white/5 origin-center transform md:scale-95 hover:scale-100 transition-transform duration-500">
                             <AdmissionForm isModal={true} />
                         </div>
-                    </div>                
+                    </div>
                 </div>
 
                 {/* Monumental Centered Heading Section */}
@@ -332,10 +332,10 @@ const Home = () => {
 
                         {/* Centered Monumental Title */}
                         <h1 className="relative flex flex-col items-center leading-[0.85] uppercase">
-                            <span className="text-[12vw] md:text-[8vw] lg:text-[7vw] font-black tracking-tighter text-slate-950 flex items-center gap-[2vw]">
+                            <span className="text-[10vw] md:text-[7vw] lg:text-[6vw] font-black tracking-tighter text-slate-950 flex items-center gap-[2vw]">
                                 From <span className="text-slate-300 transition-colors hover:text-primary">Classroom</span>
                             </span>
-                            <span className="text-[14vw] md:text-[10vw] lg:text-[9vw] font-black italic tracking-tighter text-primary flex items-center justify-center -mt-[2vw] md:-mt-[1.5vw]">
+                            <span className="text-[12vw] md:text-[9vw] lg:text-[8vw] font-black italic tracking-tighter text-primary flex items-center justify-center -mt-[2vw] md:-mt-[1.5vw]">
                                 <span className="relative inline-block">
                                     To Career
                                     <div className="absolute -bottom-2 left-0 w-full h-[0.15em] bg-linear-to-r from-primary/40 to-transparent blur-sm" />
@@ -393,7 +393,7 @@ const Home = () => {
 
                         {/* CTA Buttons */}
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 md:mt-12 w-full">
-                            <motion.button 
+                            <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={openAdmissionModal}
@@ -402,7 +402,7 @@ const Home = () => {
                                 Book Free Career Counselling
                                 <ArrowRight size={20} className="group-hover/cta:translate-x-2 transition-transform" />
                             </motion.button>
-                            <motion.button 
+                            <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => document.getElementById('programs-grid')?.scrollIntoView({ behavior: 'smooth' })}
@@ -412,16 +412,53 @@ const Home = () => {
                             </motion.button>
                         </div>
                     </motion.div>
-                    
+
                     <div className="mt-20 md:mt-32">
                         <PlacementPartners />
+                    </div>
+
+                    {/* Creative Path Transition */}
+                    <div className="mt-32 md:mt-48 mb-20 md:mb-32 text-center px-4">
+                        <motion.div
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1, ease: "easeOut" }}
+                            className="space-y-6"
+                        >
+                            <div className="flex items-center justify-center gap-4 mb-4">
+                                <div className="w-12 h-px bg-slate-200" />
+                                <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary">The Journey Begins</span>
+                                <div className="w-12 h-px bg-slate-200" />
+                            </div>
+
+                            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.95] text-slate-950">
+                                Choose Your <br className="hidden md:block" />
+                                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-primary to-slate-500 italic inline-block py-2 pr-8 -mr-8">Creative Path</span>
+                            </h2>
+
+                            <div className="space-y-4 max-w-2xl mx-auto pt-2">
+                                <p className="text-lg md:text-2xl font-bold text-slate-800 tracking-tight leading-relaxed">
+                                    Pick the creative career that excites you— <span className="text-primary italic">we’ll help you build it.</span>
+                                </p>
+                                <div className="flex items-center justify-center gap-3">
+                                    <div className="w-8 h-px bg-slate-100" />
+                                    <p className="text-[10px] md:text-sm font-black uppercase tracking-[0.25em] text-slate-400">
+                                        Skill-based programs designed for real careers
+                                    </p>
+                                    <div className="w-8 h-px bg-slate-100" />
+                                </div>
+
+                            </div>
+                            <ProgramGrid />
+
+                        </motion.div>
                     </div>
                 </div>
             </div>
 
             <JobReady />
             <EmployabilityPrograms />
-            <ProgramGrid />
             <IndustryInsights />
 
             {/* Section 2: Interactive Gallery */}
