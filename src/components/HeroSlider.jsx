@@ -3,24 +3,23 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const slides = [
     {
-        phase: "PHASE 01",
-        title: "Fashion Design",
         subtitle: "Shape the Future of Style",
-        img: "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_wy3si8wy3si8wy3s.png?tr=w-1200,fo-auto",
+        img: "https://ik.imagekit.io/fmldynl4j4/IMG_3440.JPG?updatedAt=1771841966154",
         tag: "Inquiry"
     },
     {
-        phase: "PHASE 02",
-        title: "Interior Design",
         subtitle: "Design Spaces that Inspire",
-        img: "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_u2ubidu2ubidu2ub.png?tr=w-1200,fo-auto",
+        img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Copy%20of%20pranav%20sir%20.jpeg?updatedAt=1774326566811",
         tag: "Innovation"
     },
     {
-        phase: "PHASE 03",
-        title: "Graphic Design",
         subtitle: "Master Visual Communication",
-        img: "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_hzzhu5hzzhu5hzzh.png?tr=w-1200,fo-auto",
+        img: "https://ik.imagekit.io/fmldynl4j4/Students/ARI02049%20(2).JPG",
+        tag: "Digital"
+    },
+    {
+        subtitle: "Master Visual Communication",
+        img: "https://ik.imagekit.io/fmldynl4j4/Students/ARI02418%20(2).JPG",
         tag: "Digital"
     }
 ];
@@ -90,7 +89,7 @@ const HeroSlider = () => {
                             }}
                         />
                     ))}
-                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat opacity-[0.05] mix-blend-overlay" />
+                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat opacity-[0.05]" />
                 </div>
 
                 <AnimatePresence initial={false} custom={direction}>
