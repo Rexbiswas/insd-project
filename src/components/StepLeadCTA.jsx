@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MousePointer2 } from 'lucide-react';
+import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const StepLeadCTA = () => {
     const [isVisible, setIsVisible] = useState(false);
+    const { openAdmissionModal } = useAdmissionModal();
 
     useEffect(() => {
         const checkScroll = () => {
@@ -15,25 +17,25 @@ const StepLeadCTA = () => {
         return () => window.removeEventListener('scroll', checkScroll);
     }, []);
 
-    const scrollToForm = (e) => {
+    const handleOpenModal = (e) => {
         e.preventDefault();
-        const element = document.getElementById('step-lead-form');
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
+        openAdmissionModal({
+            title: 'Quick Inquiry',
+            subtitle: 'Start your creative journey with us.'
+        });
     };
 
     return (
         <AnimatePresence>
             {isVisible && (
                 <motion.button
-                    onClick={scrollToForm}
+                    onClick={handleOpenModal}
                     initial={{ opacity: 0, scale: 0.5, y: 50 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.5, y: 50 }}
                     whileHover={{ scale: 1.1, y: -5 }}
                     whileTap={{ scale: 0.9 }}
-                    className="fixed bottom-[352px] md:bottom-[280px] right-6 md:right-10 z-[1000] group flex items-center justify-center"
+                    className="fixed bottom-[352px] md:bottom-[280px] right-6 md:right-10 z-1000 group flex items-center justify-center"
                 >
                     {/* Tooltip */}
                     <div className="absolute right-full mr-4 px-4 py-2 bg-slate-900 text-white text-[10px] font-black uppercase tracking-widest rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none translate-x-4 group-hover:translate-x-0 whitespace-nowrap shadow-2xl">

@@ -334,7 +334,7 @@ const Home = () => {
                         <div className="w-full flex flex-col items-center gap-10 md:gap-14 animate-in fade-in slide-in-from-top-12 duration-1000">
                             {/* Value Transformation Line */}
                             <div className="flex flex-col items-center text-center space-y-4">
-                                <motion.div 
+                                <motion.div
                                     initial={{ opacity: 0, letterSpacing: "0.2em" }}
                                     animate={{ opacity: 1, letterSpacing: "0.45em" }}
                                     className="text-primary font-black uppercase text-[10px] md:text-sm tracking-[0.45em] drop-shadow-sm"
@@ -342,8 +342,8 @@ const Home = () => {
                                     Global Design Excellence
                                 </motion.div>
                                 <p className="text-slate-800 font-bold text-xl md:text-3xl tracking-tight max-w-3xl leading-tight px-6 h-auto">
-                                    Skill-based Education <span className="opacity-20 text-slate-400 mx-2 md:mx-4">•</span> 
-                                    Industry Preparation <span className="opacity-20 text-slate-400 mx-2 md:mx-4">•</span> 
+                                    Skill-based Education <span className="opacity-20 text-slate-400 mx-2 md:mx-4">•</span>
+                                    Industry Preparation <span className="opacity-20 text-slate-400 mx-2 md:mx-4">•</span>
                                     Launching Careers
                                 </p>
                             </div>

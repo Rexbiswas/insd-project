@@ -331,7 +331,7 @@ const JewelleryDesigning = () => {
                             { title: "Visual Merchandiser", desc: "Designing high-impact storefronts and displays for luxury jewellery boutiques.", img: "https://images.unsplash.com/photo-1610492421943-8347fa65e236?auto=format&fit=crop&q=80&w=800" },
                             { title: "Brand Consultant", desc: "Setting the strategic identity and market positioning for global gem houses.", img: "https://images.unsplash.com/photo-1534073828943-f801091bb18c?auto=format&fit=crop&q=80&w=800" },
                             { title: "Quality Assurance", desc: "Inspecting every piece for structural integrity, plating quality, and stone setting.", img: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=800" },
-                            { title: "Auction Specialist", desc: "Curating and valuing rare vintage jewellery for prestigious international auction houses.", img: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Luxury Retail Merchant", desc: "Managing high-value inventory, luxury showroom operations and premium brand sales.", img: "https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg?auto=compress&cs=tinysrgb&w=800" },
                             { title: "Luxury Entrepreneur", desc: "Launching and managing your own independent bespoke jewellery label and atelier.", img: "https://images.unsplash.com/photo-1467043237213-65f2da53396f?auto=format&fit=crop&q=80&w=800" },
                         ].map((role, idx) => (
                             <motion.div 

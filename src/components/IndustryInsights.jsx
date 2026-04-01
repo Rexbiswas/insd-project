@@ -138,7 +138,10 @@ const IndustryInsights = () => {
                             <motion.button
                                 whileHover={{ scale: 1.05, boxShadow: "0 25px 60px -15px rgba(219,52,54,0.4)" }}
                                 whileTap={{ scale: 0.95 }}
-                                onClick={() => openAdmissionModal()}
+                                onClick={() => openAdmissionModal({ 
+                                    title: 'Start Your Creative Career', 
+                                    subtitle: 'Join the creative revolution at INSD.' 
+                                })}
                                 className="inline-flex items-center gap-6 bg-white text-slate-950 px-12 md:px-16 py-6 md:py-8 rounded-full font-black text-sm md:text-base uppercase tracking-[0.2em] shadow-2xl transition-all duration-500 hover:bg-primary hover:text-white group/btn"
                             >
                                 <Zap size={22} className="group-hover/btn:animate-bounce" />

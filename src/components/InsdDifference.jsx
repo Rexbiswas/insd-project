@@ -1,8 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Target, Briefcase, Building2, Globe, Rocket, Play, CheckCircle2 } from 'lucide-react';
+import { useAdmissionModal } from '../context/AdmissionModalContext';
+
 
 const InsdDifference = () => {
+    const { openAdmissionModal } = useAdmissionModal();
     const tiles = [
         {
             title: "Skill-First Learning",
@@ -110,7 +113,13 @@ const InsdDifference = () => {
                             transition={{ delay: 0.3 }}
                             className="pt-10 flex flex-col sm:flex-row items-center gap-6"
                         >
-                            <button className="group relative px-8 py-5 bg-primary text-white rounded-full font-black uppercase tracking-widest text-[10px] md:text-xs overflow-hidden shadow-2xl hover:shadow-primary/40 transition-all duration-500 hover:-translate-y-1">
+                            <button 
+                                onClick={() => openAdmissionModal({
+                                    title: 'Talk to Experts',
+                                    subtitle: 'Get professional guidance for your design career.'
+                                })}
+                                className="group relative px-8 py-5 bg-primary text-white rounded-full font-black uppercase tracking-widest text-[10px] md:text-xs overflow-hidden shadow-2xl hover:shadow-primary/40 transition-all duration-500 hover:-translate-y-1"
+                            >
                                 <span className="relative z-10 flex items-center gap-3">
                                     Talk to our career experts
                                     <Rocket className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
