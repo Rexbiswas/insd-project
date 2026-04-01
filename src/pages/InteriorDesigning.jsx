@@ -93,7 +93,7 @@ const InteriorDesigning = () => {
             <section className="relative h-[70vh] md:h-[80vh] flex items-center justify-center text-center px-6 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img 
-                        src="https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Copy%20of%20ID%20.png" 
+                        src="https://t3.ftcdn.net/jpg/03/14/29/04/360_F_314290430_IPtVT2vgKAmFnSq2jtblYqvtNux1IP5Q.jpg" 
                         alt="Bachelors in Interior Design" 
                         className="w-full h-full object-cover scale-105"
                     />
@@ -130,7 +130,7 @@ const InteriorDesigning = () => {
                         
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4">
                             <button 
-                                onClick={openAdmissionModal}
+                                onClick={() => openAdmissionModal()}
                                 className="w-full sm:w-auto px-16 py-6 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-900 transition-all transform hover:scale-105 shadow-2xl shadow-primary/20"
                             >
                                 Apply Now 2026
@@ -339,7 +339,7 @@ const InteriorDesigning = () => {
                                 <p className="text-slate-400 font-medium max-w-sm">Join the 2026 session. Limited seats for high-potential spatial visionaries.</p>
                             </div>
                             <button 
-                                onClick={openAdmissionModal}
+                                onClick={() => openAdmissionModal()}
                                 className="px-16 py-6 bg-slate-900 text-white rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-primary transition-all transform hover:scale-105"
                             >
                                 Start Application

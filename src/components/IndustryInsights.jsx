@@ -126,8 +126,8 @@ const IndustryInsights = () => {
                     <div className="bg-slate-950 p-12 md:p-24 text-center relative overflow-hidden group/cta">
                         {/* Animated Mesh gradient background */}
                         <div className="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-1000">
-                            <div className="absolute top-[-50%] left-[-20%] w-[100%] h-[150%] bg-primary/30 rounded-full blur-[120px] animate-pulse"></div>
-                            <div className="absolute bottom-[-50%] right-[-20%] w-[100%] h-[150%] bg-secondary/30 rounded-full blur-[120px] animate-pulse delay-1000"></div>
+                            <div className="absolute top-[-50%] left-[-20%] w-full h-[150%] bg-primary/30 rounded-full blur-[120px] animate-pulse"></div>
+                            <div className="absolute bottom-[-50%] right-[-20%] w-full h-[150%] bg-secondary/30 rounded-full blur-[120px] animate-pulse delay-1000"></div>
                         </div>
 
                         <div className="relative z-10 max-w-4xl mx-auto space-y-12">
@@ -138,7 +138,7 @@ const IndustryInsights = () => {
                             <motion.button
                                 whileHover={{ scale: 1.05, boxShadow: "0 25px 60px -15px rgba(219,52,54,0.4)" }}
                                 whileTap={{ scale: 0.95 }}
-                                onClick={openAdmissionModal}
+                                onClick={() => openAdmissionModal()}
                                 className="inline-flex items-center gap-6 bg-white text-slate-950 px-12 md:px-16 py-6 md:py-8 rounded-full font-black text-sm md:text-base uppercase tracking-[0.2em] shadow-2xl transition-all duration-500 hover:bg-primary hover:text-white group/btn"
                             >
                                 <Zap size={22} className="group-hover/btn:animate-bounce" />
@@ -146,9 +146,6 @@ const IndustryInsights = () => {
                                 <ArrowUpRight size={22} className="group-hover/btn:translate-x-2 group-hover/btn:-translate-y-2 transition-transform" />
                             </motion.button>
                             
-                            <p className="text-slate-500 font-bold uppercase tracking-widest text-[10px] md:text-xs">
-                                ⚡ Limited Admissions open for 2026 batches
-                            </p>
                         </div>
                     </div>
                 </motion.div>

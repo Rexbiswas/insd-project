@@ -77,7 +77,7 @@ const EmployabilityPrograms = () => {
                     </div>
                     
                     <motion.button 
-                        onClick={openAdmissionModal}
+                        onClick={() => openAdmissionModal()}
                         whileHover={{ scale: 1.05, boxShadow: "0 20px 50px rgba(0, 0, 0, 0.1)" }}
                         whileTap={{ scale: 0.95 }}
                         className="group relative bg-linear-to-r from-primary to-secondary text-white px-14 py-6 rounded-2xl font-black text-sm uppercase tracking-[0.2em] shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden"

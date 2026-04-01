@@ -16,8 +16,10 @@ import {
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
+import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const TextileDesigning = () => {
+    const { openAdmissionModal } = useAdmissionModal();
     const [activeOutline, setActiveOutline] = useState('PG');
     const [expandedYear, setExpandedYear] = useState(1);
 
@@ -75,7 +77,7 @@ const TextileDesigning = () => {
             <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center text-center px-6 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img 
-                        src="https://images.pexels.com/photos/236102/pexels-photo-236102.jpeg?auto=compress&cs=tinysrgb&w=1920" 
+                        src="https://plus.unsplash.com/premium_photo-1661962617583-e61b799dc558?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8c2V3aW5nJTIwY2xhc3N8ZW58MHx8MHx8fDA%3D" 
                         alt="Textile Design Loom" 
                         className="w-full h-full object-cover scale-105"
                     />
@@ -97,7 +99,10 @@ const TextileDesigning = () => {
                         </p>
                         
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                            <button className="px-12 py-5 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest hover:bg-primary hover:text-white transition-all transform hover:scale-105 shadow-2xl">
+                            <button 
+                                onClick={() => openAdmissionModal()}
+                                className="px-12 py-5 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest hover:bg-primary hover:text-white transition-all transform hover:scale-105 shadow-2xl"
+                            >
                                 Join This Course
                             </button>
                             <a 
@@ -397,7 +402,10 @@ const TextileDesigning = () => {
                                 </h3>
                                 <p className="text-white/50 font-medium max-w-sm">Join the 2026 session. Limited seats for high-potential material visionaries.</p>
                             </div>
-                            <button className="px-16 py-6 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-primary hover:text-white transition-all transform hover:scale-105">
+                            <button 
+                                onClick={() => openAdmissionModal()}
+                                className="px-16 py-6 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-primary hover:text-white transition-all transform hover:scale-105"
+                            >
                                 Start Application
                             </button>
                         </div>

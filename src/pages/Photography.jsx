@@ -16,8 +16,10 @@ import {
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
+import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const Photography = () => {
+    const { openAdmissionModal } = useAdmissionModal();
     const [activeOutline, setActiveOutline] = useState('PG');
     const [expandedYear, setExpandedYear] = useState(1);
 
@@ -75,7 +77,7 @@ const Photography = () => {
             <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center text-center px-6 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img 
-                        src="https://images.pexels.com/photos/594452/pexels-photo-594452.jpeg?auto=compress&cs=tinysrgb&w=1920" 
+                        src="https://t4.ftcdn.net/jpg/01/19/13/67/360_F_119136770_MbAquQu9xKLMaQo0GN6VOsAJRo917cLJ.jpg" 
                         alt="Photography Studio" 
                         className="w-full h-full object-cover scale-105"
                     />
@@ -97,7 +99,10 @@ const Photography = () => {
                         </p>
                         
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                            <button className="px-12 py-5 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest hover:bg-primary hover:text-white transition-all transform hover:scale-105 shadow-2xl">
+                            <button 
+                                onClick={() => openAdmissionModal()}
+                                className="px-12 py-5 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest hover:bg-primary hover:text-white transition-all transform hover:scale-105 shadow-2xl"
+                            >
                                 Join This Course
                             </button>
                             <a 
@@ -396,7 +401,10 @@ const Photography = () => {
                                 </h3>
                                 <p className="text-white/50 font-medium max-w-sm">Join the 2026 session. Limited seats for high-potential visual artists.</p>
                             </div>
-                            <button className="px-16 py-6 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-primary hover:text-white transition-all transform hover:scale-105">
+                            <button 
+                                onClick={() => openAdmissionModal()}
+                                className="px-16 py-6 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-primary hover:text-white transition-all transform hover:scale-105"
+                            >
                                 Start Application
                             </button>
                         </div>

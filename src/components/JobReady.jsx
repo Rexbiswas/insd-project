@@ -58,7 +58,7 @@ const JobReady = () => {
                     </motion.div>
                     
                     <motion.button 
-                        onClick={openAdmissionModal}
+                        onClick={() => openAdmissionModal()}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="bg-linear-to-r from-primary to-secondary text-white px-10 py-5 rounded-full font-black uppercase tracking-widest text-sm shadow-2xl shadow-primary/20 transition-all duration-300"

@@ -2,9 +2,9 @@ import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { User, Phone, Mail, MapPin, ArrowRight, ArrowLeft, Sparkles, MessageSquare } from 'lucide-react';
 
-const StepLeadForm = () => {
+const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, subtitle = null }) => {
     const sectionRef = useRef(null);
-    const [choice, setChoice] = useState(null);
+    const [choice, setChoice] = useState(initialChoice);
     const [formData, setFormData] = useState({
         name: '',
         mobile: '',
@@ -35,7 +35,7 @@ const StepLeadForm = () => {
 
     const handleChoice = (val) => {
         setChoice(val);
-        
+
         // Auto-scroll to top of section when choice is made
         setTimeout(() => {
             if (sectionRef.current) {
@@ -85,42 +85,44 @@ const StepLeadForm = () => {
         }
     };
 
-    return (
-        <section ref={sectionRef} id="step-lead-form" className="relative py-24 md:py-32 bg-white overflow-hidden selection:bg-primary selection:text-white">
-            {/* Background Decorations */}
-            <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-40">
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2" />
-                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/5 blur-[120px] rounded-full -translate-x-1/2 translate-y-1/2" />
-            </div>
+    const content = (
+        <div className={`relative ${isModal ? '' : 'py-24 md:py-32 bg-white overflow-hidden selection:bg-primary selection:text-white'}`}>
+            {!isModal && (
+                <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-40">
+                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2" />
+                    <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/5 blur-[120px] rounded-full -translate-x-1/2 translate-y-1/2" />
+                </div>
+            )}
 
             <div className="container mx-auto px-6 relative z-10">
                 <div className="max-w-4xl mx-auto">
-                    
+
                     {/* Header Area - Transformed based on state */}
                     <div className="text-center mb-12 md:mb-20">
-                        <motion.span 
+                        <motion.span
                             animate={{ opacity: submitted ? 0 : 1, y: submitted ? -20 : 0 }}
                             className="inline-block px-4 py-1 rounded-full bg-slate-100 text-slate-500 font-bold tracking-[0.3em] uppercase text-[10px] md:text-xs mb-8"
                         >
                             {submitted ? "Success" : "Take the first step"}
                         </motion.span>
-                        
-                        <motion.h2 
+
+                        <motion.h2
                             layout
-                            animate={{ 
+                            animate={{
                                 scale: choice ? 0.8 : 1,
                                 opacity: submitted ? 0 : 1
                             }}
                             className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-slate-950 leading-[0.9] mb-8"
                         >
-                            {choice 
-                                ? (choice === 'yes' ? "Talk to our Career Expert" : "Let us Career Decide")
-                                : <>Are You Ready to Start <br /> learning <span className="text-primary italic font-serif">Job-Ready</span> <br /> Skills?</>
-                            }
+                            {title ? title : (
+                                choice
+                                    ? (choice === 'yes' ? "Talk to our Career Expert" : "Let us Career Decide")
+                                    : <>Are You Ready to Start <br /> learning <span className="text-primary italic font-serif">Job-Ready</span> <br /> Skills?</>
+                            )}
                         </motion.h2>
 
                         {!choice && !submitted && (
-                            <motion.div 
+                            <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-8 mt-12"
@@ -237,11 +239,11 @@ const StepLeadForm = () => {
                                                         <div className={`mt-1 md:mt-0 w-6 h-6 rounded-md border-2 shrink-0 flex items-center justify-center transition-all ${formData.marketingConsent ? 'bg-primary border-primary shadow-[0_0_15px_rgba(219,52,54,0.4)]' : 'border-white/20 hover:border-white/40 bg-white/5'}`}>
                                                             {formData.marketingConsent && <ArrowRight className="text-white w-4 h-4" />}
                                                         </div>
-                                                        <input 
-                                                            type="checkbox" 
+                                                        <input
+                                                            type="checkbox"
                                                             checked={formData.marketingConsent}
                                                             onChange={(e) => setFormData({ ...formData, marketingConsent: e.target.checked })}
-                                                            className="hidden" 
+                                                            className="hidden"
                                                         />
                                                         <span className="text-slate-400 text-[10px] md:text-xs font-medium select-none group-hover/consent:text-white transition-colors">
                                                             I agree to give my consent to receive updates through SMS/Email*
@@ -298,6 +300,14 @@ const StepLeadForm = () => {
                     </AnimatePresence>
                 </div>
             </div>
+        </div>
+    );
+
+    if (isModal) return content;
+
+    return (
+        <section ref={sectionRef} id="step-lead-form">
+            {content}
         </section>
     );
 };

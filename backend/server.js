@@ -4,6 +4,9 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
+import hpp from 'hpp';
 import authRoutes from './routes/auth.js';
 import leadRoutes from './routes/leadauth.js';
 import stepLeadRoutes from './routes/stepleads.js';
@@ -19,7 +22,31 @@ dotenv.config({ path: path.join(__dirname, '.env') });
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-// Middleware
+// --- SOFTWARE FIREWALL (Security Middleware) ---
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
+            scriptSrc: ["'self'", "'unsafe-inline'", "https://www.googletagmanager.com", "https://va.vercel-scripts.com"],
+            imgSrc: ["'self'", "https://insd.edu.in", "data:"],
+            connectSrc: ["'self'", "https://*.vercel-scripts.com", "https://*.vercel.sh", "https://www.googletagmanager.com"],
+            objectSrc: ["'none'"],
+        }
+    }
+}));
+
+// Rate Limiter: Prevent DDOS and Brute Force
+const apiLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // limit each IP to 100 requests per windowMs
+    message: { message: "Too many requests from this IP, please try again after 15 minutes." }
+});
+app.use('/api/', apiLimiter);
+
+// Protect against HTTP Parameter Pollution
+app.use(hpp());
+
+// Core Middleware
 app.use(express.json());
 app.use(cors({ origin: '*', credentials: true }));
 

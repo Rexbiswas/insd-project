@@ -26,16 +26,16 @@ const FashionDesigning = () => {
     // Current semester being viewed in the roadmap
 
     const careerPaths = [
-        "Designer/Assistant Designer",
-        "Pattern Designer",
-        "Fashion Illustrator",
-        "Fashion Entrepreneur",
-        "Costume designer",
-        "Fashion consultant",
-        "Personal stylist",
-        "Technical designer",
-        "Production pattern maker",
-        "Fashion coordinator"
+        { title: "Designer/Assistant Designer", img: "https://images.pexels.com/photos/3735169/pexels-photo-3735169.jpeg?auto=compress&cs=tinysrgb&w=400" },
+        { title: "Pattern Designer", img: "https://images.pexels.com/photos/4614214/pexels-photo-4614214.jpeg?auto=compress&cs=tinysrgb&w=400" },
+        { title: "Fashion Illustrator", img: "https://images.pexels.com/photos/5692271/pexels-photo-5692271.jpeg?auto=compress&cs=tinysrgb&w=400" },
+        { title: "Fashion Entrepreneur", img: "https://images.pexels.com/photos/4960250/pexels-photo-4960250.jpeg?auto=compress&cs=tinysrgb&w=400" },
+        { title: "Costume designer", img: "https://images.pexels.com/photos/4580749/pexels-photo-4580749.jpeg?auto=compress&cs=tinysrgb&w=400" },
+        { title: "Fashion consultant", img: "https://images.pexels.com/photos/3965548/pexels-photo-3965548.jpeg?auto=compress&cs=tinysrgb&w=400" },
+        { title: "Personal stylist", img: "https://images.pexels.com/photos/6069554/pexels-photo-6069554.jpeg?auto=compress&cs=tinysrgb&w=400" },
+        { title: "Technical designer", img: "https://images.pexels.com/photos/3823488/pexels-photo-3823488.jpeg?auto=compress&cs=tinysrgb&w=400" },
+        { title: "Production pattern maker", img: "https://images.pexels.com/photos/4614165/pexels-photo-4614165.jpeg?auto=compress&cs=tinysrgb&w=400" },
+        { title: "Fashion coordinator", img: "https://images.pexels.com/photos/3735153/pexels-photo-3735153.jpeg?auto=compress&cs=tinysrgb&w=400" }
     ];
 
     const practitioners = [
@@ -113,11 +113,11 @@ const FashionDesigning = () => {
                 {/* Background Image with Overlay */}
                 <div className="absolute inset-0 z-0">
                     <img 
-                        src="https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Copy%20of%20Fd%20.png" 
+                        src="https://t3.ftcdn.net/jpg/01/85/83/48/360_F_185834867_qisP0T3zX8a7rflZFKlbmj3i3BYLVUGC.jpg" 
                         alt="Bachelors in Fashion Design" 
-                        className="w-full h-full object-cover scale-105"
+                        className="w-full h-full object-cover scale-100"
                     />
-                    <div className="absolute inset-0 bg-black/70 backdrop-blur-[1px]" />
+                    <div className="absolute inset-0 bg-black/70" />
                 </div>
 
                 <div className="relative z-10 max-w-6xl mx-auto space-y-8 flex flex-col items-center">
@@ -152,12 +152,15 @@ const FashionDesigning = () => {
                         
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4">
                             <button 
-                                onClick={openAdmissionModal}
+                                onClick={() => openAdmissionModal()}
                                 className="w-full sm:w-auto px-16 py-6 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-900 transition-all transform hover:scale-105 shadow-2xl shadow-primary/20"
                             >
                                 Apply Now 2026
                             </button>
-                            <button className="w-full sm:w-auto flex items-center justify-center gap-3 px-12 py-6 bg-white/5 backdrop-blur-md border border-white/20 text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white/10 transition-all font-outfit">
+                            <button 
+                                onClick={() => openAdmissionModal()}
+                                className="w-full sm:w-auto flex items-center justify-center gap-3 px-12 py-6 bg-white/5 backdrop-blur-md border border-white/20 text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white/10 transition-all font-outfit"
+                            >
                                 Download Brochure
                             </button>
                         </div>
@@ -381,13 +384,22 @@ const FashionDesigning = () => {
                         {careerPaths.map((path, idx) => (
                             <motion.div 
                                 key={idx}
-                                whileHover={{ scale: 1.05, y: -5 }}
-                                className="aspect-square flex flex-col items-center justify-center p-6 text-center bg-slate-50 border border-slate-100 shadow-sm rounded-3xl hover:bg-white hover:border-primary/20 hover:shadow-2xl hover:shadow-slate-200/50 transition-all duration-300 group"
+                                whileHover={{ scale: 1.02, y: -5 }}
+                                className="relative aspect-4/5 md:aspect-square overflow-hidden rounded-[2.5rem] group border border-slate-100 shadow-sm"
                             >
-                                <Briefcase className="text-slate-300 group-hover:text-primary mb-4 transition-colors" size={24} />
-                                <span className="text-[9px] md:text-[11px] font-black text-slate-700 leading-tight uppercase tracking-widest group-hover:text-slate-900 transition-colors">
-                                    {path}
-                                </span>
+                                <img 
+                                    src={path.img} 
+                                    alt={path.title} 
+                                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                                />
+                                <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
+                                
+                                <div className="absolute inset-x-0 bottom-0 p-6 flex flex-col items-center text-center">
+                                    <Briefcase className="text-primary mb-3 scale-75 md:scale-100 group-hover:animate-pulse" size={20} />
+                                    <span className="text-[10px] md:text-xs font-black text-white leading-tight uppercase tracking-wider group-hover:text-primary transition-colors">
+                                        {path.title}
+                                    </span>
+                                </div>
                             </motion.div>
                         ))}
                     </div>
@@ -403,7 +415,7 @@ const FashionDesigning = () => {
                             </div>
                             <div className="flex flex-col gap-4">
                                 <button 
-                                    onClick={openAdmissionModal}
+                                    onClick={() => openAdmissionModal()}
                                     className="px-16 py-6 bg-slate-900 text-white rounded-full font-black uppercase text-xs tracking-[0.2em] shadow-2xl hover:bg-primary transition-all transform hover:scale-105"
                                 >
                                     Apply Now 2026

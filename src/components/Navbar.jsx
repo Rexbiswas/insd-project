@@ -46,7 +46,7 @@ const RegisterButton = ({ className = "", isDarkTheme = false, isScrolled = fals
 
     return (
         <button
-            onClick={openAdmissionModal}
+            onClick={() => openAdmissionModal()}
             className={`group relative overflow-hidden shadow-lg transition-all duration-300 rounded-full ${isLightMode ? 'bg-slate-900/5 border-slate-900/10' : 'bg-white/10 hover:bg-white/20 border-white/20'} backdrop-blur-xl border ${className} flex items-center justify-center`}
         >
             {/* Animated Gradient Background */}

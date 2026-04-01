@@ -24,14 +24,14 @@ import WhyInsd from '../components/WhyInsd';
 import AiFutureDesign from '../components/AiFutureDesign';
 import CelebritySlider from '../components/CelebritySlider';
 import LegacyTimeline from '../components/LegacyTimeline';
-import JobReady from '../components/JobReady';
-import EmployabilityPrograms from '../components/EmployabilityPrograms';
 import ProgramGrid from '../components/ProgramGrid';
+import InsdDifference from '../components/InsdDifference';
 import IndustryInsights from '../components/IndustryInsights';
 import AdmissionForm from '../components/AdmissionForm';
 import HeroSlider from '../components/HeroSlider';
 import { ArrowRight, CheckCircle2, Sparkles, Briefcase, Rocket } from 'lucide-react';
 import PlacementPartners from '../components/PlacementPartners';
+import SuccessStory from '../components/SuccessStory';
 import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 
@@ -331,63 +331,75 @@ const Home = () => {
                         </div>
 
                         {/* Centered Monumental Title */}
-                        <h1 className="relative flex flex-col items-center leading-[0.85] uppercase">
-                            <span className="text-[10vw] md:text-[7vw] lg:text-[6vw] font-black tracking-tighter text-slate-950 flex items-center gap-[2vw]">
-                                From <span className="text-slate-300 transition-colors hover:text-primary">Classroom</span>
-                            </span>
-                            <span className="text-[12vw] md:text-[9vw] lg:text-[8vw] font-black italic tracking-tighter text-primary flex items-center justify-center -mt-[2vw] md:-mt-[1.5vw]">
-                                <span className="relative inline-block">
-                                    To Career
-                                    <div className="absolute -bottom-2 left-0 w-full h-[0.15em] bg-linear-to-r from-primary/40 to-transparent blur-sm" />
-                                </span>
-                            </span>
-                        </h1>
+                        <div className="w-full flex flex-col items-center gap-10 md:gap-14 animate-in fade-in slide-in-from-top-12 duration-1000">
+                            {/* Value Transformation Line */}
+                            <div className="flex flex-col items-center text-center space-y-4">
+                                <motion.div 
+                                    initial={{ opacity: 0, letterSpacing: "0.2em" }}
+                                    animate={{ opacity: 1, letterSpacing: "0.45em" }}
+                                    className="text-primary font-black uppercase text-[10px] md:text-sm tracking-[0.45em] drop-shadow-sm"
+                                >
+                                    Global Design Excellence
+                                </motion.div>
+                                <p className="text-slate-800 font-bold text-xl md:text-3xl tracking-tight max-w-3xl leading-tight px-6 h-auto">
+                                    Skill-based Education <span className="opacity-20 text-slate-400 mx-2 md:mx-4">•</span> 
+                                    Industry Preparation <span className="opacity-20 text-slate-400 mx-2 md:mx-4">•</span> 
+                                    Launching Careers
+                                </p>
+                            </div>
 
-                        <div className="flex flex-wrap items-center justify-center gap-x-6 md:gap-x-10 gap-y-3 pt-4 opacity-80">
-                            {[
-                                { icon: Sparkles, label: "Skills-based Education" },
-                                { icon: Briefcase, label: "Industry Preparation" },
-                                { icon: Rocket, label: "Launching Careers" }
-                            ].map((pillar, i) => (
-                                <div key={i} className="flex items-center gap-2 group cursor-default">
-                                    <div className="w-4 h-4 md:w-5 md:h-5 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-                                        <pillar.icon size={10} className="md:w-3 md:h-3 text-primary" />
+                            {/* High-Impact Statistics Strip */}
+                            <div className="relative w-full max-w-6xl mx-auto">
+                                <div className="absolute inset-0 bg-primary/5 rounded-[3rem] md:rounded-full blur-3xl" />
+                                <div className="relative bg-white/40 backdrop-blur-3xl border border-white/40 rounded-[3rem] md:rounded-full px-8 md:px-16 py-8 md:py-10 shadow-[0_40px_120px_-30px_rgba(0,0,0,0.1)] flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 overflow-hidden group/stats">
+                                    {/* Glass Shine */}
+                                    <div className="absolute top-0 -left-full w-full h-full bg-linear-to-r from-transparent via-white/20 to-transparent group-hover/stats:animate-shimmer" />
+
+                                    {/* Stat 1 */}
+                                    <div className="text-center group/item transition-transform duration-500 hover:scale-105">
+                                        <span className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Highest Package</span>
+                                        <h3 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter">
+                                            RS 18 <span className="text-primary font-black text-2xl md:text-4xl ml-1">LPA</span>
+                                        </h3>
                                     </div>
-                                    <span className="text-[8px] md:text-[11px] font-black text-slate-500 uppercase tracking-widest group-hover:text-slate-900 transition-colors">{pillar.label}</span>
+
+                                    <div className="hidden md:block w-px h-16 bg-slate-200/50" />
+
+                                    {/* Stat 2 */}
+                                    <div className="text-center group/item transition-transform duration-500 hover:scale-105">
+                                        <span className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Success Track</span>
+                                        <h3 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter">
+                                            2000+ <span className="text-primary italic font-black text-2xl md:text-4xl ml-1">PLACEMENTS</span>
+                                        </h3>
+                                    </div>
+
+                                    <div className="hidden md:block w-px h-16 bg-slate-200/50" />
+
+                                    {/* Stat 3 */}
+                                    <div className="text-center group/item transition-transform duration-500 hover:scale-105">
+                                        <span className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Career Assurance</span>
+                                        <h3 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter">
+                                            100% <span className="text-primary font-black text-2xl md:text-4xl ml-1">SUPPORT</span>
+                                        </h3>
+                                    </div>
                                 </div>
-                            ))}
+                            </div>
                         </div>
 
-                        {/* Compact Centered Impact Strip */}
-                        <div className="w-full max-w-5xl mx-auto mt-12 bg-white border border-slate-100 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] rounded-[2rem] md:rounded-[3.5rem] p-6 md:p-10 relative group overflow-hidden">
-                            <div className="absolute inset-0 bg-linear-to-br from-slate-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                            <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 relative z-10">
-                                <div className="text-center transition-transform duration-500 group-hover:scale-105">
-                                    <span className="block text-[8px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5">Highest Package</span>
-                                    <h3 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tighter leading-none">
-                                        RS 18 <span className="text-primary font-black ml-1">LPA</span>
-                                    </h3>
-                                </div>
-
-                                <div className="hidden md:block w-px h-16 bg-slate-200 self-center" />
-                                <div className="md:hidden w-full h-px bg-slate-100" />
-
-                                <div className="text-center transition-transform duration-500 group-hover:scale-105">
-                                    <span className="block text-[8px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5">Empowering</span>
-                                    <h3 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tighter leading-none">
-                                        2000+ <span className="text-primary italic ml-1">ALUMNI</span>
-                                    </h3>
-                                </div>
-
-                                <div className="hidden md:block w-px h-16 bg-slate-200 self-center" />
-                                <div className="md:hidden w-full h-px bg-slate-100" />
-
-                                <div className="text-center transition-transform duration-500 group-hover:scale-105">
-                                    <span className="block text-[8px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5">Assurance</span>
-                                    <h3 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tighter leading-none">
-                                        100% <span className="text-primary ml-1">PLACEMENT</span>
-                                    </h3>
-                                </div>
+                        {/* Monumental Trust Line */}
+                        <div className="mt-12 md:mt-16 flex flex-col items-center gap-6 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
+                            <div className="px-8 py-3 bg-slate-900/5 backdrop-blur-xl border border-slate-200/50 rounded-full flex flex-wrap items-center justify-center gap-x-8 gap-y-3 shadow-sm group/trust">
+                                {[
+                                    { val: "15+", label: "Years Legacy" },
+                                    { val: "15,000+", label: "Students" },
+                                    { val: "75+", label: "Centres Across India" }
+                                ].map((trust, i) => (
+                                    <div key={i} className="flex items-center gap-2 group/item transition-all duration-300 hover:scale-105">
+                                        <span className="text-sm md:text-lg font-black text-slate-950 uppercase tracking-tight">{trust.val}</span>
+                                        <span className="text-[9px] md:text-xs font-black text-slate-400 uppercase tracking-widest">{trust.label}</span>
+                                        {i < 2 && <div className="hidden sm:block w-px h-4 bg-slate-200 ml-6" />}
+                                    </div>
+                                ))}
                             </div>
                         </div>
 
@@ -396,7 +408,7 @@ const Home = () => {
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                onClick={openAdmissionModal}
+                                onClick={() => openAdmissionModal()}
                                 className="w-full sm:w-auto h-14 md:h-18 px-10 md:px-14 bg-primary text-white rounded-full font-black uppercase tracking-widest text-[10px] md:text-xs shadow-[0_20px_60px_-15px_rgba(219,52,54,0.5)] flex items-center justify-center gap-3 group/cta transition-all hover:bg-slate-950"
                             >
                                 Book Free Career Counselling
@@ -418,7 +430,7 @@ const Home = () => {
                     </div>
 
                     {/* Creative Path Transition */}
-                    <div className="mt-32 md:mt-48 mb-20 md:mb-32 text-center px-4">
+                    <div className="mt-16 md:mt-24 mb-12 md:mb-16 text-center px-4">
                         <motion.div
                             initial={{ opacity: 0, y: 40 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -426,15 +438,9 @@ const Home = () => {
                             transition={{ duration: 1, ease: "easeOut" }}
                             className="space-y-6"
                         >
-                            <div className="flex items-center justify-center gap-4 mb-4">
-                                <div className="w-12 h-px bg-slate-200" />
-                                <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary">The Journey Begins</span>
-                                <div className="w-12 h-px bg-slate-200" />
-                            </div>
-
-                            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.95] text-slate-950">
-                                Choose Your <br className="hidden md:block" />
-                                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-primary to-slate-500 italic inline-block py-2 pr-8 -mr-8">Creative Path</span>
+                            <h2 className="text-4xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.9] text-slate-950">
+                                Your future, <br />
+                                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-primary to-slate-500 italic py-2 inline-block">our dream.</span>
                             </h2>
 
                             <div className="space-y-4 max-w-2xl mx-auto pt-2">
@@ -457,9 +463,12 @@ const Home = () => {
                 </div>
             </div>
 
-            <JobReady />
-            <EmployabilityPrograms />
             <IndustryInsights />
+            <NetworkCounter />
+            <InsdDifference />
+            <SuccessStory />
+            <InstagramGallery />
+
 
             {/* Section 2: Interactive Gallery */}
             <div ref={galleryContainerRef} className="relative z-10 h-screen w-full bg-black overflow-hidden flex flex-col md:flex-row pointer-events-auto">
@@ -505,8 +514,6 @@ const Home = () => {
                 }
             </div>
             <AdmissionScroller />
-
-            <NetworkCounter />
             <WhyInsd />
             <StepLeadForm />
             <ProgramSearch />
@@ -583,7 +590,6 @@ const Home = () => {
 
             <FeaturedIn />
             <EventBlogs />
-            <InstagramGallery />
             <InsdiansByDesign />
             <div className="relative z-50">
                 <Footer />

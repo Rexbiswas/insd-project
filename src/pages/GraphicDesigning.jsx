@@ -128,7 +128,7 @@ const GraphicDesigning = () => {
                         
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4">
                             <button 
-                                onClick={openAdmissionModal}
+                                onClick={() => openAdmissionModal()}
                                 className="w-full sm:w-auto px-16 py-6 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-900 transition-all transform hover:scale-105 shadow-2xl shadow-primary/20"
                             >
                                 Apply Now 2026
@@ -302,7 +302,7 @@ const GraphicDesigning = () => {
                                 <p className="text-white/50 font-medium max-w-sm">Join the 2026 session. Limited seats for high-potential creative visionaries.</p>
                             </div>
                             <button 
-                                onClick={openAdmissionModal}
+                                onClick={() => openAdmissionModal()}
                                 className="px-16 py-6 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-primary hover:text-white transition-all transform hover:scale-105"
                             >
                                 Start Application

@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { useAdmissionModal } from '../context/AdmissionModalContext';
-import AdmissionForm from './AdmissionForm';
+import StepLeadForm from './StepLeadForm';
 
 const AdmissionFormModal = () => {
-    const { isAdmissionOpen, closeAdmissionModal } = useAdmissionModal();
+    const { isAdmissionOpen, closeAdmissionModal, modalConfig } = useAdmissionModal();
 
     // Lock body scroll when modal is open
     useEffect(() => {
@@ -45,7 +45,7 @@ const AdmissionFormModal = () => {
                             damping: 30,
                             delay: 0.1
                         }}
-                        className="relative w-full max-w-5xl max-h-[90vh] overflow-y-auto no-scrollbar rounded-[2.5rem] shadow-3xl bg-black border border-white/10"
+                        className="relative w-full max-w-6xl max-h-[95vh] overflow-y-auto no-scrollbar rounded-[2.5rem] md:rounded-[4rem] shadow-3xl bg-white border border-slate-200"
                     >
                         {/* Custom Close Button */}
                         <button
@@ -57,7 +57,12 @@ const AdmissionFormModal = () => {
 
                         {/* We use the existing AdmissionForm here */}
                         <div className="md:scale-95 origin-center">
-                            <AdmissionForm isModal={true} />
+                            <StepLeadForm 
+                                isModal={true} 
+                                title={modalConfig.title} 
+                                subtitle={modalConfig.subtitle}
+                                initialChoice={modalConfig.initialChoice}
+                            />
                         </div>
                     </motion.div>
                 </div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { User, Mail, Phone, MapPin, Building2, BookOpen, GraduationCap, CheckCircle2, AlertCircle, ChevronDown, Send } from 'lucide-react';
 
-const AdmissionForm = ({ isModal = false }) => {
+const AdmissionForm = ({ isModal = false, title, subtitle }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -17,23 +17,19 @@ const AdmissionForm = ({ isModal = false }) => {
     const [status, setStatus] = useState('idle'); // idle, loading, success, error
     const [errorMessage, setErrorMessage] = useState('');
 
-    const cities = ["Delhi", "Mumbai", "Pune", "Dubai", "Washington", "UK", "Paris"];
+    const cities = ["Delhi", "Mumbai", "Pune"];
     
     const centresByCity = {
         "Delhi": ["South Delhi", "North Delhi"],
         "Mumbai": ["Mumbai Central"],
-        "Pune": ["Pune Camp"],
-        "Dubai": ["Dubai IBSW"],
-        "Washington": ["Washington IBSW"],
-        "UK": ["UCA Global"],
-        "Paris": ["The Paris Project"]
+        "Pune": ["Pune Camp"]
     };
 
     const programs = [
-        "Bachelors (3 Years)",
-        "Masters (2 Years)",
-        "Diploma (1 Year)",
-        "Certificate (Short Term)"
+        "Industry Diploma",
+        "PG Degree",
+        "UG Degree",
+        "certificate course"
     ];
 
     const courses = [
@@ -120,14 +116,18 @@ const AdmissionForm = ({ isModal = false }) => {
                 <div className="space-y-4 text-center max-w-3xl mx-auto mb-6 md:mb-10">
                     <div className="flex items-center justify-center gap-4 mb-2">
                         <div className="w-8 h-px bg-primary/30" />
-                        <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">Official Enquiry</span>
+                        <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">
+                            {title ? "Priority Access" : "Your Creative Journey"}
+                        </span>
                         <div className="w-8 h-px bg-primary/30" />
                     </div>
-                    <h2 className="text-white text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none">
-                        Admissions <span className="text-primary italic">Open</span>
+                    <h2 className="text-white text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none">
+                        {title || (
+                            <>From Classroom <span className="text-primary italic">to Career</span></>
+                        )}
                     </h2>
                     <p className="text-slate-400 font-medium text-sm md:text-lg leading-relaxed px-4 opacity-70">
-                        Take the first step towards a career in creative excellence.
+                        {subtitle || "Take the first step towards a career in creative excellence."}
                     </p>
                 </div>
 
