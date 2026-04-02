@@ -80,7 +80,7 @@ const About = () => {
 
     return (
         <div ref={containerRef} className="bg-[#f3f3f3] text-slate-900 selection:bg-primary selection:text-white overflow-hidden font-sans border-y border-slate-300">
-            <SEO 
+            <SEO
                 title="About INSD – India’s Skill School for Creative Careers"
                 description="Discover INSD, India's leading Skill School for design careers. Focused on practical, industry-ready skills, job-oriented diplomas, and 100% placement support in Delhi NCR and across India."
                 keywords="skill-based education, job-ready skills, design industry projects, design apprenticeships, interior design internships, portfolio plus placement, from classroom to career, INSD legacy, best design school India"
@@ -91,15 +91,32 @@ const About = () => {
 
             {/* Section 1: Zoom-Through Hero */}
             <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden">
-                <div className="hero-bg absolute inset-0 bg-[url('https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=1600')] bg-cover bg-center brightness-[0.4]" />
+                <div className="hero-bg absolute inset-0 bg-[url('https://ik.imagekit.io/fmldynl4j4/IMG_3440.JPG?updatedAt=1771841966154')] bg-cover bg-center brightness-[0.4]" />
 
 
                 <div ref={heroTextRef} className="relative z-10 flex flex-col items-center">
-                    <span className="text-primary font-mono tracking-[1.5em] uppercase text-[10px] mb-8 animate-pulse">Designing Legacies</span>
-                    <h1 className="text-[25vw] font-black leading-none tracking-tighter flex items-baseline text-white">
-                        I<span className="text-transparent stroke-text-white opacity-40">N</span>SD
+                    <h1 className="w-full flex justify-center -mb-6 md:-mb-10 lg:-mb-14" aria-label="INSD">
+                        <svg className="w-[100vw] overflow-visible" viewBox="0 0 1000 320" style={{ shapeRendering: 'geometricPrecision' }}>
+                            <defs>
+                                <linearGradient id="nGradientGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stopColor="#ed1c24" /> {/* INSD Primary Red */}
+                                    <stop offset="50%" stopColor="#a32145" /> {/* Smooth transition hue */}
+                                    <stop offset="100%" stopColor="#003566" /> {/* INSD Secondary Blue */}
+                                </linearGradient>
+                            </defs>
+                            <text
+                                x="50%"
+                                y="85%"
+                                textAnchor="middle"
+                                className="font-black tracking-tighter"
+                                style={{ fontSize: '290px' }}
+                                fill="white"
+                            >
+                                I<tspan fill="transparent" stroke="url(#nGradientGlow)" strokeWidth="3" className="opacity-100">N</tspan>SD
+                            </text>
+                        </svg>
                     </h1>
-                    <span className="text-[12vw] font-black leading-none tracking-tighter flex items-baseline text-white">Design</span>
+                    <span className="text-[9vw] font-black leading-none tracking-tighter flex items-baseline text-white">Design</span>
                 </div>
 
                 {/* Sub-content revealed during zoom */}

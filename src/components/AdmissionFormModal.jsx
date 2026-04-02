@@ -24,7 +24,7 @@ const AdmissionFormModal = () => {
     return (
         <AnimatePresence>
             {isAdmissionOpen && (
-                <div className="fixed inset-0 z-10001 flex items-center justify-center p-4">
+                <div className="fixed inset-0 z-[10001] flex items-center justify-center p-4">
                     {/* Dark Backdrop */}
                     <motion.div
                         initial={{ opacity: 0 }}
@@ -50,7 +50,7 @@ const AdmissionFormModal = () => {
                         {/* Custom Close Button */}
                         <button
                             onClick={closeAdmissionModal}
-                            className="absolute top-6 right-6 p-2 rounded-full bg-white/5 hover:bg-white/10 text-white/50 hover:text-white transition-all backdrop-blur-md z-50 group border border-white/10"
+                            className="absolute top-4 md:top-6 right-4 md:right-6 p-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-900 transition-all backdrop-blur-md z-50 group border border-slate-200 shadow-sm"
                         >
                             <X size={24} className="group-hover:rotate-90 transition-transform duration-300" />
                         </button>

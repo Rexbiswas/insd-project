@@ -165,6 +165,7 @@ const Navbar = () => {
             icon: Folder,
             section: 'OVERVIEW',
             subItems: [
+                { title: 'About Us Overview', path: '/about-us', icon: 'info', desc: 'Discover our mission & values' },
                 { title: '15 Years Legacy', path: '/15-years-legacy', icon: 'zap', desc: 'Our national award-winning history' },
                 { title: 'Mentors', path: '/mentors', icon: 'users', desc: 'Expert creative leadership' },
                 { title: 'Academic Alliances', path: '/academic-alliances', icon: 'briefcase', desc: 'Global design partnerships' },
