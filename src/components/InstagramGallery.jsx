@@ -8,21 +8,21 @@ gsap.registerPlugin(ScrollTrigger);
 const instaPosts = [
     {
         id: 1,
-        img: "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&w=800",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdy7wo3bQ63AsnxuZlamIumVTLn8gqw__Q3Q&s",
         likes: "1.2k",
         comments: "45",
         caption: "Republic Day Celebrations at INSD Campus! 🇮🇳 #INSD #Design"
     },
     {
         id: 2,
-        img: "https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=800",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpSrr7CohqMKyqJ2cBsvXBrS6s2jhHf9Mx_A&s",
         likes: "856",
         comments: "22",
         caption: "Top 5 Interior Design Trends for 2026. #InteriorDesign"
     },
     {
         id: 3,
-        img: "https://images.pexels.com/photos/322207/pexels-photo-322207.jpeg?auto=compress&cs=tinysrgb&w=800",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGlaUJeum3Eh9-B4crMnq7dVLW63RBMLSrcQ&s",
         likes: "2.5k",
         comments: "108",
         caption: "Fashion Week Highlights. Our students rocked the runway! 💃",
@@ -30,21 +30,21 @@ const instaPosts = [
     },
     {
         id: 4,
-        img: "https://images.pexels.com/photos/1509534/pexels-photo-1509534.jpeg?auto=compress&cs=tinysrgb&w=800",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJFKi_ffsGneKKQ7-cR9Vns_FecPer3h55Yw&s",
         likes: "943",
         comments: "34",
         caption: "Artistry in motion. Graphic Design workshop results."
     },
     {
         id: 5,
-        img: "https://images.pexels.com/photos/2235071/pexels-photo-2235071.jpeg?auto=compress&cs=tinysrgb&w=800",
+        img: "https://insdnanded.com/wp-content/uploads/2024/05/IMG_2380-1-scaled.webp",
         likes: "1.5k",
         comments: "56",
         caption: "Student Spotlight: Aravind's sustainable collection."
     },
     {
         id: 6,
-        img: "https://images.pexels.com/photos/6610217/pexels-photo-6610217.jpeg?auto=compress&cs=tinysrgb&w=800",
+        img: "https://insd.edu.in/wp-content/uploads/sb-instagram-feed-images/326394436_5758005604315310_2132658014813759388_nfull.jpg",
         likes: "3.1k",
         comments: "210",
         caption: "INSD x ESG Luxe Partnership Announcement! 🚀",
@@ -52,14 +52,14 @@ const instaPosts = [
     },
     {
         id: 7,
-        img: "https://images.pexels.com/photos/3778214/pexels-photo-3778214.jpeg?auto=compress&cs=tinysrgb&w=800",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH0llxOq8Sv6hRvOjP1A2SJdcZNvnq_3B__A&s",
         likes: "720",
         comments: "18",
         caption: "Campus Life: Creativity has no boundaries."
     },
     {
         id: 8,
-        img: "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=800",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_IS8eemcMtrXlQrT5OgSebH-Ef7guy9P-2g&s",
         likes: "1.1k",
         comments: "42",
         caption: "Admissions Open for 2026 Batch. Apply Now!"

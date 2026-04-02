@@ -12,67 +12,119 @@ import {
     Globe,
     Award,
     Target,
-    Download
+    Download,
+    Clock,
+    GraduationCap,
+    BookOpen
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
+import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const BeautyAndMakeup = () => {
-    const [activeOutline, setActiveOutline] = useState('PG');
-    const [expandedYear, setExpandedYear] = useState(1);
+    const { openAdmissionModal } = useAdmissionModal();
+    const [activeOutline, setActiveOutline] = useState('Bachelors');
+    const [expandedSem, setExpandedSem] = useState(1);
 
     const curriculumData = {
-        PG: {
-            year1: [
-                "Advanced Skin Science & Aesthetics",
-                "High-Fashion Makeup Artistry",
-                "Professional Hair Styling Tech",
-                "Editorial & Runway Makeup",
-                "Cosmetic Chemistry Basics",
-                "History of Beauty & Trends",
-                "Salon Management & Ethics",
-                "Bridal Artistry & Styling"
+        Bachelors: {
+            "Semester 1": [
+                "Basics of Skin & Hygiene",
+                "History of Beauty & Aesthetics",
+                "Fundamentals of Human Anatomy",
+                "Introduction to Natural Cosmetics",
+                "Color Theory in Artistry",
+                "Self-Grooming & Etiquette"
             ],
-            year2: [
-                "Special Effects (SFX) Makeup",
-                "Prosthetics & Character Design",
+            "Semester 2": [
+                "Day & Evening Makeup Basics",
+                "Basics of Hair Styling",
+                "Introduction to Dermal Science",
+                "Product Knowledge & Chemistry",
+                "Basic Aesthetics Lab",
+                "Client Consultation Ethics"
+            ],
+            "Semester 3": [
+                "Advanced Skin Science",
+                "Intermediate Makeup Techniques",
+                "Bridal Artistry & Tradition",
+                "Hair Cutting & Color Lab",
+                "Nail Art & Extensions",
+                "Visual Art in Makeup"
+            ],
+            "Semester 4": [
+                "High-Fashion & Editorial Shoots",
+                "Salon Management Basics",
+                "Advanced Hair Science",
+                "Body Art & Temporary Graphics",
+                "Creative Portfolio Development",
+                "Professional Hygiene Standards"
+            ],
+            "Semester 5": [
+                "Special Effects (SFX) Basics",
+                "Runway & Stage Artistry",
                 "Advanced Aesthetic Treatments",
-                "Beauty Brand Entrepreneurship",
-                "Portfolio Shoots & Directing",
-                "Industry Internship & Showcase"
+                "Beauty Brand Marketing",
+                "Airbrush Makeup Mastery",
+                "Corporate Styling Basics"
+            ],
+            "Semester 6": [
+                "Prosthetics & Character Design",
+                "Global Beauty Business",
+                "Portfolio Mentorship",
+                "Major Professional Project",
+                "Final Graduation Showcase",
+                "Industry Case Studies"
+            ],
+            "Semester 7": [
+                "Industrial Internship Projects",
+                "Beauty Entrepreneurship Lab",
+                "Global Glam Trends"
+            ],
+            "Semester 8": [
+                "Professional Practice (OJT)",
+                "Showreel & Digital Branding",
+                "Final Graduation Showcase"
             ]
         },
-        UG: {
-            year1: [
-                "Basics of Skin & Hygiene",
-                "Color Theory in Cosmetics",
-                "Day & evening Makeup Basics",
-                "Basic Hair Dressing",
-                "Introduction to Aesthetics",
-                "Product Knowledge Lab",
-                "Self-Grooming & Etiquette",
-                "Client Consultation skills"
+        PG: {
+            "Year 1": [
+                "Advanced Dermal Esthetics",
+                "Film & Cinematic Character Design",
+                "Beauty Business Strategy",
+                "Advanced SFX & Prosthetics",
+                "Artistic Direction in Media"
             ],
-            year2: [
-                "Intermediate Makeup Art",
-                "Occasion Styling",
-                "Basic SFX Techniques",
-                "Nail Art & Extensions",
-                "Beauty Digital Marketing",
-                "Final Assessment Project"
+            "Year 2": [
+                "Professional Portfolio Lab",
+                "Master Research Thesis",
+                "Industry Placement Show",
+                "Final Graduation Gallery"
             ]
         }
     };
 
+    const careerPaths = [
+        { title: "Bridal Makeup Artist", desc: "Expertly crafting timeless and radiant looks for high-end weddings and traditional ceremonies.", img: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=800" },
+        { title: "Editorial Stylist", desc: "Designing avant-garde and high-fashion looks for global magazine covers and luxury runways.", img: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&q=80&w=800" },
+        { title: "SFX Artist (Film)", desc: "Creating hyper-realistic prosthetics and special effects makeup for international cinema.", img: "https://images.unsplash.com/photo-1595433707802-68c07d7f4f5d?auto=format&fit=crop&q=80&w=800" },
+        { title: "Cosmetic Consultant", desc: "Advising global beauty brands on product development, color theory, and dermal trends.", img: "https://images.unsplash.com/photo-1512496015851-a90fb38ba496?auto=format&fit=crop&q=80&w=800" },
+        { title: "Salon Manager/Owner", desc: "Overseeing the luxury operations and client experiences of premium international beauty ateliers.", img: "https://images.unsplash.com/photo-1560066984138dadb4c035?auto=format&fit=crop&q=80&w=800" },
+        { title: "Beauty Educator", desc: "Shaping the next generation of artists as a professional trainer in elite design schools.", img: "https://images.unsplash.com/photo-1516534775068-ba3e7458af70?auto=format&fit=crop&q=80&w=800" },
+        { title: "Skincare Specialist", desc: "Evaluating dermal health and providing expert medical treatments in high-end medical spas.", img: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=800" },
+        { title: "Nail Technician", desc: "Mastering advanced nail structures and intricate art for international fashion houses.", img: "https://images.unsplash.com/photo-1604654894610-df490982560a?auto=format&fit=crop&q=80&w=800" },
+        { title: "Celebrity Stylist", desc: "Directing the visual narrative and personal brand aesthetic for global icons and public figures.", img: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=800" }
+    ];
+
     return (
         <div className="bg-white min-h-screen font-sans selection:bg-primary selection:text-white">
             <SEO
-                title="Beauty & Makeup Course | INSD International School of Design"
-                description="Master the art of transformation with INSD's professional Beauty & Makeup program. Learn high-fashion artistry, SFX, and aesthetic treatments for a global glam career."
+                title="Bachelors in Beauty & Makeup | INSD International School of Design"
+                description="Master the art of transformation with INSD's professional Beauty & Makeup program. Learn high-fashion artistry, SFX, and aesthetic treatments."
             />
 
             {/* --- HERO SECTION --- */}
-            <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center text-center px-6 overflow-hidden">
+            <section className="relative h-[70vh] md:h-[85vh] flex items-center justify-center text-center px-6 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img
                         src="https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Copy%20of%20hair%20&%20beauty%20.png"
@@ -89,16 +141,22 @@ const BeautyAndMakeup = () => {
                         transition={{ duration: 1 }}
                         className="text-center"
                     >
-                        <h1 className="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none mb-6">
-                            Beauty & Makeup
+                        <span className="inline-block px-6 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-xs font-black uppercase tracking-widest mb-6">
+                            Creative Artistry
+                        </span>
+                        <h1 className="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none mb-6 text-center">
+                            Bachelors in <br /> <span className="text-primary italic">Beauty & Makeup</span>
                         </h1>
-                        <p className="text-lg md:text-xl text-white/80 font-medium leading-relaxed max-w-4xl mx-auto mb-10">
+                        <p className="text-lg md:text-xl text-white/80 font-medium leading-relaxed max-w-4xl mx-auto mb-10 text-center uppercase tracking-tight">
                             Artistry beyond the surface. Master the science of skin and the craft of transformation to define the beauty standards of film, fashion, and luxury retail.
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                            <button className="px-12 py-5 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest hover:bg-primary hover:text-white transition-all transform hover:scale-105 shadow-2xl">
-                                Join This Course
+                            <button 
+                                onClick={() => openAdmissionModal()}
+                                className="px-12 py-5 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest hover:bg-primary hover:text-white transition-all transform hover:scale-105 shadow-2xl"
+                            >
+                                Enroll Now
                             </button>
                             <a
                                 href="https://drive.google.com/drive/folders/1sFS6WXmrkoRTdVopZKOHB4hHxxku1Gz-"
@@ -114,191 +172,163 @@ const BeautyAndMakeup = () => {
                 </div>
             </section>
 
-            {/* --- CURRICULUM SECTION --- */}
-            <section className="py-24 px-6 md:px-12 lg:px-24 bg-white">
-                <div className="max-w-7xl mx-auto">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl md:text-6xl font-black text-slate-900 uppercase tracking-tighter">
-                            Curriculum
+            {/* --- COURSE HIGHLIGHTS --- */}
+            <section className="py-12 bg-slate-900 overflow-hidden">
+                <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {[
+                        { label: "Degree", value: "Bachelors accredited by UGC", icon: GraduationCap },
+                        { label: "Course Length", value: "3 or 4 Years Option", icon: Clock },
+                        { label: "Eligibility", value: "10+2 Any Stream", icon: BookOpen },
+                    ].map((item, idx) => (
+                        <motion.div 
+                            key={idx}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ delay: idx * 0.1 }}
+                            className="flex items-center gap-6 p-8 rounded-3xl bg-white/5 border border-white/10 group hover:border-primary/50 transition-colors"
+                        >
+                            <div className="w-14 h-14 rounded-2xl bg-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
+                                <item.icon size={28} />
+                            </div>
+                            <div>
+                                <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.2em] mb-1">{item.label}</p>
+                                <p className="text-white font-black text-lg tracking-tight uppercase">{item.value}</p>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </section>
+
+            {/* --- CORE PHILOSOPHY --- */}
+            <section className="py-24 px-6 md:px-12 lg:px-24 bg-white relative overflow-hidden">
+                <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                    <div className="space-y-8">
+                        <h2 className="text-4xl md:text-6xl font-black text-slate-900 uppercase tracking-tighter leading-none">
+                            The Science of <br /> <span className="text-primary italic">Transformation</span>
                         </h2>
+                        <p className="text-lg text-slate-600 font-medium leading-relaxed uppercase tracking-tight">
+                            Master the dermal arts. From cinematic SFX to editorial high-fashion, our program bridges the gap between biological science and creative visual expression. Explore the rigorous technical standards of the global glam industry.
+                        </p>
+                        <div className="grid grid-cols-2 gap-6">
+                            {[
+                                "Skin Science", "High-Fashion Artistry", 
+                                "SFX & Prosthetics", "Cosmetic Chemistry",
+                                "Salon Strategy", "Visual Directing"
+                            ].map((tech, i) => (
+                                <div key={i} className="flex items-center gap-3">
+                                    <CheckCircle2 size={18} className="text-primary" />
+                                    <span className="text-sm font-black uppercase tracking-tighter text-slate-700">{tech}</span>
+                                </div>
+                            ))}
+                        </div>
+                        <p className="text-slate-500 leading-relaxed italic border-l-4 border-primary pl-6 uppercase text-xs font-black tracking-widest">
+                            "INSD focuses on the creative artistry and professional grit needed for the global glam market. It truly prepared me for my career."
+                        </p>
                     </div>
-
-                    <div className="flex flex-col lg:flex-row gap-12 items-start">
-                        <div className="w-full lg:w-72 space-y-4 shrink-0">
-                            <button
-                                onClick={() => setActiveOutline('PG')}
-                                className={`w-full py-5 px-8 rounded-full font-black uppercase text-xs tracking-[0.2em] transition-all duration-300 border-2 ${activeOutline === 'PG'
-                                        ? 'bg-slate-900 border-slate-900 text-white shadow-2xl shadow-slate-900/20 scale-[1.02]'
-                                        : 'bg-white border-slate-200 text-slate-400 hover:border-slate-900 hover:text-slate-900'
-                                    }`}
-                            >
-                                PG Course Outline
-                            </button>
-                            <button
-                                onClick={() => setActiveOutline('UG')}
-                                className={`w-full py-5 px-8 rounded-full font-black uppercase text-xs tracking-[0.2em] transition-all duration-300 border-2 ${activeOutline === 'UG'
-                                        ? 'bg-slate-900 border-slate-900 text-white shadow-2xl shadow-slate-900/20 scale-[1.02]'
-                                        : 'bg-white border-slate-200 text-slate-400 hover:border-slate-900 hover:text-slate-900'
-                                    }`}
-                            >
-                                UG Course Outline
-                            </button>
+                    <div className="relative group">
+                        <div className="aspect-4/5 rounded-[4rem] overflow-hidden shadow-2xl">
+                            <img 
+                                src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=800" 
+                                alt="Beauty Lab Studio" 
+                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            />
                         </div>
-
-                        <div className="flex-1 w-full space-y-4">
-                            <div className="border border-slate-100 rounded-3xl overflow-hidden bg-slate-50/50">
-                                <button
-                                    onClick={() => setExpandedYear(expandedYear === 1 ? 0 : 1)}
-                                    className="w-full flex items-center justify-between p-8 bg-white hover:bg-slate-50 transition-colors group"
-                                >
-                                    <div className="flex items-center gap-4">
-                                        <div className={`p-2 rounded-xl transition-colors ${expandedYear === 1 ? 'bg-primary text-white' : 'bg-slate-100 text-slate-400 group-hover:bg-slate-200'}`}>
-                                            <ChevronDown className={`w-5 h-5 transition-transform duration-500 ${expandedYear === 1 ? 'rotate-180' : ''}`} />
-                                        </div>
-                                        <span className="text-2xl font-black text-slate-900 tracking-tighter uppercase">« 1 Year</span>
-                                    </div>
-                                </button>
-
-                                <AnimatePresence initial={false}>
-                                    {expandedYear === 1 && (
-                                        <motion.div
-                                            initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: 'auto', opacity: 1 }}
-                                            exit={{ height: 0, opacity: 0 }}
-                                            transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
-                                        >
-                                            <div className="p-8 md:p-12 border-t border-slate-100">
-                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
-                                                    {curriculumData[activeOutline].year1.map((item, idx) => (
-                                                        <motion.div
-                                                            key={idx}
-                                                            initial={{ opacity: 0, x: -10 }}
-                                                            animate={{ opacity: 1, x: 0 }}
-                                                            transition={{ delay: idx * 0.05 }}
-                                                            className="flex items-start gap-4 group"
-                                                        >
-                                                            <div className="mt-1">
-                                                                <div className="w-5 h-5 rounded-md bg-linear-to-br from-primary to-secondary flex items-center justify-center text-white shrink-0 group-hover:scale-110 transition-transform">
-                                                                    <CheckCircle2 size={12} className="stroke-3" />
-                                                                </div>
-                                                            </div>
-                                                            <span className="text-slate-600 font-bold text-sm md:text-base group-hover:text-slate-900 transition-colors uppercase tracking-tight">
-                                                                {item}
-                                                            </span>
-                                                        </motion.div>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </div>
-
-                            <div className="border border-slate-100 rounded-3xl overflow-hidden bg-slate-50/50">
-                                <button
-                                    onClick={() => setExpandedYear(expandedYear === 2 ? 0 : 2)}
-                                    className="w-full flex items-center justify-between p-8 bg-white hover:bg-slate-50 transition-colors group"
-                                >
-                                    <div className="flex items-center gap-4">
-                                        <div className={`p-2 rounded-xl transition-colors ${expandedYear === 2 ? 'bg-primary text-white' : 'bg-slate-100 text-slate-400 group-hover:bg-slate-200'}`}>
-                                            <ChevronDown className={`w-5 h-5 transition-transform duration-500 ${expandedYear === 2 ? 'rotate-180' : ''}`} />
-                                        </div>
-                                        <span className="text-2xl font-black text-slate-900 tracking-tighter uppercase">» 2 Year</span>
-                                    </div>
-                                </button>
-
-                                <AnimatePresence initial={false}>
-                                    {expandedYear === 2 && (
-                                        <motion.div
-                                            initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: 'auto', opacity: 1 }}
-                                            exit={{ height: 0, opacity: 0 }}
-                                            transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
-                                        >
-                                            <div className="p-8 md:p-12 border-t border-slate-100">
-                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
-                                                    {curriculumData[activeOutline].year2.map((item, idx) => (
-                                                        <motion.div
-                                                            key={idx}
-                                                            initial={{ opacity: 0, x: -10 }}
-                                                            animate={{ opacity: 1, x: 0 }}
-                                                            transition={{ delay: idx * 0.05 }}
-                                                            className="flex items-start gap-4 group"
-                                                        >
-                                                            <div className="mt-1">
-                                                                <div className="w-5 h-5 rounded-md bg-linear-to-br from-primary to-secondary flex items-center justify-center text-white shrink-0 group-hover:scale-110 transition-transform">
-                                                                    <CheckCircle2 size={12} className="stroke-3" />
-                                                                </div>
-                                                            </div>
-                                                            <span className="text-slate-600 font-bold text-sm md:text-base group-hover:text-slate-900 transition-colors uppercase tracking-tight">
-                                                                {item}
-                                                            </span>
-                                                        </motion.div>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </div>
-                        </div>
+                        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/20 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                 </div>
             </section>
-            {/* --- WHY CHOOSE INSD --- */}
-            <section className="py-24 px-6 md:px-12 lg:px-24 bg-slate-50 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
 
-                <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
-                    <div className="w-full lg:w-1/2 space-y-12">
-                        <div className="space-y-4 text-center lg:text-left">
-                            <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">The INSD Advantage</span>
+            {/* --- CURRICULUM SECTION --- */}
+            <section className="py-24 px-6 md:px-12 lg:px-24 bg-slate-50">
+                <div className="max-w-7xl mx-auto">
+                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+                        <div className="space-y-4">
+                            <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">Integrated Skills</span>
                             <h2 className="text-5xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none">
-                                WHY <br /> <span className="text-slate-300">CHOOSE</span> <br /> INSD?
+                                Course <br /> <span className="text-slate-300">Curriculum</span>
                             </h2>
                         </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            {[
-                                { title: "15+ Years Legacy", desc: "A national award-winning institution with a proven track record of excellence.", icon: Sparkles },
-                                { title: "Global Network", desc: "Placements and collaborations across 30+ countries worldwide.", icon: Globe },
-                                { title: "Elite Mentorship", desc: "Learn directly from industry veterans and global design leaders.", icon: Award },
-                                { title: "100% Assistance", desc: "Comprehensive career support and placement guidance for every student.", icon: Target },
-                            ].map((item, idx) => (
-                                <div key={idx} className="space-y-4 group">
-                                    <div className="w-14 h-14 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm relative z-10 mx-auto lg:mx-0">
-                                        <item.icon size={28} />
-                                    </div>
-                                    <div className="space-y-2 text-center lg:text-left">
-                                        <h4 className="text-xl font-black text-slate-900 uppercase tracking-tighter">{item.title}</h4>
-                                        <p className="text-slate-500 font-bold text-[10px] md:text-xs uppercase leading-relaxed tracking-tight">{item.desc}</p>
-                                    </div>
-                                </div>
+                        
+                        <div className="flex bg-white p-2 rounded-full border border-slate-200 shadow-sm">
+                            {['Bachelors', 'PG'].map((type) => (
+                                <button 
+                                    key={type}
+                                    onClick={() => {
+                                        setActiveOutline(type);
+                                        setExpandedSem(1);
+                                    }}
+                                    className={`px-8 py-3 rounded-full font-black uppercase text-[10px] tracking-widest transition-all ${
+                                        activeOutline === type 
+                                        ? 'bg-slate-900 text-white shadow-lg' 
+                                        : 'text-slate-400 hover:text-slate-900'
+                                    }`}
+                                >
+                                    {type === 'Bachelors' ? 'Undergraduate' : 'Post Graduate'}
+                                </button>
                             ))}
                         </div>
                     </div>
 
-                    <div className="w-full lg:w-1/2 relative group">
-                        <div className="relative aspect-square rounded-[3.5rem] overflow-hidden">
-                            <img
-                                src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=800"
-                                alt="Why Choose INSD"
-                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                            />
-                            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
-                            <div className="absolute bottom-12 left-12 right-12 p-8 md:p-12 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl">
-                                <p className="text-white font-bold text-sm md:text-base leading-relaxed italic text-center">
-                                    "INSD focuses on the creative artistry and professional grit needed for the global glam market. It truly prepared me for my career."
-                                </p>
-                                <div className="mt-8 flex items-center justify-center gap-4">
-                                    <div className="h-px w-8 bg-white/30" />
-                                    <span className="text-white/60 text-[10px] font-black uppercase tracking-widest leading-none">ALUMNI 2024</span>
-                                    <div className="h-px w-8 bg-white/30" />
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        {Object.entries(curriculumData[activeOutline]).map(([semName, items], idx) => {
+                            const semNumber = idx + 1;
+                            return (
+                                <div 
+                                    key={semName}
+                                    className={`border border-slate-100 rounded-[2.5rem] overflow-hidden transition-all duration-500 ${
+                                        expandedSem === semNumber 
+                                        ? 'bg-white shadow-2xl shadow-slate-200/50 border-primary/20 ring-1 ring-primary/10' 
+                                        : 'bg-slate-50 hover:bg-white'
+                                    }`}
+                                >
+                                    <button 
+                                        onClick={() => setExpandedSem(expandedSem === semNumber ? 0 : semNumber)}
+                                        className="w-full flex items-center justify-between p-8 group"
+                                    >
+                                        <div className="flex items-center gap-6">
+                                            <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-black transition-all ${
+                                                expandedSem === semNumber ? 'bg-primary text-white' : 'bg-white text-slate-400 group-hover:text-primary border border-slate-100'
+                                            }`}>
+                                                {semNumber}
+                                            </div>
+                                            <span className="text-xl font-black text-slate-900 tracking-tight uppercase">{semName}</span>
+                                        </div>
+                                        <div className={`transition-transform duration-500 ${expandedSem === semNumber ? 'rotate-180 text-primary' : 'text-slate-300'}`}>
+                                            <ChevronDown size={24} />
+                                        </div>
+                                    </button>
+                                    
+                                    <AnimatePresence initial={false}>
+                                        {expandedSem === semNumber && (
+                                            <motion.div
+                                                initial={{ height: 0, opacity: 0 }}
+                                                animate={{ height: 'auto', opacity: 1 }}
+                                                exit={{ height: 0, opacity: 0 }}
+                                                transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
+                                            >
+                                                <div className="px-8 pb-10 space-y-4">
+                                                    <div className="h-px w-full bg-slate-100 mb-6" />
+                                                    {items.map((item, i) => (
+                                                        <motion.div 
+                                                            key={i}
+                                                            initial={{ opacity: 0, x: -10 }}
+                                                            animate={{ opacity: 1, x: 0 }}
+                                                            transition={{ delay: i * 0.05 }}
+                                                            className="flex items-start gap-4 group/item"
+                                                        >
+                                                            <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary group-hover/item:scale-150 transition-all shrink-0" />
+                                                            <span className="text-slate-600 font-bold text-sm uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
+                                                                {item}
+                                                            </span>
+                                                        </motion.div>
+                                                    ))}
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                        <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-secondary/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                            );
+                        })}
                     </div>
                 </div>
             </section>
@@ -316,17 +346,7 @@ const BeautyAndMakeup = () => {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
-                        {[
-                            { title: "Bridal Makeup Artist", desc: "Expertly crafting timeless and radiant looks for high-end weddings and traditional ceremonies.", img: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=800" },
-                            { title: "Editorial Stylist", desc: "Designing avant-garde and high-fashion looks for magazine covers, runways, and creative shoots.", img: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&q=80&w=800" },
-                            { title: "SFX Artist (Film)", desc: "Creating hyper-realistic prosthetics and special effects makeup for cinema and television.", img: "https://images.unsplash.com/photo-1595433707802-68c07d7f4f5d?auto=format&fit=crop&q=80&w=800" },
-                            { title: "Cosmetic Consultant", desc: "Advising luxury beauty brands on product development, color theory, and consumer trends.", img: "https://images.unsplash.com/photo-1512496015851-a90fb38ba496?auto=format&fit=crop&q=80&w=800" },
-                            { title: "Salon Manager", desc: "Overseeing the luxury operations, staff, and client experiences of premium beauty ateliers.", img: "https://images.unsplash.com/photo-1560066984138dadb4c035?auto=format&fit=crop&q=80&w=800" },
-                            { title: "Influencer / Creator", desc: "Building a global personal brand through professional beauty education and digital storytelling.", img: "https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?auto=format&fit=crop&q=80&w=800" },
-                            { title: "Skincare Specialist", desc: "Evaluating dermal health and providing expert treatments in high-end medical spas.", img: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=800" },
-                            { title: "Nail Technician", desc: "Mastering advanced nail structures and intricate art for fashion and personal luxury.", img: "https://images.unsplash.com/photo-1604654894610-df490982560a?auto=format&fit=crop&q=80&w=800" },
-                            { title: "Beauty Educator", desc: "Shaping the next generation of artists as a professional trainer in top-tier design schools.", img: "https://images.unsplash.com/photo-1516534775068-ba3e7458af70?auto=format&fit=crop&q=80&w=800" },
-                        ].map((role, idx) => (
+                        {careerPaths.map((role, idx) => (
                             <motion.div
                                 key={idx}
                                 initial={{ opacity: 0, y: 20 }}
@@ -338,15 +358,13 @@ const BeautyAndMakeup = () => {
                                 <img
                                     src={role.img}
                                     alt={role.title}
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-8 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
                                     <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter leading-none mb-2">
-                                        {role.title.split(' ').map((word, i) => (
-                                            <span key={i} className="block">{word}</span>
-                                        ))}
+                                        {role.title}
                                     </h3>
-                                    <p className="text-white/60 text-[10px] md:text-xs font-bold leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                    <p className="text-white/60 text-[10px] md:text-xs font-bold leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 uppercase tracking-tight">
                                         {role.desc}
                                     </p>
                                 </div>
@@ -358,8 +376,6 @@ const BeautyAndMakeup = () => {
 
             {/* --- CORE MODULES SHOWCASE --- */}
             <section className="py-24 px-6 md:px-12 lg:px-24 bg-slate-50 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 blur-full rounded-full -translate-y-1/2 translate-x-1/2" />
-
                 <div className="max-w-7xl mx-auto space-y-16">
                     <div className="text-center space-y-4">
                         <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">Future-Proof Pedagogy</span>
@@ -370,16 +386,16 @@ const BeautyAndMakeup = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-32">
                         {[
-                            { title: "SFX Mastery", desc: "Learning specialized prosthetics and cinematic makeup for film and high-end visual production.", icon: Scissors },
-                            { title: "Brand Aesthetics", desc: "Understanding luxury brand presentation and professional portfolio management for top artists.", icon: Star },
+                            { title: "SFX Mastery", desc: "Scientific mastery of prosthetics and cinematic makeup for high-end visual production.", icon: Scissors },
+                            { title: "Brand Aesthetics", desc: "Understanding luxury brand presentation and professional portfolio management.", icon: Star },
                             { title: "Skin Science", desc: "Diving deep into dermatology and product chemistry for high-performance aesthetic results.", icon: Sparkles },
                         ].map((item, idx) => (
-                            <div key={idx} className="group p-10 rounded-[3rem] bg-white border border-slate-100 hover:border-primary/20 transition-all duration-500 hover:shadow-2xl hover:shadow-slate-200/50">
-                                <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                            <div key={idx} className="group p-10 rounded-[3.5rem] bg-white border border-slate-100 hover:border-primary/20 transition-all duration-500 hover:shadow-2xl hover:shadow-slate-200/50">
+                                <div className="w-16 h-16 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm relative z-10">
                                     <item.icon size={32} />
                                 </div>
                                 <h4 className="text-2xl font-black text-slate-900 uppercase tracking-tighter mb-4">{item.title}</h4>
-                                <p className="text-slate-500 font-bold text-sm md:text-base leading-relaxed">{item.desc}</p>
+                                <p className="text-slate-500 font-bold text-sm md:text-base leading-relaxed uppercase tracking-tight">{item.desc}</p>
                             </div>
                         ))}
                     </div>
@@ -392,9 +408,12 @@ const BeautyAndMakeup = () => {
                                 <h3 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter">
                                     Ready to redefine <br /> <span className="text-primary italic">glamour?</span>
                                 </h3>
-                                <p className="text-white/50 font-medium max-w-sm">Join the 2026 session. Limited seats for high-potential transformation artists.</p>
+                                <p className="text-white/50 font-medium max-w-sm uppercase text-xs font-black tracking-widest leading-relaxed">Join the 2026 session. Limited seats for high-potential transformation artists.</p>
                             </div>
-                            <button className="px-16 py-6 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-primary hover:text-white transition-all transform hover:scale-105">
+                            <button 
+                                onClick={() => openAdmissionModal()}
+                                className="px-16 py-6 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-primary hover:text-white transition-all transform hover:scale-105"
+                            >
                                 Start Application
                             </button>
                         </div>
