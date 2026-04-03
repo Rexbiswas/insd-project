@@ -172,17 +172,26 @@ const InsdLuxe = () => {
                         </button>
                     </div>
 
-                    <div className="relative">
-                        <div className="relative rounded-[3rem] overflow-hidden shadow-2xl">
+                    <div className="relative h-[500px] md:h-[600px] mt-12 lg:mt-0">
+                        {/* Primary Image */}
+                        <div className="absolute top-0 left-0 w-[80%] h-[80%] rounded-[3rem] overflow-hidden shadow-xl border-4 border-white z-10 hover:shadow-2xl transition-shadow duration-500">
                             <img 
-                                src="/luxury_brand_management_hero_msc_1773917076939.png" 
-                                alt="Luxury Education" 
+                                src="https://ik.imagekit.io/fmldynl4j4/ESG%20Luxe/WhatsApp%20Image%202025-04-11%20at%2012.03.36%20(1).jpeg?updatedAt=1774285587686" 
+                                alt="INSD Luxe Education" 
+                                className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
+                            />
+                        </div>
+                        {/* Secondary Image */}
+                        <div className="absolute bottom-0 right-0 w-[65%] h-[60%] rounded-[3rem] overflow-hidden shadow-2xl border-4 border-[#f4f4f7] z-20 transform hover:-translate-y-4 hover:-translate-x-4 transition-transform duration-700">
+                            <img 
+                                src="https://ik.imagekit.io/fmldynl4j4/ESG%20Luxe/WhatsApp%20Image%202025-04-11%20at%2012.03.36.jpeg?updatedAt=1774285587716" 
+                                alt="ESG Sport Education" 
                                 className="w-full h-full object-cover"
                             />
                         </div>
-                        <div className="absolute -bottom-10 -left-10 bg-gold text-white p-12 rounded-4xl shadow-2xl hidden md:block">
-                            <div className="text-4xl font-black">2026</div>
-                            <div className="text-[10px] uppercase font-black tracking-widest">Global Admissions</div>
+                        <div className="absolute top-10 -left-6 md:-left-10 bg-gold text-white p-8 md:p-10 rounded-[2rem] md:rounded-4xl shadow-2xl z-30 transform -rotate-3 hover:rotate-0 transition-transform duration-500">
+                            <div className="text-3xl md:text-4xl font-black text-center leading-none">ESG</div>
+                            <div className="text-[9px] md:text-[10px] uppercase font-black tracking-widest text-center mt-2">Partnership</div>
                         </div>
                     </div>
                 </div>
@@ -197,9 +206,9 @@ const InsdLuxe = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
                         {[
-                            { title: "Master Programs", img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800" },
-                            { title: "Bachelor Programs", img: "https://images.unsplash.com/photo-1523240795204-d940bb4b5b70?auto=format&fit=crop&q=80&w=800" },
-                            { title: "Diploma Programs", img: "https://images.unsplash.com/photo-1513364233989-4826b0a1d6e1?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Master Programs", img: "https://www.rathoreuniversity.com/wp-content/uploads/2024/09/1-year-fashion-design.jpg" },
+                            { title: "Bachelor Programs", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSYv0poO3gKDj65QD7NUaDkImIGdMLZNUeig&s" },
+                            { title: "Diploma Programs", img: "https://r.fashionunited.com/oNpO8OJMVKZNUCcYC2oA4suF-lsG9c36xIDekzr3K6U/resize:fill:360:288:0/gravity:ce/quality:70/aHR0cHM6Ly9mYXNoaW9udW5pdGVkLmNvbS9tZWRpYS9pbWFnZXMvZmFzaGlvbl9zY2hvb2xzX2RpcmVjdG9yeV9iYW5uZXJfbW9iaWxlLmpwZw" },
                             { title: "Certificate Programs", img: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=800" },
                         ].map((program, idx) => (
                             <motion.div 

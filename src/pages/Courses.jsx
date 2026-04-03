@@ -1,239 +1,204 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
-import { Filter, Search, ArrowUpRight, CheckCircle2, LayoutGrid, List, Sparkles } from 'lucide-react';
+import { ArrowUpRight, Search, Sparkles, MoveRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const CourseCard = ({ course, index }) => {
+const coursesData = [
+    {
+        id: "fashion",
+        title: "Fashion Design",
+        category: "Fashion",
+        duration: "3 Years Bachelors",
+        path: "/courses/fashion-designing",
+        description: "Master the art of haute couture, drape, and structural design in our state-of-the-art studios. Focus heavily on modern fabric manipulation, sustainable design strategies, and direct-to-runway seasonal collections."
+    },
+    {
+        id: "interior",
+        title: "Interior Design",
+        category: "Interior",
+        duration: "3 Years Bachelors",
+        path: "/courses/interior-designing",
+        description: "Learn to build immersive environments that blend high-performance luxury with human ergonomics. Modules strictly revolve around spatial psychology, architectural lighting, and 3D environment drafting."
+    },
+    {
+        id: "graphic",
+        title: "Graphic Design",
+        category: "VFX",
+        duration: "2 Years Masters",
+        path: "/courses/graphic-designing",
+        description: "From brand logic to motion design, define the visual language of the next digital era. Intensive focus on typography, brand identity synthesis, and algorithmic visual generation."
+    },
+    {
+        id: "adv-graphic",
+        title: "Advanced Graphic Design",
+        category: "VFX",
+        duration: "1 Year Diploma",
+        path: "/courses/graphic-designing",
+        description: "An intensive diploma designed specifically for career changers looking to enter the design industry. Master standard industry tools including the Adobe Suite, Figma, and Cinema 4D."
+    },
+    {
+        id: "animation",
+        title: "Animation & VFX",
+        category: "VFX",
+        duration: "6 Months",
+        path: "/courses/animation-and-vfx",
+        description: "Focused animation course for digital content artists and visual storytellers. Jump straight into compositing, keyframe rigging, and render pipeline management for OTT platforms."
+    },
+    {
+        id: "luxury",
+        title: "Luxury Brand Management",
+        category: "Management",
+        duration: "1 Year PG",
+        path: "/courses/msc-luxury-brand-management",
+        description: "Understand the psychology of high-end consumerism and manage global luxury conglomerates. Explore elite supply chain logistics, heritage brand marketing, and exclusive event direction."
+    },
+    {
+        id: "jewellery",
+        title: "Jewellery Design",
+        category: "Fashion",
+        duration: "2 Years Diploma",
+        path: "/courses/jewellery-designing",
+        description: "The intersection of material engineering and fine art. Craft the heirlooms of tomorrow while understanding gemology, precious metal casting, and 3D CAD modeling for rapid prototyping."
+    },
+    {
+        id: "photo",
+        title: "Photography",
+        category: "VFX",
+        duration: "2 Years Diploma",
+        path: "/courses/photography",
+        description: "From editorial high-fashion to cinematic digital storytelling, master the clinical lens. Study studio lighting, color grading theory, and high-end retouching workflows for magazine print."
+    }
+];
+
+const categories = ["All", "Fashion", "Interior", "VFX", "Management"];
+
+const MagneticButton = ({ children, className }) => {
+    const buttonRef = useRef(null);
+
+    useEffect(() => {
+        const button = buttonRef.current;
+        if (!button) return;
+
+        const xTo = gsap.quickTo(button, "x", { duration: 1, ease: "elastic.out(1, 0.3)" });
+        const yTo = gsap.quickTo(button, "y", { duration: 1, ease: "elastic.out(1, 0.3)" });
+
+        const handleMouseMove = (e) => {
+            const { clientX, clientY } = e;
+            const { height, width, left, top } = button.getBoundingClientRect();
+            const x = clientX - (left + width / 2);
+            const y = clientY - (top + height / 2);
+            xTo(x * 0.2);
+            yTo(y * 0.2);
+        };
+
+        const handleMouseLeave = () => {
+            xTo(0);
+            yTo(0);
+        };
+
+        button.addEventListener("mousemove", handleMouseMove);
+        button.addEventListener("mouseleave", handleMouseLeave);
+
+        return () => {
+            button.removeEventListener("mousemove", handleMouseMove);
+            button.removeEventListener("mouseleave", handleMouseLeave);
+        };
+    }, []);
+
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: index * 0.1 }}
-            className="group relative h-[500px] w-full rounded-[2.5rem] overflow-hidden bg-slate-900 border border-white/10"
-        >
-            {/* Background Image with Hover Zoom */}
-            <div className="absolute inset-0 z-0">
-                <img
-                    src={course.image}
-                    alt={course.title}
-                    className="w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/40 to-transparent" />
-            </div>
-
-            {/* Content Overlay */}
-            <div className="absolute inset-0 z-10 p-8 flex flex-col justify-end">
-                <div className="space-y-4">
-                    <span className="inline-block px-4 py-1 rounded-full bg-pink-500/20 border border-pink-500/30 text-pink-400 text-[10px] font-mono uppercase tracking-widest">
-                        {course.duration}
-                    </span>
-                    <h3 className="text-3xl md:text-4xl font-black text-white uppercase leading-[0.9] tracking-tighter group-hover:text-pink-500 transition-colors">
-                        {course.title}
-                    </h3>
-                    <p className="text-slate-400 text-sm font-light max-w-xs opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-                        {course.description}
-                    </p>
-
-                    <div className="flex items-center gap-4 pt-4">
-                        <Link 
-                            to={course.path}
-                            className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-bold text-xs uppercase tracking-widest hover:bg-pink-600 hover:text-white transition-all transform hover:scale-105"
-                        >
-                            View Syllabus <ArrowUpRight size={16} />
-                        </Link>
-                    </div>
-                </div>
-            </div>
-
-            {/* Corner Accent */}
-            <div className="absolute top-8 right-8 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-pink-600 group-hover:border-pink-600 transition-all duration-500">
-                <ArrowUpRight className="text-white transform group-hover:rotate-45 transition-transform" size={20} />
-            </div>
-        </motion.div>
+        <div ref={buttonRef} className={className}>
+            {children}
+        </div>
     );
 };
 
-const CourseListCard = ({ course, index }) => {
+const CourseCard = ({ course, index }) => {
     return (
         <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: index * 0.05 }}
-            className="group relative w-full apple-glass-dark border-white/5 hover:border-pink-500/30 rounded-3xl p-6 flex flex-col md:flex-row items-center gap-8 transition-all hover:bg-slate-900/80"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: index * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
+            className="group block w-full border border-zinc-200 bg-zinc-50 hover:bg-black rounded-xl p-8 md:p-12 transition-all duration-700 h-full flex flex-col justify-between shadow-xs hover:shadow-2xl hover:-translate-y-2"
         >
-            <div className="w-full md:w-64 h-48 rounded-2xl overflow-hidden shrink-0">
-                <img
-                    src={course.image}
-                    alt={course.title}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
-                />
-            </div>
-
-            <div className="flex-1 space-y-4 text-center md:text-left">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                    <div>
-                        <span className="text-pink-500 font-mono text-[10px] uppercase tracking-widest mb-2 block">
-                            {course.duration} • {course.category}
-                        </span>
-                        <h3 className="text-3xl font-black uppercase tracking-tighter group-hover:text-pink-500 transition-colors">
-                            {course.title}
-                        </h3>
+            <div>
+                <div className="flex justify-between items-start mb-8">
+                    <span className="px-4 py-2 rounded-full border border-zinc-300 group-hover:border-zinc-700 bg-white group-hover:bg-zinc-900 group-hover:text-white text-zinc-600 text-[10px] font-mono uppercase tracking-widest transition-colors duration-500">
+                        {course.category} • {course.duration}
+                    </span>
+                    <div className="w-12 h-12 rounded-full border border-zinc-200 group-hover:border-zinc-700 group-hover:bg-white bg-white text-black flex items-center justify-center transition-colors duration-500 relative overflow-hidden">
+                         <div className="absolute inset-0 bg-pink-500 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out" />
+                         <ArrowUpRight size={20} className="relative z-10 group-hover:text-white transition-colors duration-500" />
                     </div>
-                    <Link 
-                        to={course.path}
-                        className="self-center md:self-auto px-6 py-3 bg-white/5 hover:bg-white text-white hover:text-black border border-white/10 rounded-full font-bold text-[10px] uppercase tracking-widest transition-all"
-                    >
-                        View Syllabus
-                    </Link>
                 </div>
-                <p className="text-slate-400 text-sm font-light leading-relaxed max-w-2xl">
+
+                <h3 className="text-3xl md:text-4xl font-black text-black group-hover:text-white uppercase tracking-tighter leading-[0.95] mb-6 transition-colors duration-500">
+                    {course.title}
+                </h3>
+                
+                <p className="text-zinc-600 group-hover:text-zinc-400 text-sm md:text-base font-light leading-relaxed mb-8 transition-colors duration-500">
                     {course.description}
                 </p>
             </div>
-
-            <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
-                <ArrowUpRight className="text-pink-500" size={24} />
-            </div>
+            
+            <Link
+                to={course.path}
+                className="inline-flex items-center gap-3 text-black group-hover:text-pink-500 font-bold uppercase tracking-widest text-xs transition-colors duration-500 mt-auto"
+            >
+                <span>Syllabus & Fees</span>
+                <MoveRight size={16} className="transform group-hover:translate-x-2 transition-transform duration-300" />
+            </Link>
         </motion.div>
     );
 };
 
 const Courses = () => {
     const containerRef = useRef(null);
-    const heroRef = useRef(null);
     const [activeFilter, setActiveFilter] = useState("All");
     const [searchQuery, setSearchQuery] = useState("");
-    const [viewMode, setViewMode] = useState("grid"); // 'grid' or 'list'
-
-    const courses = [
-        {
-            title: "Fashion Design",
-            category: "Fashion",
-            duration: "3 Years Bachelors",
-            image: "https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg",
-            path: "/courses/fashion-designing",
-            description: "Master the art of haute couture, drape, and structural design in our state-of-the-art studios."
-        },
-        {
-            title: "Interior Design",
-            category: "Interior",
-            duration: "3 Years Bachelors",
-            image: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg",
-            path: "/courses/interior-designing",
-            description: "Learn to build immersive environments that blend high-performance luxury with human ergonomics."
-        },
-        {
-            title: "Graphic Design",
-            category: "VFX",
-            duration: "2 Years Masters",
-            image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg",
-            path: "/courses/graphic-designing",
-            description: "From brand logic to motion design, define the visual language of the next digital era."
-        },
-        {
-            title: "Advanced Graphic Design (Career Change)",
-            category: "VFX",
-            duration: "1 Year Diploma",
-            image: "https://images.pexels.com/photos/251225/pexels-photo-251225.jpeg",
-            path: "/courses/graphic-designing",
-            description: "An intensive diploma designed specifically for career changers looking to enter the design industry."
-        },
-        {
-            title: "Animation for YouTube & OTT",
-            category: "VFX",
-            duration: "6 Months",
-            image: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg",
-            path: "/courses/animation-and-vfx",
-            description: "Focused animation course for YouTube creators and digital content artists."
-        },
-        {
-            title: "Weekend Design Pro",
-            category: "Fashion",
-            duration: "Weekend Batch",
-            image: "https://images.pexels.com/photos/594452/pexels-photo-594452.jpeg",
-            path: "/courses", 
-            description: "Convenient weekend design courses in Delhi for working professionals."
-        },
-        {
-            title: "Short-Term Design Fast-Track",
-            category: "All",
-            duration: "3 Months",
-            image: "https://images.pexels.com/photos/4050314/pexels-photo-4050314.jpeg",
-            path: "/courses",
-            description: "Design certification with job support for quick industry entry."
-        },
-        {
-            title: "Luxury Brand Management",
-            category: "Fashion",
-            duration: "1 Year PG",
-            image: "https://images.pexels.com/photos/1183992/pexels-photo-1183992.jpeg",
-            path: "/courses/msc-luxury-brand-management",
-            description: "Understand the psychology of high-end consumerism and manage global luxury conglomerates."
-        },
-        {
-            title: "Jewellery Design",
-            category: "Fashion",
-            duration: "2 Years Diploma",
-            image: "https://images.pexels.com/photos/1531660/pexels-photo-1531660.jpeg",
-            path: "/courses/jewellery-designing",
-            description: "The intersection of material engineering and fine art. Craft the heirlooms of tomorrow."
-        },
-        {
-            title: "Photography",
-            category: "VFX",
-            duration: "2 Years Diploma",
-            image: "https://images.pexels.com/photos/594452/pexels-photo-594452.jpeg",
-            path: "/courses/photography",
-            description: "From editorial high-fashion to cinematic digital storytelling, master the art of the clinical lens."
-        },
-        {
-            title: "Textile Design",
-            category: "Fashion",
-            duration: "3 Years Bachelors",
-            image: "https://images.pexels.com/photos/236102/pexels-photo-236102.jpeg",
-            path: "/courses/textile-designing",
-            description: "The science of fiber and the soul of weave. Design the future of sustainable couture materials."
-        }
-    ];
 
     useEffect(() => {
         const lenis = new Lenis({
-            lerp: 0.1,
-            smoothWheel: true
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
         });
+
         function raf(time) {
             lenis.raf(time);
             requestAnimationFrame(raf);
         }
+
         requestAnimationFrame(raf);
 
-        // Hero Parallax
-        gsap.to(".hero-bg-vortex", {
-            rotate: 360,
-            duration: 100,
-            repeat: -1,
-            ease: "none"
-        });
-
-        gsap.to(".hero-title-reveal", {
-            scrollTrigger: {
-                trigger: heroRef.current,
-                start: "top top",
-                end: "bottom top",
-                scrub: true
-            },
-            y: 200,
-            scale: 0.8,
-            opacity: 0
+        // Text reveal animations
+        const titles = gsap.utils.toArray('.reveal-text');
+        titles.forEach(title => {
+            gsap.fromTo(title, 
+                { y: 50, opacity: 0 },
+                { 
+                    y: 0, 
+                    opacity: 1, 
+                    duration: 1, 
+                    ease: "power4.out",
+                    scrollTrigger: {
+                        trigger: title,
+                        start: "top 90%",
+                    }
+                }
+            );
         });
 
         return () => {
@@ -242,195 +207,218 @@ const Courses = () => {
         };
     }, []);
 
-    const filteredCourses = courses.filter(course => {
+    const filteredCourses = coursesData.filter(course => {
         const matchesFilter = activeFilter === "All" || course.category === activeFilter;
         const matchesSearch = course.title.toLowerCase().includes(searchQuery.toLowerCase());
         return matchesFilter && matchesSearch;
     });
 
     return (
-        <div ref={containerRef} className="bg-[#050505] text-white selection:bg-pink-600 font-sans overflow-hidden">
+        <div ref={containerRef} className="bg-white min-h-screen text-zinc-900 font-sans selection:bg-pink-100 selection:text-pink-900">
             <SEO
-                title="Job-Oriented Design Courses in Delhi | INSD India's Skill School"
-                description="Choose from 100% job-oriented B.Des, M.Des, and diploma programs in Fashion, Interior, and Graphic Design. INSD offers skill-based creative education with top placement support."
-                keywords="job oriented design courses in Delhi, design courses in Delhi with 100% placement, skill-based design institute Delhi, design courses after 12th in Delhi"
+                title="Academic Programs | INSD India's Skill School"
+                description="Explore ultra-modern job-oriented design programs at INSD."
             />
 
-            {/* 1. CINEMATIC HERO */}
-            <section ref={heroRef} className="relative h-[95vh] flex flex-col items-center justify-center px-6 overflow-hidden">
-                {/* Complex Background Elements */}
+            {/* MINIMALIST TYPOGRAPHIC HERO */}
+            <section className="relative h-[80vh] flex items-center justify-center pt-24 overflow-hidden bg-zinc-50 border-b border-zinc-200">
                 <div className="absolute inset-0 z-0">
-                    <div className="hero-bg-vortex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vmax] h-[150vmax] border-[1px] border-white/5 rounded-full" />
-                    <div className="hero-bg-vortex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vmax] h-[120vmax] border-[1px] border-white/10 rounded-full animate-pulse" />
-                    <div className="hero-bg-vortex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vmax] h-[90vmax] border-[1px] border-white/5 rounded-full" />
-
-                    {/* Gradient Halos */}
-                    <div className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] bg-pink-600/20 blur-[150px] rounded-full" />
-                    <div className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-violet-600/20 blur-[150px] rounded-full" />
+                    {/* Architectural / typographic grid background hint */}
+                    <div className="absolute top-0 left-1/4 w-[1px] h-full bg-zinc-200/50" />
+                    <div className="absolute top-0 left-2/4 w-[1px] h-full bg-zinc-200/50" />
+                    <div className="absolute top-0 left-3/4 w-[1px] h-full bg-zinc-200/50" />
                 </div>
 
-                <div className="hero-title-reveal relative z-10 text-center">
-                    <motion.span
-                        initial={{ opacity: 0, tracking: "0.2em" }}
-                        animate={{ opacity: 1, tracking: "1.2em" }}
-                        transition={{ duration: 1.5 }}
-                        className="text-pink-500 font-mono text-xs md:text-sm uppercase mb-8 block ml-[1.2em]"
+                <div className="relative z-10 w-full px-6 md:px-12 max-w-[1600px] mx-auto text-center flex flex-col items-center">
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8 }}
+                        className="mb-8"
                     >
-                        Department_of_Vision
-                    </motion.span>
-                    <h1 className="text-[8vw] md:text-[6vw] font-black uppercase leading-none tracking-tighter mb-4">
-                        Skill-Based <span className="text-transparent stroke-text-white stroke-white!">Education.</span>
-                    </h1>
-                    <p className="max-w-2xl mx-auto text-slate-400 font-light text-lg md:text-xl leading-relaxed px-6">
-                        Job-oriented design courses in Delhi at India’s Skill School. Explore practical diplomas in Fashion, Interior, Graphic, and Animation & VFX with 100% placement support.
-                    </p>
-                </div>
-
-                <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-30">
-                    <span className="text-[10px] font-mono uppercase tracking-widest">Scroll_to_Explore</span>
-                    <div className="w-px h-16 bg-linear-to-b from-white to-transparent" />
+                        <span className="font-mono text-xs md:text-sm uppercase tracking-[0.4em] text-pink-600 bg-pink-50 px-6 py-2 rounded-full border border-pink-100">
+                            The Design Academics
+                        </span>
+                    </motion.div>
+                    <motion.h1 
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.1 }}
+                        className="text-[12vw] md:text-[9vw] font-black uppercase leading-[0.85] tracking-tighter text-black"
+                    >
+                        Programs &<br />
+                        <span className="text-zinc-400">Curriculum.</span>
+                    </motion.h1>
+                    <motion.p 
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="mt-12 max-w-2xl text-zinc-600 font-light text-lg md:text-xl leading-relaxed"
+                    >
+                        Our carefully curated degree and diploma programs focus purely on skill-extraction and industry preparation, entirely stripping away redundant theory to bring you directly to the bleeding edge of the creative market.
+                    </motion.p>
                 </div>
             </section>
 
-            {/* 2. DYNAMIC FILTER & SEARCH BAR */}
-            <div className="sticky top-20 z-40 px-6 py-6 apple-glass-dark border-y border-white/5 !bg-slate-900/60 transition-all">
-                <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-6 items-center justify-between">
+            {/* PROGRAM PHILOSOPHY / DETAILS (WHITE THEME TYPOGRAPHY) */}
+            <section className="py-24 md:py-32 px-6 bg-white relative z-10 border-b border-zinc-200">
+                <div className="max-w-[1600px] mx-auto">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+                        
+                        <div className="lg:col-span-5 space-y-8">
+                            <div>
+                                <span className="font-mono text-xs uppercase tracking-[0.3em] text-pink-600 mb-6 block font-bold">Pedagogy Design</span>
+                                <h2 className="reveal-text text-4xl md:text-5xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.9] text-black">
+                                    Engineered <br /> for <span className="text-zinc-300">Excellence.</span>
+                                </h2>
+                            </div>
+                            <p className="text-zinc-600 leading-relaxed text-lg font-light max-w-lg">
+                                We believe in an environment entirely devoid of creative restriction. From your very first semester, you are treated not just as a student, but as an emerging design professional navigating high-stakes briefs.
+                            </p>
+                        </div>
+                        
+                        <div className="lg:col-span-7 grid sm:grid-cols-2 gap-8 lg:mt-24">
+                            <div className="border-t-2 border-black pt-6 bg-zinc-50 p-8 rounded-xl">
+                                <div className="text-4xl font-black text-pink-600 mb-4 tracking-tighter">01.</div>
+                                <h3 className="text-xl font-bold uppercase tracking-wider text-black mb-3">Industry-Integrated</h3>
+                                <p className="text-zinc-600 font-light leading-relaxed text-sm">
+                                    Our programs are designed in direct consultation with top design councils and luxury brands, ensuring you learn the exact technical workflows and aesthetics the global market demands right now.
+                                </p>
+                            </div>
+                            
+                            <div className="border-t-2 border-zinc-300 hover:border-pink-600 pt-6 bg-zinc-50 hover:bg-pink-50 p-8 rounded-xl transition-colors duration-500">
+                                <div className="text-4xl font-black text-black mb-4 tracking-tighter">02.</div>
+                                <h3 className="text-xl font-bold uppercase tracking-wider text-black mb-3">Global Masterclasses</h3>
+                                <p className="text-zinc-600 font-light leading-relaxed text-sm">
+                                    Learn directly from practicing architects, haute couture designers, and VFX supervisors through exclusive extended weekend workshops, seminars, and intensive live-client briefs.
+                                </p>
+                            </div>
 
-                    {/* Category Filter */}
+                            <div className="border-t-2 border-zinc-300 hover:border-pink-600 pt-6 bg-zinc-50 hover:bg-pink-50 p-8 rounded-xl transition-colors duration-500">
+                                <div className="text-4xl font-black text-black mb-4 tracking-tighter">03.</div>
+                                <h3 className="text-xl font-bold uppercase tracking-wider text-black mb-3">Guaranteed Placement</h3>
+                                <p className="text-zinc-600 font-light leading-relaxed text-sm">
+                                    We do not merely teach logic—we architect careers. Benefit from our heavily active placement cell that bridges the gap between your portfolio and leading global design agencies.
+                                </p>
+                            </div>
+
+                            <div className="border-t-2 border-zinc-300 hover:border-black pt-6 bg-zinc-50 hover:bg-zinc-100 p-8 rounded-xl transition-colors duration-500">
+                                <div className="text-4xl font-black text-zinc-400 mb-4 tracking-tighter">04.</div>
+                                <h3 className="text-xl font-bold uppercase tracking-wider text-black mb-3">Live Projects</h3>
+                                <p className="text-zinc-600 font-light leading-relaxed text-sm">
+                                    Replace standard examinations with highly scrutinized jury panels evaluating real-world project outcomes, branding presentations, and spatial design maquettes.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            {/* CONTROLS (FILTER / SEARCH) */}
+            <section className="sticky top-[72px] z-40 px-6 py-4 border-b border-zinc-200 bg-white/90 backdrop-blur-xl transition-all shadow-sm">
+                <div className="max-w-[1600px] mx-auto flex flex-col lg:flex-row gap-4 items-center justify-between">
                     <div className="flex gap-2 overflow-x-auto no-scrollbar w-full lg:w-auto pb-2 lg:pb-0">
-                        {["All", "Fashion", "Interior", "VFX"].map((cat) => (
+                        {categories.map((cat) => (
                             <button
                                 key={cat}
                                 onClick={() => setActiveFilter(cat)}
-                                className={`px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest border transition-all ${activeFilter === cat
-                                    ? "bg-white text-black border-white"
-                                    : "bg-white/5 text-slate-400 border-white/10 hover:border-white/40"
-                                    }`}
+                                className={`px-5 py-2.5 rounded-lg text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em] transition-all whitespace-nowrap ${
+                                    activeFilter === cat
+                                        ? "bg-black text-white"
+                                        : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-black"
+                                }`}
                             >
                                 {cat}
                             </button>
                         ))}
                     </div>
 
-                    {/* Futuristic Search */}
-                    <div className="relative w-full lg:w-[400px] h-14">
+                    <div className="relative w-full lg:w-[350px]">
                         <input
                             type="text"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            placeholder="Identify Your Protocol..."
-                            className="w-full h-full bg-slate-950 border border-white/10 rounded-full px-12 focus:border-pink-500 outline-none text-white text-sm transition-all"
+                            placeholder="SEARCH PROGRAMS..."
+                            className="w-full bg-zinc-50 border border-zinc-200 rounded-lg px-10 py-2.5 focus:border-pink-500 focus:bg-white outline-none text-black text-sm transition-all uppercase tracking-wider font-mono placeholder:text-zinc-400"
                         />
-                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
-                        <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2">
-                            <span className="hidden md:inline-block text-[10px] font-mono text-slate-600">FILTER_ACTIVE</span>
-                            <div className="w-2 h-2 rounded-full bg-pink-500 animate-pulse" />
-                        </div>
+                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" size={16} />
                     </div>
                 </div>
-            </div>
+            </section>
 
-            {/* 3. THE GRID */}
-            <section className="py-24 px-6 relative z-10">
-                <div className="max-w-7xl mx-auto space-y-12">
-                    <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-4">
-                            <div className="p-3 rounded-2xl bg-white/5 border border-white/10">
-                                <LayoutGrid size={20} className="text-pink-500" />
-                            </div>
-                            <h2 className="text-2xl font-bold uppercase tracking-tighter">
-                                Available Nodes ({filteredCourses.length})
+            {/* CURATED GRID */}
+            <section className="py-24 px-6 bg-white relative z-10">
+                <div className="max-w-[1600px] mx-auto">
+                    
+                    <div className="mb-20 flex flex-col lg:flex-row gap-12 items-baseline justify-between border-b border-zinc-200 pb-12">
+                        <div className="overflow-hidden">
+                            <h2 className="reveal-text text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9] text-black">
+                                Select <br className="hidden md:block" />
+                                <span className="text-zinc-300">Discipline</span>
                             </h2>
                         </div>
-                        <div className="hidden md:flex items-center gap-3 p-1 rounded-2xl bg-white/5 border border-white/10">
-                            <button
-                                onClick={() => setViewMode('list')}
-                                className={`p-2 rounded-xl transition-all ${viewMode === 'list' ? 'bg-white text-black shadow-lg scale-110' : 'text-slate-500 hover:text-white'}`}
-                            >
-                                <List size={18} />
-                            </button>
-                            <button
-                                onClick={() => setViewMode('grid')}
-                                className={`p-2 rounded-xl transition-all ${viewMode === 'grid' ? 'bg-white text-black shadow-lg scale-110' : 'text-slate-500 hover:text-white'}`}
-                            >
-                                <LayoutGrid size={18} />
-                            </button>
+                        <div className="max-w-md text-zinc-500 font-mono text-sm tracking-wide leading-relaxed">
+                            BROWSE OUR CORE PROGRAMS <br/> AND SPECIALIZED DIPLOMAS. EVERYTHING YOU NEED TO LAUNCH A CREATIVE CAREER.
                         </div>
                     </div>
 
-                    <AnimatePresence mode="wait">
-                        {viewMode === 'grid' ? (
-                            <motion.div
-                                key="grid"
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, scale: 0.95 }}
-                                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8"
-                            >
-                                {filteredCourses.map((course, i) => (
-                                    <CourseCard key={i} course={course} index={i} />
-                                ))}
-                            </motion.div>
-                        ) : (
-                            <motion.div
-                                key="list"
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, scale: 0.95 }}
-                                className="flex flex-col gap-6"
-                            >
-                                {filteredCourses.map((course, i) => (
-                                    <CourseListCard key={i} course={course} index={i} />
-                                ))}
-                            </motion.div>
-                        )}
+                    <AnimatePresence mode="popLayout">
+                        <motion.div 
+                            layout
+                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+                        >
+                            {filteredCourses.map((course, i) => (
+                                <CourseCard key={course.id} course={course} index={i} />
+                            ))}
+                        </motion.div>
                     </AnimatePresence>
 
                     {filteredCourses.length === 0 && (
-                        <div className="h-[400px] flex flex-col items-center justify-center text-center space-y-6">
-                            <div className="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center animate-spin-slow">
-                                <Sparkles size={40} className="text-slate-700" />
-                            </div>
-                            <p className="text-xl font-light text-slate-500 italic">No nodes found matching your query within the "{activeFilter}" sector.</p>
+                        <motion.div 
+                            initial={{ opacity: 0 }} 
+                            animate={{ opacity: 1 }} 
+                            className="h-[30vh] flex flex-col items-center justify-center text-center space-y-6 bg-zinc-50 rounded-2xl border border-zinc-200 mt-8"
+                        >
+                            <Sparkles className="text-zinc-300" size={48} />
+                            <p className="text-xl font-medium text-black tracking-wide">NO DISCIPLINES MATCH YOUR QUERY.</p>
                             <button
                                 onClick={() => { setActiveFilter("All"); setSearchQuery(""); }}
-                                className="text-pink-500 font-bold uppercase tracking-widest text-xs hover:underline decoration-2 underline-offset-8"
+                                className="text-pink-600 font-bold uppercase tracking-[0.2em] text-xs hover:text-black transition-colors"
                             >
-                                Reset Terminal
+                                Reset Search
                             </button>
-                        </div>
+                        </motion.div>
                     )}
                 </div>
             </section>
 
-            {/* 4. THE CALL TO CREATION */}
-            <section className="py-32 px-6 bg-white relative overflow-hidden group">
-                <div className="absolute inset-0 bg-slate-950 translate-y-full group-hover:translate-y-0 transition-transform duration-1000 ease-[cubic-bezier(0.76,0,0.24,1)]" />
-
-                <div className="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 pointer-events-none md:pointer-events-auto">
-                    <div className="max-w-xl text-center md:text-left transition-colors duration-700 group-hover:text-white text-black">
-                        <span className="font-mono text-[10px] uppercase tracking-widest mb-4 block">Next_Step</span>
-                        <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-[0.85] mb-8">
-                            Join The <br /> Revolution.
-                        </h2>
-                        <p className="text-lg opacity-60 font-light">
-                            Seats for the 2026 Academic Session are being claimed. Secure your spot in the ecosystem of pure creation.
-                        </p>
-                    </div>
-
-                    <div className="flex flex-col gap-4 w-full md:w-auto">
-                        <Link to="/apply" className="px-12 py-6 bg-pink-600 text-white font-black rounded-full uppercase tracking-widest hover:bg-black transition-all hover:scale-105 shadow-2xl shadow-pink-600/20 inline-block text-center whitespace-nowrap">
-                            Apply for Admission
-                        </Link>
-                        <Link to="/INSD Prospectus_2026 01-13.pdf" className="px-12 py-6 border border-black group-hover:border-white/20 text-black group-hover:text-white font-black rounded-full uppercase tracking-widest transition-all hover:bg-white hover:text-black inline-block text-center whitespace-nowrap">
-                            Download Prospectus
-                        </Link>
+            {/* POST-GRID CALL TO ACTION */}
+            <section className="py-32 px-6 bg-black text-white relative overflow-hidden">
+                <div className="max-w-[1600px] mx-auto relative z-10 flex flex-col items-center text-center">
+                    <span className="font-mono text-xs uppercase tracking-[0.4em] mb-8 font-bold text-pink-500">
+                        Enrollment Open
+                    </span>
+                    <h2 className="text-[10vw] md:text-[8vw] font-black uppercase tracking-tighter leading-[0.8] mb-12">
+                        Ready To <br /> Create?
+                    </h2>
+                    
+                    <div className="flex flex-col sm:flex-row gap-6">
+                        <MagneticButton>
+                            <Link to="/apply" className="flex items-center justify-center gap-3 px-10 py-5 bg-white text-black rounded-full font-bold uppercase tracking-widest text-sm hover:scale-105 hover:bg-pink-500 hover:text-white transition-all">
+                                Apply Now <ArrowUpRight size={18} />
+                            </Link>
+                        </MagneticButton>
                     </div>
                 </div>
 
-                {/* Decorative Elements */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-px bg-slate-200 group-hover:bg-white/10 rotate-12" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-px bg-slate-200 group-hover:bg-white/10 -rotate-12" />
+                {/* Abstract Vector Graphic in BG */}
+                <svg className="absolute -top-[20%] -right-[10%] w-[80vw] h-[80vw] text-white/[0.03] pointer-events-none rotate-12" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="0.5" fill="none" />
+                    <circle cx="50" cy="50" r="30" stroke="currentColor" strokeWidth="0.5" fill="none" />
+                    <line x1="10" y1="50" x2="90" y2="50" stroke="currentColor" strokeWidth="0.5" />
+                    <line x1="50" y1="10" x2="50" y2="90" stroke="currentColor" strokeWidth="0.5" />
+                </svg>
             </section>
 
             <Footer />
@@ -439,3 +427,4 @@ const Courses = () => {
 };
 
 export default Courses;
+

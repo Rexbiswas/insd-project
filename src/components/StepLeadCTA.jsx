@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MousePointer2 } from 'lucide-react';
-import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const StepLeadCTA = () => {
     const [isVisible, setIsVisible] = useState(false);
-    const { openAdmissionModal } = useAdmissionModal();
 
     useEffect(() => {
         const checkScroll = () => {
@@ -17,19 +15,21 @@ const StepLeadCTA = () => {
         return () => window.removeEventListener('scroll', checkScroll);
     }, []);
 
-    const handleOpenModal = (e) => {
+    const handleNavigate = (e) => {
         e.preventDefault();
-        openAdmissionModal({
-            title: 'Quick Inquiry',
-            subtitle: 'Start your creative journey with us.'
-        });
+        const formElement = document.getElementById('step-lead-form');
+        if (formElement) {
+            const navHeight = 100; // Account for fixed navbar
+            const y = formElement.getBoundingClientRect().top + window.scrollY - navHeight;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        }
     };
 
     return (
         <AnimatePresence>
             {isVisible && (
                 <motion.button
-                    onClick={handleOpenModal}
+                    onClick={handleNavigate}
                     initial={{ opacity: 0, scale: 0.5, y: 50 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.5, y: 50 }}

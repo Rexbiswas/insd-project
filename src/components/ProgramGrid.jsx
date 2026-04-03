@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, X, Heart, TrendingUp, Award, DollarSign } from 'lucide-react';
+import { ArrowUpRight, X, Heart, TrendingUp, Award, DollarSign, Navigation, ArrowLeft } from 'lucide-react';
+import StepLeadForm from './StepLeadForm';
 
 const programs = [
     {
@@ -158,6 +159,7 @@ const programs = [
 
 const ProgramGrid = () => {
     const [selectedProgram, setSelectedProgram] = useState(null);
+    const [showLeadForm, setShowLeadForm] = useState(false);
 
     useEffect(() => {
         if (selectedProgram) {
@@ -166,10 +168,12 @@ const ProgramGrid = () => {
         } else {
             document.body.classList.remove('hide-navbar');
             document.body.style.overflow = 'unset';
+            setShowLeadForm(false);
         }
         return () => {
             document.body.classList.remove('hide-navbar');
             document.body.style.overflow = 'unset';
+            setShowLeadForm(false);
         };
     }, [selectedProgram]);
 
@@ -345,41 +349,114 @@ const ProgramGrid = () => {
                                         </button>
                                     </div>
 
-                                    <div className="flex-1 overflow-y-auto p-8 md:p-12 md:pt-6 custom-scrollbar space-y-10 pb-24 md:pb-16">
+                                    <div className="flex-1 overflow-x-hidden overflow-y-auto p-8 md:p-12 md:pt-6 custom-scrollbar space-y-10 pb-24 md:pb-16">
 
-                                        {/* Header Text */}
-                                        <div className="max-w-xl">
-                                            <h3 className="text-2xl md:text-3xl font-black text-slate-900 leading-tight mb-4 tracking-tighter uppercase italic">
-                                                {selectedProgram.careerPath.title}
-                                            </h3>
-                                            <p className="text-slate-500 font-medium text-base md:text-lg italic border-l-4 border-slate-200 pl-6">
-                                                "{selectedProgram.subtitle}"
-                                            </p>
-                                        </div>
-
-                                        {/* Career Tracks Grid */}
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                                            {selectedProgram.careerPath.tracks.map((track, i) => (
-                                                <div key={i} className="group/track relative bg-white p-5 md:p-6 rounded-3xl border border-slate-200/60 hover:border-primary/20 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)]">
-                                                    <div className="flex items-start gap-4">
-                                                        <div className="w-14 h-14 rounded-2xl overflow-hidden shrink-0 shadow-xl border-2 border-white transform transition-transform duration-500 group-hover/track:scale-105">
-                                                            <img src={track.img} className="w-full h-full object-cover" alt={track.title} />
-                                                        </div>
-                                                        <div>
-                                                            <h4 className="font-black text-slate-900 uppercase tracking-tight text-xs mb-1">{track.title}</h4>
-                                                            <p className="text-slate-500 text-[10px] leading-relaxed font-semibold">{track.desc}</p>
-                                                        </div>
+                                        <AnimatePresence mode="wait">
+                                            {showLeadForm ? (
+                                                <motion.div
+                                                    key="lead-form"
+                                                    initial={{ opacity: 0, x: 20 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    exit={{ opacity: 0, x: -20 }}
+                                                    className="w-full"
+                                                >
+                                                    <button 
+                                                        onClick={() => setShowLeadForm(false)}
+                                                        className="mb-6 flex items-center gap-2 text-slate-400 hover:text-primary transition-colors font-bold uppercase tracking-widest text-[10px]"
+                                                    >
+                                                        <ArrowLeft size={14} />
+                                                        Back to Program Details
+                                                    </button>
+                                                    <StepLeadForm 
+                                                        isModal={true} 
+                                                        title={`Apply for ${selectedProgram.title}`}
+                                                    />
+                                                </motion.div>
+                                            ) : (
+                                                <motion.div
+                                                    key="career-data"
+                                                    initial={{ opacity: 0, x: -20 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    exit={{ opacity: 0, x: 20 }}
+                                                    className="space-y-10"
+                                                >
+                                                    {/* Header Text */}
+                                                    <div className="max-w-xl">
+                                                        <h3 className="text-2xl md:text-3xl font-black text-slate-900 leading-tight mb-4 tracking-tighter uppercase italic">
+                                                            {selectedProgram.careerPath.title}
+                                                        </h3>
+                                                        <p className="text-slate-500 font-medium text-base md:text-lg italic border-l-4 border-slate-200 pl-6">
+                                                            "{selectedProgram.subtitle}"
+                                                        </p>
                                                     </div>
-                                                </div>
-                                            ))}
-                                        </div>
 
-                                        {/* Professional Outcomes Disclaimer */}
-                                        <div className="pt-10 border-t border-slate-100 italic">
-                                            <p className="text-slate-400 text-[10px] font-bold uppercase tracking-widest">
-                                                * Program outcomes may vary based on individual portfolio excellence and industry demand.
-                                            </p>
-                                        </div>
+                                                    {/* Career Tracks Grid */}
+                                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                                        {selectedProgram.careerPath.tracks.map((track, i) => (
+                                                            <div key={i} className="group/track relative bg-white p-5 md:p-6 rounded-3xl border border-slate-200/60 hover:border-primary/20 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)]">
+                                                                <div className="flex items-start gap-4">
+                                                                    <div className="w-14 h-14 rounded-2xl overflow-hidden shrink-0 shadow-xl border-2 border-white transform transition-transform duration-500 group-hover/track:scale-105">
+                                                                        <img src={track.img} className="w-full h-full object-cover" alt={track.title} />
+                                                                    </div>
+                                                                    <div>
+                                                                        <h4 className="font-black text-slate-900 uppercase tracking-tight text-xs mb-1">{track.title}</h4>
+                                                                        <p className="text-slate-500 text-[10px] leading-relaxed font-semibold">{track.desc}</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+
+                                                    {/* Salary Expectations UI */}
+                                                    {selectedProgram.careerPath.salaries && (
+                                                        <div className="mt-8">
+                                                            <div className="flex items-center gap-3 mb-6">
+                                                                <div className="w-8 h-px bg-primary" />
+                                                                <h4 className="font-black text-slate-900 uppercase tracking-widest text-xs">Salary Trajectory</h4>
+                                                            </div>
+                                                            
+                                                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                                                {/* Entry Level */}
+                                                                <div className="bg-white p-6 rounded-3xl border border-slate-200/60 hover:border-slate-300 transition-all duration-300 hover:shadow-lg overflow-hidden relative">
+                                                                    <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center mb-4 shadow-inner">
+                                                                        <TrendingUp className="w-4 h-4 text-slate-400" />
+                                                                    </div>
+                                                                    <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-1 relative z-10">Entry Level</p>
+                                                                    <p className="text-xl font-black text-slate-900 tracking-tight relative z-10">{selectedProgram.careerPath.salaries.entry}</p>
+                                                                </div>
+                                                                
+                                                                {/* Mid Level */}
+                                                                <div className="bg-white p-6 rounded-3xl border border-slate-200/60 hover:border-slate-300 transition-all duration-300 hover:shadow-lg overflow-hidden relative">
+                                                                    <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center mb-4 shadow-inner">
+                                                                        <Award className="w-4 h-4 text-slate-400" />
+                                                                    </div>
+                                                                    <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-1 relative z-10">Mid Level</p>
+                                                                    <p className="text-xl font-black text-slate-900 tracking-tight relative z-10">{selectedProgram.careerPath.salaries.mid}</p>
+                                                                </div>
+                                                                
+                                                                {/* Senior Level */}
+                                                                <div className="bg-white p-6 rounded-3xl border border-primary/20 bg-linear-to-br from-white to-red-50/50 shadow-md hover:shadow-xl relative overflow-hidden group/salary hover:border-primary/40 transition-all duration-300 [transform:translateZ(0)]">
+                                                                    <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-[100px] rounded-tr-3xl transition-transform duration-500 group-hover/salary:scale-110" />
+                                                                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mb-4 relative z-10 shadow-inner">
+                                                                        <DollarSign className="w-4 h-4 text-primary" />
+                                                                    </div>
+                                                                    <p className="text-primary text-[10px] font-black uppercase tracking-widest mb-1 relative z-10">Senior Level</p>
+                                                                    <p className="text-xl font-black text-slate-900 tracking-tight relative z-10">{selectedProgram.careerPath.salaries.senior}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    )}
+
+                                                    
+                                                    {/* Professional Outcomes Disclaimer */}
+                                                    <div className="pt-6 border-t border-slate-100 italic">
+                                                        <p className="text-slate-400 text-[10px] font-bold uppercase tracking-widest">
+                                                            Program outcomes may vary based on individual portfolio excellence and industry demand.
+                                                        </p>
+                                                    </div>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
                                     </div>
                                 </div>
                             </motion.div>

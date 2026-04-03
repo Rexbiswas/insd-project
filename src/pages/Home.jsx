@@ -27,7 +27,7 @@ import LegacyTimeline from '../components/LegacyTimeline';
 import ProgramGrid from '../components/ProgramGrid';
 import InsdDifference from '../components/InsdDifference';
 import IndustryInsights from '../components/IndustryInsights';
-import AdmissionForm from '../components/AdmissionForm';
+import AdmissionFormWhite from '../components/AdmissionFormWhite';
 import HeroSlider from '../components/HeroSlider';
 import { ArrowRight, CheckCircle2, Sparkles, Briefcase, Rocket } from 'lucide-react';
 import PlacementPartners from '../components/PlacementPartners';
@@ -309,8 +309,8 @@ const Home = () => {
 
                     {/* Right Side: Admission Form */}
                     <div className="w-full md:w-[50%] flex flex-col justify-center items-center p-4 md:p-8 relative z-20">
-                        <div className="w-full h-full max-w-xl bg-black rounded-4xl md:rounded-[2.5rem] shadow-3xl overflow-hidden border border-white/5 origin-center transform md:scale-95 hover:scale-100 transition-transform duration-500">
-                            <AdmissionForm isModal={true} />
+                        <div className="w-full h-full max-w-xl bg-white rounded-4xl md:rounded-[2.5rem] shadow-3xl overflow-hidden border border-slate-200 origin-center transform md:scale-95 hover:scale-100 transition-transform duration-500">
+                            <AdmissionFormWhite isModal={true} />
                         </div>
                     </div>
                 </div>
