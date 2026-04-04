@@ -122,7 +122,7 @@ const InteriorDesigning = () => {
         { title: "Lighting Specialist", desc: "Mastering the science and art of illumination to transform spatial perception and mood.", img: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&q=80&w=800" },
         { title: "Set Designer", desc: "Creating evocative spatial environments for film, television, and luxury events.", img: "https://images.unsplash.com/photo-1513519245088-0e12902e35ca?auto=format&fit=crop&q=80&w=800" },
         { title: "Sustainable Architect", desc: "Directing the transition toward eco-friendly building practices and circular materials.", img: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=800" },
-        { title: "Project Lead", desc: "Managing large-scale construction and design implementation across global sites.", img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800" }
+        { title: "Project Lead", desc: "Managing large-scale construction and design implementation across global sites.", img: "https://ik.imagekit.io/fmldynl4j4/Our%20Interior%20Design%20students%20explored%20the%20world%20of%20Knock%20Down%20Furniture%20and%20Modular%20Concepts%20at%20IKEA%20Mumbai.This%20hands-on%20visit%20helped%20them%20understand%20the%20functionality,%20design%20logic,%20and%20user-centric%20approach%20b%20(%20.jpg" }
     ];
 
     return (

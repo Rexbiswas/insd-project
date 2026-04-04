@@ -110,7 +110,7 @@ const FashionDesigning = () => {
     };
 
     const careerPaths = [
-        { title: "Coutur Designer", desc: "Crafting exclusive, high-end bespoke garments for international luxury labels.", img: "https://images.pexels.com/photos/3735169/pexels-photo-3735169.jpeg?auto=compress&cs=tinysrgb&w=800" },
+        { title: "Couture Designer", desc: "Crafting exclusive, high-end bespoke garments for international luxury labels.", img: "https://images.pexels.com/photos/3735169/pexels-photo-3735169.jpeg?auto=compress&cs=tinysrgb&w=800" },
         { title: "Fashion Illustrator", desc: "Translating concepts into high-impact visual narratives for global publications.", img: "https://images.pexels.com/photos/5692271/pexels-photo-5692271.jpeg?auto=compress&cs=tinysrgb&w=800" },
         { title: "Personal Stylist", desc: "Setting the visual identity for celebrities, influencers, and luxury brand ambassadors.", img: "https://images.pexels.com/photos/6069554/pexels-photo-6069554.jpeg?auto=compress&cs=tinysrgb&w=800" },
         { title: "Fashion Entrepreneur", desc: "Launching and managing independent fashion labels and high-end boutiques.", img: "https://images.pexels.com/photos/4960250/pexels-photo-4960250.jpeg?auto=compress&cs=tinysrgb&w=800" },
