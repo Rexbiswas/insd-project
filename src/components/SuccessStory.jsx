@@ -62,10 +62,10 @@ const SuccessStory = () => {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-5xl md:text-8xl font-black text-slate-950 leading-[0.9] tracking-tighter uppercase mb-6"
+                            className="text-5xl md:text-8xl font-black text-slate-950 leading-none tracking-tighter uppercase mb-6 py-2"
                         >
                             They made it.<br />
-                            <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-primary to-slate-500 italic inline-block py-2">So Can You!</span>
+                            <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-primary to-slate-500 italic inline-block py-4 pr-4">So Can You!</span>
                         </motion.h2>
                         
                         <motion.p 
