@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Target, Briefcase, Building2, Globe, Rocket, Play, CheckCircle2 } from 'lucide-react';
 import { useAdmissionModal } from '../context/AdmissionModalContext';
@@ -6,6 +6,7 @@ import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const InsdDifference = () => {
     const { openAdmissionModal } = useAdmissionModal();
+    const [isPlaying, setIsPlaying] = useState(false);
     const tiles = [
         {
             title: "Skill-First Learning",
@@ -136,33 +137,48 @@ const InsdDifference = () => {
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
-                            className="relative w-full aspect-9/16 max-w-sm rounded-4xl overflow-hidden shadow-3xl group/video cursor-pointer border border-slate-100"
+                            className="relative w-full aspect-9/16 max-w-sm rounded-4xl overflow-hidden shadow-3xl group/video cursor-pointer border border-slate-100 bg-slate-900"
+                            onClick={() => setIsPlaying(true)}
                         >
-                            {/* Cinematic Video Loop */}
-                            <video 
-                                src="https://player.vimeo.com/external/494163967.sd.mp4?s=6a982924151a6907d64380f681bc7e828e8b6b90&profile_id=165" 
-                                className="w-full h-full object-cover grayscale-20 group-hover/video:grayscale-0 transition-all duration-1000 group-hover/video:scale-105"
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
-                            />
-                            <div className="absolute inset-0 bg-linear-to-t from-slate-900/80 via-transparent to-transparent" />
-                            
-                            {/* Play Button Overlay */}
-                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                                <div className="w-24 h-24 bg-primary rounded-full flex items-center justify-center shadow-2xl transform group-hover/video:scale-110 transition-transform duration-500 animate-pulse">
-                                    <Play size={40} className="text-white fill-white ml-2" />
-                                </div>
-                            </div>
+                            {!isPlaying ? (
+                                <>
+                                    {/* Cinematic Video Loop */}
+                                    <video 
+                                        src="https://player.vimeo.com/external/494163967.sd.mp4?s=6a982924151a6907d64380f681bc7e828e8b6b90&profile_id=165" 
+                                        className="w-full h-full object-cover grayscale-20 group-hover/video:grayscale-0 transition-all duration-1000 group-hover/video:scale-105"
+                                        autoPlay
+                                        loop
+                                        muted
+                                        playsInline
+                                    />
+                                    <div className="absolute inset-0 bg-linear-to-t from-slate-900/80 via-transparent to-transparent" />
+                                    
+                                    {/* Play Button Overlay */}
+                                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                        <div className="w-24 h-24 bg-primary rounded-full flex items-center justify-center shadow-2xl transform group-hover/video:scale-110 transition-transform duration-500 animate-pulse">
+                                            <Play size={40} className="text-white fill-white ml-2" />
+                                        </div>
+                                    </div>
 
-                            {/* Floating Stats on Video */}
-                            <div className="absolute bottom-10 left-10 right-10 z-20 space-y-4">
-                                <div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl">
-                                    <p className="text-white text-[10px] font-black uppercase tracking-widest opacity-60">Career Success</p>
-                                    <h4 className="text-white text-xl font-black">2000+ Success Stories</h4>
-                                </div>
-                            </div>
+                                    {/* Floating Stats on Video */}
+                                    <div className="absolute bottom-10 left-10 right-10 z-20 space-y-4">
+                                        <div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl">
+                                            <p className="text-white text-[10px] font-black uppercase tracking-widest opacity-60">Career Success</p>
+                                            <h4 className="text-white text-xl font-black">2000+ Success Stories</h4>
+                                        </div>
+                                    </div>
+                                </>
+                            ) : (
+                                <iframe 
+                                    className="w-full h-full"
+                                    src="https://www.youtube.com/embed/3t4m4f1vaRo?si=xDdMJnubY6HjJQkY&autoplay=1" 
+                                    title="YouTube video player" 
+                                    frameBorder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    referrerPolicy="strict-origin-when-cross-origin" 
+                                    allowFullScreen
+                                ></iframe>
+                            )}
                         </motion.div>
                     </div>
 

@@ -7,36 +7,36 @@ const SuccessStory = () => {
     const { openAdmissionModal } = useAdmissionModal();
     const stories = [
         {
-            name: "Ananya Sharma",
+            name: "Ankit Khera",
             course: "Fashion Design",
-            placedAt: "Reliance Brands",
-            title: "Senior Stylist",
-            img: "https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-            quote: "INSD didn't just teach me design; they taught me the business of fashion."
+            placedAt: "Jobs Mall",
+            title: "Fashion Designer",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Ankit%20Khera.jpeg",
+            quote: "INSD helped me move from basic sketches to a strong portfolio and a full-time job as a Fashion Designer. The shows, juries and software training made interviews feel easy."
         },
         {
-            name: "Karan Verma",
-            course: "Interior Design",
-            placedAt: "Livspace",
-            title: "Design Lead",
-            img: "https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-            quote: "From local projects to national leads, my journey started with INSD's industry network."
-        },
-        {
-            name: "Riya Kapoor",
-            course: "Jewellery Design",
-            placedAt: "Tanishq",
-            title: "Gemologist",
-            img: "https://images.pexels.com/photos/7621142/pexels-photo-7621142.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-            quote: "The specialized training in gemology helped me secure my dream role at Tanishq."
-        },
-        {
-            name: "Rahul Mehta",
+            name: "Sanchita Pal",
             course: "Graphic Design",
-            placedAt: "Dentsu",
-            title: "Art Director",
-            img: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-            quote: "The portfolio review sessions were the turning point for my global career."
+            placedAt: "Freelance",
+            title: "Graphic Designer",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Sanchita%20Pal.jfif",
+            quote: "I started taking small freelance graphic design projects in my second year. The feedback on my portfolio and support from faculty gave me the confidence to charge for my skills."
+        },
+        {
+            name: "Sameer Siddiqui",
+            course: "Jewellery Design",
+            placedAt: "Gold Mark",
+            title: "Jewellery Designer",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Sameer%20Siddiqui.jpeg",
+            quote: "The hands-on training in jewellery design and the exposure to industry techniques helped me build strong technical skills. The mentor guidance played a key role in helping me secure a position."
+        },
+        {
+            name: "Nitika Gautam",
+            course: "Interior Design",
+            placedAt: "Virgo Clothing",
+            title: "Interior Designer",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Nitika%20Gautam%20.jpeg",
+            quote: "The placement cell connected me with a top interior design firm in Gurgaon. My 3D visualisation skills and studio projects made me job-ready from day one."
         }
     ];
 
