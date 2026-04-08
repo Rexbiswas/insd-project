@@ -180,12 +180,12 @@ const Events = () => {
                                 className="absolute inset-0"
                             >
                                 {showcaseEvents[showcaseIndex].video ? (
-                                    <video 
+                                    <video
                                         key={showcaseEvents[showcaseIndex].video}
-                                        src={showcaseEvents[showcaseIndex].video} 
-                                        autoPlay 
-                                        muted 
-                                        loop 
+                                        src={showcaseEvents[showcaseIndex].video}
+                                        autoPlay
+                                        muted
+                                        loop
                                         playsInline
                                         className="w-full h-full object-cover grayscale brightness-50 hover:grayscale-0 transition-all duration-1000"
                                     />
@@ -375,7 +375,6 @@ const Events = () => {
                     </div>
                 </motion.div>
             </div>
-
             <Footer />
         </div>
     );
