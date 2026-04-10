@@ -220,7 +220,7 @@ const Navbar = () => {
                 { title: 'Call Us Now', path: 'tel:+917701933935', icon: Phone, desc: 'Direct support line' },
                 { title: 'Apply Now', path: '/apply', icon: UserPlus, desc: 'Start your application' },
                 { title: 'Career Counselling', path: '/apply', icon: Calendar, desc: 'Book a session' },
-                { title: 'Download Brochure', path: '#', icon: FileDown, desc: 'Course catalogues' }
+                { title: 'Download Brochure', path: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', icon: FileDown, desc: 'Course catalogues', isDownload: true }
             ]
         },
     ];
@@ -526,6 +526,19 @@ const Navbar = () => {
                     </AnimatePresence>
 
 
+                    {/* Download Prospectus Button - Desktop */}
+                    <a
+                        href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" 
+                        download="INSD-Prospectus-2026.pdf"
+                        className={`group relative hidden lg:flex items-center gap-2 px-6 py-2.5 rounded-full overflow-hidden shadow-lg transition-all duration-300 ${isHeaderDark && !isScrolled ? 'bg-white/10 text-white border-white/20' : 'bg-slate-100 text-slate-900 border-slate-200'} border backdrop-blur-md`}
+                    >
+                        <div className="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                        <FileDown size={16} className="relative z-10 group-hover:text-white transition-colors" />
+                        <span className="relative z-10 font-black text-[10px] tracking-widest group-hover:text-white transition-colors uppercase">
+                            Prospectus
+                        </span>
+                    </a>
+
                     {/* Menu Toggle - Desktop Only */}
                     <motion.button
                         whileHover={{ scale: 1.05 }}
@@ -673,16 +686,30 @@ const Navbar = () => {
                             >
                                 {/* Header */}
                                 
-                                <div className="p-5 flex items-center justify-between bg-linear-to-r from-primary to-secondary text-white">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center border border-white/30 backdrop-blur-md">
+                                <div className="p-5 flex items-center justify-between bg-gradient-to-r from-primary to-secondary text-white">
+                                    <button 
+                                        onClick={() => {
+                                            setIsOpen(false);
+                                            if (user) {
+                                                navigate('/profile');
+                                            } else {
+                                                openModal();
+                                            }
+                                        }}
+                                        className="flex items-center gap-3 group/user cursor-pointer"
+                                    >
+                                        <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center border border-white/30 backdrop-blur-md group-hover/user:scale-110 transition-transform">
                                             <User size={20} />
                                         </div>
-                                        <div className="flex flex-col">
-                                            <span className="text-xs font-black uppercase tracking-widest">{user ? user.username : 'Guest'}</span>
-                                            <span className="text-[8px] font-bold text-white/60 tracking-widest">INSD STUDENT</span>
+                                        <div className="flex flex-col text-left">
+                                            <span className="text-xs font-black uppercase tracking-widest group-hover/user:text-white transition-colors">
+                                                {user ? user.username : 'Signin / Signup'}
+                                            </span>
+                                            <span className="text-[8px] font-bold text-white/60 tracking-widest uppercase">
+                                                {user ? 'View Profile' : 'INSD Student Protocol'}
+                                            </span>
                                         </div>
-                                    </div>
+                                    </button>
                                     <button onClick={() => setIsOpen(false)} className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all">
                                         <X size={20} />
                                     </button>
@@ -785,12 +812,16 @@ const Navbar = () => {
                                             <SocialIcons dark={true} className="!gap-4 md:!gap-6" />
                                         </div>
 
-                                        <button 
-                                            onClick={() => { setIsOpen(false); openAdmissionModal(); }}
-                                            className="w-full py-4 bg-slate-900 text-white rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] shadow-xl shadow-slate-900/20 active:scale-95 transition-all"
-                                        >
-                                            Admission Query 2026
-                                        </button>
+                                        <div className="w-full">
+                                            <a 
+                                                href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+                                                download="INSD-Prospectus-2026.pdf"
+                                                className="w-full py-4 bg-primary text-white rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] shadow-xl shadow-primary/20 active:scale-95 transition-all flex items-center justify-center gap-3"
+                                            >
+                                                <FileDown size={18} />
+                                                Download Prospectus
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </motion.div>
@@ -845,7 +876,7 @@ const Navbar = () => {
                                             { title: 'Call Us Now', sub: '+91 7701933935', icon: Phone, href: 'tel:+917701933935' },
                                             { title: 'Apply Now', sub: 'Admission Cycle 2026', icon: UserPlus, href: '/apply' },
                                             { title: 'Book Counselling', sub: 'Free Expert Session', icon: Calendar, action: 'modal' },
-                                            { title: 'Download Brochure', sub: 'Detailed Course Guide', icon: FileDown, href: '#' },
+                                            { title: 'Download Brochure', sub: 'Detailed Course Guide', icon: FileDown, href: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', isDownload: true },
                                         ].map((cta, i) => (
                                             <motion.div
                                                 key={i}
@@ -889,9 +920,10 @@ const Navbar = () => {
                                                         </div>
                                                     </button>
                                                 ) : (
-                                                    <Link
-                                                        to={cta.href}
-                                                        onClick={() => setIsOpen(false)}
+                                                    <a
+                                                        href={cta.href}
+                                                        download={cta.isDownload ? "INSD-Prospectus-2026.pdf" : undefined}
+                                                        onClick={() => { if(!cta.isDownload) setIsOpen(false); }}
                                                         className="flex items-center gap-6 md:gap-8 text-left"
                                                     >
                                                         <div className="w-10 h-10 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-primary group-hover:scale-110 group-hover:rotate-6 group-hover:border-primary shadow-2xl overflow-hidden relative">
@@ -906,7 +938,7 @@ const Navbar = () => {
                                                                 {cta.sub}
                                                             </p>
                                                         </div>
-                                                    </Link>
+                                                    </a>
                                                 )}
                                             </motion.div>
                                         ))}

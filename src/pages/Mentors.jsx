@@ -11,6 +11,7 @@ import Footer from '../components/Footer';
 
 const Mentors = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [visitingIndex, setVisitingIndex] = useState(0);
 
     const mentorData = [
         {
@@ -63,8 +64,38 @@ const Mentors = () => {
         }
     ];
 
+    const visitingLegends = [
+        {
+            name: "Amelia Thorne",
+            title: "Global Creative Director, Vogue UK",
+            tags: ["Fashion Strategist", "Editorial Visionary"],
+            img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=1200",
+            desc: "Amelia oversees the intersection of high fashion and digital media at Vogue UK. Her workshops focus on editorial photography and brand storytelling transitions.",
+            impact: "Editorial Strategy"
+        },
+        {
+            name: "Marcus Rossi",
+            title: "Supercar Concept Designer, Italy",
+            tags: ["Product Engineer", "Industrial Maverick"],
+            img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1200",
+            desc: "Formerly with Ferrari and Lamborghini, Marcus brings a rigorous approach to aerodynamic design and high-performance product manufacturing to our industrial design wing.",
+            impact: "Industrial Innovation"
+        },
+        {
+            name: "Yuki Tanaka",
+            title: "Zen Space Architect, Japan",
+            tags: ["Minimalist Maven", "Sustainability Expert"],
+            img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=1200",
+            desc: "Yuki specializes in 'Neo-Zen' interior architecture, emphasizing sustainable materials and biophilic design. Her projects in Tokyo define the future of urban living.",
+            impact: "Sustainable Spatial Art"
+        }
+    ];
+
     const handleNext = () => setCurrentIndex((prev) => (prev + 1) % mentorData.length);
     const handlePrev = () => setCurrentIndex((prev) => (prev - 1 + mentorData.length) % mentorData.length);
+    
+    const handleVisitingNext = () => setVisitingIndex((prev) => (prev + 1) % visitingLegends.length);
+    const handleVisitingPrev = () => setVisitingIndex((prev) => (prev - 1 + visitingLegends.length) % visitingLegends.length);
 
     return (
         <div className="bg-white min-h-screen font-sans selection:bg-slate-900 selection:text-white overflow-x-hidden">
@@ -118,7 +149,7 @@ const Mentors = () => {
                                 >
                                     {/* Left: Mentor Visual */}
                                     <div className="w-full lg:w-1/2 h-[400px] lg:h-full relative overflow-hidden">
-                                        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent z-10" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10" />
                                         <motion.img 
                                             initial={{ scale: 1.1 }}
                                             animate={{ scale: 1 }}
@@ -208,23 +239,128 @@ const Mentors = () => {
                         </div>
 
                     </div>
+                    
+                    {/* --- SECOND SLIDER: VISITING LEGENDS --- */}
+                    <div className="mt-48 space-y-16">
+                        <div className="text-center space-y-4">
+                            <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tightest">Visiting <span className="text-primary italic">Legends.</span></h2>
+                            <p className="text-slate-400 font-bold uppercase text-[10px] tracking-[0.3em]">Global Advisory & International Faculty</p>
+                        </div>
+
+                        <div className="relative max-w-6xl mx-auto">
+                            <div className="relative h-auto min-h-[600px] md:h-[650px] w-full rounded-[3rem] md:rounded-[4rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] bg-slate-950 flex flex-col lg:flex-row group/visiting">
+                                
+                                <AnimatePresence mode="wait">
+                                    <motion.div
+                                        key={visitingIndex}
+                                        initial={{ opacity: 0, scale: 1.05 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0.95 }}
+                                        transition={{ duration: 0.6, ease: "easeOut" }}
+                                        className="flex flex-col lg:flex-row w-full h-full"
+                                    >
+                                        {/* Right: Legend Image (Flipped layout for variety) */}
+                                        <div className="w-full lg:w-1/2 h-[400px] lg:h-full relative order-1 lg:order-2">
+                                            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/40 to-slate-950 z-10" />
+                                            <img 
+                                                src={visitingLegends[visitingIndex].img}
+                                                alt={visitingLegends[visitingIndex].name}
+                                                className="w-full h-full object-cover transition-all duration-700"
+                                            />
+                                            
+                                            <div className="absolute top-10 right-10 z-20 flex gap-4">
+                                                <button 
+                                                    onClick={handleVisitingPrev}
+                                                    className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl flex items-center justify-center text-white hover:bg-white hover:text-slate-900 transition-all border border-white/20"
+                                                >
+                                                    <ChevronLeft size={24} />
+                                                </button>
+                                                <button 
+                                                    onClick={handleVisitingNext}
+                                                    className="w-14 h-14 rounded-full bg-primary flex items-center justify-center text-white hover:bg-white hover:text-slate-900 transition-all shadow-xl"
+                                                >
+                                                    <ChevronRight size={24} />
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        {/* Left: Legend Content */}
+                                        <div className="w-full lg:w-1/2 p-10 md:p-16 lg:p-20 flex flex-col justify-center order-2 lg:order-1 text-white">
+                                            <div className="space-y-8">
+                                                <div className="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest">
+                                                    International Faculty
+                                                </div>
+                                                
+                                                <div className="space-y-2">
+                                                    <h3 className="text-4xl md:text-5xl font-black uppercase tracking-tighter leading-none">
+                                                        {visitingLegends[visitingIndex].name}
+                                                    </h3>
+                                                    <p className="text-white/40 font-bold uppercase text-xs tracking-widest">{visitingLegends[visitingIndex].title}</p>
+                                                </div>
+
+                                                <p className="text-white/60 text-lg md:text-xl font-medium leading-relaxed italic border-l-2 border-primary/40 pl-8">
+                                                    "{visitingLegends[visitingIndex].desc}"
+                                                </p>
+
+                                                <div className="flex flex-wrap gap-2">
+                                                    {visitingLegends[visitingIndex].tags.map((tag, i) => (
+                                                        <span key={i} className="text-[9px] font-black uppercase tracking-widest text-primary/80 bg-primary/5 px-4 py-1.5 rounded-full border border-primary/10">{tag}</span>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                </AnimatePresence>
+
+                                {/* Legend Progress */}
+                                <div className="absolute bottom-10 left-1/2 lg:left-[25%] -translate-x-1/2 flex items-center gap-1.5 z-40 bg-white/5 backdrop-blur-md p-2 rounded-full border border-white/10">
+                                    {visitingLegends.map((_, i) => (
+                                        <button
+                                            key={i}
+                                            onClick={() => setVisitingIndex(i)}
+                                            className={`h-1.5 rounded-full transition-all duration-500 ${visitingIndex === i ? 'w-8 bg-primary' : 'w-1.5 bg-white/20 hover:bg-white/40'}`}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* --- GLOBAL STANDARDS STRIP --- */}
+                    <div className="mt-32 py-20 border-y border-slate-100 grid grid-cols-1 md:grid-cols-3 gap-16 relative">
+                        <div className="space-y-4 text-center md:text-left">
+                            <span className="text-primary font-black text-4xl italic">01.</span>
+                            <h4 className="text-2xl font-black uppercase tracking-tightest text-slate-900">Industry <br /> Learning</h4>
+                            <p className="text-slate-400 text-xs font-bold uppercase tracking-widest leading-loose">Curriculum engineered by the masters of the craft.</p>
+                        </div>
+                        <div className="space-y-4 text-center md:text-left">
+                            <span className="text-primary font-black text-4xl italic">02.</span>
+                            <h4 className="text-2xl font-black uppercase tracking-tightest text-slate-900">Industry <br /> Practices</h4>
+                            <p className="text-slate-400 text-xs font-bold uppercase tracking-widest leading-loose">Real-world protocols from luxury houses & design firms.</p>
+                        </div>
+                        <div className="space-y-4 text-center md:text-left">
+                            <span className="text-primary font-black text-4xl italic">03.</span>
+                            <h4 className="text-2xl font-black uppercase tracking-tightest text-slate-900">Global <br /> Placement</h4>
+                            <p className="text-slate-400 text-xs font-bold uppercase tracking-widest leading-loose">Direct pathways to international design conglomerates.</p>
+                        </div>
+                    </div>
 
                     {/* --- BOTTOM COLLABORATION STRIP --- */}
-                    <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-12 pt-24 border-t border-slate-100 items-start">
+                    <div className="mt-32 grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
                         <div className="space-y-4">
-                            <h4 className="text-lg font-black uppercase tracking-tighter text-slate-900">Industry Connection</h4>
-                            <p className="text-slate-400 text-sm leading-relaxed max-w-xs font-medium">
-                                At INSD, you don't just study design; you interact with the architects of the industry daily.
+                            <h4 className="text-sm font-black uppercase tracking-[0.3em] text-slate-300">Industry Connection</h4>
+                            <p className="text-slate-900 text-lg leading-tight font-black uppercase tracking-tighter">
+                                Interact with the architects of the industry daily.
                             </p>
                         </div>
                         <div className="space-y-4">
-                            <h4 className="text-lg font-black uppercase tracking-tighter text-secondary">Join the Protocol</h4>
-                            <p className="text-slate-400 text-sm leading-relaxed max-w-xs font-medium">
-                                Become a part of the cohort that learns from these visionaries.
+                            <h4 className="text-sm font-black uppercase tracking-[0.3em] text-slate-300">Join the Protocol</h4>
+                            <p className="text-slate-900 text-lg leading-tight font-black uppercase tracking-tighter">
+                                Learn from the visionaries of tomorrow.
                             </p>
                         </div>
                         <div className="flex md:justify-end gap-6">
-                            <Link to="/apply" className="px-12 py-5 bg-slate-900 text-white rounded-3xl font-black uppercase text-xs tracking-widest hover:bg-primary transition-all shadow-2xl active:scale-95">
+                            <Link to="/apply" className="px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-slate-900 transition-all shadow-2xl active:scale-95">
                                 APPLY FOR 2026
                             </Link>
                         </div>
