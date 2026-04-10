@@ -38,7 +38,7 @@ import Mentors from './pages/Mentors';
 import Legacy from './pages/Legacy';
 import Centers from './pages/Centers';
 const ProfileDashboard = lazy(() => import('./pages/ProfileDashboard'));
-import FashionDesigning from './pages/FashionDesigning';
+const FashionDesigning = lazy(() => import('./pages/FashionDesigning'));
 import InteriorDesigning from './pages/InteriorDesigning';
 import GraphicDesigning from './pages/GraphicDesigning';
 import AnimationAndVFX from './pages/AnimationAndVFX';

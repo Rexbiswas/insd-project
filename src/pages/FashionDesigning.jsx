@@ -9,13 +9,8 @@ import {
     Scissors, 
     BookOpen,
     ArrowRight,
-    Globe,
-    Award,
-    Target,
-    Download,
     Users,
     Briefcase,
-    Milestone,
     Zap,
     Clock,
     GraduationCap
@@ -247,7 +242,7 @@ const FashionDesigning = () => {
             <section className="py-24 px-6 md:px-12 lg:px-24 bg-black text-white overflow-hidden relative">
                 <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-3xl rounded-full" />
                 <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
-                    <div className="space-y-8" data-aos="fade-right">
+                    <div className="space-y-8">
                         <h2 className="text-3xl md:text-4xl font-black tracking-tight leading-none mb-2">
                             Learning outcomes
                         </h2>
@@ -320,7 +315,7 @@ const FashionDesigning = () => {
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        {Object.entries(curriculumData[activeOutline]).map(([semName, items], idx) => {
+                        {curriculumData[activeOutline] && Object.entries(curriculumData[activeOutline]).map(([semName, items], idx) => {
                             const semNumber = idx + 1;
                             return (
                                 <div 
