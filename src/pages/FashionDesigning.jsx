@@ -13,7 +13,9 @@ import {
     Briefcase,
     Zap,
     Clock,
-    GraduationCap
+    GraduationCap,
+    PenTool,
+    Globe
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
@@ -26,13 +28,25 @@ const FashionDesigning = () => {
 
     const curriculumData = {
         "Industry Diploma": {
-            "Part 1": [
-                "Fashion Sketching & Illustration",
-                "Advanced Pattern Construction",
-                "Garment Manufacturing Technology",
-                "Textile Science & Fabric Study",
-                "Fashion Merchandising Basics",
-                "Portfolio Development"
+            "Part 1: Creative Foundation": [
+                "Foundation with AI",
+                "Elements of Design with AI",
+                "Basic Design Idea / Fashion Language",
+                "Fashion Illustration",
+                "Computer Aided Design (CAD) + AI Platforms",
+                "Design to Concept & Fashion Forecasting with AI",
+                "Dummy to Concept & Draping",
+                "Colour Idea & Concept on Texture Fabric with AI"
+            ],
+            "Part 2: Professional Mastery": [
+                "Client Profile",
+                "Project on Brands + Understanding data based Market Trends with AI",
+                "Garment Construction (GMT)",
+                "Pattern Making (PMT)",
+                "Basic Embroidery & State Embroideries with AI",
+                "Textile Theory (Fibre to Fabric)",
+                "Grooming Standard",
+                "Personality Development"
             ]
         },
         "UG Course": {
@@ -134,7 +148,7 @@ const FashionDesigning = () => {
             />
 
             {/* --- HERO SECTION --- */}
-            <section className="relative h-[70vh] md:h-[85vh] flex items-center justify-center text-center px-6 overflow-hidden">
+            <section className="relative h-[70vh] md:h-[85vh] flex items-center justify-center pt-20 md:pt-32 text-center px-6 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img 
                         src="https://t3.ftcdn.net/jpg/01/85/83/48/360_F_185834867_qisP0T3zX8a7rflZFKlbmj3i3BYLVUGC.jpg" 
@@ -151,12 +165,10 @@ const FashionDesigning = () => {
                         transition={{ duration: 1 }}
                         className="text-center"
                     >
-                        <h1 className="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none mb-6">
+                        <h1 className="text-4xl md:text-7xl lg:text-9xl font-black text-white uppercase tracking-tighter leading-tight md:leading-none mb-6">
                             <span className="text-primary italic">Fashion</span> Design
                         </h1>
-                        <p className="text-lg md:text-xl text-white/80 font-medium leading-relaxed max-w-4xl mx-auto mb-10 uppercase tracking-tight">
-                            Elevate your creative vision. Master essential design and practical skills demanded by the global fashion industry to shape the future of style.
-                        </p>
+                        
                         
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                             <button 
@@ -201,9 +213,9 @@ const FashionDesigning = () => {
             <section className="py-24 px-6 md:px-12 lg:px-24 bg-white relative overflow-hidden">
                 <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                     <div className="space-y-8">
-                        <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-slate-900 uppercase tracking-tighter leading-[0.85]">
-                            The Art of <br /> 
-                            <span className="text-primary italic">Couture</span> <br /> 
+                        <h2 className="text-4xl md:text-6xl lg:text-8xl font-black text-slate-900 uppercase tracking-tighter leading-[1.1] md:leading-[0.85]">
+                            The Art of <br className="hidden md:block" /> 
+                            <span className="text-primary italic">Couture</span> <br className="hidden md:block" /> 
                             Engineering
                         </h2>
                         <p className="text-lg text-slate-600 font-medium leading-relaxed">
@@ -247,18 +259,18 @@ const FashionDesigning = () => {
                             Learning outcomes
                         </h2>
                         <p className="text-lg md:text-xl text-white/70 leading-relaxed font-bold tracking-tight">
-                            NIF Global's Fashion Design program equips students with cutting-edge design techniques and fosters innovation and creativity. Through hands-on training, students master trend analysis, develop professional portfolios, and gain critical business acumen. With a strong emphasis on sustainability and ethics, our program prepares students for success in the dynamic fashion world. Internships and global perspectives further enhance their readiness to thrive in diverse fashion environments.
+                            INSD's Fashion Design program equips students with cutting-edge design techniques and fosters innovation and creativity. Through hands-on training, students master trend analysis, develop professional portfolios, and gain critical business acumen. With a strong emphasis on sustainability and ethics, our program prepares students for success in the dynamic fashion world. Internships and global perspectives further enhance their readiness to thrive in diverse fashion environments.
                         </p>
                     </div>
-                    <div className="grid grid-cols-12 gap-4 h-[400px] md:h-[600px]">
-                        <div className="col-span-7 h-full rounded-2xl overflow-hidden shadow-2xl">
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-4 h-auto md:h-[600px]">
+                        <div className="col-span-1 md:col-span-7 h-[300px] md:h-full rounded-2xl overflow-hidden shadow-2xl">
                             <img 
                                 src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&q=80&w=800" 
                                 alt="Fashion Design Student Work" 
                                 className="w-full h-full object-cover"
                             />
                         </div>
-                        <div className="col-span-5 grid grid-rows-2 gap-4 h-full">
+                        <div className="col-span-1 md:col-span-5 grid grid-cols-2 md:grid-cols-1 gap-4 h-[200px] md:h-full">
                             <div className="rounded-2xl overflow-hidden shadow-2xl">
                                 <img 
                                     src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=800" 
@@ -283,7 +295,7 @@ const FashionDesigning = () => {
                 <div className="max-w-7xl mx-auto">
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
                         <div className="space-y-4">
-                            <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">Integrated Learning</span>
+
                             <h2 className="text-5xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none">
                                 Course <br /> <span className="text-slate-300">Curriculum</span>
                             </h2>
@@ -291,7 +303,7 @@ const FashionDesigning = () => {
                         
                         <div className="flex bg-white p-2 rounded-full border border-slate-200 shadow-sm overflow-x-auto no-scrollbar">
                             {[
-                                { id: 'Industry Diploma', label: 'Industry Diploma', sub: '' },
+                                { id: 'Industry Diploma', label: 'Industry Diploma', sub: '', badge: 'Featured' },
                                 { id: 'PG Course', label: 'PG Course', sub: 'MBA | MSC | M.DES | MVOK' },
                                 { id: 'UG Course', label: 'UG Course', sub: 'BCS IN FD | BDES | B.VOC' }
                             ].map((tab) => (
@@ -301,14 +313,21 @@ const FashionDesigning = () => {
                                         setActiveOutline(tab.id);
                                         setExpandedSem(1);
                                     }}
-                                    className={`px-8 py-3 rounded-full font-black uppercase text-[10px] tracking-widest transition-all whitespace-nowrap flex flex-col items-center gap-1 ${
+                                    className={`px-8 py-3 rounded-full font-black uppercase text-[10px] tracking-widest transition-all whitespace-nowrap flex flex-col items-center gap-1 relative overflow-visible ${
                                         activeOutline === tab.id 
                                         ? 'bg-slate-900 text-white shadow-lg' 
                                         : 'text-slate-400 hover:text-slate-900'
                                     }`}
                                 >
-                                    <span>{tab.label}</span>
-                                    {tab.sub && <span className="text-[7px] opacity-60 font-medium">{tab.sub}</span>}
+                                    <div className="flex items-center gap-2">
+                                        <span>{tab.label}</span>
+                                        {tab.badge && (
+                                            <span className="px-1.5 py-0.5 text-[8px] font-black uppercase tracking-tighter bg-primary text-white rounded-xs animate-pulse">
+                                                {tab.badge}
+                                            </span>
+                                        )}
+                                    </div>
+                                    {tab.sub && <span className="text-[7px] opacity-60 tracking-tighter font-medium">{tab.sub}</span>}
                                 </button>
                             ))}
                         </div>
@@ -421,32 +440,52 @@ const FashionDesigning = () => {
                 </div>
             </section>
 
-            {/* --- CORE MODULES SHOWCASE --- */}
+            {/* --- WHY CHOOSE SECTION --- */}
             <section className="py-24 px-6 md:px-12 lg:px-24 bg-slate-50 relative overflow-hidden">
-                <div className="max-w-7xl mx-auto space-y-16">
+                <div className="max-w-7xl mx-auto space-y-20">
                     <div className="text-center space-y-4">
-                        <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">Future-Proof Pedagogy</span>
-                        <h2 className="text-4xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none">
-                            The Fashion <br /> <span className="text-slate-300">Edge</span>
+                        <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">Academic Excellence</span>
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 uppercase tracking-tighter leading-none">
+                            Why Choose <br /> <span className="text-primary">INSD</span> Fashion Design Courses?
                         </h2>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-32">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {[
-                            { title: "Design Development", desc: "Scientific approach to design thinking and consumer behavior analysis.", icon: Palette },
-                            { title: "Technical Drafting", desc: "Mastering the architecture of patterns and garments with precision.", icon: Scissors },
-                            { title: "Digital Couture", desc: "Using advanced software for high-fidelity fashion rendering and prototyping.", icon: Zap },
+                            { 
+                                title: "100% Placement Support", 
+                                desc: "Career focused learning with continuous guidance, ensuring you don’t just learn fashion—you build a real career in it.", 
+                                icon: GraduationCap 
+                            },
+                            { 
+                                title: "Industry + AI Integrated Curriculum", 
+                                desc: "Learn what the industry actually demands with a curriculum that blends real-world practices and the latest AI-driven tools shaping fashion today.", 
+                                icon: Sparkles 
+                            },
+                            { 
+                                title: "Hands-On Training & Portfolio Building", 
+                                desc: "From practical projects to creating your own professional portfolio, every step is focused on making you industry-ready.", 
+                                icon: PenTool 
+                            },
+                            { 
+                                title: "Expert Mentorship & Global Exposure", 
+                                desc: "Learn from experienced faculty, gain global insights, and grow through a fast-paced learning environment designed for future designers.", 
+                                icon: Globe 
+                            }
                         ].map((item, idx) => (
-                            <div key={idx} className="group p-10 rounded-[3rem] bg-white border border-slate-100 hover:border-primary/20 transition-all duration-500 hover:shadow-2xl hover:shadow-slate-200/50">
+                            <div key={idx} className="group p-10 rounded-[2.5rem] bg-white border border-slate-100 hover:border-primary/20 transition-all duration-500 hover:shadow-2xl hover:shadow-slate-200/50">
                                 <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-all duration-500">
                                     <item.icon size={32} />
                                 </div>
-                                <h4 className="text-2xl font-black text-slate-900 uppercase tracking-tighter mb-4">{item.title}</h4>
-                                <p className="text-slate-500 font-bold text-sm md:text-base leading-relaxed">{item.desc}</p>
+                                <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tighter mb-4 leading-tight group-hover:text-primary transition-colors">
+                                    {item.title}
+                                </h3>
+                                <p className="text-slate-500 text-sm leading-relaxed font-medium transition-colors">
+                                    {item.desc}
+                                </p>
                             </div>
                         ))}
                     </div>
-
                     {/* Final CTA Strip */}
                     <div className="relative p-12 md:p-24 bg-slate-900 rounded-[3.5rem] overflow-hidden group">
                         <div className="absolute inset-0 z-0 bg-primary/10 group-hover:bg-primary/20 transition-colors" />
@@ -467,6 +506,7 @@ const FashionDesigning = () => {
                     </div>
                 </div>
             </section>
+
 
             <Footer />
         </div>

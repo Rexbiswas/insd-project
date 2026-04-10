@@ -1,170 +1,216 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
-    Sparkles, 
-    Zap, 
+    TrendingUp, 
+    Target, 
+    Award, 
     Globe, 
-    Layers, 
     Cpu, 
-    Database, 
-    Fingerprint,
-    ArrowUpRight,
-    Search,
-    Compass
+    Layers, 
+    ArrowRight,
+    Zap,
+    Briefcase,
+    GraduationCap,
+    Lightbulb,
+    BarChart3
 } from 'lucide-react';
+import GrowthChart from '../components/GrowthChart';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
 
 const FutureOfDesign = () => {
+
     return (
         <div className="bg-white min-h-screen font-sans selection:bg-primary selection:text-white overflow-hidden">
             <SEO 
-                title="Future of Design | INSD"
-                description="Explore the next frontier of creativity. From Generative AI to Sustainable Ecosystems, discover how INSD is shaping the designers of 2048 and beyond."
+                title="Future of Design | Skills are the Future | INSD"
+                description="Explore the massive shift in India's creative economy. Discover why design is the new tech and how skill-based education is shaping the 2026 budget and beyond."
             />
 
-            {/* --- FUTURISTIC HERO (WHITE VARIANT) --- */}
-            <section className="relative pt-32 pb-40 px-6 md:px-12 lg:px-24 flex items-center justify-center overflow-hidden bg-white">
-                {/* Visual Decorations */}
-                <div className="absolute inset-0 z-0 overflow-hidden opacity-40">
-                    <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[200px] -translate-x-1/2 -translate-y-1/2 animate-pulse" />
-                    <div className="absolute bottom-0 right-1/4 w-[800px] h-[800px] bg-secondary/20 rounded-full blur-[200px] translate-x-1/2 translate-y-1/2" />
+            {/* --- HERO SECTION: DESIGN IS EVERYWHERE --- */}
+            <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-slate-950">
+                {/* Background Collage Elements (Inspired by Image 3) */}
+                <div className="absolute inset-0 z-0 overflow-hidden opacity-30">
+                    <motion.div 
+                        animate={{ 
+                            x: [0, 50, 0],
+                            y: [0, -30, 0],
+                            rotate: [0, 5, 0]
+                        }}
+                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                        className="absolute top-10 left-[10%] w-[30%] aspect-video rounded-3xl overflow-hidden border border-white/10 blur-[1px]"
+                    >
+                        <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&q=80&w=1200" alt="Fashion" className="w-full h-full object-cover" />
+                    </motion.div>
+                    <motion.div 
+                        animate={{ 
+                            x: [0, -40, 0],
+                            y: [0, 40, 0],
+                            rotate: [0, -3, 0]
+                        }}
+                        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                        className="absolute bottom-20 right-[5%] w-[35%] aspect-square rounded-full overflow-hidden border border-white/10 blur-[2px]"
+                    >
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200" alt="Architecture" className="w-full h-full object-cover" />
+                    </motion.div>
+                    <motion.div 
+                        animate={{ scale: [1, 1.1, 1] }}
+                        transition={{ duration: 15, repeat: Infinity }}
+                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-b from-transparent via-slate-950/80 to-slate-950" 
+                    />
                 </div>
 
-                <div className="max-w-7xl mx-auto relative z-10 text-center space-y-12">
+                <div className="max-w-7xl mx-auto relative z-10 px-6 text-center space-y-12">
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1 }}
-                        className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-slate-200 bg-slate-50 backdrop-blur-md mb-4"
+                        className="space-y-6"
                     >
-                        <div className="w-2 h-2 rounded-full bg-primary animate-ping" />
-                        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">Beyond the Horizon</span>
+                        <span className="inline-block text-primary font-black uppercase text-xs tracking-[0.5em] mb-4">The Creative Revolution</span>
+                        <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-black text-white uppercase tracking-tightest leading-[0.8] mb-8">
+                            Design Is <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-primary italic">Everywhere</span>
+                        </h1>
+                        <p className="text-white/40 font-bold text-lg md:text-2xl max-w-4xl mx-auto uppercase tracking-tight leading-loose">
+                            From the products you touch to the spaces you inhabit. 
+                            <span className="text-white"> Design is no longer a hobby; it is a serious career opportunity.</span>
+                        </p>
                     </motion.div>
 
-                    <div className="space-y-6">
-                        <motion.h1
-                            initial={{ opacity: 0, y: 50 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 1, delay: 0.2 }}
-                            className="text-6xl md:text-[9.5rem] font-black text-slate-900 uppercase tracking-tighter leading-[0.8]"
-                        >
-                            The <br />
-                            <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-slate-500 to-secondary">Future</span> <br />
-                            Of Design
-                        </motion.h1>
-                        
-                        <motion.p
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 1, delay: 0.4 }}
-                            className="text-slate-500 font-bold text-lg md:text-2xl max-w-3xl mx-auto uppercase tracking-tight leading-relaxed"
-                        >
-                            Synchronizing Human Intuition with Algorithmic Intelligence. We are not just predicting the future; we are prototyping it.
-                        </motion.p>
-                    </div>
-
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 1, delay: 0.6 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.8 }}
                         className="flex flex-col sm:flex-row items-center justify-center gap-6"
                     >
-                        <button className="px-12 py-5 bg-slate-900 text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-primary transition-all transform hover:scale-105 shadow-2xl">
-                            Explore Innovation Lab
-                        </button>
-                        <button className="px-12 py-5 border border-slate-200 text-slate-900 rounded-full font-black uppercase text-xs tracking-widest hover:bg-slate-50 transition-all">
-                            View 2048 Roadmap
+                        <button className="group px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3">
+                            Join the Skill Revolution
+                            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                         </button>
                     </motion.div>
                 </div>
+
+                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-4 text-white/20 animate-bounce">
+                    <span className="text-[10px] font-black uppercase tracking-[0.3em]">Explore the Global Market Shift</span>
+                    <div className="w-px h-10 bg-white/20" />
+                </div>
             </section>
 
-            {/* --- CORE PILLARS --- */}
-            <section className="py-32 px-6 md:px-12 lg:px-24 bg-slate-50 border-y border-slate-100 relative z-10">
+            {/* --- THE SHIFT IN INDIA SECTION (Inspired by Image 1) --- */}
+            <section className="py-32 px-6 md:px-12 lg:px-24 bg-white relative overflow-hidden">
                 <div className="max-w-7xl mx-auto space-y-24">
-                    <div className="flex flex-col md:flex-row justify-between items-end gap-12">
-                        <div className="space-y-4 max-w-2xl">
-                            <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">Strategic Foresight</span>
-                            <h2 className="text-5xl md:text-8xl font-black text-slate-900 uppercase tracking-tighter leading-none">
-                                Design <br /> <span className="text-slate-300 italic">Ecosystems</span>
-                            </h2>
-                        </div>
-                        <p className="text-slate-500 font-bold text-sm uppercase tracking-tight max-w-md text-right">
-                            Our curriculum transcends aesthetics to focus on the interplay of technology, biology, and data-driven creative problem solving.
-                        </p>
-                    </div>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                        <div className="space-y-8">
+                            <div className="space-y-2">
+                                <h2 className="text-primary font-black uppercase text-xs tracking-[0.4em]">The Market Shift</h2>
+                                <h3 className="text-5xl md:text-7xl font-black text-slate-950 uppercase tracking-tighter leading-none">
+                                    Skills Are <br /> <span className="text-slate-300">The Future</span>
+                                </h3>
+                            </div>
+                            
+                            <p className="text-slate-600 text-lg font-bold uppercase tracking-tight leading-relaxed border-l-4 border-primary pl-6">
+                                India is moving towards skill-based education. The "Orange Economy" is projected to need 20 lakh professionals by 2033.
+                            </p>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {[
-                            { title: 'Generative XR', icon: Layers, desc: 'AI architects creating infinite, adaptive meta-realities that respond instantly to user intent.', color: 'bg-blue-500' },
-                            { title: 'Sentient Bio', icon: Fingerprint, desc: 'Synthesizing AI and molecular biology to grow living, responsive design ecosystems.', color: 'bg-green-500' },
-                            { title: 'AI Governance', icon: Database, desc: 'Embedding ethical AI frameworks to ensure unbiased, inclusive global creative problem solving.', color: 'bg-purple-500' },
-                            { title: 'Circular AI', icon: Globe, desc: 'AI-optimized zero-waste manufacturing pipelines driven by predictive demand synthesis.', color: 'bg-rose-500' }
-                        ].map((item, idx) => (
-                            <motion.div 
-                                key={idx}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: idx * 0.1 }}
-                                className="group p-10 rounded-[3rem] bg-white border border-slate-100 hover:bg-slate-900 hover:scale-[1.02] transition-all duration-500 overflow-hidden relative shadow-sm"
-                            >
-                                <div className={`absolute top-0 right-0 w-32 h-32 ${item.color} opacity-0 group-hover:opacity-10 blur-[60px] rounded-full transition-opacity`} />
-                                <div className="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-900 group-hover:bg-primary group-hover:text-white transition-all duration-500 mb-8 shadow-sm">
-                                    <item.icon size={24} />
-                                </div>
-                                <h3 className="text-2xl font-black text-slate-900 group-hover:text-white uppercase tracking-tighter mb-4">{item.title}</h3>
-                                <p className="text-slate-500 group-hover:text-slate-400 font-bold text-xs uppercase tracking-[0.1em] leading-relaxed">
-                                    {item.desc}
-                                </p>
-                            </motion.div>
-                        ))}
+                            <div className="space-y-6">
+                                {[
+                                    { text: "Design is a high-growth career path.", icon: TrendingUp },
+                                    { text: "Projected 20 Lakh jobs in Creative Sector by 2033.", icon: Briefcase },
+                                    { text: "Global demand for professional Indian Designers.", icon: Globe }
+                                ].map((item, idx) => (
+                                    <motion.div 
+                                        key={idx}
+                                        whileHover={{ x: 10 }}
+                                        className="flex items-center gap-6 p-6 rounded-2xl bg-slate-50 border border-slate-100 group transition-all"
+                                    >
+                                        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
+                                            <item.icon size={24} />
+                                        </div>
+                                        <span className="text-slate-900 font-extrabold uppercase text-sm tracking-widest">{item.text}</span>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Interactive Data Visualization */}
+                        <GrowthChart />
                     </div>
                 </div>
             </section>
 
-            {/* --- INNOVATION TIMELINE (20% BLACK ASPECT) --- */}
-            <section className="py-40 px-6 md:px-12 lg:px-24 bg-black relative overflow-hidden">
-                <div className="max-w-7xl mx-auto space-y-24">
-                    <div className="text-center space-y-4">
-                        <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">The Design Epoch</span>
-                        <h2 className="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none">
-                            Design <span className="text-white/20">Evolution</span>
-                        </h2>
+            {/* --- BUDGET 2026 SECTION (Inspired by Image 2) --- */}
+            <section className="py-32 px-6 md:px-12 lg:px-24 bg-slate-50 relative border-y border-slate-100">
+                <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div className="lg:col-span-8 space-y-12">
+                        <div className="space-y-4">
+                            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-[10px] font-black uppercase tracking-widest">
+                                <Zap size={14} />
+                                Budget 2026 Update
+                            </div>
+                            <h2 className="text-5xl md:text-8xl font-black text-slate-950 uppercase tracking-tighter leading-none">
+                                Design Is <br /> <span className="text-primary italic">The New Tech</span>
+                            </h2>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div className="p-8 bg-white border border-slate-200 rounded-3xl space-y-4 shadow-sm">
+                                <GraduationCap className="text-primary" size={32} />
+                                <h4 className="text-xl font-black uppercase tracking-tighter">15,000 Schools</h4>
+                                <p className="text-slate-500 text-sm font-bold uppercase tracking-tight leading-relaxed">
+                                    Govt. to introduce AVGC Labs in schools nationwide to boost skill development from the foundation.
+                                </p>
+                            </div>
+                            <div className="p-8 bg-white border border-slate-200 rounded-3xl space-y-4 shadow-sm">
+                                <Award className="text-primary" size={32} />
+                                <h4 className="text-xl font-black uppercase tracking-tighter">New NID Clusters</h4>
+                                <p className="text-slate-500 text-sm font-bold uppercase tracking-tight leading-relaxed">
+                                    Strategic expansion of National Institutes of Design to bridge the industry-talent gap.
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div className="relative border-l border-white/10 ml-6 md:ml-0 md:border-l-0 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-12">
-                        {[
-                            { year: '2024', event: 'AGENTIC DESIGN', desc: 'AI collaborators evolve from simple tools to active, sentient companions in the creative process.' },
-                            { year: '2026', event: 'GENERATIVE SPACES', desc: 'AI-driven spatial layers that dynamically adapt in real-time to human behavior and intent.' },
-                            { year: '2030', event: 'NEURAL SYMMETRY', desc: 'Direct thought-to-design pipelines powered by AI that interprets subconscious aesthetic vision.' },
-                            { year: '2035', event: 'NANO-SYNTHESIS', desc: 'Autonomous AI molecules constructing self-healing, shapeshifting smart apparel and textures.' },
-                            { year: '2042', event: 'SENTIENT HABITATS', desc: 'AI urban ecosystems that morph their visual and structural DNA based on collective emotions.' },
-                            { year: '2048', event: 'ATOMIC GENERATIVE', desc: 'Quantum AI enabling design at the subatomic level, where matter is curated via algorithmic intent.' }
-                        ].map((node, i) => (
-                            <motion.div 
-                                key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                className="relative pl-12 md:pl-0 md:pt-12 mb-12 md:mb-0"
-                            >
-                                <div className="absolute left-[-5px] top-0 md:left-0 md:top-[-5px] w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_15px_rgba(219,52,54,0.8)]" />
-                                <div className="space-y-3">
-                                    <span className="text-4xl md:text-5xl font-black text-white leading-none inline-block mb-2">{node.year}</span>
-                                    <h4 className="text-primary font-black uppercase tracking-[0.3em] text-[10px]">{node.event}</h4>
-                                    <p className="text-slate-400 font-bold text-xs uppercase tracking-widest leading-relaxed">
-                                        {node.desc}
-                                    </p>
-                                </div>
-                            </motion.div>
-                        ))}
-                        
-                        {/* Desktop Horizontal Line */}
-                        <div className="hidden lg:block absolute top-1.5 left-0 right-0 h-px bg-white/10 -z-10" />
+                    <div className="lg:col-span-4 relative group">
+                        <motion.div 
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            whileInView={{ scale: 1, opacity: 1 }}
+                            className="relative overflow-hidden rounded-[3.5rem] shadow-2xl h-full min-h-[400px]"
+                        >
+                            <img 
+                                src="https://images.livemint.com/img/2024/02/01/1600x900/Nirmala_Sitharaman_1706764511080_1706764511306.JPG" 
+                                alt="Nirmala Sitharaman Budget" 
+                                className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 brightness-75 group-hover:brightness-100"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+                            
+                            <div className="absolute bottom-10 left-10 right-10 space-y-4">
+                                <div className="w-12 h-1 bg-primary" />
+                                <h3 className="text-3xl font-black text-white uppercase tracking-tighter leading-none">The Budget <br /> Narrative</h3>
+                                <p className="text-white/70 font-bold uppercase text-[10px] tracking-widest leading-relaxed">
+                                    "Special focus on Skill India and Creative Economy."
+                                </p>
+                            </div>
+                        </motion.div>
+                        <div className="absolute -inset-4 border-2 border-primary/10 rounded-[4rem] -z-10 group-hover:border-primary/30 transition-colors duration-500" />
                     </div>
+                </div>
+            </section>
+
+            {/* --- FINAL STAT STRIP --- */}
+            <section className="py-20 px-6 bg-slate-950 text-white overflow-hidden relative">
+                <div className="max-w-7xl mx-auto flex flex-wrap justify-between gap-12 text-center md:text-left">
+                    {[
+                        { label: "Projected Professionals", value: "20 Lakh+", sub: "By 2033" },
+                        { label: "Investment Growth", value: "3.5X", sub: "Creative Sector" },
+                        { label: "New Tech Focus", value: "AVGC-XR", sub: "Next-Gen Design" }
+                    ].map((stat, i) => (
+                        <div key={i} className="space-y-2 flex-1 min-w-[200px]">
+                            <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.3em]">{stat.label}</p>
+                            <h4 className="text-5xl font-black text-primary uppercase tracking-tighter">{stat.value}</h4>
+                            <p className="text-white/60 text-xs font-bold uppercase tracking-widest">{stat.sub}</p>
+                        </div>
+                    ))}
                 </div>
             </section>
 

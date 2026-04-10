@@ -86,7 +86,7 @@ const DiplomaAndCertificate = () => {
                     </svg>
                 </motion.div>
 
-                <div className="relative z-10 flex flex-col items-start px-6 md:px-20 w-full max-w-7xl mx-auto">
+                <div className="relative z-10 flex flex-col items-start px-6 md:px-20 w-full max-w-7xl mx-auto pt-24 md:pt-32">
                     <motion.div 
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}

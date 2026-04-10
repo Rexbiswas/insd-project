@@ -94,7 +94,7 @@ const About = () => {
                 <div className="hero-bg absolute inset-0 bg-[url('https://ik.imagekit.io/fmldynl4j4/IMG_3440.JPG?updatedAt=1771841966154')] bg-cover bg-center brightness-[0.4]" />
 
 
-                <div ref={heroTextRef} className="relative z-10 flex flex-col items-center">
+                <div ref={heroTextRef} className="relative z-10 flex flex-col items-center pt-20 md:pt-32">
                     <h1 className="w-full flex justify-center -mb-6 md:-mb-10 lg:-mb-14" aria-label="INSD">
                         <svg className="w-[100vw] overflow-visible" viewBox="0 0 1000 320" style={{ shapeRendering: 'geometricPrecision' }}>
                             <defs>

@@ -63,12 +63,12 @@ const StickyCards = () => {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ margin: "-100px" }}
                                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                                    className={`${prog.color} p-8 md:p-16 rounded-[2rem] md:rounded-[3rem] shadow-[0_-20px_40px_rgba(0,0,0,0.03)] border border-black/5 flex flex-col lg:flex-row gap-12 lg:gap-24 justify-between h-auto lg:h-[60vh]`}
+                                    className={`${prog.color} p-8 md:p-16 rounded-4xl md:rounded-[3rem] shadow-[0_-20px_40px_rgba(0,0,0,0.03)] border border-black/5 flex flex-col lg:flex-row gap-12 lg:gap-24 justify-between h-auto lg:h-[60vh]`}
                                 >
                                     <div className="max-w-xl flex flex-col justify-between h-full">
                                         <div>
                                             <p className="text-sm font-bold uppercase tracking-widest text-black/40 mb-4 flex items-center gap-3">
-                                                <span className="w-8 h-[1px] bg-black/40"></span>
+                                                <span className="w-8 h-px bg-black/40"></span>
                                                 {prog.duration} Program
                                             </p>
                                             <h3 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-[#111] leading-[0.9]">
@@ -138,7 +138,7 @@ const Postgraduate = () => {
 
                 <motion.div 
                     style={{ y: heroTextY }}
-                    className="relative z-10 text-center px-6 max-w-5xl mx-auto mt-24"
+                    className="relative z-10 text-center px-6 max-w-5xl mx-auto pt-24 md:pt-32"
                 >
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -146,9 +146,9 @@ const Postgraduate = () => {
                         transition={{ duration: 1, delay: 0.2 }}
                         className="flex items-center justify-center gap-4 mb-8"
                     >
-                        <span className="w-12 h-[1px] bg-white/30"></span>
+                        <span className="w-12 h-px bg-white/30"></span>
                         <span className="text-sm font-bold uppercase tracking-[0.3em] text-white/70">Master's Division</span>
-                        <span className="w-12 h-[1px] bg-white/30"></span>
+                        <span className="w-12 h-px bg-white/30"></span>
                     </motion.div>
                     
                     <motion.h1 

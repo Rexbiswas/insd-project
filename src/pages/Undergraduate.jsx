@@ -113,7 +113,7 @@ const Undergraduate = () => {
             />
 
             {/* 1. Hero Section */}
-            <section className="relative h-[80vh] flex items-center justify-center overflow-hidden bg-white text-slate-900 px-4 border-b border-slate-300">
+            <section className="relative h-[80vh] flex items-center justify-center pt-20 md:pt-32 overflow-hidden bg-white text-slate-900 px-4 border-b border-slate-300">
                 <div className="absolute inset-0 z-0 opacity-20">
                     <img
                         src="https://images.pexels.com/photos/3771088/pexels-photo-3771088.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"

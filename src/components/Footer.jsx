@@ -14,23 +14,6 @@ const Footer = () => {
 
     useLayoutEffect(() => {
         let ctx = gsap.context(() => {
-            // Entrance Animation for CTA Nodes
-            gsap.fromTo(".footer-node",
-                { y: 40, autoAlpha: 0 },
-                {
-                    y: 0,
-                    autoAlpha: 1,
-                    stagger: 0.1,
-                    ease: "power3.out",
-                    duration: 1,
-                    scrollTrigger: {
-                        trigger: ".footer-node",
-                        start: "top 90%",
-                        toggleActions: "play none none none"
-                    }
-                }
-            );
-
             // Sitemap Columns Entrance
             gsap.fromTo(".sitemap-column",
                 { y: 30, opacity: 0 },
@@ -47,45 +30,21 @@ const Footer = () => {
                 }
             );
 
-            // Giant Text Parallax Depth
+            // Parallax for the and large text
             gsap.fromTo(".giant-footer-text",
-                { xPercent: -10 },
+                { xPercent: -5 },
                 {
-                    xPercent: 10,
+                    xPercent: 5,
                     scrollTrigger: {
                         trigger: footerRef.current,
                         start: "top bottom",
                         end: "bottom top",
-                        scrub: 1.5
+                        scrub: 1
                     }
                 }
             );
 
-            // Magnetic Grid Animation
-            const nodes = document.querySelectorAll('.footer-node');
-            nodes.forEach(node => {
-                node.addEventListener('mousemove', (e) => {
-                    const rect = node.getBoundingClientRect();
-                    const x = e.clientX - rect.left - rect.width / 2;
-                    const y = e.clientY - rect.top - rect.height / 2;
-                    gsap.to(node.querySelector('.node-content'), {
-                        x: x * 0.2,
-                        y: y * 0.2,
-                        duration: 0.5,
-                        ease: "power2.out"
-                    });
-                    gsap.to(node.querySelector('.node-glow'), {
-                        x: x * 0.5,
-                        y: y * 0.5,
-                        opacity: 1,
-                        duration: 0.5
-                    });
-                });
-                node.addEventListener('mouseleave', () => {
-                    gsap.to(node.querySelector('.node-content'), { x: 0, y: 0, duration: 0.5 });
-                    gsap.to(node.querySelector('.node-glow'), { opacity: 0, duration: 0.5 });
-                });
-            });
+            // Magnetic Grid Animation removed
 
         }, footerRef);
         return () => ctx.revert();
@@ -243,13 +202,14 @@ const Footer = () => {
                     style={{ '--x': '50%', '--y': '50%' }}
                 >
                     {/* Layer 1: The "Ghost" Outline */}
-                    <h1 className="absolute text-[35vw] font-black text-transparent stroke-text-white/2 select-none whitespace-nowrap leading-none tracking-[-0.05em] uppercase pointer-events-none">
+                    {/* Layer 1: The "Ghost" Outline */}
+                    <h1 className="giant-footer-text absolute text-[35vw] font-black text-transparent stroke-text-white/2 select-none whitespace-nowrap leading-none tracking-[-0.05em] uppercase pointer-events-none">
                         INSD
                     </h1>
 
                     {/* Layer 2: The "Spotlight" Reveal */}
                     <h1
-                        className="text-[35vw] font-black text-white/15 select-none whitespace-nowrap leading-none tracking-[-0.05em] uppercase pointer-events-none transition-all duration-300"
+                        className="giant-footer-text text-[35vw] font-black text-white/15 select-none whitespace-nowrap leading-none tracking-[-0.05em] uppercase pointer-events-none transition-all duration-300"
                         style={{
                             maskImage: 'radial-gradient(circle 300px at var(--x) var(--y), black 20%, transparent 100%)',
                             WebkitMaskImage: 'radial-gradient(circle 300px at var(--x) var(--y), black 20%, transparent 100%)',

@@ -67,7 +67,7 @@ const ParisCDP = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="relative z-10 text-center px-6 mt-16"
+                    className="relative z-10 text-center px-6 pt-32 md:pt-40"
                 >
                     <div className="flex items-center justify-center gap-4 mb-8">
                         <span className="w-12 h-px bg-[#d4af37]" />

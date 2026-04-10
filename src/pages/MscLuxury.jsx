@@ -73,7 +73,7 @@ const MscLuxury = () => {
             />
 
             {/* --- HERO SECTION --- */}
-            <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center text-center px-6 overflow-hidden">
+            <section className="relative h-[70vh] md:h-[85vh] flex items-center justify-center pt-20 md:pt-32 text-center px-6 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img 
                         src="/luxury_brand_management_hero_msc_1773917076939.png" 
@@ -89,10 +89,10 @@ const MscLuxury = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1 }}
                     >
-                        <h1 className="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none mb-6">
-                            INSD Luxe
+                        <h1 className="text-5xl md:text-8xl lg:text-[10rem] font-black text-white uppercase tracking-tighter leading-tight md:leading-none mb-6">
+                            INSD <br className="md:hidden" /> Luxe
                         </h1>
-                        <p className="text-lg md:text-xl text-white/80 font-medium leading-relaxed max-w-4xl mx-auto">
+                        <p className="text-base md:text-xl text-white/80 font-medium leading-relaxed max-w-4xl mx-auto px-4 md:px-0">
                             The pinnacle of design leadership. Learn the strategic architecture and emotional intelligence required to manage the world's most prestigious luxury houses and heritage brands.
                         </p>
                     </motion.div>
@@ -133,7 +133,7 @@ const MscLuxury = () => {
                         </div>
 
                         <div className="flex-1 w-full space-y-4">
-                            <div className="border border-slate-100 rounded-3xl overflow-hidden bg-slate-50/50">
+                            <div className="border border-slate-100 rounded-3xl md:rounded-4xl overflow-hidden bg-slate-50/50">
                                 <button 
                                     onClick={() => setExpandedYear(expandedYear === 1 ? 0 : 1)}
                                     className="w-full flex items-center justify-between p-8 bg-white hover:bg-slate-50 transition-colors group"
@@ -142,7 +142,7 @@ const MscLuxury = () => {
                                         <div className={`p-2 rounded-xl transition-colors ${expandedYear === 1 ? 'bg-primary text-white' : 'bg-slate-100 text-slate-400 group-hover:bg-slate-200'}`}>
                                             <ChevronDown className={`w-5 h-5 transition-transform duration-500 ${expandedYear === 1 ? 'rotate-180' : ''}`} />
                                         </div>
-                                        <span className="text-2xl font-black text-slate-900 tracking-tighter uppercase">« 1 Year</span>
+                                        <span className="text-xl md:text-2xl font-black text-slate-900 tracking-tighter uppercase">« 1 Year</span>
                                     </div>
                                 </button>
                                 
@@ -181,7 +181,7 @@ const MscLuxury = () => {
                                 </AnimatePresence>
                             </div>
 
-                            <div className="border border-slate-100 rounded-3xl overflow-hidden bg-slate-50/50">
+                            <div className="border border-slate-100 rounded-3xl md:rounded-4xl overflow-hidden bg-slate-50/50">
                                 <button 
                                     onClick={() => setExpandedYear(expandedYear === 2 ? 0 : 2)}
                                     className="w-full flex items-center justify-between p-8 bg-white hover:bg-slate-50 transition-colors group"
@@ -190,7 +190,7 @@ const MscLuxury = () => {
                                         <div className={`p-2 rounded-xl transition-colors ${expandedYear === 2 ? 'bg-primary text-white' : 'bg-slate-100 text-slate-400 group-hover:bg-slate-200'}`}>
                                             <ChevronDown className={`w-5 h-5 transition-transform duration-500 ${expandedYear === 2 ? 'rotate-180' : ''}`} />
                                         </div>
-                                        <span className="text-2xl font-black text-slate-900 tracking-tighter uppercase">» 2 Year</span>
+                                        <span className="text-xl md:text-2xl font-black text-slate-900 tracking-tighter uppercase">» 2 Year</span>
                                     </div>
                                 </button>
                                 

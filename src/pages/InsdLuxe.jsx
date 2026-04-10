@@ -30,7 +30,7 @@ const InsdLuxe = () => {
             />
 
             {/* --- HERO SECTION --- */}
-            <section className="relative pt-32 pb-64 px-6 md:px-12 lg:px-24 overflow-hidden bg-white">
+            <section className="relative pt-40 md:pt-48 pb-64 px-6 md:px-12 lg:px-24 overflow-hidden bg-white">
                 <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-20">
                     
                     {/* Left Content */}
@@ -189,7 +189,7 @@ const InsdLuxe = () => {
                                 className="w-full h-full object-cover"
                             />
                         </div>
-                        <div className="absolute top-10 -left-6 md:-left-10 bg-gold text-white p-8 md:p-10 rounded-[2rem] md:rounded-4xl shadow-2xl z-30 transform -rotate-3 hover:rotate-0 transition-transform duration-500">
+                        <div className="absolute top-10 -left-6 md:-left-10 bg-gold text-white p-8 md:p-10 rounded-4xl shadow-2xl z-30 transform -rotate-3 hover:rotate-0 transition-transform duration-500">
                             <div className="text-3xl md:text-4xl font-black text-center leading-none">ESG</div>
                             <div className="text-[9px] md:text-[10px] uppercase font-black tracking-widest text-center mt-2">Partnership</div>
                         </div>
