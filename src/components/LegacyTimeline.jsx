@@ -11,70 +11,71 @@ const timelineData = [
         year: "2011",
         title: "INSD IS FOUNDED",
         description: "With a simple idea: Make design education practical. Prepare students to be self-focused and placement ready.",
-        image: "https://images.unsplash.com/photo-1541339907198-e08756ebafe3?auto=format&fit=crop&w=400&q=80",
+        image: "https://ik.imagekit.io/fmldynl4j4/Vertical_Logo__1_.jpg-removebg-preview.png",
         dotColor: "bg-[#2d4a8a]"
     },
     {
         year: "2013",
         title: "LAUNCH OF CORE PROGRAMS",
         description: "In Fashion, Interior and Graphic Design with studio-based learning at the centre.",
-        image: "https://images.unsplash.com/photo-1558583082-409143c794ca?auto=format&fit=crop&w=400&q=80",
+        image: "https://ik.imagekit.io/fmldynl4j4/WhatsApp%20Image%202026-03-23%20at%201.15.04%20PM-2011.jpeg",
         dotColor: "bg-[#b91c1c]"
     },
     {
         year: "2017",
         title: "INSD WINS RECOGNITION",
         description: "As one of India's promising design schools for its hands-on teaching approach.",
-        image: "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_hzzhu5hzzhu5hzzh.png?tr=w-400,fo-auto",
+        image: "https://ik.imagekit.io/fmldynl4j4/Best%20design%20school%20award%202017%20insd%20(1).jpg_2017.jpeg",
         dotColor: "bg-[#0891b2]"
     },
     {
         year: "2017",
         title: "INTRODUCTION OF SPECIALISED PROGRAMS",
         description: "In Jewellery Design, Textile Design, Photography, Animation & VFX and Beauty & Hair.",
-        image: "https://images.unsplash.com/photo-1515562141207-7a88fb0ce33e?auto=format&fit=crop&w=400&q=80",
+        image: "https://plus.unsplash.com/premium_photo-1681276170281-cf50a487a1b7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8amV3ZWxyeXxlbnwwfHwwfHx8MA%3D%3D",
         dotColor: "bg-[#1e40af]"
     },
     {
         year: "2018",
         title: "NETWORK EXPANDS",
-        description: "To 50+ centres across 19 states, bringing design careers closer to students from tier-2 and tier-3 cities.",
-        image: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=400&q=80",
+        description: "To 50+ centers across 19 states, bringing design careers closer to students from tier-2 and tier-3 cities.",
+        image: "https://ik.imagekit.io/fmldynl4j4/9f11619c-4fc4-44cc-be8d-41fa366258f6.jfif",
         dotColor: "bg-[#4c1d95]"
     },
     {
         year: "2019",
         title: "INTERNATIONAL STUDY PROGRAMS",
         description: "Begin taking students to fashion and design hubs like Paris, London etc.",
-        image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=400&q=80",
+        image: "https://ik.imagekit.io/fmldynl4j4/WhatsApp%20Image%202025-04-11%20at%2012.03.33%20(1)%20(4)-2019.jpeg",
         dotColor: "bg-[#831843]"
     },
     {
         year: "2023",
         title: "NATIONAL RECOGNITION",
         description: "Shri Yogendra Upadhyay Honourable Education Minister UPI awards INSD as 'The Fastest Growing Design Institute in India in 2023'.",
-        image: "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_wy3si8wy3si8wy3s.png?tr=w-400,fo-auto",
+        image: "https://ik.imagekit.io/fmldynl4j4/INSD%20receives%20National%20award%20(3).jpg.jpeg",
         dotColor: "bg-[#b91c1c]"
     },
     {
         year: "2024",
         title: "CURRICULUM UPGRADED",
         description: "With AI, UX/UI and digital-first modules to keep students future-ready.",
-        image: "https://images.unsplash.com/photo-1633167606207-d840b5070fc2?auto=format&fit=crop&w=400&q=80",
+        image: "https://ik.imagekit.io/fmldynl4j4/Gemini_Generated_Image_h6q9gdh6q9gdh6q9%20(1).png",
         dotColor: "bg-[#ea580c]"
     },
     {
         year: "2025",
         title: "AWARDED BY TIMES OF INDIA",
         description: "For 'Excellence in Design Education', having trained more than 30,000 students.",
-        image: "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_u2ubidu2ubidu2ub.png?tr=w-400,fo-auto",
+        image: "https://ik.imagekit.io/fmldynl4j4/WhatsApp%20Image%202025-05-03%20at%205.24.15%20PM%20(1)%20(3).jpeg",
         dotColor: "bg-[#0891b2]"
     },
+    
     {
         year: "2026",
         title: "15 YEARS OF INSD",
         description: "Completes 15 years and reaches 75+ centres in 23 states.",
-        image: "https://images.unsplash.com/photo-1540317580114-ed684c15ffcc?auto=format&fit=crop&w=400&q=80",
+        image: "https://ik.imagekit.io/fmldynl4j4/WhatsApp%20Image%202026-03-23%20at%201.12.09%20PM%20(2).jpeg",
         dotColor: "bg-[#1e40af]"
     }
 ];

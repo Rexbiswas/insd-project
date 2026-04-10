@@ -26,11 +26,21 @@ import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const FashionDesigning = () => {
     const { openAdmissionModal } = useAdmissionModal();
-    const [activeOutline, setActiveOutline] = useState('Bachelors');
+    const [activeOutline, setActiveOutline] = useState('UG Course');
     const [expandedSem, setExpandedSem] = useState(1);
 
     const curriculumData = {
-        Bachelors: {
+        "Industry Diploma": {
+            "Part 1": [
+                "Fashion Sketching & Illustration",
+                "Advanced Pattern Construction",
+                "Garment Manufacturing Technology",
+                "Textile Science & Fabric Study",
+                "Fashion Merchandising Basics",
+                "Portfolio Development"
+            ]
+        },
+        "UG Course": {
             "Semester 1": [
                 "Foundation Art & Design",
                 "Principles of Fashion Design",
@@ -90,7 +100,7 @@ const FashionDesigning = () => {
                 "Final Graduation Showcase"
             ]
         },
-        PG: {
+        "PG Course": {
             "Year 1": [
                 "Advanced Fashion Theory",
                 "Luxury Brand Perception",
@@ -124,8 +134,8 @@ const FashionDesigning = () => {
     return (
         <div className="bg-white min-h-screen font-sans selection:bg-primary selection:text-white">
             <SEO 
-                title="Bachelors in Fashion Design | INSD International School of Design"
-                description="Master the art of clothing design at INSD. High-impact fashion program covering illustration, pattern making, draping, and global couture strategies."
+                title="The Art of Couture Engineering | Premiere Fashion Design Degree @ INSD"
+                description="Master the intersection of creative vision and technical precision. Our 'Art of Couture Engineering' program equips you with global techniques in draping, pattern science, and luxury couture strategy."
             />
 
             {/* --- HERO SECTION --- */}
@@ -146,11 +156,8 @@ const FashionDesigning = () => {
                         transition={{ duration: 1 }}
                         className="text-center"
                     >
-                        <span className="inline-block px-6 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-xs font-black uppercase tracking-widest mb-6 font-outfit">
-                            Creative Excellence
-                        </span>
                         <h1 className="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none mb-6">
-                            Bachelors in <br /> <span className="text-primary italic">Fashion</span> Design
+                            <span className="text-primary italic">Fashion</span> Design
                         </h1>
                         <p className="text-lg md:text-xl text-white/80 font-medium leading-relaxed max-w-4xl mx-auto mb-10 uppercase tracking-tight">
                             Elevate your creative vision. Master essential design and practical skills demanded by the global fashion industry to shape the future of style.
@@ -163,15 +170,6 @@ const FashionDesigning = () => {
                             >
                                 Enroll Now
                             </button>
-                            <a 
-                                href="https://drive.google.com/drive/folders/1sFS6WXmrkoRTdVopZKOHB4hHxxku1Gz-" 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-3 px-12 py-5 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white/20 transition-all transform hover:scale-105"
-                            >
-                                <Download size={16} />
-                                Download Curriculum
-                            </a>
                         </div>
                     </motion.div>
                 </div>
@@ -208,8 +206,10 @@ const FashionDesigning = () => {
             <section className="py-24 px-6 md:px-12 lg:px-24 bg-white relative overflow-hidden">
                 <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                     <div className="space-y-8">
-                        <h2 className="text-4xl md:text-6xl font-black text-slate-900 uppercase tracking-tighter leading-none">
-                            The Art of <br /> <span className="text-primary italic">Couture</span> Engineering
+                        <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-slate-900 uppercase tracking-tighter leading-[0.85]">
+                            The Art of <br /> 
+                            <span className="text-primary italic">Couture</span> <br /> 
+                            Engineering
                         </h2>
                         <p className="text-lg text-slate-600 font-medium leading-relaxed">
                             We’ll encourage you to innovate as well as to understand historic and contemporary trends in fashion. By graduation, you’ll be equipped with the design and manufacturing skills to take your unique creative vision to the global stage.
@@ -243,6 +243,46 @@ const FashionDesigning = () => {
                 </div>
             </section>
 
+            {/* --- LEARNING OUTCOMES --- */}
+            <section className="py-24 px-6 md:px-12 lg:px-24 bg-black text-white overflow-hidden relative">
+                <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-3xl rounded-full" />
+                <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
+                    <div className="space-y-8" data-aos="fade-right">
+                        <h2 className="text-3xl md:text-4xl font-black tracking-tight leading-none mb-2">
+                            Learning outcomes
+                        </h2>
+                        <p className="text-lg md:text-xl text-white/70 leading-relaxed font-bold tracking-tight">
+                            NIF Global's Fashion Design program equips students with cutting-edge design techniques and fosters innovation and creativity. Through hands-on training, students master trend analysis, develop professional portfolios, and gain critical business acumen. With a strong emphasis on sustainability and ethics, our program prepares students for success in the dynamic fashion world. Internships and global perspectives further enhance their readiness to thrive in diverse fashion environments.
+                        </p>
+                    </div>
+                    <div className="grid grid-cols-12 gap-4 h-[400px] md:h-[600px]">
+                        <div className="col-span-7 h-full rounded-2xl overflow-hidden shadow-2xl">
+                            <img 
+                                src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&q=80&w=800" 
+                                alt="Fashion Design Student Work" 
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+                        <div className="col-span-5 grid grid-rows-2 gap-4 h-full">
+                            <div className="rounded-2xl overflow-hidden shadow-2xl">
+                                <img 
+                                    src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=800" 
+                                    alt="Sketching Sessions" 
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
+                            <div className="rounded-2xl overflow-hidden shadow-2xl">
+                                <img 
+                                    src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=800" 
+                                    alt="Final Garment Construction" 
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* --- CURRICULUM SECTION --- */}
             <section className="py-24 px-6 md:px-12 lg:px-24 bg-slate-50">
                 <div className="max-w-7xl mx-auto">
@@ -254,21 +294,26 @@ const FashionDesigning = () => {
                             </h2>
                         </div>
                         
-                        <div className="flex bg-white p-2 rounded-full border border-slate-200 shadow-sm">
-                            {['Bachelors', 'PG'].map((type) => (
+                        <div className="flex bg-white p-2 rounded-full border border-slate-200 shadow-sm overflow-x-auto no-scrollbar">
+                            {[
+                                { id: 'Industry Diploma', label: 'Industry Diploma', sub: '' },
+                                { id: 'PG Course', label: 'PG Course', sub: 'MBA | MSC | M.DES | MVOK' },
+                                { id: 'UG Course', label: 'UG Course', sub: 'BCS IN FD | BDES | B.VOC' }
+                            ].map((tab) => (
                                 <button 
-                                    key={type}
+                                    key={tab.id}
                                     onClick={() => {
-                                        setActiveOutline(type);
+                                        setActiveOutline(tab.id);
                                         setExpandedSem(1);
                                     }}
-                                    className={`px-8 py-3 rounded-full font-black uppercase text-[10px] tracking-widest transition-all ${
-                                        activeOutline === type 
+                                    className={`px-8 py-3 rounded-full font-black uppercase text-[10px] tracking-widest transition-all whitespace-nowrap flex flex-col items-center gap-1 ${
+                                        activeOutline === tab.id 
                                         ? 'bg-slate-900 text-white shadow-lg' 
                                         : 'text-slate-400 hover:text-slate-900'
                                     }`}
                                 >
-                                    {type === 'Bachelors' ? 'Undergraduate' : 'Post Graduate'}
+                                    <span>{tab.label}</span>
+                                    {tab.sub && <span className="text-[7px] opacity-60 font-medium">{tab.sub}</span>}
                                 </button>
                             ))}
                         </div>

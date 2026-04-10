@@ -177,102 +177,76 @@ const ProgramGrid = () => {
         };
     }, [selectedProgram]);
 
+    const ProgramCard = ({ program, index, onClick }) => (
+        <motion.div
+            onClick={onClick}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.05, duration: 0.8 }}
+            className="group relative aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-xl hover:shadow-primary/20 border border-white/5 hover:border-primary/40 transition-all duration-700"
+        >
+            <img
+                src={program.img}
+                alt={program.title}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/30 to-transparent opacity-95 group-hover:opacity-75 transition-opacity duration-700" />
+            <div className="absolute inset-0 bg-white/3 opacity-0 group-hover:opacity-100 backdrop-blur-xs transition-all duration-700 pointer-events-none" />
+            <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-primary/20 blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
+            <div className="absolute inset-0 z-10 flex flex-col justify-end p-6 md:p-8">
+                <h3 className="text-white font-black text-xl md:text-2xl leading-none uppercase tracking-tighter transition-transform duration-700 group-hover:-translate-y-6">
+                    {program.title}
+                </h3>
+                {program.headline && (
+                    <div className="overflow-hidden">
+                        <p className="text-primary font-black text-[11px] md:text-sm uppercase tracking-[0.25em] mb-3 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-100 transform translate-y-8 group-hover:translate-y-0">
+                            {program.headline}
+                        </p>
+                    </div>
+                )}
+                {program.subtitle && (
+                    <div className="overflow-hidden">
+                        <p className="text-slate-200 text-[10px] md:text-sm font-bold leading-relaxed mb-6 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-200 transform translate-y-8 group-hover:translate-y-0">
+                            {program.subtitle}
+                        </p>
+                    </div>
+                )}
+                <div className="mt-2 flex items-center gap-3 opacity-0 -translate-x-6 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-700 border-t border-white/10 pt-6">
+                    <span className="text-[11px] font-black text-white uppercase tracking-widest pb-1">View Career Path</span>
+                    <ArrowUpRight className="text-primary w-5 h-5 ml-auto group-hover:rotate-45 transition-transform duration-500" />
+                </div>
+            </div>
+        </motion.div>
+    );
+
     return (
         <section id="programs-grid" className="py-12 md:py-16 bg-slate-50 overflow-hidden relative">
             <div className="container mx-auto px-4 md:px-6">
-                {/* Balanced High-End Grid (4x2 + Centered Last Item) */}
+                {/* Balanced High-End Grid (4 cards in first row, 5 in second row) */}
                 <div className="space-y-6 md:space-y-8">
-                    {/* Main Row 1 & 2 (8 cards) */}
+                    {/* First Row (4 cards) */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-                        {programs.slice(0, 8).map((program, index) => (
-                            <motion.div
-                                key={index}
-                                onClick={() => setSelectedProgram(program)}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.05, duration: 0.8 }}
-                                className="group relative aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-xl hover:shadow-primary/20 border border-white/5 hover:border-primary/40 transition-all duration-700"
-                            >
-                                <img
-                                    src={program.img}
-                                    alt={program.title}
-                                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"
-                                />
-                                <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/30 to-transparent opacity-95 group-hover:opacity-75 transition-opacity duration-700" />
-                                <div className="absolute inset-0 bg-white/3 opacity-0 group-hover:opacity-100 backdrop-blur-xs transition-all duration-700 pointer-events-none" />
-                                <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-primary/20 blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
-                                <div className="absolute inset-0 z-10 flex flex-col justify-end p-6 md:p-8">
-                                    <h3 className="text-white font-black text-xl md:text-2xl leading-none uppercase tracking-tighter transition-transform duration-700 group-hover:-translate-y-6">
-                                        {program.title}
-                                    </h3>
-                                    {program.headline && (
-                                        <div className="overflow-hidden">
-                                            <p className="text-primary font-black text-[11px] md:text-sm uppercase tracking-[0.25em] mb-3 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-100 transform translate-y-8 group-hover:translate-y-0">
-                                                {program.headline}
-                                            </p>
-                                        </div>
-                                    )}
-                                    {program.subtitle && (
-                                        <div className="overflow-hidden">
-                                            <p className="text-slate-200 text-[10px] md:text-sm font-bold leading-relaxed mb-6 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-200 transform translate-y-8 group-hover:translate-y-0">
-                                                {program.subtitle}
-                                            </p>
-                                        </div>
-                                    )}
-                                    <div className="mt-2 flex items-center gap-3 opacity-0 -translate-x-6 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-700 border-t border-white/10 pt-6">
-                                        <span className="text-[11px] font-black text-white uppercase tracking-widest pb-1">View Career Path</span>
-                                        <ArrowUpRight className="text-primary w-5 h-5 ml-auto group-hover:rotate-45 transition-transform duration-500" />
-                                    </div>
-                                </div>
-                            </motion.div>
+                        {programs.slice(0, 4).map((program, index) => (
+                            <ProgramCard 
+                                key={index} 
+                                program={program} 
+                                index={index} 
+                                onClick={() => setSelectedProgram(program)} 
+                            />
                         ))}
                     </div>
 
-                    {/* Centered Last Row (9th card) */}
-                    <div className="flex justify-center">
-                        <div className="w-full sm:w-1/2 lg:w-1/4">
-                            <motion.div
-                                onClick={() => setSelectedProgram(programs[8])}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.1, duration: 0.8 }}
-                                className="group relative aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-xl hover:shadow-primary/20 border border-white/5 hover:border-primary/40 transition-all duration-700"
-                            >
-                                <img
-                                    src={programs[8].img}
-                                    alt={programs[8].title}
-                                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"
-                                />
-                                <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/30 to-transparent opacity-95 group-hover:opacity-75 transition-opacity duration-700" />
-                                <div className="absolute inset-0 bg-white/3 opacity-0 group-hover:opacity-100 backdrop-blur-xs transition-all duration-700 pointer-events-none" />
-                                <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-primary/20 blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
-                                <div className="absolute inset-0 z-10 flex flex-col justify-end p-6 md:p-8">
-                                    <h3 className="text-white font-black text-xl md:text-2xl leading-none uppercase tracking-tighter transition-transform duration-700 group-hover:-translate-y-6">
-                                        {programs[8].title}
-                                    </h3>
-                                    {programs[8].headline && (
-                                        <div className="overflow-hidden">
-                                            <p className="text-primary font-black text-[11px] md:text-sm uppercase tracking-[0.25em] mb-3 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-100 transform translate-y-8 group-hover:translate-y-0">
-                                                {programs[8].headline}
-                                            </p>
-                                        </div>
-                                    )}
-                                    {programs[8].subtitle && (
-                                        <div className="overflow-hidden">
-                                            <p className="text-slate-200 text-[10px] md:text-sm font-bold leading-relaxed mb-6 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-200 transform translate-y-8 group-hover:translate-y-0">
-                                                {programs[8].subtitle}
-                                            </p>
-                                        </div>
-                                    )}
-                                    <div className="mt-2 flex items-center gap-3 opacity-0 -translate-x-6 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-700 border-t border-white/10 pt-6">
-                                        <span className="text-[11px] font-black text-white uppercase tracking-widest pb-1">View Career Path</span>
-                                        <ArrowUpRight className="text-primary w-5 h-5 ml-auto group-hover:rotate-45 transition-transform duration-500" />
-                                    </div>
-                                </div>
-                            </motion.div>
-                        </div>
+                    {/* Second Row (5 cards) */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8">
+                        {programs.slice(4, 9).map((program, index) => (
+                            <ProgramCard 
+                                key={index + 4} 
+                                program={program} 
+                                index={index + 4} 
+                                onClick={() => setSelectedProgram(program)} 
+                            />
+                        ))}
                     </div>
                 </div>
             </div>

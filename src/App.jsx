@@ -36,7 +36,6 @@ const ParisProject = lazy(() => import('./pages/ParisProject'));
 const Events = lazy(() => import('./pages/Events'));
 import Mentors from './pages/Mentors';
 import Legacy from './pages/Legacy';
-import AcademicAlliances from './pages/AcademicAlliances';
 import Centers from './pages/Centers';
 const ProfileDashboard = lazy(() => import('./pages/ProfileDashboard'));
 import FashionDesigning from './pages/FashionDesigning';
@@ -138,7 +137,6 @@ function App() {
                                     <Route path="/events" element={<Events />} />
                                     <Route path="/mentors" element={<Mentors />} />
                                     <Route path="/15-years-legacy" element={<Legacy />} />
-                                    <Route path="/academic-alliances" element={<AcademicAlliances />} />
                                     <Route path="/centers-across-india" element={<Centers />} />
                                     <Route path="/profile" element={<ProfileDashboard />} />
                                     <Route path="/success-stories" element={<SuccessStory />} />

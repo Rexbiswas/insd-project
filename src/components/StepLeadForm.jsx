@@ -9,29 +9,43 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
         name: '',
         mobile: '',
         email: '',
+        state: '',
         city: '',
         marketingConsent: false
     });
     const [submitted, setSubmitted] = useState(false);
+    const [isStateDropdownOpen, setIsStateDropdownOpen] = useState(false);
     const [isCityDropdownOpen, setIsCityDropdownOpen] = useState(false);
-    const [isOtherSelected, setIsOtherSelected] = useState(false);
-    const [customLocation, setCustomLocation] = useState('');
     const [loading, setLoading] = useState(false);
 
-    const locations = [
-        { city: "New Delhi", state: "Delhi NCR" },
-        { city: "Gurugram", state: "Haryana" },
-        { city: "Noida", state: "Uttar Pradesh" },
-        { city: "Mumbai", state: "Maharashtra" },
-        { city: "Bangalore", state: "Karnataka" },
-        { city: "Pune", state: "Maharashtra" },
-        { city: "Hyderabad", state: "Telangana" },
-        { city: "Kolkata", state: "West Bengal" },
-        { city: "Ahmedabad", state: "Gujarat" },
-        { city: "Chandigarh", state: "Punjab" },
-        { city: "Chennai", state: "Tamil Nadu" },
-        { city: "Other", state: "India" }
-    ];
+    const stateCityData = {
+        "Andhra Pradesh": ["Vishakhapattnam", "Anantapur", "Guntur", "Kadappa", "Kakinada", "Kurnool", "Nellor", "Rajamundari", "Tirupati", "Vizianagram", "Eluru", "Machhlipattnam", "Nandayal", "Ongole"],
+        "Assam": ["Guwahati", "Dibrugarh", "Jorhat", "Nagaon", "Silchar"],
+        "Bihar": ["Patna", "Ara", "Begusarai", "Bhagalpur", "Biharsharif", "Darbhanga", "Gaya", "Mungher", "Muzaffarpur", "Purnea", "Katihar", "Sasaram"],
+        "Chhatisgarh": ["Raipur", "Bhilai", "Bilaspur", "Durg", "Korba"],
+        "Delhi/NCR": ["Delhi", "Faridabad", "Ghzaiabad", "Gurugram", "Noida", "Greater Noida"],
+        "Goa": ["North Goa", "South Goa"],
+        "Gujarat": ["Ahmedabad", "Rajkot", "Surat", "Vadodara", "Bardoli", "Jamnagar", "Junagarh", "Idar", "Rapar", "Songarh"],
+        "Haryana": ["Ambala", "Bhiwani", "Karnal", "Panipat", "Rohtak", "Panchkula", "Sonipat", "Yamunanagar"],
+        "Himachal Pradesh": ["Baddi", "Dharamshala", "Hamirpur", "Kullu", "Mandi", "Nahan", "Palampur", "Shimla", "Solan", "Una"],
+        "J & K": ["Sri Nagar", "Anantnag"],
+        "Jharkhand": ["Dhanbad", "Jamshedpur", "Ranchi", "Bokaro", "Deoghar"],
+        "Karnataka": ["Benagaluru", "Belgaun", "Hubballi", "Mangalore", "Bijapur", "Udupi"],
+        "Kerala": ["Thiruvananthapuram", "Kochi", "Kollam", "Kozhikod", "Allapuzha", "Mallapuram", "Palakkad"],
+        "Madhya Pradesh": ["Bhopal", "Gwallior", "Indore", "Jabalpur", "Sagar", "Ujjain", "Dewas", "Ratlam", "Rewa", "Satna"],
+        "Maharashtra": ["Kalyan/Dombivli", "Mumbai", "Nagpur", "Nashik", "Navi Mumbai", "Pune", "Sambhaji Nagar", "Thane", "Ahmednagar", "Akola", "Bhiwandi", "Chandrapur", "Dhule", "Jalgaon", "Kolhapur", "Latur", "Malegaon", "Mira-Bhayandar", "Sangli-miraj-kupwad", "Solapur", "Ulhashnagar", "Parbhani"],
+        "Manipur": ["Imphal West", "Senapati", "Churachandpur"],
+        "Mijoram": ["Aizwal", "Champhai", "Lunglei"],
+        "Nagaland": ["Dimapur", "Kohima", "Mon"],
+        "Odisha": ["Bhubneshwar", "Cuttack", "Balasore", "Berhampur", "Puri", "Rourkela", "Sambhal pur"],
+        "Punjab": ["Amritsar", "Ludhiana", "Bathinda", "Jalandhar", "Mohali (SAS Nagar)", "Patiala", "Zirakpur", "Firozpur", "Hoshiarpur", "Khanna", "Moga", "Pathankot", "Phagwara"],
+        "Rajasthan": ["Jaipur", "Jodhpur", "Ajmer", "Alwar", "Bikaner", "Udaipur", "Bharatpur", "Pali", "Sikar", "Sri Ganganagar"],
+        "Sikkim": ["Gangtok", "Namchi"],
+        "Tamilnadu": ["Chennai", "Coimbatore", "Madurai", "Tambaram", "Trippur", "Avadi", "Erode", "Hosur", "Nagarcoil", "Salem", "Tirunaveli", "Trichy", "Tuticorin", "Vellore"],
+        "Telengana": ["Hydrabad", "Karimnagar", "Nizamabad", "Warangal", "Godavarikhani", "Ramagundam", "Secundrabad"],
+        "Tripura": ["Agartala", "Dharmanagar"],
+        "Uttar Pradesh": ["Agra", "Kanpur", "Lucknow", "Meerut", "Varanasi", "Aligarh", "Ayodhya", "Bareilly", "Firozabad", "Gorakhpur", "Jhansi", "Mathura", "Moradabad", "Muzaffarnagar", "Rampur", "Saharanpur", "Amroha", "Budaun", "Bulandshahr", "Etawah", "Farrukhabad", "Mau", "Mirzapur", "Shahjahanpur"]
+    };
 
     const handleChoice = (val) => {
         setChoice(val);
@@ -64,6 +78,7 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
                     name: formData.name,
                     mobile: formData.mobile,
                     email: formData.email,
+                    state: formData.state,
                     city: formData.city,
                     marketingConsent: formData.marketingConsent,
                     readyToStart: choice,
@@ -218,18 +233,83 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
                                                     />
                                                 </div>
 
-                                                <div className="relative">
-                                                    <div
-                                                        onClick={() => setIsCityDropdownOpen(!isCityDropdownOpen)}
-                                                        className="w-full h-14 bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 text-white flex items-center justify-between cursor-pointer focus-within:border-primary/50 hover:bg-white/10 transition-all font-bold text-sm group"
-                                                    >
-                                                        <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 group-hover:text-primary transition-colors" />
-                                                        <span className={formData.city ? "text-white" : "text-slate-600"}>
-                                                            {formData.city || "Select City"}
-                                                        </span>
-                                                        <motion.div animate={{ rotate: isCityDropdownOpen ? 180 : 0 }}>
-                                                            <ArrowRight className="w-4 h-4 rotate-90 opacity-40 hover:opacity-100" />
-                                                        </motion.div>
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                    <div className="relative">
+                                                        <div
+                                                            onClick={() => setIsStateDropdownOpen(!isStateDropdownOpen)}
+                                                            className="w-full h-14 bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 text-white flex items-center justify-between cursor-pointer focus-within:border-primary/50 hover:bg-white/10 transition-all font-bold text-sm group"
+                                                        >
+                                                            <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 group-hover:text-primary transition-colors" />
+                                                            <span className={formData.state ? "text-white" : "text-slate-600"}>
+                                                                {formData.state || "Select State"}
+                                                            </span>
+                                                            <motion.div animate={{ rotate: isStateDropdownOpen ? 180 : 0 }}>
+                                                                <ArrowRight className="w-4 h-4 rotate-90 opacity-40" />
+                                                            </motion.div>
+                                                        </div>
+
+                                                        <AnimatePresence>
+                                                            {isStateDropdownOpen && (
+                                                                <motion.div
+                                                                    initial={{ opacity: 0, y: 10 }}
+                                                                    animate={{ opacity: 1, y: 0 }}
+                                                                    exit={{ opacity: 0, y: 10 }}
+                                                                    className="absolute z-50 left-0 right-0 mt-2 max-h-60 overflow-y-auto bg-slate-900 border border-white/10 rounded-xl shadow-2xl custom-scrollbar"
+                                                                >
+                                                                    {Object.keys(stateCityData).map((state) => (
+                                                                        <div
+                                                                            key={state}
+                                                                            onClick={() => {
+                                                                                setFormData({ ...formData, state: state, city: '' });
+                                                                                setIsStateDropdownOpen(false);
+                                                                            }}
+                                                                            className="px-6 py-3 hover:bg-primary hover:text-white cursor-pointer transition-colors text-sm font-bold"
+                                                                        >
+                                                                            {state}
+                                                                        </div>
+                                                                    ))}
+                                                                </motion.div>
+                                                            )}
+                                                        </AnimatePresence>
+                                                    </div>
+
+                                                    <div className="relative">
+                                                        <div
+                                                            onClick={() => formData.state && setIsCityDropdownOpen(!isCityDropdownOpen)}
+                                                            className={`w-full h-14 bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 text-white flex items-center justify-between cursor-pointer focus-within:border-primary/50 hover:bg-white/10 transition-all font-bold text-sm group ${!formData.state ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                                        >
+                                                            <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 group-hover:text-primary transition-colors" />
+                                                            <span className={formData.city ? "text-white" : "text-slate-600"}>
+                                                                {formData.city || (formData.state ? "Select City" : "Choose State First")}
+                                                            </span>
+                                                            <motion.div animate={{ rotate: isCityDropdownOpen ? 180 : 0 }}>
+                                                                <ArrowRight className="w-4 h-4 rotate-90 opacity-40" />
+                                                            </motion.div>
+                                                        </div>
+
+                                                        <AnimatePresence>
+                                                            {isCityDropdownOpen && formData.state && (
+                                                                <motion.div
+                                                                    initial={{ opacity: 0, y: 10 }}
+                                                                    animate={{ opacity: 1, y: 0 }}
+                                                                    exit={{ opacity: 0, y: 10 }}
+                                                                    className="absolute z-40 left-0 right-0 mt-2 max-h-60 overflow-y-auto bg-slate-900 border border-white/10 rounded-xl shadow-2xl custom-scrollbar"
+                                                                >
+                                                                    {stateCityData[formData.state].map((city) => (
+                                                                        <div
+                                                                            key={city}
+                                                                            onClick={() => {
+                                                                                setFormData({ ...formData, city: city });
+                                                                                setIsCityDropdownOpen(false);
+                                                                            }}
+                                                                            className="px-6 py-3 hover:bg-primary hover:text-white cursor-pointer transition-colors text-sm font-bold"
+                                                                        >
+                                                                            {city}
+                                                                        </div>
+                                                                    ))}
+                                                                </motion.div>
+                                                            )}
+                                                        </AnimatePresence>
                                                     </div>
                                                 </div>
 

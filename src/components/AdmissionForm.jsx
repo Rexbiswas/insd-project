@@ -7,8 +7,8 @@ const AdmissionForm = ({ isModal = false, title, subtitle }) => {
         name: '',
         email: '',
         phone: '',
+        state: '',
         city: '',
-        centre: '',
         program: '',
         course: '',
         marketingConsent: false
@@ -17,13 +17,29 @@ const AdmissionForm = ({ isModal = false, title, subtitle }) => {
     const [status, setStatus] = useState('idle'); // idle, loading, success, error
     const [errorMessage, setErrorMessage] = useState('');
 
-    const cities = ["Delhi", "Mumbai", "Pune"];
-    
-    const centresByCity = {
-        "Delhi": ["South Delhi", "North Delhi"],
-        "Mumbai": ["Mumbai Central"],
-        "Pune": ["Pune Camp"]
+    const stateCityData = {
+        "Andhra Pradesh": ["Vishakhapatnam", "Vijayawada"],
+        "Arunachal Pradesh": ["Itanagar"],
+        "Assam": ["Guwahati"],
+        "Chhattisgarh": ["Bhilai", "Raipur"],
+        "Delhi": ["Head Campus", "Dwarka"],
+        "Gujarat": ["Ahmedabad", "Surat"],
+        "Haryana": ["Hisar"],
+        "Jammu & Kashmir": ["Jammu"],
+        "Karnataka": ["Bangalore JP Nagar", "Kalaburagi", "Mysore", "Bangalore Whitefield", "Shivamogga", "Davanagere"],
+        "Kerala": ["Kochin", "Thrissur", "Trivandrum"],
+        "Madhya Pradesh": ["Bhopal"],
+        "Maharashtra": ["Amravati", "Mumbai Andheri", "Pune Baner", "Mumbai Ghtakopar", "Pune Hadapsar", "Mumbai Kandivali", "Nanded", "Pune PCMC", "Pune Deccan", "Pune Kothrud", "Navi Mumbai Sanpada", "Mumbai Thane", "Navi Mumbai Vasai"],
+        "Manipur": ["Imphal"],
+        "Odisha": ["Bhubaneshvar"],
+        "Punjab": ["Mohali", "New Amritsar", "Ludhiana"],
+        "Rajasthan": ["Jaipur", "Udaipur", "Kota"],
+        "Tamil Nadu": ["Coimbatore", "Salem", "Chennai"],
+        "Uttar Pradesh": ["Bareilly", "Prayagraj"],
+        "West Bengal": ["Kolkata", "Siliguri"]
     };
+
+    const states = Object.keys(stateCityData);
 
     const programs = [
         "Industry Diploma",
@@ -68,7 +84,7 @@ const AdmissionForm = ({ isModal = false, title, subtitle }) => {
             if (response.ok) {
                 setStatus('success');
                 setFormData({
-                    name: '', email: '', phone: '', city: '', centre: '', 
+                    name: '', email: '', phone: '', state: '', city: '', 
                     program: '', course: '', marketingConsent: false
                 });
             } else {
@@ -182,18 +198,18 @@ const AdmissionForm = ({ isModal = false, title, subtitle }) => {
                         </div>
                     </div>
 
-                    {/* Preferences Grid - making it two columns for a more professional look if on desktop, or keeping it parallel stack */}
+                    {/* Preferences Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div className="relative group/field">
                             <select 
                                 required
-                                name="city"
-                                value={formData.city}
+                                name="state"
+                                value={formData.state}
                                 onChange={handleChange}
                                 className="w-full h-15 bg-white/5 border border-white/10 rounded-2xl pl-12 px-8 text-white font-bold focus:outline-none focus:border-primary appearance-none cursor-pointer placeholder-slate-500 text-sm md:text-base shadow-inner"
                             >
-                                <option value="" disabled className="bg-slate-900">Select City *</option>
-                                {cities.map(city => <option key={city} value={city} className="bg-slate-900">{city}</option>)}
+                                <option value="" disabled className="bg-slate-900">Select State *</option>
+                                {states.map(state => <option key={state} value={state} className="bg-slate-900">{state}</option>)}
                             </select>
                             <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within/field:text-primary transition-colors" size={18} />
                             <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" size={14} />
@@ -202,15 +218,15 @@ const AdmissionForm = ({ isModal = false, title, subtitle }) => {
                         <div className="relative group/field">
                             <select 
                                 required
-                                name="centre"
-                                value={formData.centre}
+                                name="city"
+                                value={formData.city}
                                 onChange={handleChange}
                                 className="w-full h-15 bg-white/5 border border-white/10 rounded-2xl pl-12 px-8 text-white font-bold focus:outline-none focus:border-primary appearance-none cursor-pointer disabled:opacity-50 text-sm md:text-base shadow-inner"
-                                disabled={!formData.city}
+                                disabled={!formData.state}
                             >
-                                <option value="" disabled className="bg-slate-900">Select Centre *</option>
-                                {formData.city && centresByCity[formData.city]?.map(centre => (
-                                    <option key={centre} value={centre} className="bg-slate-900">{centre}</option>
+                                <option value="" disabled className="bg-slate-900">Select City *</option>
+                                {formData.state && stateCityData[formData.state]?.map(city => (
+                                    <option key={city} value={city} className="bg-slate-900">{city}</option>
                                 ))}
                             </select>
                             <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within/field:text-primary transition-colors" size={18} />

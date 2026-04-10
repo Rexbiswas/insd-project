@@ -4,12 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 const slides = [
     {
         subtitle: "Shape the Future of Style",
-        img: "https://ik.imagekit.io/fmldynl4j4/IMG_3440.JPG?updatedAt=1771841966154",
+        img: "https://ik.imagekit.io/fmldynl4j4/WhatsApp%20Image%202026-04-08%20at%201.41.11%20PM.jpeg",
         tag: "Inquiry"
     },
     {
         subtitle: "Design Spaces that Inspire",
-        img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Copy%20of%20pranav%20sir%20.jpeg?updatedAt=1774326566811",
+        img: "https://ik.imagekit.io/fmldynl4j4/P1510960%20(1)%20(2).jpg.jpeg",
         tag: "Innovation"
     },
     {
@@ -105,7 +105,7 @@ const HeroSlider = () => {
                         <img 
                             src={slides[current].img} 
                             alt={slides[current].title}
-                            className="w-full h-full object-cover grayscale brightness-110 contrast-125 transition-all duration-1000"
+                            className="w-full h-full object-cover brightness-110 contrast-125 transition-all duration-1000"
                         />
                         {/* Soft Overlays */}
                         <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />

@@ -168,7 +168,6 @@ const Navbar = () => {
                 { title: 'About Us Overview', path: '/about-us', icon: 'info', desc: 'Discover our mission & values' },
                 { title: '15 Years Legacy', path: '/15-years-legacy', icon: 'zap', desc: 'Our national award-winning history' },
                 { title: 'Mentors', path: '/mentors', icon: 'users', desc: 'Expert creative leadership' },
-                { title: 'Academic Alliances', path: '/academic-alliances', icon: 'briefcase', desc: 'Global design partnerships' },
                 { title: 'Center Across India', path: '/centers-across-india', icon: 'trending-up', desc: 'Our regional network' },
                 { title: 'Paris Project', path: '/insd-360/paris-project', icon: 'globe', desc: 'International design showcase', badge: 'Featured' }
             ]
@@ -314,11 +313,11 @@ const Navbar = () => {
                 className="hidden md:flex fixed left-1/2 z-1000 px-6 lg:px-8 xl:px-10 py-4 items-center justify-between pointer-events-auto w-full"
             >
                 {/* Left: Logo */}
-                <Link to="/" className="nav-logo relative z-50 shrink-0 block h-10 overflow-hidden" onClick={() => setIsOpen(false)}>
+                <Link to="/" className="nav-logo relative z-50 shrink-0 block h-14 overflow-hidden" onClick={() => setIsOpen(false)}>
                     <motion.img
                         whileHover={{ scale: 1.1, rotate: 2 }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                        className={`h-10 w-auto object-contain transition-all duration-500 ${isHeaderDark && !isScrolled ? 'brightness-0 invert' : 'drop-shadow-sm'}`}
+                        className={`h-14 w-auto object-contain transition-all duration-500 ${isHeaderDark && !isScrolled ? 'brightness-0 invert' : 'drop-shadow-sm'}`}
                         src="https://insd.edu.in/wp-content/uploads/2022/02/Final-Logo.png"
                         alt="INSD Logo"
                     />
@@ -353,7 +352,6 @@ const Navbar = () => {
                                                 {[
                                                     { title: '15 Years Legacy', path: '/15-years-legacy', icon: 'zap', desc: 'Explore industry trends' },
                                                     { title: 'Mentors', path: '/mentors', icon: 'users', desc: 'Meet our community' },
-                                                    { title: 'Academic Alliances', path: '/academic-alliances', icon: 'briefcase', desc: 'Career opportunities' },
                                                     { title: 'Awards & Recognition', path: '/awards-recognition', icon: 'map-pin', desc: 'Our locations' },
                                                     { title: 'Center Across India', path: '/centers-across-india', icon: 'trending-up', desc: 'Our national presence' },
                                                     { title: 'Paris Project', path: '/insd-360/paris-project', icon: 'globe', desc: 'International design showcase', badge: 'Featured' }
@@ -583,7 +581,7 @@ const Navbar = () => {
                 <div className="relative w-full h-full flex items-center justify-center px-4 pointer-events-auto">
                     <Link to="/" onClick={() => setIsOpen(false)} className="h-full flex items-center justify-center">
                         <img
-                            className={`h-7 md:h-8 w-auto object-contain transition-all duration-500 ${isHeaderDark && !isScrolled ? 'brightness-0 invert' : 'drop-shadow-sm'}`}
+                            className={`h-10 w-auto object-contain transition-all duration-500 ${isHeaderDark && !isScrolled ? 'brightness-0 invert' : 'drop-shadow-sm'}`}
                             src="https://insd.edu.in/wp-content/uploads/2022/02/Final-Logo.png"
                             alt="INSD Logo"
                         />
