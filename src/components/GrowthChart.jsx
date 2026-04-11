@@ -2,24 +2,24 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 
 const chartData = [
-    { 
-        year: 2020, 
+    {
+        year: 2020,
         metrics: [
             { label: 'Creative Industry Jobs', value: 35, color: '#DB3436' },
             { label: 'Design Education Demand', value: 100, color: '#F97316' },
             { label: 'Skilled Designers Supply', value: 100, color: '#22C55E' }
         ]
     },
-    { 
-        year: 2025, 
+    {
+        year: 2025,
         metrics: [
             { label: 'Creative Industry Jobs', value: 165, color: '#DB3436' },
             { label: 'Design Education Demand', value: 175, color: '#F97316' },
             { label: 'Skilled Designers Supply', value: 120, color: '#22C55E' }
         ]
     },
-    { 
-        year: 2030, 
+    {
+        year: 2030,
         metrics: [
             { label: 'Creative Industry Jobs', value: 240, color: '#DB3436' },
             { label: 'Design Education Demand', value: 245, color: '#F97316' },
@@ -129,19 +129,18 @@ const GrowthChart = () => {
     return (
         <div ref={containerRef} className="bg-[#050505] p-8 md:p-12 rounded-[3rem] border border-white/5 shadow-2xl space-y-12 overflow-hidden relative group">
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full blur-[120px] opacity-10 group-hover:opacity-20 transition-all duration-700 pointer-events-none" />
-            
+
             <div className="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
                 <h4 className="text-2xl font-black uppercase tracking-tighter text-white">Growth Indicators</h4>
                 <div className="flex bg-white/5 p-1.5 rounded-full border border-white/10 backdrop-blur-xl">
                     {[2020, 2025, 2030].map((yr) => (
-                        <button 
+                        <button
                             key={yr}
                             onClick={() => setActiveYear(yr)}
-                            className={`px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all duration-300 ${
-                                activeYear === yr 
-                                ? 'bg-primary text-white shadow-lg shadow-primary/20 scale-105' 
+                            className={`px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all duration-300 ${activeYear === yr
+                                ? 'bg-primary text-white shadow-lg shadow-primary/20 scale-105'
                                 : 'text-white/40 hover:text-white'
-                            }`}
+                                }`}
                         >
                             {yr}
                         </button>
