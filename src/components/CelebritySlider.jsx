@@ -108,7 +108,7 @@ const CelebritySlider = () => {
                                         <img 
                                             src={celeb.img} 
                                             alt={celeb.name}
-                                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
+                                            className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
                                         />
                                         
                                         {/* Bottom Content Overlay - More prominent */}

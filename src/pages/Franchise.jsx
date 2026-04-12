@@ -5,6 +5,7 @@ import { Shield, Target, TrendingUp, Globe, Award, Users } from 'lucide-react';
 import Lenis from 'lenis';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
+import FranchiseCTA from '../components/FranchiseCTA';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -145,59 +146,7 @@ const Franchise = () => {
             </div>
 
             {/* Hero Section */}
-            <section className="relative h-screen flex flex-col items-center justify-center px-6 z-10 overflow-hidden">
-                {/* Floating Hero Image - Unexpected Position */}
-                <div
-                    ref={heroImageRef}
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none z-0 flex items-center justify-end md:pr-[10vw] opacity-40 md:opacity-100"
-                >
-                    <div className="relative w-[80vw] md:w-[35vw] aspect-square">
-                        {/* Glow effect */}
-                        <div className="absolute inset-0 bg-primary/10 blur-[120px] rounded-full animate-pulse pointer-events-none"></div>
-                        <img
-                            src="https://insd.edu.in/wp-content/uploads/2022/01/1ST-IMAGE-ON-PAGE.png"
-                            alt="Distinguished Legacy"
-                            className="w-full h-full object-contain relative z-10 drop-shadow-xl"
-                        />
-                        {/* Decorative Frame Elements */}
-                        <div className="absolute top-0 right-0 w-24 h-24 border-t-2 border-r-2 border-primary/40"></div>
-                        <div className="absolute bottom-0 left-0 w-24 h-24 border-b-2 border-l-2 border-slate-300"></div>
-                    </div>
-                </div>
-
-                <div className="text-center relative z-10">
-                    <span
-                        className="hero-sub block text-primary font-mono text-sm mb-6 uppercase tracking-[0.5em] opacity-0 font-bold"
-                    >
-                        The Future of Design Education
-                    </span>
-                    <h1 ref={heroRef} className="text-[10vw] md:text-[8vw] font-black leading-[0.8] uppercase tracking-tighter flex flex-col items-center text-slate-900">
-                        <div className="overflow-hidden">
-                            <span className="inline-block hero-char">Skill School</span>
-                        </div>
-                        <div className="overflow-hidden">
-                            <span className="inline-block hero-char text-transparent strok-text-black italic">Franchise</span>
-                        </div>
-                    </h1>
-                </div>
-
-                {/* Rotating Seal */}
-                <div
-                    ref={sealRef}
-                    className="absolute -bottom-20 -right-20 md:bottom-20 md:right-20 w-80 h-80 flex items-center justify-center p-12 border border-slate-200 rounded-full opacity-40 hover:opacity-100 transition-opacity duration-500 group cursor-help z-20 shadow-sm bg-white/20 backdrop-blur-sm"
-                >
-                    <div className="text-center group-hover:scale-110 transition-transform">
-                        <Award className="w-16 h-16 mx-auto mb-4 text-primary" />
-                        <span className="text-[10px] font-mono uppercase tracking-widest leading-loose">
-                            Co-founded by<br />IAS Officer<br />& NIFT DG
-                        </span>
-                    </div>
-                </div>
-
-                <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce opacity-30 z-20">
-                    <div className="w-px h-12 bg-white/50 mx-auto"></div>
-                </div>
-            </section>
+            <FranchiseCTA />
 
             {/* Legacy Section */}
             <section className="relative py-32 px-6 z-10 border-t border-slate-300 bg-white overflow-hidden">
@@ -226,7 +175,7 @@ const Franchise = () => {
                         <img
                             src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800"
                             alt="Meeting"
-                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100"
+                            className="w-full h-full object-cover transition-all duration-700 scale-110 group-hover:scale-100"
                         />
                         <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent"></div>
                         <div className="absolute bottom-12 left-12 right-12 p-8 bg-white/90 rounded-3xl backdrop-blur-xl border border-slate-200 shadow-sm text-slate-900">
@@ -265,47 +214,8 @@ const Franchise = () => {
                 </div>
             </section>
 
-            {/* CTA Section: The Form */}
-            <section className="relative py-32 px-6 z-10 bg-white border-t border-slate-300">
-                <div className="max-w-4xl mx-auto">
-                    <div className="bg-[#f3f3f3] border-2 border-slate-200 p-12 md:p-24 rounded-[4rem] text-center shadow-lg relative overflow-hidden group">
-                        {/* Interactive Background for Form */}
-                        <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
-                            <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-primary/20 blur-[150px] mix-blend-multiply animate-pulse"></div>
-                            <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-secondary/20 blur-[150px] mix-blend-multiply animate-pulse delay-1000"></div>
-                        </div>
 
-                        <div className="relative z-10 text-slate-900">
-                            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8 leading-none italic">
-                                Ready to Lead the <br /><span className="text-transparent strok-text-black">Design Movement?</span>
-                            </h2>
-                            <p className="text-xl text-slate-600 font-light mb-12 max-w-2xl mx-auto">
-                                Apply for an authorized center today and become part of India's most prestigious design education network.
-                            </p>
-
-                            <form className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left max-w-2xl mx-auto">
-                                <div className="col-span-1">
-                                    <label className="block text-[10px] uppercase tracking-widest text-slate-500 mb-2 ml-2">Full Name</label>
-                                    <input type="text" className="w-full bg-white border border-slate-300 rounded-full px-8 py-4 focus:border-primary outline-none transition-all shadow-sm focus:shadow-md" placeholder="John Doe" />
-                                </div>
-                                <div className="col-span-1">
-                                    <label className="block text-[10px] uppercase tracking-widest text-slate-500 mb-2 ml-2">Email Address</label>
-                                    <input type="email" className="w-full bg-white border border-slate-300 rounded-full px-8 py-4 focus:border-primary outline-none transition-all shadow-sm focus:shadow-md" placeholder="john@example.com" />
-                                </div>
-                                <div className="col-span-2">
-                                    <label className="block text-[10px] uppercase tracking-widest text-slate-500 mb-2 ml-2">Location of Interest</label>
-                                    <input type="text" className="w-full bg-white border border-slate-300 rounded-full px-8 py-4 focus:border-primary outline-none transition-all shadow-sm focus:shadow-md" placeholder="Enter City/State" />
-                                </div>
-                                <button className="col-span-2 mt-8 w-full bg-primary hover:bg-[#a61517] text-white font-bold py-5 rounded-full uppercase tracking-widest transition-all hover:shadow-[0_0_40px_rgba(219,52,54,0.4)] relative group overflow-hidden">
-                                    <span className="relative z-10">Get Franchise Prospectus</span>
-                                    <div className="absolute inset-0 bg-slate-900 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
+            
             <Footer />
         </div>
     );

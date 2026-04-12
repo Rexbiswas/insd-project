@@ -15,6 +15,105 @@ const Mentors = () => {
 
     const mentorData = [
         {
+            name: "Chander Shekhar",
+            title: "TEDizen & Design Consultant",
+            tags: ["NID Alumnus", "Ex-UNICEF", "TEDizen"],
+            img: "https://ik.imagekit.io/fmldynl4j4/IMG_4565.JPG.jpeg",
+            desc: "A veteran in the global design landscape, Chander brings insights from his tenure at UNICEF and his experience as a TEDizen to guide the next generation of social innovators.",
+            impact: "Social Impact Design"
+        },
+        {
+            name: "Shivam Takulia",
+            title: "Architect & Product Designer",
+            tags: ["Co-founder EBB&FLO", "Associate - Inspatia"],
+            img: "https://ik.imagekit.io/fmldynl4j4/WhatsApp%20Image%202026-04-07%20at%206.04.09%20PM.jpeg",
+            desc: "Bridging the gap between architecture and product engineering. Shivam focuses on spatial fluidity and sustainable manufacturing through his ventures like EBB&FLO.",
+            impact: "Sustainable Architecture"
+        },
+        {
+            name: "Harsh Mann",
+            title: "Founder & CEO, HMLC",
+            tags: ["Luxury Consultant", "CEO - Harsh Mann Consultancy"],
+            img: "https://media.licdn.com/dms/image/v2/D5605AQH3VHDbxoEw8w/videocover-high/B56ZZiR90cGUCU-/0/1745405603228?e=2147483647&v=beta&t=tQ-kgpgTCWJ5lrLA1LEM1zeeuVb5G2j-9R7dGJy494o",
+            desc: "The authority on luxury branding and heritage ecosystems. Harsh consults for global ultra-premium brands, bringing the 'HMLC' perspective to INSD students.",
+            impact: "Luxury Branding"
+        },
+        {
+            name: "Gautam Gupta",
+            title: "Co-owner, Asha Gautam",
+            tags: ["Founder, Label GG", "Fashion Visionary"],
+            img: "https://ik.imagekit.io/fmldynl4j4/1767808884551.jfif.jpeg?updatedAt=1776012986888",
+            desc: "Redefining contemporary Indian couture. As the creative force behind Asha Gautam and Label GG, Gautam mentors students on the intersection of heritage textiles and global retail.",
+            impact: "Contemporary Couture"
+        },
+        {
+            name: "Shalini Passi",
+            title: "Founder & Director, Art Foundation & MASH",
+            tags: ["Art Patron", "Cultural Icon", "Art Curation"],
+            img: "https://bharatflux.com/wp-content/uploads/2024/11/Shalini-passi-gorgeous-273723622-e1732275691404.jpg",
+            desc: "A renowned art patron and collector, Shalini guides our students in understanding the synergy between contemporary art and modern design aesthetics.",
+            impact: "Art & Design Curation"
+        },
+        {
+            name: "Bhavana Jasra",
+            title: "Principal Artist, First Impression",
+            tags: ["Celebrity Artist", "Lifestyle Innovator"],
+            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2NSZK5f6xwgLUNi60u3KJYouxV50WkqOwvA&s",
+            desc: "An artist to celebrities like the Bachchans and cricketers, Bhavana teaches the value of unique artistic entrepreneurship and emotional design branding.",
+            impact: "Lifestyle Artistry"
+        },
+        {
+            name: "Rishab Suresh",
+            title: "Ex-Country Manager, Vacheron Constantin",
+            tags: ["Luxury Veteran", "Brand Strategist"],
+            img: "https://images.yourstory.com/cs/images/people/031-1601553383456.jpg?format=auto&w=1920&q=75",
+            desc: "With a legacy at one of the world's most prestigious horology brands, Rishab offers a deep dive into the world of ultra-luxury retail and strategic brand management.",
+            impact: "Luxury Management"
+        },
+        {
+            name: "Sneha Manant",
+            title: "Advertising Director, Media Sales Corp",
+            tags: ["Media Strategist", "Brand Integration"],
+            img: "https://media.licdn.com/dms/image/v2/D4D03AQHSTlyDPQ082Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1685450598024?e=2147483647&v=beta&t=m0tmQmyjFIrAdtUAsgYFKwNFu3Kc_yw9ACGKF05V13I",
+            desc: "A powerhouse in media sales and corporate advertising, Sneha mentors on high-impact brand visibility and the mechanics of large-scale media operations.",
+            impact: "Media Advertising"
+        },
+        {
+            name: "Raahul Kapoor",
+            title: "Founder, Only Luxury Consultancy",
+            tags: ["Monaco Strategy", "Luxury Consultant"],
+            img: "https://ik.imagekit.io/fmldynl4j4/717f361f-1c90-4a92-8596-54c1c3aeebae.jfif",
+            desc: "Based between Monaco and India, Raahul provides a global perspective on luxury consulting, identifying trends for ultra-high-net-worth audiences.",
+            impact: "Global Luxury Strategy"
+        },
+        {
+            name: "Neha Lulla",
+            title: "Couture Jewellery Designer",
+            tags: ["Jewellery Icon", "Craftsmanship Expert"],
+            img: "https://media.licdn.com/dms/image/v2/D4D03AQF2OuzGNLanNQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1707443828473?e=2147483647&v=beta&t=vCj6oKWYpBt-NW0XhGWdLS_YuOJlbKyoVJ0Um9Nup8o",
+            desc: "Consistently dressing Bollywood icons, Neha mentors students on the intersection of heritage craftsmanship and the modern global jewellery market.",
+            impact: "Jewellery Design"
+        },
+        {
+            name: "Yogesh Chaudhary",
+            title: "Director, Jaipur Rugs",
+            tags: ["Design for Good", "Global Retail"],
+            img: "https://static.fibre2fashion.com/InterviewResources/UserImages/4294/headshot.jpg",
+            desc: "Exporting handmade luxury to over 60 countries, Yogesh shares his expertise on social entrepreneurship and the scaling of traditional craft for global home decor.",
+            impact: "Sustainable Retail"
+        },
+        {
+            name: "Biren Vaidya",
+            title: "MD, Rose Group",
+            tags: ["Horology Icon", "Retail Visionary"],
+            img: "https://coralesque.com/wp-content/uploads/2011/12/biren-vaidya-1-1-2093531493-e1713174511656.jpg",
+            desc: "A leader in India's luxury landscape, Biren guides students on the business of prestige, focusing on the retail operations of high-end watches and jewelry.",
+            impact: "Retail Excellence"
+        }
+    ];
+
+    const visitingLegends = [
+        {
             name: "Sunjey Aggarwal",
             title: "Founder & Chairman, INSD",
             tags: ["Visionary Leader", "Educational Pioneer", "Chairman"],
@@ -29,65 +128,6 @@ const Mentors = () => {
             img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Copy%20of%20pranav%20sir%20.jpeg",
             desc: "Driving the next wave of innovation at INSD. Pranav focuses on integrating emerging technologies and international alliances into the core curriculum for 21st-century designers.",
             impact: "Future Tech & Strategy"
-        },
-        {
-            name: "Chander Shekhar",
-            title: "TEDizen & Design Consultant",
-            tags: ["NID Alumnus", "Ex-UNICEF", "TEDizen"],
-            img: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            desc: "A veteran in the global design landscape, Chander brings insights from his tenure at UNICEF and his experience as a TEDizen to guide the next generation of social innovators.",
-            impact: "Social Impact Design"
-        },
-        {
-            name: "Shivam Takulia",
-            title: "Architect & Product Designer",
-            tags: ["Co-founder EBB&FLO", "Associate - Inspatia"],
-            img: "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            desc: "Bridging the gap between architecture and product engineering. Shivam focuses on spatial fluidity and sustainable manufacturing through his ventures like EBB&FLO.",
-            impact: "Sustainable Architecture"
-        },
-        {
-            name: "Harsh Mann",
-            title: "Founder & CEO, HMLC",
-            tags: ["Luxury Consultant", "CEO - Harsh Mann Consultancy"],
-            img: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            desc: "The authority on luxury branding and heritage ecosystems. Harsh consults for global ultra-premium brands, bringing the 'HMLC' perspective to INSD students.",
-            impact: "Luxury Branding"
-        },
-        {
-            name: "Gautam Gupta",
-            title: "Co-owner, Asha Gautam",
-            tags: ["Founder, Label GG", "Fashion Visionary"],
-            img: "https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            desc: "Redefining contemporary Indian couture. As the creative force behind Asha Gautam and Label GG, Gautam mentors students on the intersection of heritage textiles and global retail.",
-            impact: "Contemporary Couture"
-        }
-    ];
-
-    const visitingLegends = [
-        {
-            name: "Amelia Thorne",
-            title: "Global Creative Director, Vogue UK",
-            tags: ["Fashion Strategist", "Editorial Visionary"],
-            img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=1200",
-            desc: "Amelia oversees the intersection of high fashion and digital media at Vogue UK. Her workshops focus on editorial photography and brand storytelling transitions.",
-            impact: "Editorial Strategy"
-        },
-        {
-            name: "Marcus Rossi",
-            title: "Supercar Concept Designer, Italy",
-            tags: ["Product Engineer", "Industrial Maverick"],
-            img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1200",
-            desc: "Formerly with Ferrari and Lamborghini, Marcus brings a rigorous approach to aerodynamic design and high-performance product manufacturing to our industrial design wing.",
-            impact: "Industrial Innovation"
-        },
-        {
-            name: "Yuki Tanaka",
-            title: "Zen Space Architect, Japan",
-            tags: ["Minimalist Maven", "Sustainability Expert"],
-            img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=1200",
-            desc: "Yuki specializes in 'Neo-Zen' interior architecture, emphasizing sustainable materials and biophilic design. Her projects in Tokyo define the future of urban living.",
-            impact: "Sustainable Spatial Art"
         }
     ];
 

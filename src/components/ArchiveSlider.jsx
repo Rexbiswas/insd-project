@@ -50,7 +50,7 @@ const ArchiveSlider = () => {
                         <img 
                             src={src} 
                             alt={`Archive Frame ${idx}`} 
-                            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 font-sans"
+                            className="w-full h-full object-cover transition-all duration-1000 font-sans"
                             loading="lazy"
                         />
                     </motion.div>

@@ -24,7 +24,7 @@ const HiringPartnersLogoCloud = () => {
                     {[...Array(3)].map((_, groupIndex) => (
                         <div key={groupIndex} className="flex items-center gap-20">
                             {commonLogos.map((logo, i) => (
-                                <div key={i} className="h-12 md:h-16 w-32 md:w-48 flex items-center justify-center grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+                                <div key={i} className="h-12 md:h-16 w-32 md:w-48 flex items-center justify-center opacity-80 transition-all duration-500">
                                     <img
                                         src={logo}
                                         alt="Brand Partner"

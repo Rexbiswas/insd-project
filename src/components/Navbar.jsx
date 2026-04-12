@@ -79,7 +79,7 @@ const Navbar = () => {
     const navigate = useNavigate();
     // Pages that have a dark background/theme or high-impact gradient hero sections
     // Updated detection: Pages with permanent dark themes or sections
-    const darkPages = ['/franchise', '/apply', '/insd-360/blog'];
+    const darkPages = ['/apply', '/insd-360/blog'];
     const [isHeaderDark, setIsHeaderDark] = useState(darkPages.includes(location.pathname));
 
     // GSAP SVG Animation REfs

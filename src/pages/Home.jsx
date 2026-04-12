@@ -479,7 +479,7 @@ const Home = () => {
                             href={item.link || "#"}
                             target={item.link ? "_blank" : "_self"}
                             rel="noopener noreferrer"
-                            className="gallery-item relative flex-1 group transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] hover:flex-3 cursor-pointer grayscale-0 md:grayscale md:hover:grayscale-0 border-b md:border-b-0 md:border-r border-white/10 last:border-b-0 last:border-r-0"
+                            className="gallery-item relative flex-1 group transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] hover:flex-3 cursor-pointer border-b md:border-b-0 md:border-r border-white/10 last:border-b-0 last:border-r-0"
                         >
                             {/* Image Background */}
                             <div className="absolute inset-0 z-0 overflow-hidden">
@@ -551,7 +551,7 @@ const Home = () => {
                                     src={`https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=${isMobile ? 800 : 1260}`}
                                     alt="Future Visionaries"
                                     loading="lazy"
-                                    className="spotlight-img-main w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-out hover:scale-105"
+                                    className="spotlight-img-main w-full h-full object-cover transition-all duration-700 ease-out hover:scale-105"
                                 />
                             </div>
                             {/* Graphic Elements */}

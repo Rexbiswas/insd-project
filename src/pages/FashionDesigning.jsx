@@ -129,15 +129,15 @@ const FashionDesigning = () => {
     };
 
     const careerPaths = [
-        { title: "Couture Designer", desc: "Crafting exclusive, high-end bespoke garments for international luxury labels.", img: "https://images.pexels.com/photos/3735169/pexels-photo-3735169.jpeg?auto=compress&cs=tinysrgb&w=800" },
-        { title: "Fashion Illustrator", desc: "Translating concepts into high-impact visual narratives for global publications.", img: "https://images.pexels.com/photos/5692271/pexels-photo-5692271.jpeg?auto=compress&cs=tinysrgb&w=800" },
-        { title: "Personal Stylist", desc: "Setting the visual identity for celebrities, influencers, and luxury brand ambassadors.", img: "https://images.pexels.com/photos/6069554/pexels-photo-6069554.jpeg?auto=compress&cs=tinysrgb&w=800" },
-        { title: "Fashion Entrepreneur", desc: "Launching and managing independent fashion labels and high-end boutiques.", img: "https://images.pexels.com/photos/4960250/pexels-photo-4960250.jpeg?auto=compress&cs=tinysrgb&w=800" },
-        { title: "Costume Designer", desc: "Designing evocative wardrobes for high-production theatre, film, and media.", img: "https://images.pexels.com/photos/4580749/pexels-photo-4580749.jpeg?auto=compress&cs=tinysrgb&w=800" },
-        { title: "Fashion Consultant", desc: "Strategic advising for heritage brands on trend forecasting and market positioning.", img: "https://images.pexels.com/photos/3965548/pexels-photo-3965548.jpeg?auto=compress&cs=tinysrgb&w=800" },
-        { title: "Technical Designer", desc: "Mastering the blueprint of garments and ensuring engineering precision in apparel.", img: "https://images.pexels.com/photos/3823488/pexels-photo-3823488.jpeg?auto=compress&cs=tinysrgb&w=800" },
-        { title: "Brand Merchant", desc: "Managing inventory and sales strategies for global luxury fashion houses.", img: "https://images.pexels.com/photos/3735153/pexels-photo-3735153.jpeg?auto=compress&cs=tinysrgb&w=800" },
-        { title: "Pattern Scientist", desc: "Precision engineering of complex silhouettes and fit dynamics for manufacturing.", img: "https://images.pexels.com/photos/4614165/pexels-photo-4614165.jpeg?auto=compress&cs=tinysrgb&w=800" }
+        { title: "Couture Designer", desc: "Crafting exclusive, high-end bespoke garments for international luxury labels.", img: "https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?auto=format&fit=crop&q=80&w=800" },
+        { title: "Fashion Illustrator", desc: "Translating concepts into high-impact visual narratives for global publications.", img: "https://images.unsplash.com/photo-1541339907198-e08756ebafe3?auto=format&fit=crop&q=80&w=800" },
+        { title: "Personal Stylist", desc: "Setting the visual identity for celebrities, influencers, and luxury brand ambassadors.", img: "https://images.unsplash.com/photo-1562322140-5ba7b293d0d3?auto=format&fit=crop&q=80&w=800" },
+        { title: "Fashion Entrepreneur", desc: "Launching and managing independent fashion labels and high-end boutiques.", img: "https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&q=80&w=800" },
+        { title: "Costume Designer", desc: "Designing evocative wardrobes for high-production theatre, film, and media.", img: "https://images.unsplash.com/photo-1551232864-3f0890e580d9?auto=format&fit=crop&q=80&w=800" },
+        { title: "Fashion Consultant", desc: "Strategic advising for heritage brands on trend forecasting and market positioning.", img: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&q=80&w=800" },
+        { title: "Technical Designer", desc: "Mastering the blueprint of garments and ensuring engineering precision in apparel.", img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800" },
+        { title: "Brand Merchant", desc: "Managing inventory and sales strategies for global luxury fashion houses.", img: "https://images.unsplash.com/photo-1589718471415-32512f518e38?auto=format&fit=crop&q=80&w=800" },
+        { title: "Pattern Scientist", desc: "Precision engineering of complex silhouettes and fit dynamics for manufacturing.", img: "https://images.unsplash.com/photo-1532187863486-abf51ad9f69d?auto=format&fit=crop&q=80&w=800" }
     ];
 
     return (
@@ -151,7 +151,7 @@ const FashionDesigning = () => {
             <section className="relative h-[70vh] md:h-[85vh] flex items-center justify-center pt-20 md:pt-32 text-center px-6 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img 
-                        src="https://t3.ftcdn.net/jpg/01/85/83/48/360_F_185834867_qisP0T3zX8a7rflZFKlbmj3i3BYLVUGC.jpg" 
+                        src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=1200" 
                         alt="Fashion Design Studio" 
                         className="w-full h-full object-cover scale-105"
                     />
@@ -265,7 +265,7 @@ const FashionDesigning = () => {
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-4 h-auto md:h-[600px]">
                         <div className="col-span-1 md:col-span-7 h-[300px] md:h-full rounded-2xl overflow-hidden shadow-2xl">
                             <img 
-                                src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&q=80&w=800" 
+                                src="https://images.unsplash.com/photo-1517245385633-9118c7a6f272?auto=format&fit=crop&q=80&w=800" 
                                 alt="Fashion Design Student Work" 
                                 className="w-full h-full object-cover"
                             />
@@ -273,14 +273,14 @@ const FashionDesigning = () => {
                         <div className="col-span-1 md:col-span-5 grid grid-cols-2 md:grid-cols-1 gap-4 h-[200px] md:h-full">
                             <div className="rounded-2xl overflow-hidden shadow-2xl">
                                 <img 
-                                    src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=800" 
+                                    src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?auto=format&fit=crop&q=80&w=800" 
                                     alt="Sketching Sessions" 
                                     className="w-full h-full object-cover"
                                 />
                             </div>
                             <div className="rounded-2xl overflow-hidden shadow-2xl">
                                 <img 
-                                    src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=800" 
+                                    src="https://images.unsplash.com/photo-1550523091-628f52285e68?auto=format&fit=crop&q=80&w=800" 
                                     alt="Final Garment Construction" 
                                     className="w-full h-full object-cover"
                                 />

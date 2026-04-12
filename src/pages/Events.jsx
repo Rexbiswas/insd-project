@@ -16,43 +16,67 @@ const Events = () => {
 
     const showcaseEvents = [
         {
-            title: "Annual Talent Showcase 2025",
-            icon: Sparkles,
-            color: "from-primary/10",
-            img: "https://images.pexels.com/photos/1036622/pexels-photo-1036622.jpeg?auto=compress&cs=tinysrgb&w=800",
-            desc: "The pinnacle of student creativity. Introducing the next cohort of design disruptors."
-        },
-        {
-            title: "Annual Talent Showcase 2024",
-            icon: Award,
-            color: "from-blue-500/10",
-            img: "https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=800",
-            desc: "A celebration of sustainable couture and revolutionary industrial concepts."
-        },
-        {
-            title: "Annual Talent Showcase 2023",
-            icon: Globe,
-            color: "from-secondary/10",
-            img: "https://images.pexels.com/photos/2030826/pexels-photo-2030826.jpeg?auto=compress&cs=tinysrgb&w=800",
-            desc: "Where tradition met technology. A retrospective of INSD's core values."
-        },
-        {
-            title: "Annual Talent Showcase 2023-01",
-            icon: Zap,
-            color: "from-secondary/10",
-            video: "https://assets.mixkit.co/videos/preview/mixkit-woman-walking-on-the-street-during-fashion-week-42410-large.mp4",
-            desc: "Experimental textiles and high-contrast silhouettes from the 2023 collection."
-        },
-        {
-            title: "Annual Talent Showcase 2023-1",
+            title: "Annual Talent Showcase - Highlights",
             icon: Camera,
+            color: "from-primary/10",
+            img: "https://ik.imagekit.io/fmldynl4j4/folder/P1304858.JPG",
+            desc: "Capturing the raw energy and experimental spirit of the national showcase."
+        },
+        {
+            title: "Annual Talent Showcase - Highlights",
+            icon: Sparkles,
             color: "from-secondary/10",
-            video: "https://assets.mixkit.co/videos/preview/mixkit-fashion-model-dancing-at-night-42412-large.mp4",
-            desc: "A deep dive into the urban fashion revolution and sustainable manufacturing."
+            img: "https://ik.imagekit.io/fmldynl4j4/folder/P1304559.JPG",
+            desc: "Where traditional craftsmanship meets contemporary design innovation."
+        },
+        {
+            title: "Annual Talent Showcase - Highlights",
+            icon: Camera,
+            color: "from-primary/10",
+            img: "https://ik.imagekit.io/fmldynl4j4/folder/4A9B6490%20(1).jpg",
+            desc: "Intricate detailing and avant-garde silhouettes defining the next trend."
+        },
+        {
+            title: "Annual Talent Showcase - Highlights",
+            icon: Sparkles,
+            color: "from-secondary/10",
+            img: "https://ik.imagekit.io/fmldynl4j4/folder/DSC08535.JPG",
+            desc: "A celebration of student creativity on the prestigious runway stage."
+        },
+        {
+            title: "Annual Talent Showcase - Highlights",
+            icon: Camera,
+            color: "from-primary/10",
+            img: "https://ik.imagekit.io/fmldynl4j4/folder/P1304076.JPG",
+            desc: "Pioneering new aesthetics through sustainable and urban design concepts."
+        },
+        {
+            title: "Annual Talent Showcase - Highlights",
+            icon: Sparkles,
+            color: "from-secondary/10",
+            img: "https://ik.imagekit.io/fmldynl4j4/folder/DSC09094.JPG",
+            desc: "Final looks that left a lasting impression on the global design community."
+        },
+        {
+            title: "Annual Talent Showcase - Highlights",
+            icon: Camera,
+            color: "from-primary/10",
+            img: "https://ik.imagekit.io/fmldynl4j4/folder/DSC09115.JPG",
+            desc: "The pinnacle of artistic expression from our graduating cohorts."
         }
     ];
 
     const timesFashionEvents = [
+        {
+            title: "Runway Showcase 09",
+            img: "https://ik.imagekit.io/fmldynl4j4/events-toi/283271316_148311721053997_7512848085186064548_n.webp",
+            desc: "The pinnacle of craftsmanship where every stitch tells a story of innovation."
+        },
+        {
+            title: "Runway Showcase 10",
+            img: "https://ik.imagekit.io/fmldynl4j4/events-toi/3.webp",
+            desc: "Final looks from a collection that set the national runway ablaze."
+        },
         {
             title: "Runway Showcase 01",
             img: "https://ik.imagekit.io/fmldynl4j4/events-toi/1.webp",
@@ -92,16 +116,6 @@ const Events = () => {
             title: "Runway Showcase 08",
             img: "https://ik.imagekit.io/fmldynl4j4/events-toi/283066658_7583834778323341_3664188590159620889_n.webp",
             desc: "Bold patterns and revolutionary draping techniques at the heart of the showcase."
-        },
-        {
-            title: "Runway Showcase 09",
-            img: "https://ik.imagekit.io/fmldynl4j4/events-toi/283271316_148311721053997_7512848085186064548_n.webp",
-            desc: "The pinnacle of craftsmanship where every stitch tells a story of innovation."
-        },
-        {
-            title: "Runway Showcase 10",
-            img: "https://ik.imagekit.io/fmldynl4j4/events-toi/3.webp",
-            desc: "Final looks from a collection that set the national runway ablaze."
         }
     ];
 
@@ -187,10 +201,10 @@ const Events = () => {
                                         muted
                                         loop
                                         playsInline
-                                        className="w-full h-full object-cover grayscale brightness-50 hover:grayscale-0 transition-all duration-1000"
+                                        className="w-full h-full object-cover brightness-50 transition-all duration-1000"
                                     />
                                 ) : (
-                                    <img src={showcaseEvents[showcaseIndex].img} className="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 transition-all duration-1000" alt="" />
+                                    <img src={showcaseEvents[showcaseIndex].img} className="w-full h-full object-cover brightness-75 transition-all duration-1000" alt="" />
                                 )}
                                 <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
 
