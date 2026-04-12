@@ -14,6 +14,7 @@ import admissionRoutes from './routes/admission.js';
 import parisRoutes from './routes/paris.js';
 import partnerRoutes from './routes/partner.js';
 import contactRoutes from './routes/contact.js';
+import blogRoutes from './routes/blogs.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -85,6 +86,7 @@ app.use('/api/admission', admissionRoutes);
 app.use('/api/paris', parisRoutes);
 app.use('/api/partner', partnerRoutes);
 app.use('/api/contact', contactRoutes);
+app.use('/api/blogs', blogRoutes);
 
 // Start Server locally
 if (process.env.NODE_ENV !== 'production') {
