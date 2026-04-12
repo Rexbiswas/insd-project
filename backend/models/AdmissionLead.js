@@ -17,17 +17,21 @@ const AdmissionLeadSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    state: {
+        type: String
+    },
     centre: {
-        type: String,
-        required: true
+        type: String
     },
     program: {
-        type: String,
-        required: true
+        type: String
     },
     course: {
-        type: String,
-        required: true
+        type: String
+    },
+    referred: {
+        type: Boolean,
+        default: false
     },
     marketingConsent: {
         type: Boolean,

@@ -1,5 +1,6 @@
 import express from 'express';
 import StepLead from '../models/StepLead.js';
+import { sendSMS, sendWelcomeEmail } from '../utils/notifications.js';
 
 const router = express.Router();
 
@@ -23,20 +24,13 @@ router.post('/', async (req, res) => {
 
         const savedLead = await newLead.save();
 
-        // Send notifications if consent was given
-        if (marketingConsent) {
-            const { sendSMS, sendWelcomeEmail, sendWhatsApp } = await import('../utils/notifications.js');
-            console.log(`[Marketing Consent] StepLead ${name} opted in. Processing notifications...`);
-            
-            Promise.allSettled([
-                sendWelcomeEmail(email, name, "Career Roadmap"),
-                sendSMS(mobile, name)
-                // WhatsApp disabled as per UI change
-                // sendWhatsApp(mobile, name)
-            ]).then(() => {
-                console.log(`[Notifications] Processed for ${name}`);
-            });
-        }
+        // Send notifications
+        Promise.allSettled([
+            sendWelcomeEmail(email, name, "Career Roadmap"),
+            sendSMS(mobile, name)
+        ]).then(() => {
+            console.log(`[Notifications] Processed for ${name}`);
+        }).catch(err => console.error('[Notification Error]', err.message));
 
         res.status(201).json({ success: true, lead: savedLead });
     } catch (err) {

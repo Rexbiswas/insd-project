@@ -1,50 +1,29 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { CheckCircle2, ChevronDown, Send, User, Phone, Mail, IndianRupee, MapPin, Building, Info } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { CheckCircle2, ChevronDown, Send } from 'lucide-react';
+import { stateCityData } from '../data/locations';
 
 const AdmissionFormWhite = ({ isModal = false }) => {
     const [formData, setFormData] = useState({
         name: '',
         mobile: '',
         email: '',
-        investment: '',
-        preference: '',
         state: '',
-        location: '',
+        city: '',
         referred: false
     });
 
     const [status, setStatus] = useState('idle'); // idle, loading, success, error
     const [touched, setTouched] = useState({});
 
-    const investments = [
-        "Select Investment",
-        "₹5 Lakhs - ₹10 Lakhs",
-        "₹10 Lakhs - ₹15 Lakhs",
-        "₹15 Lakhs - ₹20 Lakhs",
-        "₹20 Lakhs+"
-    ];
-
-    const preferences = [
-        "Select Preference",
-        "Immediately",
-        "within 3 months",
-        "within 6 months",
-        "No Preference"
-    ];
-
-    const states = [
-        "Select State",
-        "Assam", "Andhra Pradesh", "Bihar", "Delhi", "Gujarat", "Haryana", 
-        "Karnataka", "Kerala", "Maharashtra", "Punjab", "Rajasthan", "Tamil Nadu", 
-        "Telangana", "Uttar Pradesh", "West Bengal"
-    ];
+    const states = ["Select State", ...Object.keys(stateCityData)];
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         setFormData(prev => ({
             ...prev,
-            [name]: type === 'checkbox' ? checked : value
+            [name]: type === 'checkbox' ? checked : value,
+            ...(name === 'state' ? { city: '' } : {})
         }));
     };
 
@@ -56,14 +35,28 @@ const AdmissionFormWhite = ({ isModal = false }) => {
         e.preventDefault();
         setStatus('loading');
         
-        // Simulate API call
-        setTimeout(() => {
-            setStatus('success');
-            setFormData({
-                name: '', mobile: '', email: '', investment: '', 
-                preference: '', state: '', location: '', referred: false
+        try {
+            const response = await fetch('/api/admission', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                   ...formData,
+                   marketingConsent: true // Admission inquiries usually imply consent for contact
+                })
             });
-        }, 1500);
+
+            if (response.ok) {
+                setStatus('success');
+                setFormData({
+                    name: '', mobile: '', email: '', state: '', city: '', referred: false
+                });
+            } else {
+                throw new Error("Submission failed");
+            }
+        } catch (error) {
+            console.error('Submission error:', error);
+            setStatus('error');
+        }
     };
 
     if (status === 'success') {
@@ -125,50 +118,64 @@ const AdmissionFormWhite = ({ isModal = false }) => {
                         className="w-full h-14 bg-slate-50 border-2 border-slate-100 rounded-xl px-6 text-slate-900 font-medium focus:outline-none focus:border-primary focus:bg-white transition-all placeholder:text-slate-300"
                     />
                 )}
-                {options && <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" size={20} />}
-                
-                {touched[name] && required && !formData[name] && (
-                    <motion.p 
-                        initial={{ opacity: 0, y: -5 }} 
-                        animate={{ opacity: 1, y: 0 }}
-                        className="absolute -bottom-6 left-0 text-red-500 text-xs font-bold uppercase tracking-wider"
-                    >
-                        {label} is required
-                    </motion.p>
+                {options && (
+                    <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400 group-focus-within:text-primary transition-colors">
+                        <ChevronDown size={20} />
+                    </div>
                 )}
             </div>
         </div>
     );
 
     return (
-        <div id="admission-form-white" className="w-full max-w-4xl mx-auto bg-white rounded-[40px] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden border border-slate-100">
-            <div className="p-8 md:p-16 space-y-12">
-                <div className="space-y-6">
-                    <h2 className="text-3xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter">
-                        From Classroom <span className="text-primary italic">to Career</span>
-                    </h2>
-                    <div className="h-1 w-full bg-slate-900/5 rounded-full overflow-hidden">
-                        <motion.div 
-                            initial={{ width: 0 }}
-                            whileInView={{ width: "100%" }}
-                            transition={{ duration: 1.5, ease: "easeOut" }}
-                            className="h-full bg-primary"
+        <div className={`w-full ${isModal ? '' : 'py-20 px-6 bg-[#f3f3f3]'}`}>
+            <div className="max-w-4xl mx-auto">
+                <form onSubmit={handleSubmit} className="bg-white rounded-[2.5rem] p-8 md:p-16 shadow-2xl border border-white space-y-12">
+                    <div className="space-y-4 text-center">
+                        <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter">
+                            ADMISSIONS <span className="text-primary italic">OPEN.</span>
+                        </h1>
+                        <p className="text-slate-500 font-medium text-lg">
+                            Begin your creative journey with India's leading design school.
+                        </p>
+                    </div>
+
+                    <div className="space-y-8">
+                        <FormField 
+                            label="Your Name" 
+                            name="name" 
+                            placeholder="Full Name" 
+                            required 
+                        />
+                        <FormField 
+                            label="Mobile Number" 
+                            name="mobile" 
+                            type="tel" 
+                            placeholder="+91" 
+                            required 
+                        />
+                        <FormField 
+                            label="Email Address" 
+                            name="email" 
+                            type="email" 
+                            placeholder="email@example.com" 
+                            required 
+                        />
+                        <FormField 
+                            label="State" 
+                            name="state" 
+                            options={states} 
+                            required 
+                        />
+                        <FormField 
+                            label="City" 
+                            name="city" 
+                            options={["Select City", ...(formData.state ? stateCityData[formData.state] : [])]} 
+                            required 
                         />
                     </div>
-                </div>
 
-                <form onSubmit={handleSubmit} className="space-y-8">
-                    <div className="space-y-6">
-                        <FormField label="Name" name="name" placeholder="Enter your full name" required />
-                        <FormField label="Mobile" name="mobile" type="tel" placeholder="Enter mobile number" required />
-                        <FormField label="Email Id" name="email" type="email" placeholder="Enter email address" required />
-                        <FormField label="Investment" name="investment" options={investments} required />
-                        <FormField label="Preference" name="preference" options={preferences} required />
-                        <FormField label="State" name="state" options={states} required />
-                        <FormField label="Location" name="location" placeholder="Enter your location" required />
-                    </div>
-
-                    <div className="flex flex-col items-center pt-8 space-y-8">
+                    <div className="pt-8 flex flex-col items-center gap-8">
                         <label className="flex items-center gap-4 cursor-pointer group/refer">
                             <div className={`w-6 h-6 rounded-md border-2 flex items-center justify-center transition-all ${formData.referred ? 'bg-primary border-primary' : 'border-slate-300 group-hover/refer:border-primary'}`}>
                                 {formData.referred && <CheckCircle2 className="text-white w-4 h-4" />}

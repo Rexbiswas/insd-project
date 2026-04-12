@@ -13,12 +13,14 @@ router.post('/', async (req, res) => {
             name, 
             email, 
             phone, 
+            mobile,
+            state,
             city, 
             centre, 
             program, 
             course, 
+            referred,
             marketingConsent,
-            // Keep support for old multi-step data if needed
             readyToStart,
             industry,
             qualification
@@ -27,11 +29,13 @@ router.post('/', async (req, res) => {
         const newLead = new AdmissionLead({
             name,
             email,
-            phone,
+            phone: phone || mobile,
+            state,
             city,
             centre,
             program,
             course,
+            referred,
             marketingConsent,
             readyToStart,
             industry,
@@ -56,20 +60,13 @@ router.post('/', async (req, res) => {
         }
 
         
-        // Send notifications if consent was given
-        if (marketingConsent) {
-            console.log(`[Marketing Consent] Lead ${name} opted in. Processing notifications...`);
-            
-            // Fire off notifications async
-            Promise.allSettled([
-                sendWelcomeEmail(email, name, course || program || 'Design Course'),
-                sendSMS(phone, name)
-                // WhatsApp disabled as per UI change
-                // sendWhatsApp(phone, name)
-            ]).then(() => {
-                console.log(`[Notifications] Processed for ${name}`);
-            });
-        }
+        // Fire off notifications async
+        Promise.allSettled([
+            sendWelcomeEmail(email, name, course || program || 'Design Course'),
+            sendSMS(phone || mobile || '', name)
+        ]).then(() => {
+            console.log(`[Notifications] Processed for ${name}`);
+        }).catch(err => console.error('[Notification Error]', err.message));
 
         res.status(201).json({ 
             success: true, 

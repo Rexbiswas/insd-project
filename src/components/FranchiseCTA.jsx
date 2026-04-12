@@ -11,6 +11,7 @@ import {
     ChevronDown,
     Check
 } from 'lucide-react';
+import { stateCityData as locationsData } from '../data/locations';
 
 const CustomDropdown = ({ label, options, placeholder, value, onChange }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -70,42 +71,46 @@ const CustomDropdown = ({ label, options, placeholder, value, onChange }) => {
     );
 };
 
-const locationsData = {
-    "Andhra Pradesh": ["Vishakhapattnam", "Anantapur", "Guntur", "Kadappa", "Kakinada", "Kurnool", "Nellor", "Rajamundari", "Tirupati", "Vizianagram", "Eluru", "Machhlipattnam", "Nandayal", "Ongole"],
-    "Assam": ["Guwahati", "Dibrugarh", "Jorhat", "Nagaon", "Silchar"],
-    "Bihar": ["Patna", "Ara", "Begusarai", "Bhagalpur", "Biharsharif", "Darbhanga", "Gaya", "Mungher", "Muzaffarpur", "Purnea", "Katihar", "Sasaram"],
-    "Chhatisgarh": ["Raipur", "Bhilai", "Bilaspur", "Durg", "Korba"],
-    "Delhi/NCR": ["Delhi", "Faridabad", "Ghzaiabad", "Gurugram", "Noida", "Greater Noida"],
-    "Goa": ["North Goa", "South Goa"],
-    "Gujarat": ["Ahmedabad", "Rajkot", "Surat", "Vadodara", "Bardoli", "Jamnagar", "Junagarh", "Idar", "Rapar", "Songarh"],
-    "Haryana": ["Ambala", "Bhiwani", "Karnal", "Panipat", "Rohtak", "Panchkula", "Sonipat", "Yamunanagar"],
-    "Himachal Pradesh": ["Baddi", "Dharamshala", "Hamirpur", "Kullu", "Mandi", "Nahan", "Palampur", "Shimla", "Solan", "Una"],
-    "J & K": ["Sri Nagar", "Anantnag"],
-    "Jharkhand": ["Dhanbad", "Jamshedpur", "Ranchi", "Bokaro", "Deoghar"],
-    "Karnataka": ["Benagaluru", "Belgaun", "Hubballi", "Mangalore", "Bijapur", "Udupi"],
-    "Kerala": ["Thiruvananthapuram", "Kochi", "Kollam", "Kozhikod", "Allapuzha", "Mallapuram", "Palakkad"],
-    "Madhya Pradesh": ["Bhopal", "Gwallior", "Indore", "Jabalpur", "Sagar", "Ujjain", "Dewas", "Ratlam", "Rewa", "Satna"],
-    "Maharashtra": ["Kalyan/Dombivli", "Mumbai", "Nagpur", "Nashik", "Navi Mumbai", "Pune", "Sambhaji Nagar", "Thane", "Ahmednagar", "Akola", "Bhiwandi", "Chandrapur", "Dhule", "Jalgaon", "Kolhapur", "Latur", "Malegaon", "Mira-Bhayandar", "Sangli-miraj-kupwad", "Solapur", "Ulhashnagar", "Parbhani"],
-    "Manipur": ["Imphal West", "Senapati", "Churachandpur"],
-    "Mijoram": ["Aizwal", "Champhai", "Lunglei"],
-    "Nagaland": ["Dimapur", "Kohima", "Mon"],
-    "Odisha": ["Bhubneshwar", "Cuttack", "Balasore", "Berhampur", "Puri", "Rourkela", "Sambhal pur"],
-    "Punjab": ["Amritsar", "Ludhiana", "Bathinda", "Jalandhar", "Mohali (SAS Nagar)", "Patiala", "Zirakpur", "Firozpur", "Hoshiarpur", "Khanna", "Moga", "Pathankot", "Phagwara"],
-    "Rajasthan": ["Jaipur", "Jodhpur", "Ajmer", "Alwar", "Bikaner", "Udaipur", "Bharatpur", "Pali", "Sikar", "Sri Ganganagar"],
-    "Sikkim": ["Gangtok", "Namchi"],
-    "Tamilnadu": ["Chennai", "Coimbatore", "Madurai", "Tambaram", "Trippur", "Avadi", "Erode", "Hosur", "Nagarcoil", "Salem", "Tirunaveli", "Trichy", "Tuticorin", "Vellore"],
-    "Telengana": ["Hydrabad", "Karimnagar", "Nizamabad", "Warangal", "Godavarikhani", "Ramagundam", "Secundrabad"],
-    "Tripura": ["Agartala", "Dharmanagar"],
-    "Uttar Pradesh": ["Agra", "Kanpur", "Lucknow", "Meerut", "Varanasi", "Aligarh", "Ayodhya", "Bareilly", "Firozabad", "Gorakhpur", "Jhansi", "Mathura", "Moradabad", "Muzaffarnagar", "Rampur", "Saharanpur", "Amroha", "Budaun", "Bulandshahr", "Etawah", "Farrukhabad", "Mau", "Mirzapur", "Shahjahanpur"]
-};
+// locationsData import replaces local definition
 
 const FranchiseCTA = () => {
     const [formData, setFormData] = useState({
+        name: '',
+        mobile: '',
+        email: '',
         investment: '',
         preference: '',
         state: '',
-        city: ''
+        city: '',
+        referred: false
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        try {
+            const response = await fetch('/api/partner/leads', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+            if (response.ok) {
+                setIsSuccess(true);
+                setFormData({
+                    name: '', mobile: '', email: '', investment: '', preference: '', state: '', city: '', referred: false
+                });
+            } else {
+                throw new Error("Submission failed");
+            }
+        } catch (error) {
+            console.error('Franchise submission error:', error);
+            alert("There was an error. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
     const pointers = [
         {
@@ -204,103 +209,144 @@ const FranchiseCTA = () => {
                                 <p className="text-slate-500 font-medium text-sm">Join India's most prestigious design education network. Share your details below.</p>
                             </div>
 
-                            <form className="space-y-6">
-                                {/* Name */}
-                                <div className="space-y-2">
-                                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-4">Full Name</label>
-                                    <input 
-                                        type="text" 
-                                        placeholder="Enter your name"
-                                        className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-6 py-4 outline-none text-slate-900 font-medium focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all"
-                                    />
-                                </div>
-
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    {/* Mobile */}
+                            {!isSuccess ? (
+                                <form onSubmit={handleSubmit} className="space-y-6">
+                                    {/* Name */}
                                     <div className="space-y-2">
-                                        <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-4">Mobile Number</label>
+                                        <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-4">Full Name</label>
                                         <input 
-                                            type="tel" 
-                                            placeholder="+91"
+                                            type="text" 
+                                            required
+                                            value={formData.name}
+                                            onChange={(e) => setFormData({...formData, name: e.target.value})}
+                                            placeholder="Enter your name"
                                             className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-6 py-4 outline-none text-slate-900 font-medium focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all"
                                         />
                                     </div>
 
-                                    {/* Email */}
-                                    <div className="space-y-2">
-                                        <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-4">Email Address</label>
-                                        <input 
-                                            type="email" 
-                                            placeholder="your@email.com"
-                                            className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-6 py-4 outline-none text-slate-900 font-medium focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all"
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        {/* Mobile */}
+                                        <div className="space-y-2">
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-4">Mobile Number</label>
+                                            <input 
+                                                type="tel" 
+                                                required
+                                                value={formData.mobile}
+                                                onChange={(e) => setFormData({...formData, mobile: e.target.value})}
+                                                placeholder="+91"
+                                                className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-6 py-4 outline-none text-slate-900 font-medium focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all"
+                                            />
+                                        </div>
+
+                                        {/* Email */}
+                                        <div className="space-y-2">
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-4">Email Address</label>
+                                            <input 
+                                                type="email" 
+                                                required
+                                                value={formData.email}
+                                                onChange={(e) => setFormData({...formData, email: e.target.value})}
+                                                placeholder="your@email.com"
+                                                className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-6 py-4 outline-none text-slate-900 font-medium focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        {/* Investment Dropdown */}
+                                        <CustomDropdown 
+                                            label="Investment"
+                                            placeholder="Select Investment"
+                                            options={["25 to 30 Lakhs", "30 to 40 Lakhs"]}
+                                            value={formData.investment}
+                                            onChange={(val) => setFormData({...formData, investment: val})}
+                                        />
+
+                                        {/* Preference Dropdown */}
+                                        <CustomDropdown 
+                                            label="Preference"
+                                            placeholder="Select Preference"
+                                            options={["Immediately", "within 3 months", "within 6 months", "No Preference"]}
+                                            value={formData.preference}
+                                            onChange={(val) => setFormData({...formData, preference: val})}
                                         />
                                     </div>
-                                </div>
 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    {/* Investment Dropdown */}
-                                    <CustomDropdown 
-                                        label="Investment"
-                                        placeholder="Select Investment"
-                                        options={["25 to 30 Lakhs", "30 to 40 Lakhs"]}
-                                        value={formData.investment}
-                                        onChange={(val) => setFormData({...formData, investment: val})}
-                                    />
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        {/* State Dropdown */}
+                                        <CustomDropdown 
+                                            label="State"
+                                            placeholder="Select State"
+                                            options={states}
+                                            value={formData.state}
+                                            onChange={(val) => setFormData({...formData, state: val, city: ''})}
+                                        />
 
-                                    {/* Preference Dropdown */}
-                                    <CustomDropdown 
-                                        label="Preference"
-                                        placeholder="Select Preference"
-                                        options={["Immediately", "within 3 months", "within 6 months", "No Preference"]}
-                                        value={formData.preference}
-                                        onChange={(val) => setFormData({...formData, preference: val})}
-                                    />
-                                </div>
+                                        {/* City Dropdown - Dependent on State */}
+                                        <CustomDropdown 
+                                            label="Target City"
+                                            placeholder={formData.state ? "Select City" : "Select State First"}
+                                            options={cities}
+                                            value={formData.city}
+                                            onChange={(val) => setFormData({...formData, city: val})}
+                                        />
+                                    </div>
 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    {/* State Dropdown */}
-                                    <CustomDropdown 
-                                        label="State"
-                                        placeholder="Select State"
-                                        options={states}
-                                        value={formData.state}
-                                        onChange={(val) => setFormData({...formData, state: val, city: ''})}
-                                    />
+                                    {/* Referred Checkbox */}
+                                    <div 
+                                        onClick={() => setFormData({...formData, referred: !formData.referred})}
+                                        className="flex items-center gap-4 px-2 py-4 bg-slate-50 rounded-2xl border border-slate-100 hover:border-slate-300 transition-colors cursor-pointer group"
+                                    >
+                                        <input 
+                                            type="checkbox" 
+                                            id="referred" 
+                                            checked={formData.referred}
+                                            onChange={() => {}} // Handled by div click
+                                            className="w-5 h-5 accent-primary cursor-pointer" 
+                                        />
+                                        <label htmlFor="referred" className="text-xs font-bold text-slate-600 cursor-pointer group-hover:text-slate-900 transition-colors">Were you referred by someone?</label>
+                                    </div>
 
-                                    {/* City Dropdown - Dependent on State */}
-                                    <CustomDropdown 
-                                        label="Target City"
-                                        placeholder={formData.state ? "Select City" : "Select State First"}
-                                        options={cities}
-                                        value={formData.city}
-                                        onChange={(val) => setFormData({...formData, city: val})}
-                                    />
-                                </div>
-
-                                {/* Referred Checkbox */}
-                                <div className="flex items-center gap-4 px-2 py-4 bg-slate-50 rounded-2xl border border-slate-100 hover:border-slate-300 transition-colors cursor-pointer group">
-                                    <input type="checkbox" id="referred" className="w-5 h-5 accent-primary cursor-pointer" />
-                                    <label htmlFor="referred" className="text-xs font-bold text-slate-600 cursor-pointer group-hover:text-slate-900 transition-colors">Were you referred by someone?</label>
-                                </div>
-
-                                {/* Submit Button */}
-                                <div className="pt-4">
-                                    <button className="w-full bg-slate-900 text-white font-black uppercase tracking-[0.3em] py-6 rounded-2xl hover:bg-primary transition-all duration-500 shadow-2xl shadow-slate-900/20 flex items-center justify-center gap-4 group">
-                                        <span>Submit Application</span>
-                                        <Send size={20} className="group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-500" />
+                                    {/* Submit Button */}
+                                    <div className="pt-4">
+                                        <button 
+                                            type="submit"
+                                            disabled={isSubmitting}
+                                            className="w-full bg-slate-900 text-white font-black uppercase tracking-[0.3em] py-6 rounded-2xl hover:bg-primary transition-all duration-500 shadow-2xl shadow-slate-900/20 flex items-center justify-center gap-4 group disabled:opacity-50"
+                                        >
+                                            <span>{isSubmitting ? 'Submitting...' : 'Submit Application'}</span>
+                                            <Send size={20} className="group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-500" />
+                                        </button>
+                                    </div>
+                                    
+                                    <p className="text-center text-[10px] text-slate-400 font-bold uppercase tracking-widest pt-2">
+                                        Official Partnership Inquiry . Secure
+                                    </p>
+                                </form>
+                            ) : (
+                                <motion.div 
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    className="py-20 text-center space-y-6"
+                                >
+                                    <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto text-primary">
+                                        <Check size={40} />
+                                    </div>
+                                    <h3 className="text-3xl font-black uppercase tracking-tight">Application Sent!</h3>
+                                    <p className="text-slate-500 font-medium">Thank you for your interest. Our partnership team will contact you shortly.</p>
+                                    <button 
+                                        onClick={() => setIsSuccess(false)}
+                                        className="text-primary font-bold uppercase tracking-widest text-xs hover:underline"
+                                    >
+                                        Submit another
                                     </button>
-                                </div>
-                                
-                                <p className="text-center text-[10px] text-slate-400 font-bold uppercase tracking-widest pt-2">
-                                    Official Partnership Inquiry . Secure
-                                </p>
-                            </form>
+                                </motion.div>
+                            )}
                         </div>
 
                         {/* Ambient Glow */}
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-primary/5 blur-[120px] rounded-full -z-0" />
                     </motion.div>
-
                 </div>
             </div>
         </section>

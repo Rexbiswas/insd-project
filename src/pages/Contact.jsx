@@ -22,15 +22,30 @@ const Contact = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        setIsSubmitting(false);
-        setIsSuccess(true);
-        // Reset after delay
-        setTimeout(() => {
-            setIsSuccess(false);
-            setFormState({ name: '', email: '', phone: '', subject: '', message: '' });
-        }, 5000);
+        
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formState)
+            });
+
+            if (response.ok) {
+                setIsSuccess(true);
+                // Reset after delay
+                setTimeout(() => {
+                    setIsSuccess(false);
+                    setFormState({ name: '', email: '', phone: '', subject: '', message: '' });
+                }, 5000);
+            } else {
+                throw new Error("Failed to send message");
+            }
+        } catch (error) {
+            console.error('Contact error:', error);
+            alert("Connection error. Please try again later.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleChange = (e) => {
