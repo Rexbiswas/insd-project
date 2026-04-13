@@ -8,25 +8,18 @@ import {
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
+import { stateCityData } from '../data/locations';
 
 const Centers = () => {
-    const centerList = [
-        { city: "New Delhi", location: "South Delhi (Flagship)", region: "North", address: "Okhla Phase III", type: "Flagship" },
-        { city: "New Delhi", location: "North Delhi", region: "North", address: "Guptanagar", type: "Innovation Hub" },
-        { city: "Mumbai", location: "Andheri West", region: "West", address: "Creative Plaza", type: "Media Hub" },
-        { city: "Mumbai", location: "Kandivali", region: "West", address: "Link Road", type: "Design Hub" },
-        { city: "Pune", location: "Koregaon Park", region: "West", address: "Lanes of Lane 7", type: "Luxury Hub" },
-        { city: "Bangalore", location: "Indiranagar", region: "South", address: "100ft Road", type: "Tech Hub" },
-        { city: "Hyderabad", location: "Banjara Hills", region: "South", address: "Road No 12", type: "Heritage Hub" },
-        { city: "Kolkata", location: "Salt Lake", region: "East", address: "Sector V", type: "Artistic Hub" },
-        { city: "Ahmedabad", location: "Satellite", region: "West", address: "SG Highway", type: "Couture Hub" },
-        { city: "Chennai", location: "Nungambakkam", region: "South", address: "Sterling Road", type: "Design Lab" },
-        { city: "Lucknow", location: "Gomti Nagar", region: "North", address: "Vibhuti Khand", type: "Regional Hub" },
-        { city: "Chandigarh", location: "Sector 17", region: "North", address: "Main City Centre", type: "Modernist Hub" },
-        { city: "Jaipur", location: "Malviya Nagar", region: "North", address: "GT Central", type: "Heritage Hub" },
-        { city: "Indore", location: "Vijay Nagar", region: "Central", address: "Scheme No 54", type: "Central Hub" },
-        { city: "Bhopal", location: "Arera Colony", region: "Central", address: "E-3 Colony", type: "Studio Hub" }
-    ];
+    const centerList = Object.entries(stateCityData).flatMap(([state, cities]) => 
+        cities.map(city => ({
+            city: city,
+            location: state, // Using state as location text as requested
+            region: "INSD", 
+            address: `${city} City Center`,
+            type: "Campus"
+        }))
+    );
 
     const filteredCenters = centerList;
 
