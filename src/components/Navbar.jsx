@@ -526,18 +526,7 @@ const Navbar = () => {
                     </AnimatePresence>
 
 
-                    {/* Download Prospectus Button - Desktop */}
-                    <a
-                        href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" 
-                        download="INSD-Prospectus-2026.pdf"
-                        className={`group relative hidden lg:flex items-center gap-2 px-6 py-2.5 rounded-full overflow-hidden shadow-lg transition-all duration-300 ${isHeaderDark && !isScrolled ? 'bg-white/10 text-white border-white/20' : 'bg-slate-100 text-slate-900 border-slate-200'} border backdrop-blur-md`}
-                    >
-                        <div className="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                        <FileDown size={16} className="relative z-10 group-hover:text-white transition-colors" />
-                        <span className="relative z-10 font-black text-[10px] tracking-widest group-hover:text-white transition-colors uppercase">
-                            Prospectus
-                        </span>
-                    </a>
+                    
 
                     {/* Menu Toggle - Desktop Only */}
                     <motion.button

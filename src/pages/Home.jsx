@@ -29,7 +29,7 @@ import InsdDifference from '../components/InsdDifference';
 import IndustryInsights from '../components/IndustryInsights';
 import AdmissionFormWhite from '../components/AdmissionFormWhite';
 import HeroSlider from '../components/HeroSlider';
-import { ArrowRight, CheckCircle2, Sparkles, Briefcase, Rocket } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Sparkles, Briefcase, Rocket, FileDown } from 'lucide-react';
 import PlacementPartners from '../components/PlacementPartners';
 import SuccessStory from '../components/SuccessStory';
 import { useAdmissionModal } from '../context/AdmissionModalContext';
@@ -299,167 +299,138 @@ const Home = () => {
             />
 
             {/* Hero Split Section */}
-            <div ref={heroRef} className="relative z-10 min-h-screen w-full flex flex-col bg-slate-950/2 md:bg-white overflow-hidden pt-24 md:pt-32 cursor-default">
-                {/* Visual Elements & Form Row */}
-                <div className="w-full flex flex-col md:flex-row md:items-stretch justify-center md:px-12 mb-12">
-                    {/* Left Side: Carousel */}
-                    <div className="w-full md:w-[45%] h-[65vh] md:h-auto flex flex-col justify-center items-center p-4 md:p-8 relative overflow-hidden">
-                        <HeroSlider isMobile={isMobile} />
-                    </div>
-
-                    {/* Right Side: Admission Form */}
-                    <div className="w-full md:w-[50%] flex flex-col justify-center items-center p-4 md:p-8 relative z-20">
-                        <div className="w-full h-full max-w-xl bg-white rounded-4xl md:rounded-[2.5rem] shadow-3xl overflow-hidden border border-slate-200 origin-center transform md:scale-95 hover:scale-100 transition-transform duration-500">
-                            <AdmissionFormWhite isModal={true} />
-                        </div>
-                    </div>
-                </div>
-
-                {/* Monumental Centered Heading Section */}
-                <div className="w-full text-center px-5 md:px-12 mb-16 md:mb-24 relative z-30">
+            <div ref={heroRef} className="relative z-10 min-h-screen w-full flex flex-col md:flex-row bg-white overflow-hidden pt-20 md:pt-0 cursor-default">
+                
+                {/* Left Side: Content & Headlines */}
+                <div className="w-full md:w-[55%] flex flex-col justify-center px-6 md:px-16 lg:px-24 py-12 md:py-32 space-y-8 md:space-y-12 relative z-20">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0, x: -30 }}
+                        animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 1, ease: "easeOut" }}
-                        className="flex flex-col items-center justify-center space-y-4 md:space-y-6"
+                        className="space-y-6"
                     >
                         {/* Institutional Tagline */}
-                        <div className="flex items-center gap-4 mb-2">
-                            <div className="w-12 h-px bg-slate-200" />
-                            <span className="text-[9px] md:text-xs font-black uppercase tracking-[0.4em] text-slate-400">The INSD Advantage</span>
-                            <div className="w-12 h-px bg-slate-200" />
+                        <div className="flex items-center gap-4">
+                            <span className="text-[9px] md:text-xs font-black uppercase tracking-[0.4em] text-primary">The INSD Advantage</span>
+                            <div className="w-12 h-px bg-primary/20" />
                         </div>
 
-                        {/* Centered Monumental Title */}
-                        <div className="w-full flex flex-col items-center gap-10 md:gap-14 animate-in fade-in slide-in-from-top-12 duration-1000">
-                            {/* Value Transformation Line */}
-                            <div className="flex flex-col items-center text-center space-y-4">
-                                <motion.div
-                                    initial={{ opacity: 0, letterSpacing: "0.2em" }}
-                                    animate={{ opacity: 1, letterSpacing: "0.45em" }}
-                                    className="text-primary font-black uppercase text-[10px] md:text-sm tracking-[0.45em] drop-shadow-sm"
-                                >
-                                    Global Design Excellence
-                                </motion.div>
-                                <p className="text-slate-800 font-bold text-xl md:text-3xl tracking-tight max-w-3xl leading-tight px-6 h-auto">
-                                    Skill-based Education <span className="opacity-20 text-slate-400 mx-2 md:mx-4">•</span>
-                                    Industry Preparation <span className="opacity-20 text-slate-400 mx-2 md:mx-4">•</span>
-                                    Launching Careers
-                                </p>
-                            </div>
-
-                            {/* High-Impact Statistics Strip */}
-                            <div className="relative w-full max-w-6xl mx-auto">
-                                <div className="absolute inset-0 bg-primary/5 rounded-[3rem] md:rounded-full blur-3xl" />
-                                <div className="relative bg-white/40 backdrop-blur-3xl border border-white/40 rounded-[3rem] md:rounded-full px-8 md:px-16 py-8 md:py-10 shadow-[0_40px_120px_-30px_rgba(0,0,0,0.1)] flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 overflow-hidden group/stats">
-                                    {/* Glass Shine */}
-                                    <div className="absolute top-0 -left-full w-full h-full bg-linear-to-r from-transparent via-white/20 to-transparent group-hover/stats:animate-shimmer" />
-
-                                    {/* Stat 1 */}
-                                    <div className="text-center group/item transition-transform duration-500 hover:scale-105">
-                                        <span className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Highest Package</span>
-                                        <h3 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter">
-                                            RS 18 <span className="text-primary font-black text-2xl md:text-4xl ml-1">LPA</span>
-                                        </h3>
-                                    </div>
-
-                                    <div className="hidden md:block w-px h-16 bg-slate-200/50" />
-
-                                    {/* Stat 2 */}
-                                    <div className="text-center group/item transition-transform duration-500 hover:scale-105">
-                                        <span className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Success Track</span>
-                                        <h3 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter">
-                                            2000+ <span className="text-primary italic font-black text-2xl md:text-4xl ml-1">PLACEMENTS</span>
-                                        </h3>
-                                    </div>
-
-                                    <div className="hidden md:block w-px h-16 bg-slate-200/50" />
-
-                                    {/* Stat 3 */}
-                                    <div className="text-center group/item transition-transform duration-500 hover:scale-105">
-                                        <span className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Career Assurance</span>
-                                        <h3 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter">
-                                            100% <span className="text-primary font-black text-2xl md:text-4xl ml-1">SUPPORT</span>
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Monumental Trust Line */}
-                        <div className="mt-12 md:mt-16 flex flex-col items-center gap-6 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
-                            <div className="px-8 py-3 bg-slate-900/5 backdrop-blur-xl border border-slate-200/50 rounded-full flex flex-wrap items-center justify-center gap-x-8 gap-y-3 shadow-sm group/trust">
-                                {[
-                                    { val: "15+", label: "Years Legacy" },
-                                    { val: "15,000+", label: "Students" },
-                                    { val: "75+", label: "Centres Across India" }
-                                ].map((trust, i) => (
-                                    <div key={i} className="flex items-center gap-2 group/item transition-all duration-300 hover:scale-105">
-                                        <span className="text-sm md:text-lg font-black text-slate-950 uppercase tracking-tight">{trust.val}</span>
-                                        <span className="text-[9px] md:text-xs font-black text-slate-400 uppercase tracking-widest">{trust.label}</span>
-                                        {i < 2 && <div className="hidden sm:block w-px h-4 bg-slate-200 ml-6" />}
-                                    </div>
-                                ))}
-                            </div>
+                        <div className="space-y-4">
+                            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-slate-900 tracking-tighter leading-[0.9]">
+                            From Classroom <br />
+                            <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-slate-400 italic text-[0.8em]">to Career.</span>
+                            </h1>
+                            <p className="text-lg md:text-xl font-bold text-slate-600 tracking-tight max-w-xl">
+                                Skill-based education launching high-impact careers in Fashion, Interior & Graphic design.
+                            </p>
                         </div>
 
                         {/* CTA Buttons */}
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 md:mt-12 w-full">
+                        <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => openAdmissionModal()}
-                                className="w-full sm:w-auto h-14 md:h-18 px-10 md:px-14 bg-primary text-white rounded-full font-black uppercase tracking-widest text-[10px] md:text-xs shadow-[0_20px_60px_-15px_rgba(219,52,54,0.5)] flex items-center justify-center gap-3 group/cta transition-all hover:bg-slate-950"
+                                className="w-full sm:w-auto h-14 px-8 bg-primary text-white rounded-full font-black uppercase tracking-widest text-[10px] shadow-xl flex items-center justify-center gap-3 transition-all hover:bg-slate-950"
                             >
-                                Book Free Career Counselling
-                                <ArrowRight size={20} className="group-hover/cta:translate-x-2 transition-transform" />
+                                Get Started
+                                <ArrowRight size={18} />
                             </motion.button>
-                            <motion.button
+                            <motion.a
+                                href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+                                download="INSD-Prospectus-2026.pdf"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                onClick={() => document.getElementById('programs-grid')?.scrollIntoView({ behavior: 'smooth' })}
-                                className="w-full sm:w-auto h-14 md:h-18 px-10 md:px-14 bg-white border-2 border-slate-100 text-slate-600 rounded-full font-black uppercase tracking-widest text-[10px] md:text-xs hover:border-primary hover:text-primary transition-all flex items-center justify-center"
+                                className="w-full sm:w-auto h-14 px-8 bg-white border-2 border-slate-100 text-slate-600 rounded-full font-black uppercase tracking-widest text-[10px] hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-2"
                             >
-                                Explore Global Programs
-                            </motion.button>
+                                <FileDown size={14} className="mb-0.5" />
+                                Prospectus
+                            </motion.a>
+                        </div>
+
+                        {/* Transformation Vision - Pills */}
+                        <div className="flex flex-wrap items-center gap-3 pt-6">
+                            {[
+                                { text: "Design Skills", icon: <Sparkles size={12} className="text-primary" /> },
+                                { text: "Expert Training", icon: <Rocket size={12} className="text-primary" /> },
+                                { text: "Global Career", icon: <Briefcase size={12} className="text-primary" /> }
+                            ].map((pill, i) => (
+                                <div key={i} className="flex items-center gap-2 px-4 py-2 bg-slate-50 border border-slate-100 rounded-full hover:bg-white hover:shadow-md hover:border-primary/20 transition-all duration-300 group/pill cursor-default">
+                                    <div className="bg-white p-1 rounded-full shadow-sm group-hover/pill:rotate-12 transition-transform">
+                                        {pill.icon}
+                                    </div>
+                                    <span className="text-[10px] md:text-xs font-black uppercase tracking-widest text-slate-600 group-hover/pill:text-primary transition-colors">
+                                        {pill.text}
+                                    </span>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Secondary Impact Metrics */}
+                        <div className="flex items-center gap-8 pt-8 border-t border-slate-50">
+                            {[
+                                { val: "15+", label: "Years Legacy" },
+                                { val: "2000+", label: "Success Stories" },
+                                { val: "75+", label: "Institutes" }
+                            ].map((stat, i) => (
+                                <React.Fragment key={i}>
+                                    <div className="flex flex-col">
+                                        <span className="text-xl md:text-2xl font-black text-slate-900 leading-none">{stat.val}</span>
+                                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1.5">{stat.label}</span>
+                                    </div>
+                                    {i < 2 && <div className="w-px h-8 bg-slate-100 hidden sm:block" />}
+                                </React.Fragment>
+                            ))}
                         </div>
                     </motion.div>
+                </div>
 
-                    <div className="mt-20 md:mt-32">
-                        <PlacementPartners />
-                    </div>
+                {/* Right Side: Visual Elements */}
+                <div className="w-full md:w-[45%] h-[60vh] md:h-screen relative overflow-hidden bg-slate-50">
+                    <HeroSlider isMobile={isMobile} />
+                    
+                    {/* Visual Overlay for smooth transition */}
+                    <div className="absolute inset-y-0 left-0 w-32 bg-linear-to-r from-white to-transparent hidden md:block z-10" />
+                </div>
+            </div>
 
-                    {/* Creative Path Transition */}
-                    <div className="mt-16 md:mt-24 mb-12 md:mb-16 text-center px-4">
-                        <motion.div
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1, ease: "easeOut" }}
-                            className="space-y-6"
-                        >
-                            <h2 className="text-4xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.9] text-slate-950">
-                                Your future, <br />
-                                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-primary to-slate-500 italic py-2 inline-block">our dream.</span>
-                            </h2>
+            <div className="w-full bg-white py-12 px-6">
+                <div className="max-w-7xl mx-auto">
+                    <PlacementPartners />
+                </div>
+            </div>
 
-                            <div className="space-y-4 max-w-2xl mx-auto pt-2">
-                                <p className="text-lg md:text-2xl font-bold text-slate-800 tracking-tight leading-relaxed">
-                                    Pick the creative career that excites you— <span className="text-primary italic">we’ll help you build it.</span>
+            <div className="mt-20 md:mt-32">
+                {/* Creative Path Transition */}
+                <div className="mt-16 md:mt-24 mb-12 md:mb-16 text-center px-4">
+                    <motion.div
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, ease: "easeOut" }}
+                        className="space-y-6"
+                    >
+                        <h2 className="text-4xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.9] text-slate-950">
+                            Your future, <br />
+                            <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-primary to-slate-500 italic py-2 inline-block">our dream.</span>
+                        </h2>
+
+                        <div className="space-y-4 max-w-2xl mx-auto pt-2">
+                            <p className="text-lg md:text-2xl font-bold text-slate-800 tracking-tight leading-relaxed">
+                                Pick the creative career that excites you— <span className="text-primary italic">we’ll help you build it.</span>
+                            </p>
+                            <div className="flex items-center justify-center gap-3">
+                                <div className="w-8 h-px bg-slate-100" />
+                                <p className="text-[10px] md:text-sm font-black uppercase tracking-[0.25em] text-slate-400">
+                                    Skill-based programs designed for real careers
                                 </p>
-                                <div className="flex items-center justify-center gap-3">
-                                    <div className="w-8 h-px bg-slate-100" />
-                                    <p className="text-[10px] md:text-sm font-black uppercase tracking-[0.25em] text-slate-400">
-                                        Skill-based programs designed for real careers
-                                    </p>
-                                    <div className="w-8 h-px bg-slate-100" />
-                                </div>
-
+                                <div className="w-8 h-px bg-slate-100" />
                             </div>
-                            <ProgramGrid />
 
-                        </motion.div>
-                    </div>
+                        </div>
+                        <ProgramGrid />
+
+                    </motion.div>
                 </div>
             </div>
 

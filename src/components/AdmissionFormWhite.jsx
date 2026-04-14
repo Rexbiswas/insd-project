@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, ChevronDown, Send } from 'lucide-react';
 import { stateCityData } from '../data/locations';
 
-const AdmissionFormWhite = ({ isModal = false }) => {
+const AdmissionFormWhite = ({ isModal = false, isCompact = false }) => {
     const [formData, setFormData] = useState({
         name: '',
         mobile: '',
@@ -85,12 +85,14 @@ const AdmissionFormWhite = ({ isModal = false }) => {
         );
     }
 
+    const compact = isCompact;
+
     const FormField = ({ label, name, type = "text", placeholder, options = null, required = false }) => (
-        <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-8 group">
-            <label className="md:w-1/3 text-lg md:text-xl font-bold text-slate-800 md:text-right">
+        <div className={`flex ${compact ? 'flex-row items-center gap-3' : 'flex-col md:flex-row md:items-center gap-2 md:gap-8'} group`}>
+            <label className={`${compact ? 'w-1/3 text-xs text-right' : 'md:w-1/3 text-lg md:text-xl md:text-right'} font-bold text-slate-800 shrink-0`}>
                 {label}
             </label>
-            <div className="md:w-2/3 relative">
+            <div className={`${compact ? 'w-2/3' : 'md:w-2/3'} relative`}>
                 {options ? (
                     <select
                         name={name}
@@ -98,7 +100,7 @@ const AdmissionFormWhite = ({ isModal = false }) => {
                         onChange={handleChange}
                         onBlur={() => handleBlur(name)}
                         required={required}
-                        className="w-full h-14 bg-slate-50 border-2 border-slate-100 rounded-xl px-4 text-slate-900 font-medium focus:outline-none focus:border-primary focus:bg-white transition-all appearance-none cursor-pointer"
+                        className={`w-full ${compact ? 'h-9 text-xs px-3 rounded-lg' : 'h-14 px-4 rounded-xl'} bg-slate-50 border-2 border-slate-100 text-slate-900 font-medium focus:outline-none focus:border-primary focus:bg-white transition-all appearance-none cursor-pointer`}
                     >
                         {options.map(opt => (
                             <option key={opt} value={opt === options[0] ? "" : opt} disabled={opt === options[0]}>
@@ -115,12 +117,12 @@ const AdmissionFormWhite = ({ isModal = false }) => {
                         onChange={handleChange}
                         onBlur={() => handleBlur(name)}
                         required={required}
-                        className="w-full h-14 bg-slate-50 border-2 border-slate-100 rounded-xl px-6 text-slate-900 font-medium focus:outline-none focus:border-primary focus:bg-white transition-all placeholder:text-slate-300"
+                        className={`w-full ${compact ? 'h-9 text-xs px-3 rounded-lg placeholder:text-slate-300' : 'h-14 px-6 rounded-xl placeholder:text-slate-300'} bg-slate-50 border-2 border-slate-100 text-slate-900 font-medium focus:outline-none focus:border-primary focus:bg-white transition-all`}
                     />
                 )}
                 {options && (
-                    <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400 group-focus-within:text-primary transition-colors">
-                        <ChevronDown size={20} />
+                    <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400 group-focus-within:text-primary transition-colors">
+                        <ChevronDown size={compact ? 14 : 20} />
                     </div>
                 )}
             </div>
@@ -128,83 +130,65 @@ const AdmissionFormWhite = ({ isModal = false }) => {
     );
 
     return (
-        <div className={`w-full ${isModal ? '' : 'py-20 px-6 bg-[#f3f3f3]'}`}>
-            <div className="max-w-4xl mx-auto">
-                <form onSubmit={handleSubmit} className="bg-white rounded-[2.5rem] p-8 md:p-16 shadow-2xl border border-white space-y-12">
-                    <div className="space-y-4 text-center">
-                        <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter">
+        <div className={`w-full h-full ${isModal ? '' : 'py-20 px-6 bg-[#f3f3f3]'}`}>
+            <div className={`${compact ? 'h-full' : 'max-w-4xl mx-auto'}`}>
+                <form
+                    onSubmit={handleSubmit}
+                    className={`bg-white h-full ${
+                        compact
+                            ? 'rounded-[2rem] p-6 shadow-xl border border-slate-100 space-y-4 flex flex-col justify-between'
+                            : 'rounded-[2.5rem] p-8 md:p-16 shadow-2xl border border-white space-y-12'
+                    }`}
+                >
+                    {/* Header */}
+                    <div className={`${compact ? 'space-y-1 text-center' : 'space-y-4 text-center'}`}>
+                        <h1 className={`${compact ? 'text-2xl' : 'text-4xl md:text-6xl'} font-black text-slate-900 tracking-tighter`}>
                             ADMISSIONS <span className="text-primary italic">OPEN.</span>
                         </h1>
-                        <p className="text-slate-500 font-medium text-lg">
+                        <p className={`text-slate-500 font-medium ${compact ? 'text-xs' : 'text-lg'}`}>
                             Begin your creative journey with India's leading design school.
                         </p>
                     </div>
 
-                    <div className="space-y-8">
-                        <FormField 
-                            label="Your Name" 
-                            name="name" 
-                            placeholder="Full Name" 
-                            required 
-                        />
-                        <FormField 
-                            label="Mobile Number" 
-                            name="mobile" 
-                            type="tel" 
-                            placeholder="+91" 
-                            required 
-                        />
-                        <FormField 
-                            label="Email Address" 
-                            name="email" 
-                            type="email" 
-                            placeholder="email@example.com" 
-                            required 
-                        />
-                        <FormField 
-                            label="State" 
-                            name="state" 
-                            options={states} 
-                            required 
-                        />
-                        <FormField 
-                            label="City" 
-                            name="city" 
-                            options={["Select City", ...(formData.state ? stateCityData[formData.state] : [])]} 
-                            required 
+                    {/* Fields */}
+                    <div className={compact ? 'space-y-3 flex-1' : 'space-y-8'}>
+                        <FormField label="Your Name" name="name" placeholder="Full Name" required />
+                        <FormField label="Mobile Number" name="mobile" type="tel" placeholder="+91" required />
+                        <FormField label="Email Address" name="email" type="email" placeholder="email@example.com" required />
+                        <FormField label="State" name="state" options={states} required />
+                        <FormField
+                            label="City"
+                            name="city"
+                            options={["Select City", ...(formData.state ? stateCityData[formData.state] : [])]}
+                            required
                         />
                     </div>
 
-                    <div className="pt-8 flex flex-col items-center gap-8">
-                        <label className="flex items-center gap-4 cursor-pointer group/refer">
-                            <div className={`w-6 h-6 rounded-md border-2 flex items-center justify-center transition-all ${formData.referred ? 'bg-primary border-primary' : 'border-slate-300 group-hover/refer:border-primary'}`}>
-                                {formData.referred && <CheckCircle2 className="text-white w-4 h-4" />}
+                    {/* Footer */}
+                    <div className={`flex flex-col items-center ${compact ? 'gap-3 pt-2' : 'gap-8 pt-8'}`}>
+                        <label className="flex items-center gap-3 cursor-pointer group/refer">
+                            <div className={`${compact ? 'w-4 h-4 rounded' : 'w-6 h-6 rounded-md'} border-2 flex items-center justify-center transition-all shrink-0 ${formData.referred ? 'bg-primary border-primary' : 'border-slate-300 group-hover/refer:border-primary'}`}>
+                                {formData.referred && <CheckCircle2 className={`text-white ${compact ? 'w-3 h-3' : 'w-4 h-4'}`} />}
                             </div>
-                            <input 
-                                type="checkbox" 
-                                name="referred"
-                                checked={formData.referred}
-                                onChange={handleChange}
-                                className="hidden" 
-                            />
-                            <span className="text-slate-600 font-bold text-lg select-none">
+                            <input type="checkbox" name="referred" checked={formData.referred} onChange={handleChange} className="hidden" />
+                            <span className={`text-slate-600 font-bold select-none ${compact ? 'text-xs' : 'text-lg'}`}>
                                 Were you referred by someone?
                             </span>
                         </label>
 
-                        <button 
+                        <button
                             type="submit"
                             disabled={status === 'loading'}
-                            className="group relative w-full md:w-80 h-16 bg-slate-900 text-white rounded-2xl overflow-hidden shadow-xl hover:shadow-primary/20 transition-all active:scale-95 disabled:opacity-50"
+                            className={`group relative w-full ${compact ? 'h-10 rounded-xl' : 'md:w-80 h-16 rounded-2xl'} bg-slate-900 text-white overflow-hidden shadow-xl hover:shadow-primary/20 transition-all active:scale-95 disabled:opacity-50`}
                         >
                             <div className="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                            <span className="relative z-10 flex items-center justify-center gap-3 text-xl font-bold uppercase tracking-widest">
+                            <span className={`relative z-10 flex items-center justify-center gap-2 font-bold uppercase tracking-widest ${compact ? 'text-xs' : 'text-xl'}`}>
                                 {status === 'loading' ? (
-                                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                                 ) : (
                                     <>
                                         Submit
-                                        <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                        <Send size={compact ? 14 : 20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                                     </>
                                 )}
                             </span>

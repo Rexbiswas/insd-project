@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { useAdmissionModal } from '../context/AdmissionModalContext';
-import AdmissionForm from './AdmissionForm';
+import AdmissionFormWhite from './AdmissionFormWhite';
 
 const AdmissionModal = () => {
     const { isAdmissionOpen, closeAdmissionModal, modalConfig } = useAdmissionModal();
@@ -37,20 +37,18 @@ const AdmissionModal = () => {
                         initial={{ opacity: 0, scale: 0.95, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                        className="relative w-full max-w-5xl z-10 max-h-[90vh] overflow-y-auto custom-scrollbar rounded-4xl bg-black border border-white/10 shadow-2xl"
+                        className="relative w-full max-w-5xl z-10 max-h-[90vh] overflow-y-auto custom-scrollbar rounded-4xl bg-white border border-slate-100 shadow-2xl"
                     >
                         {/* Close Button */}
                         <button
                             onClick={closeAdmissionModal}
-                            className="absolute top-4 right-4 md:top-6 md:right-6 z-[60] w-10 h-10 bg-white/10 hover:bg-primary text-white hover:text-white rounded-full flex items-center justify-center transition-all duration-300"
+                            className="absolute top-4 right-4 md:top-6 md:right-6 z-[60] w-10 h-10 bg-slate-900/10 hover:bg-primary text-slate-900 hover:text-white rounded-full flex items-center justify-center transition-all duration-300"
                         >
                             <X size={20} />
                         </button>
 
-                        <AdmissionForm 
+                        <AdmissionFormWhite 
                             isModal={true} 
-                            title={modalConfig?.title} 
-                            subtitle={modalConfig?.subtitle} 
                         />
                     </motion.div>
                 </div>
