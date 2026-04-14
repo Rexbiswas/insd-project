@@ -24,6 +24,12 @@ const slides = [
     }
 ];
 
+const floatingStats = [
+    { id: 1, val: "98%", label: "Placement Rate", pos: "top-1/4 right-10", delay: 0 },
+    { id: 2, val: "2500+", label: "Global Alumni", pos: "top-1/2 left-10", delay: 0.5 },
+    { id: 3, val: "75+", label: "Industry Partners", pos: "bottom-1/4 right-20", delay: 1 }
+];
+
 const HeroSlider = () => {
     const [current, setCurrent] = useState(0);
     const [direction, setDirection] = useState(1);
@@ -64,33 +70,43 @@ const HeroSlider = () => {
     };
 
     return (
-        <div className="relative w-full h-full overflow-hidden group select-none rounded-2xl md:rounded-[2.5rem] shadow-2xl">
+        <div className="relative w-full h-full overflow-hidden group select-none rounded-[1.5rem] md:rounded-[3rem] shadow-2xl bg-slate-900">
             <div className="relative w-full h-full overflow-hidden">
                 {/* Noise and Particles Overlay */}
                 <div className="absolute inset-0 z-20 pointer-events-none">
-                    {/* Artistic Particles */}
                     {particles.map((_, i) => (
                         <motion.div
                             key={i}
                             className="absolute w-1 h-1 bg-white rounded-full opacity-40"
-                            initial={{ 
-                                x: Math.random() * 100 + "%", 
-                                y: Math.random() * 100 + "%" 
-                            }}
-                            animate={{ 
-                                y: ["0%", "100%"],
-                                opacity: [0, 0.6, 0]
-                            }}
-                            transition={{ 
-                                duration: Math.random() * 10 + 10, 
-                                repeat: Infinity, 
-                                ease: "linear",
-                                delay: Math.random() * 5
-                            }}
+                            initial={{ x: Math.random() * 100 + "%", y: Math.random() * 100 + "%" }}
+                            animate={{ y: ["0%", "100%"], opacity: [0, 0.6, 0] }}
+                            transition={{ duration: Math.random() * 10 + 10, repeat: Infinity, ease: "linear", delay: Math.random() * 5 }}
                         />
                     ))}
                     <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat opacity-[0.05]" />
                 </div>
+
+                {/* SVG Path for Paper Plane */}
+                <svg className="absolute inset-0 w-full h-full z-20 pointer-events-none opacity-40" viewBox="0 0 800 600">
+                    <motion.path
+                        d="M -100,300 C 100,300 300,500 400,300 C 500,100 700,300 900,300"
+                        fill="transparent"
+                        stroke="white"
+                        strokeWidth="1.5"
+                        strokeDasharray="8 6"
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{ duration: 3, repeat: Infinity, repeatDelay: 2, ease: "easeInOut" }}
+                    />
+                    <motion.g
+                        initial={{ offsetDistance: "0%" }}
+                        animate={{ offsetDistance: "100%" }}
+                        transition={{ duration: 3, repeat: Infinity, repeatDelay: 2, ease: "easeInOut" }}
+                        style={{ offsetPath: "path('M -100,300 C 100,300 300,500 400,300 C 500,100 700,300 900,300')" }}
+                    >
+                        <path d="M-10,-10 L15,0 L-10,10 L-5,0 Z" fill="white" transform="rotate(45)" />
+                    </motion.g>
+                </svg>
 
                 <AnimatePresence initial={false} custom={direction}>
                     <motion.div
@@ -104,40 +120,45 @@ const HeroSlider = () => {
                     >
                         <img 
                             src={slides[current].img} 
-                            alt={slides[current].title}
-                            className="w-full h-full object-cover brightness-110 contrast-125 transition-all duration-1000"
+                            alt="Student Work"
+                            className="w-full h-full object-cover brightness-105 contrast-110"
                         />
-                        {/* Soft Overlays */}
-                        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
+                        <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
                     </motion.div>
                 </AnimatePresence>
 
-                {/* Phase Badge */}
-                <motion.div
-                    key={`phase-${current}`}
-                    initial={{ opacity: 0, x: -30 }} // Reduced shift for smaller screens
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.2, duration: 0.6 }}
-                    className="absolute top-6 left-6 md:top-12 md:left-12 z-30 bg-white px-5 py-2 md:px-8 md:py-3 shadow-[0_10px_30px_rgba(0,0,0,0.1)] flex items-center justify-center rounded-sm"
-                >
-                    <span className="text-slate-900 text-[10px] md:text-sm font-black uppercase tracking-widest whitespace-nowrap">
-                        {slides[current].phase}
-                    </span>
-                </motion.div>
+                {/* Floating Glassmorphism Cards */}
+                <div className="absolute inset-0 z-30 pointer-events-none hidden md:block">
+                    {floatingStats.map((stat) => (
+                        <motion.div
+                            key={stat.id}
+                            initial={{ opacity: 0, scale: 0.8, y: 30 }}
+                            animate={{ 
+                                opacity: 1, 
+                                scale: 1, 
+                                y: [0, -15, 0] 
+                            }}
+                            transition={{ 
+                                opacity: { delay: 1 + stat.delay, duration: 0.8 },
+                                scale: { delay: 1 + stat.delay, duration: 0.8 },
+                                y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: stat.delay }
+                            }}
+                            className={`absolute ${stat.pos} px-6 py-4 rounded-2xl backdrop-blur-xl bg-white/10 border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.3)] min-w-[160px]`}
+                        >
+                            <div className="text-2xl font-black text-white leading-tight">{stat.val}</div>
+                            <div className="text-[10px] font-bold text-white/60 uppercase tracking-widest mt-1">{stat.label}</div>
+                        </motion.div>
+                    ))}
+                </div>
 
-                {/* Content Overlay - Minimalist */}
-                <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-16 z-30 pointer-events-none">
-                    <motion.div
-                        key={`title-${current}`}
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.5, duration: 0.8 }}
-                    >
-                        <h2 className="text-3xl md:text-5xl lg:text-7xl font-black text-white uppercase tracking-tighter leading-none mb-4 drop-shadow-xl">
-                            {slides[current].title}
-                        </h2>
-                        <div className="w-12 h-1 bg-white mb-6" />
-                    </motion.div>
+                {/* Mobile version of floating cards - simpler */}
+                <div className="absolute bottom-16 left-8 right-8 z-30 flex gap-3 md:hidden">
+                    {floatingStats.map((stat) => (
+                        <div key={stat.id} className="flex-1 px-3 py-2 rounded-xl backdrop-blur-lg bg-white/10 border border-white/10 text-center">
+                            <div className="text-sm font-black text-white">{stat.val}</div>
+                            <div className="text-[8px] font-bold text-white/40 uppercase truncate">{stat.label.split(' ')[0]}</div>
+                        </div>
+                    ))}
                 </div>
 
                 {/* Navigation Controls */}
@@ -156,3 +177,4 @@ const HeroSlider = () => {
 };
 
 export default HeroSlider;
+

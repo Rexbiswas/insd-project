@@ -302,20 +302,16 @@ const Home = () => {
             <div ref={heroRef} className="relative z-10 min-h-screen w-full flex flex-col md:flex-row bg-white overflow-hidden pt-20 md:pt-0 cursor-default">
                 
                 {/* Left Side: Content & Headlines */}
-                <div className="w-full md:w-[55%] flex flex-col justify-center px-6 md:px-16 lg:px-24 py-12 md:py-32 space-y-8 md:space-y-12 relative z-20">
+                <div className="w-full md:w-[55%] flex flex-col justify-center px-6 md:px-16 lg:px-24 py-8 md:py-16 space-y-6 md:space-y-8 relative z-20">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 1, ease: "easeOut" }}
-                        className="space-y-6"
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="space-y-5"
                     >
-                        {/* Institutional Tagline */}
-                        <div className="flex items-center gap-4">
-                            <span className="text-[9px] md:text-xs font-black uppercase tracking-[0.4em] text-primary">The INSD Advantage</span>
-                            <div className="w-12 h-px bg-primary/20" />
-                        </div>
 
                         <div className="space-y-4">
+
                             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-slate-900 tracking-tighter leading-[0.9]">
                             From Classroom <br />
                             <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-slate-400 italic text-[0.8em]">to Career.</span>
@@ -326,7 +322,8 @@ const Home = () => {
                         </div>
 
                         {/* CTA Buttons */}
-                        <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
+                        <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
+
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
@@ -349,49 +346,35 @@ const Home = () => {
                         </div>
 
                         {/* Transformation Vision - Pills */}
-                        <div className="flex flex-wrap items-center gap-3 pt-6">
+                        <div className="flex flex-wrap items-center gap-4 pt-4">
                             {[
-                                { text: "Design Skills", icon: <Sparkles size={12} className="text-primary" /> },
-                                { text: "Expert Training", icon: <Rocket size={12} className="text-primary" /> },
-                                { text: "Global Career", icon: <Briefcase size={12} className="text-primary" /> }
+                                { text: "Design Industry", icon: <Sparkles size={16} className="text-primary" /> },
+                                { text: "Retails Industry", icon: <Rocket size={16} className="text-primary" /> },
+                                { text: "Hospitality Industry", icon: <Briefcase size={16} className="text-primary" /> }
                             ].map((pill, i) => (
-                                <div key={i} className="flex items-center gap-2 px-4 py-2 bg-slate-50 border border-slate-100 rounded-full hover:bg-white hover:shadow-md hover:border-primary/20 transition-all duration-300 group/pill cursor-default">
-                                    <div className="bg-white p-1 rounded-full shadow-sm group-hover/pill:rotate-12 transition-transform">
+                                <div key={i} className="flex items-center gap-3 px-6 py-2.5 bg-slate-50/50 border border-slate-100 rounded-full hover:bg-white hover:shadow-xl hover:shadow-primary/5 hover:border-primary/30 transition-all duration-500 group/pill cursor-default">
+                                    <div className="bg-white p-1.5 rounded-full shadow-sm group-hover/pill:rotate-12 transition-transform duration-500">
                                         {pill.icon}
                                     </div>
-                                    <span className="text-[10px] md:text-xs font-black uppercase tracking-widest text-slate-600 group-hover/pill:text-primary transition-colors">
+                                    <span className="text-[11px] md:text-sm font-black uppercase tracking-[0.15em] text-slate-600 group-hover/pill:text-primary transition-colors">
                                         {pill.text}
                                     </span>
                                 </div>
                             ))}
                         </div>
 
-                        {/* Secondary Impact Metrics */}
-                        <div className="flex items-center gap-8 pt-8 border-t border-slate-50">
-                            {[
-                                { val: "15+", label: "Years Legacy" },
-                                { val: "2000+", label: "Success Stories" },
-                                { val: "75+", label: "Institutes" }
-                            ].map((stat, i) => (
-                                <React.Fragment key={i}>
-                                    <div className="flex flex-col">
-                                        <span className="text-xl md:text-2xl font-black text-slate-900 leading-none">{stat.val}</span>
-                                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1.5">{stat.label}</span>
-                                    </div>
-                                    {i < 2 && <div className="w-px h-8 bg-slate-100 hidden sm:block" />}
-                                </React.Fragment>
-                            ))}
-                        </div>
+
                     </motion.div>
                 </div>
 
+
                 {/* Right Side: Visual Elements */}
-                <div className="w-full md:w-[45%] h-[60vh] md:h-screen relative overflow-hidden bg-slate-50">
+                <div className="w-full md:w-[45%] h-[50vh] md:h-[95vh] md:pr-12 md:py-16 relative overflow-hidden bg-white">
                     <HeroSlider isMobile={isMobile} />
                     
-                    {/* Visual Overlay for smooth transition */}
-                    <div className="absolute inset-y-0 left-0 w-32 bg-linear-to-r from-white to-transparent hidden md:block z-10" />
+                    {/* Visual Overlay removed to let the card stand out */}
                 </div>
+
             </div>
 
             <div className="w-full bg-white py-12 px-6">
