@@ -505,3 +505,8 @@ body.hide-navbar div.fixed.bottom-6.z-50,
 body.hide-navbar div.z-1001.shadow-2xl {
   display: none !important;
 }
+
+.scroller:hover,
+.scroller:hover > * {
+  animation-play-state: paused !important;
+}

@@ -278,7 +278,7 @@ const Navbar = () => {
             <div className="w-full bg-linear-to-r from-primary to-secondary text-white py-1.5 md:py-2.5 px-3 md:px-6 text-center relative z-1001 flex items-center justify-center gap-2 md:gap-4 overflow-hidden shadow-2xl transition-all duration-500">
                 {/* Premium Shine Effect */}
                 <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-shimmer" />
-                
+
                 <div className="flex items-center gap-1.5 md:gap-3 relative z-10 overflow-hidden">
                     <GraduationCap size={12} className="md:w-5 md:h-5 text-white/90 animate-bounce shrink-0" />
                     <span className="text-[8px] md:text-xs lg:text-sm font-black tracking-wide md:tracking-widest uppercase whitespace-nowrap">
@@ -286,8 +286,8 @@ const Navbar = () => {
                     </span>
                 </div>
 
-                <Link 
-                    to="/apply" 
+                <Link
+                    to="/apply"
                     className="relative z-10 px-2.5 py-0.5 md:px-4 md:py-1.5 bg-white/20 hover:bg-white/30 backdrop-blur-md rounded-full text-[8px] md:text-xs font-black uppercase tracking-widest border border-white/30 transition-all duration-300 flex items-center gap-1 group/apply shadow-lg"
                 >
                     Apply Now
@@ -499,7 +499,7 @@ const Navbar = () => {
                                 >
                                     Events
                                 </RollerLink>
-                                
+
                                 <RollerLink
                                     to="/insd-360/blog"
                                     colorClass="nav-hover-gradient"
@@ -526,7 +526,7 @@ const Navbar = () => {
                     </AnimatePresence>
 
 
-                    
+
 
                     {/* Menu Toggle - Desktop Only */}
                     <motion.button
@@ -674,9 +674,9 @@ const Navbar = () => {
                                 className="fixed inset-y-0 left-0 w-[85%] max-w-[320px] bg-white z-1001 shadow-[20px_0_60px_-15px_rgba(0,0,0,0.2)] flex flex-col"
                             >
                                 {/* Header */}
-                                
+
                                 <div className="p-5 flex items-center justify-between bg-gradient-to-r from-primary to-secondary text-white">
-                                    <button 
+                                    <button
                                         onClick={() => {
                                             setIsOpen(false);
                                             if (user) {
@@ -732,7 +732,7 @@ const Navbar = () => {
                                                                     <ExpandMoreIcon fontSize="small" />
                                                                 </motion.div>
                                                             </button>
-                                                            
+
                                                             <AnimatePresence>
                                                                 {isExpanded && (
                                                                     <motion.div
@@ -802,7 +802,7 @@ const Navbar = () => {
                                         </div>
 
                                         <div className="w-full">
-                                            <a 
+                                            <a
                                                 href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
                                                 download="INSD-Prospectus-2026.pdf"
                                                 className="w-full py-4 bg-primary text-white rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] shadow-xl shadow-primary/20 active:scale-95 transition-all flex items-center justify-center gap-3"
@@ -912,7 +912,7 @@ const Navbar = () => {
                                                     <a
                                                         href={cta.href}
                                                         download={cta.isDownload ? "INSD-Prospectus-2026.pdf" : undefined}
-                                                        onClick={() => { if(!cta.isDownload) setIsOpen(false); }}
+                                                        onClick={() => { if (!cta.isDownload) setIsOpen(false); }}
                                                         className="flex items-center gap-6 md:gap-8 text-left"
                                                     >
                                                         <div className="w-10 h-10 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-primary group-hover:scale-110 group-hover:rotate-6 group-hover:border-primary shadow-2xl overflow-hidden relative">

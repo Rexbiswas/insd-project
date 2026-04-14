@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Briefcase, Palette } from 'lucide-react';
 
 const hospitalityLogos = [
@@ -39,7 +39,6 @@ const fashionLogos = [
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTi4adrv8AqJDPhunb3_km2idzotwLuroAWHw&s",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkD7P83txvJ2sKJ9R5N_-qmQw94coPUq8J5A&s",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAX7Ow-fSUhmokgxv7oaSro64M9jvc8HUF0Q&s"
-    
 ];
 
 const PlacementPartners = () => {
@@ -63,13 +62,13 @@ const PlacementPartners = () => {
                     <Briefcase size={10} className="text-slate-400 md:w-3 md:h-3" />
                     <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.3em]">Placement Partners</span>
                 </div>
-                <div className="relative flex overflow-hidden">
-                    <div className="flex animate-marquee whitespace-nowrap gap-3 md:gap-4 py-2 md:py-4 pr-3 md:pr-4">
+                <div className="relative flex overflow-hidden scroller group">
+                    <div className="flex animate-marquee scroller whitespace-nowrap gap-3 md:gap-4 py-2 md:py-4 pr-3 md:pr-4 pointer-events-auto">
                         {hospitalityLogos.map((logo, i) => (
                             <LogoCard key={`h1-${i}`} logo={logo} />
                         ))}
                     </div>
-                    <div className="flex animate-marquee whitespace-nowrap gap-3 md:gap-4 py-2 md:py-4 pr-3 md:pr-4">
+                    <div className="flex animate-marquee scroller whitespace-nowrap gap-3 md:gap-4 py-2 md:py-4 pr-3 md:pr-4 pointer-events-auto">
                         {hospitalityLogos.map((logo, i) => (
                             <LogoCard key={`h2-${i}`} logo={logo} />
                         ))}
@@ -83,13 +82,13 @@ const PlacementPartners = () => {
                     <Palette size={10} className="text-slate-400 md:w-3 md:h-3" />
                     <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.3em]">traning partners</span>
                 </div>
-                <div className="relative flex overflow-hidden">
-                    <div className="flex animate-marquee-reverse whitespace-nowrap gap-3 md:gap-4 py-2 md:py-4 pr-3 md:pr-4">
+                <div className="relative flex overflow-hidden scroller group">
+                    <div className="flex animate-marquee-reverse scroller whitespace-nowrap gap-3 md:gap-4 py-2 md:py-4 pr-3 md:pr-4 pointer-events-auto">
                         {fashionLogos.map((logo, i) => (
                             <LogoCard key={`f1-${i}`} logo={logo} />
                         ))}
                     </div>
-                    <div className="flex animate-marquee-reverse whitespace-nowrap gap-3 md:gap-4 py-2 md:py-4 pr-3 md:pr-4">
+                    <div className="flex animate-marquee-reverse scroller whitespace-nowrap gap-3 md:gap-4 py-2 md:py-4 pr-3 md:pr-4 pointer-events-auto">
                         {fashionLogos.map((logo, i) => (
                             <LogoCard key={`f2-${i}`} logo={logo} />
                         ))}

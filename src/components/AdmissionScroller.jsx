@@ -6,12 +6,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 const AdmissionScroller = () => {
     const trackRef = useRef(null);
+    const marqueeAnim = useRef(null);
     const containerRef = useRef(null);
 
     useLayoutEffect(() => {
         let ctx = gsap.context(() => {
             // 1. Base Infinite Marquee on the track
-            const marquee = gsap.to(trackRef.current, {
+            marqueeAnim.current = gsap.to(trackRef.current, {
                 xPercent: -50,
                 repeat: -1,
                 duration: 20,
@@ -38,7 +39,7 @@ const AdmissionScroller = () => {
             ScrollTrigger.create({
                 onUpdate: (self) => {
                     const velocity = Math.abs(self.getVelocity() / 300);
-                    gsap.to(marquee, {
+                    gsap.to(marqueeAnim.current, {
                         timeScale: 1 + velocity,
                         duration: 0.5,
                         ease: "power2.out"
@@ -69,7 +70,16 @@ const AdmissionScroller = () => {
             <div className="absolute inset-y-0 right-0 w-32 md:w-96 bg-linear-to-l from-slate-950 via-slate-950/80 to-transparent z-10 pointer-events-none" />
 
             <div className="flex items-center">
-                <div ref={trackRef} className="whitespace-nowrap flex items-center will-change-transform">
+                <div 
+                    ref={trackRef} 
+                    className="whitespace-nowrap flex items-center will-change-transform cursor-pointer pointer-events-auto"
+                    onMouseEnter={() => {
+                        if (marqueeAnim.current) marqueeAnim.current.pause();
+                    }}
+                    onMouseLeave={() => {
+                        if (marqueeAnim.current) marqueeAnim.current.resume();
+                    }}
+                >
                     {/* We need enough clones to ensure seamless looping at -50% xPercent */}
                     {[...Array(12)].map((_, i) => (
                         <AdmissionText key={i} />

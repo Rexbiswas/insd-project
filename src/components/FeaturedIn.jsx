@@ -41,11 +41,12 @@ const FeaturedIn = () => {
         let ctx = gsap.context(() => {
             const tl = gsap.timeline({ repeat: -1 });
             const marqueeContent = marqueeRef.current;
-            tl.to(marqueeContent, {
+            const marqueeAnim = tl.to(marqueeContent, {
                 xPercent: -50, // Seamlessly jumps back at halfway point since we double the rendered array
                 ease: "none",
                 duration: 40
             });
+            marqueeRef.current.marqueeAnim = marqueeAnim;
         }, containerRef);
         return () => ctx.revert();
     }, []);
@@ -69,7 +70,12 @@ const FeaturedIn = () => {
             {/* Seamless Marquee Track */}
             <div className="relative w-full overflow-hidden mask-linear-fade-wide bg-white/50 border-y border-slate-300/80 backdrop-blur-sm shadow-[inset_0_0_20px_rgba(0,0,0,0.02)]">
 
-                <div ref={marqueeRef} className="flex items-center w-max py-12 md:py-16 gap-16 md:gap-32 px-8">
+                <div 
+                    ref={marqueeRef} 
+                    className="flex items-center w-max py-12 md:py-16 gap-16 md:gap-32 px-8"
+                    onMouseEnter={() => marqueeRef.current.marqueeAnim?.pause()}
+                    onMouseLeave={() => marqueeRef.current.marqueeAnim?.resume()}
+                >
                     {/* Render sequence multiple times heavily to ensure the screen is always filled */}
                     {[...marqueeItems, ...marqueeItems].map((brand, i) => (
                         <div

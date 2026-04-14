@@ -7,13 +7,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 const GlobalIndustryNetwork = () => {
     const sectionRef = useRef(null);
-    const marqueeRef1 = useRef(null);
-    const marqueeRef2 = useRef(null);
+    const marqueeAnim1 = useRef(null);
+    const marqueeAnim2 = useRef(null);
 
     useLayoutEffect(() => {
         let ctx = gsap.context(() => {
             // Marquee 1 - Left to Right
-            gsap.to(".marquee-inner-1", {
+            marqueeAnim1.current = gsap.to(".marquee-inner-1", {
                 xPercent: -50,
                 repeat: -1,
                 duration: 30,
@@ -21,7 +21,7 @@ const GlobalIndustryNetwork = () => {
             });
 
             // Marquee 2 - Right to Left
-            gsap.to(".marquee-inner-2", {
+            marqueeAnim2.current = gsap.to(".marquee-inner-2", {
                 xPercent: 0,
                 repeat: -1,
                 duration: 35,
@@ -83,7 +83,12 @@ const GlobalIndustryNetwork = () => {
             {/* Marquee Row 1 */}
             <div className="relative py-8 md:py-12 -rotate-2 bg-white group hover:rotate-0 transition-transform duration-700">
                 <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div ref={marqueeRef1} className="marquee-container overflow-hidden whitespace-nowrap">
+                <div 
+                    ref={marqueeAnim1} 
+                    className="marquee-container overflow-hidden whitespace-nowrap cursor-pointer"
+                    onMouseEnter={() => marqueeAnim1.current?.pause()}
+                    onMouseLeave={() => marqueeAnim1.current?.resume()}
+                >
                     <div className="marquee-inner-1 flex items-center">
                         {[...partners, ...partners].map((partner, i) => (
                             <div key={i} className="flex items-center gap-12 md:gap-24 mx-6 md:mx-12">
@@ -99,7 +104,12 @@ const GlobalIndustryNetwork = () => {
 
             {/* Marquee Row 2 */}
             <div className="relative py-8 md:py-12 rotate-1 bg-slate-900 mt-4 group hover:rotate-0 transition-transform duration-700 border-y border-white/5">
-                <div ref={marqueeRef2} className="marquee-container overflow-hidden whitespace-nowrap">
+                <div 
+                    ref={marqueeAnim2} 
+                    className="marquee-container overflow-hidden whitespace-nowrap cursor-pointer"
+                    onMouseEnter={() => marqueeAnim2.current?.pause()}
+                    onMouseLeave={() => marqueeAnim2.current?.resume()}
+                >
                     <div className="marquee-inner-2 flex items-center">
                         {[...partners.reverse(), ...partners].map((partner, i) => (
                             <div key={i} className="flex items-center gap-12 md:gap-24 mx-6 md:mx-12">
