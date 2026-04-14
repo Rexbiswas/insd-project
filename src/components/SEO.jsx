@@ -5,21 +5,18 @@ const SEO = ({
     title, 
     description, 
     keywords, 
-    canonical, 
+    canonical = "https://insd.edu.in/", 
     ogTitle, 
     ogDescription, 
-    ogImage = "https://insd.edu.in/wp-content/uploads/2019/11/INSD-circle-Logo_black_100pxl.png", 
+    ogImage = "https://insd.edu.in/wp-content/uploads/2020/04/Homepage-Banner-Laptop-1.jpg", 
     ogType = 'website',
     twitterCard = 'summary_large_image',
-    robots = 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+    robots = 'max-snippet:-1, max-image-preview:large, max-video-preview:-1',
     courseSchema = null
 }) => {
-    const siteName = "International School of Design (INSD)";
-    const fullTitle = title ? `${title} | ${siteName}` : siteName;
-    const defaultDescription = "INSD is India's leading Skill School for creative careers. Offering job-oriented diplomas in Fashion, Interior & Graphic Design with 100% placement in Delhi.";
-    const metaDescription = description || defaultDescription;
-    const defaultKeywords = "best design institute in Delhi, skill school design, job oriented fashion design, interior design placement, graphic design course, INSD India";
-    const metaKeywords = keywords || defaultKeywords;
+    const siteName = "INSD";
+    const metaDescription = description || "Best designing institute in Delhi, India. Join INSD is one of the top designing colleges in Delhi, NCR offers fashion, interior, textile and graphic designing courses in UG and PG.";
+    const metaKeywords = keywords || "best design institute in Delhi, skill school design, job oriented fashion design, interior design placement, graphic design course, INSD India";
 
     // JSON-LD Structured Data for Ranking Enhancement
     const organizationSchema = {
@@ -34,7 +31,7 @@ const SEO = ({
             "https://twitter.com/INSDofficial",
             "https://www.youtube.com/user/INSDofficial"
         ],
-        "description": defaultDescription,
+        "description": metaDescription,
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Delhi NCR",
@@ -45,31 +42,33 @@ const SEO = ({
     return (
         <Helmet>
             {/* Standard metadata */}
-            <title>{fullTitle}</title>
+            <title>{title}</title>
             <meta name="description" content={metaDescription} />
             <meta name="keywords" content={metaKeywords} />
             <meta name="robots" content={robots} />
-            {canonical && <link rel="canonical" href={canonical} />}
+            <link rel="canonical" href={canonical} />
 
             {/* Mobile / Interaction */}
             <meta name="theme-color" content="#b30000" />
-            <meta name="apple-mobile-web-app-capable" content="yes" />
 
             {/* Open Graph / Facebook */}
-            <meta property="og:locale" content="en_IN" />
+            <meta property="og:locale" content="en_US" />
             <meta property="og:type" content={ogType} />
-            <meta property="og:title" content={ogTitle || fullTitle} />
+            <meta property="og:title" content={ogTitle || title} />
             <meta property="og:description" content={ogDescription || metaDescription} />
+            <meta property="og:url" content={canonical} />
             <meta property="og:site_name" content={siteName} />
             <meta property="og:image" content={ogImage} />
-            <meta property="og:image:width" content="1200" />
-            <meta property="og:image:height" content="630" />
+            <meta property="og:image:secure_url" content={ogImage} />
+            <meta property="og:image:width" content="1357" />
+            <meta property="og:image:height" content="627" />
 
             {/* Twitter */}
             <meta name="twitter:card" content={twitterCard} />
-            <meta name="twitter:title" content={ogTitle || fullTitle} />
+            <meta name="twitter:title" content={ogTitle || title} />
             <meta name="twitter:description" content={ogDescription || metaDescription} />
             <meta name="twitter:image" content={ogImage} />
+
             <meta name="twitter:site" content="@INSDofficial" />
 
             {/* Structured Data (Schema.org) */}

@@ -293,10 +293,15 @@ const Home = () => {
     return (
         <div ref={containerRef} className="min-h-screen text-slate-900 relative overflow-x-hidden">
             <SEO
-                title="Best Design Institute in Delhi | Fashion, Interior & Graphic Courses - INSD"
-                description="Join INSD, the best design institute in Delhi NCR. India's Skill School for creative careers offers job-oriented Fashion, Interior, Graphic Design & Animation courses with 100% placement support."
+                title="Best Designing Institute for Fashion, Interior & Graphic Courses in Delhi | INSD"
+                description="Best designing institute in Delhi, India. Join INSD is one of the top designing colleges in Delhi, NCR offers fashion, interior, textile and graphic designing courses in UG and PG."
                 keywords="best design institute in Delhi, skill-based design school Delhi, job-ready design institute, 100% placement design course, fashion design course in Delhi, interior design course in Delhi, graphic design course in Delhi, animation VFX course in Delhi, INSD Delhi placement"
+                canonical="https://insd.edu.in/"
+                ogImage="https://insd.edu.in/wp-content/uploads/2020/04/Homepage-Banner-Laptop-1.jpg"
+                robots="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
             />
+
+
 
             {/* Hero Split Section */}
             <div ref={heroRef} className="relative z-10 min-h-screen w-full flex flex-col md:flex-row bg-white overflow-hidden pt-20 md:pt-0 cursor-default">
@@ -338,11 +343,22 @@ const Home = () => {
                                 download="INSD-Prospectus-2026.pdf"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="w-full sm:w-auto h-14 px-8 bg-white border-2 border-slate-100 text-slate-600 rounded-full font-black uppercase tracking-widest text-[10px] hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-2"
+                                className="group relative w-full sm:w-auto h-14 px-8 bg-white border-2 border-slate-100 text-slate-600 rounded-full font-black uppercase tracking-widest text-[10px] overflow-hidden transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-primary/20 hover:border-primary/30"
                             >
-                                <FileDown size={14} className="mb-0.5" />
-                                Prospectus
+                                {/* Animated Gradient Background */}
+                                <div className="absolute inset-0 bg-linear-to-r from-primary to-slate-900 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+                                
+                                {/* Shimmer */}
+                                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                                    <div className="absolute top-0 -left-full w-full h-full bg-linear-to-r from-transparent via-white/20 to-transparent skew-x-[-20deg] group-hover:animate-shimmer" />
+                                </div>
+
+                                <div className="relative z-10 flex items-center gap-2 group-hover:text-white transition-colors duration-300">
+                                    <FileDown size={14} className="group-hover:scale-110 transition-transform duration-300" />
+                                    <span>Prospectus</span>
+                                </div>
                             </motion.a>
+
                         </div>
 
                         {/* Transformation Vision - Pills */}
