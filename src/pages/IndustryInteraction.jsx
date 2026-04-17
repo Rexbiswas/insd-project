@@ -12,6 +12,7 @@ import {
     Briefcase,
     Star,
     ArrowRight,
+    X,
     Cpu,
     Target,
     Layers,
@@ -24,6 +25,20 @@ import PartnerFormModal from '../components/PartnerFormModal';
 
 const IndustryInteraction = () => {
     const [isFormOpen, setIsFormOpen] = React.useState(false);
+    const [isVideoOpen, setIsVideoOpen] = React.useState(false);
+
+    React.useEffect(() => {
+        if (isVideoOpen) {
+            const script = document.createElement('script');
+            script.src = "https://go.screenpal.com/player/appearance/cOfbepnObYX";
+            script.async = true;
+            document.body.appendChild(script);
+            return () => {
+                document.body.removeChild(script);
+            };
+        }
+    }, [isVideoOpen]);
+
     return (
         <div className="bg-white min-h-screen font-sans selection:bg-primary selection:text-white">
             <SEO 
@@ -77,7 +92,10 @@ const IndustryInteraction = () => {
                                 <button className="px-10 py-4 bg-slate-900 text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-primary transition-all transform hover:scale-105 shadow-xl shadow-slate-900/10">
                                     Our Ecosystem
                                 </button>
-                            <button className="flex items-center gap-3 text-slate-900 group">
+                            <button 
+                                onClick={() => setIsVideoOpen(true)}
+                                className="flex items-center gap-3 text-slate-900 group"
+                            >
                                 <div className="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-slate-900 group-hover:text-white transition-all">
                                     <Video className="w-5 h-5" />
                                 </div>
@@ -377,6 +395,48 @@ const IndustryInteraction = () => {
             </section>
 
             <PartnerFormModal isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
+
+            {/* --- VIDEO ARCHIVE MODAL --- */}
+            {isVideoOpen && (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
+                    <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="absolute inset-0 bg-slate-950/90 backdrop-blur-xl"
+                        onClick={() => setIsVideoOpen(false)}
+                    />
+                    
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        className="relative w-full max-w-[400px] bg-black rounded-[3rem] overflow-hidden shadow-2xl border border-white/10"
+                    >
+                        <button 
+                            onClick={() => setIsVideoOpen(false)}
+                            className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center backdrop-blur-md transition-all"
+                        >
+                            <X size={20} />
+                        </button>
+
+                        <div className="p-2">
+                             <div 
+                                className="sp-embed-player" 
+                                data-id="cOfbepnObYX" 
+                                data-aspect-ratio="0.562500" 
+                                data-padding-top="177.777778%" 
+                                style={{ position: 'relative', width: '100%', paddingTop: '177.777778%', height: 0 }}
+                             >
+                                <iframe 
+                                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 0 }} 
+                                    scrolling="no" 
+                                    src="https://go.screenpal.com/player/cOfbepnObYX?ff=1&ahc=1&dcc=1&tl=1&bg=transparent&share=1&download=1&embed=1&cl=1" 
+                                    allowFullScreen={true}
+                                ></iframe>
+                            </div>
+                        </div>
+                    </motion.div>
+                </div>
+            )}
 
             <Footer />
         </div>
