@@ -130,9 +130,9 @@ const IndustryInsights = () => {
                             <div className="absolute bottom-[-50%] right-[-20%] w-full h-[150%] bg-secondary/30 rounded-full blur-[120px] animate-pulse delay-1000"></div>
                         </div>
 
-                        <div className="relative z-10 max-w-4xl mx-auto space-y-12">
-                            <h3 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter leading-tight italic">
-                                Ready to lead the <br /> <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-primary/60">Creative Revolution?</span>
+                        <div className="relative z-10 max-w-4xl mx-auto space-y-10 md:space-y-12">
+                            <h3 className="text-3xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tighter leading-tight italic px-4 md:px-0">
+                                Ready to lead the <br /> <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-primary to-primary/80">Creative Revolution?</span>
                             </h3>
                             
                             <motion.button
@@ -142,11 +142,11 @@ const IndustryInsights = () => {
                                     title: 'Start Your Creative Career', 
                                     subtitle: 'Join the creative revolution at INSD.' 
                                 })}
-                                className="inline-flex items-center gap-6 bg-white text-slate-950 px-12 md:px-16 py-6 md:py-8 rounded-full font-black text-sm md:text-base uppercase tracking-[0.2em] shadow-2xl transition-all duration-500 hover:bg-primary hover:text-white group/btn"
+                                className="inline-flex items-center justify-center gap-4 md:gap-8 bg-white text-slate-950 px-6 sm:px-10 md:px-16 py-6 md:py-8 rounded-full font-black text-xs md:text-base uppercase tracking-widest shadow-2xl transition-all duration-500 hover:bg-primary hover:text-white group/btn w-[90%] sm:w-auto mx-auto"
                             >
-                                <Zap size={22} className="group-hover/btn:animate-bounce" />
-                                Start Your Creative Career Today
-                                <ArrowUpRight size={22} className="group-hover/btn:translate-x-2 group-hover/btn:-translate-y-2 transition-transform" />
+                                <Zap className="w-5 h-5 md:w-6 md:h-6 group-hover/btn:animate-bounce shrink-0" />
+                                <span className="leading-tight">Start Your Creative Career Today</span>
+                                <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6 group-hover/btn:translate-x-2 group-hover/btn:-translate-y-2 transition-transform shrink-0" />
                             </motion.button>
                             
                         </div>
