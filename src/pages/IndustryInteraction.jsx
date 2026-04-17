@@ -323,28 +323,40 @@ const IndustryInteraction = () => {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
                         {[
-                            { title: "CEO Panel", tag: "Strategy", img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800" },
-                            { title: "Recruitment Lab", tag: "Placements", img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800" },
-                            { title: "Tech Showcase", tag: "Innovation", img: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=800" }
+                            { title: "Industry Summit", tag: "Conclave '25", img: "https://ik.imagekit.io/fmldynl4j4/qwe/WhatsApp%20Image%202025-04-24%20at%2014.06.59%20(1).jpeg" },
+                            { title: "Global Benchmarking", tag: "Strategy", img: "https://ik.imagekit.io/fmldynl4j4/qwe/WhatsApp%20Image%202025-04-24%20at%2014.06.59%20(2).jpeg" },
+                            { title: "Creative Exchange", tag: "Innovation", img: "https://ik.imagekit.io/fmldynl4j4/qwe/WhatsApp%20Image%202025-04-24%20at%2014.06.59.jpeg" },
+                            { title: "Leadership Panel", tag: "Summit", img: "https://ik.imagekit.io/fmldynl4j4/qwe/WhatsApp%20Image%202025-04-24%20at%2014.07.00.jpeg" },
+                            { title: "Visionary Talks", tag: "Expertise", img: "https://ik.imagekit.io/fmldynl4j4/qwe/WhatsApp%20Image%202025-04-24%20at%2014.07.01%20(1).jpeg" },
+                            { title: "Design Innovation", tag: "Masterclass", img: "https://ik.imagekit.io/fmldynl4j4/qwe/WhatsApp%20Image%202025-04-24%20at%2014.07.01%20(2).jpeg" },
+                            { title: "Career Fair", tag: "Placements", img: "https://ik.imagekit.io/fmldynl4j4/qwe/WhatsApp%20Image%202025-04-24%20at%2014.07.01.jpeg" },
+                            { title: "Portfolio Lab", tag: "Mentorship", img: "https://ik.imagekit.io/fmldynl4j4/qwe/WhatsApp%20Image%202025-04-24%20at%2014.07.02.jpeg" },
+                            { title: "Alumnae Meet", tag: "Networking", img: "https://ik.imagekit.io/fmldynl4j4/qwe/WhatsApp%20Image%202025-04-24%20at%2014.09.17.jpeg" },
+                            { title: "Curator Series", tag: "Elite", img: "https://ik.imagekit.io/fmldynl4j4/qwe/WhatsApp%20Image%202025-04-24%20at%2014.09.18%20(1).jpeg" },
+                            { title: "Future Trends", tag: "Roundtable", img: "https://ik.imagekit.io/fmldynl4j4/qwe/WhatsApp%20Image%202025-04-24%20at%2014.09.18.jpeg" },
+                            { title: "Mastery Session", tag: "Workshop", img: "https://ik.imagekit.io/fmldynl4j4/qwe/WhatsApp%20Image%202025-04-24%20at%2014.09.19.jpeg" }
                         ].map((card, i) => (
                             <motion.div 
                                 key={i}
-                                whileHover={{ y: -20 }}
-                                className="relative aspect-[3/4] rounded-[3rem] overflow-hidden group shadow-2xl"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.05 }}
+                                className="relative break-inside-avoid rounded-[2.5rem] overflow-hidden group shadow-2xl mb-8"
                             >
                                 <img 
                                     src={card.img} 
                                     alt={card.title} 
-                                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                                    className="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-110"
                                 />
-                                <div className="absolute inset-0 bg-linear-to-t from-slate-900 via-slate-900/40 to-transparent" />
-                                <div className="absolute bottom-12 left-12 space-y-4">
-                                    <span className="inline-block px-4 py-1 bg-white/20 backdrop-blur-md rounded-full text-[9px] font-black text-white uppercase tracking-widest border border-white/20">
+                                <div className="absolute inset-0 bg-linear-to-t from-slate-900 via-slate-900/10 to-transparent" />
+                                <div className="absolute bottom-8 left-8 space-y-3">
+                                    <span className="inline-block px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-[8px] font-black text-white uppercase tracking-widest border border-white/10">
                                         {card.tag}
                                     </span>
-                                    <h4 className="text-3xl font-black text-white uppercase tracking-tighter leading-none">{card.title}</h4>
+                                    <h4 className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter leading-none">{card.title}</h4>
                                 </div>
                             </motion.div>
                         ))}
