@@ -25,19 +25,28 @@ import PartnerFormModal from '../components/PartnerFormModal';
 
 const IndustryInteraction = () => {
     const [isFormOpen, setIsFormOpen] = React.useState(false);
-    const [isVideoOpen, setIsVideoOpen] = React.useState(false);
+    const [videoState, setVideoState] = React.useState({ isOpen: false, id: "cOfbepnObYX" });
+    const [currentTime, setCurrentTime] = React.useState("00:00:00");
 
     React.useEffect(() => {
-        if (isVideoOpen) {
+        const timer = setInterval(() => {
+            const now = new Date();
+            setCurrentTime(now.toLocaleTimeString('en-GB', { hour12: false }));
+        }, 1000);
+        return () => clearInterval(timer);
+    }, []);
+
+    React.useEffect(() => {
+        if (videoState.isOpen) {
             const script = document.createElement('script');
-            script.src = "https://go.screenpal.com/player/appearance/cOfbepnObYX";
+            script.src = `https://go.screenpal.com/player/appearance/${videoState.id}`;
             script.async = true;
             document.body.appendChild(script);
             return () => {
                 document.body.removeChild(script);
             };
         }
-    }, [isVideoOpen]);
+    }, [videoState.isOpen, videoState.id]);
 
     return (
         <div className="bg-white min-h-screen font-sans selection:bg-primary selection:text-white">
@@ -93,7 +102,7 @@ const IndustryInteraction = () => {
                                     Our Ecosystem
                                 </button>
                             <button 
-                                onClick={() => setIsVideoOpen(true)}
+                                onClick={() => setVideoState({ isOpen: true, id: "cOfbepnObYX" })}
                                 className="flex items-center gap-3 text-slate-900 group"
                             >
                                 <div className="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-slate-900 group-hover:text-white transition-all">
@@ -151,41 +160,6 @@ const IndustryInteraction = () => {
                         ))}
                     </div>
 
-                    {/* --- FEATURED GUESTS GRID --- */}
-                    <div className="space-y-16">
-                        <div className="flex flex-col md:flex-row justify-between items-end gap-8">
-                            <div className="space-y-4">
-                                <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">Elite Leadership</span>
-                                <h2 className="text-4xl md:text-6xl font-black text-slate-900 uppercase tracking-tighter leading-none">
-                                    Voices That <br /> <span className="text-slate-300">Resonate</span>
-                                </h2>
-                            </div>
-                            <p className="text-slate-500 font-bold text-sm uppercase tracking-tight max-w-md md:text-right">
-                                Our students have learned from the best in the business, from Luxury CEOs to award-winning creative directors.
-                            </p>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
-                            {[
-                                { name: "International Designers", role: "Paris Fashion Week", img: "https://images.unsplash.com/photo-1544928147-3949a376c94e?auto=format&fit=crop&q=80&w=800" },
-                                { name: "Creative Directors", role: "Global Ad Agencies", img: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=800" },
-                                { name: "Luxury Brand Managers", role: "European Labels", img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" }
-                            ].map((person, idx) => (
-                                <div key={idx} className="relative aspect-4/5 overflow-hidden group cursor-pointer bg-slate-900">
-                                    <img 
-                                        src={person.img} 
-                                        alt={person.name} 
-                                        className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 shadow-2xl grayscale hover:grayscale-0"
-                                    />
-                                    <div className="absolute inset-0 bg-linear-to-t from-slate-900 via-transparent to-transparent opacity-80" />
-                                    <div className="absolute bottom-10 left-10 space-y-2">
-                                        <h4 className="text-white text-2xl font-black uppercase tracking-tighter">{person.name}</h4>
-                                        <p className="text-primary text-[10px] font-black uppercase tracking-widest">{person.role}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
 
                     {/* --- VIDEO SHOWCASE: INDUSTRY VISITS --- */}
                     <div className="pt-32 space-y-16">
@@ -205,15 +179,27 @@ const IndustryInteraction = () => {
                             viewport={{ once: true }}
                             className="relative aspect-video rounded-[3.5rem] overflow-hidden bg-slate-900 group shadow-2xl"
                         >
-                            <img 
-                                src="https://images.unsplash.com/photo-1540317580384-e5d43616b9aa?auto=format&fit=crop&q=80&w=1600" 
-                                alt="Industry Visit Video Cover" 
-                                className="w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-1000"
-                            />
+                            {/* Cinematic Video Background */}
+                            <video 
+                                autoPlay 
+                                loop 
+                                muted 
+                                playsInline 
+                                className="w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-1000 pointer-events-none"
+                            >
+                                <source src="https://assets.mixkit.co/videos/preview/mixkit-fashion-show-runway-with-models-34444-large.mp4" type="video/mp4" />
+                            </video>
                             
+                            {/* Live/Real-time Indicator Overlay */}
+                            <div className="absolute top-8 left-8 flex items-center gap-3">
+                                <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_#db3436]" />
+                                <span className="text-white text-[9px] font-black uppercase tracking-[0.4em]">REAL-TIME FEED</span>
+                            </div>
+
                             {/* Animated Play Button Wrapper */}
                             <div className="absolute inset-0 flex items-center justify-center">
                                 <motion.button
+                                    onClick={() => setVideoState({ isOpen: true, id: "cOfbf9nObOZ" })}
                                     whileHover={{ scale: 1.1 }}
                                     whileTap={{ scale: 0.95 }}
                                     className="relative w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center shadow-2xl transition-all group-hover:bg-primary group-hover:text-white"
@@ -225,13 +211,24 @@ const IndustryInteraction = () => {
                                 </motion.button>
                             </div>
 
+                            {/* Video Progress Bar (Simulation) */}
+                            <div className="absolute bottom-0 left-0 w-full h-1.5 bg-white/10 overflow-hidden">
+                                <motion.div 
+                                    initial={{ x: "-100%" }}
+                                    animate={{ x: "0%" }}
+                                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                                    className="h-full w-full bg-primary shadow-[0_0_15px_#db3436]"
+                                />
+                            </div>
+
                             <div className="absolute bottom-12 left-12 right-12 flex flex-col md:flex-row justify-between items-end gap-6 pointer-events-none">
                                 <div className="space-y-2">
                                     <span className="text-white/60 font-black uppercase tracking-[0.4em] text-[10px]">Documentary Series</span>
                                     <h4 className="text-white text-3xl font-black uppercase tracking-tighter">Day in the life: Paris Fashion Week</h4>
                                 </div>
-                                <div className="px-6 py-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white text-[10px] font-black uppercase tracking-widest">
-                                    12:45 MIN
+                                <div className="px-6 py-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white text-[10px] font-black uppercase tracking-widest flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                                    <span>TIMECODE: {currentTime}</span>
                                 </div>
                             </div>
                         </motion.div>
@@ -239,69 +236,6 @@ const IndustryInteraction = () => {
                 </div>
             </section>
 
-            {/* --- NEW EDIC SECTION: THE INDUSTRIAL NERVE CENTER --- */}
-            <section className="py-32 px-6 md:px-12 lg:px-24 bg-slate-900 overflow-hidden relative">
-                <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-                     <div className="absolute inset-0 bg-[radial-gradient(#db3436_1px,transparent_1px)] [background-size:40px_40px]" />
-                </div>
-
-                <div className="max-w-7xl mx-auto relative z-10">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-                        <div className="space-y-12">
-                            <div className="space-y-6">
-                                <span className="inline-block px-4 py-1.5 bg-primary/20 text-primary rounded-full text-[10px] font-black uppercase tracking-[0.4em] border border-primary/30">
-                                    Entrepreneurship & Design Innovation Center
-                                </span >
-                                <h2 className="text-6xl md:text-8xl font-black text-white uppercase tracking-tighter leading-[0.85]">
-                                    THE <br /> <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary">NERVE CENTER</span>
-                                </h2>
-                                <p className="text-slate-400 font-bold text-lg md:text-xl uppercase tracking-tight leading-relaxed max-w-xl">
-                                    EDIC bridges the gap between creative excellence and industrial scalability, transforming student concepts into market-dominant ventures.
-                                </p>
-                            </div>
-
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                                {[
-                                    { icon: Target, title: "Incubation", desc: "Seed funding & workspace for high-potential design startups." },
-                                    { icon: Cpu, title: "Tech Integration", desc: "Harnessing AI & robotics for modern product manufacturing." },
-                                    { icon: Layers, title: "Market Access", desc: "Direct pipelines to global retail and industrial distribution." },
-                                    { icon: ShieldCheck, title: "IP Protection", desc: "Navigating patent laws and design registration frameworks." }
-                                ].map((item, i) => (
-                                    <div key={i} className="p-8 bg-white/5 backdrop-blur-xl rounded-[2rem] border border-white/10 hover:bg-white/10 transition-all group">
-                                        <item.icon className="w-10 h-10 text-primary mb-6 group-hover:scale-110 transition-transform" />
-                                        <h4 className="text-white text-xl font-black uppercase tracking-tighter mb-2">{item.title}</h4>
-                                        <p className="text-slate-500 text-xs font-bold uppercase tracking-widest leading-relaxed">{item.desc}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="relative">
-                            <div className="relative aspect-square rounded-[4rem] overflow-hidden border border-white/10 shadow-2xl">
-                                <img 
-                                    src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200" 
-                                    alt="EDIC Tech Hub" 
-                                    className="w-full h-full object-cover grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-1000"
-                                />
-                                <div className="absolute inset-0 bg-linear-to-t from-slate-900 to-transparent" />
-                                
-                                <div className="absolute bottom-12 left-12 right-12">
-                                    <div className="p-8 bg-primary/90 backdrop-blur-xl rounded-3xl text-white space-y-2">
-                                        <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-80">Industrial Impact</span>
-                                        <div className="flex justify-between items-end">
-                                            <h5 className="text-4xl font-black italic tracking-tighter">500+</h5>
-                                            <span className="text-[10px] font-black uppercase tracking-widest mb-1">Partnerships Active</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Decorative Floating Element */}
-                            <div className="absolute -top-12 -right-12 w-48 h-48 bg-secondary/20 blur-[80px] rounded-full animate-pulse" />
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             {/* --- NEW DESIGN CONCLAVE SECTION: THE GLOBAL SUMMIT --- */}
             <section className="py-32 px-6 md:px-12 lg:px-24 bg-white overflow-hidden">
@@ -409,13 +343,13 @@ const IndustryInteraction = () => {
             <PartnerFormModal isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
 
             {/* --- VIDEO ARCHIVE MODAL --- */}
-            {isVideoOpen && (
+            {videoState.isOpen && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
                     <motion.div 
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         className="absolute inset-0 bg-slate-950/90 backdrop-blur-xl"
-                        onClick={() => setIsVideoOpen(false)}
+                        onClick={() => setVideoState(prev => ({ ...prev, isOpen: false }))}
                     />
                     
                     <motion.div 
@@ -424,7 +358,7 @@ const IndustryInteraction = () => {
                         className="relative w-full max-w-[400px] bg-black rounded-[3rem] overflow-hidden shadow-2xl border border-white/10"
                     >
                         <button 
-                            onClick={() => setIsVideoOpen(false)}
+                            onClick={() => setVideoState(prev => ({ ...prev, isOpen: false }))}
                             className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center backdrop-blur-md transition-all"
                         >
                             <X size={20} />
@@ -433,7 +367,7 @@ const IndustryInteraction = () => {
                         <div className="p-2">
                              <div 
                                 className="sp-embed-player" 
-                                data-id="cOfbepnObYX" 
+                                data-id={videoState.id}
                                 data-aspect-ratio="0.562500" 
                                 data-padding-top="177.777778%" 
                                 style={{ position: 'relative', width: '100%', paddingTop: '177.777778%', height: 0 }}
@@ -441,7 +375,7 @@ const IndustryInteraction = () => {
                                 <iframe 
                                     style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 0 }} 
                                     scrolling="no" 
-                                    src="https://go.screenpal.com/player/cOfbepnObYX?ff=1&ahc=1&dcc=1&tl=1&bg=transparent&share=1&download=1&embed=1&cl=1" 
+                                    src={`https://go.screenpal.com/player/${videoState.id}?ff=1&ahc=1&dcc=1&tl=1&bg=transparent&share=1&download=1&embed=1&cl=1`}
                                     allowFullScreen={true}
                                 ></iframe>
                             </div>
