@@ -24,10 +24,26 @@ import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const JewelleryDesigning = () => {
     const { openAdmissionModal } = useAdmissionModal();
-    const [activeOutline, setActiveOutline] = useState('Bachelors');
+    const [activeOutline, setActiveOutline] = useState('Industry Diploma');
     const [expandedSem, setExpandedSem] = useState(1);
 
     const curriculumData = {
+        "Industry Diploma": {
+            "Foundation: Gem Arts": [
+                "Manual Designing: Motifs & Forms",
+                "Gemstone Identification Basics",
+                "3D CAD (Matrix) + AI Prototyping",
+                "Metallurgy & Casting Basics",
+                "Illustration & Rendering with AI"
+            ],
+            "Industry: Luxury Market": [
+                "Luxury Brand Management",
+                "Quality Control & Appraisal",
+                "Digital Portfolio Mastery",
+                "Industry Case Studies",
+                "Startup Economics in Gemology"
+            ]
+        },
         PG: {
             "Year 1": [
                 "Gemology: Identification & Grading",
@@ -49,55 +65,26 @@ const JewelleryDesigning = () => {
             ]
         },
         Bachelors: {
-            "Semester 1": [
-                "Manual Designing: Motives & Jewelry Knowledge",
-                "Shading & Rendering: White Gold, Yellow Gold, Gemstones",
-                "Costume Jewellery: Bead & Stone Craft",
-                "Metallurgy: Basic Knowledge & Terminology"
-            ],
-            "Semester 2": [
-                "Advanced Manual Design Techniques",
-                "Gemology: Study of Gemstones, Shapes & Origin",
-                "Gemstone Occurrence & Identification",
-                "Diamond Grading: Basic Knowledge & 4Cs"
-            ],
-            "Semester 3": [
-                "Production Management & Designing Projects",
-                "State, Country, & Temple Jewellery Projects",
-                "Detachable Jewelry Projects",
-                "Advanced Gemology & Diamond Grading"
-            ],
-            "Semester 4": [
-                "Market Surveys & Trend Analysis",
+            "Year 1": [
+                "Manual Designing: Motifs & Form Rendering",
+                "Gemology: Identification & Stone Study",
+                "Diamond Grading: The 4Cs Mastery",
+                "Metallurgy & Basic Jewelry Knowledge",
                 "CAD Designing: Rhino & Matrix Mastery",
-                "Fashion Accessory Design",
-                "Hallmarking Systems of Jewellery",
-                "History of Eras & Era Design Practical",
-                "Accessory Designing Practical"
+                "Fashion Accessory Design Foundations",
+                "Market Dynamics & Trend Analysis"
             ],
-            "Semester 5": [
-                "Human Resource Management",
+            "Year 2": [
                 "Custom Made Jewellery Boutique",
-                "Entrepreneurship Development",
-                "Scientific Study of Pearls",
-                "Inspirational & State Designing Practicals"
-            ],
-            "Semester 6": [
-                "Marketing & Brand Management",
+                "Entrepreneurship & Startup Development",
+                "Scientific Study of Pearls & Grading",
+                "Luxury Marketing & Brand Management",
                 "Retail Sales & Quality Control",
-                "Portfolio Case Study"
-            ],
-            "Semester 7": [
-                "High-End Industry Projects",
-                "Entrepreneurial Strategy",
-                "Corporate Design Standards"
-            ],
-            "Semester 8": [
-                "Professional Internship",
-                "On-the-Job Industry Training",
-                "Market Dynamics & Placement Readiness"
+                "High-End Industry Capstone Projects",
+                "Professional Placement & OJT",
+                "Final Portfolio Case Study"
             ]
-        }
+        },
     };
 
     const careerPaths = [
@@ -144,18 +131,25 @@ const JewelleryDesigning = () => {
                             Design
                         </h1>
                        
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12">
                             <button 
                                 onClick={() => openAdmissionModal()}
-                                className="px-12 py-5 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest hover:bg-primary hover:text-white transition-all transform hover:scale-105 shadow-2xl"
+                                className="group px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3"
                             >
-                                Secure Admission
+                                Join the Skill Revolution
+                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                             </button>
-                            <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
+                            <button 
+                                onClick={() => openAdmissionModal()}
+                                className="px-12 py-5 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105"
+                            >
+                                Enroll Now
+                            </button>
+                        </div>
+                        <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
                                 <span className="text-[10px] font-black uppercase tracking-widest">Scroll to Explore</span>
                                 <ArrowRight size={16} className="rotate-90" />
                             </div>
-                        </div>
                     </motion.div>
                 </div>
             </section>
@@ -240,8 +234,9 @@ const JewelleryDesigning = () => {
                         
                         <div className="flex bg-white p-2 rounded-full border border-slate-200 shadow-sm overflow-x-auto no-scrollbar">
                             {[
-                                { id: 'Bachelors', label: 'Undergraduate', sub: 'B.Des | B.Voc' },
-                                { id: 'PG', label: 'Post Graduate', sub: 'M.Des | M.Voc' }
+                                { id: 'Industry Diploma', label: 'Industry Diploma', badge: 'Featured' },
+                                { id: 'Bachelors', label: 'Undergraduate' },
+                                { id: 'PG', label: 'Post Graduate' }
                             ].map((tab) => (
                                 <button 
                                     key={tab.id}
@@ -255,8 +250,14 @@ const JewelleryDesigning = () => {
                                         : 'text-slate-400 hover:text-slate-900'
                                     }`}
                                 >
-                                    <span>{tab.label}</span>
-                                    {tab.sub && <span className="text-[7px] opacity-60 tracking-tighter font-medium">{tab.sub}</span>}
+                                    <div className="flex items-center gap-2">
+                                        <span>{tab.label}</span>
+                                        {tab.badge && (
+                                            <span className="px-1.5 py-0.5 rounded-full bg-primary text-[6px] text-white">
+                                                {tab.badge}
+                                            </span>
+                                        )}
+                                    </div>
                                 </button>
                             ))}
                         </div>

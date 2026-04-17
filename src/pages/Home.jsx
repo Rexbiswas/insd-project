@@ -305,7 +305,7 @@ const Home = () => {
 
             {/* Hero Split Section */}
             <div ref={heroRef} className="relative z-10 min-h-screen w-full flex flex-col md:flex-row bg-white overflow-hidden pt-20 md:pt-0 cursor-default">
-                
+
                 {/* Left Side: Content & Headlines */}
                 <div className="w-full md:w-[55%] flex flex-col justify-center px-6 md:px-16 lg:px-24 py-8 md:py-16 space-y-6 md:space-y-8 relative z-20">
                     <motion.div
@@ -318,8 +318,8 @@ const Home = () => {
                         <div className="space-y-4">
 
                             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-slate-900 tracking-tighter leading-[0.9]">
-                            From Classroom <br />
-                            <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-slate-400 italic text-[0.8em]">to Career.</span>
+                                From Classroom <br />
+                                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-slate-400 italic text-[0.8em]">to Career.</span>
                             </h1>
                             <p className="text-lg md:text-xl font-bold text-slate-600 tracking-tight max-w-xl">
                                 Skill-based education launching high-impact careers in Fashion, Interior & Graphic design.
@@ -347,7 +347,7 @@ const Home = () => {
                             >
                                 {/* Animated Gradient Background */}
                                 <div className="absolute inset-0 bg-linear-to-r from-primary to-slate-900 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
-                                
+
                                 {/* Shimmer */}
                                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                                     <div className="absolute top-0 -left-full w-full h-full bg-linear-to-r from-transparent via-white/20 to-transparent skew-x-[-20deg] group-hover:animate-shimmer" />
@@ -386,8 +386,8 @@ const Home = () => {
 
                 {/* Right Side: Visual Elements */}
                 <div className="w-full md:w-[45%] h-[50vh] md:h-[95vh] md:pr-12 md:py-16 relative overflow-hidden bg-white">
-                    <HeroSlider isMobile={isMobile} />
-                    
+                    <HeroSlider />
+
                     {/* Visual Overlay removed to let the card stand out */}
                 </div>
 

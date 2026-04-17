@@ -60,7 +60,7 @@ const AwardsRecognition = () => {
 
     return (
         <div ref={containerRef} className="bg-white min-h-screen selection:bg-slate-900 selection:text-white overflow-x-hidden">
-            <SEO 
+            <SEO
                 title="Awards & Recognition | Excellence in Design Education - INSD"
                 description="Explore the prestigious awards and official recognitions that define INSD's legacy of excellence. From National Awards to Global Placement Records, our achievements speak for themselves."
                 keywords="design school awards, INSD ranking, best fashion college India, top interior design institute, national design excellence award"
@@ -69,13 +69,13 @@ const AwardsRecognition = () => {
             {/* --- PRESTIGE HERO --- */}
             <section ref={heroRef} className="relative h-screen flex flex-col items-center justify-center text-center overflow-hidden">
                 {/* Parallax Background */}
-                <motion.div 
+                <motion.div
                     style={{ y, opacity }}
                     className="absolute inset-0 z-0"
                 >
                     <div className="absolute inset-0 bg-linear-to-b from-white/10 via-transparent to-white z-10" />
-                    <img 
-                        src="/C:/Users/Rishi/.gemini/antigravity/brain/8980b6ce-25db-4a18-a093-a44406a5ec23/awards_recognition_hero_1774030014761.png" 
+                    <img
+                        src="/C:/Users/Rishi/.gemini/antigravity/brain/8980b6ce-25db-4a18-a093-a44406a5ec23/awards_recognition_hero_1774030014761.png"
                         alt="Prestige Recognition"
                         className="w-full h-full object-cover scale-110"
                     />
@@ -100,7 +100,7 @@ const AwardsRecognition = () => {
                         transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                         className="text-[12vw] md:text-[8vw] lg:text-[7vw] font-black uppercase leading-[0.85] tracking-tighter text-slate-500 mix-blend-difference"
                     >
-                        THE <br className="md:hidden" /> <span className="text-primary italic font-serif">PRESTIGE.</span>
+                        Trusted. Recognised. <br className="md:hidden" /> <span className="text-primary italic font-serif">Proven.</span>
                     </motion.h1>
 
                     <motion.p
@@ -113,7 +113,7 @@ const AwardsRecognition = () => {
                     </motion.p>
                 </div>
 
-                
+
             </section>
 
             {/* --- IMPACT STATS --- */}
@@ -143,16 +143,31 @@ const AwardsRecognition = () => {
 
             {/* --- ACCOMPLISHMENTS REVEAL --- */}
             <section className="py-24 md:py-32 bg-slate-50 relative overflow-hidden">
-                
-                
+
+
 
                 {/* Integrating TOICertification Here */}
                 <div className="relative z-10">
                     <TOICertification />
                 </div>
-            </section>
 
-            
+            </section>
+            <div className="flex justify-center items-center pb-24 relative z-10">
+                <motion.button
+                    whileHover={{ scale: 1.05, y: -5 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="group relative px-12 py-6 bg-slate-900 text-white rounded-full font-black uppercase text-xs tracking-[0.3em] shadow-2xl overflow-hidden transition-all duration-500"
+                >
+                    <span className="relative z-10 flex items-center gap-4">
+                        Start Your Design Journey Here
+                        <Sparkles size={18} className="text-primary group-hover:rotate-12 transition-transform" />
+                    </span>
+                    <div className="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+                </motion.button>
+            </div>
+
+
+
 
             <Footer />
         </div>
@@ -161,22 +176,22 @@ const AwardsRecognition = () => {
 
 // Simplified Globe for icon replacement if needed
 const Globe = ({ size, className }) => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round" 
-    className={className}
-  >
-    <circle cx="12" cy="12" r="10" />
-    <line x1="2" y1="12" x2="22" y2="12" />
-    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-  </svg>
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={className}
+    >
+        <circle cx="12" cy="12" r="10" />
+        <line x1="2" y1="12" x2="22" y2="12" />
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+    </svg>
 );
 
 export default AwardsRecognition;

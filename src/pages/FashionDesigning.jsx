@@ -7,13 +7,10 @@ import {
     Palette, 
     Layers, 
     Scissors, 
-    BookOpen,
     ArrowRight,
-    Users,
-    Briefcase,
-    Zap,
-    Clock,
     GraduationCap,
+    Clock,
+    BookOpen,
     PenTool,
     Globe
 } from 'lucide-react';
@@ -23,7 +20,7 @@ import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const FashionDesigning = () => {
     const { openAdmissionModal } = useAdmissionModal();
-    const [activeOutline, setActiveOutline] = useState('UG Course');
+    const [activeOutline, setActiveOutline] = useState('Industry Diploma');
     const [expandedSem, setExpandedSem] = useState(1);
 
     const curriculumData = {
@@ -32,84 +29,42 @@ const FashionDesigning = () => {
                 "Foundation with AI",
                 "Elements of Design with AI",
                 "Basic Design Idea / Fashion Language",
-                "Fashion Illustration",
+                "Fashion Illustration Mastery",
                 "Computer Aided Design (CAD) + AI Platforms",
-                "Design to Concept & Fashion Forecasting with AI",
-                "Dummy to Concept & Draping",
-                "Colour Idea & Concept on Texture Fabric with AI"
+                "Fashion Forecasting with AI"
             ],
             "Part 2: Professional Mastery": [
-                "Client Profile",
-                "Project on Brands + Understanding data based Market Trends with AI",
-                "Garment Construction (GMT)",
-                "Pattern Making (PMT)",
-                "Basic Embroidery & State Embroideries with AI",
-                "Textile Theory (Fibre to Fabric)",
-                "Grooming Standard",
-                "Personality Development"
+                "Strategic Brand Projects",
+                "Advanced Market Trends with AI",
+                "Garment Construction & Tailoring",
+                "Pattern Engineering (PMT)",
+                "Digital Texture & Fabric Concept",
+                "Personality Development & Grooming"
             ]
         },
-        "UG Course": {
-            "Semester 1": [
+        Bachelors: {
+            "Year 1": [
                 "Foundation Art & Design",
                 "Principles of Fashion Design",
                 "Introduction to Pattern Making & GMT",
-                "Fashion & Apparel Design Fundamentals",
-                "Portfolio Making Basics",
-                "Industrial Garment Grading"
-            ],
-            "Semester 2": [
+                "Introduction to Fashion Illustration",
                 "History of Western World Fashion",
-                "Introduction to Textile Science",
-                "Grooming & Communication Skills",
-                "Fashion Design Foundation Theory",
-                "Creative Yarn Craft",
+                "Textile Science & Fiber Study",
+                "Fashion & Apparel Design Fundamentals",
                 "Basics of Computer Applications"
             ],
-            "Semester 3": [
-                "Introduction to Fashion Illustration",
-                "Sewing Technology & Advanced Stitching",
-                "Introduction to Draping Techniques",
-                "Creative Embroidery & Surface Ornamentation",
-                "Inspiration-based Design Projects",
-                "Pattern Making & Sewing Lab"
-            ],
-            "Semester 4": [
+            "Year 2": [
                 "Advanced Garment Construction",
-                "Sewing Technology Part-II",
-                "Textile Science & Processing",
                 "Advanced Computer Aided Design (CAD)",
-                "History of Indian Fashion",
-                "Market Dynamics & Client Research"
-            ],
-            "Semester 5": [
-                "Fabric Testing & Quality Control",
-                "Advanced Fashion Analysis",
-                "Vintage Costumes & Historical Studies",
-                "Global Fashion Forecasting",
-                "Mood Board & Trend Analysis",
-                "Production Planning & Management"
-            ],
-            "Semester 6": [
+                "Fashion Forecasting & Trend Analysis",
                 "Visual Merchandising & Retail Design",
-                "Fashion Accessory Design",
-                "Advanced Fashion Illustration",
-                "Production & Operations Management",
-                "Total Quality Management",
-                "Entrepreneurship Development"
-            ],
-            "Semester 7": [
+                "Entrepreneurship Development",
                 "Industrial Internship Projects",
-                "Advanced Entrepreneurial Strategy",
-                "Collection Development"
-            ],
-            "Semester 8": [
-                "Internship & On-the-Job training",
-                "Market Placement Program",
+                "Collection Development",
                 "Final Graduation Showcase"
             ]
         },
-        "PG Course": {
+        PG: {
             "Year 1": [
                 "Advanced Fashion Theory",
                 "Luxury Brand Perception",
@@ -151,7 +106,7 @@ const FashionDesigning = () => {
             <section className="relative h-[70vh] md:h-[85vh] flex items-center justify-center pt-20 md:pt-32 text-center px-6 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img 
-                        src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=1200" 
+                        src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                         alt="Fashion Design Studio" 
                         className="w-full h-full object-cover scale-105"
                     />
@@ -170,10 +125,17 @@ const FashionDesigning = () => {
                         </h1>
                         
                         
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12">
                             <button 
                                 onClick={() => openAdmissionModal()}
-                                className="px-12 py-5 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest hover:bg-primary hover:text-white transition-all transform hover:scale-105 shadow-2xl"
+                                className="group px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3"
+                            >
+                                Join the Skill Revolution
+                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                            </button>
+                            <button 
+                                onClick={() => openAdmissionModal()}
+                                className="px-12 py-5 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105"
                             >
                                 Enroll Now
                             </button>
@@ -209,46 +171,7 @@ const FashionDesigning = () => {
                 </div>
             </section>
 
-            {/* --- CORE PHILOSOPHY --- */}
-            <section className="py-24 px-6 md:px-12 lg:px-24 bg-white relative overflow-hidden">
-                <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                    <div className="space-y-8">
-                        <h2 className="text-4xl md:text-6xl lg:text-8xl font-black text-slate-900 uppercase tracking-tighter leading-[1.1] md:leading-[0.85]">
-                            The Art of <br className="hidden md:block" /> 
-                            <span className="text-primary italic">Couture</span> <br className="hidden md:block" /> 
-                            Engineering
-                        </h2>
-                        <p className="text-lg text-slate-600 font-medium leading-relaxed">
-                            We’ll encourage you to innovate as well as to understand historic and contemporary trends in fashion. By graduation, you’ll be equipped with the design and manufacturing skills to take your unique creative vision to the global stage.
-                        </p>
-                        <div className="grid grid-cols-2 gap-6">
-                            {[
-                                "Design Development", "Pattern Cutting", 
-                                "Draping Skills", "Garment Construction",
-                                "Fashion Illustration", "Collection Planning"
-                            ].map((tech, i) => (
-                                <div key={i} className="flex items-center gap-3">
-                                    <CheckCircle2 size={18} className="text-primary" />
-                                    <span className="text-sm font-black uppercase tracking-tighter text-slate-700">{tech}</span>
-                                </div>
-                            ))}
-                        </div>
-                        <p className="text-slate-500 leading-relaxed italic border-l-4 border-primary pl-6">
-                            "INSD prepares you for the high-intensity fashion industry, balancing traditional artisanal techniques with modern digital tools."
-                        </p>
-                    </div>
-                    <div className="relative group">
-                        <div className="aspect-4/5 rounded-[4rem] overflow-hidden shadow-2xl">
-                            <img 
-                                src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?auto=format&fit=crop&q=80&w=800" 
-                                alt="Fashion Experimentation" 
-                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                            />
-                        </div>
-                        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/20 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </div>
-                </div>
-            </section>
+
 
             {/* --- LEARNING OUTCOMES --- */}
             <section className="py-24 px-6 md:px-12 lg:px-24 bg-black text-white overflow-hidden relative">
@@ -265,7 +188,7 @@ const FashionDesigning = () => {
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-4 h-auto md:h-[600px]">
                         <div className="col-span-1 md:col-span-7 h-[300px] md:h-full rounded-2xl overflow-hidden shadow-2xl">
                             <img 
-                                src="https://images.unsplash.com/photo-1517245385633-9118c7a6f272?auto=format&fit=crop&q=80&w=800" 
+                                src="" 
                                 alt="Fashion Design Student Work" 
                                 className="w-full h-full object-cover"
                             />
@@ -303,9 +226,9 @@ const FashionDesigning = () => {
                         
                         <div className="flex bg-white p-2 rounded-full border border-slate-200 shadow-sm overflow-x-auto no-scrollbar">
                             {[
-                                { id: 'Industry Diploma', label: 'Industry Diploma', sub: '', badge: 'Featured' },
-                                { id: 'PG Course', label: 'PG Course', sub: 'MBA | MSC | M.DES | MVOK' },
-                                { id: 'UG Course', label: 'UG Course', sub: 'BCS IN FD | BDES | B.VOC' }
+                                { id: 'Industry Diploma', label: 'Industry Diploma', badge: 'Featured' },
+                                { id: 'Bachelors', label: 'Undergraduate' },
+                                { id: 'PG', label: 'Post Graduate' }
                             ].map((tab) => (
                                 <button 
                                     key={tab.id}
@@ -327,7 +250,6 @@ const FashionDesigning = () => {
                                             </span>
                                         )}
                                     </div>
-                                    {tab.sub && <span className="text-[7px] opacity-60 tracking-tighter font-medium">{tab.sub}</span>}
                                 </button>
                             ))}
                         </div>

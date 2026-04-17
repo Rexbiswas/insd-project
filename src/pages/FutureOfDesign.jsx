@@ -28,9 +28,9 @@ const FutureOfDesign = () => {
             />
 
             {/* --- HERO SECTION: DESIGN IS EVERYWHERE --- */}
-            <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-slate-950">
-                {/* Background Collage Elements (Inspired by Image 3) */}
-                <div className="absolute inset-0 z-0 overflow-hidden opacity-30">
+            <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
+                {/* Subtle Background Elements */}
+                <div className="absolute inset-0 z-0 overflow-hidden opacity-10">
                     <motion.div 
                         animate={{ 
                             x: [0, 50, 0],
@@ -38,7 +38,7 @@ const FutureOfDesign = () => {
                             rotate: [0, 5, 0]
                         }}
                         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                        className="absolute top-10 left-[10%] w-[30%] aspect-video rounded-3xl overflow-hidden border border-white/10 blur-[1px]"
+                        className="absolute top-10 left-[10%] w-[30%] aspect-video rounded-3xl overflow-hidden border border-slate-200 blur-[1px]"
                     >
                         <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&q=80&w=1200" alt="Fashion" className="w-full h-full object-cover" />
                     </motion.div>
@@ -49,15 +49,10 @@ const FutureOfDesign = () => {
                             rotate: [0, -3, 0]
                         }}
                         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                        className="absolute bottom-20 right-[5%] w-[35%] aspect-square rounded-full overflow-hidden border border-white/10 blur-[2px]"
+                        className="absolute bottom-20 right-[5%] w-[35%] aspect-square rounded-full overflow-hidden border border-slate-200 blur-[2px]"
                     >
                         <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200" alt="Architecture" className="w-full h-full object-cover" />
                     </motion.div>
-                    <motion.div 
-                        animate={{ scale: [1, 1.1, 1] }}
-                        transition={{ duration: 15, repeat: Infinity }}
-                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-b from-transparent via-slate-950/80 to-slate-950" 
-                    />
                 </div>
 
                 <div className="max-w-7xl mx-auto relative z-10 px-6 text-center space-y-12">
@@ -67,14 +62,13 @@ const FutureOfDesign = () => {
                         transition={{ duration: 1 }}
                         className="space-y-6"
                     >
-                        <span className="inline-block text-primary font-black uppercase text-xs tracking-[0.5em] mb-4">The Creative Revolution</span>
-                        <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-black text-white uppercase tracking-tightest leading-[0.8] mb-8">
+                        <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-black text-slate-950 uppercase tracking-tightest leading-[0.8] mb-8">
                             Design Is <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-primary italic">Everywhere</span>
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-slate-400 to-primary italic">Everywhere</span>
                         </h1>
-                        <p className="text-white/40 font-bold text-lg md:text-2xl max-w-4xl mx-auto uppercase tracking-tight leading-loose">
+                        <p className="text-slate-400 font-bold text-lg md:text-2xl max-w-4xl mx-auto uppercase tracking-tight leading-loose">
                             From the products you touch to the spaces you inhabit. 
-                            <span className="text-white"> Design is no longer a hobby; it is a serious career opportunity.</span>
+                            <span className="text-slate-950"> Design is no longer a hobby; it is a serious career opportunity.</span>
                         </p>
                     </motion.div>
 
@@ -84,16 +78,11 @@ const FutureOfDesign = () => {
                         transition={{ delay: 0.8 }}
                         className="flex flex-col sm:flex-row items-center justify-center gap-6"
                     >
-                        <button className="group px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3">
+                        <button className="group px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-slate-950 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3">
                             Join the Skill Revolution
                             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                         </button>
                     </motion.div>
-                </div>
-
-                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-4 text-white/20 animate-bounce">
-                    <span className="text-[10px] font-black uppercase tracking-[0.3em]">Explore the Global Market Shift</span>
-                    <div className="w-px h-10 bg-white/20" />
                 </div>
             </section>
 
@@ -178,7 +167,7 @@ const FutureOfDesign = () => {
                             className="relative overflow-hidden rounded-[3.5rem] shadow-2xl h-full min-h-[400px]"
                         >
                             <img 
-                                src="https://images.livemint.com/img/2024/02/01/1600x900/Nirmala_Sitharaman_1706764511080_1706764511306.JPG" 
+                                src="https://tse2.mm.bing.net/th/id/OIP.KWaUVJW5bvb12bdMy9k7DQAAAA?rs=1&pid=ImgDetMain&o=7&rm=3" 
                                 alt="Nirmala Sitharaman Budget" 
                                 className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 brightness-75 group-hover:brightness-100"
                             />
@@ -198,17 +187,17 @@ const FutureOfDesign = () => {
             </section>
 
             {/* --- FINAL STAT STRIP --- */}
-            <section className="py-20 px-6 bg-slate-950 text-white overflow-hidden relative">
-                <div className="max-w-7xl mx-auto flex flex-wrap justify-between gap-12 text-center md:text-left">
+            <section className="py-24 px-6 bg-slate-50 text-slate-950 overflow-hidden relative border-t border-slate-100">
+                <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-16 md:gap-32 lg:gap-48 text-center">
                     {[
                         { label: "Projected Professionals", value: "20 Lakh+", sub: "By 2033" },
                         { label: "Investment Growth", value: "3.5X", sub: "Creative Sector" },
                         { label: "New Tech Focus", value: "AVGC-XR", sub: "Next-Gen Design" }
                     ].map((stat, i) => (
-                        <div key={i} className="space-y-2 flex-1 min-w-[200px]">
-                            <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.3em]">{stat.label}</p>
-                            <h4 className="text-5xl font-black text-primary uppercase tracking-tighter">{stat.value}</h4>
-                            <p className="text-white/60 text-xs font-bold uppercase tracking-widest">{stat.sub}</p>
+                        <div key={i} className="space-y-2 min-w-[200px]">
+                            <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">{stat.label}</p>
+                            <h4 className="text-4xl md:text-6xl font-black text-primary uppercase tracking-tightest">{stat.value}</h4>
+                            <p className="text-slate-500 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em]">{stat.sub}</p>
                         </div>
                     ))}
                 </div>

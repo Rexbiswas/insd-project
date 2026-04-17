@@ -25,10 +25,26 @@ import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const TextileDesigning = () => {
     const { openAdmissionModal } = useAdmissionModal();
-    const [activeOutline, setActiveOutline] = useState('Bachelors');
+    const [activeOutline, setActiveOutline] = useState('Industry Diploma');
     const [expandedSem, setExpandedSem] = useState(1);
 
     const curriculumData = {
+        "Industry Diploma": {
+            "Part 1: Fiber & Color": [
+                "Textile Science & Fiber Study",
+                "Color Theory & Digital Dyeing with AI",
+                "Print Design & Surface Ornamentation",
+                "Digital Illustration (CAD + AI)",
+                "Weaving & Embroidery Basics"
+            ],
+            "Part 2: Market Strategy": [
+                "Sustainable Textiles & Ecology",
+                "Brand Management & Textile Marketing",
+                "Global Sourcing & Supply Chain",
+                "Portfolio Development + Industry Case Studies",
+                "Innovative Textiles & Smart Fabrics with AI"
+            ]
+        },
         PG: {
             "Year 1": [
                 "Advanced Textile Science",
@@ -50,51 +66,24 @@ const TextileDesigning = () => {
             ]
         },
         Bachelors: {
-            "Semester 1": [
-                "Introduction to Traditional Textiles",
-                "Study of Textile Fibers",
-                "Physical & Chemical Properties of Fiber",
-                "Fiber Manufacturing Systems"
-            ],
-            "Semester 2": [
-                "Yarn Formation & Looms",
-                "Types of Yarn & Applications",
-                "Basic Weaves & Structures",
-                "Communication Skills & Presentation"
-            ],
-            "Semester 3": [
-                "Introduction to Wet Processes",
-                "Advance Weaving Processes",
-                "Industrial Visit Project on Weaves",
-                "Fabric Construction Analysis"
-            ],
-            "Semester 4": [
-                "Introduction to Print Processes",
-                "Article on Block Printing",
-                "Stencil Printing, Tie & Dye Techniques",
+            "Year 1": [
+                "Fiber Science & Traditional Textiles",
+                "Yarn Formation & Loom Structures",
+                "Textile Chemistry & Wet Processes",
+                "Dyeing & Printing Technology",
+                "Digital Illustration (CAD + AI)",
+                "Weaving & Color Theory",
                 "Market Dynamics & Client Research"
             ],
-            "Semester 5": [
-                "Fundamentals of Knitting Processes",
-                "Textile Finishing Processes",
-                "Surface Ornamentation Techniques",
-                "Dyeing & Color Chemistry"
-            ],
-            "Semester 6": [
-                "Advanced Knitting Systems",
-                "Specialized Finishing Processes",
-                "Quality Assurance in Textiles",
-                "Digital Print Design Mastery"
-            ],
-            "Semester 7": [
-                "High-End Industry Projects",
+            "Year 2": [
+                "Knitting Processes & Systems",
+                "Advanced Textile Finishing",
+                "Surface Ornamentation & Artistry",
+                "Digital Print Design Mastery",
+                "Sustainable Material Research",
                 "Entrepreneurship & Startup Strategy",
-                "Sustainable Material Research"
-            ],
-            "Semester 8": [
-                "Professional Internship",
-                "On-the-Job Industry Training",
-                "Global Market Dynamics & Trends"
+                "Industrial Internship (OJT)",
+                "Final Graduation Showcase"
             ]
         }
     };
@@ -144,18 +133,25 @@ const TextileDesigning = () => {
                         </h1>
                         
                         
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12">
                             <button 
                                 onClick={() => openAdmissionModal()}
-                                className="px-12 py-5 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest hover:bg-primary hover:text-white transition-all transform hover:scale-105 shadow-2xl"
+                                className="group px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3"
                             >
-                                Secure Admission
+                                Join the Skill Revolution
+                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                             </button>
-                            <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
+                            <button 
+                                onClick={() => openAdmissionModal()}
+                                className="px-12 py-5 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105"
+                            >
+                                Enroll Now
+                            </button>
+                        </div>
+                        <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
                                 <span className="text-[10px] font-black uppercase tracking-widest">Scroll to Explore</span>
                                 <ArrowRight size={16} className="rotate-90" />
                             </div>
-                        </div>
                     </motion.div>
                 </div>
             </section>
@@ -240,8 +236,9 @@ const TextileDesigning = () => {
                         
                         <div className="flex bg-white p-2 rounded-full border border-slate-200 shadow-sm overflow-x-auto no-scrollbar">
                             {[
-                                { id: 'Bachelors', label: 'Undergraduate', sub: 'B.Des | B.Voc' },
-                                { id: 'PG', label: 'Post Graduate', sub: 'M.Des | M.Voc' }
+                                { id: 'Industry Diploma', label: 'Industry Diploma', badge: 'Featured' },
+                                { id: 'Bachelors', label: 'Undergraduate' },
+                                { id: 'PG', label: 'Post Graduate' }
                             ].map((tab) => (
                                 <button 
                                     key={tab.id}
@@ -255,8 +252,14 @@ const TextileDesigning = () => {
                                         : 'text-slate-400 hover:text-slate-900'
                                     }`}
                                 >
-                                    <span>{tab.label}</span>
-                                    {tab.sub && <span className="text-[7px] opacity-60 tracking-tighter font-medium">{tab.sub}</span>}
+                                    <div className="flex items-center gap-2">
+                                        <span>{tab.label}</span>
+                                        {tab.badge && (
+                                            <span className="px-1.5 py-0.5 rounded-full bg-primary text-[6px] text-white">
+                                                {tab.badge}
+                                            </span>
+                                        )}
+                                    </div>
                                 </button>
                             ))}
                         </div>

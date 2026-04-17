@@ -27,68 +27,45 @@ import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const AnimationAndVFX = () => {
     const { openAdmissionModal } = useAdmissionModal();
-    const [activeOutline, setActiveOutline] = useState('Bachelors');
+    const [activeOutline, setActiveOutline] = useState('Industry Diploma');
     const [expandedSem, setExpandedSem] = useState(1);
 
     const curriculumData = {
-        Bachelors: {
-            "Semester 1": [
-                "Fundamentals of Art & Design",
-                "Digital Imaging & Manipulation",
-                "Principles of 2D Animation",
-                "Traditional Animation Concepts",
-                "History of Visual Media",
-                "Sketching & Anatomy Study"
-            ],
-            "Semester 2": [
-                "3D Basics: Modeling & Assets",
-                "Texture & Shading Fundamentals",
-                "Lighting & Rendering Basics",
-                "Introduction to VFX Compositing",
-                "Digital Storyboarding Art",
-                "Visual Communication"
-            ],
-            "Semester 3": [
-                "Advanced 3D Modeling (Prop & Environment)",
-                "Character Rigging Fundamentals",
-                "3D Character Animation",
+        "Industry Diploma": {
+            "Foundation: Motion Graphics": [
+                "2D Animation & Storyboarding",
+                "Advanced Modeling & Texturing",
+                "Character Design & Anatomy with AI",
                 "Digital Sculpting Basics",
-                "Dynamics & Particle Systems I",
-                "Pre-visualization Techniques"
+                "Intro to VFX Mechanics"
             ],
-            "Semester 4": [
-                "Advanced Character Animation",
-                "Performance Animation & Acting",
-                "Motion Graphics & Titles",
-                "Video Editing & Color Grading",
-                "Intermediate Compositing (Nuke)",
-                "Match-moving & Tracking"
+            "Industry: Cinematic VFX": [
+                "3D Rendering & Lighting Mastery",
+                "Visual Effects & Compositing (Nuke/AE)",
+                "Game Design Architecture",
+                "Professional Portfolio + Industry Project",
+                "AI-Driven Real-time Rendering"
+            ]
+        },
+        Bachelors: {
+            "Year 1": [
+                "Digital Imaging & Principles of Animation",
+                "3D Basics: Modeling & Assets Foundations",
+                "Texture, Shading & Rendering Mechanics",
+                "Character Rigging & Animation",
+                "Digital Sculpting & Storyboarding Art",
+                "Dynamics & Particle Systems",
+                "Motion Graphics & Title Design"
             ],
-            "Semester 5": [
-                "High-End VFX Compositing",
+            "Year 2": [
+                "High-End VFX Compositing (Nuke)",
                 "Dynamics & Fluid Simulations",
-                "Advanced Look Development",
-                "Digital Matte Painting",
-                "Production Pipeline Workflow",
-                "Advanced Character Rigging"
-            ],
-            "Semester 6": [
                 "Unreal Engine for Production",
                 "Real-time Rendering & Lighting",
                 "Interactive Media Design",
-                "Major Production Project",
-                "Showreel Development",
-                "Portfolio Mentorship"
-            ],
-            "Semester 7": [
-                "Industrial Internship Projects",
                 "Entrepreneurship in Creative Media",
-                "Global Market Dynamics"
-            ],
-            "Semester 8": [
-                "On-the-Job training (OJT)",
-                "Placement Preparation",
-                "Final Thesis & Showcase"
+                "Industrial Internship (OJT)",
+                "Final Production Showcase"
             ]
         },
         PG: {
@@ -154,18 +131,25 @@ const AnimationAndVFX = () => {
                         </h1>
                         
                         
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12">
                             <button 
                                 onClick={() => openAdmissionModal()}
-                                className="px-12 py-5 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest hover:bg-primary hover:text-white transition-all transform hover:scale-105 shadow-2xl"
+                                className="group px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3"
                             >
-                                Secure Admission
+                                Join the Skill Revolution
+                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                             </button>
-                            <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
+                            <button 
+                                onClick={() => openAdmissionModal()}
+                                className="px-12 py-5 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105"
+                            >
+                                Enroll Now
+                            </button>
+                        </div>
+                        <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
                                 <span className="text-[10px] font-black uppercase tracking-widest">Scroll to Explore</span>
                                 <ArrowRight size={16} className="rotate-90" />
                             </div>
-                        </div>
                     </motion.div>
                 </div>
             </section>
@@ -250,8 +234,9 @@ const AnimationAndVFX = () => {
                         
                         <div className="flex bg-white p-2 rounded-full border border-slate-200 shadow-sm overflow-x-auto no-scrollbar">
                             {[
-                                { id: 'Bachelors', label: 'Undergraduate', sub: 'B.Des | B.Voc' },
-                                { id: 'PG', label: 'Post Graduate', sub: 'M.Des | M.Voc' }
+                                { id: 'Industry Diploma', label: 'Industry Diploma', badge: 'Featured' },
+                                { id: 'Bachelors', label: 'Undergraduate' },
+                                { id: 'PG', label: 'Post Graduate' }
                             ].map((tab) => (
                                 <button 
                                     key={tab.id}
@@ -265,8 +250,14 @@ const AnimationAndVFX = () => {
                                         : 'text-slate-400 hover:text-slate-900'
                                     }`}
                                 >
-                                    <span>{tab.label}</span>
-                                    {tab.sub && <span className="text-[7px] opacity-60 tracking-tighter font-medium">{tab.sub}</span>}
+                                    <div className="flex items-center gap-2">
+                                        <span>{tab.label}</span>
+                                        {tab.badge && (
+                                            <span className="px-1.5 py-0.5 rounded-full bg-primary text-[6px] text-white">
+                                                {tab.badge}
+                                            </span>
+                                        )}
+                                    </div>
                                 </button>
                             ))}
                         </div>

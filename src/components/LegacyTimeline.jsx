@@ -70,7 +70,7 @@ const timelineData = [
         image: "https://ik.imagekit.io/fmldynl4j4/WhatsApp%20Image%202025-05-03%20at%205.24.15%20PM%20(1)%20(3).jpeg",
         dotColor: "bg-[#0891b2]"
     },
-    
+
     {
         year: "2026",
         title: "15 YEARS OF INSD",
@@ -131,13 +131,13 @@ const LegacyTimeline = () => {
 
     return (
         <section ref={containerRef} className="relative min-h-screen bg-[#f8f5f0] py-24 md:py-32 px-4 md:px-12 overflow-hidden selection:bg-primary selection:text-white">
-            
+
             {/* Background Texture Overlay */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-multiply bg-[url('https://www.transparenttextures.com/patterns/paper.png')]"></div>
-            
+
             <div className="max-w-7xl mx-auto relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12">
-                    
+
                     {/* LEFT COLUMN: FIXED CONTENT + GRAPHIC */}
                     <div className="lg:col-span-5 relative">
                         <div className="lg:sticky lg:top-32 mb-16 lg:mb-0">
@@ -151,10 +151,10 @@ const LegacyTimeline = () => {
                             <div className="relative mb-8">
                                 <span className="text-[20vw] lg:text-[10rem] font-black leading-none text-slate-200/50 absolute -top-8 -left-4 select-none italic font-serif">15</span>
                                 <div className="relative z-10">
-                                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.85] text-slate-900">
+                                    <h1 className="text-6xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter leading-[0.8] text-slate-900">
                                         <span className="block text-primary">15</span>
-                                        <span className="block italic font-serif lowercase tracking-normal bg-linear-to-r from-slate-900 to-slate-600 bg-clip-text text-transparent">Years of</span>
-                                        <span className="block">Legacy</span>
+                                        <span className="block italic font-serif text-[0.4em] lg:text-[0.45em] tracking-tight bg-linear-to-r from-slate-900 to-slate-600 bg-clip-text text-transparent mt-2">Years of</span>
+                                        <span className="block -mt-2">Legacy</span>
                                     </h1>
                                 </div>
                             </div>
@@ -170,9 +170,9 @@ const LegacyTimeline = () => {
                             <div className="relative w-full max-w-md lg:ml-0 translate-x-4 lg:translate-x-0 h-[400px] lg:min-h-[1200px] flex items-center">
                                 {/* Red Flowing Graphic - Extended Height for Parallel 2026 */}
                                 <div className="absolute inset-0 group lg:perspective-3000 w-full h-full overflow-hidden rounded-[2rem] lg:rounded-[3rem]">
-                                    <img 
-                                        src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=50" 
-                                        alt="Flowing Design" 
+                                    <img
+                                        src="https://ik.imagekit.io/fmldynl4j4/b5542294-ca42-4241-8288-e2809ec01b6d_1.jfif"
+                                        alt="Flowing Design"
                                         className="h-full w-full object-cover shadow-[20px_20px_60px_rgba(0,0,0,0.1)] lg:shadow-[40px_40px_100px_rgba(0,0,0,0.2)] transition-all duration-[1.5s] ease-in-out lg:group-hover:scale-110 lg:group-hover:rotate-y-4"
                                     />
                                     {/* Lustrous overlay */}
@@ -194,7 +194,7 @@ const LegacyTimeline = () => {
                                 <div className={`hidden lg:block absolute left-[-29px] md:left-[-45.5px] lg:left-[-55px] top-1.5 w-4 h-4 rounded-full border-[3px] border-white shadow-lg z-20 ${item.dotColor} group-hover:scale-150 transition-transform duration-300`}></div>
 
                                 <div className="flex flex-col sm:grid sm:grid-cols-12 gap-6 bg-white/40 hover:bg-white/80 p-5 lg:p-6 rounded-2xl lg:rounded-3xl border border-white/50 backdrop-blur-sm transition-all duration-500 shadow-sm hover:shadow-xl hover:shadow-primary/5">
-                                    
+
                                     <div className="sm:col-span-12 lg:col-span-7 order-2 lg:order-1">
                                         <div className="flex items-center gap-3 mb-3">
                                             <span className="text-xl lg:text-2xl font-black text-slate-800 tracking-tighter">{item.year}</span>
@@ -208,10 +208,10 @@ const LegacyTimeline = () => {
 
                                     <div className="sm:col-span-12 lg:col-span-5 order-1 lg:order-2">
                                         <div className="relative overflow-hidden rounded-xl lg:rounded-2xl aspect-video sm:aspect-[21/9] lg:aspect-video shadow-lg">
-                                            <img 
-                                                src={item.image} 
-                                                className="w-full h-full object-cover transform group-hover:scale-[1.15] transition-transform duration-1000 ease-out" 
-                                                alt={item.title} 
+                                            <img
+                                                src={item.image}
+                                                className="w-full h-full object-cover transform group-hover:scale-[1.15] transition-transform duration-1000 ease-out"
+                                                alt={item.title}
                                             />
                                             <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors duration-500"></div>
                                         </div>
@@ -227,22 +227,22 @@ const LegacyTimeline = () => {
                 <div className="stats-section mt-16 md:mt-32 relative">
                     {/* Decorative Background for Stats */}
                     <div className="absolute inset-0 bg-linear-to-b from-transparent via-primary/5 to-transparent -z-10 rounded-full blur-[120px] opacity-30"></div>
-                    
+
                     <div className="text-center mb-12 md:mb-20">
                         <span className="inline-block px-4 py-1.5 rounded-full bg-white border border-slate-200 text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-4 shadow-sm">Metrics of Excellence</span>
                         <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-slate-900 leading-none">
                             Our Legacy <span className="text-primary italic font-serif lowercase tracking-normal">in Numbers</span>
                         </h2>
                     </div>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12 pb-12 lg:pb-20">
-                        
+
                         {/* Years of Excellence Card */}
                         <div className="group relative">
                             <div className="h-full bg-white/50 backdrop-blur-md border border-white p-8 lg:p-12 rounded-[2rem] lg:rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.03)] hover:shadow-[0_40px_80px_rgba(var(--primary-rgb),0.1)] transition-all duration-700 hover:-translate-y-4 overflow-hidden">
                                 {/* Abstract Shape in background */}
                                 <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/5 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
-                                
+
                                 <div className="relative z-10">
                                     <div className="mb-8 w-16 h-16 bg-white shadow-lg rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 transform group-hover:rotate-12">
                                         <GraduationCap className="w-8 h-8" />
@@ -251,7 +251,7 @@ const LegacyTimeline = () => {
                                         <span className="stat-number text-6xl md:text-7xl font-black text-slate-900 leading-none tracking-tighter">15</span>
                                         <span className="text-primary text-4xl font-black leading-none">+</span>
                                     </div>
-                                    <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 group-hover:text-slate-600 transition-colors">Years of<br />Excellence</p>
+                                    <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 group-hover:text-slate-600 transition-colors">Years of<br />Legacy</p>
                                 </div>
                             </div>
                         </div>
@@ -261,7 +261,7 @@ const LegacyTimeline = () => {
                             <div className="h-full bg-linear-to-br from-primary via-primary/95 to-primary/90 p-8 md:p-12 rounded-[2.5rem] shadow-[0_30px_60px_rgba(var(--primary-rgb),0.3)] hover:shadow-[0_50px_90px_rgba(var(--primary-rgb),0.5)] transition-all duration-700 hover:-translate-y-6 overflow-hidden">
                                 {/* Flowing Glow */}
                                 <div className="absolute top-0 left-0 w-full h-full bg-linear-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
-                                
+
                                 <div className="relative z-10">
                                     <div className="mb-8 w-16 h-16 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-white shadow-xl">
                                         <Users className="w-8 h-8" />
@@ -279,7 +279,7 @@ const LegacyTimeline = () => {
                         <div className="group relative">
                             <div className="h-full bg-white/50 backdrop-blur-md border border-white p-8 md:p-12 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.03)] hover:shadow-[0_40px_80px_rgba(var(--primary-rgb),0.1)] transition-all duration-700 hover:-translate-y-4 overflow-hidden">
                                 <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-secondary/5 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
-                                
+
                                 <div className="relative z-10">
                                     <div className="mb-8 w-16 h-16 bg-white shadow-lg rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 transform group-hover:-rotate-12">
                                         <MapPin className="w-8 h-8" />
@@ -300,7 +300,7 @@ const LegacyTimeline = () => {
             {/* Aesthetic Blurs */}
             <div className="absolute top-[20%] right-[-5%] w-96 h-96 bg-primary/5 blur-[100px] rounded-full pointer-events-none"></div>
             <div className="absolute bottom-[10%] left-[-5%] w-96 h-96 bg-secondary/5 blur-[100px] rounded-full pointer-events-none"></div>
-            
+
         </section>
     );
 };

@@ -26,67 +26,44 @@ import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const Photography = () => {
     const { openAdmissionModal } = useAdmissionModal();
-    const [activeOutline, setActiveOutline] = useState('Bachelors');
+    const [activeOutline, setActiveOutline] = useState('Industry Diploma');
     const [expandedSem, setExpandedSem] = useState(1);
 
     const curriculumData = {
+        "Industry Diploma": {
+            "Foundation: Light & Lens": [
+                "Advanced DSLR/Mirrorless Mechanics",
+                "Principles of Lighting & Composition",
+                "Studio Setup & Equipment Mastery",
+                "Digital Processing with AI (Lightroom/PS)",
+                "Visual Storytelling Fundamentals"
+            ],
+            "Industry: Commercial Shoots": [
+                "Fashion & Editorial Photography",
+                "Product & E-commerce Imagery",
+                "Brand Identity & Visual Marketing",
+                "Digital Portfolio + Industry Showreel",
+                "Drone & High-Speed Media Platforms"
+            ]
+        },
         Bachelors: {
-            "Semester 1": [
-                "Basics of Camera & Lenses",
-                "Composition & Framing Techniques",
-                "Introduction to Natural Light",
+            "Year 1": [
+                "Camera & Lens Mechanics",
+                "Composition & Visual Storytelling",
+                "Natural & Studio Lighting Mastery",
                 "Digital Workflow Foundations",
-                "Visual Perception & Art",
-                "Sketching for Photographers"
+                "Portraiture & Fashion Portfolio",
+                "Still Life & Color Science",
+                "Advanced Digital Editing (PS/LR)"
             ],
-            "Semester 2": [
-                "B&W Photography Mastery",
-                "Introduction to Studio Light",
-                "Portraiture Fundamentals",
-                "Creative Image Making",
-                "Digital Manipulation (Photoshop)",
-                "History of Photographic Arts"
-            ],
-            "Semester 3": [
-                "Intermediate Studio Lighting",
-                "Fashion & Model Portfolio",
-                "Still Life & Product Study",
-                "Color Science & Management",
-                "Advanced Digital Editing",
-                "Visual Storytelling"
-            ],
-            "Semester 4": [
-                "Advanced Portraiture",
-                "Beauty & High-End Retouching",
-                "Event & Wedding Photography",
-                "Architecture & Interior Shoots",
-                "Macrophotography Lab",
-                "Action & Sports Photography"
-            ],
-            "Semester 5": [
-                "Commercial & Advertising Photography",
-                "Editorial & Magazine Layouts",
+            "Year 2": [
+                "Commercial & advertising Photography",
                 "Photo Journalism & Documentary",
-                "Cinematography Basics",
-                "Video Editing (Premiere Pro)",
-                "Outdoor & Travel Photography"
-            ],
-            "Semester 6": [
-                "Advanced Digital Cinematography",
-                "Marketing & Business of Photography",
-                "Portfolio Mentorship",
+                "Digital Cinematography Basics",
+                "Business of Photography & Marketing",
                 "Major Professional Project",
-                "Final Graduation Exhibition",
-                "Industry Networking"
-            ],
-            "Semester 7": [
-                "Industrial Internship Projects",
                 "Creative Entrepreneurship Lab",
-                "Global Media Trends"
-            ],
-            "Semester 8": [
-                "Professional Practice (OJT)",
-                "Showreel & Website Prep",
+                "Industrial Internship (OJT)",
                 "Final Graduation Showcase"
             ]
         },
@@ -151,18 +128,25 @@ const Photography = () => {
                             
                         </h1>
                         
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12">
                             <button 
                                 onClick={() => openAdmissionModal()}
-                                className="px-12 py-5 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest hover:bg-primary hover:text-white transition-all transform hover:scale-105 shadow-2xl"
+                                className="group px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3"
                             >
-                                Secure Admission
+                                Join the Skill Revolution
+                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                             </button>
-                            <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
+                            <button 
+                                onClick={() => openAdmissionModal()}
+                                className="px-12 py-5 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105"
+                            >
+                                Enroll Now
+                            </button>
+                        </div>
+                        <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
                                 <span className="text-[10px] font-black uppercase tracking-widest">Scroll to Explore</span>
                                 <ArrowRight size={16} className="rotate-90" />
                             </div>
-                        </div>
                     </motion.div>
                 </div>
             </section>
@@ -247,8 +231,9 @@ const Photography = () => {
                         
                         <div className="flex bg-white p-2 rounded-full border border-slate-200 shadow-sm overflow-x-auto no-scrollbar">
                             {[
-                                { id: 'Bachelors', label: 'Undergraduate', sub: 'B.Des | B.Voc' },
-                                { id: 'PG', label: 'Post Graduate', sub: 'M.Des | M.Voc' }
+                                { id: 'Industry Diploma', label: 'Industry Diploma', badge: 'Featured' },
+                                { id: 'Bachelors', label: 'Undergraduate' },
+                                { id: 'PG', label: 'Post Graduate' }
                             ].map((tab) => (
                                 <button 
                                     key={tab.id}
@@ -262,8 +247,14 @@ const Photography = () => {
                                         : 'text-slate-400 hover:text-slate-900'
                                     }`}
                                 >
-                                    <span>{tab.label}</span>
-                                    {tab.sub && <span className="text-[7px] opacity-60 tracking-tighter font-medium">{tab.sub}</span>}
+                                    <div className="flex items-center gap-2">
+                                        <span>{tab.label}</span>
+                                        {tab.badge && (
+                                            <span className="px-1.5 py-0.5 rounded-full bg-primary text-[6px] text-white">
+                                                {tab.badge}
+                                            </span>
+                                        )}
+                                    </div>
                                 </button>
                             ))}
                         </div>

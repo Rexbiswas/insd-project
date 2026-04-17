@@ -30,68 +30,46 @@ import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const InteriorDesigning = () => {
     const { openAdmissionModal } = useAdmissionModal();
-    const [activeOutline, setActiveOutline] = useState('Bachelors');
+    const [activeOutline, setActiveOutline] = useState('Industry Diploma');
     const [expandedSem, setExpandedSem] = useState(1);
 
     const curriculumData = {
-        Bachelors: {
-            "Semester 1": [
+        "Industry Diploma": {
+            "Part 1: Foundational Art": [
                 "Basics of Drafting",
-                "Basics of Graphics",
+                "Elements of Interior Design",
+                "CAD + AI Design Platforms",
+                "Color Theory & Spatial Moods",
+                "Drawing & Sketching with AI",
+                "Introduction to Materials"
+            ],
+            "Part 2: Industry Mastery": [
+                "Commercial Design Project",
+                "Residential Space Planning",
+                "Building Services & Estimation",
+                "Furniture & Furnishings",
+                "Global Startup Strategy",
+                "Industry Placement Projects"
+            ]
+        },
+        Bachelors: {
+            "Year 1": [
+                "Basics of Drafting & Graphics",
                 "Introduction of Interior Designing",
-                "History of Architecture",
-                "Basics of Furniture Designing",
-                "Market Survey & Building Construction",
+                "History of Architecture (Global & Modern)",
+                "Building Technology & Materials",
+                "Furniture & Furnishings Basics",
+                "Life Space Planning & Urban Design",
                 "Grooming & Communication Skills"
             ],
-            "Semester 2": [
-                "Application of Drafting",
-                "Application of Colors",
-                "Principles of Interior Designing",
-                "Advanced History of Architecture",
-                "Glossary of Furniture",
-                "Building Construction II"
-            ],
-            "Semester 3": [
-                "Building Technology & Materials",
-                "Life Space Planning",
-                "Design Graphics & Display",
-                "Modern Architecture History",
-                "Furniture & Furnishings",
-                "Portfolio Development Basics"
-            ],
-            "Semester 4": [
-                "Building Services & Estimation",
-                "Urban Space Planning",
-                "Elements of Interior Designing",
-                "Theory of Architecture",
-                "Significance of Furniture",
-                "Market Dynamics & Client Research"
-            ],
-            "Semester 5": [
-                "Interior and Exterior Treatments",
-                "Furniture, Furnishings and Fittings",
-                "Art and Graphics in Interior Design",
+            "Year 2": [
+                "Interior & Exterior Treatments",
+                "Advanced Building Construction",
+                "Art & Graphics in Interior Design",
+                "Sustainable Architecture & Lighting",
+                "Retail & Commercial Design Projects",
                 "Entrepreneurship Development",
-                "Computer Aided Design (CAD)",
-                "Building Construction – Part III"
-            ],
-            "Semester 6": [
-                "Interior Design Projects – Part I",
-                "Spatial Management & Lighting",
-                "Retail & Commercial Design",
-                "Sustainable Architecture",
-                "Industrial Visit Analysis",
-                "Advanced CAD & Rendering"
-            ],
-            "Semester 7": [
-                "High-End Industry Projects",
-                "Global Startup Strategy",
-                "Final Thesis Presentation"
-            ],
-            "Semester 8": [
-                "Professional Internship",
-                "On-the-Job Industry training",
+                "Industrial Internship & On-the-Job training",
                 "Global Market Placement"
             ]
         },
@@ -157,18 +135,25 @@ const InteriorDesigning = () => {
                         </h1>
                         
                         
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12">
                             <button 
                                 onClick={() => openAdmissionModal()}
-                                className="px-12 py-5 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest hover:bg-primary hover:text-white transition-all transform hover:scale-105 shadow-2xl"
+                                className="group px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3"
                             >
-                                Secure Admission
+                                Join the Skill Revolution
+                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                             </button>
-                            <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
+                            <button 
+                                onClick={() => openAdmissionModal()}
+                                className="px-12 py-5 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105"
+                            >
+                                Enroll Now
+                            </button>
+                        </div>
+                        <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
                                 <span className="text-[10px] font-black uppercase tracking-widest">Scroll to Explore</span>
                                 <ArrowRight size={16} className="rotate-90" />
                             </div>
-                        </div>
                     </motion.div>
                 </div>
             </section>
@@ -265,8 +250,9 @@ const InteriorDesigning = () => {
                         
                         <div className="flex bg-white p-2 rounded-full border border-slate-200 shadow-sm overflow-x-auto no-scrollbar">
                             {[
-                                { id: 'Bachelors', label: 'Undergraduate', sub: 'B.Des | B.Voc' },
-                                { id: 'PG', label: 'Post Graduate', sub: 'M.Des | M.Voc' }
+                                { id: 'Industry Diploma', label: 'Industry Diploma', badge: 'Featured' },
+                                { id: 'Bachelors', label: 'Undergraduate' },
+                                { id: 'PG', label: 'Post Graduate' }
                             ].map((tab) => (
                                 <button 
                                     key={tab.id}
@@ -280,8 +266,14 @@ const InteriorDesigning = () => {
                                         : 'text-slate-400 hover:text-slate-900'
                                     }`}
                                 >
-                                    <span>{tab.label}</span>
-                                    {tab.sub && <span className="text-[7px] opacity-60 tracking-tighter font-medium">{tab.sub}</span>}
+                                    <div className="flex items-center gap-2">
+                                        <span>{tab.label}</span>
+                                        {tab.badge && (
+                                            <span className="px-1.5 py-0.5 rounded-full bg-primary text-[6px] text-white">
+                                                {tab.badge}
+                                            </span>
+                                        )}
+                                    </div>
                                 </button>
                             ))}
                         </div>

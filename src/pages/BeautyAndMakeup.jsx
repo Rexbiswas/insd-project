@@ -24,67 +24,44 @@ import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const BeautyAndMakeup = () => {
     const { openAdmissionModal } = useAdmissionModal();
-    const [activeOutline, setActiveOutline] = useState('Bachelors');
+    const [activeOutline, setActiveOutline] = useState('Industry Diploma');
     const [expandedSem, setExpandedSem] = useState(1);
 
     const curriculumData = {
-        Bachelors: {
-            "Semester 1": [
+        "Industry Diploma": {
+            "Foundation: Aesthetic Art": [
                 "Basics of Skin & Hygiene",
-                "History of Beauty & Aesthetics",
-                "Fundamentals of Human Anatomy",
-                "Introduction to Natural Cosmetics",
                 "Color Theory in Artistry",
-                "Self-Grooming & Etiquette"
+                "Self-Grooming & Etiquette",
+                "Day & Evening Makeup Mastery",
+                "Hair Styling Basics"
             ],
-            "Semester 2": [
-                "Day & Evening Makeup Basics",
-                "Basics of Hair Styling",
-                "Introduction to Dermal Science",
-                "Product Knowledge & Chemistry",
-                "Basic Aesthetics Lab",
-                "Client Consultation Ethics"
-            ],
-            "Semester 3": [
-                "Advanced Skin Science",
-                "Intermediate Makeup Techniques",
+            "Industry: Professional Glam": [
                 "Bridal Artistry & Tradition",
-                "Hair Cutting & Color Lab",
-                "Nail Art & Extensions",
-                "Visual Art in Makeup"
-            ],
-            "Semester 4": [
                 "High-Fashion & Editorial Shoots",
-                "Salon Management Basics",
-                "Advanced Hair Science",
-                "Body Art & Temporary Graphics",
-                "Creative Portfolio Development",
-                "Professional Hygiene Standards"
-            ],
-            "Semester 5": [
                 "Special Effects (SFX) Basics",
-                "Runway & Stage Artistry",
-                "Advanced Aesthetic Treatments",
-                "Beauty Brand Marketing",
+                "Salon Management & Marketing",
+                "Digital Portfolio + Industry Placement"
+            ]
+        },
+        Bachelors: {
+            "Year 1": [
+                "Skin Science & Hygiene Standards",
+                "Color Theory in Artistry",
+                "Day, Evening & Bridal Makeup Basics",
+                "Hair Styling & Cutting Foundations",
+                "Dermal Science & Aesthetics Lab",
+                "Self-Grooming & Professional Etiquette",
+                "Salon Management Basics"
+            ],
+            "Year 2": [
+                "High-Fashion & Editorial Artistry",
+                "Special effects (SFX) & Prosthetics",
+                "Runway & Stage Character Design",
                 "Airbrush Makeup Mastery",
-                "Corporate Styling Basics"
-            ],
-            "Semester 6": [
-                "Prosthetics & Character Design",
-                "Global Beauty Business",
-                "Portfolio Mentorship",
-                "Major Professional Project",
-                "Final Graduation Showcase",
-                "Industry Case Studies"
-            ],
-            "Semester 7": [
-                "Industrial Internship Projects",
-                "Beauty Entrepreneurship Lab",
-                "Global Glam Trends"
-            ],
-            "Semester 8": [
-                "Professional Practice (OJT)",
-                "Showreel & Digital Branding",
+                "Beauty Brand Marketing & Global Business",
+                "Creative Portfolio & Showreel",
+                "Industrial Internship (OJT)",
                 "Final Graduation Showcase"
             ]
         },
@@ -150,18 +127,25 @@ const BeautyAndMakeup = () => {
                         </h1>
                         
                         
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12">
                             <button 
                                 onClick={() => openAdmissionModal()}
-                                className="px-12 py-5 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest hover:bg-primary hover:text-white transition-all transform hover:scale-105 shadow-2xl"
+                                className="group px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3"
                             >
-                                Secure Admission
+                                Join the Skill Revolution
+                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                             </button>
-                            <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
+                            <button 
+                                onClick={() => openAdmissionModal()}
+                                className="px-12 py-5 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105"
+                            >
+                                Enroll Now
+                            </button>
+                        </div>
+                        <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
                                 <span className="text-[10px] font-black uppercase tracking-widest">Scroll to Explore</span>
                                 <ArrowRight size={16} className="rotate-90" />
                             </div>
-                        </div>
                     </motion.div>
                 </div>
             </section>
@@ -237,8 +221,9 @@ const BeautyAndMakeup = () => {
                         
                         <div className="flex bg-white p-2 rounded-full border border-slate-200 shadow-sm overflow-x-auto no-scrollbar">
                             {[
-                                { id: 'Bachelors', label: 'Undergraduate', sub: 'B.Des | B.Voc' },
-                                { id: 'PG', label: 'Post Graduate', sub: 'M.Des | M.Voc' }
+                                { id: 'Industry Diploma', label: 'Industry Diploma', badge: 'Featured' },
+                                { id: 'Bachelors', label: 'Undergraduate' },
+                                { id: 'PG', label: 'Post Graduate' }
                             ].map((tab) => (
                                 <button 
                                     key={tab.id}
@@ -252,8 +237,14 @@ const BeautyAndMakeup = () => {
                                         : 'text-slate-400 hover:text-slate-900'
                                     }`}
                                 >
-                                    <span>{tab.label}</span>
-                                    {tab.sub && <span className="text-[7px] opacity-60 tracking-tighter font-medium">{tab.sub}</span>}
+                                    <div className="flex items-center gap-2">
+                                        <span>{tab.label}</span>
+                                        {tab.badge && (
+                                            <span className="px-1.5 py-0.5 rounded-full bg-primary text-[6px] text-white">
+                                                {tab.badge}
+                                            </span>
+                                        )}
+                                    </div>
                                 </button>
                             ))}
                         </div>

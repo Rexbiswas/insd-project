@@ -11,7 +11,12 @@ import {
     Mic2,
     Briefcase,
     Star,
-    ArrowRight
+    ArrowRight,
+    Cpu,
+    Target,
+    Layers,
+    ShieldCheck,
+    BarChart3
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
@@ -212,6 +217,119 @@ const IndustryInteraction = () => {
                                 </div>
                             </div>
                         </motion.div>
+                    </div>
+                </div>
+            </section>
+
+            {/* --- NEW EDIC SECTION: THE INDUSTRIAL NERVE CENTER --- */}
+            <section className="py-32 px-6 md:px-12 lg:px-24 bg-slate-900 overflow-hidden relative">
+                <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+                     <div className="absolute inset-0 bg-[radial-gradient(#db3436_1px,transparent_1px)] [background-size:40px_40px]" />
+                </div>
+
+                <div className="max-w-7xl mx-auto relative z-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+                        <div className="space-y-12">
+                            <div className="space-y-6">
+                                <span className="inline-block px-4 py-1.5 bg-primary/20 text-primary rounded-full text-[10px] font-black uppercase tracking-[0.4em] border border-primary/30">
+                                    Entrepreneurship & Design Innovation Center
+                                </span >
+                                <h2 className="text-6xl md:text-8xl font-black text-white uppercase tracking-tighter leading-[0.85]">
+                                    THE <br /> <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary">NERVE CENTER</span>
+                                </h2>
+                                <p className="text-slate-400 font-bold text-lg md:text-xl uppercase tracking-tight leading-relaxed max-w-xl">
+                                    EDIC bridges the gap between creative excellence and industrial scalability, transforming student concepts into market-dominant ventures.
+                                </p>
+                            </div>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                                {[
+                                    { icon: Target, title: "Incubation", desc: "Seed funding & workspace for high-potential design startups." },
+                                    { icon: Cpu, title: "Tech Integration", desc: "Harnessing AI & robotics for modern product manufacturing." },
+                                    { icon: Layers, title: "Market Access", desc: "Direct pipelines to global retail and industrial distribution." },
+                                    { icon: ShieldCheck, title: "IP Protection", desc: "Navigating patent laws and design registration frameworks." }
+                                ].map((item, i) => (
+                                    <div key={i} className="p-8 bg-white/5 backdrop-blur-xl rounded-[2rem] border border-white/10 hover:bg-white/10 transition-all group">
+                                        <item.icon className="w-10 h-10 text-primary mb-6 group-hover:scale-110 transition-transform" />
+                                        <h4 className="text-white text-xl font-black uppercase tracking-tighter mb-2">{item.title}</h4>
+                                        <p className="text-slate-500 text-xs font-bold uppercase tracking-widest leading-relaxed">{item.desc}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="relative">
+                            <div className="relative aspect-square rounded-[4rem] overflow-hidden border border-white/10 shadow-2xl">
+                                <img 
+                                    src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200" 
+                                    alt="EDIC Tech Hub" 
+                                    className="w-full h-full object-cover grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-1000"
+                                />
+                                <div className="absolute inset-0 bg-linear-to-t from-slate-900 to-transparent" />
+                                
+                                <div className="absolute bottom-12 left-12 right-12">
+                                    <div className="p-8 bg-primary/90 backdrop-blur-xl rounded-3xl text-white space-y-2">
+                                        <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-80">Industrial Impact</span>
+                                        <div className="flex justify-between items-end">
+                                            <h5 className="text-4xl font-black italic tracking-tighter">500+</h5>
+                                            <span className="text-[10px] font-black uppercase tracking-widest mb-1">Partnerships Active</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Decorative Floating Element */}
+                            <div className="absolute -top-12 -right-12 w-48 h-48 bg-secondary/20 blur-[80px] rounded-full animate-pulse" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* --- NEW DESIGN CONCLAVE SECTION: THE GLOBAL SUMMIT --- */}
+            <section className="py-32 px-6 md:px-12 lg:px-24 bg-white overflow-hidden">
+                <div className="max-w-7xl mx-auto space-y-24">
+                    <div className="flex flex-col md:flex-row justify-between items-end gap-12">
+                        <div className="space-y-6">
+                            <span className="text-primary font-black uppercase text-[10px] tracking-[0.5em]">Annual Flagship Summit</span>
+                            <h2 className="text-6xl md:text-[9rem] font-black text-slate-900 uppercase tracking-tighter leading-[0.8]">
+                                DESIGN <br /> <span className="text-slate-200">CONCLAVE</span>
+                            </h2>
+                        </div>
+                        <div className="max-w-md text-right space-y-6">
+                             <p className="text-slate-500 font-bold text-sm uppercase tracking-widest leading-relaxed">
+                                Our industry benchmark event where international CEOs, luxury curators, and tech pioneers converge to set the design agenda for the next decade.
+                             </p>
+                             <button className="px-8 py-4 bg-slate-950 text-white rounded-full font-black uppercase text-[10px] tracking-[0.3em] hover:bg-primary transition-all">
+                                Explore previous editions
+                             </button>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {[
+                            { title: "CEO Panel", tag: "Strategy", img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Recruitment Lab", tag: "Placements", img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800" },
+                            { title: "Tech Showcase", tag: "Innovation", img: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=800" }
+                        ].map((card, i) => (
+                            <motion.div 
+                                key={i}
+                                whileHover={{ y: -20 }}
+                                className="relative aspect-[3/4] rounded-[3rem] overflow-hidden group shadow-2xl"
+                            >
+                                <img 
+                                    src={card.img} 
+                                    alt={card.title} 
+                                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                                />
+                                <div className="absolute inset-0 bg-linear-to-t from-slate-900 via-slate-900/40 to-transparent" />
+                                <div className="absolute bottom-12 left-12 space-y-4">
+                                    <span className="inline-block px-4 py-1 bg-white/20 backdrop-blur-md rounded-full text-[9px] font-black text-white uppercase tracking-widest border border-white/20">
+                                        {card.tag}
+                                    </span>
+                                    <h4 className="text-3xl font-black text-white uppercase tracking-tighter leading-none">{card.title}</h4>
+                                </div>
+                            </motion.div>
+                        ))}
                     </div>
                 </div>
             </section>

@@ -15,156 +15,235 @@ import {
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
+import ConclaveSlider from '../components/ConclaveSlider';
+import LabSlider from '../components/LabSlider';
 
 const Entrepreneur = () => {
     return (
-        <div className="bg-white min-h-screen font-sans selection:bg-primary selection:text-white">
+        <div className="bg-white min-h-screen font-sans selection:bg-primary selection:text-white pt-20">
             <SEO 
                 title="Entrepreneurship & Startup Incubation | INSD"
                 description="Ignite your entrepreneurial journey with INSD's startup incubation cell. We provide the mentorship, resources, and global network to turn your design vision into a successful venture."
             />
 
-            {/* --- HERO SECTION --- */}
-            <section className="relative pt-32 pb-64 px-6 md:px-12 lg:px-24 overflow-hidden bg-white">
-                <div className="absolute inset-0 z-0">
-                    <img 
-                        src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=1600" 
-                        alt="Startup Culture" 
-                        className="w-full h-full object-cover opacity-5 scale-105"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-b from-white via-white/80 to-transparent" />
-                </div>
+            {/* --- NARRATIVE HERO SECTION (Based on Reference Image) --- */}
+            <section className="relative min-h-screen flex flex-col items-center justify-center px-6 md:px-12 lg:px-24 overflow-hidden bg-white py-20">
+                {/* Visual Depth Texture */}
+                <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none cyber-grid" />
+                
+                {/* Main Narrative Container */}
+                <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col items-center">
+                    
+                    {/* Editorial Headlines */}
+                    <div className="text-center mb-16 space-y-4">
+                        <motion.h1 
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                            className="text-6xl md:text-[8rem] font-black text-slate-900 tracking-tighter uppercase leading-none"
+                        >
+                            From <span className="text-primary">Student</span> to <span className="stroke-text-slate-900 opacity-20">CEO</span>
+                        </motion.h1>
+                        
+                        <motion.p 
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 1, delay: 0.5 }}
+                            className="text-2xl md:text-5xl font-serif italic text-slate-600 tracking-tight"
+                        >
+                            Employee or Employer — your choice.
+                        </motion.p>
+                    </div>
 
-                <div className="max-w-7xl mx-auto relative z-10 text-center lg:text-left">
-                    <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
-                        <div className="w-full lg:w-2/3 space-y-8">
-                            <motion.div
-                                initial={{ opacity: 0, x: -50 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.8 }}
-                                className="space-y-4"
-                            >
-                                <span className="inline-block px-4 py-1.5 bg-primary/20 text-primary rounded-full text-xs font-black uppercase tracking-widest border border-primary/20">
-                                    INSD Startup Cell
-                                </span>
-                                <h1 className="text-5xl md:text-8xl font-black text-slate-900 uppercase tracking-tighter leading-[0.9]">
-                                    Igniting The <br />
-                                    <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary">Entrepreneurial</span> <br />
-                                    Spirit
-                                </h1>
-                            </motion.div>
-
-                            <motion.p
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.8, delay: 0.2 }}
-                                className="text-xl text-slate-500 font-bold max-w-2xl leading-relaxed uppercase tracking-tight"
-                            >
-                                From visionary concepts to market-ready ventures. INSD provides the strategic bridge between design excellence and business profitability.
-                            </motion.p>
-
+                    {/* Split Narrative Collage */}
+                    <div className="relative w-full aspect-[21/9] flex items-center justify-center gap-4 group mt-12">
+                        
+                        {/* LEFT: THE STUDENT/EMPLOYEE PHASE */}
+                        <div className="w-1/2 h-full relative overflow-hidden rounded-l-[4rem] group/left">
                             <motion.div 
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.8, delay: 0.4 }}
-                                className="flex flex-wrap items-center justify-center lg:justify-start gap-8"
+                                initial={{ x: -100, opacity: 0 }}
+                                animate={{ x: 0, opacity: 1 }}
+                                transition={{ duration: 1.2, delay: 0.2 }}
+                                className="absolute inset-0 flex items-center justify-end pr-12 bg-slate-50 border-r border-slate-100"
                             >
-                                <button className="px-10 py-4 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-secondary transition-all transform hover:scale-105 shadow-xl shadow-primary/20">
-                                    Apply for Incubation
-                                </button>
-                                <button className="flex items-center gap-3 text-slate-900 group">
-                                    <div className="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-slate-900 group-hover:text-white transition-all">
-                                        <ArrowRight className="w-5 h-5" />
+                                <div className="grid grid-cols-2 gap-4 w-full h-full p-8 max-w-2xl">
+                                    <div className="relative rounded-3xl overflow-hidden shadow-2xl transition-all duration-700 group-hover/left:-rotate-2 group-hover/left:scale-105 border-4 border-white">
+                                        <img src="https://images.unsplash.com/photo-1558603668-6570496b66f8?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover grayscale brightness-90" alt="Student 1" />
                                     </div>
-                                    <span className="font-black uppercase text-xs tracking-widest">Our Ecosystem</span>
-                                </button>
-                            </motion.div>
-                        </div>
-
-                        <div className="hidden lg:block w-1/3">
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 1 }}
-                                className="relative aspect-square"
-                            >
-                                <div className="absolute inset-0 bg-primary/10 blur-3xl rounded-full animate-pulse" />
-                                <div className="relative z-10 w-full h-full border border-slate-100 rounded-[3rem] p-12 flex items-center justify-center bg-white/50 backdrop-blur-3xl overflow-hidden group">
-                                    <Zap size={160} className="text-primary group-hover:scale-110 transition-transform duration-700" />
-                                    <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-secondary/10 rounded-full blur-3xl" />
+                                    <div className="relative rounded-3xl overflow-hidden shadow-2xl mt-12 transition-all duration-700 group-hover/left:rotate-3 group-hover/left:scale-105 border-4 border-white">
+                                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover brightness-110" alt="Student 2" />
+                                    </div>
+                                    <div className="relative rounded-3xl overflow-hidden shadow-2xl -mt-8 transition-all duration-700 group-hover/left:rotate-2 group-hover/left:scale-105 border-4 border-white">
+                                        <img src="https://images.unsplash.com/photo-1621600411688-4be93cd68504?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover brightness-95" alt="Student 3" />
+                                    </div>
+                                    <div className="relative rounded-3xl overflow-hidden shadow-2xl transition-all duration-700 group-hover/left:-rotate-3 group-hover/left:scale-105 border-4 border-white">
+                                        <img src="https://images.unsplash.com/photo-1523240715632-61041119c3af?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover grayscale opacity-70" alt="Student 4" />
+                                    </div>
                                 </div>
                             </motion.div>
-                        </div>
-                    </div>
-                </div>
-
-                <div 
-                    className="absolute bottom-0 left-0 w-full h-32 md:h-48 bg-white"
-                    style={{ clipPath: 'polygon(0 80%, 100% 0, 100% 100%, 0% 100%)' }}
-                />
-            </section>
-
-            {/* --- ECOSYSTEM STATS --- */}
-            <section className="bg-white py-24 px-6 md:px-12 lg:px-24 -mt-32 relative z-20">
-                <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-1">
-                    {[
-                        { label: "Startups Founded", value: "150+" },
-                        { label: "Industry Partners", value: "300+" },
-                        { label: "Startup Mentors", value: "50+" },
-                        { label: "Global Network", value: "25+" }
-                    ].map((stat, idx) => (
-                        <div key={idx} className="bg-slate-50 p-12 text-center space-y-4 border border-slate-100 hover:bg-slate-900 group transition-all duration-500">
-                            <div className="text-4xl md:text-6xl font-black text-slate-900 group-hover:text-white transition-colors tracking-tighter">
-                                {stat.value}
-                            </div>
-                            <div className="text-[10px] md:text-xs font-black uppercase text-slate-400 group-hover:text-primary transition-colors tracking-[0.3em]">
-                                {stat.label}
+                            <div className="absolute top-12 left-12 mix-blend-difference pointer-events-none">
+                                <span className="text-white text-[10px] font-black uppercase tracking-[1em]">The Inception Phase</span>
                             </div>
                         </div>
-                    ))}
+
+                        {/* CENTRAL DIVIDER (The Decision Line) */}
+                        <motion.div 
+                            initial={{ scaleY: 0 }}
+                            animate={{ scaleY: 1 }}
+                            transition={{ duration: 1.5, delay: 0.8 }}
+                            className="absolute z-20 w-px h-[80%] bg-linear-to-b from-transparent via-primary to-transparent"
+                        />
+
+                        {/* RIGHT: THE CEO/EMPLOYER PHASE */}
+                        <div className="w-1/2 h-full relative overflow-hidden rounded-r-[4rem] group/right">
+                            <motion.div 
+                                initial={{ x: 100, opacity: 0 }}
+                                animate={{ x: 0, opacity: 1 }}
+                                transition={{ duration: 1.2, delay: 0.4 }}
+                                className="absolute inset-0 flex items-center justify-start pl-12 bg-white border-l border-slate-100"
+                            >
+                                <div className="grid grid-cols-2 gap-4 w-full h-full p-8 max-w-2xl">
+                                    <div className="relative rounded-3xl overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] transition-all duration-700 group-hover/right:rotate-2 group-hover/right:scale-105 border-4 border-slate-900">
+                                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover brightness-110" alt="CEO 1" />
+                                    </div>
+                                    <div className="relative rounded-3xl overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] mt-16 transition-all duration-700 group-hover/right:-rotate-3 group-hover/right:scale-105 border-4 border-slate-900">
+                                        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover grayscale brightness-75" alt="CEO 2" />
+                                    </div>
+                                    <div className="relative rounded-3xl overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] -mt-4 transition-all duration-700 group-hover/right:-rotate-2 group-hover/right:scale-105 border-4 border-slate-900">
+                                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover grayscale brightness-125" alt="CEO 3" />
+                                    </div>
+                                    <div className="relative rounded-3xl overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] transition-all duration-700 group-hover/right:rotate-3 group-hover/right:scale-105 border-4 border-slate-900">
+                                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover brightness-105" alt="CEO 4" />
+                                    </div>
+                                </div>
+                            </motion.div>
+                            <div className="absolute top-12 right-12 mix-blend-difference pointer-events-none">
+                                <span className="text-white text-[10px] font-black uppercase tracking-[1em]">The Mastery Phase</span>
+                            </div>
+                        </div>
+
+                        {/* Interactive Float Menu */}
+                        <div className="absolute bottom-12 z-30 flex gap-10">
+                            {[
+                                { text: "Incubation Program", primary: false },
+                                { text: "Pitch Your Concept", primary: true }
+                            ].map((btn, i) => (
+                                <motion.button 
+                                    key={i}
+                                    whileHover={{ scale: 1.05, y: -5 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className={`px-12 py-6 rounded-full text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl transition-all ${btn.primary ? 'bg-primary text-white' : 'bg-slate-900 text-white'}`}
+                                >
+                                    {btn.text}
+                                </motion.button>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Inclusion Footer (Straight from Reference) */}
+                    <div className="mt-24 text-center">
+                        <motion.div 
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 1, delay: 1.5 }}
+                            className="inline-flex items-center gap-6 px-10 py-5 bg-slate-50 border border-slate-100 rounded-full"
+                        >
+                            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                            <p className="text-sm md:text-lg font-bold text-slate-400 uppercase tracking-widest leading-none">
+                                Modules on <span className="text-slate-950">Business Management</span>, <span className="text-slate-950">Marketing</span>, and <span className="text-slate-950">Client Acquisition</span> included.
+                            </p>
+                            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                        </motion.div>
+                    </div>
+
+                </div>
+
+                {/* Aesthetic Detail: Lateral Scroll Progress */}
+                <div className="absolute bottom-12 left-6 md:left-24 flex items-center gap-6 pointer-events-none">
+                    <div className="w-16 h-px bg-slate-200" />
+                    <span className="text-[10px] font-black uppercase tracking-[0.5em] text-slate-300">Choose Your Narrative</span>
                 </div>
             </section>
 
-            {/* --- INCUBATION PILLARS --- */}
-            <section className="py-24 px-6 md:px-12 lg:px-24 bg-white relative overflow-hidden">
-                <div className="max-w-7xl mx-auto space-y-20">
-                    <div className="text-center space-y-6 max-w-3xl mx-auto">
-                        <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">Strategic Support</span>
-                        <h2 className="text-5xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none">
-                            Our <span className="text-slate-300">Incubation</span> Pillars
-                        </h2>
+            {/* --- ECOSYSTEM STATS (Light Overhaul) --- */}
+            <section className="bg-white px-6 md:px-12 lg:px-24 py-40 relative">
+                <div className="max-w-7xl mx-auto">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 border-y border-slate-100">
+                        {[
+                            { label: "Founded", value: "150+", suffix: "Brands" },
+                            { label: "Partners", value: "300+", suffix: "Global" },
+                            { label: "Mentors", value: "50+", suffix: "CXOs" },
+                            { label: "Networks", value: "25+", suffix: "Cities" }
+                        ].map((stat, idx) => (
+                            <motion.div 
+                                key={idx} 
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{ delay: idx * 0.1 }}
+                                viewport={{ once: true }}
+                                className="p-16 border-r border-slate-100 last:border-r-0 hover:bg-slate-50 transition-colors group relative overflow-hidden"
+                            >
+                                <div className="absolute top-0 left-0 w-1 h-0 bg-primary group-hover:h-full transition-all duration-700" />
+                                <div className="relative z-10">
+                                    <p className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter mb-4 group-hover:text-primary transition-colors">
+                                        {stat.value}
+                                    </p>
+                                    <div className="space-y-1">
+                                        <p className="text-[10px] font-black uppercase text-slate-400 tracking-[0.4em]">{stat.label}</p>
+                                        <p className="text-[9px] font-bold text-primary/60 italic uppercase tracking-widest">{stat.suffix}</p>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* --- INCUBATION PILLARS (Light Modernized) --- */}
+            <section className="py-40 px-6 md:px-12 lg:px-24 bg-slate-50 relative overflow-hidden">
+                <div className="max-w-7xl mx-auto space-y-32">
+                    <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-16">
+                        <div className="space-y-8">
+                            <span className="text-primary font-black uppercase text-xs tracking-[0.6em]">The Foundation</span>
+                            <h2 className="text-6xl md:text-[9rem] font-black text-slate-900 uppercase tracking-tighter leading-[0.8]">
+                                Protocol <br /> <span className="stroke-text-slate-900 opacity-20">Elements.</span>
+                            </h2>
+                        </div>
+                        <p className="text-slate-500 font-medium text-xl md:text-2xl max-w-xl leading-relaxed tracking-tight">
+                            A multi-dimensional approach to startup engineering, designed exclusively for the creative avant-garde.
+                        </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-200 border border-slate-200 rounded-[4rem] overflow-hidden">
                         {[
                             { 
                                 title: "Business Strategy", 
-                                desc: "Master the art of lean startups, scaling models, and pricing architectures tailored for the luxury and lifestyle sectors.",
+                                desc: "High-performance scaling models and lean architecture for global dominance.",
                                 icon: Target 
                             },
                             { 
-                                title: "Funding Assistance", 
-                                desc: "Get direct access to angel investors, venture capitalists, and pitch-day opportunities to fuel your startup's growth.",
+                                title: "Funding Engines", 
+                                desc: "Direct-to-investor pipelines and zero-friction capital procurement strategies.",
                                 icon: TrendingUp 
                             },
                             { 
-                                title: "IP & Legal Support", 
-                                desc: "Protect your creative legacy with expert legal guidance on trademarks, patents, and copyright frameworks.",
+                                title: "Legacy Assets", 
+                                desc: "Absolute protection for creative IP through elite patent frameworks.",
                                 icon: Shield 
                             },
                             { 
-                                title: "Global Marketplace", 
-                                desc: "Leverage INSD's international partnerships to launch your brand in European and Asian markets.",
+                                title: "Global Mesh", 
+                                desc: "Neural network of international partners spanning 40+ strategic markets.",
                                 icon: Globe 
                             },
                             { 
-                                title: "Expert Mentorship", 
-                                desc: "Learn from CXOs, Founders, and specialized business consultants who have built multi-million dollar brands.",
+                                title: "Titan Mentory", 
+                                desc: "Direct advisory from the world's most successful design-led founders.",
                                 icon: Users 
                             },
                             { 
-                                title: "Co-working Studio", 
-                                desc: "Access high-end infrastructure, prototyping labs, and collaborative spaces designed for creative entrepreneurs.",
+                                title: "Quantum Studio", 
+                                desc: "Elite physical infrastructure for rapid prototyping and collaborative engineering.",
                                 icon: Briefcase 
                             }
                         ].map((pillar, idx) => (
@@ -174,103 +253,193 @@ const Entrepreneur = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="p-12 bg-white border border-slate-100 rounded-[3rem] hover:shadow-2xl transition-all duration-500 group relative"
+                                className="p-16 bg-white hover:bg-slate-50 transition-all duration-700 group relative cursor-pointer"
                             >
-                                <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm">
-                                    <pillar.icon size={32} />
+                                <div className="w-20 h-20 rounded-3xl bg-slate-50 flex items-center justify-center text-slate-400 mb-12 group-hover:bg-primary group-hover:text-white transition-all transform group-hover:-translate-y-4 group-hover:rotate-6 shadow-sm">
+                                    <pillar.icon size={36} />
                                 </div>
-                                <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tighter mb-4">{pillar.title}</h3>
-                                <p className="text-slate-500 font-bold text-sm leading-relaxed uppercase tracking-tight">{pillar.desc}</p>
+                                <h3 className="text-3xl font-black text-slate-900 uppercase tracking-tighter mb-8 group-hover:text-primary transition-colors">{pillar.title}</h3>
+                                <p className="text-slate-500 font-medium text-lg leading-relaxed tracking-tight group-hover:text-slate-900 transition-colors uppercase">{pillar.desc}</p>
+                                
+                                <div className="absolute bottom-12 right-12 opacity-0 group-hover:opacity-100 transition-all">
+                                    <ArrowRight size={24} className="text-primary" />
+                                </div>
                             </motion.div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* --- INNOVATION LAB --- */}
-            <section className="py-24 px-6 md:px-12 lg:px-24 bg-slate-50 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
+            {/* --- EIDC CENTERPIECE (Entrepreneurship, Innovation & Design Center) --- */}
+            <section className="py-48 px-6 md:px-12 lg:px-24 bg-white relative overflow-hidden">
+                <div className="absolute inset-0 z-0 opacity-[0.05] pointer-events-none cyber-grid" />
                 
-                <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
-                    <div className="w-full lg:w-1/2 space-y-10">
-                        <div className="space-y-4 text-center lg:text-left">
-                            <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">Future-Forward</span>
-                            <h2 className="text-5xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none">
-                                THE <br /> <span className="text-slate-300">INNOVATION</span> <br /> LAB
+                <div className="max-w-7xl mx-auto relative z-10">
+                    <div className="flex flex-col lg:flex-row gap-24 items-start">
+                        
+                        {/* Left Content Column */}
+                        <div className="w-full lg:w-1/2 space-y-16">
+                            <div className="space-y-6">
+                                <motion.div 
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    className="flex items-center gap-4"
+                                >
+                                    <div className="w-12 h-px bg-primary" />
+                                    <span className="text-primary font-black uppercase text-[10px] tracking-[0.8em]">Core Institutional Directive</span>
+                                </motion.div>
+                                
+                                <h2 className="text-8xl md:text-[12rem] font-black text-slate-900 uppercase tracking-tighter leading-[0.75]">
+                                    EIDC<span className="text-primary italic font-serif">.</span><br />
+                                    <span className="stroke-text-slate-900 opacity-20 text-6xl md:text-[8rem]">PROTOCOLS</span>
+                                </h2>
+                                
+                                <p className="text-slate-400 font-bold uppercase tracking-[0.4em] text-xs">Entrepreneurship, Innovation & Design Center</p>
+                            </div>
+
+                            <p className="text-2xl md:text-4xl text-slate-500 font-medium leading-relaxed tracking-tight max-w-xl">
+                                The architectural foundation where <span className="text-slate-900">visionary concepts</span> undergo rigorous engineering into <span className="text-slate-900">market-dominant</span> entities.
+                            </p>
+
+                            {/* Directives Grid */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8">
+                                {[
+                                    { title: "Alpha Mentorship", icon: Lightbulb, color: "text-amber-500" },
+                                    { title: "Capital Infusion", icon: TrendingUp, color: "text-emerald-500" },
+                                    { title: "Legal Frameworks", icon: Shield, color: "text-blue-500" },
+                                    { title: "Global Scaling", icon: Globe, color: "text-primary" }
+                                ].map((dir, idx) => (
+                                    <motion.div 
+                                        key={idx}
+                                        whileHover={{ x: 10 }}
+                                        className="p-8 bg-slate-50 border border-slate-100 rounded-[2.5rem] group cursor-pointer transition-all hover:bg-white hover:shadow-xl hover:shadow-slate-200/50"
+                                    >
+                                        <div className="flex items-center gap-6">
+                                            <div className={`w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center ${dir.color} group-hover:scale-110 transition-transform`}>
+                                                <dir.icon size={24} />
+                                            </div>
+                                            <span className="font-black uppercase text-xs tracking-[0.2em] text-slate-900">{dir.title}</span>
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Right Visual Column (Laboratory Aesthetic) */}
+                        <div className="w-full lg:w-1/2 relative">
+                            <motion.div 
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 1.5 }}
+                                className="relative aspect-[4/5] rounded-[5rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] group"
+                            >
+                                <img 
+                                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600" 
+                                    className="w-full h-full object-cover grayscale brightness-125 group-hover:scale-105 transition-all duration-1000"
+                                    alt="EIDC Lab"
+                                />
+                                <div className="absolute inset-0 bg-linear-to-t from-white via-white/20 to-transparent" />
+                                
+                                {/* Overlay Lab Card */}
+                                <div className="absolute bottom-12 left-12 right-12 apple-glass border-slate-100/50 rounded-[4rem] h-[340px] md:h-[380px] overflow-hidden">
+                                    <LabSlider />
+                                </div>
+                            </motion.div>
+                            
+                            {/* Detail Callout */}
+                            <motion.div 
+                                animate={{ y: [0, -20, 0] }}
+                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                                className="absolute -top-12 -right-12 p-8 bg-white shadow-2xl rounded-[2rem] border border-slate-100 hidden md:block"
+                            >
+                                <div className="space-y-2">
+                                    <p className="text-[10px] font-black uppercase text-primary tracking-widest">Lab Capacity</p>
+                                    <p className="text-4xl font-black text-slate-900 tracking-tighter">100%</p>
+                                    <p className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.4em]">Active Protocols</p>
+                                </div>
+                            </motion.div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+            {/* --- DESIGN CONCLAVE (The Flagship Event) --- */}
+            <section className="py-48 px-6 md:px-12 lg:px-24 bg-white relative overflow-hidden">
+                <div className="absolute inset-x-0 top-0 h-px bg-slate-100" />
+                
+                <div className="max-w-7xl mx-auto">
+                    <div className="flex flex-col lg:flex-row items-end justify-between gap-12 mb-32">
+                        <div className="space-y-6">
+                            <motion.div 
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                className="flex items-center gap-4"
+                            >
+                                <div className="w-12 h-px bg-primary" />
+                                <span className="text-primary font-black uppercase text-[10px] tracking-[0.8em]">Annual Global Summit</span>
+                            </motion.div>
+                            
+                            <h2 className="text-7xl md:text-[10rem] font-black text-slate-900 uppercase tracking-tighter leading-[0.8]">
+                                DESIGN <br /> <span className="stroke-text-slate-900 opacity-20">CONCLAVE.</span>
                             </h2>
                         </div>
                         
-                        <p className="text-slate-600 font-bold text-lg leading-relaxed uppercase tracking-tight max-w-lg">
-                            We don't just teach design; we cultivate design-led thinkers who solve complex problems and build enduring institutions.
-                        </p>
+                        <div className="max-w-md space-y-8">
+                            <p className="text-xl md:text-2xl text-slate-500 font-medium leading-relaxed tracking-tight">
+                                Where industry titans and emerging visionaries converge to architect the next era of <span className="text-slate-900">creative commerce.</span>
+                            </p>
+                        </div>
+                    </div>
 
-                        <div className="space-y-6">
-                            {[
-                                "Bespoke Mentorship from Industry Legends",
-                                "Annual 'Shark-Tank' Style Pitch Days",
-                                "Zero-Equity Incubation Support",
-                                "Access to Elite Global Supply Chains"
-                            ].map((item, idx) => (
-                                <div key={idx} className="flex items-center gap-4 group">
-                                    <div className="w-6 h-6 rounded-full border-2 border-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
-                                        <div className="w-2 h-2 bg-primary rounded-full group-hover:bg-white" />
-                                    </div>
-                                    <span className="font-black uppercase text-xs tracking-widest text-slate-900">{item}</span>
-                                </div>
+                    {/* Conclave Moments Slider */}
+                    <div className="relative z-10 -mx-6 md:-mx-12 lg:-mx-24">
+                        <ConclaveSlider />
+                    </div>
+
+                    {/* Final Event CTA */}
+                    <div className="mt-40 p-16 md:p-24 bg-slate-900 rounded-[5rem] relative overflow-hidden flex flex-col items-center text-center space-y-12">
+                        <div className="absolute inset-0 z-0 opacity-10 pointer-events-none cyber-grid" />
+                        
+                        <div className="relative z-10 space-y-6">
+                            <span className="text-primary font-black uppercase text-xs tracking-[0.8em]">Exclusive Access Only</span>
+                            <h3 className="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none">
+                                SECURE YOUR <br /> <span className="stroke-text-white opacity-20">PRECINCT.</span>
+                            </h3>
+                        </div>
+
+                        <div className="relative z-10 flex flex-col md:flex-row gap-8">
+                            <motion.button 
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="px-16 py-8 bg-primary text-white rounded-full font-black uppercase text-xs tracking-[0.4em] shadow-2xl shadow-primary/20"
+                            >
+                                Request Invitation
+                            </motion.button>
+                            <motion.button 
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="px-16 py-8 border-2 border-white/20 text-white rounded-full font-black uppercase text-xs tracking-[0.4em] hover:bg-white hover:text-slate-900 transition-all"
+                            >
+                                Conclave History
+                            </motion.button>
+                        </div>
+
+                        <div className="relative z-10 flex items-center gap-10 opacity-30">
+                            {["London", "Milan", "Dubai", "New Delhi"].map((city, i) => (
+                                <React.Fragment key={i}>
+                                    <span className="text-[10px] font-black uppercase tracking-widest text-white">{city}</span>
+                                    {i < 3 && <div className="w-1 h-1 rounded-full bg-white" />}
+                                </React.Fragment>
                             ))}
                         </div>
                     </div>
-
-                    <div className="w-full lg:w-1/2 relative group">
-                        <div className="relative aspect-square rounded-[3.5rem] overflow-hidden shadow-2xl">
-                           <img 
-                               src="https://images.unsplash.com/photo-1542744094-3a31f272c441?auto=format&fit=crop&q=80&w=800"
-                               alt="Entrepreneurship Lab"
-                               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                           />
-                           <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
-                           <div className="absolute bottom-12 left-12 right-12 p-8 md:p-12 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl">
-                               <p className="text-white font-bold text-sm md:text-base leading-relaxed italic text-center uppercase tracking-tight">
-                                   "The incubation center at INSD was the turning point for my brand. They didn't just give me space; they gave me a roadmap to market dominance."
-                               </p>
-                               <div className="mt-8 flex items-center justify-center gap-4">
-                                   <div className="h-px w-8 bg-white/30" />
-                                   <span className="text-white/60 text-[10px] font-black uppercase tracking-widest leading-none">ALUMNI FOUNDER</span>
-                                   <div className="h-px w-8 bg-white/30" />
-                               </div>
-                           </div>
-                        </div>
-                        <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                        <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-secondary/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                    </div>
                 </div>
             </section>
 
-            {/* --- FINAL CTA --- */}
-            <section className="py-32 px-6 md:px-12 lg:px-24 bg-white relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[150px] rounded-full" />
-                <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-secondary/5 blur-[100px] rounded-full" />
-                
-                <div className="max-w-5xl mx-auto text-center space-y-12 relative z-10">
-                    <div className="inline-block p-4 rounded-full bg-slate-50 border border-slate-100 mb-4 animate-bounce">
-                        <Rocket size={40} className="text-primary" />
-                    </div>
-                    <h2 className="text-5xl md:text-8xl font-black text-slate-900 uppercase tracking-tighter leading-none">
-                        Ready To <br /> <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary">Launch</span>?
-                    </h2>
-                    <p className="text-slate-500 font-bold text-lg md:text-2xl max-w-3xl mx-auto uppercase tracking-tight leading-relaxed">
-                        Don't let your vision stay a dream. Join the next cohort of high-performing entrepreneurs and scale your design empire.
-                    </p>
-                    <div className="flex flex-col md:flex-row items-center justify-center gap-6 pt-8">
-                        <button className="px-12 py-5 bg-slate-900 text-white rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-primary transition-all transform hover:scale-105">
-                            Submit Your Startup Pitch
-                        </button>
-                        <button className="px-12 py-5 border border-slate-200 text-slate-900 rounded-full font-black uppercase text-xs tracking-widest hover:bg-slate-900 hover:text-white transition-all">
-                            Speak with a Business Mentor
-                        </button>
-                    </div>
-                </div>
-            </section>
+
 
             <Footer />
         </div>
