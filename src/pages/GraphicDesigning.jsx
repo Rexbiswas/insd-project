@@ -35,19 +35,23 @@ const GraphicDesigning = () => {
 
     const curriculumData = {
         "Industry Diploma": {
-            "Foundation: Visual Arts": [
-                "Fundamentals of Design & AI",
-                "Color Theory & Digital Art",
-                "Typography & Print Systems",
-                "Illustration & Digital Imaging",
-                "CAD + AI Design Suite"
+            "Foundation: Design Fundamentals": [
+                "Fundamentals of Design",
+                "Elements of Design",
+                "Adobe Photoshop",
+                "Adobe Illustrator",
+                "Corel Draw",
+                "Adobe Indesign"
             ],
-            "Mastery: Branding": [
-                "Corporate Identity Design",
-                "Packaging & Product Layout",
-                "Marketing & Media Strategy",
-                "Portfolio Lab + Industry Project",
-                "Global Design Trends & AI"
+            "Mastery: UI/UX & Web": [
+                "Introduction to UI & UX",
+                "Adobe XD",
+                "Figma",
+                "HTML5",
+                "CSS3",
+                "Adobe Dreamweaver",
+                "Personality Development & Grooming",
+                "Interview Skill Training"
             ]
         },
         Bachelors: {
@@ -95,9 +99,9 @@ const GraphicDesigning = () => {
         { title: "Package Designer", desc: "Creating impactful packaging solutions that define product presence on shelves.", img: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=800" },
         { title: "Motion Artist", desc: "Bringing static designs to life through animation for film and digital media.", img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800" },
         { title: "Web Designer", desc: "Architecting responsive websites that blend aesthetics with technical utility.", img: "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=800" },
-        { title: "Editorial Designer", desc: "Layout and visual strategy for high-end magazines, books, and digital journals.", img: "https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&q=80&w=800" },
+        { title: "Editorial Designer", desc: "Layout and visual strategy for high-end magazines, books, and digital journals.", img: "https://images.unsplash.com/photo-1586075010633-2470acfd8e8a?auto=format&fit=crop&q=80&w=800" },
         { title: "Creative Consultant", desc: "Providing strategic visual solutions for startups and global corporations.", img: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=800" },
-        { title: "Exhibition Designer", desc: "Designing immersive visual environments for museums, galleries and trade fairs.", img: "https://images.unsplash.com/photo-1531050171669-70c4765064bb?auto=format&fit=crop&q=80&w=800" }
+        { title: "Exhibition Designer", desc: "Designing immersive visual environments for museums, galleries and trade fairs.", img: "https://images.unsplash.com/photo-1518998053574-53f1f114e8c5?auto=format&fit=crop&q=80&w=800" }
     ];
 
     return (
@@ -137,14 +141,8 @@ const GraphicDesigning = () => {
                                 onClick={() => openAdmissionModal()}
                                 className="group px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3"
                             >
-                                Join the Skill Revolution
-                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                            </button>
-                            <button 
-                                onClick={() => openAdmissionModal()}
-                                className="px-12 py-5 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105"
-                            >
                                 Enroll Now
+                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                             </button>
                         </div>
                         <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
@@ -263,6 +261,35 @@ const GraphicDesigning = () => {
                             ))}
                         </div>
                     </div>
+
+                    {activeOutline === 'Industry Diploma' && (
+                        <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mb-12 p-8 rounded-[2.5rem] bg-slate-900 text-white border border-primary/20 shadow-2xl relative overflow-hidden group"
+                        >
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/20 transition-colors" />
+                            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                                <div className="space-y-2 text-center md:text-left">
+                                    <p className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">Program Name</p>
+                                    <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tighter leading-none">
+                                        Advanced Industry-Integrated Graphic Diploma (AIIGD)
+                                    </h3>
+                                </div>
+                                <div className="flex items-center gap-6 px-8 py-4 bg-white/5 rounded-2xl border border-white/10">
+                                    <div className="text-center md:text-right">
+                                        <p className="text-white/40 font-black uppercase text-[8px] tracking-widest mb-1">Duration</p>
+                                        <p className="text-xl font-black text-primary leading-none uppercase tracking-tight">1 Year</p>
+                                    </div>
+                                    <div className="w-px h-10 bg-white/10" />
+                                    <div className="text-center md:text-left">
+                                        <p className="text-white/40 font-black uppercase text-[8px] tracking-widest mb-1">Learning Hours</p>
+                                        <p className="text-xl font-black text-white leading-none uppercase tracking-tight">420 Hours</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         {curriculumData[activeOutline] && Object.entries(curriculumData[activeOutline]).map(([semName, items], idx) => {

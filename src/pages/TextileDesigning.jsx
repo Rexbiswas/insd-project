@@ -111,7 +111,7 @@ const TextileDesigning = () => {
             <section className="relative h-[70vh] md:h-[85vh] flex items-center justify-center pt-20 md:pt-32 text-center px-6 overflow-hidden bg-slate-900">
                 <div className="absolute inset-0 z-0">
                     <img 
-                        src="https://plus.unsplash.com/premium_photo-1661962617583-e61b799dc558?fm=jpg&q=60&w=3000&auto=format&fit=crop" 
+                        src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&q=80&w=2000" 
                         alt="Textile Design Loom" 
                         className="w-full h-full object-cover opacity-60 scale-105"
                     />
@@ -138,14 +138,8 @@ const TextileDesigning = () => {
                                 onClick={() => openAdmissionModal()}
                                 className="group px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3"
                             >
-                                Join the Skill Revolution
-                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                            </button>
-                            <button 
-                                onClick={() => openAdmissionModal()}
-                                className="px-12 py-5 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105"
-                            >
                                 Enroll Now
+                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                             </button>
                         </div>
                         <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
@@ -264,6 +258,35 @@ const TextileDesigning = () => {
                             ))}
                         </div>
                     </div>
+
+                    {activeOutline === 'Industry Diploma' && (
+                        <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mb-12 p-8 rounded-[2.5rem] bg-slate-900 text-white border border-primary/20 shadow-2xl relative overflow-hidden group"
+                        >
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/20 transition-colors" />
+                            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                                <div className="space-y-2 text-center md:text-left">
+                                    <p className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">Program Name</p>
+                                    <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tighter leading-none">
+                                        Advanced Industry-Integrated Textile Diploma (AIITD)
+                                    </h3>
+                                </div>
+                                <div className="flex items-center gap-6 px-8 py-4 bg-white/5 rounded-2xl border border-white/10">
+                                    <div className="text-center md:text-right">
+                                        <p className="text-white/40 font-black uppercase text-[8px] tracking-widest mb-1">Duration</p>
+                                        <p className="text-xl font-black text-primary leading-none uppercase tracking-tight">1 Year</p>
+                                    </div>
+                                    <div className="w-px h-10 bg-white/10" />
+                                    <div className="text-center md:text-left">
+                                        <p className="text-white/40 font-black uppercase text-[8px] tracking-widest mb-1">Learning Hours</p>
+                                        <p className="text-xl font-black text-white leading-none uppercase tracking-tight">420 Hours</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         {curriculumData[activeOutline] && Object.entries(curriculumData[activeOutline]).map(([semName, items], idx) => {

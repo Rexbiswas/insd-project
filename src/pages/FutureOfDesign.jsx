@@ -71,18 +71,6 @@ const FutureOfDesign = () => {
                             <span className="text-slate-950"> Design is no longer a hobby; it is a serious career opportunity.</span>
                         </p>
                     </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.8 }}
-                        className="flex flex-col sm:flex-row items-center justify-center gap-6"
-                    >
-                        <button className="group px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-slate-950 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3">
-                            Join the Skill Revolution
-                            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                        </button>
-                    </motion.div>
                 </div>
             </section>
 

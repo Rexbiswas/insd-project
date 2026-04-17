@@ -85,13 +85,13 @@ const FashionDesigning = () => {
 
     const careerPaths = [
         { title: "Couture Designer", desc: "Crafting exclusive, high-end bespoke garments for international luxury labels.", img: "https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?auto=format&fit=crop&q=80&w=800" },
-        { title: "Fashion Illustrator", desc: "Translating concepts into high-impact visual narratives for global publications.", img: "https://images.unsplash.com/photo-1541339907198-e08756ebafe3?auto=format&fit=crop&q=80&w=800" },
-        { title: "Personal Stylist", desc: "Setting the visual identity for celebrities, influencers, and luxury brand ambassadors.", img: "https://images.unsplash.com/photo-1562322140-5ba7b293d0d3?auto=format&fit=crop&q=80&w=800" },
+        { title: "Fashion Illustrator", desc: "Translating concepts into high-impact visual narratives for global publications.", img: "https://tse3.mm.bing.net/th/id/OIP.mwqmmBNn_aPTNK9R3TMH0QHaJY?rs=1&pid=ImgDetMain&o=7&rm=3" },
+        { title: "Personal Stylist", desc: "Setting the visual identity for celebrities, influencers, and luxury brand ambassadors.", img: "https://tse4.mm.bing.net/th/id/OIP.pUiakNrbcElp0LrKhdHz_wHaNK?pid=ImgDet&w=188&h=333&c=7&o=7&rm=3" },
         { title: "Fashion Entrepreneur", desc: "Launching and managing independent fashion labels and high-end boutiques.", img: "https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&q=80&w=800" },
         { title: "Costume Designer", desc: "Designing evocative wardrobes for high-production theatre, film, and media.", img: "https://images.unsplash.com/photo-1551232864-3f0890e580d9?auto=format&fit=crop&q=80&w=800" },
         { title: "Fashion Consultant", desc: "Strategic advising for heritage brands on trend forecasting and market positioning.", img: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&q=80&w=800" },
         { title: "Technical Designer", desc: "Mastering the blueprint of garments and ensuring engineering precision in apparel.", img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800" },
-        { title: "Brand Merchant", desc: "Managing inventory and sales strategies for global luxury fashion houses.", img: "https://images.unsplash.com/photo-1589718471415-32512f518e38?auto=format&fit=crop&q=80&w=800" },
+        { title: "Brand Merchant", desc: "Managing inventory and sales strategies for global luxury fashion houses.", img: "https://media.istockphoto.com/id/1783667046/photo/female-customer-making-a-mobile-payment-at-local-flower-shop.jpg?s=612x612&w=0&k=20&c=0U_nu0zNASVM6oXqr8KsE8o1V6hDNbkSwpsbOvnxQWs=" },
         { title: "Pattern Scientist", desc: "Precision engineering of complex silhouettes and fit dynamics for manufacturing.", img: "https://images.unsplash.com/photo-1532187863486-abf51ad9f69d?auto=format&fit=crop&q=80&w=800" }
     ];
 
@@ -128,16 +128,10 @@ const FashionDesigning = () => {
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12">
                             <button 
                                 onClick={() => openAdmissionModal()}
-                                className="group px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3"
-                            >
-                                Join the Skill Revolution
-                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                            </button>
-                            <button 
-                                onClick={() => openAdmissionModal()}
-                                className="px-12 py-5 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105"
+                                className="px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-white hover:text-slate-900 transition-all transform hover:scale-105 flex items-center gap-3"
                             >
                                 Enroll Now
+                                <ArrowRight size={18} />
                             </button>
                         </div>
                     </motion.div>
@@ -188,7 +182,7 @@ const FashionDesigning = () => {
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-4 h-auto md:h-[600px]">
                         <div className="col-span-1 md:col-span-7 h-[300px] md:h-full rounded-2xl overflow-hidden shadow-2xl">
                             <img 
-                                src="" 
+                                src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&q=80&w=800" 
                                 alt="Fashion Design Student Work" 
                                 className="w-full h-full object-cover"
                             />
@@ -203,7 +197,7 @@ const FashionDesigning = () => {
                             </div>
                             <div className="rounded-2xl overflow-hidden shadow-2xl">
                                 <img 
-                                    src="https://images.unsplash.com/photo-1550523091-628f52285e68?auto=format&fit=crop&q=80&w=800" 
+                                    src="https://b.she-buy.com/wp-content/uploads/Quality-Control-in-Garment-Construction-.webp" 
                                     alt="Final Garment Construction" 
                                     className="w-full h-full object-cover"
                                 />
@@ -254,6 +248,35 @@ const FashionDesigning = () => {
                             ))}
                         </div>
                     </div>
+
+                    {activeOutline === 'Industry Diploma' && (
+                        <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mb-12 p-8 rounded-[2.5rem] bg-slate-900 text-white border border-primary/20 shadow-2xl relative overflow-hidden group"
+                        >
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/20 transition-colors" />
+                            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                                <div className="space-y-2 text-center md:text-left">
+                                    <p className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">Program Name</p>
+                                    <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tighter leading-none">
+                                        Advanced Industry-Integrated Fashion Diploma (AIIFD)
+                                    </h3>
+                                </div>
+                                <div className="flex items-center gap-6 px-8 py-4 bg-white/5 rounded-2xl border border-white/10">
+                                    <div className="text-center md:text-right">
+                                        <p className="text-white/40 font-black uppercase text-[8px] tracking-widest mb-1">Duration</p>
+                                        <p className="text-xl font-black text-primary leading-none uppercase tracking-tight">1 Year</p>
+                                    </div>
+                                    <div className="w-px h-10 bg-white/10" />
+                                    <div className="text-center md:text-left">
+                                        <p className="text-white/40 font-black uppercase text-[8px] tracking-widest mb-1">Learning Hours</p>
+                                        <p className="text-xl font-black text-white leading-none uppercase tracking-tight">420 Hours</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         {curriculumData[activeOutline] && Object.entries(curriculumData[activeOutline]).map(([semName, items], idx) => {

@@ -76,7 +76,7 @@ const MscLuxury = () => {
             <section className="relative h-[70vh] md:h-[85vh] flex items-center justify-center pt-20 md:pt-32 text-center px-6 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img 
-                        src="/luxury_brand_management_hero_msc_1773917076939.png" 
+                        src="https://images.unsplash.com/photo-1549439602-43ebca2327af?auto=format&fit=crop&q=80&w=1600" 
                         alt="Luxury Management Studio" 
                         className="w-full h-full object-cover scale-105"
                     />

@@ -85,13 +85,13 @@ const BeautyAndMakeup = () => {
     const careerPaths = [
         { title: "Bridal Makeup Artist", desc: "Expertly crafting timeless and radiant looks for high-end weddings and traditional ceremonies.", img: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=800" },
         { title: "Editorial Stylist", desc: "Designing avant-garde and high-fashion looks for global magazine covers and luxury runways.", img: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&q=80&w=800" },
-        { title: "SFX Artist (Film)", desc: "Creating hyper-realistic prosthetics and special effects makeup for international cinema.", img: "https://images.unsplash.com/photo-1595433707802-68c07d7f4f5d?auto=format&fit=crop&q=80&w=800" },
+        { title: "SFX Artist (Film)", desc: "Creating hyper-realistic prosthetics and special effects makeup for international cinema.", img: "https://images.unsplash.com/photo-1594968213941-af7cd88acc6d?auto=format&fit=crop&q=80&w=800" },
         { title: "Cosmetic Consultant", desc: "Advising global beauty brands on product development, color theory, and dermal trends.", img: "https://images.unsplash.com/photo-1512496015851-a90fb38ba496?auto=format&fit=crop&q=80&w=800" },
         { title: "Salon Manager/Owner", desc: "Overseeing the luxury operations and client experiences of premium international beauty ateliers.", img: "https://images.unsplash.com/photo-1560066984138dadb4c035?auto=format&fit=crop&q=80&w=800" },
         { title: "Beauty Educator", desc: "Shaping the next generation of artists as a professional trainer in elite design schools.", img: "https://images.unsplash.com/photo-1516534775068-ba3e7458af70?auto=format&fit=crop&q=80&w=800" },
         { title: "Skincare Specialist", desc: "Evaluating dermal health and providing expert medical treatments in high-end medical spas.", img: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=800" },
         { title: "Nail Technician", desc: "Mastering advanced nail structures and intricate art for international fashion houses.", img: "https://images.unsplash.com/photo-1604654894610-df490982560a?auto=format&fit=crop&q=80&w=800" },
-        { title: "Celebrity Stylist", desc: "Directing the visual narrative and personal brand aesthetic for global icons and public figures.", img: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=800" }
+        { title: "Celebrity Stylist", desc: "Directing the visual narrative and personal brand aesthetic for global icons and public figures.", img: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=800" }
     ];
 
     return (
@@ -132,14 +132,8 @@ const BeautyAndMakeup = () => {
                                 onClick={() => openAdmissionModal()}
                                 className="group px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3"
                             >
-                                Join the Skill Revolution
-                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                            </button>
-                            <button 
-                                onClick={() => openAdmissionModal()}
-                                className="px-12 py-5 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105"
-                            >
                                 Enroll Now
+                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                             </button>
                         </div>
                         <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">

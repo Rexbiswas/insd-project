@@ -33,7 +33,7 @@ const HeroSlider = () => {
             {/* Main Hero Image */}
             <div className="relative w-full h-full overflow-hidden">
                 <img 
-                    src="https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                    src="" 
                     alt="Student with Vision"
                     className="w-full h-full object-cover"
                 />

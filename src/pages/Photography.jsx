@@ -107,7 +107,7 @@ const Photography = () => {
             <section className="relative h-[70vh] md:h-[85vh] flex items-center justify-center pt-20 md:pt-32 text-center px-6 overflow-hidden bg-slate-900">
                 <div className="absolute inset-0 z-0">
                     <img 
-                        src="https://t4.ftcdn.net/jpg/01/19/13/67/360_F_119136770_MbAquQu9xKLMaQo0GN6VOsAJRo917cLJ.jpg" 
+                        src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&q=80&w=1600" 
                         alt="Photography Studio" 
                         className="w-full h-full object-cover opacity-60 scale-105"
                     />
@@ -133,14 +133,8 @@ const Photography = () => {
                                 onClick={() => openAdmissionModal()}
                                 className="group px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3"
                             >
-                                Join the Skill Revolution
-                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                            </button>
-                            <button 
-                                onClick={() => openAdmissionModal()}
-                                className="px-12 py-5 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105"
-                            >
                                 Enroll Now
+                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                             </button>
                         </div>
                         <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">

@@ -29,19 +29,21 @@ const JewelleryDesigning = () => {
 
     const curriculumData = {
         "Industry Diploma": {
-            "Foundation: Gem Arts": [
-                "Manual Designing: Motifs & Forms",
-                "Gemstone Identification Basics",
-                "3D CAD (Matrix) + AI Prototyping",
-                "Metallurgy & Casting Basics",
-                "Illustration & Rendering with AI"
+            "Foundation: Tech & Gems": [
+                "Foundation with AI",
+                "Elements of Design with AI",
+                "Gemology",
+                "Diamond Grading",
+                "Designing Project 1 with AI",
+                "Designing Project 2 inspiration"
             ],
-            "Industry: Luxury Market": [
-                "Luxury Brand Management",
-                "Quality Control & Appraisal",
-                "Digital Portfolio Mastery",
-                "Industry Case Studies",
-                "Startup Economics in Gemology"
+            "Industry: CAD & Market": [
+                "Concept Designing with AI",
+                "Costume Jewellery",
+                "Coral draw CAD 2 D software with AI",
+                "CAD Matrix 3D software with AI",
+                "Industry Visit",
+                "Market Survey"
             ]
         },
         PG: {
@@ -94,8 +96,8 @@ const JewelleryDesigning = () => {
         { title: "Product Head", desc: "Managing the end-to-end design and manufacturing lifecycle of jewellery collections.", img: "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&q=80&w=800" },
         { title: "Visual Merchandiser", desc: "Designing high-impact storefronts and displays for luxury jewellery boutiques.", img: "https://images.unsplash.com/photo-1610492421943-8347fa65e236?auto=format&fit=crop&q=80&w=800" },
         { title: "Brand Consultant", desc: "Setting the strategic identity and market positioning for global gem houses.", img: "https://images.unsplash.com/photo-1534073828943-f801091bb18c?auto=format&fit=crop&q=80&w=800" },
-        { title: "Quality Assurance", desc: "Inspecting every piece for structural integrity, plating quality, and stone setting.", img: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=800" },
-        { title: "Luxury Retail Merchant", desc: "Managing high-value inventory, luxury showroom operations and premium brand sales.", img: "https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg?auto=compress&cs=tinysrgb&w=800" },
+        { title: "Quality Assurance", desc: "Inspecting every piece for structural integrity, plating quality, and stone setting.", img: "https://images.unsplash.com/photo-1573408302355-4e0b7cb39602?auto=format&fit=crop&q=80&w=800" },
+        { title: "Luxury Retail Merchant", desc: "Managing high-value inventory, luxury showroom operations and premium brand sales.", img: "https://images.unsplash.com/photo-1531995811006-35cb42e5a3ed?auto=format&fit=crop&q=80&w=800" },
         { title: "Luxury Entrepreneur", desc: "Launching and managing your own independent bespoke jewellery label and atelier.", img: "https://images.unsplash.com/photo-1467043237213-65f2da53396f?auto=format&fit=crop&q=80&w=800" },
     ];
 
@@ -136,14 +138,8 @@ const JewelleryDesigning = () => {
                                 onClick={() => openAdmissionModal()}
                                 className="group px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3"
                             >
-                                Join the Skill Revolution
-                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                            </button>
-                            <button 
-                                onClick={() => openAdmissionModal()}
-                                className="px-12 py-5 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105"
-                            >
                                 Enroll Now
+                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                             </button>
                         </div>
                         <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
@@ -262,6 +258,35 @@ const JewelleryDesigning = () => {
                             ))}
                         </div>
                     </div>
+
+                    {activeOutline === 'Industry Diploma' && (
+                        <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mb-12 p-8 rounded-[2.5rem] bg-slate-900 text-white border border-primary/20 shadow-2xl relative overflow-hidden group"
+                        >
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/20 transition-colors" />
+                            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                                <div className="space-y-2 text-center md:text-left">
+                                    <p className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">Program Name</p>
+                                    <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tighter leading-none">
+                                        Advanced Industry Integrated Jewellery Diploma (AIIJD)
+                                    </h3>
+                                </div>
+                                <div className="flex items-center gap-6 px-8 py-4 bg-white/5 rounded-2xl border border-white/10">
+                                    <div className="text-center md:text-right">
+                                        <p className="text-white/40 font-black uppercase text-[8px] tracking-widest mb-1">Duration</p>
+                                        <p className="text-xl font-black text-primary leading-none uppercase tracking-tight">1 Year</p>
+                                    </div>
+                                    <div className="w-px h-10 bg-white/10" />
+                                    <div className="text-center md:text-left">
+                                        <p className="text-white/40 font-black uppercase text-[8px] tracking-widest mb-1">Learning Hours</p>
+                                        <p className="text-xl font-black text-white leading-none uppercase tracking-tight">420 Hours</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         {curriculumData[activeOutline] && Object.entries(curriculumData[activeOutline]).map(([semName, items], idx) => {

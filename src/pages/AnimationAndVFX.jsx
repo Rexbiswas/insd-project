@@ -94,7 +94,7 @@ const AnimationAndVFX = () => {
         { title: "Game Artist", desc: "Developing immersive environments and interactive assets for the multi-billion dollar gaming industry.", img: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=800" },
         { title: "Motion Artist", desc: "Creating high-impact animated graphics for national television, film titles, and digital ads.", img: "https://images.unsplash.com/photo-1558591710-4b4a1ad0f04d?auto=format&fit=crop&q=80&w=800" },
         { title: "Lighting Artist", desc: "Setting the cinematic mood and atmosphere of digital scenes through advanced virtual lighting.", img: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=800" },
-        { title: "Technical Director", desc: "Engineers the production pipeline and develops specialized tools for major animation houses.", img: "https://images.unsplash.com/photo-1512496015851-a90fb38ba496?auto=format&fit=crop&q=80&w=800" },
+        { title: "Technical Director", desc: "Engineers the production pipeline and develops specialized tools for major animation houses.", img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" },
         { title: "Concept Artist", desc: "Visualizing characters and worlds before production begins to guide the creative direction.", img: "https://images.unsplash.com/photo-1520633215439-d49eec2030ca?auto=format&fit=crop&q=80&w=800" }
     ];
 
@@ -136,14 +136,8 @@ const AnimationAndVFX = () => {
                                 onClick={() => openAdmissionModal()}
                                 className="group px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3"
                             >
-                                Join the Skill Revolution
-                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                            </button>
-                            <button 
-                                onClick={() => openAdmissionModal()}
-                                className="px-12 py-5 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105"
-                            >
                                 Enroll Now
+                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                             </button>
                         </div>
                         <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">

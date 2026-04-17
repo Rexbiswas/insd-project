@@ -35,21 +35,27 @@ const InteriorDesigning = () => {
 
     const curriculumData = {
         "Industry Diploma": {
-            "Part 1: Foundational Art": [
-                "Basics of Drafting",
-                "Elements of Interior Design",
-                "CAD + AI Design Platforms",
-                "Color Theory & Spatial Moods",
-                "Drawing & Sketching with AI",
-                "Introduction to Materials"
+            "Foundation: Advanced Drafting": [
+                "Advance Drafting",
+                "Enhanced visualisation with AI",
+                "Interior Designing Studio (Residential + Commercial) with AI",
+                "Supported ideation & research with AI",
+                "Design to Concept & Conceptualising Design with AI",
+                "Building Construction",
+                "Furniture & Space Planning with AI",
+                "AutoCAD",
+                "Photoshop with AI"
             ],
-            "Part 2: Industry Mastery": [
-                "Commercial Design Project",
-                "Residential Space Planning",
-                "Building Services & Estimation",
-                "Furniture & Furnishings",
-                "Global Startup Strategy",
-                "Industry Placement Projects"
+            "Industry: Professional Practice": [
+                "3Ds Max – Introductory",
+                "Vastu Shastra with AI",
+                "Professional practice with AI",
+                "Estimation & Costing",
+                "Grooming Standards with AI",
+                "Personality Development with AI",
+                "Industrial Portfolio Creation with AI",
+                "Interview Skill Training with AI",
+                "Industrial & Market visits with AI"
             ]
         },
         Bachelors: {
@@ -94,13 +100,13 @@ const InteriorDesigning = () => {
     const careerPaths = [
         { title: "Commercial Designer", desc: "Leading the creative vision for high-impact office spaces, retail showrooms, and corporate headquarters.", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" },
         { title: "Residential Designer", desc: "Crafting personalized sanctuary spaces and luxury home environments centered on human comfort.", img: "https://images.unsplash.com/photo-1618221195710-dd6b41faeaa6?auto=format&fit=crop&q=80&w=800" },
-        { title: "Institutional Designer", desc: "Designing purposeful environments for education, healthcare, and public infrastructure.", img: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=800" },
+        { title: "Institutional Designer", desc: "Designing purposeful environments for education, healthcare, and public infrastructure.", img: "https://images.unsplash.com/photo-1549692520-acc6669e2f0c?auto=format&fit=crop&q=80&w=800" },
         { title: "Exhibition Designer", desc: "Creating immersive temporary spaces for galleries, trade fairs, and global design showcases.", img: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=800" },
         { title: "Furniture Stylist", desc: "Designing functional art pieces that define the character and aesthetic of modern interiors.", img: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&q=80&w=800" },
         { title: "Lighting Specialist", desc: "Mastering the science and art of illumination to transform spatial perception and mood.", img: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&q=80&w=800" },
         { title: "Set Designer", desc: "Creating evocative spatial environments for film, television, and luxury events.", img: "https://images.unsplash.com/photo-1513519245088-0e12902e35ca?auto=format&fit=crop&q=80&w=800" },
         { title: "Sustainable Architect", desc: "Directing the transition toward eco-friendly building practices and circular materials.", img: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=800" },
-        { title: "Project Lead", desc: "Managing large-scale construction and design implementation across global sites.", img: "https://ik.imagekit.io/fmldynl4j4/Our%20Interior%20Design%20students%20explored%20the%20world%20of%20Knock%20Down%20Furniture%20and%20Modular%20Concepts%20at%20IKEA%20Mumbai.This%20hands-on%20visit%20helped%20them%20understand%20the%20functionality,%20design%20logic,%20and%20user-centric%20approach%20b%20(%20.jpg" }
+        { title: "Project Lead", desc: "Managing large-scale construction and design implementation across global sites.", img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800" }
     ];
 
     return (
@@ -140,14 +146,8 @@ const InteriorDesigning = () => {
                                 onClick={() => openAdmissionModal()}
                                 className="group px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3"
                             >
-                                Join the Skill Revolution
-                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                            </button>
-                            <button 
-                                onClick={() => openAdmissionModal()}
-                                className="px-12 py-5 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105"
-                            >
                                 Enroll Now
+                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                             </button>
                         </div>
                         <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
@@ -278,6 +278,35 @@ const InteriorDesigning = () => {
                             ))}
                         </div>
                     </div>
+
+                    {activeOutline === 'Industry Diploma' && (
+                        <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mb-12 p-8 rounded-[2.5rem] bg-slate-900 text-white border border-primary/20 shadow-2xl relative overflow-hidden group"
+                        >
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/20 transition-colors" />
+                            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                                <div className="space-y-2 text-center md:text-left">
+                                    <p className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">Program Name</p>
+                                    <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tighter leading-none">
+                                        Advance Industry-Integrated Interior Diploma (AIIID)
+                                    </h3>
+                                </div>
+                                <div className="flex items-center gap-6 px-8 py-4 bg-white/5 rounded-2xl border border-white/10">
+                                    <div className="text-center md:text-right">
+                                        <p className="text-white/40 font-black uppercase text-[8px] tracking-widest mb-1">Duration</p>
+                                        <p className="text-xl font-black text-primary leading-none uppercase tracking-tight">1 Year</p>
+                                    </div>
+                                    <div className="w-px h-10 bg-white/10" />
+                                    <div className="text-center md:text-left">
+                                        <p className="text-white/40 font-black uppercase text-[8px] tracking-widest mb-1">Learning Hours</p>
+                                        <p className="text-xl font-black text-white leading-none uppercase tracking-tight">420 Hours</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         {curriculumData[activeOutline] && Object.entries(curriculumData[activeOutline]).map(([semName, items], idx) => {
