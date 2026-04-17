@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, X, Heart, TrendingUp, Award, DollarSign, Navigation, ArrowLeft } from 'lucide-react';
+import { ArrowUpRight, X, Heart, TrendingUp, Award, DollarSign, Navigation, ArrowLeft, BarChart3, Users, Globe } from 'lucide-react';
 import StepLeadForm from './StepLeadForm';
 
 const programs = [
@@ -13,12 +13,16 @@ const programs = [
         subtitle: "From styling to runway — step into the world of fashion.",
         careerPath: {
             title: "Not just Fashion be a part of a larger Industry",
+            stats: {
+                industrySize: "₹45 Lakh Crore Industry",
+                demand: "15 Lakh designers till 2030"
+            },
             tracks: [
                 { title: "Fashion Designer", desc: "Create collections, build labels, launch your brand", img: "https://images.pexels.com/photos/3735641/pexels-photo-3735641.jpeg?auto=compress&cs=tinysrgb&w=800" },
                 { title: "Fashion Stylist", desc: "Style celebrities, shoots & fashion campaigns", img: "https://images.pexels.com/photos/1036622/pexels-photo-1036622.jpeg?auto=compress&cs=tinysrgb&w=800" },
                 { title: "Textile Designer", desc: "Design fabrics, prints & materials for global brands", img: "https://images.pexels.com/photos/4622437/pexels-photo-4622437.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ],
-            salaries: { entry: "2-6 LPA", mid: "6-10 LPA", senior: "12-20 LPA" }
+            salaries: { entry: "3-5 LPA", mid: "6-12 LPA", senior: "15+ LPA" }
         }
     },
     {
@@ -29,12 +33,16 @@ const programs = [
         subtitle: "Turn ideas into real-world environments people live in.",
         careerPath: {
             title: "Not just Interior Design be a part of a larger Industry",
+            stats: {
+                industrySize: "₹2.88 Lakh Crore Industry",
+                demand: "26 Lakh designers till 2030"
+            },
             tracks: [
                 { title: "Interior Designer", desc: "Design homes, offices & commercial spaces", img: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800" },
                 { title: "Space Planner", desc: "Optimize layouts for functionality & aesthetics", img: "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=800" },
                 { title: "Furniture Designer", desc: "Create custom furniture & décor products", img: "https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ],
-            salaries: { entry: "2-5 LPA", mid: "6-12 LPA", senior: "15-25+ LPA" }
+            salaries: { entry: "3-5 LPA", mid: "6-10 LPA", senior: "12-20+ LPA" }
         }
     },
     {
@@ -45,12 +53,16 @@ const programs = [
         subtitle: "Create visuals, identities & campaigns that people remember.",
         careerPath: {
             title: "Not just Graphic Design be a part of a larger Industry",
+            stats: {
+                industrySize: "₹1.2 Lakh Crore Digital Economy",
+                demand: "18 Lakh designers till 2030"
+            },
             tracks: [
                 { title: "Graphic Designer", desc: "Create logos, branding & marketing creatives", img: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800" },
                 { title: "Brand Identity Designer", desc: "Shape how brands look, feel & communicate", img: "https://images.pexels.com/photos/326501/pexels-photo-326501.jpeg?auto=compress&cs=tinysrgb&w=800" },
                 { title: "Packaging Designer", desc: "Design product packaging for retail & e-commerce", img: "https://images.pexels.com/photos/3951901/pexels-photo-3951901.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ],
-            salaries: { entry: "2-4 LPA", mid: "5-10 LPA", senior: "10-18 LPA" }
+            salaries: { entry: "3-5 LPA", mid: "6-12 LPA", senior: "15+ LPA" }
         }
     },
     {
@@ -61,12 +73,16 @@ const programs = [
         subtitle: "Build apps, websites & experiences used by millions",
         careerPath: {
             title: "Not just UI/UX Design be a part of a larger Industry",
+            stats: {
+                industrySize: "₹3.5 – ₹5 Lakh Crore Digital Economy",
+                demand: "20 Lakh designers till 2030"
+            },
             tracks: [
                 { title: "UI Designer", desc: "Design apps, websites & interfaces", img: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800" },
                 { title: "UX Designer", desc: "Improve user experience & product usability", img: "https://images.pexels.com/photos/3183186/pexels-photo-3183186.jpeg?auto=compress&cs=tinysrgb&w=800" },
                 { title: "Product Designer", desc: "Build digital products used by millions", img: "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ],
-            salaries: { entry: "2.5-5 LPA", mid: "8-18 LPA", senior: "20-35+ LPA" }
+            salaries: { entry: "4-6 LPA", mid: "8-15 LPA", senior: "20-35+ LPA" }
         }
     },
     {
@@ -77,12 +93,16 @@ const programs = [
         subtitle: "Work in films, gaming & digital entertainment.",
         careerPath: {
             title: "Not just Animation be a part of a larger Industry",
+            stats: {
+                industrySize: "$2.2 Billion creating 2 Million Jobs",
+                demand: "20 Lakh designers till 2030"
+            },
             tracks: [
                 { title: "Animator", desc: "Work in films, OTT & gaming", img: "https://images.pexels.com/photos/1148998/pexels-photo-1148998.jpeg?auto=compress&cs=tinysrgb&w=800" },
                 { title: "VFX Artist", desc: "Create visual effects for movies & ads", img: "https://images.pexels.com/photos/2510428/pexels-photo-2510428.jpeg?auto=compress&cs=tinysrgb&w=800" },
                 { title: "Game Designer", desc: "Design characters & game environments", img: "https://images.pexels.com/photos/735911/pexels-photo-735911.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ],
-            salaries: { entry: "2-4 LPA", mid: "5-10 LPA", senior: "12-20 LPA" }
+            salaries: { entry: "3-5 LPA", mid: "6-12 LPA", senior: "15-25+ LPA" }
         }
     },
     {
@@ -93,12 +113,16 @@ const programs = [
         subtitle: "From shoots to social media — become a visual storyteller.",
         careerPath: {
             title: "Not just Photography be a part of a larger Industry",
+            stats: {
+                industrySize: "₹679 Billion Industry",
+                demand: "8 Lakh photographers till 2030"
+            },
             tracks: [
                 { title: "Photographer", desc: "Fashion, product, wedding & commercial shoots", img: "https://images.pexels.com/photos/1205033/pexels-photo-1205033.jpeg?auto=compress&cs=tinysrgb&w=800" },
                 { title: "Content Creator", desc: "Build your personal brand or work with brands", img: "https://images.pexels.com/photos/3052848/pexels-photo-3052848.jpeg?auto=compress&cs=tinysrgb&w=800" },
                 { title: "Influencer / Visual Creator", desc: "Create content for social media platforms", img: "https://images.pexels.com/photos/2531551/pexels-photo-2531551.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ],
-            salaries: { entry: "2-5 LPA", mid: "6-12 LPA", senior: "15-30+ LPA" }
+            salaries: { entry: "2.5-4 LPA", mid: "5-10 LPA", senior: "Variable (High Potential)" }
         }
     },
     {
@@ -109,12 +133,16 @@ const programs = [
         subtitle: "Work in fashion, media, salons & personal branding.",
         careerPath: {
             title: "Not just Beauty & Makeup be a part of a larger Industry",
+            stats: {
+                industrySize: "₹410 Billion Industry (Projected ₹519B by 2031)",
+                demand: "11-15 Lakh artists till 2030"
+            },
             tracks: [
                 { title: "Makeup Artist", desc: "Work in fashion, films & bridal industry", img: "https://images.pexels.com/photos/3373739/pexels-photo-3373739.jpeg?auto=compress&cs=tinysrgb&w=800" },
                 { title: "Hair Stylist", desc: "Professional styling for salons & shoots", img: "https://images.pexels.com/photos/3993444/pexels-photo-3993444.jpeg?auto=compress&cs=tinysrgb&w=800" },
                 { title: "Beauty Expert", desc: "Skincare, personal grooming & consulting", img: "https://images.pexels.com/photos/3762875/pexels-photo-3762875.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ],
-            salaries: { entry: "2-4 LPA", mid: "5-10 LPA", senior: "10-25+ LPA" }
+            salaries: { entry: "2-4 LPA", mid: "5-10 LPA", senior: "Variable (High Potential)" }
         }
     },
     {
@@ -125,12 +153,16 @@ const programs = [
         subtitle: "Blend creativity with craftsmanship and innovation.",
         careerPath: {
             title: "Not just Textile Design be a part of a larger Industry",
+            stats: {
+                industrySize: "₹12 – ₹15 Lakh Crore Industry",
+                demand: "5 Lakh designers till 2030"
+            },
             tracks: [
                 { title: "Textile Designer", desc: "Create fabrics, patterns & materials for fashion and lifestyle brands", img: "https://images.pexels.com/photos/4622437/pexels-photo-4622437.jpeg?auto=compress&cs=tinysrgb&w=800" },
                 { title: "Print & Surface Designer", desc: "Design prints for apparel, home décor, and global collections", img: "https://images.pexels.com/photos/1036622/pexels-photo-1036622.jpeg?auto=compress&cs=tinysrgb&w=800" },
                 { title: "Fabric Production Specialist", desc: "Work with mills & manufacturers to bring designs to life", img: "https://images.pexels.com/photos/3735641/pexels-photo-3735641.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ],
-            salaries: { entry: "3-5 LPA", mid: "6-12 LPA", senior: "12-25 LPA" }
+            salaries: { entry: "3-5 LPA", mid: "6-10 LPA", senior: "12+ LPA" }
         }
     },
     {
@@ -141,12 +173,16 @@ const programs = [
         subtitle: "From gemstone styling to luxury manufacturing — become a master crafter.",
         careerPath: {
             title: "Not just Jewellery Design be a part of a larger Industry",
+            stats: {
+                industrySize: "₹9.5 Lakh Crore Market",
+                demand: "5 Lakh professionals till 2030"
+            },
             tracks: [
                 { title: "Jewellery Designer", desc: "Design bespoke pieces, wedding collections & brand labels", img: "https://images.pexels.com/photos/1458867/pexels-photo-1458867.jpeg?auto=compress&cs=tinysrgb&w=800" },
                 { title: "Gemologist / Stone Grader", desc: "Expert assessment, grading and sourcing of precious stones", img: "https://images.pexels.com/photos/265906/pexels-photo-265906.jpeg?auto=compress&cs=tinysrgb&w=800" },
                 { title: "Luxury Retail Merchant", desc: "Manage high-value inventory and luxury brand operations", img: "https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ],
-            salaries: { entry: "3-6 LPA", mid: "7-15 LPA", senior: "20-45+ LPA" }
+            salaries: { entry: "3-5 LPA", mid: "6-10 LPA", senior: "Variable / Own Brand" }
         }
     }
 ];
@@ -274,8 +310,8 @@ const ProgramGrid = () => {
                                             animate={{ opacity: 1, x: 0 }}
                                             transition={{ delay: 0.3 }}
                                         >
-                                            <div className="w-12 h-px bg-primary mb-6" />
-                                            <h2 className="text-white text-5xl font-black uppercase tracking-tighter leading-[0.9] mb-4 italic">
+                                            <div className="w-12 h-px bg-primary mb-4" />
+                                            <h2 className="text-white text-4xl font-black uppercase tracking-tighter leading-[0.9] mb-4 italic drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
                                                 {selectedProgram.title}
                                             </h2>
                                         </motion.div>
@@ -283,22 +319,16 @@ const ProgramGrid = () => {
                                 </div>
 
                                 {/* Right Side: Career Data */}
-                                <div className="flex-1 md:w-2/3 flex flex-col bg-slate-50 relative overflow-hidden">
-                                    {/* Desktop Top Bar with Close */}
-                                    <div className="hidden md:flex items-center justify-between p-8 pb-4 border-b border-slate-100 bg-slate-50/80 backdrop-blur-xs z-40 sticky top-0">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-8 h-px bg-primary" />
-                                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Global Career Pathways</span>
-                                        </div>
-                                        <button 
-                                            onClick={() => setSelectedProgram(null)}
-                                            className="p-3 rounded-full bg-white shadow-xl hover:bg-primary hover:text-white transition-all duration-300 border border-slate-100 group"
-                                        >
-                                            <X size={20} className="group-hover:rotate-90 transition-transform duration-300" />
-                                        </button>
-                                    </div>
+                                <div className="flex-1 md:w-2/3 flex flex-col bg-white relative">
+                                    {/* Desktop Close Button */}
+                                    <button 
+                                        onClick={() => setSelectedProgram(null)}
+                                        className="hidden md:flex absolute top-6 right-6 p-3 rounded-full bg-slate-50 shadow-lg hover:bg-primary hover:text-white transition-all duration-300 border border-slate-100 group z-50"
+                                    >
+                                        <X size={20} className="group-hover:rotate-90 transition-transform duration-300" />
+                                    </button>
 
-                                    <div className="flex-1 overflow-x-hidden overflow-y-auto p-8 md:p-12 md:pt-6 space-y-10 pb-24 md:pb-16" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                                    <div className="flex-1 overflow-x-hidden overflow-y-auto p-6 md:p-10 md:pt-10 space-y-6 pb-12" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                                         <style>{`
                                             div::-webkit-scrollbar { display: none; }
                                         `}</style>
@@ -333,49 +363,80 @@ const ProgramGrid = () => {
                                                 >
                                                     {/* Header Text */}
                                                     <div className="max-w-xl">
-                                                        <h3 className="text-2xl md:text-3xl font-black text-slate-900 leading-tight mb-4 tracking-tighter uppercase italic">
+                                                        <h3 className="text-xl md:text-2xl font-black text-slate-900 leading-tight mb-2 tracking-tighter uppercase italic">
                                                             {selectedProgram.careerPath.title}
                                                         </h3>
-                                                        <p className="text-slate-500 font-medium text-base md:text-lg italic border-l-4 border-slate-200 pl-6">
+                                                        
+                                                        {selectedProgram.careerPath.salaries && (
+                                                            <div className="flex flex-wrap gap-2 mb-4">
+                                                                <div className="flex items-center gap-1 px-2.5 py-1 bg-slate-100 border border-slate-200 rounded-full">
+                                                                    <TrendingUp className="w-2.5 h-2.5 text-slate-400" />
+                                                                    <span className="text-[8px] font-black uppercase tracking-widest text-slate-500 whitespace-nowrap">Entry: {selectedProgram.careerPath.salaries.entry}</span>
+                                                                </div>
+                                                                <div className="flex items-center gap-1 px-2.5 py-1 bg-slate-100 border border-slate-200 rounded-full">
+                                                                    <Award className="w-2.5 h-2.5 text-slate-400" />
+                                                                    <span className="text-[8px] font-black uppercase tracking-widest text-slate-500 whitespace-nowrap">Mid: {selectedProgram.careerPath.salaries.mid}</span>
+                                                                </div>
+                                                                <div className="flex items-center gap-1 px-2.5 py-1 bg-primary/10 border border-primary/20 rounded-full text-primary">
+                                                                    <DollarSign className="w-2.5 h-2.5" />
+                                                                    <span className="text-[8px] font-black uppercase tracking-widest whitespace-nowrap">Senior: {selectedProgram.careerPath.salaries.senior}</span>
+                                                                </div>
+                                                            </div>
+                                                        )}
+
+                                                        <p className="text-slate-500 font-medium text-sm md:text-base italic border-l-4 border-slate-200 pl-4 mb-6">
                                                             "{selectedProgram.subtitle}"
                                                         </p>
                                                     </div>
+ streams. Every program now includes Market Size and Industry Demand projections.
+
+                                                    {/* Market Statistics Section */}
+                                                    {selectedProgram.careerPath.stats && (
+                                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                                            <div className="bg-slate-50 rounded-2xl p-3 border border-slate-100 flex items-center gap-3 group/stat">
+                                                                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover/stat:bg-primary group-hover/stat:text-white transition-all duration-500">
+                                                                    <BarChart3 size={20} />
+                                                                </div>
+                                                                <div>
+                                                                    <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-0.5">Market Size</p>
+                                                                    <h5 className="text-sm font-black text-slate-900 uppercase tracking-tighter leading-none">{selectedProgram.careerPath.stats.industrySize}</h5>
+                                                                </div>
+                                                            </div>
+                                                            <div className="bg-slate-50 rounded-2xl p-3 border border-slate-100 flex items-center gap-3 group/stat">
+                                                                <div className="w-10 h-10 rounded-xl bg-slate-900/10 flex items-center justify-center text-slate-900 group-hover/stat:bg-slate-900 group-hover/stat:text-white transition-all duration-500">
+                                                                    <Users size={20} />
+                                                                </div>
+                                                                <div>
+                                                                    <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-0.5">Industry Demand</p>
+                                                                    <h5 className="text-sm font-black text-slate-900 uppercase tracking-tighter leading-none">{selectedProgram.careerPath.stats.demand}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    )}
 
                                                     {/* Career Tracks Grid */}
-                                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                                         {selectedProgram.careerPath.tracks.map((track, i) => (
-                                                            <div key={i} className={`group/track relative bg-white p-5 md:p-6 rounded-3xl border border-slate-200/60 hover:border-primary/20 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] ${i === 2 ? 'sm:col-span-2' : ''}`}>
-                                                                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                                                                    <div className="flex items-start gap-4">
-                                                                        <div className="w-14 h-14 rounded-2xl overflow-hidden shrink-0 shadow-xl border-2 border-white transform transition-transform duration-500 group-hover/track:scale-105">
+                                                            <div key={i} className={`group/track relative bg-slate-50 p-3 rounded-2xl border border-slate-100 hover:border-primary/20 transition-all duration-500 hover:shadow-lg ${i === 2 ? 'sm:col-span-2' : ''}`}>
+                                                                <div className="flex flex-col gap-3">
+                                                                    <div className="flex items-center gap-3">
+                                                                        <div className="w-10 h-10 rounded-xl overflow-hidden shrink-0 shadow-lg border-2 border-white transform transition-transform duration-500 group-hover/track:scale-105">
                                                                             <img src={track.img} className="w-full h-full object-cover" alt={track.title} />
                                                                         </div>
-                                                                        <div className="max-w-[350px]">
-                                                                            <h4 className="font-black text-slate-900 uppercase tracking-tight text-xs mb-1">{track.title}</h4>
-                                                                            <p className="text-slate-500 text-[10px] leading-relaxed font-semibold">{track.desc}</p>
+                                                                        <div>
+                                                                            <h4 className="font-black text-slate-900 uppercase tracking-tight text-[10px] mb-1">{track.title}</h4>
+                                                                            <div className="w-6 h-0.5 bg-primary/30 group-hover/track:w-12 transition-all duration-500" />
                                                                         </div>
                                                                     </div>
-
-                                                                    {i === 2 && selectedProgram.careerPath.salaries && (
-                                                                        <div className="flex flex-wrap gap-2 mt-4 md:mt-0 justify-start md:justify-end shrink-0">
-                                                                            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100/50 border border-slate-200/60 rounded-full">
-                                                                                <TrendingUp className="w-3 h-3 text-slate-400" />
-                                                                                <span className="text-[9px] font-black uppercase tracking-widest text-slate-500 whitespace-nowrap">Entry: {selectedProgram.careerPath.salaries.entry}</span>
-                                                                            </div>
-                                                                            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100/50 border border-slate-200/60 rounded-full">
-                                                                                <Award className="w-3 h-3 text-slate-400" />
-                                                                                <span className="text-[9px] font-black uppercase tracking-widest text-slate-500 whitespace-nowrap">Mid: {selectedProgram.careerPath.salaries.mid}</span>
-                                                                            </div>
-                                                                            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 border border-primary/20 rounded-full">
-                                                                                <DollarSign className="w-3 h-3 text-primary" />
-                                                                                <span className="text-[9px] font-black uppercase tracking-widest text-primary whitespace-nowrap">Senior: {selectedProgram.careerPath.salaries.senior}</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    )}
+                                                                    <p className="text-slate-600 text-[9px] leading-relaxed font-bold uppercase tracking-tight">
+                                                                        {track.desc}
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                         ))}
                                                     </div>
+ streams. Every program now includes Market Size and Industry Demand projections.
+ streams. Every program now includes Market Size and Industry Demand projections.
 
                                                     {/* Professional Outcomes Disclaimer */}
                                                     <div className="pt-6 border-t border-slate-100 italic">

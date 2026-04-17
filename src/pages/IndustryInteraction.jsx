@@ -56,7 +56,7 @@ const IndustryInteraction = () => {
             />
 
             {/* --- HERO SECTION --- */}
-            <section className="relative pt-32 pb-48 px-6 md:px-12 lg:px-24 overflow-hidden bg-slate-50">
+            <section className="relative pt-32 pb-24 px-6 md:px-12 lg:px-24 overflow-hidden bg-slate-50">
                 <div className="absolute inset-0 z-0">
                     <img 
                         src="https://images.unsplash.com/photo-1540317580384-e5d43616b9aa?auto=format&fit=crop&q=80&w=1600" 
@@ -116,7 +116,7 @@ const IndustryInteraction = () => {
             </section>
 
             {/* --- INTERACTION MODES --- */}
-            <section className="py-32 px-6 md:px-12 lg:px-24 bg-white relative z-20">
+            <section className="py-24 px-6 md:px-12 lg:px-24 bg-white relative z-20">
                 <div className="max-w-7xl mx-auto space-y-24">
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
                         {[
@@ -162,7 +162,7 @@ const IndustryInteraction = () => {
 
 
                     {/* --- VIDEO SHOWCASE: INDUSTRY VISITS --- */}
-                    <div className="pt-32 space-y-16">
+                    <div className="pt-24 space-y-16">
                         <div className="text-center space-y-4">
                             <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">Live from the Hub</span>
                             <h2 className="text-4xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none">
@@ -238,7 +238,7 @@ const IndustryInteraction = () => {
 
 
             {/* --- NEW DESIGN CONCLAVE SECTION: THE GLOBAL SUMMIT --- */}
-            <section className="py-32 px-6 md:px-12 lg:px-24 bg-white overflow-hidden">
+            <section className="py-24 px-6 md:px-12 lg:px-24 bg-white overflow-hidden">
                 <div className="max-w-7xl mx-auto space-y-24">
                     <div className="flex flex-col md:flex-row justify-between items-end gap-12">
                         <div className="space-y-6">
