@@ -6,22 +6,22 @@ const HeroSlider = () => {
     const floatingStats = [
         { 
             id: 1, 
-            val: "98%", 
-            label: "Placement Track Record", 
+            val: "100%", 
+            label: "Placement Support", 
             pos: "top-12 right-12 md:top-20 md:right-10", 
             delay: 0.5 
         },
         { 
             id: 2, 
-            val: "4,500+", 
-            label: "Students Trained", 
+            val: "300000+", 
+            label: "students", 
             pos: "bottom-1/3 left-6 md:bottom-1/2 md:left-10", 
             delay: 0.8 
         },
         { 
             id: 3, 
-            val: "60+", 
-            label: "Locations Across 24 states", 
+            val: "75", 
+            label: "Campuses Across India", 
             pos: "bottom-16 right-6 md:bottom-24 md:right-12", 
             delay: 1.1 
         }
@@ -33,7 +33,7 @@ const HeroSlider = () => {
             {/* Main Hero Image */}
             <div className="relative w-full h-full overflow-hidden">
                 <img 
-                    src="" 
+                    src="https://ik.imagekit.io/fmldynl4j4/IMG_3440.JPG?updatedAt=1771841966154" 
                     alt="Student with Vision"
                     className="w-full h-full object-cover"
                 />
