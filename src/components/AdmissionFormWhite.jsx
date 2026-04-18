@@ -243,7 +243,7 @@ const AdmissionFormWhite = ({ isModal = false, onClose }) => {
                             </label>
                         </div>
 
-                        {/* Submit Button */}
+                        {/* Submit Button */ }
                         <button
                             type="submit"
                             disabled={status === 'loading'}

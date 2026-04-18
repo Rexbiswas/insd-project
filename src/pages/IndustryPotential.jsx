@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import GlobalDesignEconomy from '../components/GlobalDesignEconomy';
 import GovernmentValidation from '../components/GovernmentValidation';
+import IndustryExposure from '../components/IndustryExposure';
 
 const IndustryPotential = () => {
     useEffect(() => {
@@ -44,6 +45,7 @@ const IndustryPotential = () => {
                 transition={{ duration: 1, delay: 0.2 }}
             >
                 <GlobalDesignEconomy />
+                <IndustryExposure />
                 <GovernmentValidation />
             </motion.div>
         </main>
