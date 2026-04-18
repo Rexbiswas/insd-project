@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, ChevronDown, Send } from 'lucide-react';
+import { CheckCircle2, X, ChevronDown, Send } from 'lucide-react';
 import { stateCityData } from '../data/locations';
 
-const AdmissionFormWhite = ({ isModal = false, isCompact = false }) => {
+const AdmissionFormWhite = ({ isModal = false, onClose }) => {
     const [formData, setFormData] = useState({
         name: '',
         mobile: '',
@@ -14,7 +14,6 @@ const AdmissionFormWhite = ({ isModal = false, isCompact = false }) => {
     });
 
     const [status, setStatus] = useState('idle'); // idle, loading, success, error
-    const [touched, setTouched] = useState({});
 
     const states = ["Select State", ...Object.keys(stateCityData)];
 
@@ -27,57 +26,43 @@ const AdmissionFormWhite = ({ isModal = false, isCompact = false }) => {
         }));
     };
 
-    const handleBlur = (field) => {
-        setTouched(prev => ({ ...prev, [field]: true }));
-    };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setStatus('loading');
         
-        try {
-            const response = await fetch('/api/admission', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                   ...formData,
-                   marketingConsent: true // Admission inquiries usually imply consent for contact
-                })
+        // Mock API call
+        setTimeout(() => {
+            setStatus('success');
+            setFormData({
+                name: '', mobile: '', email: '', state: '', city: '', referred: false
             });
-
-            if (response.ok) {
-                setStatus('success');
-                setFormData({
-                    name: '', mobile: '', email: '', state: '', city: '', referred: false
-                });
-            } else {
-                throw new Error("Submission failed");
-            }
-        } catch (error) {
-            console.error('Submission error:', error);
-            setStatus('error');
-        }
+        }, 1500);
     };
+
+    const benefits = [
+        "Limited Intakes Annually",
+        "Expert Career Counseling"
+    ];
 
     if (status === 'success') {
         return (
             <motion.div 
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="w-full max-w-2xl mx-auto p-12 bg-white rounded-3xl border border-slate-100 text-center space-y-8 shadow-xl"
+                className="w-full max-w-4xl mx-auto p-12 bg-white rounded-[2rem] text-center space-y-8 shadow-2xl border border-slate-100"
             >
-                <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto border border-green-100">
-                    <CheckCircle2 className="text-green-500 w-10 h-10" />
+                <div className="w-24 h-24 bg-green-50 rounded-full flex items-center justify-center mx-auto border-2 border-green-100">
+                    <CheckCircle2 className="text-green-500 w-12 h-12" />
                 </div>
                 <div className="space-y-4">
-                    <h2 className="text-3xl font-bold text-slate-900">Thank You!</h2>
-                    <p className="text-slate-600 text-lg">
-                        Your inquiry has been submitted successfully. Our team will contact you shortly.
+                    <h2 className="text-4xl font-black text-slate-900 leading-tight">Registration <span className="text-green-500">Successful!</span></h2>
+                    <p className="text-slate-600 text-xl font-medium">
+                        Thank you for your interest. One of our senior counselors will call you within 24 hours.
                     </p>
                 </div>
                 <button 
                     onClick={() => setStatus('idle')}
-                    className="px-8 py-3 bg-slate-900 text-white font-bold rounded-xl hover:bg-primary transition-all shadow-lg"
+                    className="px-12 py-4 bg-slate-900 text-white font-bold rounded-2xl hover:bg-black transition-all shadow-xl hover:shadow-2xl active:scale-95 uppercase tracking-widest"
                 >
                     Submit Another Inquiry
                 </button>
@@ -85,119 +70,205 @@ const AdmissionFormWhite = ({ isModal = false, isCompact = false }) => {
         );
     }
 
-    const compact = isCompact;
-
-    const FormField = ({ label, name, type = "text", placeholder, options = null, required = false }) => (
-        <div className={`flex ${compact ? 'flex-row items-center gap-3' : 'flex-col md:flex-row md:items-center gap-2 md:gap-8'} group`}>
-            <label className={`${compact ? 'w-1/3 text-xs text-right' : 'md:w-1/3 text-lg md:text-xl md:text-right'} font-bold text-slate-800 shrink-0`}>
-                {label}
-            </label>
-            <div className={`${compact ? 'w-2/3' : 'md:w-2/3'} relative`}>
-                {options ? (
-                    <select
-                        name={name}
-                        value={formData[name]}
-                        onChange={handleChange}
-                        onBlur={() => handleBlur(name)}
-                        required={required}
-                        className={`w-full ${compact ? 'h-9 text-xs px-3 rounded-lg' : 'h-14 px-4 rounded-xl'} bg-slate-50 border-2 border-slate-100 text-slate-900 font-medium focus:outline-none focus:border-primary focus:bg-white transition-all appearance-none cursor-pointer`}
-                    >
-                        {options.map(opt => (
-                            <option key={opt} value={opt === options[0] ? "" : opt} disabled={opt === options[0]}>
-                                {opt}
-                            </option>
-                        ))}
-                    </select>
-                ) : (
-                    <input
-                        type={type}
-                        name={name}
-                        value={formData[name]}
-                        placeholder={placeholder}
-                        onChange={handleChange}
-                        onBlur={() => handleBlur(name)}
-                        required={required}
-                        className={`w-full ${compact ? 'h-9 text-xs px-3 rounded-lg placeholder:text-slate-300' : 'h-14 px-6 rounded-xl placeholder:text-slate-300'} bg-slate-50 border-2 border-slate-100 text-slate-900 font-medium focus:outline-none focus:border-primary focus:bg-white transition-all`}
-                    />
-                )}
-                {options && (
-                    <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400 group-focus-within:text-primary transition-colors">
-                        <ChevronDown size={compact ? 14 : 20} />
-                    </div>
-                )}
-            </div>
-        </div>
-    );
-
     return (
-        <div className={`w-full h-full ${isModal ? '' : 'py-20 px-6 bg-[#f3f3f3]'}`}>
-            <div className={`${compact ? 'h-full' : 'max-w-4xl mx-auto'}`}>
-                <form
-                    onSubmit={handleSubmit}
-                    className={`bg-white h-full ${
-                        compact
-                            ? 'rounded-[2rem] p-6 shadow-xl border border-slate-100 space-y-4 flex flex-col justify-between'
-                            : 'rounded-[2.5rem] p-8 md:p-16 shadow-2xl border border-white space-y-12'
-                    }`}
+        <div className={`w-full max-w-6xl mx-auto overflow-hidden bg-white md:rounded-[2rem] shadow-2xl flex flex-col md:flex-row relative ${isModal ? 'max-h-[95vh] md:max-h-[90vh]' : 'my-4 md:my-10 animate-fade-in'}`}>
+            {/* Close Button (for Modal) */}
+            {isModal && (
+                <button 
+                    onClick={onClose}
+                    className="absolute top-6 right-6 z-50 p-3 bg-slate-100/50 hover:bg-slate-200 rounded-full transition-all backdrop-blur-md shadow-lg group active:scale-95"
                 >
-                    {/* Header */}
-                    <div className={`${compact ? 'space-y-1 text-center' : 'space-y-4 text-center'}`}>
-                        <h1 className={`${compact ? 'text-2xl' : 'text-4xl md:text-6xl'} font-black text-slate-900 tracking-tighter`}>
-                            ADMISSIONS <span className="text-primary italic">OPEN.</span>
-                        </h1>
-                        <p className={`text-slate-500 font-medium ${compact ? 'text-xs' : 'text-lg'}`}>
-                            Begin your creative journey with India's leading design school.
+                    <X className="w-6 h-6 text-slate-900 group-hover:rotate-90 transition-transform duration-300" />
+                </button>
+            )}
+
+            {/* Left Content - Marketing */}
+            <div className={`w-full md:w-[45%] bg-gradient-to-br from-[#134a84] to-[#db3436] text-white flex flex-col justify-between relative overflow-hidden ${isModal ? 'md:h-auto' : 'min-h-[300px] md:min-h-[650px]'}`}>
+                {/* Background Decoration */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-[#db3436] opacity-10 rounded-full blur-[80px] -mr-32 -mt-32" />
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#db3436] opacity-10 rounded-full blur-[80px] -ml-32 -mb-32" />
+
+                <div className="p-6 md:p-10 relative z-10 flex flex-col h-full items-center text-center justify-center">
+                    <div className="space-y-6 md:space-y-8 flex flex-col items-center">
+                        {/* Badge */}
+                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 border border-white/20 rounded-full w-fit">
+                            <div className="w-1.5 h-1.5 bg-[#db3436] rounded-full animate-pulse" />
+                            <span className="text-[9px] uppercase tracking-[0.2em] font-black text-white">Limited Seats Available</span>
+                        </div>
+
+                        <h2 className="text-xl md:text-4xl font-black leading-[1.2] tracking-tight">
+                            Unlock Your<br />
+                            Career<br />
+                            Potential with<br />
+                            <span className="text-[#db3436]">Expert Guidance</span>
+                        </h2>
+
+                        <p className="text-white font-bold text-xs md:text-sm max-w-[280px] leading-relaxed opacity-80">
+                            Limited Intakes Annually. Enroll Now to Secure Your Seat!
                         </p>
+
+                        <div className="space-y-3 pt-2 w-full flex flex-col items-center">
+                            {benefits.map((benefit, i) => (
+                                <div key={i} className="flex items-center gap-3">
+                                    <div className="w-4 h-4 bg-[#db3436] rounded-full flex items-center justify-center shrink-0">
+                                        <CheckCircle2 className="w-2.5 h-2.5 text-white" strokeWidth={5} />
+                                    </div>
+                                    <span className="text-xs md:text-sm font-bold text-white tracking-tight">{benefit}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Right Content - Form */}
+            <div className={`flex-1 bg-white flex flex-col relative ${isModal ? 'overflow-y-auto max-h-[60vh] md:max-h-full' : ''}`}>
+                {/* Visual Accent Line on far right */}
+                <div className="absolute right-0 top-0 bottom-0 w-2 bg-[#db3436] opacity-10 pointer-events-none hidden md:block" />
+                <div className="absolute right-0 top-0 bottom-0 w-0.5 bg-[#db3436] opacity-30 pointer-events-none hidden md:block" />
+                
+                <div className="p-6 md:p-10 space-y-6 md:space-y-8">
+                    <div className="space-y-1">
+                        <h3 className="text-xl md:text-3xl font-black text-slate-900 tracking-tight">Start Your Journey</h3>
+                        <p className="text-slate-500 font-bold text-sm md:text-base">Our experts will call you within 24 hours</p>
                     </div>
 
-                    {/* Fields */}
-                    <div className={compact ? 'space-y-3 flex-1' : 'space-y-8'}>
-                        <FormField label="Your Name" name="name" placeholder="Full Name" required />
-                        <FormField label="Mobile Number" name="mobile" type="tel" placeholder="+91" required />
-                        <FormField label="Email Address" name="email" type="email" placeholder="email@example.com" required />
-                        <FormField label="State" name="state" options={states} required />
-                        <FormField
-                            label="City"
-                            name="city"
-                            options={["Select City", ...(formData.state ? stateCityData[formData.state] : [])]}
-                            required
-                        />
-                    </div>
+                    <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
+                        {/* Name Field */}
+                        <div className="space-y-1">
+                            <label className="text-[10px] md:text-xs font-black text-slate-800 ml-1 uppercase tracking-wider">Full Name</label>
+                            <input 
+                                type="text"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                placeholder="Enter your full name"
+                                required
+                                className="w-full h-11 md:h-14 px-5 bg-slate-50/50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#134a84]/5 focus:border-[#134a84] transition-all text-slate-900 font-bold text-sm md:text-base placeholder:text-slate-300"
+                            />
+                        </div>
 
-                    {/* Footer */}
-                    <div className={`flex flex-col items-center ${compact ? 'gap-3 pt-2' : 'gap-8 pt-8'}`}>
-                        <label className="flex items-center gap-3 cursor-pointer group/refer">
-                            <div className={`${compact ? 'w-4 h-4 rounded' : 'w-6 h-6 rounded-md'} border-2 flex items-center justify-center transition-all shrink-0 ${formData.referred ? 'bg-primary border-primary' : 'border-slate-300 group-hover/refer:border-primary'}`}>
-                                {formData.referred && <CheckCircle2 className={`text-white ${compact ? 'w-3 h-3' : 'w-4 h-4'}`} />}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                            {/* Mobile Number Field */}
+                            <div className="space-y-1">
+                                <label className="text-[10px] md:text-xs font-black text-slate-800 ml-1 uppercase tracking-wider">Mobile Number</label>
+                                <input 
+                                    type="tel"
+                                    name="mobile"
+                                    value={formData.mobile}
+                                    onChange={handleChange}
+                                    placeholder="+91 00000 00000"
+                                    required
+                                    className="w-full h-11 md:h-14 px-5 bg-slate-50/50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#134a84]/5 focus:border-[#134a84] transition-all text-slate-900 font-bold text-sm md:text-base placeholder:text-slate-300"
+                                />
                             </div>
-                            <input type="checkbox" name="referred" checked={formData.referred} onChange={handleChange} className="hidden" />
-                            <span className={`text-slate-600 font-bold select-none ${compact ? 'text-xs' : 'text-lg'}`}>
-                                Were you referred by someone?
-                            </span>
-                        </label>
 
+                            {/* Email Field */}
+                            <div className="space-y-1">
+                                <label className="text-[10px] md:text-xs font-black text-slate-800 ml-1 uppercase tracking-wider">Email Address</label>
+                                <input 
+                                    type="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    placeholder="yourname@gmail.com"
+                                    required
+                                    className="w-full h-11 md:h-14 px-5 bg-slate-50/50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#134a84]/5 focus:border-[#134a84] transition-all text-slate-900 font-bold text-sm md:text-base placeholder:text-slate-300"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                            {/* State Dropdown */}
+                            <div className="space-y-1">
+                                <label className="text-[10px] md:text-xs font-black text-slate-800 ml-1 uppercase tracking-wider">State</label>
+                                <div className="relative">
+                                    <select 
+                                        name="state"
+                                        value={formData.state}
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full h-11 md:h-14 px-5 bg-slate-50/50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:border-[#134a84] appearance-none text-slate-900 font-bold text-sm md:text-base cursor-pointer"
+                                    >
+                                        {states.map(opt => (
+                                            <option key={opt} value={opt === states[0] ? "" : opt} disabled={opt === states[0]}>
+                                                {opt}
+                                            </option>
+                                        ))}
+                                    </select>
+                                    <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                                        <ChevronDown size={18} />
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* City Dropdown */}
+                            <div className="space-y-1">
+                                <label className="text-[10px] md:text-xs font-black text-slate-800 ml-1 uppercase tracking-wider">City</label>
+                                <div className="relative">
+                                    <select 
+                                        name="city"
+                                        value={formData.city}
+                                        onChange={handleChange}
+                                        disabled={!formData.state}
+                                        required
+                                        className="w-full h-11 md:h-14 px-5 bg-slate-50/50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:border-[#134a84] appearance-none text-slate-900 font-bold text-sm md:text-base cursor-pointer disabled:opacity-50"
+                                    >
+                                        <option value="">Select City</option>
+                                        {(formData.state ? stateCityData[formData.state] : []).map(city => (
+                                            <option key={city} value={city}>{city}</option>
+                                        ))}
+                                    </select>
+                                    <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                                        <ChevronDown size={18} />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Referral Checkbox */}
+                        <div className="pt-1">
+                            <label className="flex items-center gap-3 cursor-pointer group select-none">
+                                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all ${formData.referred ? 'bg-[#134a84] border-[#134a84]' : 'border-slate-200 group-hover:border-slate-300'}`}>
+                                    {formData.referred && <CheckCircle2 className="w-3 h-3 text-white" strokeWidth={4} />}
+                                </div>
+                                <input 
+                                    type="checkbox" 
+                                    name="referred" 
+                                    checked={formData.referred} 
+                                    onChange={handleChange} 
+                                    className="hidden" 
+                                />
+                                <span className="text-slate-600 font-bold text-xs md:text-sm">Referral?</span>
+                            </label>
+                        </div>
+
+                        {/* Submit Button */}
                         <button
                             type="submit"
                             disabled={status === 'loading'}
-                            className={`group relative w-full ${compact ? 'h-10 rounded-xl' : 'md:w-80 h-16 rounded-2xl'} bg-slate-900 text-white overflow-hidden shadow-xl hover:shadow-primary/20 transition-all active:scale-95 disabled:opacity-50`}
+                            className="w-full h-12 md:h-16 bg-gradient-to-r from-[#134a84] to-[#db3436] hover:brightness-110 disabled:opacity-50 text-white font-black uppercase tracking-[0.2em] text-sm md:text-lg rounded-xl md:rounded-2xl transition-all shadow-xl hover:shadow-[0_10px_30px_-10px_rgba(219,52,54,0.5)] active:scale-[0.98] mt-2 md:mt-4 flex items-center justify-center gap-3"
                         >
-                            <div className="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                            <span className={`relative z-10 flex items-center justify-center gap-2 font-bold uppercase tracking-widest ${compact ? 'text-xs' : 'text-xl'}`}>
-                                {status === 'loading' ? (
+                            {status === 'loading' ? (
+                                <>
                                     <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                                ) : (
-                                    <>
-                                        Submit
-                                        <Send size={compact ? 14 : 20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                                    </>
-                                )}
-                            </span>
+                                    <span>Processing...</span>
+                                </>
+                            ) : (
+                                <>
+                                    REQUEST CALLBACK
+                                    <Send size={18} className="rotate-[-10deg]" />
+                                </>
+                            )}
                         </button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     );
 };
 
+
 export default AdmissionFormWhite;
+
+

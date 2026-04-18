@@ -1,5 +1,6 @@
 import React, { useRef, useLayoutEffect, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -27,7 +28,6 @@ import LegacyTimeline from '../components/LegacyTimeline';
 import ProgramGrid from '../components/ProgramGrid';
 import InsdDifference from '../components/InsdDifference';
 import IndustryInsights from '../components/IndustryInsights';
-import AdmissionFormWhite from '../components/AdmissionFormWhite';
 import HeroSlider from '../components/HeroSlider';
 import { ArrowRight, CheckCircle2, Sparkles, Briefcase, Rocket, FileDown } from 'lucide-react';
 import PlacementPartners from '../components/PlacementPartners';
@@ -58,6 +58,7 @@ const Home = () => {
 
     const [isMobile, setIsMobile] = React.useState(false);
     const { openAdmissionModal } = useAdmissionModal();
+    const navigate = useNavigate();
 
 
     // Lenis Smooth Scroll Integration
