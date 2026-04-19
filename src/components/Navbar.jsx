@@ -82,6 +82,7 @@ const Navbar = () => {
     const darkPages = [
         '/apply', 
         '/insd-360/blog',
+        '/entrepreneur',
         '/courses/fashion-designing',
         '/courses/interior-designing',
         '/courses/graphic-designing',

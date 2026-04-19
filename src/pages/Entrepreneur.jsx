@@ -27,9 +27,19 @@ const Entrepreneur = () => {
             />
 
             {/* --- NARRATIVE HERO SECTION (Based on Reference Image) --- */}
-            <section className="relative min-h-screen flex flex-col items-center justify-center px-6 md:px-12 lg:px-24 overflow-hidden bg-white py-20">
+            <section className="relative min-h-screen flex flex-col items-center justify-center px-6 md:px-12 lg:px-24 overflow-hidden py-20 bg-slate-950">
+                {/* Background Image & Overlays */}
+                <div className="absolute inset-0 z-0">
+                    <img 
+                        src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1600" 
+                        alt="Global HQ CEO" 
+                        className="w-full h-full object-cover grayscale opacity-30"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-b from-slate-950 via-slate-950/80 to-slate-950" />
+                </div>
+                
                 {/* Visual Depth Texture */}
-                <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none cyber-grid" />
+                <div className="absolute inset-0 z-1 opacity-[0.03] pointer-events-none cyber-grid" />
                 
                 {/* Main Narrative Container */}
                 <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col items-center">
@@ -40,104 +50,19 @@ const Entrepreneur = () => {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                            className="text-6xl md:text-[8rem] font-black text-slate-900 tracking-tighter uppercase leading-none"
+                            className="text-[2.75rem] sm:text-6xl md:text-[8rem] font-black text-white tracking-tighter uppercase leading-[0.9] md:leading-none"
                         >
-                            From <span className="text-primary">Student</span> to <span className="stroke-text-slate-900 opacity-20">CEO</span>
+                            From <span className="text-primary">Student</span> to <span className="stroke-text-white opacity-20">CEO</span>
                         </motion.h1>
                         
                         <motion.p 
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 1, delay: 0.5 }}
-                            className="text-2xl md:text-5xl font-serif italic text-slate-600 tracking-tight"
+                            className="text-lg sm:text-2xl md:text-5xl font-serif italic text-slate-400 tracking-tight leading-tight"
                         >
                             Employee or Employer — your choice.
                         </motion.p>
-                    </div>
-
-                    {/* Split Narrative Collage */}
-                    <div className="relative w-full aspect-[21/9] flex items-center justify-center gap-4 group mt-12">
-                        
-                        {/* LEFT: THE STUDENT/EMPLOYEE PHASE */}
-                        <div className="w-1/2 h-full relative overflow-hidden rounded-l-[4rem] group/left">
-                            <motion.div 
-                                initial={{ x: -100, opacity: 0 }}
-                                animate={{ x: 0, opacity: 1 }}
-                                transition={{ duration: 1.2, delay: 0.2 }}
-                                className="absolute inset-0 flex items-center justify-end pr-12 bg-slate-50 border-r border-slate-100"
-                            >
-                                <div className="grid grid-cols-2 gap-4 w-full h-full p-8 max-w-2xl">
-                                    <div className="relative rounded-3xl overflow-hidden shadow-2xl transition-all duration-700 group-hover/left:-rotate-2 group-hover/left:scale-105 border-4 border-white">
-                                        <img src="https://images.unsplash.com/photo-1558603668-6570496b66f8?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover grayscale brightness-90" alt="Student 1" />
-                                    </div>
-                                    <div className="relative rounded-3xl overflow-hidden shadow-2xl mt-12 transition-all duration-700 group-hover/left:rotate-3 group-hover/left:scale-105 border-4 border-white">
-                                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover brightness-110" alt="Student 2" />
-                                    </div>
-                                    <div className="relative rounded-3xl overflow-hidden shadow-2xl -mt-8 transition-all duration-700 group-hover/left:rotate-2 group-hover/left:scale-105 border-4 border-white">
-                                        <img src="https://images.unsplash.com/photo-1621600411688-4be93cd68504?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover brightness-95" alt="Student 3" />
-                                    </div>
-                                    <div className="relative rounded-3xl overflow-hidden shadow-2xl transition-all duration-700 group-hover/left:-rotate-3 group-hover/left:scale-105 border-4 border-white">
-                                        <img src="https://images.unsplash.com/photo-1523240715632-61041119c3af?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover grayscale opacity-70" alt="Student 4" />
-                                    </div>
-                                </div>
-                            </motion.div>
-                            <div className="absolute top-12 left-12 mix-blend-difference pointer-events-none">
-                                <span className="text-white text-[10px] font-black uppercase tracking-[1em]">The Inception Phase</span>
-                            </div>
-                        </div>
-
-                        {/* CENTRAL DIVIDER (The Decision Line) */}
-                        <motion.div 
-                            initial={{ scaleY: 0 }}
-                            animate={{ scaleY: 1 }}
-                            transition={{ duration: 1.5, delay: 0.8 }}
-                            className="absolute z-20 w-px h-[80%] bg-linear-to-b from-transparent via-primary to-transparent"
-                        />
-
-                        {/* RIGHT: THE CEO/EMPLOYER PHASE */}
-                        <div className="w-1/2 h-full relative overflow-hidden rounded-r-[4rem] group/right">
-                            <motion.div 
-                                initial={{ x: 100, opacity: 0 }}
-                                animate={{ x: 0, opacity: 1 }}
-                                transition={{ duration: 1.2, delay: 0.4 }}
-                                className="absolute inset-0 flex items-center justify-start pl-12 bg-white border-l border-slate-100"
-                            >
-                                <div className="grid grid-cols-2 gap-4 w-full h-full p-8 max-w-2xl">
-                                    <div className="relative rounded-3xl overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] transition-all duration-700 group-hover/right:rotate-2 group-hover/right:scale-105 border-4 border-slate-900">
-                                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover brightness-110" alt="CEO 1" />
-                                    </div>
-                                    <div className="relative rounded-3xl overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] mt-16 transition-all duration-700 group-hover/right:-rotate-3 group-hover/right:scale-105 border-4 border-slate-900">
-                                        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover grayscale brightness-75" alt="CEO 2" />
-                                    </div>
-                                    <div className="relative rounded-3xl overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] -mt-4 transition-all duration-700 group-hover/right:-rotate-2 group-hover/right:scale-105 border-4 border-slate-900">
-                                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover grayscale brightness-125" alt="CEO 3" />
-                                    </div>
-                                    <div className="relative rounded-3xl overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] transition-all duration-700 group-hover/right:rotate-3 group-hover/right:scale-105 border-4 border-slate-900">
-                                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover brightness-105" alt="CEO 4" />
-                                    </div>
-                                </div>
-                            </motion.div>
-                            <div className="absolute top-12 right-12 mix-blend-difference pointer-events-none">
-                                <span className="text-white text-[10px] font-black uppercase tracking-[1em]">The Mastery Phase</span>
-                            </div>
-                        </div>
-
-                        {/* Interactive Float Menu */}
-                        <div className="absolute bottom-12 z-30 flex gap-10">
-                            {[
-                                { text: "Incubation Program", primary: false },
-                                { text: "Pitch Your Concept", primary: true }
-                            ].map((btn, i) => (
-                                <motion.button 
-                                    key={i}
-                                    whileHover={{ scale: 1.05, y: -5 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className={`px-12 py-6 rounded-full text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl transition-all ${btn.primary ? 'bg-primary text-white' : 'bg-slate-900 text-white'}`}
-                                >
-                                    {btn.text}
-                                </motion.button>
-                            ))}
-                        </div>
                     </div>
 
                     {/* Inclusion Footer (Straight from Reference) */}
@@ -145,14 +70,14 @@ const Entrepreneur = () => {
                         <motion.div 
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ duration: 1, delay: 1.5 }}
-                            className="inline-flex items-center gap-6 px-10 py-5 bg-slate-50 border border-slate-100 rounded-full"
+                            transition={{ duration: 1, delay: 0.5 }}
+                            className="inline-flex flex-wrap items-center justify-center gap-4 sm:gap-6 px-6 sm:px-10 py-5 bg-white/5 border border-white/10 rounded-3xl sm:rounded-full backdrop-blur-md"
                         >
-                            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                            <p className="text-sm md:text-lg font-bold text-slate-400 uppercase tracking-widest leading-none">
-                                Modules on <span className="text-slate-950">Business Management</span>, <span className="text-slate-950">Marketing</span>, and <span className="text-slate-950">Client Acquisition</span> included.
+                            <div className="w-2 h-2 rounded-full bg-primary animate-pulse hidden sm:block" />
+                            <p className="text-xs sm:text-sm md:text-lg font-bold text-slate-400 uppercase tracking-widest leading-relaxed">
+                                Modules on <span className="text-white">Business Management</span>, <span className="text-white">Marketing</span>, and <span className="text-white">Client Acquisition</span> included.
                             </p>
-                            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                            <div className="w-2 h-2 rounded-full bg-primary animate-pulse hidden sm:block" />
                         </motion.div>
                     </div>
 
@@ -160,8 +85,8 @@ const Entrepreneur = () => {
 
                 {/* Aesthetic Detail: Lateral Scroll Progress */}
                 <div className="absolute bottom-12 left-6 md:left-24 flex items-center gap-6 pointer-events-none">
-                    <div className="w-16 h-px bg-slate-200" />
-                    <span className="text-[10px] font-black uppercase tracking-[0.5em] text-slate-300">Choose Your Narrative</span>
+                    <div className="w-16 h-px bg-white/20" />
+                    <span className="text-[10px] font-black uppercase tracking-[0.5em] text-white/40">Choose Your Narrative</span>
                 </div>
             </section>
 
@@ -205,7 +130,7 @@ const Entrepreneur = () => {
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-16">
                         <div className="space-y-8">
                             <span className="text-primary font-black uppercase text-xs tracking-[0.6em]">The Foundation</span>
-                            <h2 className="text-6xl md:text-[9rem] font-black text-slate-900 uppercase tracking-tighter leading-[0.8]">
+                            <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-[9rem] font-black text-slate-900 uppercase tracking-tighter leading-[0.8]">
                                 Protocol <br /> <span className="stroke-text-slate-900 opacity-20">Elements.</span>
                             </h2>
                         </div>
@@ -290,9 +215,9 @@ const Entrepreneur = () => {
                                     <span className="text-primary font-black uppercase text-[10px] tracking-[0.8em]">Core Institutional Directive</span>
                                 </motion.div>
                                 
-                                <h2 className="text-8xl md:text-[12rem] font-black text-slate-900 uppercase tracking-tighter leading-[0.75]">
+                                <h2 className="text-5xl sm:text-7xl md:text-9xl lg:text-[12rem] font-black text-slate-900 uppercase tracking-tighter leading-[0.75]">
                                     EIDC<span className="text-primary italic font-serif">.</span><br />
-                                    <span className="stroke-text-slate-900 opacity-20 text-6xl md:text-[8rem]">PROTOCOLS</span>
+                                    <span className="stroke-text-slate-900 opacity-20 text-3xl sm:text-5xl md:text-7xl lg:text-[8rem]">PROTOCOLS</span>
                                 </h2>
                                 
                                 <p className="text-slate-400 font-bold uppercase tracking-[0.4em] text-xs">Entrepreneurship, Innovation & Design Center</p>
@@ -382,7 +307,7 @@ const Entrepreneur = () => {
                                 <span className="text-primary font-black uppercase text-[10px] tracking-[0.8em]">Annual Global Summit</span>
                             </motion.div>
                             
-                            <h2 className="text-7xl md:text-[10rem] font-black text-slate-900 uppercase tracking-tighter leading-[0.8]">
+                            <h2 className="text-5xl sm:text-7xl md:text-9xl lg:text-[10rem] font-black text-slate-900 uppercase tracking-tighter leading-[0.8]">
                                 DESIGN <br /> <span className="stroke-text-slate-900 opacity-20">CONCLAVE.</span>
                             </h2>
                         </div>

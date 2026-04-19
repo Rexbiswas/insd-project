@@ -152,7 +152,7 @@ const StudentTransformation = () => {
             quote: "The INSD Studio Labs provided the exact ecosystem I needed to transition from amateur floor plans to commercial retail architecture for premium lifestyle brands.",
             placement: "Hafele India",
             portfolio: "#"
-        },
+        }
     ];
 
     return (
