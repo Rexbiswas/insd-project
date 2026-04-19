@@ -24,11 +24,13 @@ import {
     GraduationCap,
     BookOpen
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
 import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const InteriorDesigning = () => {
+    const navigate = useNavigate();
     const { openAdmissionModal } = useAdmissionModal();
     const [activeOutline, setActiveOutline] = useState('Industry Diploma');
     const [expandedSem, setExpandedSem] = useState(1);
@@ -99,13 +101,13 @@ const InteriorDesigning = () => {
 
     const careerPaths = [
         { title: "Commercial Designer", desc: "Leading the creative vision for high-impact office spaces, retail showrooms, and corporate headquarters.", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" },
-        { title: "Residential Designer", desc: "Crafting personalized sanctuary spaces and luxury home environments centered on human comfort.", img: "https://images.unsplash.com/photo-1618221195710-dd6b41faeaa6?auto=format&fit=crop&q=80&w=800" },
-        { title: "Institutional Designer", desc: "Designing purposeful environments for education, healthcare, and public infrastructure.", img: "https://images.unsplash.com/photo-1549692520-acc6669e2f0c?auto=format&fit=crop&q=80&w=800" },
-        { title: "Exhibition Designer", desc: "Creating immersive temporary spaces for galleries, trade fairs, and global design showcases.", img: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=800" },
+        { title: "Residential Designer", desc: "Crafting personalized sanctuary spaces and luxury home environments centered on human comfort.", img: "https://insdandheri.com/landingpage/images/interior.webp" },
+        { title: "Institutional Designer", desc: "Designing purposeful environments for education, healthcare, and public infrastructure.", img: "https://tse4.mm.bing.net/th/id/OIP.UHwc8GDErECCgNCubB1AAwHaEL?rs=1&pid=ImgDetMain&o=7&rm=3" },
+        { title: "Exhibition Designer", desc: "Creating immersive temporary spaces for galleries, trade fairs, and global design showcases.", img: "https://image.architonic.com/img_pro2-4/149/2090/exhibition-space-design-1-b.jpg" },
         { title: "Furniture Stylist", desc: "Designing functional art pieces that define the character and aesthetic of modern interiors.", img: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&q=80&w=800" },
-        { title: "Lighting Specialist", desc: "Mastering the science and art of illumination to transform spatial perception and mood.", img: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&q=80&w=800" },
-        { title: "Set Designer", desc: "Creating evocative spatial environments for film, television, and luxury events.", img: "https://images.unsplash.com/photo-1513519245088-0e12902e35ca?auto=format&fit=crop&q=80&w=800" },
-        { title: "Sustainable Architect", desc: "Directing the transition toward eco-friendly building practices and circular materials.", img: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=800" },
+        { title: "Lighting Specialist", desc: "Mastering the science and art of illumination to transform spatial perception and mood.", img: "https://www.customizelighting.com/wp-content/uploads/2024/05/custom-lighting-design-applications.jpg" },
+        { title: "Set Designer", desc: "Creating evocative spatial environments for film, television, and luxury events.", img: "https://tse3.mm.bing.net/th/id/OIP.lLH6k_nsRJDgECERoGGXUgHaE0?rs=1&pid=ImgDetMain&o=7&rm=3" },
+        { title: "Sustainable Architect", desc: "Directing the transition toward eco-friendly building practices and circular materials.", img: "https://tse2.mm.bing.net/th/id/OIP.IXwqgCpe3nKkzaCbmkW9PQHaEc?rs=1&pid=ImgDetMain&o=7&rm=3" },
         { title: "Project Lead", desc: "Managing large-scale construction and design implementation across global sites.", img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800" }
     ];
 
@@ -120,7 +122,7 @@ const InteriorDesigning = () => {
             <section className="relative h-[70vh] md:h-[85vh] flex items-center justify-center pt-20 md:pt-32 text-center px-6 overflow-hidden bg-slate-900">
                 <div className="absolute inset-0 z-0">
                     <img 
-                        src="https://images.unsplash.com/photo-1618221195710-dd6b41faeaa6?auto=format&fit=crop&q=80&w=1600" 
+                        src="https://ik.imagekit.io/fmldynl4j4/Students/ID%20(2).png?updatedAt=1774928402849" 
                         alt="Interior Design Studio" 
                         className="w-full h-full object-cover opacity-60 scale-105"
                     />
@@ -140,16 +142,6 @@ const InteriorDesigning = () => {
                           
                         </h1>
                         
-                        
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12">
-                            <button 
-                                onClick={() => openAdmissionModal()}
-                                className="group px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3"
-                            >
-                                Enroll Now
-                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                            </button>
-                        </div>
                         <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
                                 <span className="text-[10px] font-black uppercase tracking-widest">Scroll to Explore</span>
                                 <ArrowRight size={16} className="rotate-90" />
@@ -159,21 +151,21 @@ const InteriorDesigning = () => {
             </section>
 
             {/* --- COURSE HIGHLIGHTS --- */}
-            <section className="py-12 bg-black overflow-hidden relative border-y border-white/5">
+            <section className="py-12 bg-slate-900 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
                     {[
-                        { label: "Degree", value: "Bachelors accredited by UGC", icon: GraduationCap },
-                        { label: "Course Length", value: "3 or 4 Years Option", icon: Clock },
-                        { label: "Eligibility", value: "10+2 Any Stream", icon: BookOpen },
+                        { label: "Degree", value: "Bachelors accredited", icon: GraduationCap },
+                        { label: "Course Length", value: "1 Year", icon: Clock },
+                        { label: "Eligibility", value: "Any Stream", icon: BookOpen },
                     ].map((item, idx) => (
                         <motion.div 
                             key={idx}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: idx * 0.1 }}
-                            className="flex items-center gap-6 p-8 rounded-3xl md:rounded-4xl bg-white/5 border border-white/10 group hover:border-primary/50 transition-all duration-500"
+                            className="flex items-center gap-6 p-8 rounded-3xl bg-white/5 border border-white/10 group hover:border-primary/50 transition-colors"
                         >
-                            <div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                            <div className="w-14 h-14 rounded-2xl bg-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
                                 <item.icon size={28} />
                             </div>
                             <div>
@@ -183,6 +175,22 @@ const InteriorDesigning = () => {
                         </motion.div>
                     ))}
                 </div>
+
+                {/* Enroll Now Button */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="flex justify-center mt-12 mb-4"
+                >
+                    <button
+                        onClick={() => navigate('/apply')}
+                        className="px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-white hover:text-slate-900 transition-all transform hover:scale-105 flex items-center gap-3"
+                    >
+                        Enroll Now
+                        <ArrowRight size={18} />
+                    </button>
+                </motion.div>
             </section>
 
             {/* --- LEARNING OUTCOMES --- */}
@@ -212,7 +220,7 @@ const InteriorDesigning = () => {
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-4 h-auto md:h-[600px]">
                         <div className="col-span-1 md:col-span-7 h-[300px] md:h-full rounded-2xl overflow-hidden shadow-2xl">
                             <img 
-                                src="https://images.unsplash.com/photo-1618221195710-dd6b41faeaa6?auto=format&fit=crop&q=80&w=800" 
+                                src="https://tse4.mm.bing.net/th/id/OIP.j6jg6XbqZuaFjWVdidBN-wHaEO?rs=1&pid=ImgDetMain&o=7&rm=3" 
                                 alt="Interior Architecture" 
                                 className="w-full h-full object-cover"
                             />
@@ -220,7 +228,7 @@ const InteriorDesigning = () => {
                         <div className="col-span-1 md:col-span-12 lg:col-span-5 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-1 gap-4 h-auto md:h-full">
                             <div className="rounded-2xl overflow-hidden shadow-2xl h-[200px] md:h-auto">
                                 <img 
-                                    src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=800" 
+                                    src="https://i0.wp.com/ulaburgiel.com/wp-content/uploads/2018/10/Project-Erica-Formal-Living.jpg?resize=1024%2C747&ssl=1" 
                                     alt="Sketching Sessions" 
                                     className="w-full h-full object-cover"
                                 />
@@ -471,7 +479,7 @@ const InteriorDesigning = () => {
                                 <p className="text-white/50 font-medium max-w-sm uppercase text-xs tracking-widest leading-relaxed font-black">Join the 2026 session. Limited seats for high-potential spatial visionaries.</p>
                             </div>
                             <button 
-                                onClick={() => openAdmissionModal()}
+                                onClick={() => navigate('/apply')}
                                 className="px-16 py-6 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-primary hover:text-white transition-all transform hover:scale-105"
                             >
                                 Start Application

@@ -16,8 +16,10 @@ import {
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
+import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const PlacementAndTraining = () => {
+    const { openAdmissionModal } = useAdmissionModal();
     return (
         <div className="bg-white min-h-screen font-sans selection:bg-primary selection:text-white">
             <SEO 
@@ -64,7 +66,13 @@ const PlacementAndTraining = () => {
                                 transition={{ duration: 0.8, delay: 0.4 }}
                                 className="flex flex-wrap items-center justify-center lg:justify-start gap-8 pt-4"
                             >
-                                <button className="px-12 py-5 bg-slate-900 text-white rounded-full font-black uppercase text-[10px] tracking-[0.2em] hover:bg-primary transition-all transform hover:scale-105 shadow-2xl shadow-slate-900/10">
+                                <button 
+                                    onClick={() => openAdmissionModal({ 
+                                        title: 'Download Placement Report', 
+                                        subtitle: 'Please fill in your details to receive our latest placement audit and report.' 
+                                    })}
+                                    className="px-12 py-5 bg-slate-900 text-white rounded-full font-black uppercase text-[10px] tracking-[0.2em] hover:bg-primary transition-all transform hover:scale-105 shadow-2xl shadow-slate-900/10"
+                                >
                                     Download Placement Report
                                 </button>
                                 <div className="flex items-center gap-3">

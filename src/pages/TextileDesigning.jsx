@@ -19,11 +19,13 @@ import {
     PenTool,
     Briefcase
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
 import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const TextileDesigning = () => {
+    const navigate = useNavigate();
     const { openAdmissionModal } = useAdmissionModal();
     const [activeOutline, setActiveOutline] = useState('Industry Diploma');
     const [expandedSem, setExpandedSem] = useState(1);
@@ -91,12 +93,9 @@ const TextileDesigning = () => {
     const careerPaths = [
         { title: "Prints & Patterns Designer", desc: "Creating innovative surface designs and repeated patterns for fashion and home interiors.", img: "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&fit=crop&q=80&w=800" },
         { title: "Weaving Consultant", desc: "Expertly directing the structural composition of fabrics through traditional and modern weaving.", img: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&q=80&w=800" },
-        { title: "Material Researcher", desc: "Exploring sustainable and high-tech fibers to define the next generation of performance fabrics.", img: "https://images.unsplash.com/photo-1558591710-4b4a1ad0f04d?auto=format&fit=crop&q=80&w=800" },
-        { title: "Home Furnishing Lead", desc: "Designing comprehensive textile collections for luxury upholstery, curtains, and linens.", img: "https://images.unsplash.com/photo-1513519245088-0e12902e35ca?auto=format&fit=crop&q=80&w=800" },
-        { title: "Dyeing Specialist", desc: "Mastering color chemistry and sustainable finishing techniques for large-scale production.", img: "https://images.unsplash.com/photo-1534030347209-467a5b0ad3e6?auto=format&fit=crop&q=80&w=800" },
-        { title: "Textile Quality Head", desc: "Ensuring every meter of fabric meets international standards for durability and aesthetics.", img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800" },
-        { title: "Embroidery Designer", desc: "Elevating garments through intricate hand and machine embellishment techniques.", img: "https://images.unsplash.com/photo-1512496015851-a90fb38ba496?auto=format&fit=crop&q=80&w=800" },
-        { title: "Sustainable Director", desc: "Leading the transition toward circular textiles and eco-friendly manufacturing ecosystems.", img: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=800" },
+        { title: "Material Researcher", desc: "Exploring sustainable and high-tech fibers to define the next generation of performance fabrics.", img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800" },
+        { title: "Home Furnishing Lead", desc: "Designing comprehensive textile collections for luxury upholstery, curtains, and linens.", img: "https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&q=80&w=800" },
+        { title: "Sustainability Architect", desc: "Leading the global transition toward circular textiles, eco-friendly dyes, and ethical manufacturing.", img: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&q=80&w=800" },
         { title: "Independent Artist", desc: "Launching a boutique studio focused on artisanal, handcrafted, and limited-edition textiles.", img: "https://images.unsplash.com/photo-1459156212016-c812468e2115?auto=format&fit=crop&q=80&w=800" },
     ];
 
@@ -132,16 +131,6 @@ const TextileDesigning = () => {
                             Design
                         </h1>
                         
-                        
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12">
-                            <button 
-                                onClick={() => openAdmissionModal()}
-                                className="group px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3"
-                            >
-                                Enroll Now
-                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                            </button>
-                        </div>
                         <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
                                 <span className="text-[10px] font-black uppercase tracking-widest">Scroll to Explore</span>
                                 <ArrowRight size={16} className="rotate-90" />
@@ -151,21 +140,21 @@ const TextileDesigning = () => {
             </section>
 
             {/* --- COURSE HIGHLIGHTS --- */}
-            <section className="py-12 bg-black overflow-hidden relative border-y border-white/5">
+            <section className="py-12 bg-slate-900 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
                     {[
-                        { label: "Degree", value: "Bachelors accredited by UGC", icon: GraduationCap },
-                        { label: "Course Length", value: "3 or 4 Years Option", icon: Clock },
-                        { label: "Eligibility", value: "10+2 Any Stream", icon: BookOpen },
+                        { label: "Degree", value: "Bachelors accredited", icon: GraduationCap },
+                        { label: "Course Length", value: "2 Years", icon: Clock },
+                        { label: "Eligibility", value: "Any Stream", icon: BookOpen },
                     ].map((item, idx) => (
                         <motion.div 
                             key={idx}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: idx * 0.1 }}
-                            className="flex items-center gap-6 p-8 rounded-[2.5rem] bg-white/5 border border-white/10 group hover:border-primary/50 transition-all duration-500"
+                            className="flex items-center gap-6 p-8 rounded-3xl bg-white/5 border border-white/10 group hover:border-primary/50 transition-colors"
                         >
-                            <div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                            <div className="w-14 h-14 rounded-2xl bg-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
                                 <item.icon size={28} />
                             </div>
                             <div>
@@ -175,6 +164,22 @@ const TextileDesigning = () => {
                         </motion.div>
                     ))}
                 </div>
+
+                {/* Enroll Now Button */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="flex justify-center mt-12 mb-4"
+                >
+                    <button
+                        onClick={() => navigate('/apply')}
+                        className="px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-white hover:text-slate-900 transition-all transform hover:scale-105 flex items-center gap-3"
+                    >
+                        Enroll Now
+                        <ArrowRight size={18} />
+                    </button>
+                </motion.div>
             </section>
 
             {/* --- LEARNING OUTCOMES --- */}
@@ -206,9 +211,7 @@ const TextileDesigning = () => {
                             <img src="https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&fit=crop&q=80&w=600" className="w-full h-full object-cover" alt="Textile Print" />
                         </div>
                         <div className="col-span-1 md:col-span-5 grid grid-cols-2 md:grid-cols-1 gap-4 h-[200px] md:h-full">
-                            <div className="rounded-2xl overflow-hidden shadow-2xl">
-                                <img src="https://images.unsplash.com/photo-1558591710-4b4a1ad0f04d?auto=format&fit=crop&q=80&w=600" className="w-full h-full object-cover" alt="Material Research" />
-                            </div>
+                            
                             <div className="hidden md:block rounded-2xl overflow-hidden shadow-2xl">
                                 <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&q=80&w=600" className="w-full h-full object-cover" alt="Textile Loom" />
                             </div>
@@ -451,7 +454,7 @@ const TextileDesigning = () => {
                                 <p className="text-white/50 font-medium max-w-sm uppercase text-xs tracking-widest font-black">Join the 2026 session. Limited seats for high-potential material visionaries.</p>
                             </div>
                             <button 
-                                onClick={() => openAdmissionModal()}
+                                onClick={() => navigate('/apply')}
                                 className="px-16 py-6 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-primary hover:text-white transition-all transform hover:scale-105"
                             >
                                 Start Application

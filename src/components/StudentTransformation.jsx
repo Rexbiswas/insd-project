@@ -138,7 +138,7 @@ const StudentTransformation = () => {
             discipline: "Fashion Design",
             program: "B.Des Excellence",
             beforeImg: "https://images.pexels.com/photos/4458554/pexels-photo-4458554.jpeg?auto=compress&cs=tinysrgb&w=800",
-            afterImg: "https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=800",
+            afterImg: "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1Z7dfd.img?w=800&h=415&q=60&m=2&f=jpg",
             quote: "At INSD, I didn't just learn to stitch; I learned the business of couture. My final project landed me directly at the Lakmé Fashion Week studio.",
             placement: "Manish Malhotra",
             portfolio: "#"

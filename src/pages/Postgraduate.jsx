@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight, BookOpen, GraduationCap, Briefcase, Globe } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 
@@ -104,6 +105,7 @@ const StickyCards = () => {
 };
 
 const Postgraduate = () => {
+    const navigate = useNavigate();
     const heroRef = useRef(null);
     const { scrollYProgress: heroScroll } = useScroll({
         target: heroRef,
@@ -230,6 +232,7 @@ const Postgraduate = () => {
                     <motion.button 
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
+                        onClick={() => navigate('/apply')}
                         className="mt-16 bg-white text-black px-12 py-5 rounded-full font-bold uppercase tracking-widest text-sm hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all flex items-center gap-4 mx-auto"
                     >
                         Begin Application <ArrowUpRight size={18} />

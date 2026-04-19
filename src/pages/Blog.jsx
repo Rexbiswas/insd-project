@@ -83,6 +83,20 @@ const Blog = () => {
     ]);
 
     useEffect(() => {
+        if (selectedPost || isWriting) {
+            document.body.classList.add('hide-navbar');
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.classList.remove('hide-navbar');
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.classList.remove('hide-navbar');
+            document.body.style.overflow = 'unset';
+        };
+    }, [selectedPost, isWriting]);
+
+    useEffect(() => {
         const fetchBlogs = async () => {
             try {
                 const res = await axios.get('/api/blogs');

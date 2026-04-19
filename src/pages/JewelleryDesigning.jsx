@@ -18,11 +18,13 @@ import {
     GraduationCap,
     PenTool
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
 import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const JewelleryDesigning = () => {
+    const navigate = useNavigate();
     const { openAdmissionModal } = useAdmissionModal();
     const [activeOutline, setActiveOutline] = useState('Industry Diploma');
     const [expandedSem, setExpandedSem] = useState(1);
@@ -91,14 +93,12 @@ const JewelleryDesigning = () => {
 
     const careerPaths = [
         { title: "High-Jewellery Designer", desc: "Designing exclusive, one-of-a-kind masterpieces for luxury international heritage brands.", img: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=800" },
-        { title: "Gemologist", desc: "Expertly identifying and grading diamonds and precious gemstones based on the 4Cs.", img: "https://images.unsplash.com/photo-1598560917541-4043969b4a4d?auto=format&fit=crop&q=80&w=800" },
-        { title: "CAD Jewellery Designer", desc: "Using advanced 3D software to create high-precision digital models for production.", img: "https://images.unsplash.com/photo-1588444839799-eb0c797b00c8?auto=format&fit=crop&q=80&w=800" },
+        { title: "Gemologist", desc: "Expertly identifying and grading diamonds and precious gemstones based on the 4Cs.", img: "https://th.bing.com/th/id/R.72769c74fbeea9c53315c4f78ab9bcc6?rik=UfIeA2QGlaizww&riu=http%3a%2f%2fwww.ismat.in%2fwp-content%2fuploads%2f2023%2f09%2frd.jpg&ehk=957qTJ6Yai4buMd3NfPD6Qg8ycCPyIDJjSlvByJ9Vtc%3d&risl=&pid=ImgRaw&r=0" },
+        { title: "CAD Jewellery Designer", desc: "Using advanced 3D software to create high-precision digital models for production.", img: "https://tse4.mm.bing.net/th/id/OIP.jfpYhgPsDhDCMQ6UFj03CwHaFj?rs=1&pid=ImgDetMain&o=7&rm=3" },
         { title: "Product Head", desc: "Managing the end-to-end design and manufacturing lifecycle of jewellery collections.", img: "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&q=80&w=800" },
-        { title: "Visual Merchandiser", desc: "Designing high-impact storefronts and displays for luxury jewellery boutiques.", img: "https://images.unsplash.com/photo-1610492421943-8347fa65e236?auto=format&fit=crop&q=80&w=800" },
-        { title: "Brand Consultant", desc: "Setting the strategic identity and market positioning for global gem houses.", img: "https://images.unsplash.com/photo-1534073828943-f801091bb18c?auto=format&fit=crop&q=80&w=800" },
-        { title: "Quality Assurance", desc: "Inspecting every piece for structural integrity, plating quality, and stone setting.", img: "https://images.unsplash.com/photo-1573408302355-4e0b7cb39602?auto=format&fit=crop&q=80&w=800" },
-        { title: "Luxury Retail Merchant", desc: "Managing high-value inventory, luxury showroom operations and premium brand sales.", img: "https://images.unsplash.com/photo-1531995811006-35cb42e5a3ed?auto=format&fit=crop&q=80&w=800" },
-        { title: "Luxury Entrepreneur", desc: "Launching and managing your own independent bespoke jewellery label and atelier.", img: "https://images.unsplash.com/photo-1467043237213-65f2da53396f?auto=format&fit=crop&q=80&w=800" },
+        { title: "Visual Merchandiser", desc: "Designing high-impact storefronts and displays for luxury jewellery boutiques.", img: "https://www.jewelrypackagingmall.com/cdn/shop/articles/article_797188_1776269411_1344x768_crop_center.jpg?v=1776269461" },
+        { title: "Brand Consultant", desc: "Setting the strategic identity and market positioning for global gem houses.", img: "https://th.bing.com/th/id/OIP.vlGYh7JEMbqHEHuhowUDDAHaEO?w=314&h=180&c=7&r=0&o=7&pid=1.7&rm=3" },
+        
     ];
 
     return (
@@ -133,15 +133,6 @@ const JewelleryDesigning = () => {
                             Design
                         </h1>
                        
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12">
-                            <button 
-                                onClick={() => openAdmissionModal()}
-                                className="group px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3"
-                            >
-                                Enroll Now
-                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                            </button>
-                        </div>
                         <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
                                 <span className="text-[10px] font-black uppercase tracking-widest">Scroll to Explore</span>
                                 <ArrowRight size={16} className="rotate-90" />
@@ -151,21 +142,21 @@ const JewelleryDesigning = () => {
             </section>
 
             {/* --- COURSE HIGHLIGHTS --- */}
-            <section className="py-12 bg-black overflow-hidden relative border-y border-white/5">
+            <section className="py-12 bg-slate-900 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
                     {[
-                        { label: "Degree", value: "Bachelors accredited by UGC", icon: GraduationCap },
-                        { label: "Course Length", value: "3 or 4 Years Option", icon: Clock },
-                        { label: "Eligibility", value: "10+2 Any Stream", icon: BookOpen },
+                        { label: "Degree", value: "Bachelors accredited", icon: GraduationCap },
+                        { label: "Course Length", value: "1 Year", icon: Clock },
+                        { label: "Eligibility", value: "Any Stream", icon: BookOpen },
                     ].map((item, idx) => (
                         <motion.div 
                             key={idx}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: idx * 0.1 }}
-                            className="flex items-center gap-6 p-8 rounded-[2.5rem] bg-white/5 border border-white/10 group hover:border-primary/50 transition-all duration-500"
+                            className="flex items-center gap-6 p-8 rounded-3xl bg-white/5 border border-white/10 group hover:border-primary/50 transition-colors"
                         >
-                            <div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                            <div className="w-14 h-14 rounded-2xl bg-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
                                 <item.icon size={28} />
                             </div>
                             <div>
@@ -175,6 +166,22 @@ const JewelleryDesigning = () => {
                         </motion.div>
                     ))}
                 </div>
+
+                {/* Enroll Now Button */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="flex justify-center mt-12 mb-4"
+                >
+                    <button
+                        onClick={() => navigate('/apply')}
+                        className="px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-white hover:text-slate-900 transition-all transform hover:scale-105 flex items-center gap-3"
+                    >
+                        Enroll Now
+                        <ArrowRight size={18} />
+                    </button>
+                </motion.div>
             </section>
 
             {/* --- LEARNING OUTCOMES --- */}
@@ -207,10 +214,10 @@ const JewelleryDesigning = () => {
                         </div>
                         <div className="col-span-1 md:col-span-12 lg:col-span-5 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-1 gap-4 h-auto md:h-full">
                             <div className="rounded-2xl overflow-hidden shadow-2xl h-[200px] md:h-auto">
-                                <img src="https://images.unsplash.com/photo-1598560917541-4043969b4a4d?auto=format&fit=crop&q=80&w=600" className="w-full h-full object-cover" alt="Gemology" />
+                                <img src="https://tse4.mm.bing.net/th/id/OIP.niArWJIrqnXGL60Pi_hspQHaE7?rs=1&pid=ImgDetMain&o=7&rm=3" className="w-full h-full object-cover" alt="Gemology" />
                             </div>
                             <div className="rounded-2xl overflow-hidden shadow-2xl h-[200px] md:h-auto">
-                                <img src="https://images.unsplash.com/photo-1588444839799-eb0c797b00c8?auto=format&fit=crop&q=80&w=600" className="w-full h-full object-cover" alt="Jewellery CAD" />
+                                <img src="https://tse4.mm.bing.net/th/id/OIP.jfpYhgPsDhDCMQ6UFj03CwHaFj?rs=1&pid=ImgDetMain&o=7&rm=3" className="w-full h-full object-cover" alt="Jewellery CAD" />
                             </div>
                         </div>
                     </div>
@@ -451,7 +458,7 @@ const JewelleryDesigning = () => {
                                 <p className="text-white/50 font-medium max-w-sm uppercase text-xs tracking-widest font-black">Join the 2026 session. Limited seats for high-potential luxury creative visionaries.</p>
                             </div>
                             <button 
-                                onClick={() => openAdmissionModal()}
+                                onClick={() => navigate('/apply')}
                                 className="px-16 py-6 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-primary hover:text-white transition-all transform hover:scale-105"
                             >
                                 Start Application

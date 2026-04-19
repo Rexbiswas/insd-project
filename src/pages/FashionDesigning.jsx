@@ -14,12 +14,12 @@ import {
     PenTool,
     Globe
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
-import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const FashionDesigning = () => {
-    const { openAdmissionModal } = useAdmissionModal();
+    const navigate = useNavigate();
     const [activeOutline, setActiveOutline] = useState('Industry Diploma');
     const [expandedSem, setExpandedSem] = useState(1);
 
@@ -92,7 +92,7 @@ const FashionDesigning = () => {
         { title: "Fashion Consultant", desc: "Strategic advising for heritage brands on trend forecasting and market positioning.", img: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&q=80&w=800" },
         { title: "Technical Designer", desc: "Mastering the blueprint of garments and ensuring engineering precision in apparel.", img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800" },
         { title: "Brand Merchant", desc: "Managing inventory and sales strategies for global luxury fashion houses.", img: "https://media.istockphoto.com/id/1783667046/photo/female-customer-making-a-mobile-payment-at-local-flower-shop.jpg?s=612x612&w=0&k=20&c=0U_nu0zNASVM6oXqr8KsE8o1V6hDNbkSwpsbOvnxQWs=" },
-        { title: "Pattern Scientist", desc: "Precision engineering of complex silhouettes and fit dynamics for manufacturing.", img: "https://images.unsplash.com/photo-1532187863486-abf51ad9f69d?auto=format&fit=crop&q=80&w=800" }
+        { title: "Pattern Scientist", desc: "Precision engineering of complex silhouettes and fit dynamics for manufacturing.", img: "https://tse1.mm.bing.net/th/id/OIP.-p2UXkdKTArGlfFllhJMowHaDH?rs=1&pid=ImgDetMain&o=7&rm=3" }
     ];
 
     return (
@@ -124,15 +124,9 @@ const FashionDesigning = () => {
                             <span className="text-primary italic">Fashion</span> Design
                         </h1>
                         
-                        
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12">
-                            <button 
-                                onClick={() => openAdmissionModal()}
-                                className="px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-white hover:text-slate-900 transition-all transform hover:scale-105 flex items-center gap-3"
-                            >
-                                Enroll Now
-                                <ArrowRight size={18} />
-                            </button>
+                        <div className="flex items-center justify-center gap-4 text-white/50 animate-bounce cursor-default mt-8">
+                            <span className="text-[10px] font-black uppercase tracking-widest">Scroll to Explore</span>
+                            <ArrowRight size={16} className="rotate-90" />
                         </div>
                     </motion.div>
                 </div>
@@ -142,9 +136,9 @@ const FashionDesigning = () => {
             <section className="py-12 bg-slate-900 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
                     {[
-                        { label: "Degree", value: "Bachelors accredited by UGC", icon: GraduationCap },
-                        { label: "Course Length", value: "3 or 4 Years Option", icon: Clock },
-                        { label: "Eligibility", value: "10+2 Any Stream", icon: BookOpen },
+                        { label: "Degree", value: "Bachelors accredited", icon: GraduationCap },
+                        { label: "Course Length", value: "2 Years", icon: Clock },
+                        { label: "Eligibility", value: "Any Stream", icon: BookOpen },
                     ].map((item, idx) => (
                         <motion.div 
                             key={idx}
@@ -163,6 +157,22 @@ const FashionDesigning = () => {
                         </motion.div>
                     ))}
                 </div>
+
+                {/* Enroll Now Button */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="flex justify-center mt-12 mb-4"
+                >
+                    <button
+                        onClick={() => navigate('/apply')}
+                        className="px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-white hover:text-slate-900 transition-all transform hover:scale-105 flex items-center gap-3"
+                    >
+                        Enroll Now
+                        <ArrowRight size={18} />
+                    </button>
+                </motion.div>
             </section>
 
 
@@ -220,7 +230,7 @@ const FashionDesigning = () => {
                         
                         <div className="flex bg-white p-2 rounded-full border border-slate-200 shadow-sm overflow-x-auto no-scrollbar">
                             {[
-                                { id: 'Industry Diploma', label: 'Industry Diploma', badge: 'Featured' },
+                                { id: 'Industry Diploma', label: '(AIIFD)', badge: 'Featured' },
                                 { id: 'Bachelors', label: 'Undergraduate' },
                                 { id: 'PG', label: 'Post Graduate' }
                             ].map((tab) => (
@@ -442,7 +452,7 @@ const FashionDesigning = () => {
                                 <p className="text-white/50 font-medium max-w-sm">Join the 2026 session. Limited seats for high-potential creative visionaries.</p>
                             </div>
                             <button 
-                                onClick={() => openAdmissionModal()}
+                                onClick={() => navigate('/apply')}
                                 className="px-16 py-6 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-primary hover:text-white transition-all transform hover:scale-105"
                             >
                                 Start Application

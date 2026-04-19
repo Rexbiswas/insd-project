@@ -45,6 +45,8 @@ const RegistrationModal = () => {
 
     useEffect(() => {
         if (isOpen) {
+            document.body.classList.add('hide-navbar');
+            document.body.style.overflow = 'hidden';
             // Generate simple math captcha
             const n1 = Math.floor(Math.random() * 10);
             const n2 = Math.floor(Math.random() * 10);
@@ -68,7 +70,14 @@ const RegistrationModal = () => {
                 const r2 = Math.floor(Math.random() * 10);
                 setCaptcha({ num1: r1, num2: r2, answer: r1 + r2 });
             }, 500);
+        } else {
+            document.body.classList.remove('hide-navbar');
+            document.body.style.overflow = 'unset';
         }
+        return () => {
+            document.body.classList.remove('hide-navbar');
+            document.body.style.overflow = 'unset';
+        };
     }, [isOpen]);
 
     const handleRegisterSubmit = async (e) => {

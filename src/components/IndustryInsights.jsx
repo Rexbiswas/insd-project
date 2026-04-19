@@ -139,8 +139,7 @@ const IndustryInsights = () => {
                                 whileHover={{ scale: 1.05, boxShadow: "0 25px 60px -15px rgba(219,52,54,0.4)" }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => openAdmissionModal({ 
-                                    title: 'Start Your Creative Career', 
-                                    subtitle: 'Join the creative revolution at INSD.' 
+                                    formType: 'step'
                                 })}
                                 className="inline-flex items-center justify-center gap-4 md:gap-8 bg-white text-slate-950 px-6 sm:px-10 md:px-16 py-6 md:py-8 rounded-full font-black text-xs md:text-base uppercase tracking-widest shadow-2xl transition-all duration-500 hover:bg-primary hover:text-white group/btn w-[90%] sm:w-auto mx-auto"
                             >

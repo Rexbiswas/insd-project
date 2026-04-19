@@ -72,15 +72,7 @@ const AdmissionFormWhite = ({ isModal = false, onClose }) => {
 
     return (
         <div className={`w-full max-w-6xl mx-auto overflow-hidden bg-white md:rounded-[2rem] shadow-2xl flex flex-col md:flex-row relative ${isModal ? 'max-h-[95vh] md:max-h-[90vh]' : 'my-4 md:my-10 animate-fade-in'}`}>
-            {/* Close Button (for Modal) */}
-            {isModal && (
-                <button 
-                    onClick={onClose}
-                    className="absolute top-6 right-6 z-50 p-3 bg-slate-100/50 hover:bg-slate-200 rounded-full transition-all backdrop-blur-md shadow-lg group active:scale-95"
-                >
-                    <X className="w-6 h-6 text-slate-900 group-hover:rotate-90 transition-transform duration-300" />
-                </button>
-            )}
+
 
             {/* Left Content - Marketing */}
             <div className={`w-full md:w-[45%] bg-gradient-to-br from-[#134a84] to-[#db3436] text-white flex flex-col justify-between relative overflow-hidden ${isModal ? 'md:h-auto' : 'min-h-[300px] md:min-h-[650px]'}`}>
@@ -97,10 +89,9 @@ const AdmissionFormWhite = ({ isModal = false, onClose }) => {
                         </div>
 
                         <h2 className="text-xl md:text-4xl font-black leading-[1.2] tracking-tight">
-                            Unlock Your<br />
-                            Career<br />
-                            Potential with<br />
-                            <span className="text-[#db3436]">Expert Guidance</span>
+                            Start Your<br />
+                            <span className="text-[#db3436]">Creative Career</span><br />
+                            Today
                         </h2>
 
                         <p className="text-white font-bold text-xs md:text-sm max-w-[280px] leading-relaxed opacity-80">
@@ -128,9 +119,19 @@ const AdmissionFormWhite = ({ isModal = false, onClose }) => {
                 <div className="absolute right-0 top-0 bottom-0 w-0.5 bg-[#db3436] opacity-30 pointer-events-none hidden md:block" />
                 
                 <div className="p-6 md:p-10 space-y-6 md:space-y-8">
-                    <div className="space-y-1">
-                        <h3 className="text-xl md:text-3xl font-black text-slate-900 tracking-tight">Start Your Journey</h3>
-                        <p className="text-slate-500 font-bold text-sm md:text-base">Our experts will call you within 24 hours</p>
+                    <div className="flex items-center justify-between gap-4">
+                        <div className="space-y-1">
+                            <h3 className="text-xl md:text-3xl font-black text-slate-900 tracking-tight uppercase">Talk to our Career Expert</h3>
+                            <p className="text-slate-500 font-bold text-sm md:text-base">Our experts will call you within 24 hours</p>
+                        </div>
+                        {isModal && (
+                            <button 
+                                onClick={onClose}
+                                className="p-2 md:p-3 rounded-full bg-slate-50 text-slate-400 hover:bg-[#db3436] hover:text-white transition-all border border-slate-100 shadow-md group"
+                            >
+                                <X size={24} className="group-hover:rotate-90 transition-transform" />
+                            </button>
+                        )}
                     </div>
 
                     <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">

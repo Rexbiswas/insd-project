@@ -79,7 +79,19 @@ const Navbar = () => {
     const navigate = useNavigate();
     // Pages that have a dark background/theme or high-impact gradient hero sections
     // Updated detection: Pages with permanent dark themes or sections
-    const darkPages = ['/apply', '/insd-360/blog'];
+    const darkPages = [
+        '/apply', 
+        '/insd-360/blog',
+        '/courses/fashion-designing',
+        '/courses/interior-designing',
+        '/courses/graphic-designing',
+        '/courses/animation-and-vfx',
+        '/courses/jewellery-designing',
+        '/courses/uiux-designing',
+        '/courses/beauty-and-makeup',
+        '/courses/photography',
+        '/courses/textile-designing'
+    ];
     const [isHeaderDark, setIsHeaderDark] = useState(darkPages.includes(location.pathname));
 
     // GSAP SVG Animation REfs

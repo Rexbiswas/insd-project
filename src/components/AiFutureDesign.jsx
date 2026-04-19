@@ -90,7 +90,7 @@ const AiFutureDesign = () => {
                         <div className="relative aspect-square md:aspect-3/4 rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl">
                             <motion.img
                                 style={{ scale }}
-                                src="https://ik.imagekit.io/fmldynl4j4/insd-awards/Screenshot%202026-03-10%20162457.png"
+                                src="https://ik.imagekit.io/fmldynl4j4/Students/12fa84bc-f2de-40be-8b80-21dc73057af3_1.jfif"
                                 alt="AI and Design Integration"
                                 className="w-full h-full object-cover origin-center"
                             />

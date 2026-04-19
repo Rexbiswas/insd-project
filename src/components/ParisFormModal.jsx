@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Check, ArrowRight, Stars, Mail, Phone, User as UserIcon } from 'lucide-react';
 
@@ -10,6 +10,21 @@ const ParisFormModal = ({ isOpen, onClose }) => {
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
+
+    // Toggle body class to hide navbar and prevent scroll
+    useEffect(() => {
+        if (isOpen) {
+            document.body.classList.add('hide-navbar');
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.classList.remove('hide-navbar');
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.classList.remove('hide-navbar');
+            document.body.style.overflow = 'unset';
+        };
+    }, [isOpen]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

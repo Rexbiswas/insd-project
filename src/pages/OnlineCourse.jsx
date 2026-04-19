@@ -3,12 +3,14 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Play, Pause, Clock, Globe, Sparkles, Star, BookOpen, CheckCircle2 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const OnlineCourse = () => {
+    const navigate = useNavigate();
     const heroRef = useRef(null);
     const navRef = useRef(null);
     const containerRef = useRef(null);
@@ -151,7 +153,10 @@ const OnlineCourse = () => {
                         </p>
 
                         <div className="flex flex-col md:flex-row items-center gap-6 justify-center lg:justify-start">
-                            <button className="magnetic group relative px-12 py-5 bg-white text-black font-black uppercase tracking-widest rounded-full hover:bg-primary hover:text-white transition-all duration-500 shadow-2xl overflow-hidden">
+                             <button 
+                                onClick={() => navigate('/apply')}
+                                className="magnetic group relative px-12 py-5 bg-white text-black font-black uppercase tracking-widest rounded-full hover:bg-primary hover:text-white transition-all duration-500 shadow-2xl overflow-hidden"
+                            >
                                 <span className="relative z-10">Start Learning Now</span>
                                 <div className="absolute inset-x-0 bottom-0 h-0 group-hover:h-full bg-primary transition-all duration-300 -z-0"></div>
                             </button>
@@ -514,7 +519,10 @@ const OnlineCourse = () => {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                            <button className="px-12 py-6 bg-primary text-white font-black uppercase tracking-widest rounded-full hover:scale-105 active:scale-95 transition-all shadow-[0_20px_40px_rgba(219,52,54,0.4)]">
+                             <button 
+                                onClick={() => navigate('/apply')}
+                                className="px-12 py-6 bg-primary text-white font-black uppercase tracking-widest rounded-full hover:scale-105 active:scale-95 transition-all shadow-[0_20px_40px_rgba(219,52,54,0.4)]"
+                            >
                                 Claim My Seat
                             </button>
                             <button className="px-12 py-6 border border-white/20 text-white font-black uppercase tracking-widest rounded-full hover:bg-white hover:text-black transition-all">

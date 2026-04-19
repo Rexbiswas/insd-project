@@ -159,7 +159,7 @@ const AwardsRecognition = () => {
                     className="group relative px-12 py-6 bg-slate-900 text-white rounded-full font-black uppercase text-xs tracking-[0.3em] shadow-2xl overflow-hidden transition-all duration-500"
                 >
                     <span className="relative z-10 flex items-center gap-4">
-                        Start Your Design Journey Here
+                        Talk to a Counsellor
                         <Sparkles size={18} className="text-primary group-hover:rotate-12 transition-transform" />
                     </span>
                     <div className="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />

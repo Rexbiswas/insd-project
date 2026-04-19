@@ -112,10 +112,10 @@ const AdmissionStepForm = () => {
                     >
                         <div className="text-center mb-12">
                             <h2 className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter mb-4 text-slate-900 leading-[0.9]">
-                                Are You Ready to Start <br /> Learning <span className="text-primary italic font-serif">Job-Ready</span> Skills?
+                                Start Your <br /> <span className="text-primary italic font-serif">Creative Career</span> <br /> Today
                             </h2>
                             <p className="text-slate-500 font-medium max-w-lg mx-auto text-lg">
-                                The design industry is booming. Let's find out if you're ready to take the leap into a creative career.
+                                Start your creative career with industry-standard protocols. Let's determine the right path for your talent.
                             </p>
                         </div>
 

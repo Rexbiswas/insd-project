@@ -191,6 +191,16 @@ const ProgramGrid = () => {
     const [selectedProgram, setSelectedProgram] = useState(null);
     const [showLeadForm, setShowLeadForm] = useState(false);
 
+    const highlightIndustry = (text) => {
+        if (!text) return text;
+        const parts = text.split(/(Industry)/i);
+        return parts.map((part, i) => 
+            part.toLowerCase() === 'industry' 
+                ? <span key={i} className="relative inline-block px-2 py-0.5 bg-primary/5 text-primary border border-primary/20 rounded-md ml-1 font-serif italic shadow-sm">{part}</span> 
+                : part
+        );
+    };
+
     useEffect(() => {
         if (selectedProgram) {
             document.body.classList.add('hide-navbar');
@@ -226,7 +236,7 @@ const ProgramGrid = () => {
             <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-transparent to-black/40 opacity-100 z-0" />
             
             <div className="absolute inset-0 z-10 flex flex-col items-center justify-center p-6 text-center">
-                <h3 className="text-white font-black text-2xl md:text-3xl lg:text-4xl leading-none uppercase tracking-tighter transition-all duration-700 group-hover:scale-110 group-hover:text-primary drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
+                <h3 className="text-white font-black text-[32px] md:text-[38px] lg:text-[44px] leading-none uppercase tracking-tighter transition-all duration-700 group-hover:scale-110 group-hover:text-primary drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
                     {program.title}
                 </h3>
                 
@@ -311,7 +321,7 @@ const ProgramGrid = () => {
                                             transition={{ delay: 0.3 }}
                                         >
                                             <div className="w-12 h-px bg-primary mb-4" />
-                                            <h2 className="text-white text-4xl font-black uppercase tracking-tighter leading-[0.9] mb-4 italic drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
+                                            <h2 className="text-white text-[44px] font-black uppercase tracking-tighter leading-[0.9] mb-4 italic drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
                                                 {selectedProgram.title}
                                             </h2>
                                         </motion.div>
@@ -363,8 +373,8 @@ const ProgramGrid = () => {
                                                 >
                                                     {/* Header Text */}
                                                     <div className="max-w-xl">
-                                                        <h3 className="text-xl md:text-2xl font-black text-slate-900 leading-tight mb-2 tracking-tighter uppercase italic">
-                                                            {selectedProgram.careerPath.title}
+                                                        <h3 className="text-sm md:text-base font-black text-slate-900 leading-tight mb-2 tracking-tighter uppercase italic flex flex-wrap items-center">
+                                                            {highlightIndustry(selectedProgram.careerPath.title)}
                                                         </h3>
                                                         
                                                         {selectedProgram.careerPath.salaries && (
@@ -388,7 +398,7 @@ const ProgramGrid = () => {
                                                             "{selectedProgram.subtitle}"
                                                         </p>
                                                     </div>
- streams. Every program now includes Market Size and Industry Demand projections.
+
 
                                                     {/* Market Statistics Section */}
                                                     {selectedProgram.careerPath.stats && (
@@ -435,8 +445,8 @@ const ProgramGrid = () => {
                                                             </div>
                                                         ))}
                                                     </div>
- streams. Every program now includes Market Size and Industry Demand projections.
- streams. Every program now includes Market Size and Industry Demand projections.
+
+
 
                                                     {/* Professional Outcomes Disclaimer */}
                                                     <div className="pt-6 border-t border-slate-100 italic">

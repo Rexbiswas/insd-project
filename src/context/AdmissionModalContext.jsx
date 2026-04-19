@@ -4,10 +4,14 @@ const AdmissionModalContext = createContext();
 
 export const AdmissionModalProvider = ({ children }) => {
     const [isAdmissionOpen, setIsAdmissionOpen] = useState(false);
-    const [modalConfig, setModalConfig] = useState({ title: '', subtitle: '' });
+    const [modalConfig, setModalConfig] = useState({ title: '', subtitle: '', formType: 'admission' });
 
-    const openAdmissionModal = (config = { title: '', subtitle: '' }) => {
-        setModalConfig(config);
+    const openAdmissionModal = (config = {}) => {
+        setModalConfig({
+            title: config.title || '',
+            subtitle: config.subtitle || '',
+            formType: config.formType || 'admission'
+        });
         setIsAdmissionOpen(true);
     };
     const closeAdmissionModal = () => setIsAdmissionOpen(false);

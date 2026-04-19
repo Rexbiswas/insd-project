@@ -21,11 +21,13 @@ import {
     Palette,
     PenTool
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
 import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const UIUXDesigning = () => {
+    const navigate = useNavigate();
     const { openAdmissionModal } = useAdmissionModal();
     const [activeOutline, setActiveOutline] = useState('Industry Diploma');
     const [expandedSem, setExpandedSem] = useState(1);
@@ -87,7 +89,7 @@ const UIUXDesigning = () => {
     };
 
     const careerPaths = [
-        { title: "UX Researcher", desc: "Conducting user interviews and data analysis to uncover deep behavioral insights and pain points.", img: "https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&q=80&w=800" },
+        { title: "UX Researcher", desc: "Conducting user interviews and data analysis to uncover deep behavioral insights and pain points.", img: "https://tse1.mm.bing.net/th/id/OIP.vppbBU8oSFzMKYM97ytEOwHaE7?rs=1&pid=ImgDetMain&o=7&rm=3" },
         { title: "Visual UI Designer", desc: "Crafting beautiful and high-fidelity interfaces that align with brand aesthetics and UI patterns.", img: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800" },
         { title: "Product Designer", desc: "Solving complex business problems through end-to-end digital product design and strategy.", img: "https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&q=80&w=800" },
         { title: "Information Architect", desc: "Organizing complex data structures and navigation systems for intuitive user discovery.", img: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800" },
@@ -131,15 +133,6 @@ const UIUXDesigning = () => {
                         </h1>
                         
                         
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12">
-                            <button 
-                                onClick={() => openAdmissionModal()}
-                                className="group px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3"
-                            >
-                                Enroll Now
-                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                            </button>
-                        </div>
                         <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
                                 <span className="text-[10px] font-black uppercase tracking-widest">Scroll to Explore</span>
                                 <ArrowRight size={16} className="rotate-90" />
@@ -149,21 +142,21 @@ const UIUXDesigning = () => {
             </section>
 
             {/* --- COURSE HIGHLIGHTS --- */}
-            <section className="py-12 bg-black overflow-hidden relative border-y border-white/5">
+            <section className="py-12 bg-slate-900 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
                     {[
-                        { label: "Degree", value: "Bachelors accredited by UGC", icon: GraduationCap },
-                        { label: "Course Length", value: "3 or 4 Years Option", icon: Clock },
-                        { label: "Eligibility", value: "10+2 Any Stream", icon: BookOpen },
+                        { label: "Degree", value: "Bachelors accredited", icon: GraduationCap },
+                        { label: "Course Length", value: "1 Years", icon: Clock },
+                        { label: "Eligibility", value: "Any Stream", icon: BookOpen },
                     ].map((item, idx) => (
                         <motion.div 
                             key={idx}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: idx * 0.1 }}
-                            className="flex items-center gap-6 p-8 rounded-[2.5rem] bg-white/5 border border-white/10 group hover:border-primary/50 transition-all duration-500"
+                            className="flex items-center gap-6 p-8 rounded-3xl bg-white/5 border border-white/10 group hover:border-primary/50 transition-colors"
                         >
-                            <div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                            <div className="w-14 h-14 rounded-2xl bg-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
                                 <item.icon size={28} />
                             </div>
                             <div>
@@ -173,6 +166,22 @@ const UIUXDesigning = () => {
                         </motion.div>
                     ))}
                 </div>
+
+                {/* Enroll Now Button */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="flex justify-center mt-12 mb-4"
+                >
+                    <button
+                        onClick={() => navigate('/apply')}
+                        className="px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-white hover:text-slate-900 transition-all transform hover:scale-105 flex items-center gap-3"
+                    >
+                        Enroll Now
+                        <ArrowRight size={18} />
+                    </button>
+                </motion.div>
             </section>
 
             {/* --- LEARNING OUTCOMES --- */}
@@ -201,7 +210,7 @@ const UIUXDesigning = () => {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-4 h-auto md:h-[600px]">
                         <div className="col-span-1 md:col-span-7 h-[300px] md:h-full rounded-2xl overflow-hidden shadow-2xl">
-                            <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=600" className="w-full h-full object-cover" alt="UI Design" />
+                            <img src="https://tse1.mm.bing.net/th/id/OIP.vppbBU8oSFzMKYM97ytEOwHaE7?rs=1&pid=ImgDetMain&o=7&rm=3" className="w-full h-full object-cover" alt="UI Design" />
                         </div>
                         <div className="col-span-1 md:col-span-5 grid grid-cols-2 md:grid-cols-1 gap-4 h-[200px] md:h-full">
                             <div className="rounded-2xl overflow-hidden shadow-2xl">
@@ -415,7 +424,7 @@ const UIUXDesigning = () => {
                                 <p className="text-white/50 max-w-sm uppercase text-xs tracking-widest font-black">Join the 2026 session. Limited seats for high-potential tech creative visionaries.</p>
                             </div>
                             <button 
-                                onClick={() => openAdmissionModal()}
+                                onClick={() => navigate('/apply')}
                                 className="px-16 py-6 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-primary hover:text-white transition-all transform hover:scale-105"
                             >
                                 Start Application

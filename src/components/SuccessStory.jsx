@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Quote, ArrowUpRight, Award, Star } from 'lucide-react';
+import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const SuccessStory = () => {
+    const { openAdmissionModal } = useAdmissionModal();
     const stories = [
         {
             name: "Ankit Khera",
@@ -144,10 +146,10 @@ const SuccessStory = () => {
                     
 
                     <button 
-                        onClick={() => {
-                            const el = document.getElementById('step-lead-form');
-                            if (el) el.scrollIntoView({ behavior: 'smooth' });
-                        }}
+                        onClick={() => openAdmissionModal({ 
+                            title: 'Download Placement Report', 
+                            subtitle: 'Join our elite alumni network. Fill in your details to get the full report.' 
+                        })}
                         className="group relative px-12 py-6 bg-slate-950 text-white rounded-full font-black uppercase tracking-widest text-xs overflow-hidden shadow-3xl hover:shadow-primary/40 transition-all duration-500 hover:-translate-y-2 cursor-pointer z-20"
                     >
                         <span className="relative z-10 flex items-center gap-4">

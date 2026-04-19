@@ -24,11 +24,13 @@ import {
     BookOpen,
     PenTool
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
 import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const GraphicDesigning = () => {
+    const navigate = useNavigate();
     const { openAdmissionModal } = useAdmissionModal();
     const [activeOutline, setActiveOutline] = useState('Industry Diploma');
     const [expandedSem, setExpandedSem] = useState(1);
@@ -95,13 +97,13 @@ const GraphicDesigning = () => {
     const careerPaths = [
         { title: "Brand Identity Designer", desc: "Crafting unique visual identities, logos, and brand guidelines for global businesses.", img: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=800" },
         { title: "Art Director", desc: "Leading the creative vision for advertising campaigns, editorial shoots, and digital media.", img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800" },
-        { title: "UI/UX Specialist", desc: "Designing intuitive digital interfaces and seamless user experiences for apps and web.", img: "https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&q=80&w=800" },
-        { title: "Package Designer", desc: "Creating impactful packaging solutions that define product presence on shelves.", img: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=800" },
+        { title: "UI/UX Specialist", desc: "Designing intuitive digital interfaces and seamless user experiences for apps and web.", img: "https://tse1.mm.bing.net/th/id/OIP.cXd2t08w39TxRqab9CxDBQHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" },
+        { title: "Package Designer", desc: "Creating impactful packaging solutions that define product presence on shelves.", img: "https://packagingdiscussions.com/uploads/images/the-impact-of-graphic-design-in-packaging-1699924821.webp" },
         { title: "Motion Artist", desc: "Bringing static designs to life through animation for film and digital media.", img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800" },
         { title: "Web Designer", desc: "Architecting responsive websites that blend aesthetics with technical utility.", img: "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=800" },
-        { title: "Editorial Designer", desc: "Layout and visual strategy for high-end magazines, books, and digital journals.", img: "https://images.unsplash.com/photo-1586075010633-2470acfd8e8a?auto=format&fit=crop&q=80&w=800" },
+        { title: "Editorial Designer", desc: "Layout and visual strategy for high-end magazines, books, and digital journals.", img: "https://i.ytimg.com/vi/xXKAhmT9GxU/maxresdefault.jpg" },
         { title: "Creative Consultant", desc: "Providing strategic visual solutions for startups and global corporations.", img: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=800" },
-        { title: "Exhibition Designer", desc: "Designing immersive visual environments for museums, galleries and trade fairs.", img: "https://images.unsplash.com/photo-1518998053574-53f1f114e8c5?auto=format&fit=crop&q=80&w=800" }
+        { title: "Exhibition Designer", desc: "Designing immersive visual environments for museums, galleries and trade fairs.", img: "https://tse4.mm.bing.net/th/id/OIP.y2jL9gPJ5ILj9X-nw-PPWgHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" }
     ];
 
     return (
@@ -135,40 +137,30 @@ const GraphicDesigning = () => {
                             <span className="text-primary italic">design</span>
                         </h1>
                         
-                        
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12">
-                            <button 
-                                onClick={() => openAdmissionModal()}
-                                className="group px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3"
-                            >
-                                Enroll Now
-                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                            </button>
-                        </div>
                         <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
                                 <span className="text-[10px] font-black uppercase tracking-widest">Scroll to Explore</span>
                                 <ArrowRight size={16} className="rotate-90" />
-                            </div>
+                        </div>
                     </motion.div>
                 </div>
             </section>
 
             {/* --- COURSE HIGHLIGHTS --- */}
-            <section className="py-12 bg-black overflow-hidden relative border-y border-white/5">
+            <section className="py-12 bg-slate-900 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
                     {[
-                        { label: "Degree", value: "Bachelors accredited by UGC", icon: GraduationCap },
-                        { label: "Course Length", value: "3 or 4 Years Option", icon: Clock },
-                        { label: "Eligibility", value: "10+2 Any Stream", icon: BookOpen },
+                        { label: "Degree", value: "Bachelors accredited", icon: GraduationCap },
+                        { label: "Course Length", value: "1 Year", icon: Clock },
+                        { label: "Eligibility", value: "Any Stream", icon: BookOpen },
                     ].map((item, idx) => (
                         <motion.div 
                             key={idx}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: idx * 0.1 }}
-                            className="flex items-center gap-6 p-8 rounded-[2.5rem] bg-white/5 border border-white/10 group hover:border-primary/50 transition-all duration-500"
+                            className="flex items-center gap-6 p-8 rounded-3xl bg-white/5 border border-white/10 group hover:border-primary/50 transition-colors"
                         >
-                            <div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                            <div className="w-14 h-14 rounded-2xl bg-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
                                 <item.icon size={28} />
                             </div>
                             <div>
@@ -178,6 +170,22 @@ const GraphicDesigning = () => {
                         </motion.div>
                     ))}
                 </div>
+
+                {/* Enroll Now Button */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="flex justify-center mt-12 mb-4"
+                >
+                    <button
+                        onClick={() => navigate('/apply')}
+                        className="px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-white hover:text-slate-900 transition-all transform hover:scale-105 flex items-center gap-3"
+                    >
+                        Enroll Now
+                        <ArrowRight size={18} />
+                    </button>
+                </motion.div>
             </section>
 
             {/* --- LEARNING OUTCOMES --- */}
@@ -213,7 +221,7 @@ const GraphicDesigning = () => {
                                 <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=600" className="w-full h-full object-cover" alt="Graphic Design" />
                             </div>
                             <div className="hidden md:block rounded-2xl overflow-hidden shadow-2xl">
-                                <img src="https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&q=80&w=600" className="w-full h-full object-cover" alt="Graphic Design" />
+                                <img src="https://tse2.mm.bing.net/th/id/OIP.gzOEL1VJYYy6LlebRE9DQQHaE7?rs=1&pid=ImgDetMain&o=7&rm=3" className="w-full h-full object-cover" alt="Graphic Design" />
                             </div>
                         </div>
                     </div>
@@ -454,7 +462,7 @@ const GraphicDesigning = () => {
                                 <p className="text-white/50 font-medium max-w-sm">Join the 2026 session. Limited seats for high-potential creative visionaries.</p>
                             </div>
                             <button 
-                                onClick={() => openAdmissionModal()}
+                                onClick={() => navigate('/apply')}
                                 className="px-16 py-6 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-primary hover:text-white transition-all transform hover:scale-105"
                             >
                                 Start Application

@@ -336,7 +336,7 @@ const Home = () => {
                                 onClick={() => openAdmissionModal()}
                                 className="w-full sm:w-auto h-14 px-8 bg-primary text-white rounded-full font-black uppercase tracking-widest text-[10px] shadow-xl flex items-center justify-center gap-3 transition-all hover:bg-slate-950"
                             >
-                                Get Started
+                                Talk to a Counsellor
                                 <ArrowRight size={18} />
                             </motion.button>
                             <motion.a
@@ -373,8 +373,12 @@ const Home = () => {
                                     <div className="bg-white p-1.5 rounded-full shadow-sm group-hover/pill:rotate-12 transition-transform duration-500">
                                         {pill.icon}
                                     </div>
-                                    <span className="text-[11px] md:text-sm font-black uppercase tracking-[0.15em] text-slate-600 group-hover/pill:text-primary transition-colors">
-                                        {pill.text}
+                                    <span className="text-[11px] md:text-sm font-black uppercase tracking-[0.15em] text-slate-800 transition-colors">
+                                        {pill.text.split(' ').map((word, index) => (
+                                            <span key={index} className={word.toLowerCase() === 'industry' ? 'text-primary' : 'group-hover/pill:text-primary'}>
+                                                {word}{index === 0 ? ' ' : ''}
+                                            </span>
+                                        ))}
                                     </span>
                                 </div>
                             ))}

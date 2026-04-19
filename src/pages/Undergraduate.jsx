@@ -2,7 +2,8 @@ import React, { useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowUpRight, Palette, PenTool, Layout, Monitor, Scissors, Home, Camera, Video } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { ArrowUpRight, Palette, PenTool, Layout, Monitor, Scissors, Home, Camera, Video, Rocket, Globe, Target, ArrowRight } from 'lucide-react';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import DirectorProfile from '../components/DirectorProfile';
@@ -10,6 +11,7 @@ import DirectorProfile from '../components/DirectorProfile';
 gsap.registerPlugin(ScrollTrigger);
 
 const Undergraduate = () => {
+    const navigate = useNavigate();
     const containerRef = useRef(null);
     const [activeCategory, setActiveCategory] = React.useState("Undergraduate");
 
@@ -227,7 +229,7 @@ const Undergraduate = () => {
                             className="flex flex-wrap items-center gap-12 pt-10"
                         >
                             <button className="relative group overflow-hidden px-16 py-7 bg-slate-900 text-white rounded-full font-black uppercase text-[10px] tracking-[0.4em] transition-all hover:pr-24 shadow-2xl shadow-slate-900/20">
-                                <span className="relative z-10">Start Your Journey</span>
+                                <span className="relative z-10">Talk to a Counsellor</span>
                                 <div className="absolute inset-0 bg-primary translate-x-[-101%] group-hover:translate-x-0 transition-transform duration-500" />
                                 <ArrowRight className="absolute right-10 top-1/2 -translate-y-1/2 w-7 h-7 opacity-0 group-hover:opacity-100 transition-all text-white" />
                             </button>
@@ -428,7 +430,10 @@ const Undergraduate = () => {
                     </h2>
                     
                     <div className="flex flex-col md:flex-row items-center justify-center gap-12 pt-12">
-                        <button className="px-20 py-8 bg-white text-slate-950 rounded-full font-black uppercase text-[10px] tracking-[0.5em] shadow-[0_30px_70px_rgba(255,255,255,0.1)] hover:bg-primary hover:text-white transition-all transform hover:scale-105">
+                        <button 
+                            onClick={() => navigate('/apply')}
+                            className="px-20 py-8 bg-white text-slate-950 rounded-full font-black uppercase text-[10px] tracking-[0.5em] shadow-[0_30px_70px_rgba(255,255,255,0.1)] hover:bg-primary hover:text-white transition-all transform hover:scale-105"
+                        >
                             Apply Admission
                         </button>
                         <button className="px-20 py-8 border-2 border-white/20 text-white rounded-full font-black uppercase text-[10px] tracking-[0.5em] hover:bg-white hover:text-slate-950 transition-all transform hover:scale-105">
@@ -447,7 +452,10 @@ const Undergraduate = () => {
                     Ready to <br /> Create?
                 </h2>
                 <div className="flex flex-col md:flex-row justify-center items-center gap-6">
-                    <button className="px-12 py-4 bg-primary text-white font-bold uppercase tracking-widest rounded-full hover:bg-[#a61517] shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <button 
+                        onClick={() => navigate('/apply')}
+                        className="px-12 py-4 bg-primary text-white font-bold uppercase tracking-widest rounded-full hover:bg-[#a61517] shadow-xl hover:-translate-y-1 transition-all duration-300"
+                    >
                         Apply Now
                     </button>
                     <button className="px-12 py-4 border border-white text-white font-bold uppercase tracking-widest rounded-full hover:bg-white hover:text-black transition-colors duration-300">

@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, Award, Clock, Star, ShieldCheck, Zap } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 
@@ -40,6 +41,7 @@ const specialties = [
 ];
 
 const DiplomaAndCertificate = () => {
+    const navigate = useNavigate();
     const heroRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: heroRef,
@@ -228,6 +230,7 @@ const DiplomaAndCertificate = () => {
                     <motion.button 
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
+                        onClick={() => navigate('/apply')}
                         className="bg-black text-white px-12 py-5 rounded-full font-bold uppercase tracking-widest text-sm shadow-[0_20px_40px_rgba(0,0,0,0.2)] flex items-center gap-4 transition-all hover:bg-[#111]"
                     >
                         Register Interest <ArrowUpRight size={18} />

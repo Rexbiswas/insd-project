@@ -8,14 +8,14 @@ const HeroSlider = () => {
             id: 1, 
             val: "100%", 
             label: "Placement Support", 
-            pos: "top-12 right-12 md:top-20 md:right-10", 
+            pos: "top-2 right-10 md:top-16 md:right-10", 
             delay: 0.5 
         },
         { 
             id: 2, 
             val: "300000+", 
             label: "students", 
-            pos: "bottom-1/3 left-6 md:bottom-1/2 md:left-10", 
+            pos: "bottom-12 left-6 md:bottom-16 md:left-10", 
             delay: 0.8 
         },
         { 
@@ -33,7 +33,7 @@ const HeroSlider = () => {
             {/* Main Hero Image */}
             <div className="relative w-full h-full overflow-hidden">
                 <img 
-                    src="https://ik.imagekit.io/fmldynl4j4/IMG_3440.JPG?updatedAt=1771841966154" 
+                    src="https://ik.imagekit.io/fmldynl4j4/Students/ARI02311%20(2).JPG?updatedAt=1774928425723" 
                     alt="Student with Vision"
                     className="w-full h-full object-cover"
                 />

@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight, Target, Flame, Sparkles, Zap } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 
@@ -79,6 +80,7 @@ const ScrollingText = () => (
 );
 
 const ShortTermCourse = () => {
+    const navigate = useNavigate();
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] });
     const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
@@ -200,7 +202,10 @@ const ShortTermCourse = () => {
                     <p className="text-xl font-bold uppercase tracking-widest text-black/60 mb-12">
                         Next intake begins in 14 days. Limited seats per module.
                     </p>
-                    <button className="bg-black text-[#e1f021] px-12 py-5 rounded-full font-bold uppercase tracking-widest text-sm hover:scale-105 transition-transform flex items-center justify-center gap-4 mx-auto shadow-2xl shadow-black/20">
+                    <button 
+                        onClick={() => navigate('/apply')}
+                        className="bg-black text-[#e1f021] px-12 py-5 rounded-full font-bold uppercase tracking-widest text-sm hover:scale-105 transition-transform flex items-center justify-center gap-4 mx-auto shadow-2xl shadow-black/20"
+                    >
                         Enroll Now <ArrowUpRight size={18} />
                     </button>
                 </motion.div>

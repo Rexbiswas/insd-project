@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PlayCircle, ArrowRight, Star, Globe, ShieldCheck, Plus, ChevronRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
 
 const InsdLuxe = () => {
+    const navigate = useNavigate();
     const [openFaq, setOpenFaq] = useState(null);
 
     const faqs = [
@@ -64,7 +66,10 @@ const InsdLuxe = () => {
                             transition={{ duration: 0.8, delay: 0.4 }}
                             className="flex flex-wrap items-center gap-8"
                         >
-                            <button className="px-10 py-4 bg-gold text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-secondary transition-all transform hover:scale-105 shadow-xl shadow-gold/20">
+                            <button 
+                                onClick={() => navigate('/apply')}
+                                className="px-10 py-4 bg-gold text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-secondary transition-all transform hover:scale-105 shadow-xl shadow-gold/20"
+                            >
                                 Apply Now
                             </button>
                             <button className="flex items-center gap-3 text-slate-900 group">
@@ -290,7 +295,10 @@ const InsdLuxe = () => {
                         Experience the convergence of business and design. Apply for the 2026 international exchange program today.
                     </p>
                     <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-                        <button className="px-12 py-5 bg-gold text-white rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-secondary hover:text-white transition-all transform hover:scale-105">
+                        <button 
+                            onClick={() => navigate('/apply')}
+                            className="px-12 py-5 bg-gold text-white rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-secondary hover:text-white transition-all transform hover:scale-105"
+                        >
                             Start Application
                         </button>
                         <button className="px-12 py-5 border border-slate-200 text-slate-900 rounded-full font-black uppercase text-xs tracking-widest hover:bg-slate-900 hover:text-white transition-all">
