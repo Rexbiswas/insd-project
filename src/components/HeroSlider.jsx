@@ -4,38 +4,38 @@ import { motion } from 'framer-motion';
 const HeroSlider = () => {
     // Stats matching the user's provided image
     const floatingStats = [
-        { 
-            id: 1, 
-            val: "100%", 
-            label: "Placement Support", 
-            pos: "top-2 right-10 md:top-16 md:right-10", 
-            delay: 0.5 
+        {
+            id: 1,
+            val: "100%",
+            label: "Placement Support",
+            pos: "top-2 left-6 md:top-16 md:left-10",
+            delay: 0.5
         },
-        { 
-            id: 2, 
-            val: "300000+", 
-            label: "students", 
-            pos: "bottom-12 left-6 md:bottom-16 md:left-10", 
-            delay: 0.8 
+        {
+            id: 2,
+            val: "300000+",
+            label: "students",
+            pos: "bottom-12 right-6 md:bottom-16 md:right-10",
+            delay: 0.8
         },
-        { 
-            id: 3, 
-            val: "75", 
-            label: "Campuses Across India", 
-            pos: "bottom-16 right-6 md:bottom-24 md:right-12", 
-            delay: 1.1 
+        {
+            id: 3,
+            val: "75",
+            label: "Campuses Across India",
+            pos: "bottom-16 left-6 md:bottom-24 md:left-12",
+            delay: 1.1
         }
     ];
 
     return (
         <div className="relative w-full h-full overflow-hidden group select-none rounded-[1.5rem] md:rounded-[3rem] shadow-2xl">
-            
+
             {/* Main Hero Image */}
-            <div className="relative w-full h-full overflow-hidden">
-                <img 
-                    src="https://ik.imagekit.io/fmldynl4j4/Students/ARI02311%20(2).JPG?updatedAt=1774928425723" 
+            <div className="relative w-full h-full overflow-hidden bg-[#a3a3a3]">
+                <img
+                    src="https://ik.imagekit.io/fmldynl4j4/63c1e643-7489-4d73-8ae2-d96401370885_1-removebg-preview.png"
                     alt="Student with Vision"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-right"
                 />
 
                 {/* Paper Plane Animation */}
@@ -66,12 +66,12 @@ const HeroSlider = () => {
                         <motion.div
                             key={stat.id}
                             initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                            animate={{ 
-                                opacity: 1, 
-                                scale: 1, 
-                                y: [0, -10, 0] 
+                            animate={{
+                                opacity: 1,
+                                scale: 1,
+                                y: [0, -10, 0]
                             }}
-                            transition={{ 
+                            transition={{
                                 opacity: { delay: stat.delay, duration: 0.8 },
                                 scale: { delay: stat.delay, duration: 0.8 },
                                 y: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: stat.delay }
