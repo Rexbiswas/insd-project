@@ -16,53 +16,53 @@ const Events = () => {
 
     const showcaseEvents = [
         {
-            title: "Annual Talent Showcase - Highlights",
+            title: "The Runway Edit",
             icon: Camera,
             color: "from-primary/10",
             img: "https://ik.imagekit.io/fmldynl4j4/folder/P1304858.JPG",
-            desc: "Capturing the raw energy and experimental spirit of the national showcase."
+            desc: "Raw energy and experimental spirit of the national showcase."
         },
         {
-            title: "Annual Talent Showcase - Highlights",
+            title: "Design Innovation",
             icon: Sparkles,
             color: "from-secondary/10",
             img: "https://ik.imagekit.io/fmldynl4j4/folder/P1304559.JPG",
-            desc: "Where traditional craftsmanship meets contemporary design innovation."
+            desc: "Traditional craftsmanship meets contemporary innovation."
         },
         {
-            title: "Annual Talent Showcase - Highlights",
+            title: "Avant-Garde Detailing",
             icon: Camera,
             color: "from-primary/10",
             img: "https://ik.imagekit.io/fmldynl4j4/folder/4A9B6490%20(1).jpg",
-            desc: "Intricate detailing and avant-garde silhouettes defining the next trend."
+            desc: "Intricate detailing and silhouettes defining the next trend."
         },
         {
-            title: "Annual Talent Showcase - Highlights",
+            title: "Student Creative",
             icon: Sparkles,
             color: "from-secondary/10",
             img: "https://ik.imagekit.io/fmldynl4j4/folder/DSC08535.JPG",
-            desc: "A celebration of student creativity on the prestigious runway stage."
+            desc: "A celebration of student creativity on the prestigious runway."
         },
         {
-            title: "Annual Talent Showcase - Highlights",
+            title: "Sustainable Urban",
             icon: Camera,
             color: "from-primary/10",
             img: "https://ik.imagekit.io/fmldynl4j4/folder/P1304076.JPG",
-            desc: "Pioneering new aesthetics through sustainable and urban design concepts."
+            desc: "Sustainable and urban design concepts from the future."
         },
         {
-            title: "Annual Talent Showcase - Highlights",
+            title: "Global Expressions",
             icon: Sparkles,
             color: "from-secondary/10",
             img: "https://ik.imagekit.io/fmldynl4j4/folder/DSC09094.JPG",
-            desc: "Final looks that left a lasting impression on the global design community."
+            desc: "Final looks that left a lasting impression globally."
         },
         {
-            title: "Annual Talent Showcase - Highlights",
+            title: "Artistic Pinnacle",
             icon: Camera,
             color: "from-primary/10",
             img: "https://ik.imagekit.io/fmldynl4j4/folder/DSC09115.JPG",
-            desc: "The pinnacle of artistic expression from our graduating cohorts."
+            desc: "The pinnacle of artistic expression from our graduates."
         }
     ];
 
@@ -160,7 +160,7 @@ const Events = () => {
                 <div className="absolute top-0 left-0 w-full h-[150%] bg-[radial-gradient(circle_at_50%_0%,#db343605,transparent_50%)] -z-10" />
 
                 <div className="max-w-7xl mx-auto">
-                    <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-10">
+                    <div className="flex flex-col lg:flex-row justify-between items-start md:items-end gap-10 mb-16">
                         <div className="space-y-6 max-w-2xl">
                             <motion.div
                                 initial={{ opacity: 0, x: -20 }}
@@ -169,54 +169,77 @@ const Events = () => {
                             >
                                 <Sparkles size={14} /> Annual Flagship Events
                             </motion.div>
-                            <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-[0.8] text-slate-900">
-                                Talent <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Showcase</span>
+                            <h2 className="text-5xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter leading-[0.8] text-slate-900">
+                                Talent <br /> <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary">Showcase</span>
                             </h2>
                         </div>
-                        <div className="flex gap-8 mb-2">
-                            <button onClick={prevShowcase} className="group flex items-center gap-3 text-[20px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-primary transition-all">
-                                <ChevronLeft size={20} className="group-hover:-translate-x-1 transition-transform" /> PREVIOUS
-                            </button>
-                            <button onClick={nextShowcase} className="group flex items-center gap-3 text-[20px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-primary transition-all">
-                                NEXT <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                            </button>
+                        <div className="flex flex-col items-end gap-4">
+                            <div className="flex gap-4">
+                                <button onClick={prevShowcase} className="w-14 h-14 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:border-primary hover:text-primary transition-all active:scale-90">
+                                    <ChevronLeft size={24} />
+                                </button>
+                                <button onClick={nextShowcase} className="w-14 h-14 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:border-primary hover:text-primary transition-all active:scale-90">
+                                    <ChevronRight size={24} />
+                                </button>
+                            </div>
+                            <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Viewing {showcaseIndex + 1} of {showcaseEvents.length}</p>
                         </div>
                     </div>
 
-                    <div className="relative h-[600px] w-full rounded-[3rem] overflow-hidden shadow-3xl bg-slate-50 border border-slate-100">
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={showcaseIndex}
-                                initial={{ opacity: 0, scale: 1.05 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.95 }}
-                                transition={{ duration: 0.8, ease: "circOut" }}
-                                className="absolute inset-0"
-                            >
-                                {showcaseEvents[showcaseIndex].video ? (
-                                    <video
-                                        key={showcaseEvents[showcaseIndex].video}
-                                        src={showcaseEvents[showcaseIndex].video}
-                                        autoPlay
-                                        muted
-                                        loop
-                                        playsInline
-                                        className="w-full h-full object-cover brightness-50 transition-all duration-1000"
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 h-auto lg:h-[750px]">
+                        {/* Main Featured Image */}
+                        <div className="lg:col-span-8 relative h-[500px] lg:h-full rounded-[3rem] overflow-hidden shadow-3xl bg-slate-50 border border-slate-100 group">
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={showcaseIndex}
+                                    initial={{ opacity: 0, scale: 1.05 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0.95 }}
+                                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                                    className="absolute inset-0"
+                                >
+                                    <img 
+                                        src={showcaseEvents[showcaseIndex].img} 
+                                        className="w-full h-full object-cover object-top transition-all duration-[2s] group-hover:scale-110" 
+                                        alt={showcaseEvents[showcaseIndex].title} 
                                     />
-                                ) : (
-                                    <img src={showcaseEvents[showcaseIndex].img} className="w-full h-full object-cover brightness-75 transition-all duration-1000" alt="" />
-                                )}
-                                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+                                    <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent z-10" />
+                                </motion.div>
+                            </AnimatePresence>
+                        </div>
 
-                                <div className="absolute bottom-16 left-16 right-16 flex flex-col md:flex-row items-end justify-between gap-10">
-                                    <div className="space-y-4 max-w-xl">
-                                        <h3 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter leading-none">{showcaseEvents[showcaseIndex].title}</h3>
-                                        <p className="text-white/60 text-lg md:text-xl font-medium">{showcaseEvents[showcaseIndex].desc}</p>
-                                    </div>
+                        {/* Side Gallery Grid - Showing More Pictures */}
+                        <div className="lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-4 h-full">
+                            {showcaseEvents.map((event, idx) => {
+                                // For simplicity in this layout, let's just show a fixed set of "more pictures" that change
+                                const displayIndices = [
+                                    (showcaseIndex + 1) % showcaseEvents.length,
+                                    (showcaseIndex + 2) % showcaseEvents.length,
+                                    (showcaseIndex + 3) % showcaseEvents.length,
+                                    (showcaseIndex + 4) % showcaseEvents.length
+                                ];
 
-                                </div>
-                            </motion.div>
-                        </AnimatePresence>
+                                if (!displayIndices.includes(idx)) return null;
+
+                                return (
+                                    <motion.div
+                                        key={idx}
+                                        layout
+                                        onClick={() => setShowcaseIndex(idx)}
+                                        className="relative rounded-3xl overflow-hidden cursor-pointer group/thumb border border-slate-100 shadow-xl"
+                                        whileHover={{ y: -5 }}
+                                    >
+                                        <img src={event.img} className="w-full h-full object-cover object-top aspect-video lg:aspect-auto lg:h-full brightness-75 group-hover/thumb:brightness-100 transition-all duration-500" alt="" />
+                                        <div className="absolute inset-0 bg-black/40 group-hover/thumb:bg-transparent transition-colors" />
+                                        <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover/thumb:opacity-100 transition-opacity">
+                                            <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-primary shadow-lg">
+                                                <Play size={12} fill="currentColor" />
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                );
+                            })}
+                        </div>
                     </div>
                 </div>
             </section>
@@ -228,88 +251,91 @@ const Events = () => {
                 <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-secondary/10 blur-[150px] z-0 rounded-r-full" />
 
                 <div className="max-w-7xl mx-auto relative z-10">
-                    <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-10">
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 mb-20">
                         <div className="space-y-6">
-                            <motion.span
+                            <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                className="text-primary font-black uppercase tracking-[0.4em] text-[10px]"
+                                className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-primary text-[10px] font-black uppercase tracking-[0.4em]"
                             >
-                                The National Stage
-                            </motion.span>
-                            <h2 className="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none relative">
-                                Times Fashion <br /> <span className="text-primary">Shows</span>
+                                <Globe size={14} /> The National Stage
+                            </motion.div>
+                            <h2 className="text-6xl md:text-8xl lg:text-9xl font-black text-white uppercase tracking-tighter leading-[0.8] relative">
+                                Times Fashion <br /> <span className="text-primary italic font-serif">Shows</span>
                             </h2>
                         </div>
 
-                        {/* Navigation Buttons for Dark Theme - MOVED ABOVE */}
-                        <div className="flex gap-2">
-                            <button onClick={prevTimes} className="px-10 py-5 bg-white text-slate-950 text-[12px] font-black uppercase tracking-widest hover:bg-primary hover:text-white transition-all shadow-2xl flex items-center gap-3 rounded-l-2xl">
-                                <ChevronLeft size={16} /> PREV
-                            </button>
-                            <button onClick={nextTimes} className="px-10 py-5 bg-white text-slate-950 text-[12px] font-black uppercase tracking-widest hover:bg-primary hover:text-white transition-all shadow-2xl flex items-center gap-3 rounded-r-2xl">
-                                NEXT <ChevronRight size={16} />
-                            </button>
+                        <div className="flex flex-col items-end gap-6">
+                            <p className="text-slate-400 max-w-sm text-right text-sm font-medium leading-relaxed border-r-2 border-primary/30 pr-6">
+                                Experience the raw energy and artistry of our students on the most prestigious national runways.
+                            </p>
+                            <div className="flex gap-3">
+                                <button onClick={prevTimes} className="w-16 h-16 rounded-2xl border border-white/10 flex items-center justify-center text-white hover:bg-primary hover:border-primary transition-all active:scale-95">
+                                    <ChevronLeft size={24} />
+                                </button>
+                                <button onClick={nextTimes} className="w-16 h-16 rounded-2xl border border-white/10 flex items-center justify-center text-white hover:bg-primary hover:border-primary transition-all active:scale-95">
+                                    <ChevronRight size={24} />
+                                </button>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                        {/* Image Carousel */}
-                        <div className="lg:col-span-7 relative h-[450px] md:h-[650px] w-full">
-                            <AnimatePresence mode="wait">
+                    <div className="space-y-12">
+                        {/* Horizontal Gallery - Showing MORE Pictures at once */}
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                            {timesFashionEvents.slice(timesIndex, timesIndex + 4).map((event, idx) => (
                                 <motion.div
-                                    key={timesIndex}
-                                    initial={{ opacity: 0, x: -50 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    exit={{ opacity: 0, x: 50 }}
-                                    transition={{ duration: 0.6, ease: "anticipate" }}
-                                    className="absolute inset-0 rounded-[2.5rem] overflow-hidden border-4 border-white/5 shadow-2xl"
+                                    key={idx}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: idx * 0.1 }}
+                                    className={`relative aspect-[4/5] rounded-[2rem] overflow-hidden border-2 border-white/5 group/times ${idx === 0 ? 'md:col-span-1' : ''}`}
                                 >
-                                    <img src={timesFashionEvents[timesIndex].img} className="w-full h-full object-cover" alt={timesFashionEvents[timesIndex].title} />
-                                    <div className="absolute inset-0 bg-linear-to-tr from-slate-950 via-transparent to-transparent opacity-60" />
+                                    <img src={event.img} className="w-full h-full object-cover object-top transition-transform duration-[1.5s] group-hover/times:scale-110" alt="" />
+                                    <div className="absolute inset-0 bg-linear-to-t from-slate-950/60 via-transparent to-transparent group-hover/times:opacity-0 transition-opacity" />
                                 </motion.div>
-                            </AnimatePresence>
+                            ))}
                         </div>
 
-                        {/* Content Section */}
-                        <div className="lg:col-span-5 space-y-12">
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={timesIndex}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -20 }}
-                                    className="space-y-8"
-                                >
-                                    <div className="space-y-4">
-                                        <h3 className="text-4xl md:text-6xl font-black text-white italic tracking-tighter leading-tight">
-                                            {timesFashionEvents[timesIndex].title}
-                                        </h3>
-                                    </div>
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center bg-white/5 p-8 md:p-16 rounded-[4rem] border border-white/5 backdrop-blur-sm">
+                            <div className="lg:col-span-7 relative h-[400px] md:h-[600px] rounded-[3rem] overflow-hidden group">
+                                <AnimatePresence mode="wait">
+                                    <motion.img
+                                        key={timesIndex}
+                                        src={timesFashionEvents[timesIndex].img}
+                                        initial={{ opacity: 0, scale: 1.1 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0.9 }}
+                                        transition={{ duration: 0.8 }}
+                                        className="w-full h-full object-cover object-top"
+                                        alt=""
+                                    />
+                                </AnimatePresence>
+                                <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-transparent to-transparent opacity-60" />
+                            </div>
 
+                            <div className="lg:col-span-5 space-y-8">
+                                <div className="space-y-4">
+                                    <h3 className="text-4xl md:text-6xl font-black text-white italic tracking-tighter leading-tight">
+                                        {timesFashionEvents[timesIndex].title}
+                                    </h3>
                                     <p className="text-slate-400 text-lg md:text-xl font-medium leading-relaxed border-l-2 border-primary/30 pl-8">
                                         {timesFashionEvents[timesIndex].desc}
                                     </p>
+                                </div>
 
-                                    <div className="pt-4 flex flex-col sm:flex-row gap-6">
-                                        <Link to="/apply" className="px-10 py-5 bg-white text-slate-950 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-primary hover:text-white transition-all text-center">Get Vip Entry</Link>
-                                        <div className="flex items-center gap-4 text-white/40">
-                                            <span className="w-12 h-px bg-white/20"></span>
-                                            <span className="text-[10px] uppercase font-bold tracking-[0.2em]">Exclusively by INSD</span>
-                                        </div>
+                                <div className="flex items-center gap-6">
+                                    <Link to="/apply" className="px-10 py-5 bg-primary text-white rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all text-center shadow-xl shadow-primary/20">Get Vip Entry</Link>
+                                    <div className="flex gap-2">
+                                        {timesFashionEvents.map((_, i) => (
+                                            <button
+                                                key={i}
+                                                onClick={() => setTimesIndex(i)}
+                                                className={`h-1.5 transition-all duration-500 rounded-full ${timesIndex === i ? 'w-8 bg-primary' : 'w-2 bg-white/20'}`}
+                                            />
+                                        ))}
                                     </div>
-                                </motion.div>
-                            </AnimatePresence>
-
-                            {/* Indicators */}
-                            <div className="flex gap-3 pt-4">
-                                {timesFashionEvents.map((_, i) => (
-                                    <button
-                                        key={i}
-                                        onClick={() => setTimesIndex(i)}
-                                        className={`h-1.5 transition-all duration-500 rounded-full ${timesIndex === i ? 'w-12 bg-primary' : 'w-4 bg-white/20'}`}
-                                    />
-                                ))}
+                                </div>
                             </div>
                         </div>
                     </div>

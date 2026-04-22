@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, X, Heart, TrendingUp, Award, DollarSign, Navigation, ArrowLeft, BarChart3, Users, Globe } from 'lucide-react';
+import { ArrowUpRight, X, Heart, TrendingUp, Award, DollarSign, Navigation, ArrowLeft, BarChart3, Users, Globe, Coffee, ShoppingBag, Film, Palette } from 'lucide-react';
 import StepLeadForm from './StepLeadForm';
 
 const programs = [
@@ -19,10 +19,15 @@ const programs = [
             },
             tracks: [
                 { title: "Fashion Designer", desc: "Create collections, build labels, launch your brand", img: "https://images.pexels.com/photos/3735641/pexels-photo-3735641.jpeg?auto=compress&cs=tinysrgb&w=800" },
-                { title: "Fashion Stylist", desc: "Style celebrities, shoots & fashion campaigns", img: "https://images.pexels.com/photos/1036622/pexels-photo-1036622.jpeg?auto=compress&cs=tinysrgb&w=800" },
-                { title: "Textile Designer", desc: "Design fabrics, prints & materials for global brands", img: "https://images.pexels.com/photos/4622437/pexels-photo-4622437.jpeg?auto=compress&cs=tinysrgb&w=800" }
+                { title: "Fashion Stylist", desc: "Style celebrities, shoots & fashion campaigns", img: "https://images.pexels.com/photos/1036622/pexels-photo-1036622.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ],
-            salaries: { entry: "3-5 LPA", mid: "6-12 LPA", senior: "15+ LPA" }
+            salaries: { entry: "3-5 LPA", mid: "6-12 LPA", senior: "15+ LPA" },
+            sectors: [
+                { label: "Hospitality Industry", icon: Coffee },
+                { label: "Retail Industry", icon: ShoppingBag },
+                { label: "Media & Entertainment", icon: Film },
+                { label: "Design Industry", icon: Palette }
+            ]
         }
     },
     {
@@ -39,10 +44,15 @@ const programs = [
             },
             tracks: [
                 { title: "Interior Designer", desc: "Design homes, offices & commercial spaces", img: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800" },
-                { title: "Space Planner", desc: "Optimize layouts for functionality & aesthetics", img: "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=800" },
-                { title: "Furniture Designer", desc: "Create custom furniture & décor products", img: "https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg?auto=compress&cs=tinysrgb&w=800" }
+                { title: "Space Planner", desc: "Optimize layouts for functionality & aesthetics", img: "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ],
-            salaries: { entry: "3-5 LPA", mid: "6-10 LPA", senior: "12-20+ LPA" }
+            salaries: { entry: "3-5 LPA", mid: "6-10 LPA", senior: "12-20+ LPA" },
+            sectors: [
+                { label: "Hospitality Industry", icon: Coffee },
+                { label: "Retail Industry", icon: ShoppingBag },
+                { label: "Media & Entertainment", icon: Film },
+                { label: "Design Industry", icon: Palette }
+            ]
         }
     },
     {
@@ -59,10 +69,15 @@ const programs = [
             },
             tracks: [
                 { title: "Graphic Designer", desc: "Create logos, branding & marketing creatives", img: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800" },
-                { title: "Brand Identity Designer", desc: "Shape how brands look, feel & communicate", img: "https://images.pexels.com/photos/326501/pexels-photo-326501.jpeg?auto=compress&cs=tinysrgb&w=800" },
-                { title: "Packaging Designer", desc: "Design product packaging for retail & e-commerce", img: "https://images.pexels.com/photos/3951901/pexels-photo-3951901.jpeg?auto=compress&cs=tinysrgb&w=800" }
+                { title: "Brand Identity Designer", desc: "Shape how brands look, feel & communicate", img: "https://images.pexels.com/photos/326501/pexels-photo-326501.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ],
-            salaries: { entry: "3-5 LPA", mid: "6-12 LPA", senior: "15+ LPA" }
+            salaries: { entry: "3-5 LPA", mid: "6-12 LPA", senior: "15+ LPA" },
+            sectors: [
+                { label: "Hospitality Industry", icon: Coffee },
+                { label: "Retail Industry", icon: ShoppingBag },
+                { label: "Media & Entertainment", icon: Film },
+                { label: "Design Industry", icon: Palette }
+            ]
         }
     },
     {
@@ -79,10 +94,15 @@ const programs = [
             },
             tracks: [
                 { title: "UI Designer", desc: "Design apps, websites & interfaces", img: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800" },
-                { title: "UX Designer", desc: "Improve user experience & product usability", img: "https://images.pexels.com/photos/3183186/pexels-photo-3183186.jpeg?auto=compress&cs=tinysrgb&w=800" },
-                { title: "Product Designer", desc: "Build digital products used by millions", img: "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=800" }
+                { title: "UX Designer", desc: "Improve user experience & product usability", img: "https://images.pexels.com/photos/3183186/pexels-photo-3183186.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ],
-            salaries: { entry: "4-6 LPA", mid: "8-15 LPA", senior: "20-35+ LPA" }
+            salaries: { entry: "4-6 LPA", mid: "8-15 LPA", senior: "20-35+ LPA" },
+            sectors: [
+                { label: "Hospitality Industry", icon: Coffee },
+                { label: "Retail Industry", icon: ShoppingBag },
+                { label: "Media & Entertainment", icon: Film },
+                { label: "Design Industry", icon: Palette }
+            ]
         }
     },
     {
@@ -99,10 +119,15 @@ const programs = [
             },
             tracks: [
                 { title: "Animator", desc: "Work in films, OTT & gaming", img: "https://images.pexels.com/photos/1148998/pexels-photo-1148998.jpeg?auto=compress&cs=tinysrgb&w=800" },
-                { title: "VFX Artist", desc: "Create visual effects for movies & ads", img: "https://images.pexels.com/photos/2510428/pexels-photo-2510428.jpeg?auto=compress&cs=tinysrgb&w=800" },
-                { title: "Game Designer", desc: "Design characters & game environments", img: "https://images.pexels.com/photos/735911/pexels-photo-735911.jpeg?auto=compress&cs=tinysrgb&w=800" }
+                { title: "VFX Artist", desc: "Create visual effects for movies & ads", img: "https://images.pexels.com/photos/2510428/pexels-photo-2510428.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ],
-            salaries: { entry: "3-5 LPA", mid: "6-12 LPA", senior: "15-25+ LPA" }
+            salaries: { entry: "3-5 LPA", mid: "6-12 LPA", senior: "15-25+ LPA" },
+            sectors: [
+                { label: "Hospitality Industry", icon: Coffee },
+                { label: "Retail Industry", icon: ShoppingBag },
+                { label: "Media & Entertainment", icon: Film },
+                { label: "Design Industry", icon: Palette }
+            ]
         }
     },
     {
@@ -119,10 +144,15 @@ const programs = [
             },
             tracks: [
                 { title: "Photographer", desc: "Fashion, product, wedding & commercial shoots", img: "https://images.pexels.com/photos/1205033/pexels-photo-1205033.jpeg?auto=compress&cs=tinysrgb&w=800" },
-                { title: "Content Creator", desc: "Build your personal brand or work with brands", img: "https://images.pexels.com/photos/3052848/pexels-photo-3052848.jpeg?auto=compress&cs=tinysrgb&w=800" },
-                { title: "Influencer / Visual Creator", desc: "Create content for social media platforms", img: "https://images.pexels.com/photos/2531551/pexels-photo-2531551.jpeg?auto=compress&cs=tinysrgb&w=800" }
+                { title: "Content Creator", desc: "Build your personal brand or work with brands", img: "https://images.pexels.com/photos/3052848/pexels-photo-3052848.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ],
-            salaries: { entry: "2.5-4 LPA", mid: "5-10 LPA", senior: "Variable (High Potential)" }
+            salaries: { entry: "2.5-4 LPA", mid: "5-10 LPA", senior: "Variable (High Potential)" },
+            sectors: [
+                { label: "Hospitality Industry", icon: Coffee },
+                { label: "Retail Industry", icon: ShoppingBag },
+                { label: "Media & Entertainment", icon: Film },
+                { label: "Design Industry", icon: Palette }
+            ]
         }
     },
     {
@@ -139,10 +169,15 @@ const programs = [
             },
             tracks: [
                 { title: "Makeup Artist", desc: "Work in fashion, films & bridal industry", img: "https://images.pexels.com/photos/3373739/pexels-photo-3373739.jpeg?auto=compress&cs=tinysrgb&w=800" },
-                { title: "Hair Stylist", desc: "Professional styling for salons & shoots", img: "https://images.pexels.com/photos/3993444/pexels-photo-3993444.jpeg?auto=compress&cs=tinysrgb&w=800" },
-                { title: "Beauty Expert", desc: "Skincare, personal grooming & consulting", img: "https://images.pexels.com/photos/3762875/pexels-photo-3762875.jpeg?auto=compress&cs=tinysrgb&w=800" }
+                { title: "Hair Stylist", desc: "Professional styling for salons & shoots", img: "https://images.pexels.com/photos/3993444/pexels-photo-3993444.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ],
-            salaries: { entry: "2-4 LPA", mid: "5-10 LPA", senior: "Variable (High Potential)" }
+            salaries: { entry: "2-4 LPA", mid: "5-10 LPA", senior: "Variable (High Potential)" },
+            sectors: [
+                { label: "Hospitality Industry", icon: Coffee },
+                { label: "Retail Industry", icon: ShoppingBag },
+                { label: "Media & Entertainment", icon: Film },
+                { label: "Design Industry", icon: Palette }
+            ]
         }
     },
     {
@@ -159,10 +194,15 @@ const programs = [
             },
             tracks: [
                 { title: "Textile Designer", desc: "Create fabrics, patterns & materials for fashion and lifestyle brands", img: "https://images.pexels.com/photos/4622437/pexels-photo-4622437.jpeg?auto=compress&cs=tinysrgb&w=800" },
-                { title: "Print & Surface Designer", desc: "Design prints for apparel, home décor, and global collections", img: "https://images.pexels.com/photos/1036622/pexels-photo-1036622.jpeg?auto=compress&cs=tinysrgb&w=800" },
-                { title: "Fabric Production Specialist", desc: "Work with mills & manufacturers to bring designs to life", img: "https://images.pexels.com/photos/3735641/pexels-photo-3735641.jpeg?auto=compress&cs=tinysrgb&w=800" }
+                { title: "Print & Surface Designer", desc: "Design prints for apparel, home décor, and global collections", img: "https://images.pexels.com/photos/1036622/pexels-photo-1036622.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ],
-            salaries: { entry: "3-5 LPA", mid: "6-10 LPA", senior: "12+ LPA" }
+            salaries: { entry: "3-5 LPA", mid: "6-10 LPA", senior: "12+ LPA" },
+            sectors: [
+                { label: "Hospitality Industry", icon: Coffee },
+                { label: "Retail Industry", icon: ShoppingBag },
+                { label: "Media & Entertainment", icon: Film },
+                { label: "Design Industry", icon: Palette }
+            ]
         }
     },
     {
@@ -179,10 +219,15 @@ const programs = [
             },
             tracks: [
                 { title: "Jewellery Designer", desc: "Design bespoke pieces, wedding collections & brand labels", img: "https://images.pexels.com/photos/1458867/pexels-photo-1458867.jpeg?auto=compress&cs=tinysrgb&w=800" },
-                { title: "Gemologist / Stone Grader", desc: "Expert assessment, grading and sourcing of precious stones", img: "https://images.pexels.com/photos/265906/pexels-photo-265906.jpeg?auto=compress&cs=tinysrgb&w=800" },
-                { title: "Luxury Retail Merchant", desc: "Manage high-value inventory and luxury brand operations", img: "https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg?auto=compress&cs=tinysrgb&w=800" }
+                { title: "Gemologist / Stone Grader", desc: "Expert assessment, grading and sourcing of precious stones", img: "https://images.pexels.com/photos/265906/pexels-photo-265906.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ],
-            salaries: { entry: "3-5 LPA", mid: "6-10 LPA", senior: "Variable / Own Brand" }
+            salaries: { entry: "3-5 LPA", mid: "6-10 LPA", senior: "Variable / Own Brand" },
+            sectors: [
+                { label: "Hospitality Industry", icon: Coffee },
+                { label: "Retail Industry", icon: ShoppingBag },
+                { label: "Media & Entertainment", icon: Film },
+                { label: "Design Industry", icon: Palette }
+            ]
         }
     }
 ];
@@ -196,7 +241,7 @@ const ProgramGrid = () => {
         const parts = text.split(/(Industry)/i);
         return parts.map((part, i) => 
             part.toLowerCase() === 'industry' 
-                ? <span key={i} className="relative inline-block px-2 py-0.5 bg-primary/5 text-primary border border-primary/20 rounded-md ml-1 font-serif italic shadow-sm">{part}</span> 
+                ? <span key={i} className="text-primary ml-1 font-serif italic">{part}</span> 
                 : part
         );
     };
@@ -360,6 +405,7 @@ const ProgramGrid = () => {
                                                     </button>
                                                     <StepLeadForm 
                                                         isModal={true} 
+                                                        showClose={false}
                                                         title={`Apply for ${selectedProgram.title}`}
                                                     />
                                                 </motion.div>
@@ -400,26 +446,24 @@ const ProgramGrid = () => {
                                                     </div>
 
 
-                                                    {/* Market Statistics Section */}
-                                                    {selectedProgram.careerPath.stats && (
-                                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                                            <div className="bg-slate-50 rounded-2xl p-3 border border-slate-100 flex items-center gap-3 group/stat">
-                                                                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover/stat:bg-primary group-hover/stat:text-white transition-all duration-500">
-                                                                    <BarChart3 size={20} />
-                                                                </div>
-                                                                <div>
-                                                                    <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-0.5">Market Size</p>
-                                                                    <h5 className="text-sm font-black text-slate-900 uppercase tracking-tighter leading-none">{selectedProgram.careerPath.stats.industrySize}</h5>
-                                                                </div>
+
+
+                                                    {/* Largest Sectors Section */}
+                                                    {selectedProgram.careerPath.sectors && (
+                                                        <div className="space-y-4">
+                                                            <div className="flex items-center gap-2">
+                                                                <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                                                                <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Work in the Largest Sectors</h4>
                                                             </div>
-                                                            <div className="bg-slate-50 rounded-2xl p-3 border border-slate-100 flex items-center gap-3 group/stat">
-                                                                <div className="w-10 h-10 rounded-xl bg-slate-900/10 flex items-center justify-center text-slate-900 group-hover/stat:bg-slate-900 group-hover/stat:text-white transition-all duration-500">
-                                                                    <Users size={20} />
-                                                                </div>
-                                                                <div>
-                                                                    <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-0.5">Industry Demand</p>
-                                                                    <h5 className="text-sm font-black text-slate-900 uppercase tracking-tighter leading-none">{selectedProgram.careerPath.stats.demand}</h5>
-                                                                </div>
+                                                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                                                                {selectedProgram.careerPath.sectors.map((sector, idx) => (
+                                                                    <div key={idx} className="flex flex-col items-center justify-center p-3 bg-slate-50 border border-slate-100 rounded-2xl hover:bg-white hover:border-primary/20 hover:shadow-lg transition-all duration-500 group/sector">
+                                                                        <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-primary mb-2 shadow-sm group-hover/sector:scale-110 transition-transform">
+                                                                            <sector.icon size={16} />
+                                                                        </div>
+                                                                        <span className="text-[8px] font-black uppercase tracking-wider text-slate-700 text-center leading-tight">{sector.label}</span>
+                                                                    </div>
+                                                                ))}
                                                             </div>
                                                         </div>
                                                     )}
@@ -427,7 +471,7 @@ const ProgramGrid = () => {
                                                     {/* Career Tracks Grid */}
                                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                                         {selectedProgram.careerPath.tracks.map((track, i) => (
-                                                            <div key={i} className={`group/track relative bg-slate-50 p-3 rounded-2xl border border-slate-100 hover:border-primary/20 transition-all duration-500 hover:shadow-lg ${i === 2 ? 'sm:col-span-2' : ''}`}>
+                                                            <div key={i} className="group/track relative bg-slate-50 p-3 rounded-2xl border border-slate-100 hover:border-primary/20 transition-all duration-500 hover:shadow-lg">
                                                                 <div className="flex flex-col gap-3">
                                                                     <div className="flex items-center gap-3">
                                                                         <div className="w-10 h-10 rounded-xl overflow-hidden shrink-0 shadow-lg border-2 border-white transform transition-transform duration-500 group-hover/track:scale-105">
@@ -445,8 +489,6 @@ const ProgramGrid = () => {
                                                             </div>
                                                         ))}
                                                     </div>
-
-
 
                                                     {/* Professional Outcomes Disclaimer */}
                                                     <div className="pt-6 border-t border-slate-100 italic">

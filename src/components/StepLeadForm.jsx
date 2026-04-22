@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { User, Phone, Mail, MapPin, ArrowRight, ArrowLeft, Sparkles, MessageSquare, X } from 'lucide-react';
 import { useAdmissionModal } from '../context/AdmissionModalContext';
 
-const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, subtitle = null }) => {
+const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, subtitle = null, showClose = true }) => {
     const { closeAdmissionModal } = useAdmissionModal();
     const sectionRef = useRef(null);
     const [choice, setChoice] = useState(initialChoice);
@@ -116,11 +116,11 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
 
                     {/* Header Area - Transformed based on state */}
                     <div className={`relative ${!choice && !submitted ? 'bg-white p-8 md:p-16 rounded-[3rem] text-center border border-slate-100 shadow-3xl text-slate-900 overflow-hidden' : 'text-center mb-10 md:mb-16'}`}>
-                        {(!choice && !submitted) && (
+                        {(!choice && !submitted && isModal && showClose) && (
                             <>
                                 {/* Close Button */}
                                 <button 
-                                    onClick={() => isModal ? closeAdmissionModal() : setChoice(null)}
+                                    onClick={() => closeAdmissionModal()}
                                     className="absolute top-2 right-2 z-[1002] p-2.5 rounded-full bg-slate-50/80 text-slate-400 hover:bg-slate-100 hover:text-slate-900 transition-all border border-slate-100 group backdrop-blur-sm"
                                 >
                                     <X size={20} className="group-hover:rotate-90 transition-transform duration-300" />
@@ -153,9 +153,9 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
                                 )}
                             </motion.h2>
 
-                            {choice && !submitted && (
+                            {choice && !submitted && isModal && showClose && (
                                 <button 
-                                    onClick={() => isModal ? closeAdmissionModal() : setChoice(null)}
+                                    onClick={() => closeAdmissionModal()}
                                     className="p-2 md:p-3 rounded-full bg-slate-50 text-slate-400 hover:bg-primary hover:text-white transition-all border border-slate-100 shadow-lg active:scale-90"
                                 >
                                     <X size={24} className="transition-transform group-hover:rotate-90" />
@@ -395,13 +395,14 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
                                 animate={{ opacity: 1, scale: 1 }}
                                 className="bg-white p-12 md:p-20 rounded-[4rem] text-center text-slate-950 relative overflow-hidden border border-slate-100 shadow-3xl"
                             >
-                                {/* Success Close Button */}
-                                <button 
-                                    onClick={() => isModal ? closeAdmissionModal() : setSubmitted(false)}
-                                    className="absolute top-6 right-6 md:top-10 md:right-10 p-2 rounded-full bg-slate-50 text-slate-400 hover:bg-slate-100 hover:text-slate-900 transition-all border border-slate-100 group z-50"
-                                >
-                                    <X size={20} className="group-hover:rotate-90 transition-transform duration-300" />
-                                </button>
+                                {isModal && showClose && (
+                                    <button 
+                                        onClick={() => closeAdmissionModal()}
+                                        className="absolute top-6 right-6 md:top-10 md:right-10 p-2 rounded-full bg-slate-50 text-slate-400 hover:bg-slate-100 hover:text-slate-900 transition-all border border-slate-100 group z-50"
+                                    >
+                                        <X size={20} className="group-hover:rotate-90 transition-transform duration-300" />
+                                    </button>
+                                )}
 
                                 <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-primary via-secondary to-primary" />
                                 <div className="p-8 inline-flex bg-primary/10 rounded-3xl mb-8">

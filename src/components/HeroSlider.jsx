@@ -19,6 +19,7 @@ const HeroSlider = () => {
             delay: 0.8
         },
         {
+
             id: 3,
             val: "75",
             label: "Campuses Across India",
@@ -33,7 +34,7 @@ const HeroSlider = () => {
             {/* Main Hero Image */}
             <div className="relative w-full h-full overflow-hidden bg-[#a3a3a3]">
                 <img
-                    src="https://ik.imagekit.io/fmldynl4j4/63c1e643-7489-4d73-8ae2-d96401370885_1-removebg-preview.png"
+                    src="https://ik.imagekit.io/fmldynl4j4/Removed%20background.png"
                     alt="Student with Vision"
                     className="w-full h-full object-cover object-right"
                 />
