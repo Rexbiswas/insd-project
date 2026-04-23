@@ -128,9 +128,9 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', checkColor);
     }, [location.pathname]);
     // Responsive check
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
     useEffect(() => {
-        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        const handleResize = () => setIsMobile(window.innerWidth < 1024);
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
@@ -323,7 +323,7 @@ const Navbar = () => {
                     x: "-50%",
                 }}
                 ref={navRef}
-                className="hidden md:flex fixed left-1/2 z-1000 px-6 lg:px-8 xl:px-10 py-4 items-center justify-between pointer-events-auto w-full"
+                className="hidden lg:flex fixed left-1/2 z-1000 px-6 lg:px-8 xl:px-10 py-4 items-center justify-between pointer-events-auto w-full"
             >
                 {/* Left: Logo */}
                 <Link to="/" className="nav-logo relative z-50 shrink-0 block h-14 overflow-hidden" onClick={() => setIsOpen(false)}>
@@ -546,7 +546,7 @@ const Navbar = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => setIsOpen(!isOpen)}
-                        className={`group relative hidden md:flex items-center gap-3 px-5 py-2.5 rounded-full overflow-hidden shadow-lg transition-all duration-300 ${isHeaderDark && !isScrolled ? 'bg-white text-slate-900 shadow-white/10' : 'bg-slate-900 text-white shadow-slate-900/20'}`}
+                        className={`group relative hidden lg:flex items-center gap-3 px-5 py-2.5 rounded-full overflow-hidden shadow-lg transition-all duration-300 ${isHeaderDark && !isScrolled ? 'bg-white text-slate-900 shadow-white/10' : 'bg-slate-900 text-white shadow-slate-900/20'}`}
                     >
                         <div className="absolute inset-0 bg-linear-to-r from-primary to-secondary translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                         <span className={`relative z-10 font-bold text-[10px] md:text-xs hidden sm:inline-block tracking-widest transition-colors duration-300 ${isHeaderDark && !isScrolled ? 'group-hover:text-white' : ''}`}>
@@ -558,7 +558,7 @@ const Navbar = () => {
                     {user ? (
                         <Link
                             to="/profile"
-                            className={`hidden md:flex items-center justify-center w-10 h-10 rounded-full border transition-all duration-300 font-black text-sm ${isDarkTheme && !isScrolled ? 'border-primary bg-primary text-white hover:scale-105' : 'border-primary bg-primary text-white hover:scale-105'} shadow-xl`}
+                            className={`hidden lg:flex items-center justify-center w-10 h-10 rounded-full border transition-all duration-300 font-black text-sm ${isDarkTheme && !isScrolled ? 'border-primary bg-primary text-white hover:scale-105' : 'border-primary bg-primary text-white hover:scale-105'} shadow-xl`}
                             title="Profile Dashboard"
                         >
                             {user.username.charAt(0).toUpperCase()}
@@ -566,7 +566,7 @@ const Navbar = () => {
                     ) : (
                         <button
                             onClick={openModal}
-                            className={`hidden md:flex items-center justify-center w-10 h-10 rounded-full border transition-all duration-300 ${isHeaderDark && !isScrolled ? 'border-white/20 text-white hover:bg-white hover:text-slate-900' : 'border-slate-200 text-slate-800 bg-white hover:bg-slate-900 hover:border-slate-900 hover:text-white'} shadow-sm`}
+                            className={`hidden lg:flex items-center justify-center w-10 h-10 rounded-full border transition-all duration-300 ${isHeaderDark && !isScrolled ? 'border-white/20 text-white hover:bg-white hover:text-slate-900' : 'border-slate-200 text-slate-800 bg-white hover:bg-slate-900 hover:border-slate-900 hover:text-white'} shadow-sm`}
                         >
                             <User size={18} strokeWidth={2.5} />
                         </button>
@@ -591,7 +591,7 @@ const Navbar = () => {
                     x: "-50%",
                 }}
                 ref={mobileNavRef}
-                className="md:hidden fixed left-1/2 z-50 flex items-center pointer-events-none"
+                className="lg:hidden fixed left-1/2 z-50 flex items-center pointer-events-none"
             >
                 <div className="relative w-full h-full flex items-center justify-center px-4 pointer-events-auto">
                     <Link to="/" onClick={() => setIsOpen(false)} className="h-full flex items-center justify-center">
@@ -605,7 +605,7 @@ const Navbar = () => {
             </motion.div >
 
             {/* Mobile Bottom Navigation Bar - Pill Glass Style */}
-            <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[400px] h-20 z-50 md:hidden">
+            <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[400px] h-20 z-50 lg:hidden">
                 <div className={`w-full h-full flex items-center justify-around px-6 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition-all duration-500 border ${isOpen || (isHeaderDark && !isScrolled) ? 'bg-slate-900/40 backdrop-blur-2xl border-white/10' : 'bg-white/40 backdrop-blur-2xl border-white/30'}`}>
 
                     {/* HOME */}

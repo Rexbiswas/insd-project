@@ -340,18 +340,18 @@ const ProgramGrid = () => {
                                 initial={{ scale: 0.9, opacity: 0, y: 30 }}
                                 animate={{ scale: 1, opacity: 1, y: 0 }}
                                 exit={{ scale: 0.9, opacity: 0, y: 30 }}
-                                className="relative w-full max-w-5xl h-full max-h-[92vh] bg-white rounded-[2.5rem] md:rounded-[4xl] shadow-[0_0_100px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col md:flex-row"
+                                className="relative w-full max-w-5xl h-full max-h-[95vh] md:max-h-[90vh] lg:max-h-[92vh] bg-white rounded-[2rem] md:rounded-[3rem] lg:rounded-[4xl] shadow-[0_0_100px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col lg:flex-row"
                             >
                                 {/* Mobile Close Button - Visible only on mobile, placed outside hidden panels */}
                                 <button 
                                     onClick={() => setSelectedProgram(null)}
-                                    className="md:hidden absolute top-4 right-4 p-2.5 rounded-full bg-slate-900/60 backdrop-blur-xl text-white border border-white/20 z-[110000] shadow-2xl active:scale-95 transition-all"
+                                    className="lg:hidden absolute top-4 right-4 p-2.5 rounded-full bg-slate-900/60 backdrop-blur-xl text-white border border-white/20 z-[110000] shadow-2xl active:scale-95 transition-all"
                                 >
                                     <X size={18} />
                                 </button>
 
                                 {/* Left Side: Program Branding */}
-                                <div className="hidden md:flex md:w-1/3 relative overflow-hidden bg-slate-900 group/modal">
+                                <div className="hidden lg:flex lg:w-1/3 relative overflow-hidden bg-slate-900 group/modal">
                                     <div className="absolute inset-0 bg-slate-950/60 z-10" />
                                     <img 
                                         src={selectedProgram.img} 
@@ -374,11 +374,11 @@ const ProgramGrid = () => {
                                 </div>
 
                                 {/* Right Side: Career Data */}
-                                <div className="flex-1 md:w-2/3 flex flex-col bg-white relative">
+                                <div className="flex-1 lg:w-2/3 flex flex-col bg-white relative">
                                     {/* Desktop Close Button */}
                                     <button 
                                         onClick={() => setSelectedProgram(null)}
-                                        className="hidden md:flex absolute top-6 right-6 p-3 rounded-full bg-slate-50 shadow-lg hover:bg-primary hover:text-white transition-all duration-300 border border-slate-100 group z-50"
+                                        className="hidden lg:flex absolute top-6 right-6 p-3 rounded-full bg-slate-50 shadow-lg hover:bg-primary hover:text-white transition-all duration-300 border border-slate-100 group z-50"
                                     >
                                         <X size={20} className="group-hover:rotate-90 transition-transform duration-300" />
                                     </button>

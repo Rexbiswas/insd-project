@@ -63,7 +63,7 @@ const Home = () => {
 
     // Lenis Smooth Scroll Integration
     useEffect(() => {
-        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        const checkMobile = () => setIsMobile(window.innerWidth < 1024);
         checkMobile();
         window.addEventListener('resize', checkMobile);
 
@@ -305,10 +305,10 @@ const Home = () => {
 
 
             {/* Hero Split Section */}
-            <div ref={heroRef} className="relative z-10 min-h-screen w-full flex flex-col md:flex-row bg-white overflow-hidden pt-20 md:pt-0 cursor-default">
+            <div ref={heroRef} className="relative z-10 min-h-screen w-full flex flex-col lg:flex-row bg-white overflow-hidden pt-20 lg:pt-0 cursor-default">
 
                 {/* Left Side: Content & Headlines */}
-                <div className="w-full md:w-[55%] flex flex-col justify-center px-6 md:px-16 lg:px-24 py-8 md:py-16 space-y-6 md:space-y-8 relative z-20">
+                <div className="w-full lg:w-[55%] flex flex-col justify-center px-6 md:px-16 lg:px-24 py-8 md:py-16 space-y-6 md:space-y-8 relative z-20">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -390,7 +390,7 @@ const Home = () => {
 
 
                 {/* Right Side: Visual Elements */}
-                <div className="w-full md:w-[45%] h-[50vh] md:h-[95vh] md:pr-12 md:py-16 relative overflow-hidden bg-white">
+                <div className="w-full lg:w-[45%] h-[50vh] lg:h-[95vh] lg:pr-12 lg:py-16 relative overflow-hidden bg-white">
                     <HeroSlider />
 
                     {/* Visual Overlay removed to let the card stand out */}
@@ -446,7 +446,7 @@ const Home = () => {
 
 
             {/* Section 2: Interactive Gallery */}
-            <div ref={galleryContainerRef} className="relative z-10 h-screen w-full bg-black overflow-hidden flex flex-col md:flex-row pointer-events-auto">
+            <div ref={galleryContainerRef} className="relative z-10 h-screen w-full bg-black overflow-hidden flex flex-col lg:flex-row pointer-events-auto">
                 {
                     galleryItems.map((item, index) => (
                         <a
@@ -454,32 +454,32 @@ const Home = () => {
                             href={item.link || "#"}
                             target={item.link ? "_blank" : "_self"}
                             rel="noopener noreferrer"
-                            className="gallery-item relative flex-1 group transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] hover:flex-3 cursor-pointer border-b md:border-b-0 md:border-r border-white/10 last:border-b-0 last:border-r-0"
+                            className="gallery-item relative flex-1 group transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] hover:flex-3 cursor-pointer border-b lg:border-b-0 lg:border-r border-white/10 last:border-b-0 last:border-r-0"
                         >
                             {/* Image Background */}
                             <div className="absolute inset-0 z-0 overflow-hidden">
                                 <img
                                     src={item.img}
                                     alt={item.title}
-                                    className="w-full h-full object-cover opacity-80 md:opacity-60 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110"
+                                    className="w-full h-full object-cover opacity-80 lg:opacity-60 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110"
                                 />
-                                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent md:bg-black/60 md:group-hover:bg-black/20 transition-colors duration-700 pointer-events-none" />
+                                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent lg:bg-black/60 lg:group-hover:bg-black/20 transition-colors duration-700 pointer-events-none" />
                             </div>
 
-                            <div className="absolute inset-0 z-10 flex flex-col justify-end p-6 md:p-8 pb-32 md:pb-12">
+                            <div className="absolute inset-0 z-10 flex flex-col justify-end p-6 md:p-8 pb-32 lg:pb-12">
                                 <div className="overflow-hidden">
-                                    <h3 className="text-5xl md:text-7xl lg:text-9xl font-black text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary translate-y-0 md:translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-100 uppercase tracking-tighter leading-none">
+                                    <h3 className="text-5xl md:text-7xl lg:text-9xl font-black text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary translate-y-0 lg:translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-100 uppercase tracking-tighter leading-none">
                                         {item.title}
                                     </h3>
                                 </div>
-                                <div className="overflow-hidden mt-2 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                                <div className="overflow-hidden mt-2 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
                                     <p className="text-white/80 text-[10px] md:text-sm font-bold tracking-widest uppercase border-t border-primary/50 pt-3 inline-block">
                                         Explore Program
                                     </p>
                                 </div>
                             </div>
 
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 opacity-0 md:opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none hidden md:block">
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 opacity-0 lg:opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none hidden lg:block">
                                 <span className="text-white/50 font-bold uppercase tracking-widest text-xl whitespace-nowrap">
                                     {item.title}
                                 </span>
@@ -517,10 +517,10 @@ const Home = () => {
                     </div>
 
                     {/* Editorial Layout */}
-                    <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
                         {/* Large Image */}
-                        <div className="md:col-span-7 relative">
+                        <div className="lg:col-span-7 relative">
                             <div className="overflow-hidden rounded-sm aspect-3/4">
                                 <img
                                     src={`https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=${isMobile ? 800 : 1260}`}
@@ -536,7 +536,7 @@ const Home = () => {
                         </div>
 
                         {/* Content & Smaller Image */}
-                        <div className="md:col-span-5 flex flex-col justify-between h-full pl-0 md:pl-8">
+                        <div className="lg:col-span-5 flex flex-col justify-between h-full pl-0 lg:pl-8">
                             <div className="mb-12">
                                 <p className="text-xl md:text-2xl font-light leading-relaxed mb-8 opacity-80 flex flex-wrap gap-x-2 quote-container">
                                     {splitText("\"INSD gave me the freedom to fail, which is the only way to truly succeed in design. My final collection was a direct result of that chaos.\"", "quote-word")}

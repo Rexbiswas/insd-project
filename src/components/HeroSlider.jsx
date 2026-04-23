@@ -8,22 +8,21 @@ const HeroSlider = () => {
             id: 1,
             val: "100%",
             label: "Placement Support",
-            pos: "top-2 left-6 md:top-16 md:left-10",
+            pos: "top-4 left-4 md:top-10 md:left-8 lg:top-16 lg:left-10",
             delay: 0.5
         },
         {
             id: 2,
             val: "300000+",
             label: "students",
-            pos: "bottom-12 right-6 md:bottom-16 md:right-10",
+            pos: "bottom-4 right-4 md:bottom-10 md:right-8 lg:bottom-16 lg:right-10",
             delay: 0.8
         },
         {
-
             id: 3,
             val: "75",
             label: "Campuses Across India",
-            pos: "bottom-16 left-6 md:bottom-24 md:left-12",
+            pos: "bottom-20 left-4 md:bottom-28 md:left-8 lg:bottom-24 lg:left-12",
             delay: 1.1
         }
     ];
