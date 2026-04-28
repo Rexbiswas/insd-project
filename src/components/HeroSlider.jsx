@@ -22,16 +22,16 @@ const HeroSlider = () => {
             id: 3,
             val: "75",
             label: "Campuses Across India",
-            pos: "bottom-20 left-4 md:bottom-28 md:left-8 lg:bottom-24 lg:left-12",
+            pos: "bottom-4 left-4 md:bottom-10 md:left-8 lg:bottom-16 lg:left-10",
             delay: 1.1
         }
     ];
 
     return (
-        <div className="relative w-full h-full overflow-hidden group select-none rounded-[1.5rem] md:rounded-[3rem] shadow-2xl">
+        <div className="relative w-full h-full overflow-hidden group select-none rounded-none">
 
             {/* Main Hero Image */}
-            <div className="relative w-full h-full overflow-hidden bg-[#a3a3a3]">
+            <div className="relative w-full h-full overflow-hidden">
                 <img
                     src="https://ik.imagekit.io/fmldynl4j4/Removed%20background.png"
                     alt="Student with Vision"
@@ -40,10 +40,16 @@ const HeroSlider = () => {
 
                 {/* Paper Plane Animation */}
                 <svg className="absolute inset-0 w-full h-full z-20 pointer-events-none" viewBox="0 0 800 600">
+                    <defs>
+                        <linearGradient id="planeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stopColor="#db3436" />
+                            <stop offset="100%" stopColor="#134a84" />
+                        </linearGradient>
+                    </defs>
                     <motion.path
                         d="M -50,400 C 100,400 200,500 350,300 C 500,100 650,200 850,150"
                         fill="transparent"
-                        stroke="white"
+                        stroke="url(#planeGradient)"
                         strokeWidth="1"
                         strokeDasharray="6 6"
                         initial={{ pathLength: 0, opacity: 0 }}
@@ -56,7 +62,7 @@ const HeroSlider = () => {
                         transition={{ duration: 4, repeat: Infinity, repeatDelay: 1, ease: "easeInOut" }}
                         style={{ offsetPath: "path('M -50,400 C 100,400 200,500 350,300 C 500,100 650,200 850,150')" }}
                     >
-                        <path d="M-10,-10 L15,0 L-10,10 L-5,0 Z" fill="white" transform="rotate(25)" />
+                        <path d="M-10,-10 L15,0 L-10,10 L-5,0 Z" fill="url(#planeGradient)" transform="rotate(25)" />
                     </motion.g>
                 </svg>
 
@@ -76,10 +82,10 @@ const HeroSlider = () => {
                                 scale: { delay: stat.delay, duration: 0.8 },
                                 y: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: stat.delay }
                             }}
-                            className={`absolute ${stat.pos} px-4 py-3 md:px-6 md:py-4 rounded-xl md:rounded-2xl backdrop-blur-md bg-white/10 border border-white/20 shadow-2xl min-w-[140px] md:min-w-[180px]`}
+                            className={`absolute ${stat.pos} px-4 py-3 md:px-6 md:py-4 rounded-none backdrop-blur-md bg-white/10 border border-white/20 min-w-[140px] md:min-w-[180px]`}
                         >
-                            <div className="text-xl md:text-3xl font-black text-white leading-tight">{stat.val}</div>
-                            <div className="text-[8px] md:text-[10px] font-bold text-white/70 uppercase tracking-widest mt-1">{stat.label}</div>
+                            <div className="text-xl md:text-3xl font-black mask-text leading-tight">{stat.val}</div>
+                            <div className="text-[8px] md:text-[10px] font-bold mask-text uppercase tracking-widest mt-1">{stat.label}</div>
                         </motion.div>
                     ))}
                 </div>

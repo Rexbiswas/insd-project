@@ -20,7 +20,7 @@ import LabSlider from '../components/LabSlider';
 
 const Entrepreneur = () => {
     return (
-        <div className="bg-white min-h-screen font-sans selection:bg-primary selection:text-white pt-20">
+        <div className="bg-white min-h-screen font-sans selection:bg-primary selection:text-white pt-20 overflow-x-hidden">
             <SEO 
                 title="Entrepreneurship & Startup Incubation | INSD"
                 description="Ignite your entrepreneurial journey with INSD's startup incubation cell. We provide the mentorship, resources, and global network to turn your design vision into a successful venture."
@@ -291,7 +291,146 @@ const Entrepreneur = () => {
             </section>
 
 
-            {/* --- DESIGN CONCLAVE (The Flagship Event) --- */}
+            {/* --- SUCCESSFUL CAREER SKILLS (Based on User Image) --- */}
+            <section className="py-40 bg-[#f8f9fa] relative overflow-hidden">
+                <div className="container mx-auto px-6">
+                    <div className="text-center mb-24">
+                        <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter text-slate-900 leading-none mb-4">
+                            SUCCESSFUL <span className="text-primary">CAREER SKILLS</span>
+                        </h2>
+                        <p className="text-xl md:text-3xl font-serif italic text-slate-400">We train students for holistic growth</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {[
+                            {
+                                title: "DESIGN SKILLS",
+                                subtitle: "CREATE. DESIGN. EXECUTE.",
+                                img: "/brain/b291e1a3-1cb2-4efc-ac17-c19bc4ddc65e/skills_design_laptop_1776964909628.png"
+                            },
+                            {
+                                title: "AI TOOLS",
+                                subtitle: "PROMPT. PRODUCE. FAST.",
+                                img: "/brain/b291e1a3-1cb2-4efc-ac17-c19bc4ddc65e/skills_ai_smartphone_1776964927149.png"
+                            },
+                            {
+                                title: "SOFT SKILLS",
+                                subtitle: "COMMUNICATE. PRESENT. CONFIDENCE.",
+                                img: "/brain/b291e1a3-1cb2-4efc-ac17-c19bc4ddc65e/skills_soft_presenting_1776964941714.png"
+                            },
+                            {
+                                title: "ENTREPRENEURIAL SKILLS",
+                                subtitle: "PRICE. SELL. BUILD. EARN.",
+                                img: "/brain/b291e1a3-1cb2-4efc-ac17-c19bc4ddc65e/skills_entrepreneur_working_1776964959064.png"
+                            }
+                        ].map((skill, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.1 }}
+                                className="group relative"
+                            >
+                                <div className="aspect-[3/4] rounded-[2rem] overflow-hidden mb-8 shadow-2xl border border-slate-100">
+                                    <img src={skill.img} alt={skill.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" />
+                                    <div className="absolute inset-0 bg-linear-to-t from-slate-900/80 via-transparent to-transparent" />
+                                </div>
+                                <div className="space-y-2">
+                                    <h3 className="text-2xl font-black text-slate-900 tracking-tighter uppercase">{skill.title}</h3>
+                                    <p className="text-[10px] font-bold text-primary tracking-[0.3em] uppercase">{skill.subtitle}</p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* --- WORK IN THE LARGEST SECTORS (Based on User Image) --- */}
+            <section className="py-40 bg-white">
+                <div className="container mx-auto px-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                        <div className="lg:col-span-4">
+                            <h2 className="text-6xl md:text-9xl font-black uppercase tracking-tighter text-slate-900 leading-[0.8] mb-12">
+                                WORK <br /> IN THE <br /> <span className="text-primary">LARGEST</span> <br /> SECTORS
+                            </h2>
+                            <p className="text-xl text-slate-500 font-medium max-w-sm">
+                                Our graduates are engineered to dominate the most lucrative industries in the global creative economy.
+                            </p>
+                        </div>
+                        <div className="lg:col-span-8">
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 h-[600px]">
+                                {[
+                                    { title: "HOSPITALITY INDUSTRY", img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1000" },
+                                    { title: "RETAIL INDUSTRY", img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1000" },
+                                    { title: "MEDIA & ENTERTAINMENT", img: "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1000" },
+                                    { title: "DESIGN INDUSTRY", img: "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1000" }
+                                ].map((sector, i) => (
+                                    <motion.div
+                                        key={i}
+                                        initial={{ opacity: 0, scale: 0.9 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: i * 0.1 }}
+                                        className="relative h-full rounded-[2rem] overflow-hidden group border border-slate-100"
+                                    >
+                                        <img src={sector.img} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110" />
+                                        <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-transparent to-transparent opacity-60 group-hover:opacity-90 transition-opacity" />
+                                        <div className="absolute bottom-8 left-0 right-0 px-6 text-center">
+                                            <h4 className="text-white font-black text-xs md:text-sm tracking-widest uppercase leading-tight">
+                                                {sector.title}
+                                            </h4>
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* --- EXPERT FACULTY & #1 SKILL SCHOOL --- */}
+            <section className="py-40 bg-slate-950 text-white relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/10 blur-[150px] -translate-y-1/2 translate-x-1/2 rounded-full pointer-events-none" />
+                
+                <div className="container mx-auto px-6 relative z-10">
+                    <div className="max-w-4xl mx-auto text-center mb-32">
+                        <span className="text-primary font-black uppercase tracking-[0.8em] text-[10px] mb-8 block">Academic Excellence</span>
+                        <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-12">
+                            LEARN FROM <span className="italic font-serif font-light text-white/50">EXPERT FACULTIES</span> AT INSD.
+                        </h2>
+                        <p className="text-white/40 text-lg md:text-2xl font-medium leading-relaxed mb-12">
+                            Our mentors are industry-active practitioners, ensuring your education is directly aligned with the current market velocity.
+                        </p>
+                        <div className="inline-block px-12 py-6 border-2 border-primary text-primary rounded-full font-black uppercase text-sm tracking-[0.5em] hover:bg-primary hover:text-white transition-all cursor-pointer">
+                            Meet Your Mentors
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 rounded-[4rem] overflow-hidden border border-white/10">
+                        <div className="p-20 bg-slate-900 flex flex-col justify-center items-center text-center space-y-8">
+                            <h3 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">India's #1</h3>
+                            <div className="w-24 h-1 bg-primary mx-auto" />
+                            <p className="text-2xl font-black uppercase tracking-[0.2em] text-white/60">Skill School</p>
+                        </div>
+                        <div className="p-20 bg-slate-950 flex flex-col justify-center space-y-8">
+                            <p className="text-white/60 text-xl leading-relaxed font-light">
+                                "INSD provided me with the architectural foundation to scale my vision into a market-dominant brand within 24 months of graduation."
+                            </p>
+                            <div className="flex items-center gap-6">
+                                <div className="w-16 h-16 rounded-full bg-white/10 overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200" className="w-full h-full object-cover" />
+                                </div>
+                                <div>
+                                    <p className="font-black uppercase tracking-widest text-sm">Aman Varma</p>
+                                    <p className="text-primary font-bold text-[10px] uppercase tracking-widest">Founder, VERMA COUTURE</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section className="py-48 px-6 md:px-12 lg:px-24 bg-white relative overflow-hidden">
                 <div className="absolute inset-x-0 top-0 h-px bg-slate-100" />
                 
@@ -365,6 +504,156 @@ const Entrepreneur = () => {
             </section>
 
 
+
+            {/* --- GLOBAL CURRENCY SECTION (Based on Image) --- */}
+            <section className="py-40 px-6 md:px-12 lg:px-24 bg-white relative overflow-hidden">
+                <div className="max-w-7xl mx-auto flex flex-col items-center">
+                    
+                    {/* Header Group */}
+                    <div className="text-center space-y-4 mb-24 relative z-20">
+                        <motion.h2 
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            className="text-4xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none"
+                        >
+                            Skills Accepted <span className="text-primary italic">Globally</span>
+                        </motion.h2>
+                        <motion.p 
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            transition={{ delay: 0.3 }}
+                            className="text-lg md:text-2xl text-slate-500 font-bold tracking-tight uppercase"
+                        >
+                            Your talent has no borders & your skills are a global currency.
+                        </motion.p>
+                    </div>
+
+                    {/* Interactive World Map / Brand Hub */}
+                    <div className="relative w-full aspect-[16/10] max-w-5xl group">
+                        
+                        {/* Central Visual */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <motion.div 
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                className="relative w-[80%] h-[80%] rounded-[4rem] overflow-hidden shadow-2xl border border-slate-100"
+                            >
+                                <img 
+                                    src="https://images.unsplash.com/photo-1522071823991-b9671f9d7f1f?auto=format&fit=crop&q=80&w=1600" 
+                                    className="w-full h-full object-cover grayscale brightness-110 opacity-40" 
+                                    alt="Global Designer"
+                                />
+                                <div className="absolute inset-0 bg-linear-to-tr from-white via-transparent to-primary/5" />
+                                
+                                {/* Overlay brands image (Conceptual) */}
+                                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                    <div className="w-[60%] h-[60%] border-2 border-primary/20 rounded-full animate-spin-slow opacity-20" />
+                                    <div className="w-[80%] h-[80%] border border-primary/10 rounded-full animate-reverse-spin opacity-10 absolute" />
+                                </div>
+                            </motion.div>
+                        </div>
+
+                        {/* Floating Cities - Left Side */}
+                        <div className="absolute inset-0 z-10 pointer-events-none">
+                            {[
+                                { name: "Delhi", top: "15%", left: "5%" },
+                                { name: "Mumbai", top: "35%", left: "0%" },
+                                { name: "Bangalore", top: "55%", left: "5%" },
+                                { name: "Kolkata", top: "75%", left: "10%" },
+                                { name: "Hyderabad", bottom: "5%", left: "20%" },
+                                { name: "Pune", bottom: "0%", left: "40%" }
+                            ].map((city, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 0.6, x: 0 }}
+                                    animate={{ 
+                                        y: [0, -10, 0],
+                                        x: [0, 5, 0]
+                                    }}
+                                    transition={{ 
+                                        duration: 5, 
+                                        delay: i * 0.2, 
+                                        repeat: Infinity,
+                                        opacity: { duration: 1, delay: i * 0.2 }
+                                    }}
+                                    style={{ top: city.top, left: city.left, bottom: city.bottom }}
+                                    className="absolute text-slate-900 font-black uppercase text-xs md:text-xl tracking-widest"
+                                >
+                                    {city.name}
+                                </motion.div>
+                            ))}
+                        </div>
+
+                        {/* Floating Cities - Right Side */}
+                        <div className="absolute inset-0 z-10 pointer-events-none">
+                            {[
+                                { name: "London", top: "10%", right: "10%" },
+                                { name: "Paris", top: "30%", right: "5%" },
+                                { name: "New York", top: "55%", right: "0%" },
+                                { name: "Tokyo", bottom: "20%", right: "10%" },
+                                { name: "Milan", bottom: "5%", right: "30%" }
+                            ].map((city, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, x: 20 }}
+                                    whileInView={{ opacity: 0.6, x: 0 }}
+                                    animate={{ 
+                                        y: [0, 10, 0],
+                                        x: [0, -5, 0]
+                                    }}
+                                    transition={{ 
+                                        duration: 6, 
+                                        delay: i * 0.3, 
+                                        repeat: Infinity,
+                                        opacity: { duration: 1, delay: i * 0.3 }
+                                    }}
+                                    style={{ top: city.top, right: city.right, bottom: city.bottom }}
+                                    className="absolute text-slate-900 font-black uppercase text-xs md:text-xl tracking-widest text-right"
+                                >
+                                    {city.name}
+                                </motion.div>
+                            ))}
+                        </div>
+
+                        {/* Central Graphic Element (Person at desk aesthetic) */}
+                        <div className="absolute inset-0 flex items-center justify-center z-20">
+                            <motion.div 
+                                initial={{ y: 50, opacity: 0 }}
+                                whileInView={{ y: 0, opacity: 1 }}
+                                transition={{ duration: 1, delay: 0.5 }}
+                                className="w-[50%] h-[70%] relative"
+                            >
+                                <img 
+                                    src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=1200" 
+                                    className="w-full h-full object-contain filter drop-shadow-[0_20px_50px_rgba(0,0,0,0.2)]" 
+                                    alt="Professional Hub"
+                                />
+                                
+                                {/* Floating Brand Accents (Simulating logos from image) */}
+                                <div className="absolute inset-0 pointer-events-none">
+                                    {[
+                                        { label: "NIKE", top: "10%", left: "0%", color: "bg-black" },
+                                        { label: "LV", top: "45%", left: "10%", color: "bg-amber-800" },
+                                        { label: "GOOGLE", top: "20%", right: "10%", color: "bg-blue-500" },
+                                        { label: "BOLLYWOOD", top: "5%", right: "20%", color: "bg-red-600" }
+                                    ].map((brand, i) => (
+                                        <motion.div
+                                            key={i}
+                                            animate={{ scale: [1, 1.1, 1] }}
+                                            transition={{ duration: 3, repeat: Infinity, delay: i }}
+                                            style={{ top: brand.top, left: brand.left, right: brand.right }}
+                                            className={`absolute px-3 py-1 ${brand.color} text-white font-black text-[8px] rounded-sm shadow-lg`}
+                                        >
+                                            {brand.label}
+                                        </motion.div>
+                                    ))}
+                                </div>
+                            </motion.div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <Footer />
         </div>

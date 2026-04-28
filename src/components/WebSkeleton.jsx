@@ -1,85 +1,78 @@
 import React from 'react';
+import Boneyard from './Boneyard';
 
 const WebSkeleton = () => {
     return (
-        <div className="w-full min-h-screen bg-white">
-            {/* Shimmer Effect Definition */}
-            <style>
-                {`
-                @keyframes shimmer {
-                    0% {
-                        background-position: -1000px 0;
-                    }
-                    100% {
-                        background-position: 1000px 0;
-                    }
-                }
-                .shimmer {
-                    animation: shimmer 2s infinite linear;
-                    background: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
-                    background-size: 1000px 100%;
-                }
-                `}
-            </style>
-
-            {/* Navbar Skeleton Placeholder */}
-            <div className="w-full h-16 md:h-20 flex items-center justify-between px-8 md:px-16 border-b border-slate-50 relative z-10 bg-white/50 backdrop-blur-sm">
-                <div className="h-8 w-32 md:w-40 shimmer rounded-lg"></div>
+        <div className="w-full min-h-screen bg-white overflow-hidden">
+            {/* Navbar Boneyard */}
+            <div className="w-full h-16 md:h-20 flex items-center justify-between px-8 md:px-16 border-b border-slate-50 relative z-10 bg-white">
+                <Boneyard.Bone width="140px" height="24px" />
                 <div className="hidden md:flex items-center gap-10">
-                    <div className="h-4 w-20 shimmer rounded-md"></div>
-                    <div className="h-4 w-24 shimmer rounded-md"></div>
-                    <div className="h-4 w-20 shimmer rounded-md"></div>
-                    <div className="h-4 w-24 shimmer rounded-md"></div>
+                    <Boneyard.Bone width="80px" height="12px" />
+                    <Boneyard.Bone width="90px" height="12px" />
+                    <Boneyard.Bone width="80px" height="12px" />
                 </div>
-                <div className="h-10 w-24 md:w-32 shimmer rounded-full"></div>
+                <Boneyard.Bone width="120px" height="40px" className="rounded-full" />
             </div>
 
-            {/* Hero Section Skeleton */}
-            <div className="w-full h-[60vh] md:h-[80vh] shimmer -mt-16 md:-mt-20"></div>
+            {/* Hero Boneyard */}
+            <div className="relative w-full h-[60vh] md:h-[80vh] px-8 md:px-16 flex flex-col justify-center gap-8">
+                <Boneyard.Bone width="60%" height="80px" className="md:h-[120px]" />
+                <Boneyard.Bone width="40%" height="20px" />
+                <div className="flex gap-4">
+                    <Boneyard.Bone width="160px" height="56px" />
+                    <Boneyard.Bone width="160px" height="56px" />
+                </div>
+                {/* Abstract wireframe element */}
+                <div className="absolute right-0 top-1/4 w-1/3 h-2/3 border-l border-t border-slate-100 opacity-20 pointer-events-none" />
+            </div>
 
             {/* Content Container */}
-            <div className="max-w-7xl mx-auto px-6 py-12 space-y-12">
+            <div className="max-w-7xl mx-auto px-6 py-20 space-y-24">
                 
-                {/* Section Title */}
-                <div className="h-10 w-64 shimmer rounded-md mb-8"></div>
-
-                {/* Grid of items */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {[1, 2, 3].map((i) => (
-                        <div key={i} className="space-y-4">
-                            <div className="h-48 w-full shimmer rounded-xl"></div>
-                            <div className="h-6 w-3/4 shimmer rounded-md"></div>
-                            <div className="h-4 w-full shimmer rounded-md"></div>
-                            <div className="h-4 w-5/6 shimmer rounded-md"></div>
-                        </div>
-                    ))}
-                </div>
-
-                {/* Long Text Block */}
-                <div className="space-y-6 pt-12">
-                    <div className="h-8 w-48 shimmer rounded-md"></div>
-                    <div className="space-y-3">
-                        <div className="h-4 w-full shimmer rounded-md"></div>
-                        <div className="h-4 w-full shimmer rounded-md"></div>
-                        <div className="h-4 w-full shimmer rounded-md"></div>
-                        <div className="h-4 w-3/4 shimmer rounded-md"></div>
+                {/* Section Template */}
+                <div className="space-y-12">
+                    <Boneyard.Bone width="300px" height="40px" />
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                        <Boneyard.Card />
+                        <Boneyard.Card />
+                        <Boneyard.Card />
                     </div>
                 </div>
 
-                {/* Another Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-12">
-                     <div className="h-64 w-full shimmer rounded-2xl"></div>
-                     <div className="space-y-6 flex flex-col justify-center">
-                        <div className="h-8 w-1/2 shimmer rounded-md"></div>
-                        <div className="h-4 w-full shimmer rounded-md"></div>
-                        <div className="h-4 w-full shimmer rounded-md"></div>
-                        <div className="h-12 w-40 shimmer rounded-full mt-4"></div>
-                     </div>
+                {/* Wireframe Block Template */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                    <Boneyard.Block height="500px" />
+                    <div className="space-y-8">
+                        <Boneyard.Bone width="80%" height="48px" />
+                        <Boneyard.Text lines={6} />
+                        <Boneyard.Bone width="180px" height="56px" />
+                    </div>
+                </div>
+
+                {/* Stats / Joint Pattern */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-20 border-y border-slate-50">
+                    {[1, 2, 3, 4].map(i => (
+                        <div key={i} className="flex flex-col items-center gap-4">
+                            <Boneyard.Joint />
+                            <Boneyard.Bone width="60%" height="24px" />
+                            <Boneyard.Bone width="40%" height="12px" />
+                        </div>
+                    ))}
                 </div>
             </div>
 
-            {/* Footer-like area */}
-            <div className="w-full h-32 shimmer mt-24 opacity-50"></div>
+            {/* Footer Area */}
+            <div className="w-full h-64 bg-slate-50/50 mt-20 p-16 flex justify-between">
+                <div className="space-y-4 w-1/4">
+                    <Boneyard.Bone width="100%" height="20px" />
+                    <Boneyard.Text lines={3} />
+                </div>
+                <div className="flex gap-12">
+                    <div className="space-y-4"><Boneyard.Bone width="80px" height="12px" /><Boneyard.Bone width="80px" height="12px" /></div>
+                    <div className="space-y-4"><Boneyard.Bone width="80px" height="12px" /><Boneyard.Bone width="80px" height="12px" /></div>
+                </div>
+            </div>
         </div>
     );
 };

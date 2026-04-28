@@ -400,6 +400,127 @@ const Campuses = () => {
                 </div>
             </section>
 
+            {/* Campus Ecosystem Mosaic Section */}
+            <section className="py-32 md:py-60 bg-slate-50 relative overflow-hidden">
+                <div className="container mx-auto px-6">
+                    <div className="grid grid-cols-12 gap-4 md:gap-6 auto-rows-[150px] md:auto-rows-[250px]">
+                        {/* Mosaic Item 1 */}
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            className="col-span-6 md:col-span-3 row-span-1 md:row-span-2 rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white"
+                        >
+                            <img src="/brain/b291e1a3-1cb2-4efc-ac17-c19bc4ddc65e/campus_reception_modern_1776962671863.png" className="w-full h-full object-cover" alt="Campus" />
+                        </motion.div>
+
+                        {/* Mosaic Item 2 */}
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.1 }}
+                            className="col-span-6 md:col-span-3 row-span-1 rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white"
+                        >
+                            <img src="/brain/b291e1a3-1cb2-4efc-ac17-c19bc4ddc65e/campus_studio_mural_1776962689497.png" className="w-full h-full object-cover" alt="Campus" />
+                        </motion.div>
+
+                        {/* Mosaic Item 3 */}
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.2 }}
+                            className="col-span-6 md:col-span-3 row-span-1 rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white"
+                        >
+                            <img src="/brain/b291e1a3-1cb2-4efc-ac17-c19bc4ddc65e/campus_fashion_workshop_1776962708536.png" className="w-full h-full object-cover" alt="Campus" />
+                        </motion.div>
+
+                        {/* Central Text Block */}
+                        <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="col-span-12 md:col-span-6 row-span-1 md:row-span-2 bg-white flex items-center justify-center text-center p-12 rounded-[3rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] relative z-10 border border-slate-100"
+                        >
+                            <h2 className="text-3xl md:text-6xl font-black uppercase tracking-tighter text-slate-900 leading-[0.85]">
+                                OUR CAMPUS IS <br />
+                                <span className="text-primary italic">WELL-EQUIPPED</span> <br />
+                                TO DELIVER THE <br />
+                                <span className="text-slate-300">PERFECT TRAINING</span>
+                            </h2>
+                        </motion.div>
+
+                        {/* Mosaic Item 4 */}
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.3 }}
+                            className="col-span-6 md:col-span-3 row-span-1 md:row-span-2 rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white"
+                        >
+                            <img src="/brain/b291e1a3-1cb2-4efc-ac17-c19bc4ddc65e/campus_computer_lab_tech_1776962724124.png" className="w-full h-full object-cover" alt="Campus" />
+                        </motion.div>
+
+                        {/* Mosaic Item 5 */}
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.4 }}
+                            className="col-span-6 md:col-span-3 row-span-1 rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white"
+                        >
+                            <img src="/brain/b291e1a3-1cb2-4efc-ac17-c19bc4ddc65e/campus_mural_creative_wall_1776962741811.png" className="w-full h-full object-cover" alt="Campus" />
+                        </motion.div>
+
+                        {/* Mosaic Item 6 */}
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.5 }}
+                            className="col-span-6 md:col-span-3 row-span-1 rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white"
+                        >
+                            <img src="/brain/b291e1a3-1cb2-4efc-ac17-c19bc4ddc65e/campus_office_meeting_room_1776962757325.png" className="w-full h-full object-cover" alt="Campus" />
+                        </motion.div>
+
+                        {/* Mosaic Item 7 */}
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.6 }}
+                            className="col-span-6 md:col-span-3 row-span-1 rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white"
+                        >
+                            <img src="/brain/b291e1a3-1cb2-4efc-ac17-c19bc4ddc65e/campus_art_studio_tables_1776962773027.png" className="w-full h-full object-cover" alt="Campus" />
+                        </motion.div>
+
+                        {/* Mosaic Item 8 (Placeholder/Additional) */}
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.7 }}
+                            className="col-span-6 md:col-span-3 row-span-1 rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white"
+                        >
+                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000" className="w-full h-full object-cover" alt="Campus" />
+                        </motion.div>
+                    </div>
+
+                    <motion.div 
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 1 }}
+                        className="mt-16 text-center"
+                    >
+                        <p className="text-slate-400 text-[10px] uppercase tracking-widest">
+                            ©All rights reserved 2026. International School of Design, Head Office, New Delhi
+                        </p>
+                    </motion.div>
+                </div>
+            </section>
+
             <section ref={horizontalSectionRef} className="h-screen bg-white">
                 <div ref={horizontalScrollRef} className="h-full flex items-center px-[5vw] gap-32">
                     <div className="min-w-[85vw] md:min-w-[40vw] flex flex-col justify-center">

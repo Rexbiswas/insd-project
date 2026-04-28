@@ -514,3 +514,52 @@ body.is-404-page div.fixed.bottom-6.z-50 {
 .scroller:hover > * {
   animation-play-state: paused !important;
 }
+
+/* Boneyard Loader System */
+@keyframes boneyard-pulse {
+  0%, 100% { opacity: 0.5; background-color: #f3f4f6; }
+  50% { opacity: 0.8; background-color: #e5e7eb; }
+}
+
+@keyframes boneyard-shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.boneyard-base {
+  background-color: #f3f4f6;
+  position: relative;
+  overflow: hidden;
+}
+
+.boneyard-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    transparent 100%
+  );
+  animation: boneyard-shimmer 2s infinite;
+}
+
+.boneyard-bone {
+  border-radius: 9999px;
+  background: #e5e7eb;
+  position: relative;
+  overflow: hidden;
+}
+
+.boneyard-joint {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #e5e7eb;
+}
+
+.boneyard-wireframe {
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.02);
+}

@@ -17,8 +17,10 @@ import {
 import GrowthChart from '../components/GrowthChart';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
+import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const FutureOfDesign = () => {
+    const { openAdmissionModal } = useAdmissionModal();
 
     return (
         <div className="bg-white min-h-screen font-sans selection:bg-primary selection:text-white overflow-hidden">
@@ -188,6 +190,51 @@ const FutureOfDesign = () => {
                             <p className="text-slate-500 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em]">{stat.sub}</p>
                         </div>
                     ))}
+                </div>
+            </section>
+
+            {/* --- CALL TO ACTION: JOIN THE REVOLUTION --- */}
+            <section className="py-32 px-6 bg-white relative overflow-hidden">
+                <div className="max-w-7xl mx-auto">
+                    <div className="relative rounded-[3rem] md:rounded-[4rem] bg-slate-950 p-12 md:p-24 overflow-hidden group">
+                        {/* Animated background accent */}
+                        <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/20 blur-[120px] -rotate-12 translate-x-1/2 group-hover:bg-primary/30 transition-all duration-700" />
+                        
+                        <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-16">
+                            <div className="space-y-8 text-center lg:text-left max-w-2xl">
+                                <h2 className="text-4xl md:text-7xl font-black text-white uppercase tracking-tightest leading-none">
+                                    Be Part of the <br />
+                                    <span className="text-primary italic">Creative Shift.</span>
+                                </h2>
+                                <p className="text-white/60 font-bold uppercase text-sm md:text-lg tracking-tight leading-relaxed">
+                                    The "Orange Economy" is calling. Join INSD to master the skills 
+                                    demanded by the 2033 job market and build a high-impact career in design.
+                                </p>
+                            </div>
+
+                            <div className="flex flex-col sm:flex-row items-center gap-6">
+                                <motion.button
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    onClick={() => openAdmissionModal()}
+                                    className="w-full sm:w-auto h-20 px-12 bg-primary text-white rounded-full font-black uppercase tracking-[0.2em] text-xs shadow-2xl shadow-primary/40 flex items-center justify-center gap-4 hover:bg-white hover:text-slate-950 transition-all duration-500"
+                                >
+                                    Join the 2026 Batch
+                                    <ArrowRight size={20} />
+                                </motion.button>
+                                
+                                <div className="flex flex-col items-center lg:items-start">
+                                    <span className="text-white font-black text-2xl tracking-tighter">100%</span>
+                                    <span className="text-white/40 text-[10px] font-black uppercase tracking-widest">Placement Support</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Decorative floating icon */}
+                        <div className="absolute -bottom-10 -left-10 text-white/5 opacity-20 pointer-events-none">
+                            <Lightbulb size={300} strokeWidth={1} />
+                        </div>
+                    </div>
                 </div>
             </section>
 
