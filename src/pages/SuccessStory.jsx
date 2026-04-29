@@ -152,7 +152,7 @@ const SuccessStory = () => {
                         >
                             <Trophy className="w-3 h-3" /> The Wall of Excellence
                         </motion.span>
-                        <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[9.5rem] font-black tracking-tighter uppercase leading-[0.85] md:leading-[0.8] mb-8 md:mb-12 hero-reveal">
+                        <h1 className="text-clamp-4xl font-black tracking-tighter uppercase leading-[0.85] md:leading-[0.8] mb-8 md:mb-12 hero-reveal">
                             Manifesting <br className="hidden md:block" />
                             <span className="text-transparent stroke-text-slate opacity-20">Ambition</span>
                         </h1>
@@ -195,7 +195,7 @@ const SuccessStory = () => {
                                 </div>
                                 <div className="space-y-6 md:space-y-10">
                                     <span className="text-primary font-black text-[9px] md:text-xs uppercase tracking-[0.5em] block">STUDENT SPOTLIGHT</span>
-                                    <h2 className="text-4xl md:text-7xl font-black text-white uppercase tracking-tighter leading-tight">
+                                    <h2 className="text-clamp-3xl font-black text-white uppercase tracking-tighter leading-tight">
                                         {featuredStory.title}
                                     </h2>
                                     <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 items-start sm:items-center py-6 border-y border-white/5">
@@ -331,7 +331,7 @@ const SuccessStory = () => {
                             </div>
                         </div>
                         <div className="space-y-8 md:space-y-10 order-1 lg:order-2">
-                            <h2 className="text-4xl md:text-6xl lg:text-[5.5rem] font-black tracking-tighter uppercase leading-[0.9] md:leading-[0.8] text-slate-950">
+                            <h2 className="text-clamp-3xl font-black tracking-tighter uppercase leading-[0.9] md:leading-[0.8] text-slate-950">
                                 The Alumni <br className="hidden md:block" /> <span className="text-primary italic">Ecosystem</span>
                             </h2>
                             <p className="text-lg md:text-xl text-slate-500 font-light leading-relaxed">

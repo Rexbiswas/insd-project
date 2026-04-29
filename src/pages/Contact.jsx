@@ -100,7 +100,7 @@ const Contact = () => {
                         <span>We're Here to Listen</span>
                     </motion.div>
 
-                    <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-6 tracking-tight leading-tight">
+                    <h1 className="text-clamp-4xl font-black text-slate-900 mb-6 tracking-tight leading-tight">
                         Let's Start a <br className="hidden md:block" />
                         <span className="text-transparent bg-clip-text bg-linear-to-r from-secondary to-primary">Conversation.</span>
                     </h1>

@@ -111,7 +111,7 @@ const AdmissionStepForm = () => {
                         className="space-y-8"
                     >
                         <div className="text-center mb-12">
-                            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter mb-4 text-slate-900 leading-[0.9]">
+                            <h2 className="text-clamp-3xl font-black uppercase tracking-tighter mb-4 text-slate-900 leading-[0.9]">
                                 Start Your <br /> <span className="text-primary italic font-serif">Creative Career</span> <br /> Today
                             </h2>
                             <p className="text-slate-500 font-medium max-w-lg mx-auto text-lg">
@@ -159,7 +159,7 @@ const AdmissionStepForm = () => {
                         className="space-y-8"
                     >
                         <div className="text-center mb-10">
-                            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4 text-slate-900 leading-[0.9]">
+                            <h2 className="text-clamp-3xl font-black uppercase tracking-tighter mb-4 text-slate-900 leading-[0.9]">
                                 Which Billion-dollar <br /> Industry <span className="text-secondary italic font-serif">Excites</span> You?
                             </h2>
                             <p className="text-slate-500 font-medium text-lg">Select a discipline to personalize your path.</p>
@@ -191,7 +191,7 @@ const AdmissionStepForm = () => {
                         className="space-y-8"
                     >
                         <div className="text-center mb-12">
-                            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4 text-slate-900 leading-none">
+                            <h2 className="text-clamp-3xl font-black uppercase tracking-tighter mb-4 text-slate-900 leading-none">
                                 Tell Us About <span className="text-primary italic font-serif">Yourself</span>
                             </h2>
                             <p className="text-slate-500 font-medium text-lg">We need these details to send you the admission brochure.</p>
@@ -284,7 +284,7 @@ const AdmissionStepForm = () => {
                         className="space-y-8"
                     >
                         <div className="text-center mb-10">
-                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-tighter mb-4 text-slate-900 leading-[0.9]">
+                            <h2 className="text-clamp-3xl font-black uppercase tracking-tighter mb-4 text-slate-900 leading-[0.9]">
                                 Current <span className="text-primary italic font-serif">Qualification</span>
                             </h2>
                             <p className="text-slate-500 font-medium text-lg">Help us recommend the right programs for you.</p>

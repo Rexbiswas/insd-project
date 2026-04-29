@@ -80,7 +80,7 @@ const Gallery = () => {
                         <span className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.6em] mb-4 block">
                             Visual Portfolios
                         </span>
-                        <h1 className="gallery-hero-title text-5xl md:text-[11.5rem] font-black uppercase tracking-tighter leading-none m-0 text-slate-900 mix-blend-multiply">
+                        <h1 className="gallery-hero-title text-clamp-4xl font-black uppercase tracking-tighter leading-none m-0 text-slate-900 mix-blend-multiply">
                             GALLERY<span className="text-transparent stroke-text-slate opacity-10">.</span>
                         </h1>
                         <p className="text-slate-400 font-bold text-xs md:text-sm uppercase tracking-widest max-w-xl mx-auto">
@@ -185,7 +185,7 @@ const Gallery = () => {
                             >
                                 <div className="space-y-4">
                                     <span className="text-primary font-black uppercase tracking-[0.4em] text-xs block">{selectedImage.category}</span>
-                                    <h2 className="text-5xl md:text-8xl font-black text-slate-900 uppercase tracking-tighter leading-[0.85]">{selectedImage.title}</h2>
+                                    <h2 className="text-clamp-3xl font-black text-slate-900 uppercase tracking-tighter leading-[0.85]">{selectedImage.title}</h2>
                                 </div>
                                 <p className="text-slate-500 font-bold text-sm md:text-lg uppercase tracking-tight leading-relaxed">
                                     Showcasing the pinnacle of design excellence at INSD. This work represents the intersection of technology, art, and human-centric design.

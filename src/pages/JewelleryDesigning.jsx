@@ -16,7 +16,9 @@ import {
     BookOpen,
     Clock,
     GraduationCap,
-    PenTool
+    PenTool,
+    ShoppingBag,
+    Briefcase
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO';
@@ -79,7 +81,9 @@ const JewelleryDesigning = () => {
                 "Semester 2": [
                     "Manual design gemology: basic study of gemstones, shapes; origin, occurence etc.",
                     "diamond grading: basic knowledge of diamond . there 4cs of grading."
-                ],
+                ]
+            },
+            "Year 2": {
                 "Semester 3": [
                     "Production management designing projects.like state project, country project, detachable project, temple jewellery.",
                     "gemology- advanced study.",
@@ -94,7 +98,7 @@ const JewelleryDesigning = () => {
                     "Accessory Designing Prac 2"
                 ]
             },
-            "Year 2": {
+            "Year 3": {
                 "Semester 5": [
                     "Human Resource Management",
                     "Custome Made Jewellery",
@@ -120,12 +124,11 @@ const JewelleryDesigning = () => {
 
     const careerPaths = [
         { title: "High-Jewellery Designer", desc: "Designing exclusive, one-of-a-kind masterpieces for luxury international heritage brands.", img: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=800" },
-        { title: "Gemologist", desc: "Expertly identifying and grading diamonds and precious gemstones based on the 4Cs.", img: "https://th.bing.com/th/id/R.72769c74fbeea9c53315c4f78ab9bcc6?rik=UfIeA2QGlaizww&riu=http%3a%2f%2fwww.ismat.in%2fwp-content%2fuploads%2f2023%2f09%2frd.jpg&ehk=957qTJ6Yai4buMd3NfPD6Qg8ycCPyIDJjSlvByJ9Vtc%3d&risl=&pid=ImgRaw&r=0" },
+        { title: "Gemologist", desc: "Expertly identifying and grading diamonds and precious gemstones based on the 4Cs.", img: "https://th.bing.net/th/id/R.72769c74fbeea9c53315c4f78ab9bcc6?rik=UfIeA2QGlaizww&riu=http%3a%2f%2fwww.ismat.in%2fwp-content%2fuploads%2f2023%2f09%2frd.jpg&ehk=957qTJ6Yai4buMd3NfPD6Qg8ycCPyIDJjSlvByJ9Vtc%3d&risl=&pid=ImgRaw&r=0" },
         { title: "CAD Jewellery Designer", desc: "Using advanced 3D software to create high-precision digital models for production.", img: "https://tse4.mm.bing.net/th/id/OIP.jfpYhgPsDhDCMQ6UFj03CwHaFj?rs=1&pid=ImgDetMain&o=7&rm=3" },
         { title: "Product Head", desc: "Managing the end-to-end design and manufacturing lifecycle of jewellery collections.", img: "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&q=80&w=800" },
         { title: "Visual Merchandiser", desc: "Designing high-impact storefronts and displays for luxury jewellery boutiques.", img: "https://www.jewelrypackagingmall.com/cdn/shop/articles/article_797188_1776269411_1344x768_crop_center.jpg?v=1776269461" },
-        { title: "Brand Consultant", desc: "Setting the strategic identity and market positioning for global gem houses.", img: "https://th.bing.com/th/id/OIP.vlGYh7JEMbqHEHuhowUDDAHaEO?w=314&h=180&c=7&r=0&o=7&pid=1.7&rm=3" },
-        
+        { title: "Brand Consultant", desc: "Setting the strategic identity and market positioning for global gem houses.", img: "https://th.bing.net/th/id/OIP.vlGYh7JEMbqHEHuhowUDDAHaEO?w=314&h=180&c=7&r=0&o=7&pid=1.7&rm=3" },
     ];
 
     return (
@@ -153,17 +156,15 @@ const JewelleryDesigning = () => {
                         transition={{ duration: 1 }}
                         className="space-y-6"
                     >
-
-                        <h1 className="text-4xl md:text-8xl lg:text-[10rem] font-black text-white uppercase tracking-tighter leading-tight md:leading-[0.85] mb-8">
-                           
-                            <span className="text-primary italic">Jewellery</span> <br className="hidden md:block" /> 
-                            Design
+                        <h1 className="text-clamp-5xl font-black text-white uppercase tracking-tighter leading-tight md:leading-[0.85] mb-8">
+                            <span className="text-primary">Jewellery</span> <br className="hidden md:block" /> 
+                            Designing
                         </h1>
                        
-                        <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
+                        <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default justify-center">
                                 <span className="text-[10px] font-black uppercase tracking-widest">Scroll to Explore</span>
                                 <ArrowRight size={16} className="rotate-90" />
-                            </div>
+                        </div>
                     </motion.div>
                 </div>
             </section>
@@ -172,9 +173,9 @@ const JewelleryDesigning = () => {
             <section className="py-12 bg-slate-900 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
                     {[
-                        { label: "Degree", value: "Bachelors accredited", icon: GraduationCap },
-                        { label: "Course Length", value: "1 Year", icon: Clock },
-                        { label: "Eligibility", value: "Any Stream", icon: BookOpen },
+                        { label: "Sector", value: "Retail Industry", icon: ShoppingBag },
+                        { label: "Sector", value: "Hospitality Industry", icon: Briefcase },
+                        { label: "Sector", value: "Design Industry", icon: Palette },
                     ].map((item, idx) => (
                         <motion.div 
                             key={idx}
@@ -216,7 +217,7 @@ const JewelleryDesigning = () => {
                 <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-3xl rounded-full" />
                 <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
                     <div className="space-y-8">
-                        <h2 className="text-3xl md:text-4xl font-black tracking-tight leading-none mb-2">
+                        <h2 className="text-3xl md:text-4xl font-black tracking-tight leading-none mb-2 text-primary uppercase">
                             Jewellery <br /> Mastery
                         </h2>
                         <div className="space-y-6">
@@ -251,13 +252,31 @@ const JewelleryDesigning = () => {
                 </div>
             </section>
 
+            {/* --- COURSE OVERVIEW (QUICK FACTS) --- */}
+            <section className="py-12 bg-white border-b border-slate-100">
+                <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {[
+                        { label: "Course Length", value: "3 or 4 Years Option", icon: Clock },
+                        { label: "Degree", value: "Bachelors accredited by UGC", icon: GraduationCap },
+                        { label: "Eligibility", value: "10+2", icon: BookOpen },
+                    ].map((item, idx) => (
+                        <div key={idx} className="flex flex-col p-6 rounded-2xl bg-slate-50 border border-slate-100">
+                            <div className="flex items-center gap-3 mb-4">
+                                <item.icon className="text-primary" size={20} />
+                                <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">{item.label}</span>
+                            </div>
+                            <p className="text-lg font-black text-slate-900 uppercase tracking-tight">{item.value}</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
             {/* --- CURRICULUM SECTION --- */}
             <section className="py-24 px-6 md:px-12 lg:px-24 bg-slate-50">
                 <div className="max-w-7xl mx-auto">
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
                         <div className="space-y-4">
-
-                            <h2 className="text-5xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none">
+                            <h2 className="text-clamp-4xl font-black text-slate-900 uppercase tracking-tighter leading-none">
                                 Course <br /> <span className="text-slate-300">Curriculum</span>
                             </h2>
                         </div>
@@ -292,35 +311,6 @@ const JewelleryDesigning = () => {
                             ))}
                         </div>
                     </div>
-
-                    {activeOutline === 'Industry Diploma' && (
-                        <motion.div 
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="mb-12 p-8 rounded-[2.5rem] bg-slate-900 text-white border border-primary/20 shadow-2xl relative overflow-hidden group"
-                        >
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/20 transition-colors" />
-                            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-                                <div className="space-y-2 text-center md:text-left">
-                                    <p className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">Program Name</p>
-                                    <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tighter leading-none">
-                                        Advanced Industry Integrated Jewellery Diploma (AIIJD)
-                                    </h3>
-                                </div>
-                                <div className="flex items-center gap-6 px-8 py-4 bg-white/5 rounded-2xl border border-white/10">
-                                    <div className="text-center md:text-right">
-                                        <p className="text-white/40 font-black uppercase text-[8px] tracking-widest mb-1">Duration</p>
-                                        <p className="text-xl font-black text-primary leading-none uppercase tracking-tight">1 Year</p>
-                                    </div>
-                                    <div className="w-px h-10 bg-white/10" />
-                                    <div className="text-center md:text-left">
-                                        <p className="text-white/40 font-black uppercase text-[8px] tracking-widest mb-1">Learning Hours</p>
-                                        <p className="text-xl font-black text-white leading-none uppercase tracking-tight">420 Hours</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
-                    )}
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         {curriculumData[activeOutline] && Object.entries(curriculumData[activeOutline]).map(([semName, items], idx) => {
@@ -410,11 +400,10 @@ const JewelleryDesigning = () => {
                 </div>
             </section>
 
-            {/* --- CAREER PATHS GRID --- */}
+            {/* --- CAREER ARCHETYPES --- */}
             <section className="py-24 px-6 md:px-12 lg:px-24 bg-white relative">
                 <div className="max-w-7xl mx-auto space-y-20">
                     <div className="text-center space-y-4">
-
                         <h2 className="text-4xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none">
                             Career <br /> <span className="text-slate-300">Archetypes</span>
                         </h2>
@@ -437,9 +426,7 @@ const JewelleryDesigning = () => {
                                 />
                                 <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-8 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
                                     <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter leading-none mb-2">
-                                        {role.title.split(' ').map((word, i) => (
-                                            <span key={i} className="block">{word}</span>
-                                        ))}
+                                        {role.title}
                                     </h3>
                                     <p className="text-white/60 text-[10px] md:text-xs font-bold leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 uppercase tracking-tight">
                                         {role.desc}
@@ -455,9 +442,8 @@ const JewelleryDesigning = () => {
             <section className="py-24 px-6 md:px-12 lg:px-24 bg-slate-50 relative overflow-hidden">
                 <div className="max-w-7xl mx-auto space-y-20">
                     <div className="text-center space-y-4">
-
                         <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 uppercase tracking-tighter leading-none">
-                            Why Choose <br /> <span className="text-primary">INSD</span> Jewellery Design Courses?
+                            Why Choose <br /> <span className="text-primary">INSD</span> Jewellery Designing?
                         </h2>
                     </div>
 
@@ -465,12 +451,12 @@ const JewelleryDesigning = () => {
                         {[
                             { 
                                 title: "100% Placement Support", 
-                                desc: "Career focused learning with continuous guidance, ensuring you don’t just learn fashion—you build a real career in it.", 
+                                desc: "Career focused learning with continuous guidance, ensuring you build a real career in the luxury sector.", 
                                 icon: GraduationCap 
                             },
                             { 
                                 title: "Industry + AI Integrated Curriculum", 
-                                desc: "Learn what the industry actually demands with a curriculum that blends real-world practices and the latest AI-driven tools shaping fashion today.", 
+                                desc: "Learn what the industry actually demands with a curriculum that blends real-world practices and the latest AI-driven tools.", 
                                 icon: Sparkles 
                             },
                             { 
@@ -480,7 +466,7 @@ const JewelleryDesigning = () => {
                             },
                             { 
                                 title: "Expert Mentorship & Global Exposure", 
-                                desc: "Learn from experienced faculty, gain global insights, and grow through a fast-paced learning environment designed for future designers.", 
+                                desc: "Learn from experienced faculty, gain global insights, and grow through a fast-paced learning environment.", 
                                 icon: Globe 
                             }
                         ].map((item, idx) => (
@@ -504,9 +490,9 @@ const JewelleryDesigning = () => {
                         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
                             <div className="space-y-4">
                                 <h3 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter">
-                                    Ready to craft a <br /> <span className="text-primary italic">legacy?</span>
+                                    Ready to craft your <br /> <span className="text-primary">vision?</span>
                                 </h3>
-                                <p className="text-white/50 font-medium max-w-sm uppercase text-xs tracking-widest font-black">Join the 2026 session. Limited seats for high-potential luxury creative visionaries.</p>
+                                <p className="text-white/50 max-w-sm uppercase text-xs tracking-widest font-black">Join the 2026 session. Limited seats for high-potential creative visionaries.</p>
                             </div>
                             <button 
                                 onClick={() => navigate('/apply')}
@@ -525,4 +511,3 @@ const JewelleryDesigning = () => {
 };
 
 export default JewelleryDesigning;
-

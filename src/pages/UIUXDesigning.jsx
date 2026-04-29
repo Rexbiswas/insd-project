@@ -54,25 +54,33 @@ const UIUXDesigning = () => {
             ]
         },
         Bachelors: {
-            "Year 1": [
-                "Basics of Digital Design & IA",
-                "Color Theory & Digital Typography",
-                "User Experience (UX) Fundamentals",
-                "HTML5 & CSS3 for Designers",
-                "Interaction Design Principles",
-                "High-Fidelity Prototyping (Figma)",
-                "Visual Interface (UI) Design Mastery"
-            ],
-            "Year 2": [
-                "Advanced Mobile Product Design",
-                "E-commerce Design Strategy",
-                "Enterprise Design Systems",
-                "Accessibility & Inclusive Design",
-                "Design Leadership & Product Strategy",
-                "Design Entrepreneurship Lab",
-                "Industrial Internship (OJT)",
-                "Final Graduation Showcase"
-            ]
+            "Year 1": {
+                "Semester 1": [
+                    "Basics of Digital Design & IA",
+                    "Color Theory & Digital Typography",
+                    "User Experience (UX) Fundamentals"
+                ],
+                "Semester 2": [
+                    "HTML5 & CSS3 for Designers",
+                    "Interaction Design Principles",
+                    "High-Fidelity Prototyping (Figma)",
+                    "Visual Interface (UI) Design Mastery"
+                ]
+            },
+            "Year 2": {
+                "Semester 3": [
+                    "Advanced Mobile Product Design",
+                    "E-commerce Design Strategy",
+                    "Enterprise Design Systems"
+                ],
+                "Semester 4": [
+                    "Accessibility & Inclusive Design",
+                    "Design Leadership & Product Strategy",
+                    "Design Entrepreneurship Lab",
+                    "Industrial Internship (OJT)",
+                    "Final Graduation Showcase"
+                ]
+            }
         },
         PG: {
             "Year 1": [
@@ -129,23 +137,18 @@ const UIUXDesigning = () => {
                         transition={{ duration: 1 }}
                         className="space-y-6"
                     >
-
                         <h1 className="text-4xl md:text-8xl lg:text-[10rem] font-black text-white uppercase tracking-tighter leading-tight md:leading-[0.85] mb-8">
-                             
-                            <span className="text-primary italic">UI/UX</span> <br className="hidden md:block" /> 
-                            Design
+                            UI/UX 
+                            <span className="text-primary"> Design</span>  
                         </h1>
                         
-                        
-                        <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
+                        <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default justify-center">
                                 <span className="text-[10px] font-black uppercase tracking-widest">Scroll to Explore</span>
                                 <ArrowRight size={16} className="rotate-90" />
-                            </div>
+                        </div>
                     </motion.div>
                 </div>
             </section>
-
-            {/* --- COURSE HIGHLIGHTS --- */}
             <section className="py-12 bg-slate-900 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
                     {[
@@ -193,7 +196,7 @@ const UIUXDesigning = () => {
                 <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-3xl rounded-full" />
                 <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
                     <div className="space-y-8">
-                        <h2 className="text-3xl md:text-4xl font-black tracking-tight leading-none mb-2 text-primary uppercase italic">
+                        <h2 className="text-3xl md:text-4xl font-black tracking-tight leading-none mb-2 text-primary uppercase">
                             Product <br /> Engineering
                         </h2>
                         <div className="space-y-6">
@@ -225,6 +228,25 @@ const UIUXDesigning = () => {
                             </div>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            {/* --- COURSE OVERVIEW (QUICK FACTS) --- */}
+            <section className="py-12 bg-white border-b border-slate-100">
+                <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {[
+                        { label: "Course Length", value: "3 or 4 Years Option", icon: Clock },
+                        { label: "Degree", value: "Bachelors accredited by UGC", icon: GraduationCap },
+                        { label: "Eligibility", value: "10+2", icon: BookOpen },
+                    ].map((item, idx) => (
+                        <div key={idx} className="flex flex-col p-6 rounded-2xl bg-slate-50 border border-slate-100">
+                            <div className="flex items-center gap-3 mb-4">
+                                <item.icon className="text-primary" size={20} />
+                                <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">{item.label}</span>
+                            </div>
+                            <p className="text-lg font-black text-slate-900 uppercase tracking-tight">{item.value}</p>
+                        </div>
+                    ))}
                 </div>
             </section>
 
@@ -447,7 +469,7 @@ const UIUXDesigning = () => {
                         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
                             <div className="space-y-4">
                                 <h3 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter">
-                                    Ready to design the <br /> <span className="text-primary italic">future?</span>
+                                    Ready to design the <br /> <span className="text-primary">future?</span>
                                 </h3>
                                 <p className="text-white/50 max-w-sm uppercase text-xs tracking-widest font-black">Join the 2026 session. Limited seats for high-potential tech creative visionaries.</p>
                             </div>
@@ -468,4 +490,3 @@ const UIUXDesigning = () => {
 };
 
 export default UIUXDesigning;
-

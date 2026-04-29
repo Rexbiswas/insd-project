@@ -83,7 +83,7 @@ const CampusDetail = ({ campus }) => {
                     </motion.div>
 
                     <h1
-                        className="text-7xl md:text-9xl lg:text-[10rem] font-black uppercase tracking-tighter text-[#111] leading-[0.8] mb-8"
+                        className="text-clamp-5xl font-black uppercase tracking-tighter text-[#111] leading-[0.8] mb-8"
                     >
                         {campus.city.split(' ')[0]}<br />
                         <span className="text-transparent" style={{ WebkitTextStroke: '2px #111' }}>{campus.city.split(' ')[1] || campus.fullTitle.split('.')[0]}</span>
@@ -115,7 +115,7 @@ const CampusDetail = ({ campus }) => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                            className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-[#111] leading-[1.1] mb-10"
+                            className="text-clamp-3xl font-black uppercase tracking-tighter text-[#111] leading-[1.1] mb-10"
                         >
                             {campus.description.split('.')[0]}.
                         </motion.h2>
@@ -153,7 +153,7 @@ const CampusDetail = ({ campus }) => {
             {/* Infrastructure Bento Grid */}
             <section className="py-32 px-6 lg:px-12 max-w-[1400px] mx-auto bg-white border-y border-black/5 relative z-10 rounded-t-[3rem] mt-20">
                 <div className="mb-20 pt-10">
-                    <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-[#111]">
+                    <h2 className="text-clamp-4xl font-black uppercase tracking-tighter text-[#111]">
                         Infrastructure.
                     </h2>
                 </div>
@@ -178,7 +178,7 @@ const CampusDetail = ({ campus }) => {
                                 <div className="relative z-10 w-full h-full flex flex-col">
                                     <Icon size={24} className="mb-6 text-black/40" />
                                     <div className="mt-auto">
-                                        <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tighter text-black mb-4">
+                                        <h3 className="text-clamp-2xl font-black uppercase tracking-tighter text-black mb-4">
                                             {fac.title}
                                         </h3>
                                         <p className="text-black/60 font-medium">
@@ -202,7 +202,7 @@ const CampusDetail = ({ campus }) => {
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
                 <div className="relative z-10 max-w-4xl mx-auto">
-                    <h2 className="text-5xl md:text-7xl lg:text-9xl font-black uppercase tracking-tighter leading-[0.9] mb-8">
+                    <h2 className="text-clamp-5xl font-black uppercase tracking-tighter leading-[0.9] mb-8">
                         Design The <br /> <span className="italic font-serif font-light text-white/50">Future @ {campus.city}.</span>
                     </h2>
                     <p className="text-white/60 text-lg md:text-xl font-medium mb-12 max-w-xl mx-auto">
@@ -364,14 +364,14 @@ const Campuses = () => {
                 </div>
 
                 <div ref={portalTextRef} className="relative z-30 pointer-events-none px-4 text-center">
-                    <h1 className="text-black text-[18vw] md:text-[15vw] font-black uppercase tracking-tighter leading-none italic">
+                    <h1 className="text-black text-clamp-5xl font-black uppercase tracking-tighter leading-none italic">
                         ENT<span className="text-transparent strok-text-black opacity-40">E</span>R
                     </h1>
                 </div>
 
                 <div className="hero-content-reveal absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none px-6 text-center">
                     <span className="text-primary font-mono tracking-[0.8em] md:tracking-[1.5em] uppercase text-[9px] md:text-[10px] mb-8 animate-pulse">Unlocking The Ecosystem</span>
-                    <h2 className="text-5xl md:text-9xl font-black uppercase tracking-tighter text-center max-w-5xl leading-[0.85]">
+                    <h2 className="text-clamp-5xl font-black uppercase tracking-tighter text-center max-w-5xl leading-[0.85]">
                         Nodes Of <br /> <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary">Pure Creation.</span>
                     </h2>
                 </div>
@@ -387,7 +387,7 @@ const Campuses = () => {
                     </div>
                     <div className="order-1 md:order-2">
                         <span className="text-primary font-bold uppercase tracking-[0.5em] text-[10px] block mb-6">Atmosphere</span>
-                        <h3 className="text-4xl md:text-7xl font-black uppercase leading-none tracking-tighter mb-8">
+                        <h3 className="text-clamp-3xl font-black uppercase leading-none tracking-tighter mb-8">
                             Beyond <br /> Four Walls.
                         </h3>
                         <p className="text-black/60 text-lg md:text-xl leading-relaxed font-light mb-12">
@@ -443,7 +443,7 @@ const Campuses = () => {
                             viewport={{ once: true }}
                             className="col-span-12 md:col-span-6 row-span-1 md:row-span-2 bg-white flex items-center justify-center text-center p-12 rounded-[3rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] relative z-10 border border-slate-100"
                         >
-                            <h2 className="text-3xl md:text-6xl font-black uppercase tracking-tighter text-slate-900 leading-[0.85]">
+                            <h2 className="text-clamp-4xl font-black uppercase tracking-tighter text-slate-900 leading-[0.85]">
                                 OUR CAMPUS IS <br />
                                 <span className="text-primary italic">WELL-EQUIPPED</span> <br />
                                 TO DELIVER THE <br />
@@ -525,7 +525,7 @@ const Campuses = () => {
                 <div ref={horizontalScrollRef} className="h-full flex items-center px-[5vw] gap-32">
                     <div className="min-w-[85vw] md:min-w-[40vw] flex flex-col justify-center">
                         <span className="text-primary font-bold uppercase tracking-widest text-xs mb-6 block">— The Network</span>
-                        <h2 className="text-6xl md:text-8xl font-black text-black leading-[0.85] tracking-tighter uppercase mb-12">
+                        <h2 className="text-clamp-4xl font-black text-black leading-[0.85] tracking-tighter uppercase mb-12">
                             Global <br /> <span className="text-transparent stroke-text-white stroke-black!">Dominance.</span>
                         </h2>
                         <p className="text-lg md:text-xl text-slate-500 max-w-sm">
@@ -541,7 +541,7 @@ const Campuses = () => {
                             <div className="relative z-10 w-full h-full p-8 md:p-24 flex flex-col md:flex-row items-center gap-10 md:gap-12">
                                 <div className="w-full md:w-1/2 space-y-6 md:space-y-8">
                                     <span className="text-primary font-mono text-sm md:text-xl border border-primary/30 px-4 md:px-6 py-1 md:py-2 rounded-full w-fit block">{loc.num}</span>
-                                    <h3 className="text-5xl md:text-9xl font-black uppercase text-black tracking-tighter leading-none">{loc.city.split(' ')[0]}</h3>
+                                    <h3 className="text-clamp-4xl font-black uppercase text-black tracking-tighter leading-none">{loc.city.split(' ')[0]}</h3>
                                     <p className="text-black/60 text-base md:text-xl font-light whitespace-normal max-w-sm"><span className="text-black font-bold">{loc.title}.</span> {loc.desc}</p>
                                     <Link to={`/campuses/${loc.id}`} className="inline-block px-8 md:px-10 py-3 md:py-4 bg-black text-white font-bold uppercase tracking-widest rounded-full hover:bg-primary transition-all text-xs md:text-base">Explore Node</Link>
                                 </div>
@@ -560,7 +560,7 @@ const Campuses = () => {
                     <div className="flex flex-col md:flex-row justify-between items-end mb-32 gap-12">
                         <div className="max-w-2xl">
                             <span className="text-primary font-mono uppercase tracking-[0.5em] text-[9px] md:text-[10px] block mb-4">Inside the Labs</span>
-                            <h2 className="text-4xl md:text-8xl font-black uppercase leading-none tracking-tighter text-black">
+                            <h2 className="text-clamp-4xl font-black uppercase leading-none tracking-tighter text-black">
                                 World-Class <br /> <span className="text-transparent strok-text-black">Infrastructure.</span>
                             </h2>
                         </div>

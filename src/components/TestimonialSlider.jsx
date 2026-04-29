@@ -218,7 +218,7 @@ const TestimonialSlider = () => {
                         <motion.h2 
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            className="text-5xl md:text-8xl font-black text-slate-900 leading-[0.8] tracking-tighter uppercase"
+                            className="text-4xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[0.9] tracking-tighter uppercase"
                         >
                             From Classroom to Career: <br />
                             <span className="italic font-serif font-light text-slate-300">Voices of INSDians.</span>

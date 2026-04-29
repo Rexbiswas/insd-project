@@ -51,7 +51,7 @@ const Entrepreneur = () => {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                            className="text-[2.75rem] sm:text-6xl md:text-[8rem] font-black text-white tracking-tighter uppercase leading-[0.9] md:leading-none"
+                            className="text-clamp-5xl font-black text-white tracking-tighter uppercase leading-[0.9] md:leading-none"
                         >
                             From <span className="text-primary">Student</span> to <span className="stroke-text-white opacity-20">CEO</span>
                         </motion.h1>
@@ -60,7 +60,7 @@ const Entrepreneur = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 1, delay: 0.5 }}
-                            className="text-lg sm:text-2xl md:text-5xl font-serif italic text-slate-400 tracking-tight leading-tight"
+                            className="text-clamp-2xl font-serif italic text-slate-400 tracking-tight leading-tight"
                         >
                             Employee or Employer — your choice.
                         </motion.p>
@@ -111,7 +111,7 @@ const Entrepreneur = () => {
                             >
                                 <div className="absolute top-0 left-0 w-1 h-0 bg-primary group-hover:h-full transition-all duration-700" />
                                 <div className="relative z-10">
-                                    <p className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter mb-4 group-hover:text-primary transition-colors">
+                                    <p className="text-clamp-4xl font-black text-slate-900 tracking-tighter mb-4 group-hover:text-primary transition-colors">
                                         {stat.value}
                                     </p>
                                     <div className="space-y-1">
@@ -148,9 +148,9 @@ const Entrepreneur = () => {
                                     <span className="text-primary font-black uppercase text-[10px] tracking-[0.8em]">Core Institutional Directive</span>
                                 </motion.div>
                                 
-                                <h2 className="text-5xl sm:text-7xl md:text-9xl lg:text-[12rem] font-black text-slate-900 uppercase tracking-tighter leading-[0.75]">
+                                <h2 className="text-clamp-5xl font-black text-slate-900 uppercase tracking-tighter leading-[0.75]">
                                     EIDC<span className="text-primary italic font-serif">.</span><br />
-                                    <span className="stroke-text-slate-900 opacity-20 text-3xl sm:text-5xl md:text-7xl lg:text-[8rem]">PROTOCOLS</span>
+                                    <span className="stroke-text-slate-900 opacity-20 text-clamp-4xl">PROTOCOLS</span>
                                 </h2>
                                 
                                 <p className="text-slate-400 font-bold uppercase tracking-[0.4em] text-xs">Entrepreneurship, Innovation & Design Center</p>
@@ -228,7 +228,7 @@ const Entrepreneur = () => {
             <section className="py-40 bg-[#f8f9fa] relative overflow-hidden">
                 <div className="container mx-auto px-6">
                     <div className="text-center mb-24">
-                        <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter text-slate-900 leading-none mb-4">
+                        <h2 className="text-clamp-4xl font-black uppercase tracking-tighter text-slate-900 leading-none mb-4">
                             SUCCESSFUL <span className="text-primary">CAREER SKILLS</span>
                         </h2>
                         <p className="text-xl md:text-3xl font-serif italic text-slate-400">We train students for holistic growth</p>
@@ -284,7 +284,7 @@ const Entrepreneur = () => {
                 <div className="container mx-auto px-6">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
                         <div className="lg:col-span-4">
-                            <h2 className="text-6xl md:text-9xl font-black uppercase tracking-tighter text-slate-900 leading-[0.8] mb-12">
+                            <h2 className="text-clamp-4xl font-black uppercase tracking-tighter text-slate-900 leading-[0.8] mb-12">
                                 WORK <br /> IN THE <br /> <span className="text-primary">LARGEST</span> <br /> SECTORS
                             </h2>
                             <p className="text-xl text-slate-500 font-medium max-w-sm">
@@ -329,7 +329,7 @@ const Entrepreneur = () => {
                 <div className="container mx-auto px-6 relative z-10">
                     <div className="max-w-4xl mx-auto text-center mb-32">
                         <span className="text-primary font-black uppercase tracking-[0.8em] text-[10px] mb-8 block">Academic Excellence</span>
-                        <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-12">
+                        <h2 className="text-clamp-4xl font-black uppercase tracking-tighter leading-none mb-12">
                             LEARN FROM <span className="italic font-serif font-light text-white/50">EXPERT FACULTIES</span> AT INSD.
                         </h2>
                         <p className="text-white/40 text-lg md:text-2xl font-medium leading-relaxed mb-12">
@@ -379,7 +379,7 @@ const Entrepreneur = () => {
                                 <span className="text-primary font-black uppercase text-[10px] tracking-[0.8em]">Annual Global Summit</span>
                             </motion.div>
                             
-                            <h2 className="text-5xl sm:text-7xl md:text-9xl lg:text-[10rem] font-black text-slate-900 uppercase tracking-tighter leading-[0.8]">
+                            <h2 className="text-clamp-5xl font-black text-slate-900 uppercase tracking-tighter leading-[0.8]">
                                 DESIGN <br /> <span className="stroke-text-slate-900 opacity-20">CONCLAVE.</span>
                             </h2>
                         </div>
@@ -402,7 +402,7 @@ const Entrepreneur = () => {
                         
                         <div className="relative z-10 space-y-6">
                             <span className="text-primary font-black uppercase text-xs tracking-[0.8em]">Exclusive Access Only</span>
-                            <h3 className="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none">
+                            <h3 className="text-clamp-4xl font-black text-white uppercase tracking-tighter leading-none">
                                 SECURE YOUR <br /> <span className="stroke-text-white opacity-20">PRECINCT.</span>
                             </h3>
                         </div>
@@ -447,7 +447,7 @@ const Entrepreneur = () => {
                         <motion.h2 
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            className="text-4xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none"
+                            className="text-clamp-4xl font-black text-slate-900 uppercase tracking-tighter leading-none"
                         >
                             Skills Accepted <span className="text-primary italic">Globally</span>
                         </motion.h2>

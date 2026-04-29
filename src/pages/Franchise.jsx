@@ -152,7 +152,7 @@ const Franchise = () => {
             <section className="relative py-32 px-6 z-10 border-t border-slate-300 bg-white overflow-hidden">
                 <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
                     <div className="relative">
-                        <h2 className="text-5xl md:text-7xl font-bold leading-tight mb-8 text-slate-900">
+                        <h2 className="text-clamp-4xl font-bold leading-tight mb-8 text-slate-900">
                             Built on a <br /><span className="text-primary italic">Visionary</span> Foundation
                         </h2>
                         <p className="text-xl text-slate-600 font-light leading-relaxed mb-12">
@@ -192,7 +192,7 @@ const Franchise = () => {
                 <div className="max-w-7xl mx-auto">
                     <div className="mb-24 text-center md:text-left">
                         <h3 className="text-sm font-mono text-primary font-bold tracking-[0.5em] uppercase mb-4">The Model</h3>
-                        <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none text-slate-900">Why Choose <br />INSD?</h2>
+                        <h2 className="text-clamp-5xl font-black uppercase tracking-tighter leading-none text-slate-900">Why Choose <br />INSD?</h2>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

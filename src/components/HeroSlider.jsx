@@ -15,17 +15,17 @@ const HeroSlider = () => {
             id: 2,
             val: "300000+",
             label: "students",
-            pos: "bottom-4 right-4 md:bottom-10 md:right-8 lg:bottom-16 lg:right-10",
+            pos: "bottom-2 right-4 md:bottom-6 md:right-8 lg:bottom-5 lg:right-10",
             delay: 0.8
         },
         {
             id: 3,
             val: "75",
             label: "Campuses Across India",
-            pos: "bottom-4 left-4 md:bottom-10 md:left-8 lg:bottom-16 lg:left-10",
+            pos: "bottom-2 left-4 md:bottom-6 md:left-8 lg:bottom-5 lg:left-8",
             delay: 1.1
         },
-        
+
     ];
 
     return (
@@ -83,10 +83,10 @@ const HeroSlider = () => {
                                 scale: { delay: stat.delay, duration: 0.8 },
                                 y: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: stat.delay }
                             }}
-                            className={`absolute ${stat.pos} px-4 py-3 md:px-6 md:py-4 rounded-none backdrop-blur-md bg-white/10 border border-white/20 min-w-[140px] md:min-w-[180px]`}
+                            className={`absolute ${stat.pos} px-3 py-2 md:px-5 md:py-3 rounded-none backdrop-blur-md bg-white/10 border border-white/20 min-w-[90px] md:min-w-[150px]`}
                         >
-                            <div className="text-xl md:text-3xl font-black mask-text leading-tight">{stat.val}</div>
-                            <div className="text-[8px] md:text-[10px] font-bold mask-text uppercase tracking-widest mt-1">{stat.label}</div>
+                            <div className="text-xl md:text-clamp-2xl font-black mask-text leading-tight">{stat.val}</div>
+                            <div className="text-[7px] md:text-clamp-sm font-bold mask-text uppercase tracking-widest mt-0.5 md:mt-1">{stat.label}</div>
                         </motion.div>
                     ))}
                 </div>

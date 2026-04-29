@@ -121,7 +121,7 @@ const About = () => {
 
                 {/* Sub-content revealed during zoom */}
                 <div className="vision-content absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none">
-                    <h2 className="text-4xl md:text-6xl lg:text-8xl font-black uppercase tracking-tighter text-center max-w-5xl px-6 leading-[0.9]">
+                    <h2 className="text-clamp-3xl font-black uppercase tracking-tighter text-center max-w-5xl px-6 leading-[0.9]">
                         India's <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary">Skill School</span> <br /> for Creative Careers.
                     </h2>
                     <p className="mt-8 text-sm md:text-xl font-bold uppercase tracking-widest text-[#999] text-center max-w-2xl px-6">
@@ -135,7 +135,7 @@ const About = () => {
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-24 items-center">
                         <div className="md:col-span-1">
-                            <h3 className="text-3xl md:text-4xl font-bold uppercase tracking-tighter mb-6 md:mb-8 leading-tight">
+                            <h3 className="text-clamp-3xl font-bold uppercase tracking-tighter mb-6 md:mb-8 leading-tight">
                                 A Century of <br className="hidden md:block" /> Vision, Compressed.
                             </h3>
                             <div className="w-20 md:w-24 h-1 bg-primary" />
@@ -148,7 +148,7 @@ const About = () => {
                                 { label: 'Industry Partners', val: '80+' }
                             ].map((stat, i) => (
                                 <div key={i} className="group border-l border-slate-300 pl-6 md:pl-8 hover:border-primary transition-colors duration-500">
-                                    <span className="block text-5xl md:text-7xl font-black mb-1 md:mb-2 text-slate-900">{stat.val}</span>
+                                    <span className="block text-clamp-4xl font-black mb-1 md:mb-2 text-slate-900">{stat.val}</span>
                                     <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.3em] text-slate-600 font-mono">{stat.label}</span>
                                 </div>
                             ))}

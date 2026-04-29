@@ -101,7 +101,7 @@ const DiplomaAndCertificate = () => {
 
                     <motion.h1 
                         style={{ scale: scaleText }}
-                        className="text-6xl md:text-8xl lg:text-[10rem] font-black uppercase tracking-tighter text-[#111] leading-[0.8] mb-8"
+                        className="text-clamp-5xl font-black uppercase tracking-tighter text-[#111] leading-[0.8] mb-8"
                     >
                         <motion.span 
                             initial={{ opacity: 0, y: 50 }}
@@ -151,7 +151,7 @@ const DiplomaAndCertificate = () => {
             {/* Time-Based Program Expanders */}
             <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto">
                 <div className="mb-20">
-                    <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-[#111] max-w-3xl leading-none">
+                    <h2 className="text-clamp-4xl font-black uppercase tracking-tighter text-[#111] max-w-3xl leading-none">
                         Choose your <br/> <span className="italic font-serif font-light text-black/40">timeline.</span>
                     </h2>
                 </div>
@@ -220,7 +220,7 @@ const DiplomaAndCertificate = () => {
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-6xl md:text-8xl lg:text-[9rem] font-black uppercase tracking-tighter leading-[0.85] mb-8"
+                        className="text-clamp-5xl font-black uppercase tracking-tighter leading-[0.85] mb-8"
                     >
                         Time Is <br/> <span className="italic font-serif font-light text-white mix-blend-overlay">Now.</span>
                     </motion.h2>

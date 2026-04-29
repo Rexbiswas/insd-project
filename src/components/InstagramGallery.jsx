@@ -144,7 +144,7 @@ const InstagramGallery = () => {
                         <Instagram className="w-5 h-5" />
                         @INSD_OFFICIAL
                     </h4>
-                    <h2 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.9] text-slate-900">
+                    <h2 className="text-clamp-3xl font-black uppercase tracking-tighter leading-[0.9] text-slate-900">
                         Life On <br />
                         <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary">The Feed</span>
                     </h2>

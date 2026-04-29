@@ -49,25 +49,33 @@ const BeautyAndMakeup = () => {
             ]
         },
         Bachelors: {
-            "Year 1": [
-                "Skin Science & Hygiene Standards",
-                "Color Theory in Artistry",
-                "Day, Evening & Bridal Makeup Basics",
-                "Hair Styling & Cutting Foundations",
-                "Dermal Science & Aesthetics Lab",
-                "Self-Grooming & Professional Etiquette",
-                "Salon Management Basics"
-            ],
-            "Year 2": [
-                "High-Fashion & Editorial Artistry",
-                "Special effects (SFX) & Prosthetics",
-                "Runway & Stage Character Design",
-                "Airbrush Makeup Mastery",
-                "Beauty Brand Marketing & Global Business",
-                "Creative Portfolio & Showreel",
-                "Industrial Internship (OJT)",
-                "Final Graduation Showcase"
-            ]
+            "Year 1": {
+                "Semester 1": [
+                    "Skin Science & Hygiene Standards",
+                    "Color Theory in Artistry",
+                    "Day, Evening & Bridal Makeup Basics"
+                ],
+                "Semester 2": [
+                    "Hair Styling & Cutting Foundations",
+                    "Dermal Science & Aesthetics Lab",
+                    "Self-Grooming & Professional Etiquette",
+                    "Salon Management Basics"
+                ]
+            },
+            "Year 2": {
+                "Semester 3": [
+                    "High-Fashion & Editorial Artistry",
+                    "Special effects (SFX) & Prosthetics",
+                    "Runway & Stage Character Design"
+                ],
+                "Semester 4": [
+                    "Airbrush Makeup Mastery",
+                    "Beauty Brand Marketing & Global Business",
+                    "Creative Portfolio & Showreel",
+                    "Industrial Internship (OJT)",
+                    "Final Graduation Showcase"
+                ]
+            }
         },
         PG: {
             "Year 1": [
@@ -93,7 +101,6 @@ const BeautyAndMakeup = () => {
         { title: "Cosmetic Consultant", desc: "Advising global beauty brands on product development, color theory, and dermal trends.", img: "https://tse2.mm.bing.net/th/id/OIP.g1hPWcDKy992uui0rHKU6wHaEo?pid=ImgDet&w=474&h=296&rs=1&o=7&rm=3" },
         { title: "Salon Manager/Owner", desc: "Overseeing the luxury operations and client experiences of premium international beauty ateliers.", img: "https://courses.farn-ct.ac.uk/banner/6495b0ff68673-UCF-Header-72.jpg" },
         { title: "Beauty Educator", desc: "Shaping the next generation of artists as a professional trainer in elite design schools.", img: "https://images.unsplash.com/photo-1516534775068-ba3e7458af70?auto=format&fit=crop&q=80&w=800" },
-        
     ];
 
     return (
@@ -121,15 +128,13 @@ const BeautyAndMakeup = () => {
                         transition={{ duration: 1 }}
                         className="space-y-6"
                     >
-
-                        <h1 className="text-4xl md:text-8xl lg:text-[10rem] font-black text-white uppercase tracking-tighter leading-tight md:leading-[0.85] mb-8">
-                            
-                            <span className="text-primary italic">Beauty </span>
+                        <h1 className="text-clamp-5xl font-black text-white uppercase tracking-tighter leading-tight md:leading-[0.85] mb-8">
+                            <span className="text-primary">Beauty </span>
                             & Makeup
                         </h1>
                         
-                        <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
-                                <span className="text-[10px] font-black uppercase tracking-widest">Scroll to Explore</span>
+                        <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default justify-center">
+                                <span className="text-clamp-sm font-black uppercase tracking-widest">Scroll to Explore</span>
                                 <ArrowRight size={16} className="rotate-90" />
                         </div>
                     </motion.div>
@@ -138,7 +143,7 @@ const BeautyAndMakeup = () => {
 
             {/* --- COURSE HIGHLIGHTS --- */}
             <section className="py-12 bg-slate-900 overflow-hidden">
-                <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="max-w-7xl mx-auto container-px grid grid-cols-1 md:grid-cols-3 gap-8">
                     {[
                         { label: "Sector", value: "Retail Industry", icon: ShoppingBag },
                         { label: "Sector", value: "Hospitality Industry", icon: Briefcase },
@@ -155,8 +160,8 @@ const BeautyAndMakeup = () => {
                                 <item.icon size={28} />
                             </div>
                             <div>
-                                <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.2em] mb-1">{item.label}</p>
-                                <p className="text-white font-black text-lg tracking-tight uppercase">{item.value}</p>
+                                <p className="text-white/40 text-clamp-sm font-black uppercase tracking-[0.2em] mb-1">{item.label}</p>
+                                <p className="text-white font-black text-clamp-lg tracking-tight uppercase">{item.value}</p>
                             </div>
                         </motion.div>
                     ))}
@@ -171,7 +176,7 @@ const BeautyAndMakeup = () => {
                 >
                     <button
                         onClick={() => navigate('/apply')}
-                        className="px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-white hover:text-slate-900 transition-all transform hover:scale-105 flex items-center gap-3"
+                        className="px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-clamp-sm tracking-widest shadow-2xl hover:bg-white hover:text-slate-900 transition-all transform hover:scale-105 flex items-center gap-3"
                     >
                         Enroll Now
                         <ArrowRight size={18} />
@@ -180,11 +185,11 @@ const BeautyAndMakeup = () => {
             </section>
 
             {/* --- LEARNING OUTCOMES --- */}
-            <section className="py-24 px-6 md:px-12 lg:px-24 bg-black text-white overflow-hidden relative">
+            <section className="section-py container-px bg-black text-white overflow-hidden relative">
                 <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-3xl rounded-full" />
                 <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
                     <div className="space-y-8">
-                        <h2 className="text-3xl md:text-4xl font-black tracking-tight leading-none mb-2 text-primary uppercase italic">
+                        <h2 className="text-clamp-2xl font-black tracking-tight leading-none mb-2 text-primary uppercase">
                             The Science of <br /> Metamorphosis
                         </h2>
                         <div className="space-y-6">
@@ -196,8 +201,8 @@ const BeautyAndMakeup = () => {
                                 <div key={i} className="flex gap-6 group">
                                     <div className="w-px h-16 bg-white/10 group-hover:bg-primary transition-colors" />
                                     <div>
-                                        <h4 className="font-black uppercase text-sm tracking-widest text-primary mb-2">{outcome.title}</h4>
-                                        <p className="text-white/50 text-xs font-bold leading-relaxed max-w-md uppercase tracking-tight">{outcome.desc}</p>
+                                        <h4 className="font-black uppercase text-clamp-sm tracking-widest text-primary mb-2">{outcome.title}</h4>
+                                        <p className="text-white/50 text-clamp-sm font-bold leading-relaxed max-w-md uppercase tracking-tight">{outcome.desc}</p>
                                     </div>
                                 </div>
                             ))}
@@ -209,13 +214,31 @@ const BeautyAndMakeup = () => {
                 </div>
             </section>
 
+            {/* --- COURSE OVERVIEW (QUICK FACTS) --- */}
+            <section className="py-12 bg-white border-b border-slate-100">
+                <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {[
+                        { label: "Course Length", value: "3 or 4 Years Option", icon: Clock },
+                        { label: "Degree", value: "Bachelors accredited by UGC", icon: GraduationCap },
+                        { label: "Eligibility", value: "10+2", icon: BookOpen },
+                    ].map((item, idx) => (
+                        <div key={idx} className="flex flex-col p-6 rounded-2xl bg-slate-50 border border-slate-100">
+                            <div className="flex items-center gap-3 mb-4">
+                                <item.icon className="text-primary" size={20} />
+                                <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">{item.label}</span>
+                            </div>
+                            <p className="text-lg font-black text-slate-900 uppercase tracking-tight">{item.value}</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
             {/* --- CURRICULUM SECTION --- */}
-            <section className="py-24 px-6 md:px-12 lg:px-24 bg-slate-50">
+            <section className="section-py container-px bg-slate-50">
                 <div className="max-w-7xl mx-auto">
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
                         <div className="space-y-4">
-
-                            <h2 className="text-5xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none">
+                            <h2 className="text-clamp-4xl font-black text-slate-900 uppercase tracking-tighter leading-none">
                                 Course <br /> <span className="text-slate-300">Curriculum</span>
                             </h2>
                         </div>
@@ -241,7 +264,7 @@ const BeautyAndMakeup = () => {
                                     <div className="flex items-center gap-2">
                                         <span>{tab.label}</span>
                                         {tab.badge && (
-                                            <span className="px-1.5 py-0.5 rounded-full bg-primary text-[6px] text-white">
+                                            <span className="px-1.5 py-0.5 rounded-full bg-primary text-[8px] text-white">
                                                 {tab.badge}
                                             </span>
                                         )}
@@ -273,7 +296,7 @@ const BeautyAndMakeup = () => {
                                             }`}>
                                                 {semNumber}
                                             </div>
-                                            <span className="text-xl font-black text-slate-900 tracking-tight uppercase">{semName}</span>
+                                            <span className="text-clamp-xl font-black text-slate-900 tracking-tight uppercase">{semName}</span>
                                         </div>
                                         <div className={`transition-transform duration-500 ${expandedSem === semNumber ? 'rotate-180 text-primary' : 'text-slate-300'}`}>
                                             <ChevronDown size={24} />
@@ -300,7 +323,7 @@ const BeautyAndMakeup = () => {
                                                                 className="flex items-start gap-4 group/item"
                                                             >
                                                                 <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary group-hover/item:scale-150 transition-all shrink-0" />
-                                                                <span className="text-slate-600 font-black text-xs uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
+                                                                <span className="text-slate-600 font-bold text-clamp-sm uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
                                                                     {item}
                                                                 </span>
                                                             </motion.div>
@@ -308,7 +331,7 @@ const BeautyAndMakeup = () => {
                                                     ) : (
                                                         Object.entries(items).map(([subSemName, subItems], subIdx) => (
                                                             <div key={subIdx} className="mb-6 last:mb-0">
-                                                                <h4 className="text-primary font-black uppercase text-sm tracking-widest mb-4">{subSemName}</h4>
+                                                                <h4 className="text-primary font-black uppercase text-clamp-sm tracking-widest mb-4">{subSemName}</h4>
                                                                 <div className="space-y-3">
                                                                     {subItems.map((item, i) => (
                                                                         <motion.div 
@@ -319,7 +342,7 @@ const BeautyAndMakeup = () => {
                                                                             className="flex items-start gap-4 group/item"
                                                                         >
                                                                             <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary group-hover/item:scale-150 transition-all shrink-0" />
-                                                                            <span className="text-slate-600 font-black text-xs uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
+                                                                            <span className="text-slate-600 font-bold text-clamp-sm uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
                                                                                 {item}
                                                                             </span>
                                                                         </motion.div>
@@ -340,18 +363,17 @@ const BeautyAndMakeup = () => {
             </section>
 
             {/* --- CAREER PATHS GRID --- */}
-            <section className="py-24 px-6 md:px-12 lg:px-24 bg-white relative">
+            <section className="section-py container-px bg-white relative">
                 <div className="max-w-7xl mx-auto space-y-20">
                     <div className="text-center space-y-4">
-
-                        <h2 className="text-4xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none">
-                            Career <br /> <span className="text-slate-300">Archetypes</span>
+                        <h2 className="text-clamp-4xl font-black text-slate-900 uppercase tracking-tighter leading-none">
+                            Career <br /> <span className="text-slate-300">Artistry</span>
                         </h2>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
                         {careerPaths.map((role, idx) => (
-                            <motion.div
+                            <motion.div 
                                 key={idx}
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
@@ -359,16 +381,16 @@ const BeautyAndMakeup = () => {
                                 transition={{ delay: idx * 0.05 }}
                                 className="relative aspect-square md:aspect-4/3 overflow-hidden group border border-white/10"
                             >
-                                <img
-                                    src={role.img}
-                                    alt={role.title}
+                                <img 
+                                    src={role.img} 
+                                    alt={role.title} 
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-8 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                                    <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter leading-none mb-2">
+                                    <h3 className="text-clamp-xl font-black text-white uppercase tracking-tighter leading-none mb-2">
                                         {role.title}
                                     </h3>
-                                    <p className="text-white/60 text-[10px] md:text-xs font-bold leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 uppercase tracking-tight">
+                                    <p className="text-white/60 text-clamp-sm font-bold leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 uppercase tracking-tight">
                                         {role.desc}
                                     </p>
                                 </div>
@@ -379,10 +401,9 @@ const BeautyAndMakeup = () => {
             </section>
 
             {/* --- WHY CHOOSE SECTION --- */}
-            <section className="py-24 px-6 md:px-12 lg:px-24 bg-slate-50 relative overflow-hidden">
+            <section className="section-py container-px bg-slate-50 relative overflow-hidden">
                 <div className="max-w-7xl mx-auto space-y-20">
                     <div className="text-center space-y-4">
-
                         <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 uppercase tracking-tighter leading-none">
                             Why Choose <br /> <span className="text-primary">INSD</span> Beauty & Makeup Courses?
                         </h2>
@@ -415,10 +436,10 @@ const BeautyAndMakeup = () => {
                                 <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-all duration-500">
                                     <item.icon size={32} />
                                 </div>
-                                <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tighter mb-4 leading-tight group-hover:text-primary transition-colors">
+                                <h3 className="text-clamp-2xl font-black text-slate-900 uppercase tracking-tighter mb-4 leading-tight group-hover:text-primary transition-colors">
                                     {item.title}
                                 </h3>
-                                <p className="text-slate-500 text-sm leading-relaxed font-medium transition-colors">
+                                <p className="text-slate-500 text-clamp-base leading-relaxed font-medium transition-colors">
                                     {item.desc}
                                 </p>
                             </div>
@@ -430,14 +451,14 @@ const BeautyAndMakeup = () => {
                         <div className="absolute inset-0 z-0 bg-primary/10 group-hover:bg-primary/20 transition-colors" />
                         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
                             <div className="space-y-4">
-                                <h3 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter">
-                                    Ready to redefine <br /> <span className="text-primary italic">glamour?</span>
+                                <h3 className="text-clamp-3xl font-black text-white uppercase tracking-tighter">
+                                    Ready to redefine <br /> <span className="text-primary">glamour?</span>
                                 </h3>
-                                <p className="text-white/50 max-w-sm uppercase text-xs tracking-widest font-black">Join the 2026 session. Limited seats for high-potential aesthetic visionaries.</p>
+                                <p className="text-white/50 max-w-sm uppercase text-clamp-sm tracking-widest font-black">Join the 2026 session. Limited seats for high-potential aesthetic visionaries.</p>
                             </div>
                             <button 
                                 onClick={() => navigate('/apply')}
-                                className="px-16 py-6 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-primary hover:text-white transition-all transform hover:scale-105"
+                                className="px-16 py-6 bg-white text-slate-900 rounded-full font-black uppercase text-clamp-sm tracking-widest shadow-2xl hover:bg-primary hover:text-white transition-all transform hover:scale-105"
                             >
                                 Start Application
                             </button>
@@ -452,4 +473,3 @@ const BeautyAndMakeup = () => {
 };
 
 export default BeautyAndMakeup;
-

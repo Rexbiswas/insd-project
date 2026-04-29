@@ -17,7 +17,8 @@ import {
     Clock,
     GraduationCap,
     PenTool,
-    Briefcase
+    Briefcase,
+    ShoppingBag
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO';
@@ -80,7 +81,9 @@ const TextileDesigning = () => {
                     "Types of yarn",
                     "Basic weaves",
                     "Communication Skills"
-                ],
+                ]
+            },
+            "Year 2": {
                 "Semester 3": [
                     "Introduction to wet process",
                     "Advance weaving process",
@@ -93,7 +96,7 @@ const TextileDesigning = () => {
                     "Market Dynamics"
                 ]
             },
-            "Year 2": {
+            "Year 3": {
                 "Semester 5": [
                     "Knitting process",
                     "Finishing process"
@@ -148,17 +151,15 @@ const TextileDesigning = () => {
                         transition={{ duration: 1 }}
                         className="space-y-6"
                     >
-                        
-                        <h1 className="text-4xl md:text-8xl lg:text-[10rem] font-black text-white uppercase tracking-tighter leading-tight md:leading-[0.85] mb-8">
-                            
-                            <span className="text-primary italic">Textile </span> 
-                            Design
+                        <h1 className="text-clamp-5xl font-black text-white uppercase tracking-tighter leading-tight md:leading-[0.85] mb-8">
+                            <span className="text-primary">Textile</span> <br className="hidden md:block" /> 
+                            Designing
                         </h1>
                         
-                        <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
+                        <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default justify-center">
                                 <span className="text-[10px] font-black uppercase tracking-widest">Scroll to Explore</span>
                                 <ArrowRight size={16} className="rotate-90" />
-                            </div>
+                        </div>
                     </motion.div>
                 </div>
             </section>
@@ -167,9 +168,9 @@ const TextileDesigning = () => {
             <section className="py-12 bg-slate-900 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
                     {[
-                        { label: "Degree", value: "Bachelors accredited", icon: GraduationCap },
-                        { label: "Course Length", value: "2 Years", icon: Clock },
-                        { label: "Eligibility", value: "Any Stream", icon: BookOpen },
+                        { label: "Sector", value: "Retail Industry", icon: ShoppingBag },
+                        { label: "Sector", value: "Hospitality Industry", icon: Briefcase },
+                        { label: "Sector", value: "Design Industry", icon: Palette },
                     ].map((item, idx) => (
                         <motion.div 
                             key={idx}
@@ -211,7 +212,7 @@ const TextileDesigning = () => {
                 <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-3xl rounded-full" />
                 <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
                     <div className="space-y-8">
-                        <h2 className="text-3xl md:text-4xl font-black tracking-tight leading-none mb-2">
+                        <h2 className="text-3xl md:text-4xl font-black tracking-tight leading-none mb-2 text-primary uppercase">
                             Material <br /> Mastery
                         </h2>
                         <div className="space-y-6">
@@ -235,12 +236,33 @@ const TextileDesigning = () => {
                             <img src="https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&fit=crop&q=80&w=600" className="w-full h-full object-cover" alt="Textile Print" />
                         </div>
                         <div className="col-span-1 md:col-span-5 grid grid-cols-2 md:grid-cols-1 gap-4 h-[200px] md:h-full">
-                            
-                            <div className="hidden md:block rounded-2xl overflow-hidden shadow-2xl">
+                            <div className="rounded-2xl overflow-hidden shadow-2xl">
                                 <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&q=80&w=600" className="w-full h-full object-cover" alt="Textile Loom" />
+                            </div>
+                            <div className="hidden md:block rounded-2xl overflow-hidden shadow-2xl">
+                                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=600" className="w-full h-full object-cover" alt="Fabric Innovation" />
                             </div>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            {/* --- COURSE OVERVIEW (QUICK FACTS) --- */}
+            <section className="py-12 bg-white border-b border-slate-100">
+                <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {[
+                        { label: "Course Length", value: "3 or 4 Years Option", icon: Clock },
+                        { label: "Degree", value: "Bachelors accredited by UGC", icon: GraduationCap },
+                        { label: "Eligibility", value: "10+2", icon: BookOpen },
+                    ].map((item, idx) => (
+                        <div key={idx} className="flex flex-col p-6 rounded-2xl bg-slate-50 border border-slate-100">
+                            <div className="flex items-center gap-3 mb-4">
+                                <item.icon className="text-primary" size={20} />
+                                <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">{item.label}</span>
+                            </div>
+                            <p className="text-lg font-black text-slate-900 uppercase tracking-tight">{item.value}</p>
+                        </div>
+                    ))}
                 </div>
             </section>
 
@@ -249,7 +271,6 @@ const TextileDesigning = () => {
                 <div className="max-w-7xl mx-auto">
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
                         <div className="space-y-4">
-
                             <h2 className="text-5xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none">
                                 Course <br /> <span className="text-slate-300">Curriculum</span>
                             </h2>
@@ -407,7 +428,6 @@ const TextileDesigning = () => {
             <section className="py-24 px-6 md:px-12 lg:px-24 bg-white relative">
                 <div className="max-w-7xl mx-auto space-y-20">
                     <div className="text-center space-y-4">
-
                         <h2 className="text-4xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none">
                             Career <br /> <span className="text-slate-300">Archetypes</span>
                         </h2>
@@ -430,9 +450,7 @@ const TextileDesigning = () => {
                                 />
                                 <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-8 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
                                     <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter leading-none mb-2">
-                                        {role.title.split(' ').map((word, i) => (
-                                            <span key={i} className="block">{word}</span>
-                                        ))}
+                                        {role.title}
                                     </h3>
                                     <p className="text-white/60 text-[10px] md:text-xs font-bold leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 uppercase tracking-tight">
                                         {role.desc}
@@ -448,7 +466,6 @@ const TextileDesigning = () => {
             <section className="py-24 px-6 md:px-12 lg:px-24 bg-slate-50 relative overflow-hidden">
                 <div className="max-w-7xl mx-auto space-y-20">
                     <div className="text-center space-y-4">
-
                         <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 uppercase tracking-tighter leading-none">
                             Why Choose <br /> <span className="text-primary">INSD</span> Textile Design Courses?
                         </h2>
@@ -497,9 +514,9 @@ const TextileDesigning = () => {
                         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
                             <div className="space-y-4">
                                 <h3 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter">
-                                    Ready to weave the <br /> <span className="text-primary italic">future?</span>
+                                    Ready to weave the <br /> <span className="text-primary">future?</span>
                                 </h3>
-                                <p className="text-white/50 font-medium max-w-sm uppercase text-xs tracking-widest font-black">Join the 2026 session. Limited seats for high-potential material visionaries.</p>
+                                <p className="text-white/50 max-w-sm uppercase text-xs tracking-widest font-black">Join the 2026 session. Limited seats for high-potential material visionaries.</p>
                             </div>
                             <button 
                                 onClick={() => navigate('/apply')}
@@ -518,4 +535,3 @@ const TextileDesigning = () => {
 };
 
 export default TextileDesigning;
-

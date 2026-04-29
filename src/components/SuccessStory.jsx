@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { ArrowUpRight, Star } from 'lucide-react';
 import { useAdmissionModal } from '../context/AdmissionModalContext';
 
@@ -37,8 +38,8 @@ const SuccessStory = () => {
     ];
 
     return (
-        <section className="py-24 md:py-32 bg-slate-50 overflow-hidden relative">
-            <div className="container mx-auto px-6 relative z-10">
+        <section className="section-py bg-slate-50 overflow-hidden relative">
+            <div className="container mx-auto container-px relative z-10">
                 <div className="mb-20">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
@@ -47,14 +48,14 @@ const SuccessStory = () => {
                         className="flex items-center gap-3 mb-6"
                     >
                         <div className="w-12 h-[2px] bg-primary"></div>
-                        <span className="text-primary font-black uppercase tracking-[0.4em] text-[10px]">Industry Placements</span>
+                        <span className="text-primary font-black uppercase tracking-[0.4em] text-clamp-sm">Industry Placements</span>
                     </motion.div>
                     
                     <motion.h2 
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-6xl md:text-8xl font-black text-slate-950 leading-none tracking-tighter uppercase mb-6"
+                        className="text-clamp-4xl font-black text-slate-950 leading-none tracking-tighter uppercase mb-6"
                     >
                         They made it.<br />
                         <span className="text-primary italic">So Can You!</span>
@@ -65,7 +66,7 @@ const SuccessStory = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-xl md:text-2xl font-bold text-slate-500 tracking-tight"
+                        className="text-clamp-lg font-bold text-slate-500 tracking-tight"
                     >
                         Be a part of the INSD Success story!
                     </motion.p>
@@ -82,7 +83,7 @@ const SuccessStory = () => {
                             className="group flex flex-col h-full"
                         >
                             {/* Card Image Part */}
-                            <div className="relative aspect-[4/5] rounded-t-4xl overflow-hidden shadow-2xl">
+                            <Link to="/industry-potential" className="relative aspect-[4/5] rounded-t-4xl overflow-hidden shadow-2xl block cursor-pointer">
                                 <img 
                                     src={story.img} 
                                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" 
@@ -93,30 +94,25 @@ const SuccessStory = () => {
                                 {/* Top Badge */}
                                 <div className="absolute top-4 left-4 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 flex items-center gap-2">
                                     <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                                    <span className="text-[8px] font-black text-white uppercase tracking-widest">{story.placedAt}</span>
+                                    <span className="text-clamp-sm font-black text-white uppercase tracking-widest">{story.placedAt}</span>
                                 </div>
 
                                 <div className="absolute bottom-6 left-6 right-6">
-                                    <h3 className="text-white font-black text-xl uppercase tracking-tighter leading-none mb-1">
+                                    <h3 className="text-white font-black text-clamp-xl uppercase tracking-tighter leading-none mb-1">
                                         {story.name}
                                     </h3>
-                                    <p className="text-primary font-black text-[10px] uppercase tracking-widest">
+                                    <p className="text-primary font-black text-clamp-sm uppercase tracking-widest">
                                         {story.title}
                                     </p>
                                 </div>
-                            </div>
+                            </Link>
                             
                             {/* Card Content Part */}
                             <div className="bg-white p-8 rounded-b-4xl shadow-xl border-x border-b border-slate-100 flex-1 flex flex-col">
-                                <p className="text-slate-500 text-[11px] font-semibold leading-relaxed mb-6 flex-1">
+                                <p className="text-slate-500 text-clamp-sm font-semibold leading-relaxed mb-6 flex-1">
                                     "{story.quote}"
                                 </p>
-                                <div className="pt-6 border-t border-slate-50 flex items-center justify-between">
-                                    <div className="flex gap-1">
-                                        {[...Array(5)].map((_, i) => (
-                                            <Star key={i} size={10} className="fill-primary text-primary" />
-                                        ))}
-                                    </div>
+                                <div className="pt-6 border-t border-slate-50 flex items-center justify-end">
                                     <div className="p-2 bg-slate-50 rounded-full group-hover:bg-primary/10 transition-colors">
                                         <ArrowUpRight size={14} className="text-slate-300 group-hover:text-primary transition-colors" />
                                     </div>
@@ -137,7 +133,7 @@ const SuccessStory = () => {
                             title: 'Download Placement Report', 
                             subtitle: 'Join our elite alumni network.' 
                         })}
-                        className="group flex items-center gap-6 px-10 py-6 bg-slate-950 text-white rounded-full font-black uppercase tracking-widest text-[10px] hover:bg-primary transition-all duration-500 shadow-2xl"
+                        className="group flex items-center gap-6 px-10 py-6 bg-slate-950 text-white rounded-full font-black uppercase tracking-widest text-clamp-sm hover:bg-primary transition-all duration-500 shadow-2xl"
                     >
                         Download Placement Report
                         <div className="p-3 bg-white/10 rounded-full group-hover:rotate-45 transition-transform duration-500">

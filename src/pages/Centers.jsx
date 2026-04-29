@@ -44,7 +44,7 @@ const Centers = () => {
                         <motion.h1 
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="text-6xl md:text-[8rem] font-black text-slate-900 tracking-tighter leading-[0.85] uppercase"
+                            className="text-clamp-5xl font-black text-slate-900 tracking-tighter leading-[0.85] uppercase"
                         >
                             75+ <br /> <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-slate-500 to-secondary">CENTERS.</span>
                         </motion.h1>
@@ -142,7 +142,7 @@ const Centers = () => {
                 <div className="max-w-7xl mx-auto p-12 md:p-24 bg-slate-900 rounded-[3.5rem] text-white flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden group">
                     <div className="relative z-10 space-y-6 text-center md:text-left">
                         <Sparkles className="text-primary mx-auto md:mx-0" size={32} />
-                        <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none">
+                        <h2 className="text-clamp-4xl font-black uppercase tracking-tighter leading-none">
                             CENTERS IN <br /> <span className="text-slate-500 italic">EVERY HUB.</span>
                         </h2>
                         <p className="text-slate-400 max-w-sm font-medium text-lg leading-relaxed">

@@ -170,7 +170,7 @@ const Blog = () => {
                 <div className="max-w-7xl mx-auto space-y-12 text-center relative z-10">
                     <div className="space-y-4">
                         <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em] block">The Official Journal</span>
-                        <h1 className="text-5xl md:text-8xl font-black text-white tracking-tighter leading-[0.9]">
+                        <h1 className="text-clamp-5xl font-black text-white tracking-tighter leading-[0.9]">
                             INSD <br /> <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-white/50 to-secondary">BLOGS.</span>
                         </h1>
                     </div>

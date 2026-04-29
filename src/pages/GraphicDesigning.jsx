@@ -22,7 +22,8 @@ import {
     Clock,
     GraduationCap,
     BookOpen,
-    PenTool
+    PenTool,
+    ShoppingBag
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO';
@@ -76,7 +77,9 @@ const GraphicDesigning = () => {
                     "Still Life",
                     "Packaging – Product",
                     "Desktop / Digital Publishing"
-                ],
+                ]
+            },
+            "Year 2": {
                 "Semester 3": [
                     "Interface Design/ Web Design",
                     "Media Strategy",
@@ -93,7 +96,7 @@ const GraphicDesigning = () => {
                     "Sound Editing"
                 ]
             },
-            "Year 2": {
+            "Year 3": {
                 "Semester 5": [
                     "Client & Case Study",
                     "Full Branding Project On Existing Company"
@@ -165,13 +168,12 @@ const GraphicDesigning = () => {
                         transition={{ duration: 1 }}
                         className="space-y-6 pt-20 md:pt-32"
                     >
-
                         <h1 className="text-4xl md:text-8xl lg:text-[8rem] font-black text-white uppercase tracking-tighter leading-tight md:leading-[0.85] mb-12">
                             Graphic 
-                            <span className="text-primary italic">design</span>
+                            <span className="text-primary"> design</span>
                         </h1>
                         
-                        <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
+                        <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default justify-center">
                                 <span className="text-[10px] font-black uppercase tracking-widest">Scroll to Explore</span>
                                 <ArrowRight size={16} className="rotate-90" />
                         </div>
@@ -183,9 +185,9 @@ const GraphicDesigning = () => {
             <section className="py-12 bg-slate-900 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
                     {[
-                        { label: "Degree", value: "Bachelors accredited", icon: GraduationCap },
-                        { label: "Course Length", value: "1 Year", icon: Clock },
-                        { label: "Eligibility", value: "Any Stream", icon: BookOpen },
+                        { label: "Sector", value: "Retail Industry", icon: ShoppingBag },
+                        { label: "Sector", value: "Hospitality Industry", icon: Briefcase },
+                        { label: "Sector", value: "Design Industry", icon: Palette },
                     ].map((item, idx) => (
                         <motion.div 
                             key={idx}
@@ -223,11 +225,11 @@ const GraphicDesigning = () => {
             </section>
 
             {/* --- LEARNING OUTCOMES --- */}
-            <section className="py-24 px-6 md:px-12 lg:px-24 bg-black text-white overflow-hidden relative">
+            <section className="section-py container-px bg-black text-white overflow-hidden relative">
                 <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-3xl rounded-full" />
                 <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
                     <div className="space-y-8">
-                        <h2 className="text-3xl md:text-4xl font-black tracking-tight leading-none mb-2">
+                        <h2 className="text-3xl md:text-4xl font-black tracking-tight leading-none mb-2 text-primary uppercase">
                             Visual <br /> Outcomes
                         </h2>
                         <div className="space-y-6">
@@ -240,7 +242,7 @@ const GraphicDesigning = () => {
                                     <div className="w-px h-16 bg-white/10 group-hover:bg-primary transition-colors" />
                                     <div>
                                         <h4 className="font-black uppercase text-sm tracking-widest text-primary mb-2">{outcome.title}</h4>
-                                        <p className="text-white/50 text-xs font-bold leading-relaxed max-w-md">{outcome.desc}</p>
+                                        <p className="text-white/50 text-xs font-bold leading-relaxed max-w-md uppercase tracking-tight">{outcome.desc}</p>
                                     </div>
                                 </div>
                             ))}
@@ -250,7 +252,7 @@ const GraphicDesigning = () => {
                         <div className="col-span-1 md:col-span-7 h-[300px] md:h-full rounded-2xl overflow-hidden shadow-2xl">
                             <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=600" className="w-full h-full object-cover" alt="Graphic Design" />
                         </div>
-                        <div className="col-span-1 md:col-span-5 grid grid-cols-2 md:grid-cols-1 gap-4 h-[200px] md:h-full">
+                        <div className="col-span-1 md:col-span-5 grid grid-cols-2 md:col-span-1 gap-4 h-[200px] md:h-full">
                             <div className="rounded-2xl overflow-hidden shadow-2xl">
                                 <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=600" className="w-full h-full object-cover" alt="Graphic Design" />
                             </div>
@@ -262,12 +264,30 @@ const GraphicDesigning = () => {
                 </div>
             </section>
 
+            {/* --- COURSE OVERVIEW (QUICK FACTS) --- */}
+            <section className="py-12 bg-white border-b border-slate-100">
+                <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {[
+                        { label: "Course Length", value: "3 or 4 Years Option", icon: Clock },
+                        { label: "Degree", value: "Bachelors accredited by UGC", icon: GraduationCap },
+                        { label: "Eligibility", value: "10+2", icon: BookOpen },
+                    ].map((item, idx) => (
+                        <div key={idx} className="flex flex-col p-6 rounded-2xl bg-slate-50 border border-slate-100">
+                            <div className="flex items-center gap-3 mb-4">
+                                <item.icon className="text-primary" size={20} />
+                                <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">{item.label}</span>
+                            </div>
+                            <p className="text-lg font-black text-slate-900 uppercase tracking-tight">{item.value}</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
             {/* --- CURRICULUM SECTION --- */}
-            <section className="py-24 px-6 md:px-12 lg:px-24 bg-slate-50">
+            <section className="section-py container-px bg-slate-50">
                 <div className="max-w-7xl mx-auto">
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
                         <div className="space-y-4">
-
                             <h2 className="text-5xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none">
                                 Course <br /> Curriculum
                             </h2>
@@ -304,35 +324,6 @@ const GraphicDesigning = () => {
                         </div>
                     </div>
 
-                    {activeOutline === 'Industry Diploma' && (
-                        <motion.div 
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="mb-12 p-8 rounded-[2.5rem] bg-slate-900 text-white border border-primary/20 shadow-2xl relative overflow-hidden group"
-                        >
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/20 transition-colors" />
-                            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-                                <div className="space-y-2 text-center md:text-left">
-                                    <p className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">Program Name</p>
-                                    <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tighter leading-none">
-                                        Advanced Industry-Integrated Graphic Diploma (AIIGD)
-                                    </h3>
-                                </div>
-                                <div className="flex items-center gap-6 px-8 py-4 bg-white/5 rounded-2xl border border-white/10">
-                                    <div className="text-center md:text-right">
-                                        <p className="text-white/40 font-black uppercase text-[8px] tracking-widest mb-1">Duration</p>
-                                        <p className="text-xl font-black text-primary leading-none uppercase tracking-tight">1 Year</p>
-                                    </div>
-                                    <div className="w-px h-10 bg-white/10" />
-                                    <div className="text-center md:text-left">
-                                        <p className="text-white/40 font-black uppercase text-[8px] tracking-widest mb-1">Learning Hours</p>
-                                        <p className="text-xl font-black text-white leading-none uppercase tracking-tight">420 Hours</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
-                    )}
-
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         {curriculumData[activeOutline] && Object.entries(curriculumData[activeOutline]).map(([semName, items], idx) => {
                             const semNumber = idx + 1;
@@ -355,7 +346,7 @@ const GraphicDesigning = () => {
                                             }`}>
                                                 {semNumber}
                                             </div>
-                                            <span className="text-xl font-black text-slate-900 tracking-tight uppercase">{semName}</span>
+                                            <span className="text-clamp-xl font-black text-slate-900 tracking-tight uppercase">{semName}</span>
                                         </div>
                                         <div className={`transition-transform duration-500 ${expandedSem === semNumber ? 'rotate-180 text-primary' : 'text-slate-300'}`}>
                                             <ChevronDown size={24} />
@@ -382,7 +373,7 @@ const GraphicDesigning = () => {
                                                                 className="flex items-start gap-4 group/item"
                                                             >
                                                                 <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary group-hover/item:scale-150 transition-all shrink-0" />
-                                                                <span className="text-slate-600 font-black text-xs uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
+                                                                <span className="text-slate-600 font-black text-clamp-sm uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
                                                                     {item}
                                                                 </span>
                                                             </motion.div>
@@ -390,7 +381,7 @@ const GraphicDesigning = () => {
                                                     ) : (
                                                         Object.entries(items).map(([subSemName, subItems], subIdx) => (
                                                             <div key={subIdx} className="mb-6 last:mb-0">
-                                                                <h4 className="text-primary font-black uppercase text-sm tracking-widest mb-4">{subSemName}</h4>
+                                                                <h4 className="text-primary font-black uppercase text-clamp-sm tracking-widest mb-4">{subSemName}</h4>
                                                                 <div className="space-y-3">
                                                                     {subItems.map((item, i) => (
                                                                         <motion.div 
@@ -401,7 +392,7 @@ const GraphicDesigning = () => {
                                                                             className="flex items-start gap-4 group/item"
                                                                         >
                                                                             <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary group-hover/item:scale-150 transition-all shrink-0" />
-                                                                            <span className="text-slate-600 font-black text-xs uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
+                                                                            <span className="text-slate-600 font-black text-clamp-sm uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
                                                                                 {item}
                                                                             </span>
                                                                         </motion.div>
@@ -422,10 +413,9 @@ const GraphicDesigning = () => {
             </section>
 
             {/* --- CAREER PATHS GRID --- */}
-            <section className="py-24 px-6 md:px-12 lg:px-24 bg-white relative">
+            <section className="section-py container-px bg-white relative">
                 <div className="max-w-7xl mx-auto space-y-20">
                     <div className="text-center space-y-4">
-
                         <h2 className="text-4xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none">
                             Career <br /> <span className="text-slate-300">Archetypes</span>
                         </h2>
@@ -448,11 +438,9 @@ const GraphicDesigning = () => {
                                 />
                                 <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-8 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
                                     <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter leading-none mb-2">
-                                        {role.title.split(' ').map((word, i) => (
-                                            <span key={i} className="block">{word}</span>
-                                        ))}
+                                        {role.title}
                                     </h3>
-                                    <p className="text-white/60 text-[10px] md:text-xs font-bold leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 uppercase">
+                                    <p className="text-white/60 text-[10px] md:text-xs font-bold leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 uppercase tracking-tight">
                                         {role.desc}
                                     </p>
                                 </div>
@@ -463,10 +451,9 @@ const GraphicDesigning = () => {
             </section>
 
             {/* --- WHY CHOOSE SECTION --- */}
-            <section className="py-24 px-6 md:px-12 lg:px-24 bg-slate-50 relative overflow-hidden">
+            <section className="section-py container-px bg-slate-50 relative overflow-hidden">
                 <div className="max-w-7xl mx-auto space-y-20">
                     <div className="text-center space-y-4">
-
                         <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 uppercase tracking-tighter leading-none">
                             Why Choose <br /> <span className="text-primary">INSD</span> Graphic Design Courses?
                         </h2>
@@ -515,9 +502,9 @@ const GraphicDesigning = () => {
                         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
                             <div className="space-y-4">
                                 <h3 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter">
-                                    Ready to set the <br /> <span className="text-primary italic">next trend?</span>
+                                    Ready to set the <br /> <span className="text-primary">next trend?</span>
                                 </h3>
-                                <p className="text-white/50 font-medium max-w-sm">Join the 2026 session. Limited seats for high-potential creative visionaries.</p>
+                                <p className="text-white/50 max-w-sm uppercase text-xs tracking-widest font-black">Join the 2026 session. Limited seats for high-potential creative visionaries.</p>
                             </div>
                             <button 
                                 onClick={() => navigate('/apply')}
@@ -536,4 +523,3 @@ const GraphicDesigning = () => {
 };
 
 export default GraphicDesigning;
-

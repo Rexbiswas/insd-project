@@ -115,7 +115,7 @@ const NationalAwards = () => {
                     <div className="flex flex-col md:flex-row justify-between items-center gap-12 mb-20 md:mb-24">
                         <div className="flex-1 text-center md:text-left">
                             <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40 mb-6">India's Design Powerhouse</p>
-                            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-[0.9] uppercase mb-8">
+                            <h2 className="text-clamp-3xl font-black text-white tracking-tighter leading-[0.9] uppercase mb-8">
                                 <span className="text-primary">National</span> <br />
                                 Award-Winning <br />
                                 <span className="text-white/60">Disruptors.</span>

@@ -64,7 +64,7 @@ const FutureOfDesign = () => {
                         transition={{ duration: 1 }}
                         className="space-y-6"
                     >
-                        <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-black text-slate-950 uppercase tracking-tightest leading-[0.8] mb-8">
+                        <h1 className="text-clamp-5xl font-black text-slate-950 uppercase tracking-tightest leading-[0.8] mb-8">
                             Design Is <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-slate-400 to-primary italic">Everywhere</span>
                         </h1>
@@ -83,7 +83,7 @@ const FutureOfDesign = () => {
                         <div className="space-y-8">
                             <div className="space-y-2">
                                 <h2 className="text-primary font-black uppercase text-xs tracking-[0.4em]">The Market Shift</h2>
-                                <h3 className="text-5xl md:text-7xl font-black text-slate-950 uppercase tracking-tighter leading-none">
+                                <h3 className="text-clamp-4xl font-black text-slate-950 uppercase tracking-tighter leading-none">
                                     Skills Are <br /> <span className="text-slate-300">The Future</span>
                                 </h3>
                             </div>
@@ -127,7 +127,7 @@ const FutureOfDesign = () => {
                                 <Zap size={14} />
                                 Budget 2026 Update
                             </div>
-                            <h2 className="text-5xl md:text-8xl font-black text-slate-950 uppercase tracking-tighter leading-none">
+                            <h2 className="text-clamp-5xl font-black text-slate-950 uppercase tracking-tighter leading-none">
                                 Design Is <br /> <span className="text-primary italic">The New Tech</span>
                             </h2>
                         </div>
@@ -186,7 +186,7 @@ const FutureOfDesign = () => {
                                     <div className="w-10 h-px bg-primary"></div>
                                     <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">National Footprint</span>
                                 </div>
-                                <h2 className="text-5xl md:text-8xl font-black text-slate-950 uppercase tracking-tighter leading-[0.85]">
+                                <h2 className="text-clamp-5xl font-black text-slate-950 uppercase tracking-tighter leading-[0.85]">
                                     A Network <br /> <span className="text-slate-300">Of Excellence</span>
                                 </h2>
                             </div>
@@ -271,7 +271,7 @@ const FutureOfDesign = () => {
                         
                         <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-16">
                             <div className="space-y-8 text-center lg:text-left max-w-2xl">
-                                <h2 className="text-4xl md:text-7xl font-black text-white uppercase tracking-tightest leading-none">
+                                <h2 className="text-clamp-4xl font-black text-white uppercase tracking-tightest leading-none">
                                     Be Part of the <br />
                                     <span className="text-primary italic">Creative Shift.</span>
                                 </h2>

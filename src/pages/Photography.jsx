@@ -1,28 +1,27 @@
 import React, { useState } from 'react';
-import {
-    motion,
-    AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
-    CheckCircle2,
-    ChevronDown,
-    Camera,
-    Aperture,
-    Image,
+    CheckCircle2, 
+    ChevronDown, 
+    Camera, 
+    Image, 
+    Aperture, 
+    Zap, 
+    Play, 
     ArrowRight,
+    Sparkles,
     Globe,
     Award,
     Target,
     Download,
-    Sparkles,
-    Video,
     Clock,
     GraduationCap,
     BookOpen,
     Layers,
-    Palette,
     PenTool,
     ShoppingBag,
-    Briefcase
+    Briefcase,
+    Palette
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO';
@@ -37,81 +36,111 @@ const Photography = () => {
 
     const curriculumData = {
         "Industry Diploma": {
-            "Foundation: Light & Lens": [
-                "Advanced DSLR/Mirrorless Mechanics",
-                "Principles of Lighting & Composition",
-                "Studio Setup & Equipment Mastery",
-                "Digital Processing with AI (Lightroom/PS)",
-                "Visual Storytelling Fundamentals"
+            "Foundation: Visual Arts": [
+                "Basics of Photography with AI",
+                "History of Photography with AI",
+                "Understanding the Camera with AI",
+                "Elements & Principles of Design with AI",
+                "Indoor & Outdoor Lighting with AI",
+                "Portrait & Landscape Photography with AI"
             ],
-            "Industry: Commercial Shoots": [
-                "Fashion & Editorial Photography",
-                "Product & E-commerce Imagery",
-                "Brand Identity & Visual Marketing",
-                "Digital Portfolio + Industry Showreel",
-                "Drone & High-Speed Media Platforms"
+            "Industry: Professional Mastery": [
+                "Post-Processing & Digital Editing (Lightroom/Photoshop) with AI",
+                "Product & Still Life Photography with AI",
+                "Fashion & Event Photography with AI",
+                "Composition & Storytelling with AI",
+                "Portfolio Development with AI",
+                "Professional Ethics & Business of Photography with AI"
             ]
         },
         Bachelors: {
-            "Year 1": [
-                "Camera & Lens Mechanics",
-                "Composition & Visual Storytelling",
-                "Natural & Studio Lighting Mastery",
-                "Digital Workflow Foundations",
-                "Portraiture & Fashion Portfolio",
-                "Still Life & Color Science",
-                "Advanced Digital Editing (PS/LR)"
-            ],
-            "Year 2": [
-                "Commercial & advertising Photography",
-                "Photo Journalism & Documentary",
-                "Digital Cinematography Basics",
-                "Business of Photography & Marketing",
-                "Major Professional Project",
-                "Creative Entrepreneurship Lab",
-                "Industrial Internship (OJT)",
-                "Final Graduation Showcase"
-            ]
+            "Year 1": {
+                "Semester 1": [
+                    "Introduction To Photography",
+                    "Theory of Photography-1",
+                    "History Of Photography",
+                    "Digital Pc Skills",
+                    "Theory Of Design-1",
+                    "Visual Arts"
+                ],
+                "Semester 2": [
+                    "Visual Arts – Practical",
+                    "Theory Of Design – 2",
+                    "Theory of Photography - 2",
+                    "Indoor & Out Door Lighting Techniques – Practical",
+                    "Photography – 2 (Practical)",
+                    "Color Theory"
+                ],
+                "Semester 3": [
+                    "Digital Image Editing (Photoshop & Light room)",
+                    "Traditional Photography",
+                    "Portfolio 1",
+                    "Industrial Visit"
+                ],
+                "Semester 4": [
+                    "Advanced Lighting",
+                    "Digital Post production",
+                    "Portfolio 2"
+                ]
+            },
+            "Year 2": {
+                "Semester 5": [
+                    "Advanced Photography",
+                    "Video Production",
+                    "Portfolio 3"
+                ],
+                "Semester 6": [
+                    "Project Work"
+                ],
+                "Semester 7": [
+                    "Industry Projects",
+                    "Enterprenuership"
+                ],
+                "Semester 8": [
+                    "Internship & On the Job Training",
+                    "Market Dynamics"
+                ]
+            }
         },
         PG: {
             "Year 1": [
-                "Advanced Cinematic Lighting",
-                "Global Media Strategy",
-                "Experimental Image Making",
-                "Advanced Retouching Workflows",
-                "Photography Business Management"
+                "Advanced Digital Imaging",
+                "Commercial & Advertising Photography",
+                "Documentary & Photojournalism",
+                "Advanced Lighting Control",
+                "Visual Communication Theory",
+                "Global Trends in Photography"
             ],
             "Year 2": [
-                "Professional Portfolio Lab",
-                "Major Research Thesis",
-                "Industry Placement Show",
-                "Final Graduation Gallery"
+                "Master Production Project",
+                "Exhibition & Professional Show",
+                "The Business of Commercial Photography",
+                "Portfolio Masterclass"
             ]
         }
     };
 
     const careerPaths = [
-        { title: "Fashion Photographer", desc: "Capturing high-style garments and models for global magazine covers and retail brands.", img: "https://images.unsplash.com/photo-1534030347209-467a5b0ad3e6?auto=format&fit=crop&q=80&w=800" },
-        { title: "Commercial Lead", desc: "Directing high-impact product and advertising shoots for international corporate clients.", img: "https://images.unsplash.com/photo-1554048612-b6a482bc67e5?auto=format&fit=crop&q=80&w=800" },
-        { title: "Fine Art Photographer", desc: "Creating evocative visual narratives and limited-edition prints for global galleries.", img: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=800" },
-        { title: "Wedding Specialist", desc: "Documenting timeless emotions and luxury ceremonies with a fine-art storytelling approach.", img: "https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&q=80&w=800" },
-        { title: "Architecture Photographer", desc: "Specializing in capturing the structural beauty and interior design of luxury properties.", img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800" },
-        { title: "Photojournalist", desc: "Capturing impactful stories and global events for international news and media houses.", img: "https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&q=80&w=800" },
-        
+        { title: "Fashion Photographer", desc: "Collaborating with top designers and magazines to create high-concept editorial spreads.", img: "https://tse2.mm.bing.net/th/id/OIP.v2K9T289S-YI592k-G1A9AHaE7?rs=1&pid=ImgDetMain&o=7&rm=3" },
+        { title: "Product Photographer", desc: "Capturing high-end commercial assets for global e-commerce and luxury brands.", img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/product%20photography.png" },
+        { title: "Wildlife Photographer", desc: "Documenting the natural world for international publications like National Geographic.", img: "https://tse4.mm.bing.net/th/id/OIP.368798933ca32a8a8a8a8a8a8a8a8a8a?auto=format&fit=crop&q=80&w=800" },
+        { title: "Visual Artist", desc: "Creating fine-art photography for global galleries and private collections.", img: "https://images.unsplash.com/photo-1493863641943-9b68992a8d07?auto=format&fit=crop&q=80&w=800" },
+        { title: "Photojournalist", desc: "Telling powerful human stories through impactful visual documentation of global events.", img: "https://tse2.mm.bing.net/th/id/OIP.0a1a2a3a4a5a6a7a8a9a0a1a2a3a4a5a?auto=format&fit=crop&q=80&w=800" },
+        { title: "Creative Director", desc: "Leading the visual identity and aesthetic direction for major advertising campaigns.", img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" }
     ];
 
     return (
         <div className="bg-white min-h-screen font-sans selection:bg-primary selection:text-white">
             <SEO 
-                title="Photography Degree | Light Physics & Cinematic Vision @ INSD"
-                description="Master the art of the perfect frame. From high-fashion editorials to cinematic visual stories, engineer the next generation of visual excellence."
+                title="Photography Degree | Professional Commercial & Fine Art @ INSD"
+                description="Master the art of visual storytelling. Our Photography program balances technical camera mastery with high-impact digital post-production."
             />
 
             {/* --- HERO SECTION --- */}
             <section className="relative h-[70vh] md:h-[85vh] flex items-center justify-center pt-20 md:pt-32 text-center px-6 overflow-hidden bg-slate-900">
                 <div className="absolute inset-0 z-0">
                     <img 
-                        src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&q=80&w=1600" 
+                        src="https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Copy%20of%20photography.png" 
                         alt="Photography Studio" 
                         className="w-full h-full object-cover opacity-60 scale-105"
                     />
@@ -126,13 +155,13 @@ const Photography = () => {
                         className="space-y-6"
                     >
 
-                        <h1 className="text-4xl md:text-8xl lg:text-[10rem] font-black text-white uppercase tracking-tighter leading-tight md:leading-[0.85] mb-8">
+                        <h1 className="text-clamp-5xl font-black text-white uppercase tracking-tighter leading-tight md:leading-[0.85] mb-8">
                             
-                            <span className="text-primary italic">Photography</span> <br className="hidden md:block" /> 
-                            Course
+                            <span className="text-primary">Professional</span> <br className="hidden md:block" /> 
+                            Photography
                         </h1>
                         
-                        <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
+                        <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default justify-center">
                                 <span className="text-[10px] font-black uppercase tracking-widest">Scroll to Explore</span>
                                 <ArrowRight size={16} className="rotate-90" />
                         </div>
@@ -188,14 +217,14 @@ const Photography = () => {
                 <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-3xl rounded-full" />
                 <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
                     <div className="space-y-8">
-                        <h2 className="text-3xl md:text-4xl font-black tracking-tight leading-none mb-2 text-primary uppercase italic">
-                            The Science of <br /> Optical Narrative
+                        <h2 className="text-3xl md:text-4xl font-black tracking-tight leading-none mb-2 text-primary uppercase">
+                            Visual <br /> Storytelling
                         </h2>
                         <div className="space-y-6">
                             {[
-                                { title: "Lighting Physics", desc: "Scientific mastery of light and shadow for world-class high-fashion studio production." },
-                                { title: "Digital Post Lab", desc: "Advanced retouching and color grading workflows using industry-standard software stacks." },
-                                { title: "Cinematic Vision", desc: "Bridging the gap between static imagery and motion through professional digital videography." }
+                                { title: "Technical Mastery", desc: "Mastering manual camera controls, advanced lighting, and optical science." },
+                                { title: "Digital Post-Lab", desc: "Professional workflow mastery using Adobe Lightroom and high-end Photoshop retouching." },
+                                { title: "Studio Protocol", desc: "Professional studio management, art direction, and high-end commercial production." }
                             ].map((outcome, i) => (
                                 <div key={i} className="flex gap-6 group">
                                     <div className="w-px h-16 bg-white/10 group-hover:bg-primary transition-colors" />
@@ -209,17 +238,36 @@ const Photography = () => {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-4 h-auto md:h-[600px]">
                         <div className="col-span-1 md:col-span-7 h-[300px] md:h-full rounded-2xl overflow-hidden shadow-2xl">
-                            <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&q=80&w=600" className="w-full h-full object-cover" alt="Studio Lab" />
+                            <img src="https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Copy%20of%20photography.png" className="w-full h-full object-cover" alt="Photography Studio" />
                         </div>
                         <div className="col-span-1 md:col-span-5 grid grid-cols-2 md:grid-cols-1 gap-4 h-[200px] md:h-full">
                             <div className="rounded-2xl overflow-hidden shadow-2xl">
-                                <img src="https://images.unsplash.com/photo-1534030347209-467a5b0ad3e6?auto=format&fit=crop&q=80&w=600" className="w-full h-full object-cover" alt="Fashion Shoot" />
+                                <img src="https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/product%20photography.png" className="w-full h-full object-cover" alt="Product Photography" />
                             </div>
                             <div className="hidden md:block rounded-2xl overflow-hidden shadow-2xl">
-                                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=600" className="w-full h-full object-cover" alt="Visual Consulting" />
+                                <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover" alt="Camera Kit" />
                             </div>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            {/* --- COURSE OVERVIEW (QUICK FACTS) --- */}
+            <section className="py-12 bg-white border-b border-slate-100">
+                <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {[
+                        { label: "Course Length", value: "3 or 4 Years Option", icon: Clock },
+                        { label: "Degree", value: "Bachelors accredited by UGC", icon: GraduationCap },
+                        { label: "Eligibility", value: "10+2", icon: BookOpen },
+                    ].map((item, idx) => (
+                        <div key={idx} className="flex flex-col p-6 rounded-2xl bg-slate-50 border border-slate-100">
+                            <div className="flex items-center gap-3 mb-4">
+                                <item.icon className="text-primary" size={20} />
+                                <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">{item.label}</span>
+                            </div>
+                            <p className="text-lg font-black text-slate-900 uppercase tracking-tight">{item.value}</p>
+                        </div>
+                    ))}
                 </div>
             </section>
 
@@ -228,7 +276,6 @@ const Photography = () => {
                 <div className="max-w-7xl mx-auto">
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
                         <div className="space-y-4">
-
                             <h2 className="text-5xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none">
                                 Course <br /> <span className="text-slate-300">Curriculum</span>
                             </h2>
@@ -353,7 +400,7 @@ const Photography = () => {
                 </div>
             </section>
 
-            {/* --- CAREER PATHS GRID --- */}
+            {/* --- CAREER ARCHETYPES --- */}
             <section className="py-24 px-6 md:px-12 lg:px-24 bg-white relative">
                 <div className="max-w-7xl mx-auto space-y-20">
                     <div className="text-center space-y-4">
@@ -364,7 +411,7 @@ const Photography = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
                         {careerPaths.map((role, idx) => (
-                            <motion.div
+                            <motion.div 
                                 key={idx}
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
@@ -372,9 +419,9 @@ const Photography = () => {
                                 transition={{ delay: idx * 0.05 }}
                                 className="relative aspect-square md:aspect-4/3 overflow-hidden group border border-white/10"
                             >
-                                <img
-                                    src={role.img}
-                                    alt={role.title}
+                                <img 
+                                    src={role.img} 
+                                    alt={role.title} 
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-8 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
@@ -395,9 +442,8 @@ const Photography = () => {
             <section className="py-24 px-6 md:px-12 lg:px-24 bg-slate-50 relative overflow-hidden">
                 <div className="max-w-7xl mx-auto space-y-20">
                     <div className="text-center space-y-4">
-
                         <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 uppercase tracking-tighter leading-none">
-                            Why Choose <br /> <span className="text-primary">INSD</span> Photography Courses?
+                            Why Choose <br /> <span className="text-primary">INSD</span> Photography?
                         </h2>
                     </div>
 
@@ -405,12 +451,12 @@ const Photography = () => {
                         {[
                             { 
                                 title: "100% Placement Support", 
-                                desc: "Career focused learning with continuous guidance, ensuring you don’t just learn fashion—you build a real career in it.", 
+                                desc: "Career focused learning with continuous guidance, ensuring you build a real career in the visual arts.", 
                                 icon: GraduationCap 
                             },
                             { 
                                 title: "Industry + AI Integrated Curriculum", 
-                                desc: "Learn what the industry actually demands with a curriculum that blends real-world practices and the latest AI-driven tools shaping fashion today.", 
+                                desc: "Learn what the industry actually demands with a curriculum that blends real-world practices and the latest AI-driven tools.", 
                                 icon: Sparkles 
                             },
                             { 
@@ -420,7 +466,7 @@ const Photography = () => {
                             },
                             { 
                                 title: "Expert Mentorship & Global Exposure", 
-                                desc: "Learn from experienced faculty, gain global insights, and grow through a fast-paced learning environment designed for future designers.", 
+                                desc: "Learn from experienced faculty, gain global insights, and grow through a fast-paced learning environment.", 
                                 icon: Globe 
                             }
                         ].map((item, idx) => (
@@ -444,9 +490,9 @@ const Photography = () => {
                         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
                             <div className="space-y-4">
                                 <h3 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter">
-                                    Ready to capture your <br /> <span className="text-primary italic">vision?</span>
+                                    Ready to capture the <br /> <span className="text-primary">extraordinary?</span>
                                 </h3>
-                                <p className="text-white/50 font-medium max-w-sm uppercase text-xs tracking-widest leading-relaxed font-black">Join the 2026 session. Limited seats for high-potential visual artists.</p>
+                                <p className="text-white/50 max-w-sm uppercase text-xs tracking-widest font-black">Join the 2026 session. Limited seats for high-potential creative visionaries.</p>
                             </div>
                             <button 
                                 onClick={() => navigate('/apply')}
@@ -465,4 +511,3 @@ const Photography = () => {
 };
 
 export default Photography;
-

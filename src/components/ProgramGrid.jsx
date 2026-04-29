@@ -180,7 +180,7 @@ const programs = [
     {
         title: "TEXTILE DESIGN",
         tag: "TEXTILE",
-        img: "https://ik.imagekit.io/fmldynl4j4/Gemini_Generated_Image_dwq9tvdwq9tvdwq9.png",
+        img: "https://ik.imagekit.io/fmldynl4j4/ChatGPT%20Image%20Apr%2029,%202026,%2005_39_40%20PM.png",
         headline: "Create Fabrics. Define Trends.",
         subtitle: "Blend creativity with craftsmanship and innovation.",
         careerPath: {
@@ -380,7 +380,7 @@ const ProgramGrid = () => {
                                         <X size={20} className="group-hover:rotate-90 transition-transform duration-300" />
                                     </button>
 
-                                    <div className="flex-1 overflow-x-hidden overflow-y-auto p-6 md:p-10 md:pt-10 space-y-6 pb-12" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                                    <div className="flex-1 overflow-x-hidden overflow-y-auto p-5 md:p-10 md:pt-10 space-y-6 pb-20" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                                         <style>{`
                                             div::-webkit-scrollbar { display: none; }
                                         `}</style>
@@ -395,7 +395,7 @@ const ProgramGrid = () => {
                                                 >
                                                     <button 
                                                         onClick={() => setShowLeadForm(false)}
-                                                        className="mb-6 flex items-center gap-2 text-slate-400 hover:text-primary transition-colors font-bold uppercase tracking-widest text-[10px]"
+                                                        className="mb-6 flex items-center gap-2 text-slate-400 hover:text-primary transition-colors font-bold uppercase tracking-widest text-[10px] touch-target"
                                                     >
                                                         <ArrowLeft size={14} />
                                                         Back to Program Details
@@ -412,27 +412,27 @@ const ProgramGrid = () => {
                                                     initial={{ opacity: 0, x: -20 }}
                                                     animate={{ opacity: 1, x: 0 }}
                                                     exit={{ opacity: 0, x: 20 }}
-                                                    className="space-y-10"
+                                                    className="space-y-8"
                                                 >
                                                     {/* Header Text */}
                                                     <div className="max-w-xl">
-                                                        <h3 className="text-sm md:text-base font-black text-slate-900 leading-tight mb-2 tracking-tighter uppercase italic flex flex-wrap items-center">
+                                                        <h3 className="text-clamp-lg font-black text-slate-900 leading-tight mb-3 tracking-tighter uppercase italic flex flex-wrap items-center">
                                                             {highlightIndustry(selectedProgram.careerPath.title)}
                                                         </h3>
                                                         
                                                         {selectedProgram.careerPath.salaries && (
-                                                            <div className="flex flex-wrap gap-2 mb-4">
-                                                                <div className="flex items-center gap-1 px-2.5 py-1 bg-slate-100 border border-slate-200 rounded-full">
-                                                                    <TrendingUp className="w-2.5 h-2.5 text-slate-400" />
-                                                                    <span className="text-[8px] font-black uppercase tracking-widest text-slate-500 whitespace-nowrap">Entry: {selectedProgram.careerPath.salaries.entry}</span>
+                                                            <div className="flex flex-wrap gap-2 mb-6">
+                                                                <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 border border-slate-200 rounded-full">
+                                                                    <TrendingUp className="w-3 h-3 text-slate-400" />
+                                                                    <span className="text-[9px] font-black uppercase tracking-widest text-slate-500 whitespace-nowrap">Entry: {selectedProgram.careerPath.salaries.entry}</span>
                                                                 </div>
-                                                                <div className="flex items-center gap-1 px-2.5 py-1 bg-slate-100 border border-slate-200 rounded-full">
-                                                                    <Award className="w-2.5 h-2.5 text-slate-400" />
-                                                                    <span className="text-[8px] font-black uppercase tracking-widest text-slate-500 whitespace-nowrap">Mid: {selectedProgram.careerPath.salaries.mid}</span>
+                                                                <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 border border-slate-200 rounded-full">
+                                                                    <Award className="w-3 h-3 text-slate-400" />
+                                                                    <span className="text-[9px] font-black uppercase tracking-widest text-slate-500 whitespace-nowrap">Mid: {selectedProgram.careerPath.salaries.mid}</span>
                                                                 </div>
-                                                                <div className="flex items-center gap-1 px-2.5 py-1 bg-primary/10 border border-primary/20 rounded-full text-primary">
-                                                                    <DollarSign className="w-2.5 h-2.5" />
-                                                                    <span className="text-[8px] font-black uppercase tracking-widest whitespace-nowrap">Senior: {selectedProgram.careerPath.salaries.senior}</span>
+                                                                <div className="flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 border border-primary/20 rounded-full text-primary">
+                                                                    <DollarSign className="w-3 h-3" />
+                                                                    <span className="text-[9px] font-black uppercase tracking-widest whitespace-nowrap">Senior: {selectedProgram.careerPath.salaries.senior}</span>
                                                                 </div>
                                                             </div>
                                                         )}
@@ -440,52 +440,29 @@ const ProgramGrid = () => {
                                                         <p className="text-slate-500 font-medium text-sm md:text-base italic border-l-4 border-slate-200 pl-4 mb-6">
                                                             "{selectedProgram.subtitle}"
                                                         </p>
-                                                    </div>
 
-
-
-
-                                                    {/* Largest Sectors Section */}
-                                                    {selectedProgram.careerPath.sectors && (
-                                                        <div className="space-y-4">
-                                                            <div className="flex items-center gap-2">
-                                                                <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                                                                <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Work in the Largest Sectors</h4>
-                                                            </div>
-                                                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                                                                {selectedProgram.careerPath.sectors.map((sector, idx) => (
-                                                                    <div key={idx} className="flex flex-col items-center justify-center p-3 bg-slate-50 border border-slate-100 rounded-2xl hover:bg-white hover:border-primary/20 hover:shadow-lg transition-all duration-500 group/sector">
-                                                                        <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-primary mb-2 shadow-sm group-hover/sector:scale-110 transition-transform">
-                                                                            <sector.icon size={16} />
+                                                        {/* Largest Sectors Section */}
+                                                        {selectedProgram.careerPath.sectors && (
+                                                            <div className="space-y-4">
+                                                                <div className="flex items-center gap-2">
+                                                                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                                                                    <h4 className="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-[0.2em]">Work in the Largest Sectors</h4>
+                                                                </div>
+                                                                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                                                                    {selectedProgram.careerPath.sectors.map((sector, idx) => (
+                                                                        <div key={idx} className="flex flex-col items-center justify-center p-4 bg-slate-50 border border-slate-100 rounded-2xl hover:bg-white hover:border-primary/20 hover:shadow-lg transition-all duration-500 group/sector">
+                                                                            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary mb-2.5 shadow-sm group-hover/sector:scale-110 transition-transform">
+                                                                                <sector.icon size={18} />
+                                                                            </div>
+                                                                            <span className="text-[9px] font-black uppercase tracking-wider text-slate-700 text-center leading-tight">{sector.label}</span>
                                                                         </div>
-                                                                        <span className="text-[8px] font-black uppercase tracking-wider text-slate-700 text-center leading-tight">{sector.label}</span>
-                                                                    </div>
-                                                                ))}
-                                                            </div>
-                                                        </div>
-                                                    )}
-
-                                                    {/* Career Tracks Grid */}
-                                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                                        {selectedProgram.careerPath.tracks.map((track, i) => (
-                                                            <div key={i} className="group/track relative bg-slate-50 p-3 rounded-2xl border border-slate-100 hover:border-primary/20 transition-all duration-500 hover:shadow-lg">
-                                                                <div className="flex flex-col gap-3">
-                                                                    <div className="flex items-center gap-3">
-                                                                        <div className="w-10 h-10 rounded-xl overflow-hidden shrink-0 shadow-lg border-2 border-white transform transition-transform duration-500 group-hover/track:scale-105">
-                                                                            <img src={track.img} className="w-full h-full object-cover" alt={track.title} />
-                                                                        </div>
-                                                                        <div>
-                                                                            <h4 className="font-black text-slate-900 uppercase tracking-tight text-[10px] mb-1">{track.title}</h4>
-                                                                            <div className="w-6 h-0.5 bg-primary/30 group-hover/track:w-12 transition-all duration-500" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <p className="text-slate-600 text-[9px] leading-relaxed font-bold uppercase tracking-tight">
-                                                                        {track.desc}
-                                                                    </p>
+                                                                    ))}
                                                                 </div>
                                                             </div>
-                                                        ))}
+                                                        )}
                                                     </div>
+
+
 
                                                     {/* Professional Outcomes Disclaimer */}
                                                     <div className="pt-6 border-t border-slate-100 italic">

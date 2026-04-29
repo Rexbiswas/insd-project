@@ -64,7 +64,9 @@ const FashionDesigning = () => {
                     "Creative yarn craft",
                     "Basic of computer Application",
                     "Practical"
-                ],
+                ]
+            },
+            "Year 2": {
                 "Semester 3": [
                     "Intro to fashion illustration",
                     "Sewing Technology",
@@ -86,7 +88,7 @@ const FashionDesigning = () => {
                     "Portfolio Development"
                 ]
             },
-            "Year 2": {
+            "Year 3": {
                 "Semester 5": [
                     "Fabric Testing a quality control",
                     "Fashion Analysis",
@@ -105,7 +107,9 @@ const FashionDesigning = () => {
                     "Production Management",
                     "Quality Control",
                     "Entrepreneurship"
-                ],
+                ]
+            },
+            "Year 4": {
                 "Semester 7": [
                     "Industry Projects",
                     "Entrepreneurship"
@@ -171,8 +175,8 @@ const FashionDesigning = () => {
                         transition={{ duration: 1 }}
                         className="text-center"
                     >
-                        <h1 className="text-4xl md:text-7xl lg:text-9xl font-black text-white uppercase tracking-tighter leading-tight md:leading-none mb-6">
-                            <span className="text-primary italic">Fashion</span> Design
+                        <h1 className="text-clamp-5xl font-black text-white uppercase tracking-tighter leading-tight md:leading-none mb-6">
+                            <span className="text-primary">Fashion</span> Design
                         </h1>
                         
                         <div className="flex items-center justify-center gap-4 text-white/50 animate-bounce cursor-default mt-8">
@@ -185,7 +189,7 @@ const FashionDesigning = () => {
 
             {/* --- COURSE HIGHLIGHTS --- */}
             <section className="py-12 bg-slate-900 overflow-hidden">
-                <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="max-w-7xl mx-auto container-px grid grid-cols-1 md:grid-cols-3 gap-8">
                     {[
                         { label: "Sector", value: "Retail Industry", icon: ShoppingBag },
                         { label: "Sector", value: "Hospitality Industry", icon: Briefcase },
@@ -202,8 +206,8 @@ const FashionDesigning = () => {
                                 <item.icon size={28} />
                             </div>
                             <div>
-                                <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.2em] mb-1">{item.label}</p>
-                                <p className="text-white font-black text-lg tracking-tight uppercase">{item.value}</p>
+                                <p className="text-white/40 text-clamp-sm font-black uppercase tracking-[0.2em] mb-1">{item.label}</p>
+                                <p className="text-white font-black text-clamp-lg tracking-tight uppercase">{item.value}</p>
                             </div>
                         </motion.div>
                     ))}
@@ -229,14 +233,14 @@ const FashionDesigning = () => {
 
 
             {/* --- LEARNING OUTCOMES --- */}
-            <section className="py-24 px-6 md:px-12 lg:px-24 bg-black text-white overflow-hidden relative">
+            <section className="section-py container-px bg-black text-white overflow-hidden relative">
                 <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-3xl rounded-full" />
                 <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
                     <div className="space-y-8">
                         <h2 className="text-3xl md:text-4xl font-black tracking-tight leading-none mb-2">
                             Learning outcomes
                         </h2>
-                        <p className="text-lg md:text-xl text-white/70 leading-relaxed font-bold tracking-tight">
+                        <p className="text-clamp-lg text-white/70 leading-relaxed font-bold tracking-tight">
                             INSD's Fashion Design program equips students with cutting-edge design techniques and fosters innovation and creativity. Through hands-on training, students master trend analysis, develop professional portfolios, and gain critical business acumen. With a strong emphasis on sustainability and ethics, our program prepares students for success in the dynamic fashion world. Internships and global perspectives further enhance their readiness to thrive in diverse fashion environments.
                         </p>
                     </div>
@@ -268,13 +272,32 @@ const FashionDesigning = () => {
                 </div>
             </section>
 
+            {/* --- COURSE OVERVIEW (QUICK FACTS) --- */}
+            <section className="py-12 bg-white border-b border-slate-100">
+                <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {[
+                        { label: "Course Length", value: "3 or 4 Years Option", icon: Clock },
+                        { label: "Degree", value: "Bachelors accredited by UGC", icon: GraduationCap },
+                        { label: "Eligibility", value: "10+2", icon: BookOpen },
+                    ].map((item, idx) => (
+                        <div key={idx} className="flex flex-col p-6 rounded-2xl bg-slate-50 border border-slate-100">
+                            <div className="flex items-center gap-3 mb-4">
+                                <item.icon className="text-primary" size={20} />
+                                <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">{item.label}</span>
+                            </div>
+                            <p className="text-lg font-black text-slate-900 uppercase tracking-tight">{item.value}</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
             {/* --- CURRICULUM SECTION --- */}
-            <section className="py-24 px-6 md:px-12 lg:px-24 bg-slate-50">
+            <section className="section-py container-px bg-slate-50">
                 <div className="max-w-7xl mx-auto">
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
                         <div className="space-y-4">
 
-                            <h2 className="text-5xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none">
+                            <h2 className="text-clamp-4xl font-black text-slate-900 uppercase tracking-tighter leading-none">
                                 Course <br /> <span className="text-slate-300">Curriculum</span>
                             </h2>
                         </div>
@@ -320,19 +343,19 @@ const FashionDesigning = () => {
                             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
                                 <div className="space-y-2 text-center md:text-left">
                                     <p className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">Program Name</p>
-                                    <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tighter leading-none">
+                                    <h3 className="text-clamp-2xl font-black uppercase tracking-tighter leading-none">
                                         Advanced Industry-Integrated Fashion Diploma (AIIFD)
                                     </h3>
                                 </div>
                                 <div className="flex items-center gap-6 px-8 py-4 bg-white/5 rounded-2xl border border-white/10">
                                     <div className="text-center md:text-right">
                                         <p className="text-white/40 font-black uppercase text-[8px] tracking-widest mb-1">Duration</p>
-                                        <p className="text-xl font-black text-primary leading-none uppercase tracking-tight">1 Year</p>
+                                        <p className="text-clamp-xl font-black text-primary leading-none uppercase tracking-tight">1 Year</p>
                                     </div>
                                     <div className="w-px h-10 bg-white/10" />
                                     <div className="text-center md:text-left">
                                         <p className="text-white/40 font-black uppercase text-[8px] tracking-widest mb-1">Learning Hours</p>
-                                        <p className="text-xl font-black text-white leading-none uppercase tracking-tight">420 Hours</p>
+                                        <p className="text-clamp-xl font-black text-white leading-none uppercase tracking-tight">420 Hours</p>
                                     </div>
                                 </div>
                             </div>
@@ -361,7 +384,7 @@ const FashionDesigning = () => {
                                             }`}>
                                                 {semNumber}
                                             </div>
-                                            <span className="text-xl font-black text-slate-900 tracking-tight uppercase">{semName}</span>
+                                            <span className="text-clamp-xl font-black text-slate-900 tracking-tight uppercase">{semName}</span>
                                         </div>
                                         <div className={`transition-transform duration-500 ${expandedSem === semNumber ? 'rotate-180 text-primary' : 'text-slate-300'}`}>
                                             <ChevronDown size={24} />
@@ -388,7 +411,7 @@ const FashionDesigning = () => {
                                                                 className="flex items-start gap-4 group/item"
                                                             >
                                                                 <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary group-hover/item:scale-150 transition-all shrink-0" />
-                                                                <span className="text-slate-600 font-bold text-sm uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
+                                                                <span className="text-slate-600 font-bold text-clamp-sm uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
                                                                     {item}
                                                                 </span>
                                                             </motion.div>
@@ -396,7 +419,7 @@ const FashionDesigning = () => {
                                                     ) : (
                                                         Object.entries(items).map(([subSemName, subItems], subIdx) => (
                                                             <div key={subIdx} className="mb-6 last:mb-0">
-                                                                <h4 className="text-primary font-black uppercase text-sm tracking-widest mb-4">{subSemName}</h4>
+                                                                <h4 className="text-primary font-black uppercase text-clamp-sm tracking-widest mb-4">{subSemName}</h4>
                                                                 <div className="space-y-3">
                                                                     {subItems.map((item, i) => (
                                                                         <motion.div 
@@ -407,7 +430,7 @@ const FashionDesigning = () => {
                                                                             className="flex items-start gap-4 group/item"
                                                                         >
                                                                             <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary group-hover/item:scale-150 transition-all shrink-0" />
-                                                                            <span className="text-slate-600 font-bold text-sm uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
+                                                                            <span className="text-slate-600 font-bold text-clamp-sm uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
                                                                                 {item}
                                                                             </span>
                                                                         </motion.div>
@@ -428,10 +451,10 @@ const FashionDesigning = () => {
             </section>
 
             {/* --- CAREER PATHS GRID --- */}
-            <section className="py-24 px-6 md:px-12 lg:px-24 bg-white">
+            <section className="section-py container-px bg-white">
                 <div className="max-w-7xl mx-auto space-y-12">
                     <div className="space-y-4">
-                        <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase">
+                        <h2 className="text-clamp-4xl font-black text-slate-900 tracking-tighter uppercase">
                             Career Paths
                         </h2>
                         <p className="text-slate-500 font-bold max-w-2xl">
@@ -455,12 +478,12 @@ const FashionDesigning = () => {
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-8 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                                    <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter leading-none mb-2">
+                                    <h3 className="text-clamp-xl font-black text-white uppercase tracking-tighter leading-none mb-2">
                                         {role.title.split(' ').map((word, i) => (
                                             <span key={i} className="block">{word}</span>
                                         ))}
                                     </h3>
-                                    <p className="text-white/60 text-[10px] md:text-xs font-bold leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 uppercase">
+                                    <p className="text-white/60 text-clamp-sm font-bold leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 uppercase tracking-tight">
                                         {role.desc}
                                     </p>
                                 </div>
@@ -471,11 +494,11 @@ const FashionDesigning = () => {
             </section>
 
             {/* --- WHY CHOOSE SECTION --- */}
-            <section className="py-24 px-6 md:px-12 lg:px-24 bg-slate-50 relative overflow-hidden">
+            <section className="section-py container-px bg-slate-50 relative overflow-hidden">
                 <div className="max-w-7xl mx-auto space-y-20">
                     <div className="text-center space-y-4">
                         <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">Academic Excellence</span>
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 uppercase tracking-tighter leading-none">
+                        <h2 className="text-clamp-4xl font-black text-slate-900 uppercase tracking-tighter leading-none">
                             Why Choose <br /> <span className="text-primary">INSD</span> Fashion Design Courses?
                         </h2>
                     </div>
@@ -507,7 +530,7 @@ const FashionDesigning = () => {
                                 <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-all duration-500">
                                     <item.icon size={32} />
                                 </div>
-                                <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tighter mb-4 leading-tight group-hover:text-primary transition-colors">
+                                <h3 className="text-clamp-2xl font-black text-slate-900 uppercase tracking-tighter mb-4 leading-tight group-hover:text-primary transition-colors">
                                     {item.title}
                                 </h3>
                                 <p className="text-slate-500 text-sm leading-relaxed font-medium transition-colors">
@@ -521,8 +544,8 @@ const FashionDesigning = () => {
                         <div className="absolute inset-0 z-0 bg-primary/10 group-hover:bg-primary/20 transition-colors" />
                         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
                             <div className="space-y-4">
-                                <h3 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter">
-                                    Ready to set the <br /> <span className="text-primary italic">next trend?</span>
+                                <h3 className="text-clamp-3xl font-black text-white uppercase tracking-tighter">
+                                    Ready to set the <br /> <span className="text-primary">next trend?</span>
                                 </h3>
                                 <p className="text-white/50 font-medium max-w-sm">Join the 2026 session. Limited seats for high-potential creative visionaries.</p>
                             </div>

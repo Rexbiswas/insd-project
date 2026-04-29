@@ -55,7 +55,7 @@ const Student = () => {
                     <div className="absolute inset-0 bg-linear-to-r from-slate-950 via-slate-950/40 to-transparent" />
                 </div>
 
-                <div className="container relative z-10 mx-auto px-6 h-full flex flex-col justify-center">
+                <div className="container relative z-10 mx-auto container-px h-full flex flex-col justify-center">
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -67,12 +67,12 @@ const Student = () => {
                             <span className="text-primary font-black uppercase tracking-[0.4em] text-xs">The Student Journey</span>
                         </div>
 
-                        <h1 className="text-6xl md:text-[10vw] font-black uppercase leading-[0.85] tracking-tighter text-white mb-10">
+                        <h1 className="text-clamp-5xl font-black uppercase leading-[0.85] tracking-tighter text-white mb-10">
                             Beyond <br />
                             <span className="text-transparent stroke-text-white">Boundaries.</span>
                         </h1>
 
-                        <p className="text-xl md:text-3xl font-bold text-white/80 max-w-2xl mb-12 leading-tight">
+                        <p className="text-clamp-lg font-bold text-white/80 max-w-2xl mb-12 leading-tight">
                             At INSD, we don't just teach design; we cultivate visionaries. Join a community where your creativity meets industry-standard expertise.
                         </p>
 
@@ -104,14 +104,14 @@ const Student = () => {
             </section>
 
             {/* Career Skills Section - Editorial Skewed Layout */}
-            <section className="py-24 md:py-40 bg-white overflow-hidden relative">
-                <div className="container mx-auto px-6">
+            <section className="section-py bg-white overflow-hidden relative">
+                <div className="container mx-auto container-px">
                     <div className="text-center mb-20 md:mb-32">
                         <motion.h2
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-5xl md:text-8xl font-black uppercase tracking-tighter text-primary leading-none mb-6"
+                            className="text-clamp-4xl font-black uppercase tracking-tighter text-primary leading-none mb-6"
                         >
                             Successful Career Skills
                         </motion.h2>
@@ -120,7 +120,7 @@ const Student = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="text-xl md:text-3xl font-bold text-slate-600 tracking-tight"
+                            className="text-clamp-xl font-bold text-slate-600 tracking-tight"
                         >
                             We train students for holistic growth
                         </motion.p>
@@ -173,10 +173,10 @@ const Student = () => {
                                     <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors duration-500" />
                                 </div>
                                 <div className="px-4">
-                                    <h3 className="text-2xl font-black uppercase tracking-tighter text-slate-900 mb-1 group-hover:text-primary transition-colors">
+                                    <h3 className="text-clamp-xl font-black uppercase tracking-tighter text-slate-900 mb-1 group-hover:text-primary transition-colors">
                                         {skill.title}
                                     </h3>
-                                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+                                    <p className="text-clamp-sm font-black uppercase tracking-[0.2em] text-slate-400">
                                         {skill.sub}
                                     </p>
                                 </div>
@@ -221,7 +221,7 @@ const Student = () => {
                     </motion.div>
                 </div>
 
-                <div className="container mx-auto px-6 relative z-10">
+                <div className="container mx-auto container-px relative z-10">
                     <div className="max-w-6xl mx-auto">
                         <div className="flex flex-col items-center text-center space-y-24">
 
@@ -233,7 +233,7 @@ const Student = () => {
                                     viewport={{ once: true }}
                                     className="px-6 py-2 border border-primary/30 rounded-full inline-block backdrop-blur-md"
                                 >
-                                    <span className="text-primary font-black uppercase tracking-[0.6em] text-[10px]">World-Class Mentors</span>
+                                    <span className="text-primary font-black uppercase tracking-[0.6em] text-clamp-sm">World-Class Mentors</span>
                                 </motion.div>
 
                                 <div className="space-y-4">
@@ -241,7 +241,7 @@ const Student = () => {
                                         initial={{ opacity: 0, y: 50 }}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
-                                        className="text-7xl md:text-[12rem] font-black uppercase tracking-tighter leading-[0.75] relative"
+                                        className="text-clamp-5xl font-black uppercase tracking-tighter leading-[0.75] relative"
                                     >
                                         Learn <br />
                                         <span className="italic font-serif text-primary">From</span> <br />
@@ -262,15 +262,15 @@ const Student = () => {
                                     <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
 
                                     <div className="relative z-10 space-y-6">
-                                        <p className="text-primary font-black uppercase tracking-[0.5em] text-xs">Accreditation</p>
-                                        <h3 className="text-6xl md:text-[9rem] font-black uppercase tracking-tighter leading-none">
+                                        <p className="text-primary font-black uppercase tracking-[0.5em] text-clamp-sm">Accreditation</p>
+                                        <h3 className="text-clamp-4xl font-black uppercase tracking-tighter leading-none">
                                             India's #1 <br />
                                             <span className="text-transparent stroke-text-white italic">Skill School</span>
                                         </h3>
 
                                         <div className="flex flex-wrap justify-center gap-12 mt-12 opacity-40">
                                             {["Innovation", "Creativity", "Leadership", "Success"].map((tag, idx) => (
-                                                <span key={idx} className="text-[10px] font-black uppercase tracking-widest">• {tag}</span>
+                                                <span key={idx} className="text-clamp-sm font-black uppercase tracking-widest">• {tag}</span>
                                             ))}
                                         </div>
                                     </div>
@@ -295,8 +295,8 @@ const Student = () => {
             </section>
 
             {/* Campus Experience Section - High Fidelity Collage */}
-            <section className="py-24 md:py-40 bg-white overflow-hidden relative">
-                <div className="container mx-auto px-6">
+            <section className="section-py bg-white overflow-hidden relative">
+                <div className="container mx-auto container-px">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:grid-rows-3 auto-rows-fr">
 
                         {/* Top Row */}
@@ -356,12 +356,12 @@ const Student = () => {
                         </motion.div>
 
                         {/* Central Text Block */}
-                        <div className="lg:col-span-6 flex flex-col items-center justify-center text-center p-8 lg:p-16 bg-white">
+                        <div className="lg:col-span-6 flex flex-col items-center justify-center text-center container-px bg-white">
                             <motion.h2
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.9] text-transparent bg-clip-text bg-linear-to-br from-[#db3436] to-[#134a84] py-4"
+                                className="text-clamp-3xl font-black uppercase tracking-tighter leading-[0.9] text-transparent bg-clip-text bg-linear-to-br from-[#db3436] to-[#134a84] py-4"
                             >
                                 Our Campus <br />
                                 Is Well-Equipped <br />
@@ -429,7 +429,7 @@ const Student = () => {
                     </div>
                 </div>
 
-                <div className="container mx-auto px-6 relative z-10">
+                <div className="container mx-auto container-px relative z-10">
                     <div className="flex flex-col lg:flex-row justify-between items-end mb-20 gap-8">
                         <div className="max-w-2xl">
                             <motion.div
@@ -445,7 +445,7 @@ const Student = () => {
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                className="text-5xl md:text-8xl font-black text-white leading-none tracking-tighter uppercase"
+                                className="text-clamp-4xl font-black text-white leading-none tracking-tighter uppercase"
                             >
                                 Workshop <br />
                                 <span className="text-primary italic">Chronicles</span>
@@ -456,7 +456,7 @@ const Student = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="text-slate-400 font-bold text-lg md:text-xl max-w-md italic border-r-4 border-primary pr-8 text-right"
+                            className="text-slate-400 font-bold text-clamp-lg max-w-md italic border-r-4 border-primary pr-8 text-right"
                         >
                             "Theory is just the starting point. Our workshops are where the real transformation happens."
                         </motion.p>
@@ -467,7 +467,7 @@ const Student = () => {
             </section>
 
             {/* Placement Support Section - Industry standard UI */}
-            <section className="py-24 md:py-40 bg-slate-50 overflow-hidden relative">
+            <section className="section-py bg-slate-50 overflow-hidden relative">
                 {/* Background Decor */}
                 <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none select-none">
                     <div className="text-[20vw] font-black uppercase tracking-tighter leading-none whitespace-nowrap animate-marquee">
@@ -475,7 +475,7 @@ const Student = () => {
                     </div>
                 </div>
 
-                <div className="container mx-auto px-6 relative z-10">
+                <div className="container mx-auto container-px relative z-10">
                     <div className="flex flex-col items-center">
 
                         {/* Top Image Row - Dynamic Grid */}
@@ -509,7 +509,7 @@ const Student = () => {
                                 viewport={{ once: true }}
                                 className="space-y-4"
                             >
-                                <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none text-transparent bg-clip-text bg-linear-to-br from-[#db3436] to-[#134a84]">
+                                <h2 className="text-clamp-5xl font-black uppercase tracking-tighter leading-none text-transparent bg-clip-text bg-linear-to-br from-[#db3436] to-[#134a84]">
                                     100% Lifetime <br />
                                     Placement Support
                                 </h2>
@@ -523,13 +523,13 @@ const Student = () => {
                                 className="space-y-6"
                             >
                                 <div className="inline-block px-10 py-6 bg-primary/10 rounded-full border-2 border-primary/20 backdrop-blur-md">
-                                    <p className="text-primary font-black uppercase tracking-widest text-lg md:text-2xl">
+                                    <p className="text-primary font-black uppercase tracking-widest text-clamp-xl">
                                         Average Salary: <span className="text-slate-900">Rs. 20,000 - Rs. 1,50,000</span> per month
                                     </p>
                                 </div>
 
                                 <div className="pt-4">
-                                    <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tight text-slate-900">
+                                    <h3 className="text-clamp-2xl font-black uppercase tracking-tight text-slate-900">
                                         Highest Package 2025: <span className="text-primary">Rs. 1,50,000</span> per month
                                     </h3>
                                 </div>
@@ -563,8 +563,8 @@ const Student = () => {
             </section>
 
             {/* Comparison Section - The INSD Advantage */}
-            <section className="py-24 md:py-40 bg-white overflow-hidden relative">
-                <div className="container mx-auto px-6">
+            <section className="section-py bg-white overflow-hidden relative">
+                <div className="container mx-auto container-px">
                     <div className="text-center mb-20">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -572,11 +572,11 @@ const Student = () => {
                             viewport={{ once: true }}
                             className="space-y-4"
                         >
-                            <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none">
+                            <h2 className="text-clamp-4xl font-black uppercase tracking-tighter leading-none">
                                 <span className="text-primary italic">INSD Students</span> <span className="text-slate-400">vs</span> <br />
                                 <span className="text-secondary">Other Students</span>
                             </h2>
-                            <p className="text-xl md:text-3xl font-bold text-primary tracking-tight">
+                            <p className="text-clamp-xl font-bold text-primary tracking-tight">
                                 We develop professionals, not just designers.
                             </p>
                         </motion.div>
@@ -621,7 +621,7 @@ const Student = () => {
                                 className="group"
                             >
                                 <div className="space-y-6">
-                                    <h3 className="text-3xl font-black text-slate-900 uppercase tracking-tighter leading-tight border-l-4 border-primary pl-4">
+                                    <h3 className="text-clamp-2xl font-black text-slate-900 uppercase tracking-tighter leading-tight border-l-4 border-primary pl-4">
                                         {item.label}
                                     </h3>
                                     
@@ -676,7 +676,7 @@ const Student = () => {
             </section>
 
             {/* Largest Sectors Section - High Fashion Editorial */}
-            <section className="py-24 md:py-40 px-6 bg-white overflow-hidden relative">
+            <section className="section-py container-px bg-white overflow-hidden relative">
                 <div className="container mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
@@ -689,7 +689,7 @@ const Student = () => {
                                 className="space-y-4"
                             >
                                 <span className="text-primary font-black uppercase tracking-[0.4em] text-xs block mb-6">Industry Reach</span>
-                                <h2 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.85] text-slate-950">
+                                <h2 className="text-clamp-4xl font-black uppercase tracking-tighter leading-[0.85] text-slate-950">
                                     Work <br />
                                     <span className="italic font-serif text-slate-700">in the</span> <br />
                                     <span className="text-primary">Largest</span> <br />
@@ -958,10 +958,10 @@ const WorkshopSlider = () => {
                                             {activeMediaIndex + 1} / {currentWorkshop.media.length}
                                         </span>
                                     </div>
-                                    <h3 className="text-white text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none">
+                                    <h3 className="text-white text-clamp-3xl font-black uppercase tracking-tighter leading-none">
                                         {currentWorkshop.title}
                                     </h3>
-                                    <p className="text-white/60 text-sm font-medium leading-relaxed">
+                                    <p className="text-white/60 text-clamp-base font-medium leading-relaxed">
                                         {currentWorkshop.desc}
                                     </p>
                                 </div>

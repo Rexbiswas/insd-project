@@ -19,8 +19,7 @@ import {
     GraduationCap,
     BookOpen,
     Layers,
-    PenTool
-    ,
+    PenTool,
     ShoppingBag,
     Briefcase,
     Palette
@@ -165,13 +164,13 @@ const AnimationAndVFX = () => {
                         className="space-y-6"
                     >
 
-                        <h1 className="text-4xl md:text-8xl lg:text-[10rem] font-black text-white uppercase tracking-tighter leading-tight md:leading-[0.85] mb-8">
+                        <h1 className="text-clamp-5xl font-black text-white uppercase tracking-tighter leading-tight md:leading-[0.85] mb-8">
                             
-                            <span className="text-primary italic">Animation</span> <br className="hidden md:block" /> 
+                            <span className="text-primary">Animation</span> <br className="hidden md:block" /> 
                             & VFX
                         </h1>
                         
-                        <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default">
+                        <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default justify-center">
                                 <span className="text-[10px] font-black uppercase tracking-widest">Scroll to Explore</span>
                                 <ArrowRight size={16} className="rotate-90" />
                         </div>
@@ -227,7 +226,7 @@ const AnimationAndVFX = () => {
                 <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-3xl rounded-full" />
                 <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
                     <div className="space-y-8">
-                        <h2 className="text-3xl md:text-4xl font-black tracking-tight leading-none mb-2">
+                        <h2 className="text-3xl md:text-4xl font-black tracking-tight leading-none mb-2 text-primary uppercase">
                             Digital <br /> Magic
                         </h2>
                         <div className="space-y-6">
@@ -255,10 +254,29 @@ const AnimationAndVFX = () => {
                                 <img src="https://www.vanarts.com/drive/uploads/2019/02/VFX-FB.jpg" className="w-full h-full object-cover" alt="VFX" />
                             </div>
                             <div className="hidden md:block rounded-2xl overflow-hidden shadow-2xl">
-                                <img src="https://www.cutsncamera.com/wp-content/uploads/2019/10/Blender-Video-Animation-vs-Adobe-After-Effects.jpg" className="w-full h-full" alt="Animation Kit" />
+                                <img src="https://www.cutsncamera.com/wp-content/uploads/2019/10/Blender-Video-Animation-vs-Adobe-After-Effects.jpg" className="w-full h-full object-cover" alt="Animation Kit" />
                             </div>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            {/* --- COURSE OVERVIEW (QUICK FACTS) --- */}
+            <section className="py-12 bg-white border-b border-slate-100">
+                <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {[
+                        { label: "Course Length", value: "3 or 4 Years Option", icon: Clock },
+                        { label: "Degree", value: "Bachelors accredited by UGC", icon: GraduationCap },
+                        { label: "Eligibility", value: "10+2", icon: BookOpen },
+                    ].map((item, idx) => (
+                        <div key={idx} className="flex flex-col p-6 rounded-2xl bg-slate-50 border border-slate-100">
+                            <div className="flex items-center gap-3 mb-4">
+                                <item.icon className="text-primary" size={20} />
+                                <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">{item.label}</span>
+                            </div>
+                            <p className="text-lg font-black text-slate-900 uppercase tracking-tight">{item.value}</p>
+                        </div>
+                    ))}
                 </div>
             </section>
 
@@ -267,7 +285,6 @@ const AnimationAndVFX = () => {
                 <div className="max-w-7xl mx-auto">
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
                         <div className="space-y-4">
-
                             <h2 className="text-5xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none">
                                 Course <br /> <span className="text-slate-300">Curriculum</span>
                             </h2>
@@ -392,11 +409,10 @@ const AnimationAndVFX = () => {
                 </div>
             </section>
 
-            {/* --- CAREER PATHS GRID --- */}
+            {/* --- CAREER ARCHETYPES --- */}
             <section className="py-24 px-6 md:px-12 lg:px-24 bg-white relative">
                 <div className="max-w-7xl mx-auto space-y-20">
                     <div className="text-center space-y-4">
-
                         <h2 className="text-4xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none">
                             Career <br /> <span className="text-slate-300">Archetypes</span>
                         </h2>
@@ -419,9 +435,7 @@ const AnimationAndVFX = () => {
                                 />
                                 <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-8 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
                                     <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter leading-none mb-2">
-                                        {role.title.split(' ').map((word, i) => (
-                                            <span key={i} className="block">{word}</span>
-                                        ))}
+                                        {role.title}
                                     </h3>
                                     <p className="text-white/60 text-[10px] md:text-xs font-bold leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 uppercase tracking-tight">
                                         {role.desc}
@@ -437,9 +451,8 @@ const AnimationAndVFX = () => {
             <section className="py-24 px-6 md:px-12 lg:px-24 bg-slate-50 relative overflow-hidden">
                 <div className="max-w-7xl mx-auto space-y-20">
                     <div className="text-center space-y-4">
-
                         <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 uppercase tracking-tighter leading-none">
-                            Why Choose <br /> <span className="text-primary">INSD</span> Animation & VFX Courses?
+                            Why Choose <br /> <span className="text-primary">INSD</span> Animation & VFX?
                         </h2>
                     </div>
 
@@ -447,22 +460,22 @@ const AnimationAndVFX = () => {
                         {[
                             { 
                                 title: "100% Placement Support", 
-                                desc: "Career focused learning with continuous guidance, ensuring you don’t just learn fashion—you build a real career in it.", 
+                                desc: "Career focused learning with continuous guidance, ensuring you build a real career in the global entertainment industry.", 
                                 icon: GraduationCap 
                             },
                             { 
                                 title: "Industry + AI Integrated Curriculum", 
-                                desc: "Learn what the industry actually demands with a curriculum that blends real-world practices and the latest AI-driven tools shaping fashion today.", 
+                                desc: "Learn what the industry actually demands with a curriculum that blends real-world practices and the latest AI-driven tools.", 
                                 icon: Sparkles 
                             },
                             { 
                                 title: "Hands-On Training & Portfolio Building", 
-                                desc: "From practical projects to creating your own professional portfolio, every step is focused on making you industry-ready.", 
+                                desc: "From practical projects to creating your own professional showreel, every step is focused on making you industry-ready.", 
                                 icon: PenTool 
                             },
                             { 
                                 title: "Expert Mentorship & Global Exposure", 
-                                desc: "Learn from experienced faculty, gain global insights, and grow through a fast-paced learning environment designed for future designers.", 
+                                desc: "Learn from experienced faculty, gain global insights, and grow through a fast-paced learning environment.", 
                                 icon: Globe 
                             }
                         ].map((item, idx) => (
@@ -486,7 +499,7 @@ const AnimationAndVFX = () => {
                         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
                             <div className="space-y-4">
                                 <h3 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter">
-                                    Ready to model the <br /> <span className="text-primary italic">impossible?</span>
+                                    Ready to model the <br /> <span className="text-primary">impossible?</span>
                                 </h3>
                                 <p className="text-white/50 max-w-sm uppercase text-xs tracking-widest font-black">Join the 2026 session. Limited seats for high-potential creative visionaries.</p>
                             </div>
@@ -507,4 +520,3 @@ const AnimationAndVFX = () => {
 };
 
 export default AnimationAndVFX;
-

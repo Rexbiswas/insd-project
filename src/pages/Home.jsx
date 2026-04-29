@@ -1,6 +1,6 @@
 import React, { useRef, useLayoutEffect, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -258,15 +258,17 @@ const Home = () => {
         {
             title: "Industry",
             img: `https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_wy3si8wy3si8wy3s.png?tr=w-${isMobile ? 800 : 1800},fo-auto`,
-            link: "https://gemini.google.com/app/8c7751779a34cf52?hl=en-IN"
+            link: "/industry-potential"
         },
         {
             title: "INSD",
-            img: `https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_u2ubidu2ubidu2ub.png?tr=w-${isMobile ? 800 : 1800},fo-auto`
+            img: `https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_u2ubidu2ubidu2ub.png?tr=w-${isMobile ? 800 : 1800},fo-auto`,
+            link: "/student"
         },
         {
-            title: "Required Professional",
-            img: `https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_hzzhu5hzzhu5hzzh.png?tr=w-${isMobile ? 800 : 1800},fo-auto`
+            title: "Required Profession",
+            img: `https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_hzzhu5hzzhu5hzzh.png?tr=w-${isMobile ? 800 : 1800},fo-auto`,
+            link: "/placement"
         }
     ];
 
@@ -305,7 +307,7 @@ const Home = () => {
 
 
             {/* Hero Split Section */}
-            <div ref={heroRef} className="relative z-10 min-h-screen w-full flex flex-col lg:flex-row bg-white overflow-hidden pt-20 lg:pt-0 cursor-default">
+            <div ref={heroRef} className="relative z-10 min-h-screen w-full flex flex-col lg:flex-row bg-white overflow-hidden pt-12 lg:pt-0 cursor-default">
 
                 {/* Left Side: Content & Headlines */}
                 <div className="w-full lg:w-[55%] flex flex-col justify-center px-6 md:px-16 lg:px-24 py-8 md:py-16 space-y-6 md:space-y-8 relative z-20">
@@ -313,16 +315,16 @@ const Home = () => {
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="space-y-5"
+                        className="space-y-5 lg:mt-12"
                     >
 
                         <div className="space-y-4">
 
-                            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-slate-900 tracking-tighter leading-[0.9]">
+                            <h1 className="text-clamp-3xl font-black text-slate-900 tracking-tighter leading-[0.95]">
                                 From Classroom <br />
-                                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-slate-400 italic text-[0.8em]">to Career.</span>
+                                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-slate-400 italic text-[0.9em]">to Career.</span>
                             </h1>
-                            <p className="text-lg md:text-xl font-bold text-slate-600 tracking-tight max-w-xl">
+                            <p className="text-clamp-lg font-bold text-slate-600 tracking-tight max-w-xl">
                                 Skill-based education launching high-impact careers in Fashion, Interior & Graphic design.
                             </p>
                         </div>
@@ -334,7 +336,7 @@ const Home = () => {
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => openAdmissionModal()}
-                                className="w-full sm:w-auto h-14 px-8 bg-primary text-white rounded-full font-black uppercase tracking-widest text-[10px] shadow-xl flex items-center justify-center gap-3 transition-all hover:bg-slate-950"
+                                className="w-full sm:w-auto h-16 px-10 bg-primary text-white rounded-full font-black uppercase tracking-widest text-[11px] shadow-xl flex items-center justify-center gap-3 transition-all hover:bg-slate-950"
                             >
                                 Talk to a Counsellor
                                 <ArrowRight size={18} />
@@ -344,16 +346,16 @@ const Home = () => {
                                 download="INSD-Prospectus-2026.pdf"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="group relative w-full sm:w-auto h-14 px-8 bg-white border-2 border-slate-100 text-slate-600 rounded-full font-black uppercase tracking-widest text-[10px] overflow-hidden transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-primary/20 hover:border-primary/30"
+                                className="group relative w-full sm:w-auto h-16 px-10 bg-white border-2 border-slate-100 text-slate-600 rounded-full font-black uppercase tracking-widest text-[11px] overflow-hidden transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-primary/20 hover:border-primary/30"
                             >
                                 {/* Animated Gradient Background */}
                                 <div className="absolute inset-0 bg-linear-to-r from-primary to-slate-900 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
-
+                                
                                 {/* Shimmer */}
                                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                                     <div className="absolute top-0 -left-full w-full h-full bg-linear-to-r from-transparent via-white/20 to-transparent skew-x-[-20deg] group-hover:animate-shimmer" />
                                 </div>
-
+                                
                                 <div className="relative z-10 flex items-center gap-2 group-hover:text-white transition-colors duration-300">
                                     <FileDown size={14} className="group-hover:scale-110 transition-transform duration-300" />
                                     <span>Prospectus</span>
@@ -398,15 +400,15 @@ const Home = () => {
 
             </div>
 
-            <div className="w-full bg-white py-12 px-6">
+            <div className="w-full bg-white py-12 container-px">
                 <div className="max-w-7xl mx-auto">
                     <PlacementPartners />
                 </div>
             </div>
 
-            <div className="mt-20 md:mt-32">
+            <div className="section-py">
                 {/* Creative Path Transition */}
-                <div className="mt-16 md:mt-24 mb-12 md:mb-16 text-center px-4">
+                <div className="mt-16 md:mt-24 mb-12 md:mb-16 text-center container-px">
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -414,13 +416,13 @@ const Home = () => {
                         transition={{ duration: 1, ease: "easeOut" }}
                         className="space-y-6"
                     >
-                        <h2 className="text-4xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.9] text-slate-950">
+                        <h2 className="text-clamp-4xl font-black uppercase tracking-tighter leading-[0.9] text-slate-950">
                             Your future, <br />
                             <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-primary to-slate-500 italic py-2 inline-block">our dream.</span>
                         </h2>
 
                         <div className="space-y-4 max-w-2xl mx-auto pt-2">
-                            <p className="text-lg md:text-2xl font-bold text-slate-800 tracking-tight leading-relaxed">
+                            <p className="text-clamp-xl font-bold text-slate-800 tracking-tight leading-relaxed">
                                 Pick the creative career that excites you— <span className="text-primary italic">we’ll help you build it.</span>
                             </p>
                             <div className="flex items-center justify-center gap-3">
@@ -449,11 +451,9 @@ const Home = () => {
             <div ref={galleryContainerRef} className="relative z-10 h-screen w-full bg-black overflow-hidden flex flex-col lg:flex-row pointer-events-auto">
                 {
                     galleryItems.map((item, index) => (
-                        <a
+                        <Link
                             key={index}
-                            href={item.link || "#"}
-                            target={item.link ? "_blank" : "_self"}
-                            rel="noopener noreferrer"
+                            to={item.link || "#"}
                             className="gallery-item relative flex-1 group transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] hover:flex-3 cursor-pointer border-b lg:border-b-0 lg:border-r border-white/10 last:border-b-0 last:border-r-0"
                         >
                             {/* Image Background */}
@@ -484,7 +484,7 @@ const Home = () => {
                                     {item.title}
                                 </span>
                             </div>
-                        </a>
+                        </Link>
                     ))
                 }
             </div>
@@ -504,7 +504,7 @@ const Home = () => {
 
 
             {/* Student Spotlight Section - High Fashion Editorial Style */}
-            <div ref={studentRef} className="relative min-h-screen py-20 md:py-32 px-4 md:px-12 overflow-hidden transition-colors duration-700">
+            <div ref={studentRef} className="relative section-py container-px overflow-hidden transition-colors duration-700">
                 <div className="max-w-360 mx-auto">
 
                     {/* Header */}
@@ -538,7 +538,7 @@ const Home = () => {
                         {/* Content & Smaller Image */}
                         <div className="lg:col-span-5 flex flex-col justify-between h-full pl-0 lg:pl-8">
                             <div className="mb-12">
-                                <p className="text-xl md:text-2xl font-light leading-relaxed mb-8 opacity-80 flex flex-wrap gap-x-2 quote-container">
+                                <p className="text-clamp-xl font-light leading-relaxed mb-8 opacity-80 flex flex-wrap gap-x-2 quote-container">
                                     {splitText("\"INSD gave me the freedom to fail, which is the only way to truly succeed in design. My final collection was a direct result of that chaos.\"", "quote-word")}
                                 </p>
                                 <div className="flex items-center gap-4">

@@ -107,14 +107,14 @@ const IndustryPotential = () => {
     return (
         <main className="min-h-screen bg-[#fafafa]">
             {/* Minimal Hero Section to introduce Industry Potential */}
-            <section className="relative pt-32 pb-12 md:pt-48 md:pb-24 overflow-hidden border-b border-slate-200/50">
+            <section className="relative section-py overflow-hidden border-b border-slate-200/50">
                 {/* Background Details */}
                 <div className="absolute inset-0 pointer-events-none">
                     <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-bl from-primary/5 to-transparent blur-3xl opacity-60 mix-blend-multiply" />
                     <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-linear-to-tr from-slate-200/60 to-transparent blur-2xl opacity-50" />
                 </div>
                 
-                <div className="container mx-auto px-6 relative z-10 text-center max-w-5xl">
+                <div className="container mx-auto container-px relative z-10 text-center max-w-5xl">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -123,10 +123,10 @@ const IndustryPotential = () => {
                         <span className="inline-block px-4 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-800 font-bold tracking-[0.2em] uppercase text-[10px] md:text-xs mb-8 shadow-sm">
                             Real-World Demand
                         </span>
-                        <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-black uppercase leading-[0.85] tracking-tighter text-slate-900 mb-8">
+                        <h1 className="text-clamp-5xl font-black uppercase leading-[0.85] tracking-tighter text-slate-900 mb-8">
                             Industry <span className="text-primary inline-block">Potential</span>
                         </h1>
-                        <p className="max-w-3xl mx-auto text-lg md:text-2xl text-slate-600 font-medium leading-relaxed">
+                        <p className="max-w-3xl mx-auto text-clamp-lg text-slate-600 font-medium leading-relaxed">
                             A deep dive into the massive global opportunities waiting for design professionals across every major economic sector.
                         </p>
                     </motion.div>
@@ -136,10 +136,10 @@ const IndustryPotential = () => {
 
 
             {/* --- FIELD INTELLIGENCE: THE IMMERSION PROTOCOL (New Industry Visits Section) --- */}
-            <section className="py-40 bg-slate-950 text-white relative overflow-hidden">
+            <section className="section-py bg-slate-950 text-white relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] pointer-events-none" />
                 
-                <div className="container mx-auto px-6 relative z-10">
+                <div className="container mx-auto container-px relative z-10">
                     <div className="flex flex-col lg:flex-row items-end justify-between gap-12 mb-32">
                         <div className="space-y-6">
                             <motion.div 
@@ -148,14 +148,14 @@ const IndustryPotential = () => {
                                 className="flex items-center gap-4"
                             >
                                 <div className="w-12 h-px bg-primary" />
-                                <span className="text-primary font-black uppercase text-[10px] tracking-[0.8em]">Operational Experience</span>
+                                <span className="text-primary font-black uppercase text-clamp-sm tracking-[0.8em]">Operational Experience</span>
                             </motion.div>
                             
-                            <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-[0.85]">
+                            <h2 className="text-clamp-5xl font-black uppercase tracking-tighter leading-[0.85]">
                                 Field <br /> <span className="stroke-text-white opacity-50">Intelligence.</span>
                             </h2>
                         </div>
-                        <p className="max-w-md text-white/40 text-lg md:text-xl font-medium leading-relaxed uppercase tracking-tight">
+                        <p className="max-w-md text-white/40 text-clamp-lg font-medium leading-relaxed uppercase tracking-tight">
                             Beyond theory. We deploy our students into the world's most sophisticated design ecosystems to witness the velocity of industry first-hand.
                         </p>
                     </div>
@@ -358,7 +358,7 @@ const IndustryPotential = () => {
                                                     <span className="w-8 h-px bg-primary" />
                                                     <span className="text-primary font-black uppercase text-[10px] tracking-widest">{visit.type}</span>
                                                 </div>
-                                                <h3 className="text-2xl font-black uppercase tracking-tighter leading-tight text-white group-hover:text-primary transition-colors">
+                                                <h3 className="text-clamp-xl font-black uppercase tracking-tighter leading-tight text-white group-hover:text-primary transition-colors">
                                                     {visit.title}
                                                 </h3>
                                                 {visit.date && <p className="text-white/40 font-bold text-[9px] uppercase tracking-widest">{visit.date}</p>}
@@ -404,7 +404,7 @@ const IndustryPotential = () => {
 
 
             {/* --- INDUSTRY EXPOSURE SECTION --- */}
-            <section className="py-32 bg-slate-50 border-t border-slate-100">
+            <section className="section-py bg-slate-50 border-t border-slate-100">
                 <IndustryExposure />
             </section>
 
