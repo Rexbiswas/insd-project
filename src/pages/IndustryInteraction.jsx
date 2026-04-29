@@ -61,7 +61,7 @@ const IndustryInteraction = () => {
                     <img 
                         src="https://images.unsplash.com/photo-1540317580384-e5d43616b9aa?auto=format&fit=crop&q=80&w=1600" 
                         alt="Industry Interaction" 
-                        className="w-full h-full object-cover opacity-5 grayscale"
+                        className="w-full h-full object-cover opacity-5"
                     />
                     <div className="absolute inset-0 bg-linear-to-b from-slate-50 via-slate-50/90 to-transparent" />
                 </div>

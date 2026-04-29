@@ -150,7 +150,7 @@ const EIDC_Slider = () => {
                                     animate={{ scale: 1, opacity: 1, filter: 'blur(0px)' }}
                                     exit={{ scale: 1.05, opacity: 0, filter: 'blur(10px)' }}
                                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                                    className="w-full h-full object-cover grayscale brightness-110 hover:grayscale-0 transition-all duration-1000"
+                                    className="w-full h-full object-cover brightness-110 transition-all duration-1000"
                                     alt={activeItem.title}
                                 />
                             </AnimatePresence>

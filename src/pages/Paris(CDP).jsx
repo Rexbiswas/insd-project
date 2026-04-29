@@ -51,7 +51,7 @@ const ParisCDP = () => {
                     <img 
                         src="https://images.pexels.com/photos/1125212/pexels-photo-1125212.jpeg?auto=compress&cs=tinysrgb&w=2000" 
                         alt="Paris CDP Infinite Elegance"
-                        className="w-full h-full object-cover grayscale opacity-50 contrast-125"
+                        className="w-full h-full object-cover opacity-50 contrast-125"
                     />
                     <div className="absolute inset-0 bg-linear-to-b from-[#111]/10 via-transparent to-[#111]" />
                 </motion.div>

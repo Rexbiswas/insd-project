@@ -122,7 +122,7 @@ const ParisProject = () => {
                     <div className="w-full h-full relative group overflow-hidden">
                         <iframe 
                             src="https://go.screenpal.com/player/cOe0D9nT6Dx?ff=1&ahc=1&dcc=1&tl=1&bg=transparent&share=1&download=1&embed=1&cl=1"
-                            className="absolute inset-0 w-full h-full border-0 grayscale hover:grayscale-0 transition-all duration-1000"
+                            className="absolute inset-0 w-full h-full border-0 transition-all duration-1000"
                             allowFullScreen
                         />
                     </div>
@@ -170,23 +170,23 @@ const ParisProject = () => {
 
                     {/* Column 1 - Travels Up */}
                     <motion.div style={{ y: y1 }} className="flex flex-col gap-4 md:gap-8 w-1/3 pt-[20vh]">
-                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.18%20(3).jpeg" alt="Versailles 1" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
-                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.19%20(1).jpeg" alt="Versailles 2" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
-                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.19.jpeg" alt="Versailles 3" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
+                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.18%20(3).jpeg" alt="Versailles 1" className="w-full object-cover hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
+                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.19%20(1).jpeg" alt="Versailles 2" className="w-full object-cover hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
+                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.19.jpeg" alt="Versailles 3" className="w-full object-cover hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
                     </motion.div>
 
                     {/* Column 2 - Travels Down */}
                     <motion.div style={{ y: y2 }} className="flex flex-col gap-4 md:gap-8 w-1/3">
-                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.21%20(2).jpeg" alt="Versailles 4" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
-                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.21.jpeg" alt="Versailles 5" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
-                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.18%20(3).jpeg" alt="Versailles 6" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
+                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.21%20(2).jpeg" alt="Versailles 4" className="w-full object-cover hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
+                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.21.jpeg" alt="Versailles 5" className="w-full object-cover hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
+                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.18%20(3).jpeg" alt="Versailles 6" className="w-full object-cover hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
                     </motion.div>
 
                     {/* Column 3 - Travels Up Fast */}
                     <motion.div style={{ y: y3 }} className="flex flex-col gap-4 md:gap-8 w-1/3 pt-[10vh]">
-                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.19%20(1).jpeg" alt="Versailles 7" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
-                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.19.jpeg" alt="Versailles 8" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
-                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.21%20(2).jpeg" alt="Versailles 9" className="w-full object-cover filter grayscale hover:grayscale-0 hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
+                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.19%20(1).jpeg" alt="Versailles 7" className="w-full object-cover hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
+                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.19.jpeg" alt="Versailles 8" className="w-full object-cover hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
+                        <img src="https://ik.imagekit.io/fmldynl4j4/Palace%20of%20Versailles/WhatsApp%20Image%202025-04-11%20at%2012.03.21%20(2).jpeg" alt="Versailles 9" className="w-full object-cover hover:z-20 transform hover:scale-105 transition-all duration-700 shadow-2xl" />
                     </motion.div>
 
                 </div>
@@ -202,7 +202,7 @@ const ParisProject = () => {
                         viewport={{ once: true }}
                         src="https://images.unsplash.com/photo-1509631179647-0c114ee3c235?q=80&w=2000&auto=format&fit=crop"
                         alt="Paris Fashion Runway"
-                        className="w-full h-full object-cover filter grayscale opacity-20 object-top"
+                        className="w-full h-full object-cover opacity-20 object-top"
                     />
                     <div className="absolute inset-0 bg-linear-to-t from-[#f3f3f3] via-transparent to-white/80"></div>
                 </div>
@@ -223,7 +223,7 @@ const ParisProject = () => {
                             viewport={{ once: true }}
                             className="relative aspect-3/4 w-full max-w-md mx-auto lg:mr-auto overflow-hidden group shadow-2xl bg-slate-100 p-3"
                         >
-                            <img src="https://images.unsplash.com/photo-1545291730-faff8ca1d4b0?q=80&w=1000" alt="Couture Detail" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 filter grayscale group-hover:grayscale-0" />
+                            <img src="https://images.unsplash.com/photo-1545291730-faff8ca1d4b0?q=80&w=1000" alt="Couture Detail" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
                             <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors duration-500"></div>
                             <div className="absolute bottom-6 left-6 right-6">
                                 <div className="bg-white/95 backdrop-blur-md p-5 flex justify-between items-end border border-slate-200 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]">
@@ -256,7 +256,7 @@ const ParisProject = () => {
                             >
                                 <iframe 
                                     src="https://go.screenpal.com/player/cOe0DRnT6Dp?ff=1&ahc=1&dcc=1&tl=1&bg=transparent&share=1&download=1&embed=1&cl=1"
-                                    className="absolute inset-0 w-full h-full border-0 grayscale group-hover:grayscale-0 transition-all duration-1000"
+                                    className="absolute inset-0 w-full h-full border-0 transition-all duration-1000"
                                     allowFullScreen
                                 />
                                 <div className="absolute inset-0 bg-linear-to-tr from-slate-900/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>

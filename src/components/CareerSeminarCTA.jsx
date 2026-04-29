@@ -59,7 +59,7 @@ const CareerSeminarCTA = () => {
                             <img 
                                 src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1200" 
                                 alt="Orientation Seminar" 
-                                className="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
+                                className="w-full h-full object-cover brightness-75 group-hover:scale-105 transition-all duration-1000"
                             />
                             <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-transparent to-transparent opacity-60" />
                             

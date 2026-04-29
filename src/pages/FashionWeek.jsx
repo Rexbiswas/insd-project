@@ -138,7 +138,7 @@ const FashionWeek = () => {
                     { id: 5, img: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=1000", title: "Sustainable", desc: "Eco-friendly fabrics, timeless designs." },
                 ].map((item) => (
                     <div key={item.id} className="relative h-full w-[80vw] md:w-[30vw] shrink-0 group overflow-hidden bg-slate-100 border border-slate-200">
-                        <img src={item.img} alt={item.title} className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-[1.5s] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105 opacity-80 group-hover:opacity-100" />
+                        <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-all duration-[1.5s] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105 opacity-80 group-hover:opacity-100" />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent pointer-events-none"></div>
                         <div className="absolute bottom-8 left-8 right-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-700">
                             <span className="inline-block py-1 px-3 border border-white/20 text-white/70 text-[10px] uppercase tracking-widest font-bold mb-4 backdrop-blur-md">Collection '26</span>
@@ -279,7 +279,7 @@ const FashionWeek = () => {
                 transition={{ delay: i * 0.1 }}
                 className="group relative overflow-hidden rounded-3xl aspect-[4/5] bg-slate-100"
               >
-                <img src={box.img} alt={box.title} className="w-full h-full object-cover grayscale opacity-40 group-hover:scale-110 group-hover:grayscale-0 transition-all duration-[1s]" />
+                <img src={box.img} alt={box.title} className="w-full h-full object-cover opacity-40 group-hover:scale-110 transition-all duration-[1s]" />
                 <div className="absolute inset-0 bg-linear-to-t from-slate-900 via-transparent to-transparent opacity-80" />
                 <div className="absolute inset-0 p-8 flex flex-col justify-between">
                   <span className="text-4xl font-black text-white/20 select-none">{box.step}</span>

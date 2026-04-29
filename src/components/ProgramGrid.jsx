@@ -17,11 +17,8 @@ const programs = [
                 industrySize: "₹45 Lakh Crore Industry",
                 demand: "15 Lakh designers till 2030"
             },
-            tracks: [
-                { title: "Fashion Designer", desc: "Create collections, build labels, launch your brand", img: "https://images.pexels.com/photos/3735641/pexels-photo-3735641.jpeg?auto=compress&cs=tinysrgb&w=800" },
-                { title: "Fashion Stylist", desc: "Style celebrities, shoots & fashion campaigns", img: "https://images.pexels.com/photos/1036622/pexels-photo-1036622.jpeg?auto=compress&cs=tinysrgb&w=800" }
-            ],
-            salaries: { entry: "3-5 LPA", mid: "6-12 LPA", senior: "15+ LPA" },
+            tracks: [],
+            salaries: { entry: "Rs. 20,000", mid: "Rs. 75,000", senior: "Rs. 1,50,000" },
             sectors: [
                 { label: "Hospitality Industry", icon: Coffee },
                 { label: "Retail Industry", icon: ShoppingBag },
@@ -46,7 +43,7 @@ const programs = [
                 { title: "Interior Designer", desc: "Design homes, offices & commercial spaces", img: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800" },
                 { title: "Space Planner", desc: "Optimize layouts for functionality & aesthetics", img: "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ],
-            salaries: { entry: "3-5 LPA", mid: "6-10 LPA", senior: "12-20+ LPA" },
+            salaries: { entry: "Rs. 20,000", mid: "Rs. 50,000", senior: "Rs. 1,00,000+" },
             sectors: [
                 { label: "Hospitality Industry", icon: Coffee },
                 { label: "Retail Industry", icon: ShoppingBag },
@@ -71,7 +68,7 @@ const programs = [
                 { title: "Graphic Designer", desc: "Create logos, branding & marketing creatives", img: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800" },
                 { title: "Brand Identity Designer", desc: "Shape how brands look, feel & communicate", img: "https://images.pexels.com/photos/326501/pexels-photo-326501.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ],
-            salaries: { entry: "3-5 LPA", mid: "6-12 LPA", senior: "15+ LPA" },
+            salaries: { entry: "Rs. 20,000", mid: "Rs. 60,000", senior: "Rs. 1,20,000+" },
             sectors: [
                 { label: "Hospitality Industry", icon: Coffee },
                 { label: "Retail Industry", icon: ShoppingBag },
@@ -96,7 +93,7 @@ const programs = [
                 { title: "UI Designer", desc: "Design apps, websites & interfaces", img: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800" },
                 { title: "UX Designer", desc: "Improve user experience & product usability", img: "https://images.pexels.com/photos/3183186/pexels-photo-3183186.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ],
-            salaries: { entry: "4-6 LPA", mid: "8-15 LPA", senior: "20-35+ LPA" },
+            salaries: { entry: "Rs. 35,000", mid: "Rs. 80,000", senior: "Rs. 2,00,000+" },
             sectors: [
                 { label: "Hospitality Industry", icon: Coffee },
                 { label: "Retail Industry", icon: ShoppingBag },
@@ -121,7 +118,7 @@ const programs = [
                 { title: "Animator", desc: "Work in films, OTT & gaming", img: "https://images.pexels.com/photos/1148998/pexels-photo-1148998.jpeg?auto=compress&cs=tinysrgb&w=800" },
                 { title: "VFX Artist", desc: "Create visual effects for movies & ads", img: "https://images.pexels.com/photos/2510428/pexels-photo-2510428.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ],
-            salaries: { entry: "3-5 LPA", mid: "6-12 LPA", senior: "15-25+ LPA" },
+            salaries: { entry: "Rs. 25,000", mid: "Rs. 70,000", senior: "Rs. 1,50,000+" },
             sectors: [
                 { label: "Hospitality Industry", icon: Coffee },
                 { label: "Retail Industry", icon: ShoppingBag },
@@ -146,7 +143,7 @@ const programs = [
                 { title: "Photographer", desc: "Fashion, product, wedding & commercial shoots", img: "https://images.pexels.com/photos/1205033/pexels-photo-1205033.jpeg?auto=compress&cs=tinysrgb&w=800" },
                 { title: "Content Creator", desc: "Build your personal brand or work with brands", img: "https://images.pexels.com/photos/3052848/pexels-photo-3052848.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ],
-            salaries: { entry: "2.5-4 LPA", mid: "5-10 LPA", senior: "Variable (High Potential)" },
+            salaries: { entry: "Rs. 20,000", mid: "Rs. 50,000", senior: "High Potential" },
             sectors: [
                 { label: "Hospitality Industry", icon: Coffee },
                 { label: "Retail Industry", icon: ShoppingBag },
@@ -171,7 +168,7 @@ const programs = [
                 { title: "Makeup Artist", desc: "Work in fashion, films & bridal industry", img: "https://images.pexels.com/photos/3373739/pexels-photo-3373739.jpeg?auto=compress&cs=tinysrgb&w=800" },
                 { title: "Hair Stylist", desc: "Professional styling for salons & shoots", img: "https://images.pexels.com/photos/3993444/pexels-photo-3993444.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ],
-            salaries: { entry: "2-4 LPA", mid: "5-10 LPA", senior: "Variable (High Potential)" },
+            salaries: { entry: "Rs. 18,000", mid: "Rs. 45,000", senior: "High Potential" },
             sectors: [
                 { label: "Hospitality Industry", icon: Coffee },
                 { label: "Retail Industry", icon: ShoppingBag },
@@ -196,7 +193,7 @@ const programs = [
                 { title: "Textile Designer", desc: "Create fabrics, patterns & materials for fashion and lifestyle brands", img: "https://images.pexels.com/photos/4622437/pexels-photo-4622437.jpeg?auto=compress&cs=tinysrgb&w=800" },
                 { title: "Print & Surface Designer", desc: "Design prints for apparel, home décor, and global collections", img: "https://images.pexels.com/photos/1036622/pexels-photo-1036622.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ],
-            salaries: { entry: "3-5 LPA", mid: "6-10 LPA", senior: "12+ LPA" },
+            salaries: { entry: "Rs. 20,000", mid: "Rs. 55,000", senior: "Rs. 1,00,000+" },
             sectors: [
                 { label: "Hospitality Industry", icon: Coffee },
                 { label: "Retail Industry", icon: ShoppingBag },
@@ -221,7 +218,7 @@ const programs = [
                 { title: "Jewellery Designer", desc: "Design bespoke pieces, wedding collections & brand labels", img: "https://images.pexels.com/photos/1458867/pexels-photo-1458867.jpeg?auto=compress&cs=tinysrgb&w=800" },
                 { title: "Gemologist / Stone Grader", desc: "Expert assessment, grading and sourcing of precious stones", img: "https://images.pexels.com/photos/265906/pexels-photo-265906.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ],
-            salaries: { entry: "3-5 LPA", mid: "6-10 LPA", senior: "Variable / Own Brand" },
+            salaries: { entry: "Rs. 25,000", mid: "Rs. 65,000", senior: "Own Brand" },
             sectors: [
                 { label: "Hospitality Industry", icon: Coffee },
                 { label: "Retail Industry", icon: ShoppingBag },
@@ -355,7 +352,7 @@ const ProgramGrid = () => {
                                     <div className="absolute inset-0 bg-slate-950/60 z-10" />
                                     <img 
                                         src={selectedProgram.img} 
-                                        className="absolute inset-0 w-full h-full object-cover grayscale-50 group-hover/modal:grayscale-0 group-hover/modal:scale-110 transition-all duration-1000" 
+                                        className="absolute inset-0 w-full h-full object-cover -50 group-hover/modal:-0 group-hover/modal:scale-110 transition-all duration-1000" 
                                         alt={selectedProgram.title} 
                                     />
                                     

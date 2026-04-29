@@ -119,7 +119,7 @@ const DesignLifestyle = () => {
                                 <img
                                     src={item.image}
                                     alt={item.title}
-                                    className="w-full h-full object-cover grayscale brightness-[0.6] group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 ease-in-out"
+                                    className="w-full h-full object-cover brightness-[0.6] group-hover:brightness-100 transition-all duration-1000 ease-in-out"
                                 />
                                 {/* Dynamic Gradient Overlay */}
                                 <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent opacity-90 group-hover:opacity-70 transition-opacity duration-700"></div>

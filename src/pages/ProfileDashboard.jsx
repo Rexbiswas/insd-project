@@ -62,7 +62,7 @@ const ProfileDashboard = () => {
                             
                             <div className="relative z-10 w-32 h-32 rounded-full border-4 border-white bg-slate-900 flex items-center justify-center shadow-lg mb-6 group cursor-pointer overflow-hidden">
                                 {user.avatarUrl ? (
-                                    <img src={user.avatarUrl} alt="Avatar" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                                    <img src={user.avatarUrl} alt="Avatar" className="w-full h-full object-cover transition-all duration-500" />
                                 ) : (
                                     <span className="text-5xl font-black text-white group-hover:scale-110 transition-transform duration-300">
                                         {user.username.charAt(0).toUpperCase()}
@@ -145,7 +145,7 @@ const ProfileDashboard = () => {
                             className="bg-slate-900 rounded-[2.5rem] p-8 md:p-12 text-white relative overflow-hidden flex flex-col justify-end min-h-[300px] shadow-2xl"
                         >
                             <div className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity duration-1000 mix-blend-overlay pointer-events-none">
-                                <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg" className="w-full h-full object-cover grayscale" alt="Course Texture" />
+                                <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg" className="w-full h-full object-cover" alt="Course Texture" />
                             </div>
                             <div className="absolute inset-0 bg-linear-to-t from-slate-900 via-slate-900/40 to-transparent pointer-events-none" />
                             

@@ -84,7 +84,7 @@ const FeaturedIn = () => {
                         >
                             {/* 
                                 mix-blend-multiply: Instantly makes any white background in JPEGs completely transparent against the light grey track 
-                                grayscale & opacity: Makes logos uniform and sophisticated
+                                & opacity: Makes logos uniform and sophisticated
                             */}
                             <img
                                 src={brand.url}

@@ -111,7 +111,7 @@ const GlobalDesignEconomy = () => {
                             <img
                                 src={item.img}
                                 alt={item.title}
-                                className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
+                                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-1000"
                             />
 
                             {/* Overlay Liquid Gradient */}

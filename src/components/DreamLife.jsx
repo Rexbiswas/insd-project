@@ -87,7 +87,7 @@ const DreamLife = () => {
                             <img 
                                 src={item.img} 
                                 alt={item.title}
-                                className="absolute inset-0 w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:scale-110 group-hover:opacity-100 transition-all duration-1000 ease-out"
+                                className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-100 transition-all duration-1000 ease-out"
                             />
                             
                             {/* Gradient Overlay */}

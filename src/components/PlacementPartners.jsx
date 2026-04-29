@@ -43,7 +43,7 @@ const fashionLogos = [
 
 const PlacementPartners = () => {
     const LogoCard = ({ logo }) => (
-        <div className="flex items-center justify-center min-w-[140px] md:min-w-[200px] h-16 md:h-24 transition-all group grayscale hover:grayscale-0">
+        <div className="flex items-center justify-center min-w-[140px] md:min-w-[200px] h-16 md:h-24 transition-all group">
             <img 
                 src={logo} 
                 alt="Partner Logo" 

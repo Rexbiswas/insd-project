@@ -22,7 +22,8 @@ import {
     Pencil,
     Clock,
     GraduationCap,
-    BookOpen
+    BookOpen,
+    ShoppingBag
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO';
@@ -61,25 +62,70 @@ const InteriorDesigning = () => {
             ]
         },
         Bachelors: {
-            "Year 1": [
-                "Basics of Drafting & Graphics",
-                "Introduction of Interior Designing",
-                "History of Architecture (Global & Modern)",
-                "Building Technology & Materials",
-                "Furniture & Furnishings Basics",
-                "Life Space Planning & Urban Design",
-                "Grooming & Communication Skills"
-            ],
-            "Year 2": [
-                "Interior & Exterior Treatments",
-                "Advanced Building Construction",
-                "Art & Graphics in Interior Design",
-                "Sustainable Architecture & Lighting",
-                "Retail & Commercial Design Projects",
-                "Entrepreneurship Development",
-                "Industrial Internship & On-the-Job training",
-                "Global Market Placement"
-            ]
+            "Year 1": {
+                "Semester 1": [
+                    "Basics of Drafting",
+                    "Basics of Graphics",
+                    "Introduction of Interior designing",
+                    "History of architecture",
+                    "Basics of furniture designing",
+                    "Market survey & Building construction",
+                    "Grooming & communication skills"
+                ],
+                "Semester 2": [
+                    "Application of Drafting",
+                    "Application of colors",
+                    "Principle of Interior designing",
+                    "History of architecture",
+                    "Glossary of furniture",
+                    "Building construction"
+                ],
+                "Semester 3": [
+                    "Building technology",
+                    "Life space planning and interior designing",
+                    "Design graphics & display",
+                    "History of architecture",
+                    "Furniture & furnishings",
+                    "Portfolio development"
+                ],
+                "Semester 4": [
+                    "Building services & estimation",
+                    "Urban space planning",
+                    "Elements of Interior designing",
+                    "Theory of architecture",
+                    "Significance of Furniture",
+                    "Market Dynamics",
+                    "Project work"
+                ]
+            },
+            "Year 2": {
+                "Semester 5": [
+                    "Interior and exterior treatments",
+                    "Furniture, furnishings and fittings",
+                    "Art and graphics in interior designing",
+                    "Entrepreneurship development",
+                    "Computer aided design",
+                    "Building construction – Part 3",
+                    "Interior designing projects – Part 1"
+                ],
+                "Semester 6": [
+                    "Interior and exterior treatments",
+                    "Furniture, furnishings and fittings",
+                    "Art and graphics in interior designing",
+                    "Entrepreneurship development",
+                    "Computer aided design",
+                    "Building construction – Part 3",
+                    "Interior designing projects – Part 1"
+                ],
+                "Semester 7": [
+                    "Industry Projects",
+                    "Enterprenuership"
+                ],
+                "Semester 8": [
+                    "Internship & On the Job Training",
+                    "Market Dynamics"
+                ]
+            }
         },
         PG: {
             "Year 1": [
@@ -154,9 +200,9 @@ const InteriorDesigning = () => {
             <section className="py-12 bg-slate-900 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
                     {[
-                        { label: "Degree", value: "Bachelors accredited", icon: GraduationCap },
-                        { label: "Course Length", value: "1 Year", icon: Clock },
-                        { label: "Eligibility", value: "Any Stream", icon: BookOpen },
+                        { label: "Sector", value: "Retail Industry", icon: ShoppingBag },
+                        { label: "Sector", value: "Hospitality Industry", icon: Briefcase },
+                        { label: "Sector", value: "Design Industry", icon: Palette },
                     ].map((item, idx) => (
                         <motion.div 
                             key={idx}
@@ -355,20 +401,44 @@ const InteriorDesigning = () => {
                                             >
                                                 <div className="px-8 pb-10 space-y-4">
                                                     <div className="h-px w-full bg-slate-100 mb-6" />
-                                                    {items.map((item, i) => (
-                                                        <motion.div 
-                                                            key={i}
-                                                            initial={{ opacity: 0, x: -10 }}
-                                                            animate={{ opacity: 1, x: 0 }}
-                                                            transition={{ delay: i * 0.05 }}
-                                                            className="flex items-start gap-4 group/item"
-                                                        >
-                                                            <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary group-hover/item:scale-150 transition-all shrink-0" />
-                                                            <span className="text-slate-600 font-bold text-sm uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
-                                                                {item}
-                                                            </span>
-                                                        </motion.div>
-                                                    ))}
+                                                    {Array.isArray(items) ? (
+                                                        items.map((item, i) => (
+                                                            <motion.div 
+                                                                key={i}
+                                                                initial={{ opacity: 0, x: -10 }}
+                                                                animate={{ opacity: 1, x: 0 }}
+                                                                transition={{ delay: i * 0.05 }}
+                                                                className="flex items-start gap-4 group/item"
+                                                            >
+                                                                <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary group-hover/item:scale-150 transition-all shrink-0" />
+                                                                <span className="text-slate-600 font-bold text-sm uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
+                                                                    {item}
+                                                                </span>
+                                                            </motion.div>
+                                                        ))
+                                                    ) : (
+                                                        Object.entries(items).map(([subSemName, subItems], subIdx) => (
+                                                            <div key={subIdx} className="mb-6 last:mb-0">
+                                                                <h4 className="text-primary font-black uppercase text-sm tracking-widest mb-4">{subSemName}</h4>
+                                                                <div className="space-y-3">
+                                                                    {subItems.map((item, i) => (
+                                                                        <motion.div 
+                                                                            key={i}
+                                                                            initial={{ opacity: 0, x: -10 }}
+                                                                            animate={{ opacity: 1, x: 0 }}
+                                                                            transition={{ delay: i * 0.05 }}
+                                                                            className="flex items-start gap-4 group/item"
+                                                                        >
+                                                                            <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary group-hover/item:scale-150 transition-all shrink-0" />
+                                                                            <span className="text-slate-600 font-bold text-sm uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
+                                                                                {item}
+                                                                            </span>
+                                                                        </motion.div>
+                                                                    ))}
+                                                                </div>
+                                                            </div>
+                                                        ))
+                                                    )}
                                                 </div>
                                             </motion.div>
                                         )}

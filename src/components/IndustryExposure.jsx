@@ -75,7 +75,7 @@ const IndustryExposure = () => {
                             <img
                                 src={img}
                                 alt={`Industry exposure ${idx + 1}`}
-                                className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-110"
+                                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                             />
                             <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             

@@ -12,7 +12,9 @@ import {
     Clock,
     BookOpen,
     PenTool,
-    Globe
+    Globe,
+    ShoppingBag,
+    Briefcase
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO';
@@ -43,26 +45,75 @@ const FashionDesigning = () => {
             ]
         },
         Bachelors: {
-            "Year 1": [
-                "Foundation Art & Design",
-                "Principles of Fashion Design",
-                "Introduction to Pattern Making & GMT",
-                "Introduction to Fashion Illustration",
-                "History of Western World Fashion",
-                "Textile Science & Fiber Study",
-                "Fashion & Apparel Design Fundamentals",
-                "Basics of Computer Applications"
-            ],
-            "Year 2": [
-                "Advanced Garment Construction",
-                "Advanced Computer Aided Design (CAD)",
-                "Fashion Forecasting & Trend Analysis",
-                "Visual Merchandising & Retail Design",
-                "Entrepreneurship Development",
-                "Industrial Internship Projects",
-                "Collection Development",
-                "Final Graduation Showcase"
-            ]
+            "Year 1": {
+                "Semester 1": [
+                    "Foundation Art",
+                    "Principle of fashion design",
+                    "Intro of Pattern making & GMT",
+                    "Fashion & Apparel design fundamental",
+                    "Practical -1",
+                    "Portfolio Making",
+                    "Practical-2",
+                    "Pattern Making & Grading"
+                ],
+                "Semester 2": [
+                    "History of the western world fashion",
+                    "Introduction to textile",
+                    "Grooming & Communication Skills",
+                    "Fashion a design foundation",
+                    "Creative yarn craft",
+                    "Basic of computer Application",
+                    "Practical"
+                ],
+                "Semester 3": [
+                    "Intro to fashion illustration",
+                    "Sewing Technology",
+                    "Introduction to draping",
+                    "Creative Embroidery",
+                    "Practical -1",
+                    "Inspirations on Project",
+                    "Practical-2",
+                    "Pattern Making & Sewing"
+                ],
+                "Semester 4": [
+                    "Garment Construction",
+                    "Sewing Technology part-ii",
+                    "Textile science processing",
+                    "Advance Computer",
+                    "History of Indian Fashion",
+                    "Market Dynamics",
+                    "Practical-1",
+                    "Portfolio Development"
+                ]
+            },
+            "Year 2": {
+                "Semester 5": [
+                    "Fabric Testing a quality control",
+                    "Fashion Analysis",
+                    "Vintage costumes",
+                    "History of western world fashion",
+                    "Market Dynamics",
+                    "Practical-1",
+                    "Mood board’s and fashion forecasting",
+                    "Practical -2"
+                ],
+                "Semester 6": [
+                    "Industry Project",
+                    "Visual Merchandising",
+                    "Fashion Accessory",
+                    "Advance Fashion Illustration",
+                    "Production Management",
+                    "Quality Control",
+                    "Entrepreneurship"
+                ],
+                "Semester 7": [
+                    "Industry Projects",
+                    "Entrepreneurship"
+                ],
+                "Semester 8": [
+                    "Internship & On the Job Training"
+                ]
+            }
         },
         PG: {
             "Year 1": [
@@ -136,9 +187,9 @@ const FashionDesigning = () => {
             <section className="py-12 bg-slate-900 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
                     {[
-                        { label: "Degree", value: "Bachelors accredited", icon: GraduationCap },
-                        { label: "Course Length", value: "2 Years", icon: Clock },
-                        { label: "Eligibility", value: "Any Stream", icon: BookOpen },
+                        { label: "Sector", value: "Retail Industry", icon: ShoppingBag },
+                        { label: "Sector", value: "Hospitality Industry", icon: Briefcase },
+                        { label: "Sector", value: "Design Industry", icon: Palette },
                     ].map((item, idx) => (
                         <motion.div 
                             key={idx}
@@ -327,20 +378,44 @@ const FashionDesigning = () => {
                                             >
                                                 <div className="px-8 pb-10 space-y-4">
                                                     <div className="h-px w-full bg-slate-100 mb-6" />
-                                                    {items.map((item, i) => (
-                                                        <motion.div 
-                                                            key={i}
-                                                            initial={{ opacity: 0, x: -10 }}
-                                                            animate={{ opacity: 1, x: 0 }}
-                                                            transition={{ delay: i * 0.05 }}
-                                                            className="flex items-start gap-4 group/item"
-                                                        >
-                                                            <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary group-hover/item:scale-150 transition-all shrink-0" />
-                                                            <span className="text-slate-600 font-bold text-sm uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
-                                                                {item}
-                                                            </span>
-                                                        </motion.div>
-                                                    ))}
+                                                    {Array.isArray(items) ? (
+                                                        items.map((item, i) => (
+                                                            <motion.div 
+                                                                key={i}
+                                                                initial={{ opacity: 0, x: -10 }}
+                                                                animate={{ opacity: 1, x: 0 }}
+                                                                transition={{ delay: i * 0.05 }}
+                                                                className="flex items-start gap-4 group/item"
+                                                            >
+                                                                <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary group-hover/item:scale-150 transition-all shrink-0" />
+                                                                <span className="text-slate-600 font-bold text-sm uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
+                                                                    {item}
+                                                                </span>
+                                                            </motion.div>
+                                                        ))
+                                                    ) : (
+                                                        Object.entries(items).map(([subSemName, subItems], subIdx) => (
+                                                            <div key={subIdx} className="mb-6 last:mb-0">
+                                                                <h4 className="text-primary font-black uppercase text-sm tracking-widest mb-4">{subSemName}</h4>
+                                                                <div className="space-y-3">
+                                                                    {subItems.map((item, i) => (
+                                                                        <motion.div 
+                                                                            key={i}
+                                                                            initial={{ opacity: 0, x: -10 }}
+                                                                            animate={{ opacity: 1, x: 0 }}
+                                                                            transition={{ delay: i * 0.05 }}
+                                                                            className="flex items-start gap-4 group/item"
+                                                                        >
+                                                                            <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary group-hover/item:scale-150 transition-all shrink-0" />
+                                                                            <span className="text-slate-600 font-bold text-sm uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
+                                                                                {item}
+                                                                            </span>
+                                                                        </motion.div>
+                                                                    ))}
+                                                                </div>
+                                                            </div>
+                                                        ))
+                                                    )}
                                                 </div>
                                             </motion.div>
                                         )}

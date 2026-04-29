@@ -130,7 +130,7 @@ const Gallery = () => {
                                 <img 
                                     src={item.image} 
                                     alt={item.title} 
-                                    className="w-full h-auto grayscale md:grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110 ease-out"
+                                    className="w-full h-auto transition-all duration-1000 group-hover:scale-110 ease-out"
                                     loading="lazy"
                                 />
                                 <div className="absolute inset-0 bg-linear-to-t from-slate-900 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 p-8 flex flex-col justify-end">

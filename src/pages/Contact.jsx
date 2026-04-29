@@ -129,7 +129,7 @@ const Contact = () => {
                                         <MapPin size={24} />
                                     </div>
                                     <div>
-                                        <h3 className="text-lg font-bold text-slate-900 mb-2">Main Campus</h3>
+                                        <h3 className="text-lg font-bold text-slate-900 mb-2">Campuses</h3>
                                         <p className="text-slate-600 leading-relaxed mb-4">
                                             International School of Design,<br />
                                             Gujranwala Town, Part 1,<br />
@@ -225,7 +225,6 @@ const Contact = () => {
                                                     value={formState.name}
                                                     onChange={handleChange}
                                                     className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-3 text-slate-800 font-medium focus:border-secondary focus:bg-white transition-all outline-none"
-                                                    placeholder="John Doe"
                                                 />
                                             </div>
                                             <div className="space-y-2">
@@ -237,7 +236,6 @@ const Contact = () => {
                                                     value={formState.email}
                                                     onChange={handleChange}
                                                     className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-3 text-slate-800 font-medium focus:border-secondary focus:bg-white transition-all outline-none"
-                                                    placeholder="john@example.com"
                                                 />
                                             </div>
                                         </div>
@@ -251,7 +249,6 @@ const Contact = () => {
                                                     value={formState.phone}
                                                     onChange={handleChange}
                                                     className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-3 text-slate-800 font-medium focus:border-secondary focus:bg-white transition-all outline-none"
-                                                    placeholder="+91 98765 43210"
                                                 />
                                             </div>
                                             <div className="space-y-2">
@@ -280,7 +277,6 @@ const Contact = () => {
                                                 value={formState.message}
                                                 onChange={handleChange}
                                                 className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-3 text-slate-800 font-medium focus:border-secondary focus:bg-white transition-all outline-none resize-none"
-                                                placeholder="How can we help you today?"
                                             />
                                         </div>
 

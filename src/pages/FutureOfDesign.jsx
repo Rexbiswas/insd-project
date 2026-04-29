@@ -159,7 +159,7 @@ const FutureOfDesign = () => {
                             <img 
                                 src="https://tse2.mm.bing.net/th/id/OIP.KWaUVJW5bvb12bdMy9k7DQAAAA?rs=1&pid=ImgDetMain&o=7&rm=3" 
                                 alt="Nirmala Sitharaman Budget" 
-                                className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 brightness-75 group-hover:brightness-100"
+                                className="absolute inset-0 w-full h-full object-cover transition-all duration-700 brightness-75 group-hover:brightness-100"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
                             
@@ -176,7 +176,76 @@ const FutureOfDesign = () => {
                 </div>
             </section>
 
-            {/* --- FINAL STAT STRIP --- */}
+            {/* --- NATIONAL INFRASTRUCTURE: 75+ CENTERS --- */}
+            <section className="py-32 px-6 md:px-12 lg:px-24 bg-white relative overflow-hidden">
+                <div className="max-w-7xl mx-auto">
+                    <div className="flex flex-col lg:flex-row items-center gap-20">
+                        <div className="lg:w-1/2 space-y-10">
+                            <div className="space-y-4">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-px bg-primary"></div>
+                                    <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">National Footprint</span>
+                                </div>
+                                <h2 className="text-5xl md:text-8xl font-black text-slate-950 uppercase tracking-tighter leading-[0.85]">
+                                    A Network <br /> <span className="text-slate-300">Of Excellence</span>
+                                </h2>
+                            </div>
+                            
+                            <p className="text-slate-600 text-lg font-bold uppercase tracking-tight leading-relaxed border-l-4 border-primary pl-8">
+                                With 75+ centers across India, INSD is the engine driving the government's Skill India mission. Our centers bridge the gap between regional talent and global design standards.
+                            </p>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
+                                <div className="p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100 group hover:border-primary/30 transition-all">
+                                    <Target className="text-primary mb-6 group-hover:scale-110 transition-transform" size={32} />
+                                    <h4 className="text-xl font-black uppercase tracking-tighter mb-3">Govt. Partnership</h4>
+                                    <p className="text-slate-500 text-xs font-bold uppercase tracking-widest leading-relaxed">
+                                        Aligned with NSDC protocols and National Education Policy (NEP) standards.
+                                    </p>
+                                </div>
+                                <div className="p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100 group hover:border-primary/30 transition-all">
+                                    <Globe className="text-primary mb-6 group-hover:scale-110 transition-transform" size={32} />
+                                    <h4 className="text-xl font-black uppercase tracking-tighter mb-3">Pan-India Reach</h4>
+                                    <p className="text-slate-500 text-xs font-bold uppercase tracking-widest leading-relaxed">
+                                        Empowering creative youth from Tier-1 to Tier-3 cities through a unified design ecosystem.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="lg:w-1/2 relative">
+                            <div className="aspect-square relative flex items-center justify-center">
+                                {/* Abstract Map Visualization */}
+                                <div className="absolute inset-0 bg-primary/5 rounded-full blur-[100px] animate-pulse"></div>
+                                <motion.div 
+                                    animate={{ rotate: 360 }}
+                                    transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                                    className="relative w-full h-full border border-slate-100 rounded-full flex items-center justify-center"
+                                >
+                                    {[...Array(8)].map((_, i) => (
+                                        <div 
+                                            key={i}
+                                            className="absolute w-2 h-2 bg-primary rounded-full"
+                                            style={{ 
+                                                transform: `rotate(${i * 45}deg) translateY(-50%)`,
+                                                top: '50%'
+                                            }}
+                                        />
+                                    ))}
+                                </motion.div>
+                                <div className="absolute inset-12 border border-slate-100 rounded-full flex items-center justify-center">
+                                    <h3 className="text-6xl md:text-8xl font-black text-slate-100 select-none">75+</h3>
+                                </div>
+                                <div className="absolute z-20 text-center">
+                                    <span className="block text-[10px] font-black uppercase tracking-[0.5em] text-primary mb-2">Flagship Centers</span>
+                                    <span className="block text-2xl font-black text-slate-900 uppercase tracking-tighter">Across India</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section className="py-24 px-6 bg-slate-50 text-slate-950 overflow-hidden relative border-t border-slate-100">
                 <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-16 md:gap-32 lg:gap-48 text-center">
                     {[

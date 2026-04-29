@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
     Users,
     BookOpen,
@@ -7,7 +7,10 @@ import {
     Award,
     Briefcase,
     ArrowRight,
-    Play
+    Play,
+    X,
+    ChevronLeft,
+    ChevronRight
 } from 'lucide-react';
 
 import SEO from '../components/SEO';
@@ -18,6 +21,18 @@ import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const Student = () => {
     const { openAdmissionModal } = useAdmissionModal();
+    const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+
+    useEffect(() => {
+        if (isVideoModalOpen) {
+            document.body.classList.add('hide-navbar');
+        } else {
+            document.body.classList.remove('hide-navbar');
+        }
+        return () => {
+            document.body.classList.remove('hide-navbar');
+        };
+    }, [isVideoModalOpen]);
 
     return (
         <div className="min-h-screen bg-white">
@@ -33,9 +48,9 @@ const Student = () => {
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="https://images.pexels.com/photos/3823488/pexels-photo-3823488.jpeg?auto=compress&cs=tinysrgb&w=1920"
+                        src="https://ik.imagekit.io/fmldynl4j4/Students/ARI02311%20(2).JPG?updatedAt=1774928425723"
                         alt="Student Life at INSD"
-                        className="w-full h-full object-cover grayscale brightness-50"
+                        className="w-full h-full object-cover brightness-50"
                     />
                     <div className="absolute inset-0 bg-linear-to-r from-slate-950 via-slate-950/40 to-transparent" />
                 </div>
@@ -75,6 +90,7 @@ const Student = () => {
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
+                                onClick={() => setIsVideoModalOpen(true)}
                                 className="px-10 py-5 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-full font-black uppercase tracking-widest text-xs flex items-center gap-3 hover:bg-white/20 transition-all"
                             >
                                 <Play size={18} className="fill-white" />
@@ -84,25 +100,7 @@ const Student = () => {
                     </motion.div>
                 </div>
 
-                {/* Floating Elements */}
-                <div className="absolute bottom-12 right-12 z-10 hidden lg:block">
-                    <div className="flex items-center gap-6 bg-white/5 backdrop-blur-xl p-8 rounded-[3rem] border border-white/10 shadow-2xl">
-                        <div className="flex -space-x-4">
-                            {[1, 2, 3, 4].map(i => (
-                                <img
-                                    key={i}
-                                    src={`https://i.pravatar.cc/100?img=${i + 20}`}
-                                    className="w-12 h-12 rounded-full border-2 border-slate-900"
-                                    alt="student"
-                                />
-                            ))}
-                        </div>
-                        <div>
-                            <p className="text-white font-black text-xl leading-none mb-1">5000+</p>
-                            <p className="text-white/50 text-[10px] font-black uppercase tracking-widest">Active Dreamers</p>
-                        </div>
-                    </div>
-                </div>
+
             </section>
 
             {/* Career Skills Section - Editorial Skewed Layout */}
@@ -308,7 +306,7 @@ const Student = () => {
                             viewport={{ once: true }}
                             className="lg:col-span-2 aspect-square rounded-2xl overflow-hidden shadow-lg"
                         >
-                            <img src="https://images.pexels.com/photos/3184302/pexels-photo-3184302.jpeg?auto=compress&cs=tinysrgb&w=800" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Campus" />
+                            <img src="https://images.pexels.com/photos/3184302/pexels-photo-3184302.jpeg?auto=compress&cs=tinysrgb&w=800" className="w-full h-full object-cover transition-all duration-700" alt="Campus" />
                         </motion.div>
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
@@ -317,7 +315,7 @@ const Student = () => {
                             transition={{ delay: 0.1 }}
                             className="lg:col-span-3 aspect-square lg:aspect-auto rounded-2xl overflow-hidden shadow-lg"
                         >
-                            <img src="https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=800" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Campus" />
+                            <img src="https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=800" className="w-full h-full object-cover transition-all duration-700" alt="Campus" />
                         </motion.div>
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
@@ -326,7 +324,7 @@ const Student = () => {
                             transition={{ delay: 0.2 }}
                             className="lg:col-span-2 aspect-square rounded-2xl overflow-hidden shadow-lg"
                         >
-                            <img src="https://images.pexels.com/photos/1181311/pexels-photo-1181311.jpeg?auto=compress&cs=tinysrgb&w=800" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Campus" />
+                            <img src="https://images.pexels.com/photos/1181311/pexels-photo-1181311.jpeg?auto=compress&cs=tinysrgb&w=800" className="w-full h-full object-cover transition-all duration-700" alt="Campus" />
                         </motion.div>
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
@@ -335,7 +333,7 @@ const Student = () => {
                             transition={{ delay: 0.3 }}
                             className="lg:col-span-2 aspect-square rounded-2xl overflow-hidden shadow-lg"
                         >
-                            <img src="https://images.pexels.com/photos/1037992/pexels-photo-1037992.jpeg?auto=compress&cs=tinysrgb&w=800" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Campus" />
+                            <img src="https://images.pexels.com/photos/1037992/pexels-photo-1037992.jpeg?auto=compress&cs=tinysrgb&w=800" className="w-full h-full object-cover transition-all duration-700" alt="Campus" />
                         </motion.div>
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
@@ -344,7 +342,7 @@ const Student = () => {
                             transition={{ delay: 0.4 }}
                             className="lg:col-span-3 aspect-square lg:aspect-auto rounded-2xl overflow-hidden shadow-lg"
                         >
-                            <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Campus" />
+                            <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800" className="w-full h-full object-cover transition-all duration-700" alt="Campus" />
                         </motion.div>
 
                         {/* Middle Row */}
@@ -354,7 +352,7 @@ const Student = () => {
                             viewport={{ once: true }}
                             className="lg:col-span-3 lg:row-span-1 rounded-2xl overflow-hidden shadow-lg"
                         >
-                            <img src="https://images.pexels.com/photos/380769/pexels-photo-380769.jpeg?auto=compress&cs=tinysrgb&w=800" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Campus" />
+                            <img src="https://images.pexels.com/photos/380769/pexels-photo-380769.jpeg?auto=compress&cs=tinysrgb&w=800" className="w-full h-full object-cover transition-all duration-700" alt="Campus" />
                         </motion.div>
 
                         {/* Central Text Block */}
@@ -378,7 +376,7 @@ const Student = () => {
                             viewport={{ once: true }}
                             className="lg:col-span-3 lg:row-span-1 rounded-2xl overflow-hidden shadow-lg"
                         >
-                            <img src="https://images.pexels.com/photos/159844/science-fair-school-education-learning-159844.jpeg?auto=compress&cs=tinysrgb&w=800" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Campus" />
+                            <img src="https://images.pexels.com/photos/159844/science-fair-school-education-learning-159844.jpeg?auto=compress&cs=tinysrgb&w=800" className="w-full h-full object-cover transition-all duration-700" alt="Campus" />
                         </motion.div>
 
                         {/* Bottom Row */}
@@ -388,7 +386,7 @@ const Student = () => {
                             viewport={{ once: true }}
                             className="lg:col-span-2 aspect-square rounded-2xl overflow-hidden shadow-lg"
                         >
-                            <img src="https://images.pexels.com/photos/1170412/pexels-photo-1170412.jpeg?auto=compress&cs=tinysrgb&w=800" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Campus" />
+                            <img src="https://images.pexels.com/photos/1170412/pexels-photo-1170412.jpeg?auto=compress&cs=tinysrgb&w=800" className="w-full h-full object-cover transition-all duration-700" alt="Campus" />
                         </motion.div>
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
@@ -397,7 +395,7 @@ const Student = () => {
                             transition={{ delay: 0.1 }}
                             className="lg:col-span-4 aspect-square lg:aspect-auto rounded-2xl overflow-hidden shadow-lg"
                         >
-                            <img src="https://images.pexels.com/photos/256417/pexels-photo-256417.jpeg?auto=compress&cs=tinysrgb&w=800" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Campus" />
+                            <img src="https://images.pexels.com/photos/256417/pexels-photo-256417.jpeg?auto=compress&cs=tinysrgb&w=800" className="w-full h-full object-cover transition-all duration-700" alt="Campus" />
                         </motion.div>
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
@@ -406,7 +404,7 @@ const Student = () => {
                             transition={{ delay: 0.2 }}
                             className="lg:col-span-3 aspect-square lg:aspect-auto rounded-2xl overflow-hidden shadow-lg"
                         >
-                            <img src="https://images.pexels.com/photos/301703/pexels-photo-301703.jpeg?auto=compress&cs=tinysrgb&w=800" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Campus" />
+                            <img src="https://images.pexels.com/photos/301703/pexels-photo-301703.jpeg?auto=compress&cs=tinysrgb&w=800" className="w-full h-full object-cover transition-all duration-700" alt="Campus" />
                         </motion.div>
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
@@ -415,10 +413,56 @@ const Student = () => {
                             transition={{ delay: 0.3 }}
                             className="lg:col-span-3 aspect-square lg:aspect-auto rounded-2xl overflow-hidden shadow-lg"
                         >
-                            <img src="https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=800" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Campus" />
+                            <img src="https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=800" className="w-full h-full object-cover transition-all duration-700" alt="Campus" />
                         </motion.div>
 
                     </div>
+                </div>
+            </section>
+
+            {/* --- WORKSHOP CHRONICLES SECTION --- */}
+            <section className="py-24 md:py-40 bg-slate-950 overflow-hidden relative">
+                {/* Background Text Accent */}
+                <div className="absolute top-0 left-0 w-full h-full opacity-[0.02] pointer-events-none select-none overflow-hidden">
+                    <div className="text-[30vw] font-black uppercase tracking-tighter leading-none whitespace-nowrap animate-marquee-slow">
+                        WORKSHOPS • HANDS-ON • MASTERY • WORKSHOPS •
+                    </div>
+                </div>
+
+                <div className="container mx-auto px-6 relative z-10">
+                    <div className="flex flex-col lg:flex-row justify-between items-end mb-20 gap-8">
+                        <div className="max-w-2xl">
+                            <motion.div
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                className="flex items-center gap-3 mb-6"
+                            >
+                                <div className="w-12 h-px bg-primary"></div>
+                                <span className="text-primary font-black uppercase tracking-[0.4em] text-xs">Skills in Action</span>
+                            </motion.div>
+                            <motion.h2
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                className="text-5xl md:text-8xl font-black text-white leading-none tracking-tighter uppercase"
+                            >
+                                Workshop <br />
+                                <span className="text-primary italic">Chronicles</span>
+                            </motion.h2>
+                        </div>
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.2 }}
+                            className="text-slate-400 font-bold text-lg md:text-xl max-w-md italic border-r-4 border-primary pr-8 text-right"
+                        >
+                            "Theory is just the starting point. Our workshops are where the real transformation happens."
+                        </motion.p>
+                    </div>
+
+                    <WorkshopSlider />
                 </div>
             </section>
 
@@ -480,13 +524,13 @@ const Student = () => {
                             >
                                 <div className="inline-block px-10 py-6 bg-primary/10 rounded-full border-2 border-primary/20 backdrop-blur-md">
                                     <p className="text-primary font-black uppercase tracking-widest text-lg md:text-2xl">
-                                        Starting Salary: <span className="text-slate-900">upto Rs. 50,000/-</span> per month
+                                        Average Salary: <span className="text-slate-900">Rs. 20,000 - Rs. 1,50,000</span> per month
                                     </p>
                                 </div>
 
                                 <div className="pt-4">
                                     <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tight text-slate-900">
-                                        Highest Package 2025: <span className="text-primary">Rs. 1.5 Lacs</span> per month
+                                        Highest Package 2025: <span className="text-primary">Rs. 1,50,000</span> per month
                                     </h3>
                                 </div>
                             </motion.div>
@@ -509,7 +553,7 @@ const Student = () => {
                                     transition={{ delay: i * 0.1 }}
                                     className={`aspect-square rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white group ${i % 2 === 0 ? 'mt-12' : '-mt-12'}`}
                                 >
-                                    <img src={img} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" alt="Placement" />
+                                    <img src={img} className="w-full h-full object-cover transition-all duration-1000" alt="Placement" />
                                 </motion.div>
                             ))}
                         </div>
@@ -586,7 +630,7 @@ const Student = () => {
                                         <div className="relative w-1/2 h-full group/other overflow-hidden border-r border-white/20">
                                             <img 
                                                 src={item.imgOther} 
-                                                className="w-full h-full object-cover grayscale brightness-75 transition-all duration-1000 group-hover:scale-105" 
+                                                className="w-full h-full object-cover brightness-75 transition-all duration-1000 group-hover:scale-105" 
                                                 alt="Other Students" 
                                             />
                                             <div className="absolute inset-0 bg-slate-900/40" />
@@ -692,7 +736,7 @@ const Student = () => {
                                             <img
                                                 src={sector.img}
                                                 alt={sector.label}
-                                                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110"
+                                                className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110"
                                             />
                                             <div className="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-colors duration-500" />
 
@@ -715,9 +759,294 @@ const Student = () => {
             {/* Success Stories Section */}
             <SuccessStory />
 
+            {/* Video Modal */}
+            <AnimatePresence>
+                {isVideoModalOpen && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+                        onClick={() => setIsVideoModalOpen(false)}
+                    >
+                        <motion.button
+                            initial={{ opacity: 0, scale: 0.5 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.5 }}
+                            className="absolute top-6 right-6 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full backdrop-blur-md transition-colors"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setIsVideoModalOpen(false);
+                            }}
+                        >
+                            <X size={24} />
+                        </motion.button>
+
+                        <motion.div
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.9, opacity: 0 }}
+                            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+                            className="w-full max-w-5xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <iframe 
+                                width="100%" 
+                                height="100%" 
+                                src="https://www.youtube.com/embed/FgYVSFwWD9k?autoplay=1&mute=1" 
+                                title="Unlocking the Best Designing Institute in Pune: INSD PUNE Campus Review" 
+                                frameBorder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerPolicy="strict-origin-when-cross-origin" 
+                                allowFullScreen
+                            ></iframe>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
             {/* Footer */}
             <Footer />
         </div >
+    );
+};
+
+const WorkshopSlider = () => {
+    const workshops = [
+        {
+            id: 1,
+            title: "Creative Exploration",
+            subtitle: "Workshop 01",
+            desc: "Unlocking foundational design thinking through hands-on creative exercises and conceptual mapping.",
+            media: [
+                { type: 'image', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%201/Workshop%201.jpg' },
+                { type: 'image', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%201/Workshop%201(1).jpg' },
+                { type: 'image', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%201/Workshop%201(2).jpg' },
+                { type: 'image', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%201/Workshop%201(3).jpg' },
+                { type: 'image', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%201/Workshop%201(4).jpg' },
+            ]
+        },
+        {
+            id: 2,
+            title: "Industry Techniques",
+            subtitle: "Workshop 02",
+            desc: "Mastering professional tools and machinery under the guidance of seasoned industry veterans.",
+            media: [
+                { type: 'video', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%202/Workshop%202.mp4' },
+                { type: 'image', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%202/Workshop%202.jpg' },
+                { type: 'image', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%202/Workshop%202(2).jpg' },
+                { type: 'image', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%202/Workshop%202(3).jpg' },
+                { type: 'image', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%202/Workshop%202(4).jpg' },
+                { type: 'image', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%202/Workshop%202(5).jpg' },
+                { type: 'image', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%202/Workshop%202(6).jpg' },
+                { type: 'image', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%202/Workshop%202(7).jpg' },
+                { type: 'image', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%202/Workshop%202(8).jpg' },
+                { type: 'image', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%202/Workshop%202(9).jpg' },
+            ],
+            thumbnail: "https://ik.imagekit.io/fmldynl4j4/Workshop%202/Workshop%202.jpg"
+        },
+        {
+            id: 3,
+            title: "Prototyping Labs",
+            subtitle: "Workshop 03",
+            desc: "Converting digital concepts into physical reality using rapid prototyping and experimental materials.",
+            media: [
+                { type: 'video', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%203/Workshop%203.mp4' }
+            ],
+            thumbnail: "https://images.pexels.com/photos/3823488/pexels-photo-3823488.jpeg"
+        },
+        {
+            id: 4,
+            title: "Advanced Design",
+            subtitle: "Workshop 04",
+            desc: "Complex problem solving and design execution for high-end luxury market standards.",
+            media: [
+                { type: 'image', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%204/Workshop%20-%204_.jpg' },
+                { type: 'image', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%204/Workshop%20-%204_(1).jpg' },
+                { type: 'image', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%204/Workshop%20-%204_(2).jpg' },
+                { type: 'image', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%204/Workshop%20-%204_(3).jpg' },
+                { type: 'image', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%204/Workshop%20-%204_(4).jpg' },
+                { type: 'image', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%204/Workshop%20-%204_(5).jpg' },
+                { type: 'image', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%204/Workshop%20-%204_(6).jpg' },
+                { type: 'image', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%204/Workshop%20-%204_(7).jpg' },
+                { type: 'image', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%204/Workshop%20-%204_(8).jpg' },
+                { type: 'image', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%204/Workshop%20-%204_(9).jpg' },
+            ]
+        },
+        {
+            id: 5,
+            title: "Fashion & Textile Painting",
+            subtitle: "Workshop 05",
+            desc: "The talented Ms. Bharti Malhotra shares her expertise in the fashion industry and textile painting at INSD.",
+            media: [
+                { type: 'video', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%205/The%20talented%20Ms.%20Bharti%20Malhotra,%20our%20distinguished%20guest,%20shares%20her%20expertise%20in%20the%20fashion%20industry%20and%20textile%20painting%20at%20INSD%20!_.mp4' }
+            ],
+            thumbnail: "https://images.pexels.com/photos/3373739/pexels-photo-3373739.jpeg"
+        },
+        {
+            id: 6,
+            title: "Material Trends in Interiors",
+            subtitle: "Workshop 06",
+            desc: "Interior Design students exploring the latest Material Trends in Interiors led by mentor Hussain Patanwala.",
+            media: [
+                { type: 'video', url: 'https://ik.imagekit.io/fmldynl4j4/Workshop%206/Interior%20Design%20students%20exploring%20the%20latest%20Material%20Trends%20in%20Interiors%20in%20an%20insightful%20workshop%20led%20by%20mentor%20Hussain%20Patanwala.Learning,%20discovering,%20and%20getting%20inspired_one%20trend%20at%20a%20time!....._InteriorDesi.mp4' }
+            ],
+            thumbnail: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg"
+        }
+    ];
+
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [activeMediaIndex, setActiveMediaIndex] = useState(0);
+
+    const nextWorkshop = () => {
+        setActiveIndex((prev) => (prev + 1) % workshops.length);
+        setActiveMediaIndex(0);
+    };
+
+    const prevWorkshop = () => {
+        setActiveIndex((prev) => (prev - 1 + workshops.length) % workshops.length);
+        setActiveMediaIndex(0);
+    };
+
+    const currentWorkshop = workshops[activeIndex];
+    const currentMedia = currentWorkshop.media[activeMediaIndex];
+
+    return (
+        <div className="relative">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                {/* Media Display Area */}
+                <div className="lg:col-span-8">
+                    <div className="relative aspect-video rounded-[3rem] overflow-hidden bg-slate-900 shadow-2xl border border-white/5">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={`${activeIndex}-${activeMediaIndex}`}
+                                initial={{ opacity: 0, scale: 1.1 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.9 }}
+                                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                                className="absolute inset-0"
+                            >
+                                {currentMedia.type === 'video' ? (
+                                    <video
+                                        src={currentMedia.url}
+                                        autoPlay
+                                        muted
+                                        loop
+                                        playsInline
+                                        className="w-full h-full object-cover"
+                                    />
+                                ) : (
+                                    <img
+                                        src={currentMedia.url}
+                                        alt={currentWorkshop.title}
+                                        className="w-full h-full object-cover"
+                                    />
+                                )}
+                            </motion.div>
+                        </AnimatePresence>
+
+                        {/* Media Navigation Overlays */}
+                        <div className="absolute bottom-0 left-0 right-0 p-10 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent">
+                            <div className="flex justify-between items-end">
+                                <div className="space-y-4 max-w-xl">
+                                    <div className="flex items-center gap-3">
+                                        <span className="text-primary font-black uppercase tracking-[0.3em] text-[10px]">
+                                            {currentWorkshop.subtitle}
+                                        </span>
+                                        <div className="h-px w-8 bg-white/20"></div>
+                                        <span className="text-white/40 font-bold uppercase tracking-widest text-[8px]">
+                                            {activeMediaIndex + 1} / {currentWorkshop.media.length}
+                                        </span>
+                                    </div>
+                                    <h3 className="text-white text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none">
+                                        {currentWorkshop.title}
+                                    </h3>
+                                    <p className="text-white/60 text-sm font-medium leading-relaxed">
+                                        {currentWorkshop.desc}
+                                    </p>
+                                </div>
+                                
+                                {currentWorkshop.media.length > 1 && (
+                                    <div className="flex gap-2 mb-2">
+                                        {currentWorkshop.media.map((_, i) => (
+                                            <button
+                                                key={i}
+                                                onClick={() => setActiveMediaIndex(i)}
+                                                className={`w-12 h-1 rounded-full transition-all duration-500 ${
+                                                    i === activeMediaIndex ? 'bg-primary w-20' : 'bg-white/20 hover:bg-white/40'
+                                                }`}
+                                            />
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Info & Global Navigation Area */}
+                <div className="lg:col-span-4 flex flex-col justify-center">
+                    <div className="space-y-12">
+                        <div className="space-y-6">
+                            <p className="text-slate-500 font-bold text-sm uppercase tracking-[0.2em]">
+                                Browse Collections
+                            </p>
+                            <div className="flex items-center gap-4">
+                                <span className="text-6xl font-black text-white/10">{String(activeIndex + 1).padStart(2, '0')}</span>
+                                <div className="h-px flex-1 bg-white/10"></div>
+                                <span className="text-6xl font-black text-white/10">{String(workshops.length).padStart(2, '0')}</span>
+                            </div>
+                        </div>
+
+                        {/* Thumbnails of other workshops */}
+                        <div className="grid grid-cols-3 gap-4">
+                            {workshops.map((ws, idx) => (
+                                <button
+                                    key={ws.id}
+                                    onClick={() => {
+                                        setActiveIndex(idx);
+                                        setActiveMediaIndex(0);
+                                    }}
+                                    className={`relative aspect-square rounded-2xl overflow-hidden transition-all duration-500 group ${
+                                        idx === activeIndex 
+                                            ? 'ring-2 ring-primary ring-offset-4 ring-offset-slate-950 scale-105' 
+                                            : 'opacity-40 hover:opacity-100 grayscale hover:grayscale-0'
+                                    }`}
+                                >
+                                    <img 
+                                        src={ws.thumbnail || ws.media[0].url} 
+                                        className="w-full h-full object-cover"
+                                        alt={ws.title}
+                                    />
+                                    {ws.media.some(m => m.type === 'video') && (
+                                        <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                                            <Play size={12} className="text-white fill-white" />
+                                        </div>
+                                    )}
+                                    <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                </button>
+                            ))}
+                        </div>
+
+                        <div className="flex gap-4 pt-8">
+                            <button
+                                onClick={prevWorkshop}
+                                className="p-6 rounded-full border border-white/10 text-white hover:bg-primary hover:border-primary transition-all duration-500 group"
+                            >
+                                <ChevronLeft className="group-hover:-translate-x-1 transition-transform" />
+                            </button>
+                            <button
+                                onClick={nextWorkshop}
+                                className="flex-1 p-6 rounded-full bg-white text-slate-950 font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:bg-primary hover:text-white transition-all duration-500 shadow-2xl"
+                            >
+                                Next Workshop
+                                <ChevronRight size={18} />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 };
 

@@ -68,25 +68,49 @@ const TextileDesigning = () => {
             ]
         },
         Bachelors: {
-            "Year 1": [
-                "Fiber Science & Traditional Textiles",
-                "Yarn Formation & Loom Structures",
-                "Textile Chemistry & Wet Processes",
-                "Dyeing & Printing Technology",
-                "Digital Illustration (CAD + AI)",
-                "Weaving & Color Theory",
-                "Market Dynamics & Client Research"
-            ],
-            "Year 2": [
-                "Knitting Processes & Systems",
-                "Advanced Textile Finishing",
-                "Surface Ornamentation & Artistry",
-                "Digital Print Design Mastery",
-                "Sustainable Material Research",
-                "Entrepreneurship & Startup Strategy",
-                "Industrial Internship (OJT)",
-                "Final Graduation Showcase"
-            ]
+            "Year 1": {
+                "Semester 1": [
+                    "Introduction to traditional textile",
+                    "Textile fiber",
+                    "Physical & chemical properties of fiber",
+                    "Fiber manufacturing system"
+                ],
+                "Semester 2": [
+                    "Yarn formation looms",
+                    "Types of yarn",
+                    "Basic weaves",
+                    "Communication Skills"
+                ],
+                "Semester 3": [
+                    "Introduction to wet process",
+                    "Advance weaving process",
+                    "Industrial visit project on weaves"
+                ],
+                "Semester 4": [
+                    "Introduction to print process",
+                    "Article on block printing",
+                    "Stencil printing tie & dye",
+                    "Market Dynamics"
+                ]
+            },
+            "Year 2": {
+                "Semester 5": [
+                    "Knitting process",
+                    "Finishing process"
+                ],
+                "Semester 6": [
+                    "Knitting process",
+                    "Finishing process"
+                ],
+                "Semester 7": [
+                    "Industry Projects",
+                    "Enterprenuership"
+                ],
+                "Semester 8": [
+                    "Internship & On the Job Training",
+                    "Market Dynamics"
+                ]
+            }
         }
     };
 
@@ -330,20 +354,44 @@ const TextileDesigning = () => {
                                             >
                                                 <div className="px-8 pb-10 space-y-4">
                                                     <div className="h-px w-full bg-slate-100 mb-6" />
-                                                    {items.map((item, i) => (
-                                                        <motion.div 
-                                                            key={i}
-                                                            initial={{ opacity: 0, x: -10 }}
-                                                            animate={{ opacity: 1, x: 0 }}
-                                                            transition={{ delay: i * 0.05 }}
-                                                            className="flex items-start gap-4 group/item"
-                                                        >
-                                                            <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary group-hover/item:scale-150 transition-all shrink-0" />
-                                                            <span className="text-slate-600 font-black text-xs uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
-                                                                {item}
-                                                            </span>
-                                                        </motion.div>
-                                                    ))}
+                                                    {Array.isArray(items) ? (
+                                                        items.map((item, i) => (
+                                                            <motion.div 
+                                                                key={i}
+                                                                initial={{ opacity: 0, x: -10 }}
+                                                                animate={{ opacity: 1, x: 0 }}
+                                                                transition={{ delay: i * 0.05 }}
+                                                                className="flex items-start gap-4 group/item"
+                                                            >
+                                                                <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary group-hover/item:scale-150 transition-all shrink-0" />
+                                                                <span className="text-slate-600 font-black text-xs uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
+                                                                    {item}
+                                                                </span>
+                                                            </motion.div>
+                                                        ))
+                                                    ) : (
+                                                        Object.entries(items).map(([subSemName, subItems], subIdx) => (
+                                                            <div key={subIdx} className="mb-6 last:mb-0">
+                                                                <h4 className="text-primary font-black uppercase text-sm tracking-widest mb-4">{subSemName}</h4>
+                                                                <div className="space-y-3">
+                                                                    {subItems.map((item, i) => (
+                                                                        <motion.div 
+                                                                            key={i}
+                                                                            initial={{ opacity: 0, x: -10 }}
+                                                                            animate={{ opacity: 1, x: 0 }}
+                                                                            transition={{ delay: i * 0.05 }}
+                                                                            className="flex items-start gap-4 group/item"
+                                                                        >
+                                                                            <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary group-hover/item:scale-150 transition-all shrink-0" />
+                                                                            <span className="text-slate-600 font-black text-xs uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
+                                                                                {item}
+                                                                            </span>
+                                                                        </motion.div>
+                                                                    ))}
+                                                                </div>
+                                                            </div>
+                                                        ))
+                                                    )}
                                                 </div>
                                             </motion.div>
                                         )}

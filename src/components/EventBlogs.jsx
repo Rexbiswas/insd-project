@@ -89,7 +89,7 @@ const EventBlogs = () => {
                             <img
                                 src={blog.image}
                                 alt={blog.title}
-                                className="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition-transform duration-1000 ease-out grayscale group-hover:grayscale-0"
+                                className="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition-transform duration-1000 ease-out"
                             />
                         </div>
 

@@ -57,25 +57,59 @@ const GraphicDesigning = () => {
             ]
         },
         Bachelors: {
-            "Year 1": [
-                "Fundamentals of Design & Drawing",
-                "Color Theory & Typography Mastery",
-                "Illustration & Digital Imaging",
-                "Branding & Corporate Identity",
-                "Photography for Designers",
-                "User Interface Design (UI)",
-                "2D Animation & Storyboarding Foundations"
-            ],
-            "Year 2": [
-                "Advanced Multiplatform Branding",
-                "Marketing & Consumer Psychology",
-                "Digital Marketing Strategy",
-                "Full Branding Industry Project",
-                "Portfolio Development & Exhibition",
-                "Entrepreneurship & Startup Strategy",
-                "Industrial Internship (OJT)",
-                "Final Graduation Showcase"
-            ]
+            "Year 1": {
+                "Semester 1": [
+                    "Fundamentals Of Design & Drawing",
+                    "Basic Design",
+                    "Idea Visualization",
+                    "Typography",
+                    "Color Theory",
+                    "Illustration",
+                    "Graphic Design",
+                    "Image Editing",
+                    "Page Layout Design"
+                ],
+                "Semester 2": [
+                    "Branding And Advertising",
+                    "Composition",
+                    "Photography",
+                    "Still Life",
+                    "Packaging – Product",
+                    "Desktop / Digital Publishing"
+                ],
+                "Semester 3": [
+                    "Interface Design/ Web Design",
+                    "Media Strategy",
+                    "Language And Practice Of Media Arts",
+                    "Advance Multiplatform Design",
+                    "User Interface Experience"
+                ],
+                "Semester 4": [
+                    "Fundamentals Of 2d Animation",
+                    "The Art Of Digital Storyboarding",
+                    "Digital 2d Animation",
+                    "Interactive Presentation",
+                    "Video Editing",
+                    "Sound Editing"
+                ]
+            },
+            "Year 2": {
+                "Semester 5": [
+                    "Client & Case Study",
+                    "Full Branding Project On Existing Company"
+                ],
+                "Semester 6": [
+                    "Group Project"
+                ],
+                "Semester 7": [
+                    "Industry Projects",
+                    "Enterprenuership"
+                ],
+                "Semester 8": [
+                    "Internship & On the Job Training",
+                    "Market Dynamics"
+                ]
+            }
         },
         PG: {
             "Year 1": [
@@ -338,20 +372,44 @@ const GraphicDesigning = () => {
                                             >
                                                 <div className="px-8 pb-10 space-y-4">
                                                     <div className="h-px w-full bg-slate-100 mb-6" />
-                                                    {items.map((item, i) => (
-                                                        <motion.div 
-                                                            key={i}
-                                                            initial={{ opacity: 0, x: -10 }}
-                                                            animate={{ opacity: 1, x: 0 }}
-                                                            transition={{ delay: i * 0.05 }}
-                                                            className="flex items-start gap-4 group/item"
-                                                        >
-                                                            <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary group-hover/item:scale-150 transition-all shrink-0" />
-                                                            <span className="text-slate-600 font-black text-xs uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
-                                                                {item}
-                                                            </span>
-                                                        </motion.div>
-                                                    ))}
+                                                    {Array.isArray(items) ? (
+                                                        items.map((item, i) => (
+                                                            <motion.div 
+                                                                key={i}
+                                                                initial={{ opacity: 0, x: -10 }}
+                                                                animate={{ opacity: 1, x: 0 }}
+                                                                transition={{ delay: i * 0.05 }}
+                                                                className="flex items-start gap-4 group/item"
+                                                            >
+                                                                <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary group-hover/item:scale-150 transition-all shrink-0" />
+                                                                <span className="text-slate-600 font-black text-xs uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
+                                                                    {item}
+                                                                </span>
+                                                            </motion.div>
+                                                        ))
+                                                    ) : (
+                                                        Object.entries(items).map(([subSemName, subItems], subIdx) => (
+                                                            <div key={subIdx} className="mb-6 last:mb-0">
+                                                                <h4 className="text-primary font-black uppercase text-sm tracking-widest mb-4">{subSemName}</h4>
+                                                                <div className="space-y-3">
+                                                                    {subItems.map((item, i) => (
+                                                                        <motion.div 
+                                                                            key={i}
+                                                                            initial={{ opacity: 0, x: -10 }}
+                                                                            animate={{ opacity: 1, x: 0 }}
+                                                                            transition={{ delay: i * 0.05 }}
+                                                                            className="flex items-start gap-4 group/item"
+                                                                        >
+                                                                            <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary group-hover/item:scale-150 transition-all shrink-0" />
+                                                                            <span className="text-slate-600 font-black text-xs uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
+                                                                                {item}
+                                                                            </span>
+                                                                        </motion.div>
+                                                                    ))}
+                                                                </div>
+                                                            </div>
+                                                        ))
+                                                    )}
                                                 </div>
                                             </motion.div>
                                         )}

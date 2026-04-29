@@ -18,7 +18,7 @@ const TransformationCard = ({ student, index }) => {
                     <img
                         src={student.beforeImg}
                         alt="Initial Phase"
-                        className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:scale-110"
+                        className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-[1px]" />
                     <div className="absolute top-8 left-8 z-10">
@@ -217,9 +217,9 @@ const StudentTransformation = () => {
                     
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12 mb-20 bg-white/50 backdrop-blur-sm p-10 md:p-16 rounded-[4rem] border border-white/50 shadow-sm">
                         {[
-                            { value: 100, suffix: "%", label: "Placement Assistance" },
+                            { value: 98, suffix: "%", label: "Placement Track Record" },
                             { value: 500, suffix: "+", label: "Hiring Partners" },
-                            { value: 18, suffix: "L", label: "Highest Package" },
+                            { value: "1,50,000", suffix: "/ PM", label: "Highest Package 2025" },
                             { value: "Global", suffix: "", label: "Alumni Network" }
                         ].map((metric, i) => (
                             <MetricCounter key={i} {...metric} delay={i * 0.1} />

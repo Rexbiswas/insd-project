@@ -63,7 +63,7 @@ const CampusDetail = ({ campus }) => {
                     <img
                         src={campus.heroImage}
                         alt={campus.city}
-                        className="w-full h-full object-cover grayscale mix-blend-multiply opacity-60"
+                        className="w-full h-full object-cover mix-blend-multiply opacity-60"
                     />
                     <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#fcfcfc]/20 to-[#fcfcfc]" />
                 </motion.div>
@@ -140,7 +140,7 @@ const CampusDetail = ({ campus }) => {
                             <div key={i} className="w-[85vw] md:w-[60vw] lg:w-[45vw] h-[60vh] md:h-[70vh] rounded-[2rem] overflow-hidden shrink-0 relative group shadow-xl">
                                 <img
                                     src={img}
-                                    className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
+                                    className="w-full h-full object-cover brightness-90 group-hover:scale-105 transition-all duration-1000"
                                     alt={`Campus view ${i}`}
                                 />
                                 <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
@@ -173,7 +173,7 @@ const CampusDetail = ({ campus }) => {
                                 <img
                                     src={fac.img}
                                     alt={fac.title}
-                                    className="absolute inset-0 w-full h-full object-cover grayscale opacity-20 group-hover:opacity-40 transition-opacity duration-1000 group-hover:scale-105 mix-blend-multiply"
+                                    className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-1000 group-hover:scale-105 mix-blend-multiply"
                                 />
                                 <div className="relative z-10 w-full h-full flex flex-col">
                                     <Icon size={24} className="mb-6 text-black/40" />
@@ -381,7 +381,7 @@ const Campuses = () => {
                 <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
                     <div className="order-2 md:order-1 relative">
                         <div className="aspect-square bg-white rounded-[3rem] overflow-hidden group border border-white/10">
-                            <img src={`https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=${isMobile ? 800 : 1200}`} className="w-full h-full object-cover grayscale transition-transform duration-1000 group-hover:scale-110" loading="lazy" />
+                            <img src={`https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=${isMobile ? 800 : 1200}`} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" loading="lazy" />
                         </div>
                         <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-primary/20 blur-[100px] -z-10" />
                     </div>
@@ -546,7 +546,7 @@ const Campuses = () => {
                                     <Link to={`/campuses/${loc.id}`} className="inline-block px-8 md:px-10 py-3 md:py-4 bg-black text-white font-bold uppercase tracking-widest rounded-full hover:bg-primary transition-all text-xs md:text-base">Explore Node</Link>
                                 </div>
                                 <div className="w-full md:w-1/2 h-full rounded-[1.5rem] md:rounded-[2rem] overflow-hidden relative min-h-[200px] md:min-h-0">
-                                    <img src={loc.img} className="loc-panel-img w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 transition-all duration-1000 scale-125 group-hover:scale-100" />
+                                    <img src={loc.img} className="loc-panel-img w-full h-full object-cover brightness-75 transition-all duration-1000 scale-125 group-hover:scale-100" />
                                     <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent" />
                                 </div>
                             </div>
@@ -576,7 +576,7 @@ const Campuses = () => {
                             { name: "3D Workshops", desc: "Advanced rapid prototyping, SLA printing, and material libraries.", icon: "📐", bg: "bg-secondary/5" }
                         ].map((lab, i) => (
                             <div key={i} className={`lab-card group relative p-16 rounded-[3rem] border border-white/5 ${lab.bg} hover:border-white/20 transition-all duration-700 overflow-hidden`}>
-                                <div className="absolute top-0 right-0 p-8 text-6xl grayscale group-hover:grayscale-0 transition-all opacity-20 group-hover:opacity-100">{lab.icon}</div>
+                                <div className="absolute top-0 right-0 p-8 text-6xl transition-all opacity-20 group-hover:opacity-100">{lab.icon}</div>
                                 <div className="relative z-10">
                                     <span className="text-primary font-mono text-[10px] md:text-xs block mb-6">Lab Unit 0{i + 1}</span>
                                     <h4 className="text-2xl md:text-3xl font-black uppercase mb-6 text-black">{lab.name}</h4>

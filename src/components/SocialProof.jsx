@@ -89,7 +89,7 @@ const SocialProof = () => {
                                 <img
                                     src={item.image}
                                     alt={item.title}
-                                    className="w-full h-full object-cover grayscale brightness-110 opacity-20 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
+                                    className="w-full h-full object-cover brightness-110 opacity-20 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
                                 />
                                 {/* Bottom Content Gradient */}
                                 <div className="absolute inset-0 bg-linear-to-t from-white via-white/80 to-transparent group-hover:from-black/80 group-hover:via-black/40 group-hover:to-transparent transition-all duration-700" />

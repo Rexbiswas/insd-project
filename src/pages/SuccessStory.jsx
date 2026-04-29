@@ -180,7 +180,7 @@ const SuccessStory = () => {
                                 <div className="relative group overflow-hidden rounded-[1.5rem] md:rounded-[2.5rem] aspect-square lg:aspect-auto h-full min-h-[300px] md:min-h-[500px]">
                                     <img 
                                         src={featuredStory.image} 
-                                        className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-105"
+                                        className="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-105"
                                         alt="Featured Student"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />

@@ -69,25 +69,52 @@ const JewelleryDesigning = () => {
             ]
         },
         Bachelors: {
-            "Year 1": [
-                "Manual Designing: Motifs & Form Rendering",
-                "Gemology: Identification & Stone Study",
-                "Diamond Grading: The 4Cs Mastery",
-                "Metallurgy & Basic Jewelry Knowledge",
-                "CAD Designing: Rhino & Matrix Mastery",
-                "Fashion Accessory Design Foundations",
-                "Market Dynamics & Trend Analysis"
-            ],
-            "Year 2": [
-                "Custom Made Jewellery Boutique",
-                "Entrepreneurship & Startup Development",
-                "Scientific Study of Pearls & Grading",
-                "Luxury Marketing & Brand Management",
-                "Retail Sales & Quality Control",
-                "High-End Industry Capstone Projects",
-                "Professional Placement & OJT",
-                "Final Portfolio Case Study"
-            ]
+            "Year 1": {
+                "Semester 1": [
+                    "Manual designing: designing with different motives and knowledge of jewellery.",
+                    "shading, rendering of white gold, yellow gold, gemstones etc.",
+                    "costume jewellery: making all jewellery by different types of beads, stones.",
+                    "metallurgy- basic knowledge and theory of all terms used in jewellery."
+                ],
+                "Semester 2": [
+                    "Manual design gemology: basic study of gemstones, shapes; origin, occurence etc.",
+                    "diamond grading: basic knowledge of diamond . there 4cs of grading."
+                ],
+                "Semester 3": [
+                    "Production management designing projects.like state project, country project, detachable project, temple jewellery.",
+                    "gemology- advanced study.",
+                    "diamond grading -advanced study of diamonds."
+                ],
+                "Semester 4": [
+                    "Market surveys.cad designing – rhino n matrix.",
+                    "Fashion Accessory Design",
+                    "Hallmarking System of Jewellery",
+                    "History of Eras",
+                    "Eras Designing Prac. 1",
+                    "Accessory Designing Prac 2"
+                ]
+            },
+            "Year 2": {
+                "Semester 5": [
+                    "Human Resource Management",
+                    "Custome Made Jewellery",
+                    "Entrepreneurship Development",
+                    "Study of Pearl",
+                    "Inspirational Designing (Prac. 1)",
+                    "State Designing (Prac 2)"
+                ],
+                "Semester 6": [
+                    "Marketing"
+                ],
+                "Semester 7": [
+                    "Industry Projects",
+                    "Enterprenuership"
+                ],
+                "Semester 8": [
+                    "Internship & On the Job Training",
+                    "Market Dynamics"
+                ]
+            }
         },
     };
 
@@ -334,20 +361,44 @@ const JewelleryDesigning = () => {
                                             >
                                                 <div className="px-8 pb-10 space-y-4">
                                                     <div className="h-px w-full bg-slate-100 mb-6" />
-                                                    {items.map((item, i) => (
-                                                        <motion.div 
-                                                            key={i}
-                                                            initial={{ opacity: 0, x: -10 }}
-                                                            animate={{ opacity: 1, x: 0 }}
-                                                            transition={{ delay: i * 0.05 }}
-                                                            className="flex items-start gap-4 group/item"
-                                                        >
-                                                            <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary group-hover/item:scale-150 transition-all shrink-0" />
-                                                            <span className="text-slate-600 font-black text-xs uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
-                                                                {item}
-                                                            </span>
-                                                        </motion.div>
-                                                    ))}
+                                                    {Array.isArray(items) ? (
+                                                        items.map((item, i) => (
+                                                            <motion.div 
+                                                                key={i}
+                                                                initial={{ opacity: 0, x: -10 }}
+                                                                animate={{ opacity: 1, x: 0 }}
+                                                                transition={{ delay: i * 0.05 }}
+                                                                className="flex items-start gap-4 group/item"
+                                                            >
+                                                                <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary group-hover/item:scale-150 transition-all shrink-0" />
+                                                                <span className="text-slate-600 font-black text-xs uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
+                                                                    {item}
+                                                                </span>
+                                                            </motion.div>
+                                                        ))
+                                                    ) : (
+                                                        Object.entries(items).map(([subSemName, subItems], subIdx) => (
+                                                            <div key={subIdx} className="mb-6 last:mb-0">
+                                                                <h4 className="text-primary font-black uppercase text-sm tracking-widest mb-4">{subSemName}</h4>
+                                                                <div className="space-y-3">
+                                                                    {subItems.map((item, i) => (
+                                                                        <motion.div 
+                                                                            key={i}
+                                                                            initial={{ opacity: 0, x: -10 }}
+                                                                            animate={{ opacity: 1, x: 0 }}
+                                                                            transition={{ delay: i * 0.05 }}
+                                                                            className="flex items-start gap-4 group/item"
+                                                                        >
+                                                                            <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary group-hover/item:scale-150 transition-all shrink-0" />
+                                                                            <span className="text-slate-600 font-black text-xs uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
+                                                                                {item}
+                                                                            </span>
+                                                                        </motion.div>
+                                                                    ))}
+                                                                </div>
+                                                            </div>
+                                                        ))
+                                                    )}
                                                 </div>
                                             </motion.div>
                                         )}

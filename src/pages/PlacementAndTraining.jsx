@@ -108,12 +108,12 @@ const PlacementAndTraining = () => {
                                 </div>
                                 <div className="grid grid-cols-2 gap-4">
                                     <div className="p-6 bg-slate-50 rounded-3xl">
-                                        <p className="text-2xl font-black text-slate-900 tracking-tight">12 LPA</p>
-                                        <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Highest CTC</p>
+                                        <p className="text-2xl font-black text-slate-900 tracking-tight">18 LPA</p>
+                                        <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Highest Package 2025</p>
                                     </div>
                                     <div className="p-6 bg-slate-50 rounded-3xl">
-                                        <p className="text-2xl font-black text-slate-900 tracking-tight">95%</p>
-                                        <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Career Start</p>
+                                        <p className="text-2xl font-black text-slate-900 tracking-tight">98%</p>
+                                        <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Placement Record</p>
                                     </div>
                                 </div>
                             </motion.div>
@@ -133,24 +133,24 @@ const PlacementAndTraining = () => {
                             </h2>
                         </div>
                         <p className="text-slate-500 font-bold text-sm uppercase tracking-tight max-w-md text-center md:text-right">
-                            We don't just provide job leads. We train you through every stage—from portfolio forensics to elite interview grooming.
+                            We don't just provide job leads. We train you through every stage—from portfolio building to professional industry preparation.
                         </p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                         {[
                             { 
-                                title: "Portfolio Forensics", 
+                                title: "Build Your Portfolio", 
                                 icon: BadgeCheck, 
                                 desc: "Rigorous auditing of your academic body of work to align with global creative agency standards." 
                             },
                             { 
-                                title: "Executive Grooming", 
+                                title: "Get Industry Ready", 
                                 icon: Users, 
                                 desc: "Personal branding, soft skills, and leadership communication training for high-value client interaction." 
                             },
                             { 
-                                title: "Simulated Dialogues", 
+                                title: "Prepare for Interviews", 
                                 icon: MessageSquare, 
                                 desc: "Realistic mock interview panels with industry experts to refine your storytelling and expertise." 
                             }

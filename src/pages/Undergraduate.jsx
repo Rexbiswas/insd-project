@@ -128,7 +128,7 @@ const Undergraduate = () => {
                         <img 
                             src="https://images.pexels.com/photos/3771088/pexels-photo-3771088.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                             alt="College Campus" 
-                            className="w-full h-full object-cover grayscale mix-blend-multiply"
+                            className="w-full h-full object-cover mix-blend-multiply"
                         />
                     </motion.div>
                     
@@ -323,7 +323,7 @@ const Undergraduate = () => {
                                 <img
                                     src={course.img}
                                     alt={course.title}
-                                    className="absolute inset-0 w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-110"
+                                    className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-110"
                                 />
                                 <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/20 to-transparent group-hover:from-primary/80 transition-all duration-700" />
                                 

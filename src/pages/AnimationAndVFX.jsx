@@ -20,6 +20,10 @@ import {
     BookOpen,
     Layers,
     PenTool
+    ,
+    ShoppingBag,
+    Briefcase,
+    Palette
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO';
@@ -50,25 +54,60 @@ const AnimationAndVFX = () => {
             ]
         },
         Bachelors: {
-            "Year 1": [
-                "Digital Imaging & Principles of Animation",
-                "3D Basics: Modeling & Assets Foundations",
-                "Texture, Shading & Rendering Mechanics",
-                "Character Rigging & Animation",
-                "Digital Sculpting & Storyboarding Art",
-                "Dynamics & Particle Systems",
-                "Motion Graphics & Title Design"
-            ],
-            "Year 2": [
-                "High-End VFX Compositing (Nuke)",
-                "Dynamics & Fluid Simulations",
-                "Unreal Engine for Production",
-                "Real-time Rendering & Lighting",
-                "Interactive Media Design",
-                "Entrepreneurship in Creative Media",
-                "Industrial Internship (OJT)",
-                "Final Production Showcase"
-            ]
+            "Year 1": {
+                "Semester 1": [
+                    "Drawing Concepts",
+                    "Pre -Production",
+                    "Digital Art & Design – Theory",
+                    "Digital Art Design – Practical",
+                    "Introduction To Pc Skills And Programming",
+                    "Drawing With Computer"
+                ],
+                "Semester 2": [
+                    "Advanced Photoshop & Texturing",
+                    "Anatomy For Animation",
+                    "Cel Animation – Practical",
+                    "Principles Of Animation, Media Laws & Ethics",
+                    "Film Analysis",
+                    "2d Animation"
+                ],
+                "Semester 3": [
+                    "Introduction To 3d Studio Max",
+                    "3d Modeling In Max",
+                    "Shading & Texturing In Max",
+                    "Lighting & Camera Techniques In Max",
+                    "Videography"
+                ],
+                "Semester 4": [
+                    "Introduction To Maya",
+                    "3d Modeling In Maya",
+                    "Shading & Texturing In Maya",
+                    "Character Setup & Rigging In Maya",
+                    "Lighting & Camera Techniques In Maya",
+                    "Introduction To Mel Scripting"
+                ]
+            },
+            "Year 2": {
+                "Semester 5": [
+                    "Maya Effects, Particles, Dynamics & Rendering Techniques",
+                    "Compositing",
+                    "Editing & Sound For Animation",
+                    "3d Animation",
+                    "Creating Demo Reel",
+                    "Environment Studies"
+                ],
+                "Semester 6": [
+                    "3d Group Project Or Internship"
+                ],
+                "Semester 7": [
+                    "Industry Projects",
+                    "Enterprenuership"
+                ],
+                "Semester 8": [
+                    "Internship & On the Job Training",
+                    "Market Dynamics"
+                ]
+            }
         },
         PG: {
             "Year 1": [
@@ -144,9 +183,9 @@ const AnimationAndVFX = () => {
             <section className="py-12 bg-slate-900 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
                     {[
-                        { label: "Degree", value: "Bachelors accredited", icon: GraduationCap },
-                        { label: "Course Length", value: "2 Years", icon: Clock },
-                        { label: "Eligibility", value: "Any Stream", icon: BookOpen },
+                        { label: "Sector", value: "Retail Industry", icon: ShoppingBag },
+                        { label: "Sector", value: "Hospitality Industry", icon: Briefcase },
+                        { label: "Sector", value: "Design Industry", icon: Palette },
                     ].map((item, idx) => (
                         <motion.div 
                             key={idx}
@@ -304,20 +343,44 @@ const AnimationAndVFX = () => {
                                             >
                                                 <div className="px-8 pb-10 space-y-4">
                                                     <div className="h-px w-full bg-slate-100 mb-6" />
-                                                    {items.map((item, i) => (
-                                                        <motion.div 
-                                                            key={i}
-                                                            initial={{ opacity: 0, x: -10 }}
-                                                            animate={{ opacity: 1, x: 0 }}
-                                                            transition={{ delay: i * 0.05 }}
-                                                            className="flex items-start gap-4 group/item"
-                                                        >
-                                                            <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary group-hover/item:scale-150 transition-all shrink-0" />
-                                                            <span className="text-slate-600 font-black text-xs uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
-                                                                {item}
-                                                            </span>
-                                                        </motion.div>
-                                                    ))}
+                                                    {Array.isArray(items) ? (
+                                                        items.map((item, i) => (
+                                                            <motion.div 
+                                                                key={i}
+                                                                initial={{ opacity: 0, x: -10 }}
+                                                                animate={{ opacity: 1, x: 0 }}
+                                                                transition={{ delay: i * 0.05 }}
+                                                                className="flex items-start gap-4 group/item"
+                                                            >
+                                                                <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary group-hover/item:scale-150 transition-all shrink-0" />
+                                                                <span className="text-slate-600 font-black text-xs uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
+                                                                    {item}
+                                                                </span>
+                                                            </motion.div>
+                                                        ))
+                                                    ) : (
+                                                        Object.entries(items).map(([subSemName, subItems], subIdx) => (
+                                                            <div key={subIdx} className="mb-6 last:mb-0">
+                                                                <h4 className="text-primary font-black uppercase text-sm tracking-widest mb-4">{subSemName}</h4>
+                                                                <div className="space-y-3">
+                                                                    {subItems.map((item, i) => (
+                                                                        <motion.div 
+                                                                            key={i}
+                                                                            initial={{ opacity: 0, x: -10 }}
+                                                                            animate={{ opacity: 1, x: 0 }}
+                                                                            transition={{ delay: i * 0.05 }}
+                                                                            className="flex items-start gap-4 group/item"
+                                                                        >
+                                                                            <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary group-hover/item:scale-150 transition-all shrink-0" />
+                                                                            <span className="text-slate-600 font-black text-xs uppercase tracking-tight group-hover/item:text-slate-900 transition-colors">
+                                                                                {item}
+                                                                            </span>
+                                                                        </motion.div>
+                                                                    ))}
+                                                                </div>
+                                                            </div>
+                                                        ))
+                                                    )}
                                                 </div>
                                             </motion.div>
                                         )}

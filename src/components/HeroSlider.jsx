@@ -24,6 +24,13 @@ const HeroSlider = () => {
             label: "Campuses Across India",
             pos: "bottom-4 left-4 md:bottom-10 md:left-8 lg:bottom-16 lg:left-10",
             delay: 1.1
+        },
+        {
+            id: 4,
+            val: "Rs. 20k - 1.5L",
+            label: "Average Monthly Salary",
+            pos: "top-4 right-4 md:top-10 md:right-8 lg:top-16 lg:right-10",
+            delay: 1.4
         }
     ];
 

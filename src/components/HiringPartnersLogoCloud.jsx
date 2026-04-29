@@ -5,7 +5,14 @@ const HiringPartnersLogoCloud = () => {
     const commonLogos = [
         "https://upload.wikimedia.org/wikipedia/commons/f/fd/Zara_Logo.svg",
         "https://upload.wikimedia.org/wikipedia/commons/5/53/H%26M-Logo.svg",
-        
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaD24vay_jTexDQFlC7WcCwUKLfABsLq7Mxg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOZ9NYd0ET0u7rmr-IYI0j4dkTbDYwQnEL0w&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOUScvNv7C9KjvolThJ-fcj4IfvxSP8-m1Ig&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfp9UQE8vWcX8g8W1ik-1S5PhWyrwTt3Jj0Q&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAVXoy4-M6CZEADkAg3EKtGTrBZh8Xn5ZeDg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTi4adrv8AqJDPhunb3_km2idzotwLuroAWHw&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkD7P83txvJ2sKJ9R5N_-qmQw94coPUq8J5A&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAX7Ow-fSUhmokgxv7oaSro64M9jvc8HUF0Q&s"
     ];
 
     return (

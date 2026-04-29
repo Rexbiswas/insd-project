@@ -51,6 +51,21 @@ const Centers = () => {
                         <p className="text-slate-500 max-w-xl mx-auto text-lg font-medium tracking-tight">
                             The largest design education network in India. Bridging regional creativity with global standards.
                         </p>
+                        
+                        <div className="flex flex-wrap items-center justify-center gap-6 pt-4 opacity-60">
+                            <div className="flex items-center gap-2">
+                                <Target size={14} className="text-primary" />
+                                <span className="text-[10px] font-black uppercase tracking-widest">Skill India Partner</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <Award size={14} className="text-primary" />
+                                <span className="text-[10px] font-black uppercase tracking-widest">Govt Recognized</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <Briefcase size={14} className="text-primary" />
+                                <span className="text-[10px] font-black uppercase tracking-widest">Budget 2026 Aligned</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>

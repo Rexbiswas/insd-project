@@ -17,10 +17,11 @@ import SEO from '../components/SEO';
 import Footer from '../components/Footer';
 import ConclaveSlider from '../components/ConclaveSlider';
 import LabSlider from '../components/LabSlider';
+import SuccessStory from '../components/SuccessStory';
 
 const Entrepreneur = () => {
     return (
-        <div className="bg-white min-h-screen font-sans selection:bg-primary selection:text-white pt-20 overflow-x-hidden">
+        <div className="bg-white min-h-screen font-sans selection:bg-primary selection:text-white overflow-x-hidden">
             <SEO 
                 title="Entrepreneurship & Startup Incubation | INSD"
                 description="Ignite your entrepreneurial journey with INSD's startup incubation cell. We provide the mentorship, resources, and global network to turn your design vision into a successful venture."
@@ -33,7 +34,7 @@ const Entrepreneur = () => {
                     <img 
                         src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1600" 
                         alt="Global HQ CEO" 
-                        className="w-full h-full object-cover grayscale opacity-30"
+                        className="w-full h-full object-cover opacity-30"
                     />
                     <div className="absolute inset-0 bg-linear-to-b from-slate-950 via-slate-950/80 to-slate-950" />
                 </div>
@@ -124,76 +125,8 @@ const Entrepreneur = () => {
                 </div>
             </section>
 
-            {/* --- INCUBATION PILLARS (Light Modernized) --- */}
-            <section className="py-40 px-6 md:px-12 lg:px-24 bg-slate-50 relative overflow-hidden">
-                <div className="max-w-7xl mx-auto space-y-32">
-                    <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-16">
-                        <div className="space-y-8">
-                            <span className="text-primary font-black uppercase text-xs tracking-[0.6em]">The Foundation</span>
-                            <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-[9rem] font-black text-slate-900 uppercase tracking-tighter leading-[0.8]">
-                                Protocol <br /> <span className="stroke-text-slate-900 opacity-20">Elements.</span>
-                            </h2>
-                        </div>
-                        <p className="text-slate-500 font-medium text-xl md:text-2xl max-w-xl leading-relaxed tracking-tight">
-                            A multi-dimensional approach to startup engineering, designed exclusively for the creative avant-garde.
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-200 border border-slate-200 rounded-[4rem] overflow-hidden">
-                        {[
-                            { 
-                                title: "Business Strategy", 
-                                desc: "High-performance scaling models and lean architecture for global dominance.",
-                                icon: Target 
-                            },
-                            { 
-                                title: "Funding Engines", 
-                                desc: "Direct-to-investor pipelines and zero-friction capital procurement strategies.",
-                                icon: TrendingUp 
-                            },
-                            { 
-                                title: "Legacy Assets", 
-                                desc: "Absolute protection for creative IP through elite patent frameworks.",
-                                icon: Shield 
-                            },
-                            { 
-                                title: "Global Mesh", 
-                                desc: "Neural network of international partners spanning 40+ strategic markets.",
-                                icon: Globe 
-                            },
-                            { 
-                                title: "Titan Mentory", 
-                                desc: "Direct advisory from the world's most successful design-led founders.",
-                                icon: Users 
-                            },
-                            { 
-                                title: "Quantum Studio", 
-                                desc: "Elite physical infrastructure for rapid prototyping and collaborative engineering.",
-                                icon: Briefcase 
-                            }
-                        ].map((pillar, idx) => (
-                            <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: idx * 0.1 }}
-                                className="p-16 bg-white hover:bg-slate-50 transition-all duration-700 group relative cursor-pointer"
-                            >
-                                <div className="w-20 h-20 rounded-3xl bg-slate-50 flex items-center justify-center text-slate-400 mb-12 group-hover:bg-primary group-hover:text-white transition-all transform group-hover:-translate-y-4 group-hover:rotate-6 shadow-sm">
-                                    <pillar.icon size={36} />
-                                </div>
-                                <h3 className="text-3xl font-black text-slate-900 uppercase tracking-tighter mb-8 group-hover:text-primary transition-colors">{pillar.title}</h3>
-                                <p className="text-slate-500 font-medium text-lg leading-relaxed tracking-tight group-hover:text-slate-900 transition-colors uppercase">{pillar.desc}</p>
-                                
-                                <div className="absolute bottom-12 right-12 opacity-0 group-hover:opacity-100 transition-all">
-                                    <ArrowRight size={24} className="text-primary" />
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            {/* --- SUCCESS STORIES (Student Testimonials) --- */}
+            <SuccessStory />
 
             {/* --- EIDC CENTERPIECE (Entrepreneurship, Innovation & Design Center) --- */}
             <section className="py-48 px-6 md:px-12 lg:px-24 bg-white relative overflow-hidden">
@@ -261,7 +194,7 @@ const Entrepreneur = () => {
                             >
                                 <img 
                                     src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600" 
-                                    className="w-full h-full object-cover grayscale brightness-125 group-hover:scale-105 transition-all duration-1000"
+                                    className="w-full h-full object-cover brightness-125 group-hover:scale-105 transition-all duration-1000"
                                     alt="EIDC Lab"
                                 />
                                 <div className="absolute inset-0 bg-linear-to-t from-white via-white/20 to-transparent" />
@@ -333,7 +266,7 @@ const Entrepreneur = () => {
                                 className="group relative"
                             >
                                 <div className="aspect-[3/4] rounded-[2rem] overflow-hidden mb-8 shadow-2xl border border-slate-100">
-                                    <img src={skill.img} alt={skill.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" />
+                                    <img src={skill.img} alt={skill.title} className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110" />
                                     <div className="absolute inset-0 bg-linear-to-t from-slate-900/80 via-transparent to-transparent" />
                                 </div>
                                 <div className="space-y-2">
@@ -374,7 +307,7 @@ const Entrepreneur = () => {
                                         transition={{ delay: i * 0.1 }}
                                         className="relative h-full rounded-[2rem] overflow-hidden group border border-slate-100"
                                     >
-                                        <img src={sector.img} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110" />
+                                        <img src={sector.img} className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110" />
                                         <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-transparent to-transparent opacity-60 group-hover:opacity-90 transition-opacity" />
                                         <div className="absolute bottom-8 left-0 right-0 px-6 text-center">
                                             <h4 className="text-white font-black text-xs md:text-sm tracking-widest uppercase leading-tight">
@@ -540,7 +473,7 @@ const Entrepreneur = () => {
                             >
                                 <img 
                                     src="https://images.unsplash.com/photo-1522071823991-b9671f9d7f1f?auto=format&fit=crop&q=80&w=1600" 
-                                    className="w-full h-full object-cover grayscale brightness-110 opacity-40" 
+                                    className="w-full h-full object-cover brightness-110 opacity-40" 
                                     alt="Global Designer"
                                 />
                                 <div className="absolute inset-0 bg-linear-to-tr from-white via-transparent to-primary/5" />

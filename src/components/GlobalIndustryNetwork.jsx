@@ -131,8 +131,8 @@ const GlobalIndustryNetwork = () => {
                             <Trophy className="text-primary w-8 h-8 group-hover:scale-110 transition-transform" />
                             <ExternalLink size={16} className="text-slate-600" />
                         </div>
-                        <h3 className="text-4xl font-black mb-2 tracking-tighter">100%</h3>
-                        <p className="text-xs font-black uppercase tracking-widest text-white/50">Placement Success Rate</p>
+                        <h3 className="text-4xl font-black mb-2 tracking-tighter">98%</h3>
+                        <p className="text-xs font-black uppercase tracking-widest text-white/50">Successful Placement Track Record</p>
                     </div>
 
                     <div className="p-10 rounded-4xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all group">

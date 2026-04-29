@@ -145,7 +145,7 @@ const InsdDifference = () => {
                                     {/* Cinematic Video Loop */}
                                     <video 
                                         src="https://player.vimeo.com/external/494163967.sd.mp4?s=6a982924151a6907d64380f681bc7e828e8b6b90&profile_id=165" 
-                                        className="w-full h-full object-cover grayscale-20 group-hover/video:grayscale-0 transition-all duration-1000 group-hover/video:scale-105"
+                                        className="w-full h-full object-cover -20 group-hover/video:-0 transition-all duration-1000 group-hover/video:scale-105"
                                         autoPlay
                                         loop
                                         muted

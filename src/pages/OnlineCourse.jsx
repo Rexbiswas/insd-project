@@ -530,7 +530,7 @@ const OnlineCourse = () => {
                             </button>
                         </div>
 
-                        <div className="mt-20 flex items-center justify-center gap-8 md:gap-16 opacity-30 grayscale invert">
+                        <div className="mt-20 flex items-center justify-center gap-8 md:gap-16 opacity-30 invert">
                             <h1 className="text-4xl md:text-6xl font-black tracking-tighter">INSD</h1>
                             <div className="h-12 w-px bg-white"></div>
                             <h1 className="text-4xl md:text-4xl font-light italic font-serif">Education 5.0</h1>

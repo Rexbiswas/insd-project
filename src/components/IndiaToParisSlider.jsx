@@ -71,7 +71,7 @@ const IndiaToParisSlider = () => {
                                 <motion.img 
                                     src={stages[active].img} 
                                     alt={stages[active].title} 
-                                    className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all duration-2000 scale-105 group-hover:scale-100"
+                                    className="w-full h-full object-cover brightness-90 transition-all duration-2000 scale-105 group-hover:scale-100"
                                     layoutId="main-image"
                                 />
                                 <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-transparent to-transparent opacity-60" />

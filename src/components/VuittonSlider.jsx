@@ -61,7 +61,7 @@ const VuittonSlider = () => {
                                     <img 
                                         src={slides[active].img} 
                                         alt={slides[active].title} 
-                                        className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-1000"
+                                        className="w-full h-full object-cover transition-all duration-1000"
                                     />
                                     <div className="absolute top-8 left-8 bg-white/95 backdrop-blur-sm px-4 py-2 text-xs font-black uppercase tracking-widest text-slate-900 shadow-sm">
                                         {slides[active].day}
