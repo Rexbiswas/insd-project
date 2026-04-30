@@ -52,6 +52,10 @@ const AdmissionModal = () => {
                             <AdmissionFormWhite 
                                 isModal={true} 
                                 onClose={closeAdmissionModal}
+                                title={modalConfig.title}
+                                subtitle={modalConfig.subtitle}
+                                ctaText={modalConfig.ctaText}
+                                successMsg={modalConfig.successMsg}
                             />
                         )}
                     </motion.div>

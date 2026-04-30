@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, X, ChevronDown, Send } from 'lucide-react';
 import { stateCityData } from '../data/locations';
 
-const AdmissionFormWhite = ({ isModal = false, onClose }) => {
+const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText, successMsg }) => {
     const [formData, setFormData] = useState({
         name: '',
         mobile: '',
@@ -55,9 +55,9 @@ const AdmissionFormWhite = ({ isModal = false, onClose }) => {
                     <CheckCircle2 className="text-green-500 w-12 h-12" />
                 </div>
                 <div className="space-y-4">
-                    <h2 className="text-4xl font-black text-slate-900 leading-tight">Registration <span className="text-green-500">Successful!</span></h2>
+                    <h2 className="text-4xl font-black text-slate-900 leading-tight">Registration <span className="text-green-500">successful!</span></h2>
                     <p className="text-slate-600 text-xl font-medium">
-                        Thank you for your interest. One of our senior counselors will call you within 24 hours.
+                        {successMsg || "Thank you for your interest. One of our senior counselors will call you within 24 hours."}
                     </p>
                 </div>
                 <button 
@@ -121,8 +121,12 @@ const AdmissionFormWhite = ({ isModal = false, onClose }) => {
                 <div className="p-6 md:p-10 space-y-6 md:space-y-8">
                     <div className="flex items-center justify-between gap-4">
                         <div className="space-y-1">
-                            <h3 className="text-xl md:text-3xl font-black text-slate-900 tracking-tight uppercase">Talk to our Career Expert</h3>
-                            <p className="text-slate-500 font-bold text-sm md:text-base">Our experts will call you within 24 hours</p>
+                            <h3 className="text-xl md:text-3xl font-black text-slate-900 tracking-tight uppercase">
+                                {title || "Talk to our Career Expert"}
+                            </h3>
+                            <p className="text-slate-500 font-bold text-sm md:text-base">
+                                {subtitle || "Our experts will call you within 24 hours"}
+                            </p>
                         </div>
                         {isModal && (
                             <button 
@@ -248,7 +252,7 @@ const AdmissionFormWhite = ({ isModal = false, onClose }) => {
                         <button
                             type="submit"
                             disabled={status === 'loading'}
-                            className="w-full h-12 md:h-16 bg-gradient-to-r from-[#134a84] to-[#db3436] hover:brightness-110 disabled:opacity-50 text-white font-black uppercase tracking-[0.2em] text-sm md:text-lg rounded-xl md:rounded-2xl transition-all shadow-xl hover:shadow-[0_10px_30px_-10px_rgba(219,52,54,0.5)] active:scale-[0.98] mt-2 md:mt-4 flex items-center justify-center gap-3"
+                            className="w-full h-16 md:h-20 bg-linear-to-r from-[#134a84] to-[#db3436] hover:brightness-110 disabled:opacity-50 text-white font-black uppercase tracking-[0.25em] text-sm md:text-base rounded-full transition-all shadow-2xl hover:shadow-[0_10px_40px_-10px_rgba(219,52,54,0.6)] active:scale-[0.95] mt-4 flex items-center justify-center gap-3"
                         >
                             {status === 'loading' ? (
                                 <>
@@ -257,7 +261,7 @@ const AdmissionFormWhite = ({ isModal = false, onClose }) => {
                                 </>
                             ) : (
                                 <>
-                                    REQUEST CALLBACK
+                                    {ctaText || "REQUEST CALLBACK"}
                                     <Send size={18} className="rotate-[-10deg]" />
                                 </>
                             )}

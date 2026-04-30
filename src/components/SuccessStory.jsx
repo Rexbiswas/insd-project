@@ -68,7 +68,7 @@ const SuccessStory = () => {
                         transition={{ delay: 0.1 }}
                         className="text-clamp-lg font-bold text-slate-500 tracking-tight"
                     >
-                        Be a part of the INSD Success story!
+                        Be a part of the INSD success story!
                     </motion.p>
                 </div>
 
@@ -131,9 +131,11 @@ const SuccessStory = () => {
                     <button 
                         onClick={() => openAdmissionModal({ 
                             title: 'Download Placement Report', 
-                            subtitle: 'Join our elite alumni network.' 
+                            subtitle: 'Join our elite alumni network.',
+                            ctaText: 'Download Now',
+                            successMsg: 'Thank you! Your placement report is being prepared. Our team will also reach out to guide you through our alumni network.'
                         })}
-                        className="group flex items-center gap-6 px-10 py-6 bg-slate-950 text-white rounded-full font-black uppercase tracking-widest text-clamp-sm hover:bg-primary transition-all duration-500 shadow-2xl"
+                        className="group flex items-center gap-6 px-10 h-16 md:h-20 bg-slate-950 text-white rounded-full font-black uppercase tracking-widest text-clamp-sm hover:bg-primary transition-all duration-500 shadow-2xl"
                     >
                         Download Placement Report
                         <div className="p-3 bg-white/10 rounded-full group-hover:rotate-45 transition-transform duration-500">

@@ -94,7 +94,7 @@ function App() {
                                 <AdmissionModal />
 
                                 <ScrollToTop />
-                                <div className="relative z-0 bg-white min-h-screen pb-24 md:pb-0 overflow-x-hidden">
+                                <div className="relative z-0 bg-white min-h-screen pb-20 md:pb-0 overflow-x-hidden">
                                     <BoneyardContainer isLoading={isPageLoading} type="Section">
                                         <Routes>
                                             <Route path="/" element={<Home />} />

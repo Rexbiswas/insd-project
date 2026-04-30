@@ -113,7 +113,7 @@ const Student = () => {
                             viewport={{ once: true }}
                             className="text-clamp-4xl font-black uppercase tracking-tighter text-primary leading-none mb-6"
                         >
-                            Successful Career Skills
+                            successful career skills
                         </motion.h2>
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
@@ -269,7 +269,7 @@ const Student = () => {
                                         </h3>
 
                                         <div className="flex flex-wrap justify-center gap-12 mt-12 opacity-40">
-                                            {["Innovation", "Creativity", "Leadership", "Success"].map((tag, idx) => (
+                                            {["Innovation", "Creativity", "Leadership", "success"].map((tag, idx) => (
                                                 <span key={idx} className="text-clamp-sm font-black uppercase tracking-widest">• {tag}</span>
                                             ))}
                                         </div>

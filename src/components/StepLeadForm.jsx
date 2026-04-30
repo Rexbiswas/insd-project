@@ -134,7 +134,7 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
                             animate={{ opacity: submitted ? 0 : 1, y: submitted ? -20 : 0 }}
                             className="inline-block px-4 py-1 rounded-full bg-slate-100 text-slate-500 font-bold tracking-[0.3em] uppercase text-[10px] md:text-xs mb-8"
                         >
-                            {submitted ? "Success" : "Take the first step"}
+                            {submitted ? "success" : "Take the first step"}
                         </motion.span>
 
                         <div className="relative inline-flex items-center justify-center gap-4 md:gap-8 group">
@@ -369,7 +369,7 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
                                                     <button
                                                         disabled={loading}
                                                         type="submit"
-                                                        className="flex-1 h-14 bg-slate-950 text-white rounded-xl font-black uppercase tracking-[0.2em] text-xs hover:bg-primary hover:text-white transition-all duration-300 shadow-xl flex items-center justify-center gap-3 disabled:opacity-50"
+                                                        className="flex-1 h-16 md:h-20 bg-primary text-white rounded-full font-black uppercase tracking-[0.25em] text-sm md:text-base hover:bg-slate-950 transition-all duration-500 shadow-2xl flex items-center justify-center gap-3 disabled:opacity-50 active:scale-95"
                                                     >
                                                         {loading ? "Processing..." : "Submit Request"}
                                                     </button>

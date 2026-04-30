@@ -135,7 +135,7 @@ const DreamLife = () => {
                         </div>
                         <div className="flex flex-col">
                             <span className="text-5xl font-black text-slate-900 tracking-tighter">10K+</span>
-                            <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Success Stories</span>
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">success stories</span>
                         </div>
                     </div>
                 </div>

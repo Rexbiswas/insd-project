@@ -266,7 +266,7 @@ const Home = () => {
             link: "/student"
         },
         {
-            title: "Required Profession",
+            title: "Required Professional",
             img: `https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_hzzhu5hzzhu5hzzh.png?tr=w-${isMobile ? 800 : 1800},fo-auto`,
             link: "/placement"
         }
@@ -335,8 +335,12 @@ const Home = () => {
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                onClick={() => openAdmissionModal()}
-                                className="w-full sm:w-auto h-16 px-10 bg-primary text-white rounded-full font-black uppercase tracking-widest text-[11px] shadow-xl flex items-center justify-center gap-3 transition-all hover:bg-slate-950"
+                                onClick={() => openAdmissionModal({
+                                    title: 'Talk to a Counsellor',
+                                    subtitle: 'Get professional guidance for your design career.',
+                                    ctaText: 'Connect Now'
+                                })}
+                                className="w-full sm:w-auto h-16 md:h-20 px-10 bg-primary text-white rounded-full font-black uppercase tracking-widest text-[11px] shadow-xl flex items-center justify-center gap-3 transition-all hover:bg-slate-950"
                             >
                                 Talk to a Counsellor
                                 <ArrowRight size={18} />
@@ -346,7 +350,7 @@ const Home = () => {
                                 download="INSD-Prospectus-2026.pdf"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="group relative w-full sm:w-auto h-16 px-10 bg-white border-2 border-slate-100 text-slate-600 rounded-full font-black uppercase tracking-widest text-[11px] overflow-hidden transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-primary/20 hover:border-primary/30"
+                                className="group relative w-full sm:w-auto h-16 md:h-20 px-10 bg-white border-2 border-slate-100 text-slate-600 rounded-full font-black uppercase tracking-widest text-[11px] overflow-hidden transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-primary/20 hover:border-primary/30"
                             >
                                 {/* Animated Gradient Background */}
                                 <div className="absolute inset-0 bg-linear-to-r from-primary to-slate-900 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
@@ -368,7 +372,7 @@ const Home = () => {
                         <div className="flex flex-wrap items-center gap-4 pt-4">
                             {[
                                 { text: "Design Industry", icon: <Sparkles size={16} className="text-primary" /> },
-                                { text: "Retails Industry", icon: <Rocket size={16} className="text-primary" /> },
+                                { text: "Retail Industry", icon: <Rocket size={16} className="text-primary" /> },
                                 { text: "Hospitality Industry", icon: <Briefcase size={16} className="text-primary" /> }
                             ].map((pill, i) => (
                                 <div key={i} className="flex items-center gap-3 px-6 py-2.5 bg-slate-50/50 border border-slate-100 rounded-full hover:bg-white hover:shadow-xl hover:shadow-primary/5 hover:border-primary/30 transition-all duration-500 group/pill cursor-default">
@@ -447,57 +451,49 @@ const Home = () => {
             <InstagramGallery />
 
 
-            {/* Section 2: Interactive Gallery */}
-            <div ref={galleryContainerRef} className="relative z-10 h-screen w-full bg-black overflow-hidden flex flex-col lg:flex-row pointer-events-auto">
-                {
-                    galleryItems.map((item, index) => (
-                        <Link
-                            key={index}
-                            to={item.link || "#"}
-                            className="gallery-item relative flex-1 group transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] hover:flex-3 cursor-pointer border-b lg:border-b-0 lg:border-r border-white/10 last:border-b-0 last:border-r-0"
-                        >
-                            {/* Image Background */}
-                            <div className="absolute inset-0 z-0 overflow-hidden">
-                                <img
-                                    src={item.img}
-                                    alt={item.title}
-                                    className="w-full h-full object-cover opacity-80 lg:opacity-60 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110"
-                                />
-                                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent lg:bg-black/60 lg:group-hover:bg-black/20 transition-colors duration-700 pointer-events-none" />
-                            </div>
-
-                            <div className="absolute inset-0 z-10 flex flex-col justify-end p-6 md:p-8 pb-32 lg:pb-12">
-                                <div className="overflow-hidden">
-                                    <h3 className="text-5xl md:text-7xl lg:text-9xl font-black text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary translate-y-0 lg:translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-100 uppercase tracking-tighter leading-none">
-                                        {item.title}
-                                    </h3>
+            {/* Section 2: Interactive Gallery - Now More Compact */}
+            <div ref={galleryContainerRef} className="relative z-10 bg-white py-12 lg:py-24 overflow-hidden pointer-events-auto">
+                <div className="max-w-7xl mx-auto px-6 h-[500px] md:h-[600px] flex flex-col lg:flex-row gap-6">
+                    {
+                        galleryItems.map((item, index) => (
+                            <Link
+                                key={index}
+                                to={item.link || "#"}
+                                className="gallery-item relative flex-1 group transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] hover:flex-2 cursor-pointer border border-slate-100 rounded-[2rem] overflow-hidden shadow-2xl"
+                            >
+                                {/* Image Background */}
+                                <div className="absolute inset-0 z-0">
+                                    <img
+                                        src={item.img}
+                                        alt={item.title}
+                                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110"
+                                    />
+                                    <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent transition-colors duration-700 pointer-events-none" />
                                 </div>
-                                <div className="overflow-hidden mt-2 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
-                                    <p className="text-white/80 text-[10px] md:text-sm font-bold tracking-widest uppercase border-t border-primary/50 pt-3 inline-block">
-                                        Explore Program
-                                    </p>
-                                </div>
-                            </div>
 
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 opacity-0 lg:opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none hidden lg:block">
-                                <span className="text-white/50 font-bold uppercase tracking-widest text-xl whitespace-nowrap">
-                                    {item.title}
-                                </span>
-                            </div>
+                                <div className="absolute inset-0 z-10 flex flex-col justify-end p-8 pb-12">
+                                    <div className="overflow-hidden">
+                                        <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary translate-y-0 group-hover:scale-105 transition-all duration-500 delay-100 uppercase tracking-tighter leading-tight">
+                                            {item.title}
+                                        </h3>
+                                    </div>
+                                    <div className="overflow-hidden mt-4 opacity-100 transition-opacity duration-500 delay-200">
+                                        <p className="text-white/80 text-[10px] md:text-xs font-black tracking-widest uppercase border-t border-primary/50 pt-4 inline-block">
+                                            Explore Program
+                                        </p>
+                                    </div>
+                                </div>
+
                         </Link>
                     ))
                 }
+                </div>
             </div>
             <AdmissionScroller />
             <WhyInsd />
             <StepLeadForm />
             <ProgramSearch />
-
             <NationalAwards />
-
-
-
-
             <AiFutureDesign />
             <TestimonialSlider />
             <CelebritySlider />

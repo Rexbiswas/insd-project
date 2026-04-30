@@ -10,7 +10,6 @@ import Footer from '../components/Footer';
 
 
 const Mentors = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
     const [visitingIndex, setVisitingIndex] = useState(0);
 
     
@@ -133,8 +132,7 @@ const Mentors = () => {
         }
     ];
 
-    const handleNext = () => setCurrentIndex((prev) => (prev + 1) % mentorData.length);
-    const handlePrev = () => setCurrentIndex((prev) => (prev - 1 + mentorData.length) % mentorData.length);
+
     
     const handleVisitingNext = () => setVisitingIndex((prev) => (prev + 1) % visitingLegends.length);
     const handleVisitingPrev = () => setVisitingIndex((prev) => (prev - 1 + visitingLegends.length) % visitingLegends.length);
@@ -233,8 +231,8 @@ const Mentors = () => {
                                                     <p className="text-white/40 font-bold uppercase text-xs tracking-widest">{visitingLegends[visitingIndex].title}</p>
                                                 </div>
 
-                                                <p className="text-white/60 text-lg md:text-xl font-medium leading-relaxed italic border-l-2 border-primary/40 pl-8">
-                                                    "{visitingLegends[visitingIndex].desc}"
+                                                <p className="text-white/60 text-lg md:text-xl font-medium leading-relaxed border-l-2 border-primary/40 pl-8">
+                                                    {visitingLegends[visitingIndex].desc}
                                                 </p>
 
                                                 <div className="flex flex-wrap gap-2">
@@ -261,117 +259,66 @@ const Mentors = () => {
                         </div>
                     </div>
                     
-                    {/* --- INDUSTRY MENTOR SLIDER --- */}
+                    {/* --- INDUSTRY MENTOR GRID --- */}
                     <div className="mt-48 space-y-16">
                         <div className="text-center space-y-4">
                             <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tightest">Industry <span className="text-primary italic"> Mentors.</span></h2>
                             <p className="text-slate-400 font-bold uppercase text-[10px] tracking-[0.3em]">Corporate Leaders & Design Consultants</p>
                         </div>
 
-                        <div className="relative max-w-6xl mx-auto">
-                            
-                            <div className="relative h-auto min-h-[650px] md:h-[700px] w-full rounded-[3rem] md:rounded-[4rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.15)] bg-white border border-slate-100 flex flex-col lg:flex-row group/card">
-                                
-                                <AnimatePresence mode="wait">
-                                    <motion.div
-                                        key={currentIndex}
-                                        initial={{ opacity: 0, x: 20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        exit={{ opacity: 0, x: -20 }}
-                                        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                                        className="flex flex-col lg:flex-row w-full h-full"
-                                    >
-                                        {/* Left: Mentor Visual */}
-                                        <div className="w-full lg:w-1/2 h-[400px] lg:h-full relative overflow-hidden">
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10" />
-                                            <motion.img 
-                                                initial={{ scale: 1.1 }}
-                                                animate={{ scale: 1 }}
-                                                transition={{ duration: 1.2 }}
-                                                src={mentorData[currentIndex].img}
-                                                alt={mentorData[currentIndex].name}
-                                                className="w-full h-full object-cover transition-all duration-700"
-                                            />
-                                            
-                                            {/* Name Overlay */}
-                                            <div className="absolute bottom-12 left-12 z-20">
-                                                <div className="text-[10px] font-black uppercase tracking-[0.4em] text-white/50 mb-3">Expert Portfolio</div>
-                                                <h3 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter leading-[0.85]">
-                                                    {mentorData[currentIndex].name.split(' ')[0]} <br />
-                                                    <span className="text-primary">{mentorData[currentIndex].name.split(' ')[1]}</span>
-                                                </h3>
-                                            </div>
-
-                                            {/* Prev Button Overlay */}
-                                            <button 
-                                                onClick={handlePrev}
-                                                className="absolute top-8 left-8 w-24 h-12 rounded-full bg-white/10 backdrop-blur-xl flex items-center justify-center text-white hover:bg-white hover:text-slate-900 transition-all z-30 group-hover/card:opacity-100 opacity-0 transform -translate-x-4 group-hover/card:translate-x-0"
-                                            >   
-                                                <ChevronLeft size={20} />
-                                                Previous
-                                            </button>
-                                        </div>
-
-                                        {/* Right: Mentor Details */}
-                                        <div className="w-full lg:w-1/2 p-10 md:p-16 lg:p-20 flex flex-col justify-center bg-white relative">
-                                            
-                                            {/* Next Button Overlay */}
-                                            <button 
-                                                onClick={handleNext}
-                                                className="absolute top-8 right-8 w-24 h-12 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-900 hover:text-white transition-all z-30 group-hover/card:opacity-100 opacity-0 transform translate-x-4 group-hover/card:translate-x-0"
-                                            >
-                                                Next
-                                            <ChevronRight size={20} />
-                                            </button>
-
-                                            <div className="space-y-10">
-                                                <div className="space-y-6">
-                                                    <div className="flex flex-wrap gap-3">
-                                                        {mentorData[currentIndex].tags.map((tag, tIdx) => (
-                                                            <span key={tIdx} className="px-5 py-2 border border-slate-100 rounded-full text-[9px] font-black uppercase tracking-widest text-slate-400">
-                                                                {tag}
-                                                            </span>
-                                                        ))}
-                                                    </div>
-                                                    
-                                                    <div className="space-y-4">
-                                                        <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-slate-900 leading-[0.95]">
-                                                            {mentorData[currentIndex].title}
-                                                        </h2>
-                                                        <div className="w-16 h-1 bg-primary rounded-full transition-all group-hover/card:w-24" />
-                                                    </div>
-                                                </div>
-
-                                                <p className="text-slate-500 text-lg md:text-xl font-medium leading-relaxed max-w-md italic">
-                                                    "{mentorData[currentIndex].desc}"
-                                                </p>
-
-                                                <div className="pt-10 border-t border-slate-50 flex items-center justify-between">
-                                                    <div className="space-y-2">
-                                                        <div className="text-[10px] font-black uppercase tracking-widest text-slate-300">Core Expertise</div>
-                                                        <div className="text-xl font-black uppercase tracking-tighter text-slate-900">{mentorData[currentIndex].impact}</div>
-                                                    </div>
-                                                    <button className="w-14 h-14 rounded-full border border-slate-100 flex items-center justify-center text-slate-300 hover:bg-primary hover:text-white hover:border-primary transition-all group/btn active:scale-95">
-                                                        <ArrowUpRight size={24} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </motion.div>
-                                </AnimatePresence>
-
-                                {/* PROGRESS INDICATOR (Positioned at bottom center of the entire card) */}
-                                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl p-3 rounded-full border border-slate-100 dark:border-white/10 shadow-lg">
-                                    {mentorData.map((_, i) => (
-                                        <button
-                                            key={i}
-                                            onClick={() => setCurrentIndex(i)}
-                                            className={`h-2 rounded-full transition-all duration-700 ${currentIndex === i ? 'w-10 bg-primary' : 'w-2 bg-slate-200 hover:bg-slate-300'}`}
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                            {mentorData.map((mentor, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: index * 0.05 }}
+                                    className="group bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 hover:border-primary/20 transition-all duration-700 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.1)] flex flex-col h-full"
+                                >
+                                    {/* Image Section */}
+                                    <div className="relative aspect-[4/5] overflow-hidden">
+                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60 z-10" />
+                                        <img 
+                                            src={mentor.img}
+                                            alt={mentor.name}
+                                            className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"
                                         />
-                                    ))}
-                                </div>
-                            </div>
+                                        <div className="absolute bottom-6 left-6 z-20">
+                                            <h3 className="text-white font-black text-2xl uppercase tracking-tighter leading-none">
+                                                {mentor.name}
+                                            </h3>
+                                            <p className="text-primary font-black text-[10px] uppercase tracking-widest mt-1">{mentor.impact}</p>
+                                        </div>
+                                    </div>
 
+                                    {/* Content Section */}
+                                    <div className="p-8 flex flex-col flex-1">
+                                        <div className="flex flex-wrap gap-2 mb-4">
+                                            {mentor.tags.map((tag, tIdx) => (
+                                                <span key={tIdx} className="px-3 py-1 border border-slate-100 rounded-full text-[8px] font-black uppercase tracking-widest text-slate-400">
+                                                    {tag}
+                                                </span>
+                                            ))}
+                                        </div>
+                                        
+                                        <h4 className="text-lg font-black uppercase tracking-tight text-slate-900 mb-4 leading-tight">
+                                            {mentor.title}
+                                        </h4>
+                                        
+                                        <p className="text-slate-500 text-sm font-medium leading-relaxed mb-6 flex-1">
+                                            {mentor.desc}
+                                        </p>
+
+                                        <div className="pt-6 border-t border-slate-50 flex items-center justify-between">
+                                            <span className="text-[10px] font-black uppercase tracking-widest text-slate-300">Industry Leader</span>
+                                            <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-300 group-hover:bg-primary group-hover:text-white transition-all">
+                                                <ArrowUpRight size={18} />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            ))}
                         </div>
                     </div>
 

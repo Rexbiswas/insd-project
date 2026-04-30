@@ -157,9 +157,9 @@ const Navbar = () => {
 
     // Mobile Dynamic Island Animations
     const mobileWidth = useTransform(scrollProgress, transitionRange, ["100%", "360px"]);
-    const mobileHeight = useTransform(scrollProgress, transitionRange, ["64px", "48px"]);
-    const mobileTop = useTransform(scrollProgress, transitionRange, ["40px", "10px"]);
-    const mobileRadius = useTransform(scrollProgress, transitionRange, ["0px", "10px"]);
+    const mobileHeight = useTransform(scrollProgress, transitionRange, ["72px", "60px"]);
+    const mobileTop = useTransform(scrollProgress, transitionRange, ["20px", "10px"]);
+    const mobileRadius = useTransform(scrollProgress, transitionRange, ["0px", "20px"]);
     const mobileBackground = useTransform(scrollProgress, transitionRange, ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.4)"]);
     const mobileBackdrop = useTransform(scrollProgress, transitionRange, ["blur(0px) saturate(100%)", "blur(20px) saturate(180%)"]);
     const mobileShadow = useTransform(scrollProgress, transitionRange, ["none", "0 10px 25px -5px rgba(0, 0, 0, 0.1)"]);
@@ -326,11 +326,11 @@ const Navbar = () => {
                 className="hidden lg:flex fixed left-1/2 z-1000 px-6 lg:px-8 xl:px-10 py-4 items-center justify-between pointer-events-auto w-full"
             >
                 {/* Left: Logo */}
-                <Link to="/" className="nav-logo relative z-50 shrink-0 block h-14 overflow-hidden" onClick={() => setIsOpen(false)}>
+                <Link to="/" className="nav-logo relative z-50 shrink-0 block h-16 overflow-hidden" onClick={() => setIsOpen(false)}>
                     <motion.img
                         whileHover={{ scale: 1.1, rotate: 2 }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                        className={`h-14 w-auto object-contain transition-all duration-500 ${isHeaderDark && !isScrolled ? 'brightness-0 invert' : 'drop-shadow-sm'}`}
+                        className={`h-16 w-auto object-contain transition-all duration-500 ${isHeaderDark && !isScrolled ? 'brightness-0 invert' : 'drop-shadow-sm'}`}
                         src="https://insd.edu.in/wp-content/uploads/2022/02/Final-Logo.png"
                         alt="INSD Logo"
                     />
@@ -596,7 +596,7 @@ const Navbar = () => {
                 <div className="relative w-full h-full flex items-center justify-center px-4 pointer-events-auto">
                     <Link to="/" onClick={() => setIsOpen(false)} className="h-full flex items-center justify-center">
                         <img
-                            className={`h-10 w-auto object-contain transition-all duration-500 ${isHeaderDark && !isScrolled ? 'brightness-0 invert' : 'drop-shadow-sm'}`}
+                            className={`h-14 w-auto object-contain transition-all duration-500 ${isHeaderDark && !isScrolled ? 'brightness-0 invert' : 'drop-shadow-sm'}`}
                             src="https://insd.edu.in/wp-content/uploads/2022/02/Final-Logo.png"
                             alt="INSD Logo"
                         />
@@ -605,8 +605,8 @@ const Navbar = () => {
             </motion.div >
 
             {/* Mobile Bottom Navigation Bar - Pill Glass Style */}
-            <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[400px] h-20 z-50 lg:hidden">
-                <div className={`w-full h-full flex items-center justify-around px-6 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition-all duration-500 border ${isOpen || (isHeaderDark && !isScrolled) ? 'bg-slate-900/40 backdrop-blur-2xl border-white/10' : 'bg-white/40 backdrop-blur-2xl border-white/30'}`}>
+            <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-[400px] h-16 z-50 lg:hidden">
+                <div className={`w-full h-full flex items-center justify-around px-6 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition-all duration-500 border ${isOpen || (isHeaderDark && !isScrolled) ? 'bg-slate-900/40 backdrop-blur-2xl border-white/10' : 'bg-white/40 backdrop-blur-2xl border-white/30'}`}>
 
                     {/* HOME */}
                     <NavLink

@@ -124,7 +124,7 @@ const NationalAwards = () => {
                             <div className="flex gap-8 md:gap-16 justify-center md:justify-start">
                                 <div className="text-center md:text-left">
                                     <p className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-1">99%</p>
-                                    <p className="text-[8px] md:text-[9px] font-bold uppercase tracking-widest text-primary">Career Success</p>
+                                    <p className="text-[8px] md:text-[9px] font-bold uppercase tracking-widest text-primary">career success</p>
                                 </div>
                                 <div className="text-center md:text-left">
                                     <p className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-1">500+</p>

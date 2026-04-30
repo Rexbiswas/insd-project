@@ -164,7 +164,7 @@ const InsdDifference = () => {
                                     <div className="absolute bottom-10 left-10 right-10 z-20 space-y-4">
                                         <div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl">
                                             <p className="text-white text-[10px] font-black uppercase tracking-widest opacity-60">Career Success</p>
-                                            <h4 className="text-white text-xl font-black">2000+ Success Stories</h4>
+                                            <h4 className="text-white text-xl font-black">2000+ success stories</h4>
                                         </div>
                                     </div>
                                 </>

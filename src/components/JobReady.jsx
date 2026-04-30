@@ -17,7 +17,7 @@ const JobReady = () => {
                         viewport={{ once: true }}
                         className="text-primary font-bold uppercase tracking-widest text-sm mb-6 block"
                     >
-                        Success Driven Education
+                        success driven education
                     </motion.span>
                     
                     <motion.h2 
@@ -61,7 +61,7 @@ const JobReady = () => {
                         onClick={() => openAdmissionModal()}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="bg-linear-to-r from-primary to-secondary text-white px-10 py-5 rounded-full font-black uppercase tracking-widest text-sm shadow-2xl shadow-primary/20 transition-all duration-300"
+                        className="h-16 md:h-20 px-12 bg-linear-to-r from-primary to-secondary text-white rounded-full font-black uppercase tracking-widest text-sm shadow-2xl shadow-primary/20 transition-all duration-300 flex items-center justify-center"
                     >
                         Apply Now
                     </motion.button>

@@ -71,7 +71,7 @@ const PlacementAndTraining = () => {
                                         title: 'Download Placement Report', 
                                         subtitle: 'Please fill in your details to receive our latest placement audit and report.' 
                                     })}
-                                    className="px-12 py-5 bg-slate-900 text-white rounded-full font-black uppercase text-[10px] tracking-[0.2em] hover:bg-primary transition-all transform hover:scale-105 shadow-2xl shadow-slate-900/10"
+                                    className="h-16 md:h-20 px-12 bg-slate-900 text-white rounded-full font-black uppercase text-[10px] tracking-[0.2em] hover:bg-primary transition-all transform hover:scale-105 shadow-2xl shadow-slate-900/10 flex items-center justify-center"
                                 >
                                     Download Placement Report
                                 </button>
@@ -182,13 +182,20 @@ const PlacementAndTraining = () => {
                 <div className="max-w-7xl mx-auto space-y-20">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-12">
                         <div className="space-y-4 text-center md:text-left">
-                            <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">Success Spotlight</span>
+                            <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">success spotlight</span>
                             <h2 className="text-5xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none">
                                 Recent <span className="text-slate-300">Hires</span>
                             </h2>
                         </div>
-                        <button className="px-10 py-4 border border-slate-200 text-slate-900 rounded-full font-black uppercase text-xs tracking-widest hover:bg-slate-900 hover:text-white transition-all">
-                            Browse All Success Stories
+                        <button 
+                            onClick={() => openAdmissionModal({
+                                title: 'View All success stories',
+                                subtitle: 'Get inspired by the journeys of our top achievers.',
+                                ctaText: 'View Stories'
+                            })}
+                            className="h-16 md:h-20 px-10 border border-slate-200 text-slate-900 rounded-full font-black uppercase text-xs tracking-widest hover:bg-slate-900 hover:text-white transition-all flex items-center justify-center"
+                        >
+                            Browse All success stories
                         </button>
                     </div>
 
@@ -244,10 +251,24 @@ const PlacementAndTraining = () => {
                          Don't just dream about the industry. Become part of it. Join the INSD talent pool and let your professional journey take flight.
                      </p>
                      <div className="flex flex-col md:flex-row items-center justify-center gap-6 pt-8">
-                         <button className="px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-secondary transition-all transform hover:scale-105">
+                         <button 
+                            onClick={() => openAdmissionModal({
+                                title: 'Connect with Placement Head',
+                                subtitle: 'Get personalized career guidance from our industry experts.',
+                                ctaText: 'Request Meeting'
+                            })}
+                            className="h-16 md:h-20 px-12 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-secondary transition-all transform hover:scale-105 flex items-center justify-center"
+                         >
                              Connect with Placement Head
                          </button>
-                         <button className="px-12 py-5 border border-white/20 text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-900 transition-all">
+                         <button 
+                            onClick={() => openAdmissionModal({
+                                title: 'View Career Guide',
+                                subtitle: 'Download our comprehensive 2026 design career roadmap.',
+                                ctaText: 'Download Guide'
+                            })}
+                            className="h-16 md:h-20 px-12 border border-white/20 text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-900 transition-all flex items-center justify-center"
+                         >
                              View Career Guide
                          </button>
                      </div>

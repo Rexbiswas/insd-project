@@ -284,7 +284,7 @@ const Contact = () => {
                                             <button
                                                 type="submit"
                                                 disabled={isSubmitting}
-                                                className="w-full py-4 bg-slate-900 text-white rounded-xl font-bold uppercase tracking-wider shadow-lg shadow-slate-900/20 hover:shadow-slate-900/40 hover:-translate-y-1 transition-all overflow-hidden relative group"
+                                                className="w-full h-16 md:h-20 bg-slate-900 text-white rounded-full font-black uppercase tracking-[0.25em] text-sm md:text-base shadow-xl shadow-slate-900/20 hover:shadow-primary/30 hover:-translate-y-1 transition-all overflow-hidden relative group"
                                             >
                                                 <span className="relative z-10 flex items-center justify-center gap-2">
                                                     {isSubmitting ? 'Sending...' : 'Send Message'}

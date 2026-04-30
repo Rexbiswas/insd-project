@@ -15,7 +15,7 @@ const IndustryInsights = () => {
         },
         {
             value: "USD 100B",
-            label: "Creative Industry Growth",
+            label: "Creative industry growth",
             icon: <TrendingUp className="text-emerald-500" />,
             subtext: "Economic explosion in Design & Arts"
         },
@@ -28,14 +28,14 @@ const IndustryInsights = () => {
     ];
 
     return (
-        <section id="why-design" className="relative py-32 bg-white overflow-hidden group/section">
+        <section id="why-design" className="relative py-16 md:py-24 bg-white overflow-hidden group/section">
             {/* Soft Ambient Background Elements */}
             <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-primary/2 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/2"></div>
             <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-secondary/2 rounded-full blur-[150px] translate-y-1/2 -translate-x-1/2"></div>
             
             <div className="container mx-auto px-6 relative z-10">
                 {/* Header Section */}
-                <div className="max-w-4xl mb-24">
+                <div className="max-w-4xl mb-16 md:mb-20">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -64,7 +64,7 @@ const IndustryInsights = () => {
                         className="space-y-6"
                     >
                         <h3 className="text-2xl md:text-4xl font-black text-slate-800 tracking-tight leading-tight">
-                            The Future of Design Is Not Coming. <span className="text-primary">It’s Here.</span>
+                            The future of design is not coming. <span className="text-primary">It’s here.</span>
                         </h3>
                         <p className="text-xl text-slate-400 font-medium max-w-2xl leading-relaxed border-l-4 border-slate-100 pl-8">
                             India’s creative economy is exploding — from fashion & interiors to digital & content. 
@@ -74,7 +74,7 @@ const IndustryInsights = () => {
                 </div>
 
                 {/* Impact Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20 max-w-6xl mx-auto">
                     {stats.map((stat, idx) => (
                         <motion.div
                             key={idx}
@@ -84,7 +84,7 @@ const IndustryInsights = () => {
                             transition={{ delay: idx * 0.1 }}
                             className="group/card relative h-full"
                         >
-                            <div className="relative h-full bg-slate-50 border border-slate-100 p-10 rounded-[3rem] transition-all duration-700 hover:bg-white hover:shadow-[0_40px_100px_-30px_rgba(0,0,0,0.1)] hover:border-primary/20 overflow-hidden">
+                            <div className="relative h-full bg-slate-50 border border-slate-100 p-8 rounded-[2.5rem] transition-all duration-700 hover:bg-white hover:shadow-[0_40px_100px_-30px_rgba(0,0,0,0.1)] hover:border-primary/20 overflow-hidden">
                                 {/* Design Accent */}
                                 <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl group-hover/card:bg-primary/10 transition-colors"></div>
                                 
@@ -93,7 +93,7 @@ const IndustryInsights = () => {
                                         {stat.icon}
                                     </div>
                                     
-                                    <h4 className="text-5xl md:text-6xl font-black text-slate-950 tracking-tighter mb-4 leading-none group-hover/card:text-primary transition-colors">
+                                    <h4 className="text-4xl md:text-5xl font-black text-slate-950 tracking-tighter mb-4 leading-none group-hover:card:text-primary transition-colors">
                                         {stat.value}
                                     </h4>
                                     

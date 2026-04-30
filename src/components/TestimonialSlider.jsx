@@ -213,7 +213,7 @@ const TestimonialSlider = () => {
                             whileInView={{ opacity: 1, x: 0 }}
                             className="text-primary font-black uppercase tracking-[0.4em] text-xs mb-6 inline-block"
                         >
-                            Success Stories
+                            success stories
                         </motion.span>
                         <motion.h2 
                             initial={{ opacity: 0, y: 30 }}

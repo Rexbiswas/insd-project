@@ -261,7 +261,7 @@ const AdmissionStepForm = () => {
                             </div>
 
                             <div className="pt-8">
-                                <button type="submit" className="w-full h-16 bg-primary text-white rounded-xl font-black uppercase tracking-[0.2em] text-sm hover:bg-[#a61517] hover:shadow-xl transition-all flex items-center justify-center gap-3 active:scale-[0.98]">
+                                <button type="submit" className="w-full h-16 md:h-20 bg-primary text-white rounded-full font-black uppercase tracking-[0.25em] text-sm md:text-base hover:bg-slate-950 hover:shadow-2xl transition-all duration-500 flex items-center justify-center gap-3 active:scale-[0.95]">
                                     Continue <ArrowRight className="w-5 h-5" />
                                 </button>
                             </div>
@@ -329,7 +329,7 @@ const AdmissionStepForm = () => {
                             <button
                                 onClick={handleSubmit}
                                 disabled={!formData.qualification || loading}
-                                className="w-full h-16 bg-slate-900 text-white rounded-xl font-black uppercase tracking-[0.2em] text-sm hover:bg-black hover:shadow-2xl transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98]"
+                                className="w-full h-16 md:h-20 bg-slate-900 text-white rounded-full font-black uppercase tracking-[0.25em] text-sm md:text-base hover:bg-primary hover:shadow-2xl transition-all duration-500 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.95]"
                             >
                                 {loading ? (
                                     <span className="flex items-center gap-2">

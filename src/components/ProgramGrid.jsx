@@ -12,7 +12,7 @@ const programs = [
         headline: "Create Trends. Build Your Label.",
         subtitle: "From styling to runway — step into the world of fashion.",
         careerPath: {
-            title: "Not just Fashion be a part of a larger Industry",
+            title: "Fashion Design",
             stats: {
                 industrySize: "₹45 Lakh Crore Industry",
                 demand: "15 Lakh designers till 2030"
@@ -34,7 +34,7 @@ const programs = [
         headline: "Design Spaces That Inspire.",
         subtitle: "Turn ideas into real-world environments people live in.",
         careerPath: {
-            title: "Not just Interior Design be a part of a larger Industry",
+            title: "Interior Design",
             stats: {
                 industrySize: "₹2.88 Lakh Crore Industry",
                 demand: "26 Lakh designers till 2030"
@@ -59,7 +59,7 @@ const programs = [
         headline: "Design Brands That Stand Out.",
         subtitle: "Create visuals, identities & campaigns that people remember.",
         careerPath: {
-            title: "Not just Graphic Design be a part of a larger Industry",
+            title: "Graphic Design",
             stats: {
                 industrySize: "₹1.2 Lakh Crore Digital Economy",
                 demand: "18 Lakh designers till 2030"
@@ -84,7 +84,7 @@ const programs = [
         headline: "Design the Digital World.",
         subtitle: "Build apps, websites & experiences used by millions",
         careerPath: {
-            title: "Not just UI/UX Design be a part of a larger Industry",
+            title: "UI/UX Design",
             stats: {
                 industrySize: "₹3.5 – ₹5 Lakh Crore Digital Economy",
                 demand: "20 Lakh designers till 2030"
@@ -109,7 +109,7 @@ const programs = [
         headline: "Bring Stories to Life.",
         subtitle: "Work in films, gaming & digital entertainment.",
         careerPath: {
-            title: "Not just Animation be a part of a larger Industry",
+            title: "Animation & VFX",
             stats: {
                 industrySize: "$2.2 Billion creating 2 Million Jobs",
                 demand: "20 Lakh designers till 2030"
@@ -134,7 +134,7 @@ const programs = [
         headline: "Create Content That Connects.",
         subtitle: "From shoots to social media — become a visual storyteller.",
         careerPath: {
-            title: "Not just Photography be a part of a larger Industry",
+            title: "Photography",
             stats: {
                 industrySize: "₹679 Billion Industry",
                 demand: "8 Lakh photographers till 2030"
@@ -159,7 +159,7 @@ const programs = [
         headline: "Build a Career in Beauty & Glam.",
         subtitle: "Work in fashion, media, salons & personal branding.",
         careerPath: {
-            title: "Not just Beauty & Makeup be a part of a larger Industry",
+            title: "Hair, Beauty & Makeup",
             stats: {
                 industrySize: "₹410 Billion Industry (Projected ₹519B by 2031)",
                 demand: "11-15 Lakh artists till 2030"
@@ -184,7 +184,7 @@ const programs = [
         headline: "Create Fabrics. Define Trends.",
         subtitle: "Blend creativity with craftsmanship and innovation.",
         careerPath: {
-            title: "Not just Textile Design be a part of a larger Industry",
+            title: "Textile Design",
             stats: {
                 industrySize: "₹12 – ₹15 Lakh Crore Industry",
                 demand: "5 Lakh designers till 2030"
@@ -209,7 +209,7 @@ const programs = [
         headline: "Design Precious Legacies.",
         subtitle: "From gemstone styling to luxury manufacturing — become a master crafter.",
         careerPath: {
-            title: "Not just Jewellery Design be a part of a larger Industry",
+            title: "Jewellery Design",
             stats: {
                 industrySize: "₹9.5 Lakh Crore Market",
                 demand: "5 Lakh professionals till 2030"
@@ -233,14 +233,9 @@ const ProgramGrid = () => {
     const [selectedProgram, setSelectedProgram] = useState(null);
     const [showLeadForm, setShowLeadForm] = useState(false);
 
-    const highlightIndustry = (text) => {
+    const highlightTitle = (text) => {
         if (!text) return text;
-        const parts = text.split(/(Industry)/i);
-        return parts.map((part, i) => 
-            part.toLowerCase() === 'industry' 
-                ? <span key={i} className="text-primary ml-1 font-serif italic">{part}</span> 
-                : part
-        );
+        return <span className="text-primary font-serif italic">{text}</span>;
     };
 
     useEffect(() => {
@@ -284,7 +279,7 @@ const ProgramGrid = () => {
                 
                 <div className="overflow-hidden h-0 group-hover:h-auto transition-all duration-700">
                     {program.headline && (
-                        <p className="text-white font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100 italic drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                        <p className="text-white font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                             {program.headline}
                         </p>
                     )}
@@ -417,7 +412,7 @@ const ProgramGrid = () => {
                                                     {/* Header Text */}
                                                     <div className="max-w-xl">
                                                         <h3 className="text-clamp-lg font-black text-slate-900 leading-tight mb-3 tracking-tighter uppercase italic flex flex-wrap items-center">
-                                                            {highlightIndustry(selectedProgram.careerPath.title)}
+                                                            {highlightTitle(selectedProgram.careerPath.title)}
                                                         </h3>
                                                         
                                                         {selectedProgram.careerPath.salaries && (
@@ -437,8 +432,8 @@ const ProgramGrid = () => {
                                                             </div>
                                                         )}
 
-                                                        <p className="text-slate-500 font-medium text-sm md:text-base italic border-l-4 border-slate-200 pl-4 mb-6">
-                                                            "{selectedProgram.subtitle}"
+                                                        <p className="text-slate-500 font-medium text-sm md:text-base border-l-4 border-slate-200 pl-4 mb-6">
+                                                            {selectedProgram.subtitle}
                                                         </p>
 
                                                         {/* Largest Sectors Section */}

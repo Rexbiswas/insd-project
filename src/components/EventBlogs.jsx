@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 const blogs = [
     {
         id: 1,
-        title: "How to setup Luxury brands in India",
+        title: "How to setup luxury brands in India",
         category: "Strategy",
         image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800",
         link: "#",
@@ -17,7 +17,7 @@ const blogs = [
     },
     {
         id: 2,
-        title: "Indian Fashion Industry Trends",
+        title: "Indian fashion industry trends",
         category: "Fashion",
         image: "https://images.pexels.com/photos/1488463/pexels-photo-1488463.jpeg?auto=compress&cs=tinysrgb&w=800",
         link: "#",
@@ -25,7 +25,7 @@ const blogs = [
     },
     {
         id: 3,
-        title: "Luxury Leather and Accessories",
+        title: "Luxury leather and accessories",
         category: "Design",
         image: "https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=800",
         link: "#",
@@ -33,7 +33,7 @@ const blogs = [
     },
     {
         id: 4,
-        title: "Building Design Careers at INSD",
+        title: "Building design careers at INSD",
         category: "Campus",
         image: "https://ik.imagekit.io/fmldynl4j4/IMG_3440.JPG",
         link: "/insd-360/blog",
@@ -104,8 +104,8 @@ const EventBlogs = () => {
                         <div className="absolute inset-0 z-20 flex flex-col justify-end p-8 bg-linear-to-t from-slate-950 via-slate-950/60 to-transparent opacity-90 group-hover:opacity-100 transition-all duration-500">
 
                             <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                                <div className="mb-4 overflow-hidden">
-                                    <span className="inline-block text-xs font-mono text-primary transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-100">
+                                <div className="mb-4">
+                                    <span className="inline-block text-[10px] font-black uppercase tracking-[0.2em] text-primary">
                                         {blog.date}
                                     </span>
                                 </div>

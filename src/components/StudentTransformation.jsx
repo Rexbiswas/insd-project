@@ -213,7 +213,7 @@ const StudentTransformation = () => {
                     transition={{ duration: 0.8, delay: 0.4 }}
                     className="mt-20 text-center"
                 >
-                    <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-8">Success Record</p>
+                    <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-8">success record</p>
                     
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12 mb-20 bg-white/50 backdrop-blur-sm p-10 md:p-16 rounded-[4rem] border border-white/50 shadow-sm">
                         {[
@@ -227,7 +227,7 @@ const StudentTransformation = () => {
                     </div>
 
                     <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-8">Ready to write your own story?</p>
-                    <button className="px-12 py-5 bg-slate-900 text-white rounded-full font-black uppercase tracking-widest hover:bg-primary transition-all duration-500 shadow-xl">
+                    <button className="h-16 md:h-20 px-12 bg-slate-900 text-white rounded-full font-black uppercase tracking-widest hover:bg-primary transition-all duration-500 shadow-xl flex items-center justify-center mx-auto">
                         Start Your Evolution
                     </button>
                 </motion.div>

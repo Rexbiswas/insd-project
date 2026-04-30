@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight, BookOpen, GraduationCap, Briefcase, Globe } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useAdmissionModal } from '../context/AdmissionModalContext';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 
@@ -106,6 +107,7 @@ const StickyCards = () => {
 
 const Postgraduate = () => {
     const navigate = useNavigate();
+    const { openAdmissionModal } = useAdmissionModal();
     const heroRef = useRef(null);
     const { scrollYProgress: heroScroll } = useScroll({
         target: heroRef,
@@ -179,7 +181,7 @@ const Postgraduate = () => {
                     <div className="py-6 md:py-0 md:px-12 flex-1 flex flex-col items-center text-center">
                         <GraduationCap className="w-8 h-8 text-black/20 mb-4" />
                         <h4 className="text-4xl font-black text-[#111] tracking-tighter">100%</h4>
-                        <p className="text-xs uppercase tracking-widest text-[#111]/50 font-bold mt-2">Placement Focus</p>
+                        <p className="text-[10px] uppercase tracking-widest text-[#111]/50 font-black mt-2">placement focus</p>
                     </div>
                     <div className="py-6 md:py-0 md:px-12 flex-1 flex flex-col items-center text-center">
                         <Globe className="w-8 h-8 text-black/20 mb-4" />
@@ -232,8 +234,12 @@ const Postgraduate = () => {
                     <motion.button 
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={() => navigate('/apply')}
-                        className="mt-16 bg-white text-black px-12 py-5 rounded-full font-bold uppercase tracking-widest text-sm hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all flex items-center gap-4 mx-auto"
+                        onClick={() => openAdmissionModal({
+                            title: 'Postgraduate Admission',
+                            subtitle: 'Begin your journey into specialized creative leadership.',
+                            ctaText: 'Apply Now'
+                        })}
+                        className="mt-16 h-16 md:h-20 bg-white text-black px-12 rounded-full font-bold uppercase tracking-widest text-sm hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all flex items-center justify-center gap-4 mx-auto"
                     >
                         Begin Application <ArrowUpRight size={18} />
                     </motion.button>
