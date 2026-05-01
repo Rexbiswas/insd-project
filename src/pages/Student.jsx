@@ -48,7 +48,7 @@ const Student = () => {
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="https://ik.imagekit.io/fmldynl4j4/Students/ARI02311%20(2).JPG?updatedAt=1774928425723"
+                        src="https://ik.imagekit.io/fmldynl4j4/drive-download-20260430T134248Z-3-001/0.jpg"
                         alt="Student Life at INSD"
                         className="w-full h-full object-cover brightness-50"
                     />
