@@ -411,8 +411,10 @@ const ProgramGrid = () => {
                                                 >
                                                     {/* Header Text */}
                                                     <div className="max-w-xl">
-                                                        <h3 className="text-clamp-lg font-black text-slate-900 leading-tight mb-3 tracking-tighter uppercase italic flex flex-wrap items-center">
+                                                        <h3 className="text-clamp-xl font-black text-slate-900 leading-[1.1] mb-6 tracking-tighter italic flex flex-wrap items-center uppercase">
+                                                            <span className="text-slate-400 not-italic font-medium opacity-60 mr-3">not just</span>
                                                             {highlightTitle(selectedProgram.careerPath.title)}
+                                                            <span className="text-slate-400 not-italic font-medium opacity-60 ml-3">be part of a larger industry</span>
                                                         </h3>
                                                         
                                                         {selectedProgram.careerPath.salaries && (
