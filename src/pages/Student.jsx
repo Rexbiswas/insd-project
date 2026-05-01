@@ -518,12 +518,12 @@ const Student = () => {
                         {/* Top Image Row - Dynamic Grid */}
                         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 w-full mb-20">
                             {[
-                                "https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg",
-                                "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg",
-                                "https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg",
-                                "https://images.pexels.com/photos/3182763/pexels-photo-3182763.jpeg",
-                                "https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg",
-                                "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg"
+                                "https://ik.imagekit.io/fmldynl4j4/drive-download-20260430T134248Z-3-001/drive-download-20260501T070719Z-3-001/Scanned_20260220-1418.jpg",
+                                "https://ik.imagekit.io/fmldynl4j4/drive-download-20260430T134248Z-3-001/drive-download-20260501T070719Z-3-001/Scanned_20260220-1420.jpg",
+                                "https://ik.imagekit.io/fmldynl4j4/drive-download-20260430T134248Z-3-001/drive-download-20260501T070719Z-3-001/Scanned_20260220-1422-01.jpg",
+                                "https://ik.imagekit.io/fmldynl4j4/drive-download-20260430T134248Z-3-001/drive-download-20260501T070719Z-3-001/Scanned_20260220-1422-02.jpg",
+                                "https://ik.imagekit.io/fmldynl4j4/drive-download-20260430T134248Z-3-001/drive-download-20260501T070719Z-3-001/Scanned_20260220-1422-03.jpg",
+                                "https://ik.imagekit.io/fmldynl4j4/drive-download-20260430T134248Z-3-001/drive-download-20260501T070719Z-3-001/Scanned_20260220-1422-04.jpg"
                             ].map((img, i) => (
                                 <motion.div
                                     key={i}
@@ -546,9 +546,10 @@ const Student = () => {
                                 viewport={{ once: true }}
                                 className="space-y-4"
                             >
-                                <h2 className="text-clamp-5xl font-black uppercase tracking-tighter leading-none text-transparent bg-clip-text bg-linear-to-br from-[#db3436] to-[#134a84]">
+                                <h2 className="text-clamp-6xl font-black uppercase tracking-tighter leading-[0.8] text-transparent bg-clip-text bg-linear-to-br from-[#db3436] to-[#134a84]">
                                     100% Lifetime <br />
-                                    Placement Support
+                                    Placement <br />
+                                    Support
                                 </h2>
                             </motion.div>
 
@@ -559,15 +560,15 @@ const Student = () => {
                                 transition={{ delay: 0.2 }}
                                 className="space-y-6"
                             >
-                                <div className="inline-block px-10 py-6 bg-primary/10 rounded-full border-2 border-primary/20 backdrop-blur-md">
-                                    <p className="text-primary font-black uppercase tracking-widest text-clamp-xl">
-                                        Average Salary: <span className="text-slate-900">Rs. 20,000 - Rs. 1,50,000</span> per month
+                                <div className="inline-block px-10 py-4 bg-[#fdf2f2] rounded-full border border-[#fbdada] backdrop-blur-md">
+                                    <p className="text-[#db3436] font-black uppercase tracking-widest text-[10px] md:text-xs">
+                                        Average Salary: <span className="text-[#db3436]">Rs. 20,000 - Rs. 1,50,000</span> Per Month
                                     </p>
                                 </div>
 
-                                <div className="pt-4">
-                                    <h3 className="text-clamp-2xl font-black uppercase tracking-tight text-slate-900">
-                                        Highest Package 2025: <span className="text-primary">Rs. 1,50,000</span> per month
+                                <div className="pt-2">
+                                    <h3 className="text-clamp-lg font-black uppercase tracking-tight text-slate-900">
+                                        Highest Package 2025: <span className="text-[#db3436]">Rs. 1,50,000</span> Per Month
                                     </h3>
                                 </div>
                             </motion.div>
@@ -576,11 +577,11 @@ const Student = () => {
                         {/* Bottom Image Row - Staggered */}
                         <div className="grid grid-cols-2 md:grid-cols-5 gap-6 w-full mt-24">
                             {[
-                                "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg",
-                                "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg",
-                                "https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg",
-                                "https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg",
-                                "https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg"
+                                "https://ik.imagekit.io/fmldynl4j4/drive-download-20260430T134248Z-3-001/drive-download-20260501T070719Z-3-001/Scanned_20260220-1422-05.jpg",
+                                "https://ik.imagekit.io/fmldynl4j4/drive-download-20260430T134248Z-3-001/drive-download-20260501T070719Z-3-001/Scanned_20260220-1422-07.jpg",
+                                "https://ik.imagekit.io/fmldynl4j4/drive-download-20260430T134248Z-3-001/drive-download-20260501T070719Z-3-001/Scanned_20260220-1422-08.jpg",
+                                "https://ik.imagekit.io/fmldynl4j4/drive-download-20260430T134248Z-3-001/drive-download-20260501T070719Z-3-001/Scanned_20260220-1422-09.jpg",
+                                "https://ik.imagekit.io/fmldynl4j4/drive-download-20260430T134248Z-3-001/drive-download-20260501T070719Z-3-001/Scanned_20260220-1418.jpg"
                             ].map((img, i) => (
                                 <motion.div
                                     key={i}
