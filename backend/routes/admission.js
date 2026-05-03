@@ -42,22 +42,20 @@ router.post('/', async (req, res) => {
             qualification
         });
 
+        // --- TRIPLE REDUNDANCY SAVING ---
         let savedLead = null;
-        const isDbConnected = mongoose.connection.readyState === 1;
-
-        if (!isDbConnected) {
-            console.warn(`[DB Status] Database not connected. Proceeding in Mock Mode for: ${name}`);
-            savedLead = newLead; // Mock successful save for internal logical flow
-        } else {
-            try {
-                savedLead = await newLead.save();
-                console.log(`[DB] New lead saved: ${name}`);
-            } catch (dbErr) {
-                console.error(`[DB Error] Failed to save lead: ${dbErr.message}`);
-                // Proceed anyway as fall-through mock for dev
-                savedLead = newLead;
-            }
+        
+        try {
+            // 1. Attempt Database Save
+            savedLead = await newLead.save();
+            console.log(`✅ [DB Success] Lead saved to MongoDB: ${name}`);
+        } catch (dbErr) {
+            console.warn(`⚠️ [DB Offline] Could not save to MongoDB yet. Data is buffered.`);
+            savedLead = newLead; 
         }
+
+        // 2. Always Backup to JSON (Fail-Safe)
+        import('../utils/offlineLogger.js').then(m => m.backupOfflineData('admissions', req.body));
 
         
         // Fire off notifications async

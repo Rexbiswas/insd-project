@@ -17,7 +17,16 @@ router.post('/submit', async (req, res) => {
             readyToStart
         });
 
-        await newLead.save();
+        // --- TRIPLE REDUNDANCY SAVING ---
+        try {
+            await newLead.save();
+            console.log(`✅ [DB Success] Lead saved to MongoDB: ${fullName}`);
+        } catch (dbErr) {
+            console.warn(`⚠️ [DB Offline] Could not save lead to MongoDB yet. Data is buffered.`);
+        }
+
+        // Backup data locally (Fail-Safe)
+        import('../utils/offlineLogger.js').then(m => m.backupOfflineData('leads', req.body));
 
         // Fire off notifications async
         Promise.allSettled([

@@ -22,7 +22,18 @@ router.post('/', async (req, res) => {
             marketingConsent
         });
 
-        const savedLead = await newLead.save();
+        // --- TRIPLE REDUNDANCY SAVING ---
+        let savedLead = null;
+        try {
+            savedLead = await newLead.save();
+            console.log(`✅ [DB Success] Multi-step lead saved to MongoDB: ${name}`);
+        } catch (dbErr) {
+            console.warn(`⚠️ [DB Offline] Could not save multi-step lead yet. Data is buffered.`);
+            savedLead = newLead;
+        }
+
+        // Always Backup data locally to JSON (Fail-Safe)
+        import('../utils/offlineLogger.js').then(m => m.backupOfflineData('step-leads', req.body));
 
         // Send notifications
         Promise.allSettled([

@@ -48,8 +48,8 @@ export const sendSMS = async (phone, name) => {
     try {
         const isDLT = !!process.env.FAST2SMS_TEMPLATE_ID;
         const payload = {
-            route: isDLT ? "dlt" : "v3", // 'v3' is preferred over 'q' for bulkV2 recently
-            message: isDLT ? process.env.FAST2SMS_TEMPLATE_ID : `Hello ${name}, thank you for your inquiry at INSD. Our team will contact you soon. Stay creative!`,
+            route: isDLT ? "dlt" : "q", // 'q' (Quick) route is better for testing without DLT
+            message: isDLT ? process.env.FAST2SMS_TEMPLATE_ID : `Hello ${name}, thank you for your inquiry at INSD. Our team will contact you soon.`,
             language: "english",
             flash: 0,
             numbers: phoneNo,

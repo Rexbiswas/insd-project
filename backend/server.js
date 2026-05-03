@@ -62,16 +62,54 @@ process.on('uncaughtException', (err) => {
     if (process.env.NODE_ENV === 'production') process.exit(1);
 });
 
-// Database Connection
-mongoose.connect(process.env.MONGO_URI, {
-    serverSelectionTimeoutMS: 5000, // Timeout after 5 seconds instead of 30
-    socketTimeoutMS: 45000,
-}).then(() => {
-    console.log('MongoDB Connected successfully');
-}).catch(err => {
-    console.warn('\n MongoDB Connection Warning:', err.message);
-    console.warn('The server will continue running, but database operations will fail until whitelisted.\n');
-});
+// Import Models for Sync
+import Lead from './models/Lead.js';
+import AdmissionLead from './models/AdmissionLead.js';
+import StepLead from './models/StepLead.js';
+import { syncBackups } from './utils/offlineLogger.js';
+
+// Database Connection Logic with Persistent Retries and Auto-Sync
+const connectDB = async () => {
+    const cloudURI = process.env.MONGO_URI;
+    const localURI = process.env.MONGO_URI_LOCAL || 'mongodb://127.0.0.1:27017/insd';
+
+    const options = {
+        serverSelectionTimeoutMS: 5000,
+        socketTimeoutMS: 45000,
+    };
+
+    const runSync = () => {
+        const models = {
+            'leads': Lead,
+            'admissions': AdmissionLead,
+            'step-leads': StepLead
+        };
+        syncBackups(models);
+    };
+
+    try {
+        console.log('📡 Attempting to connect to Cloud Database...');
+        await mongoose.connect(cloudURI, options);
+        console.log('✅ MongoDB Cloud Connected successfully');
+        runSync();
+    } catch (cloudErr) {
+        console.warn('⚠️ Cloud Database Connection Failed. Attempting Local Fallback...');
+        
+        try {
+            await mongoose.connect(localURI, options);
+            console.log('✅ Local MongoDB Connected successfully (Offline Mode)');
+            runSync();
+        } catch (localErr) {
+            console.error('🛑 No database connection established. Entering "Buffer Mode".');
+            console.log('ℹ️  Data will be saved to local JSON files and synced when a connection is found.');
+            
+            // Retry connection every 30 seconds
+            setTimeout(connectDB, 30000);
+        }
+    }
+};
+
+connectDB();
 
 
 // Routes
