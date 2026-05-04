@@ -396,8 +396,9 @@ const Home = () => {
             </div>
 
 
-            <NetworkCounter />
+            {/* <NetworkCounter /> */}
             <InsdDifference />
+            <CelebritySlider />
             <SuccessStory />
             <InstagramGallery />
 
@@ -447,7 +448,6 @@ const Home = () => {
             <NationalAwards />
             <AiFutureDesign />
             <TestimonialSlider />
-            <CelebritySlider />
 
 
             {/* Student Spotlight Section - High Fashion Editorial Style */}
