@@ -321,11 +321,11 @@ const Home = () => {
                         <div className="space-y-4">
 
                             <h1 className="text-clamp-3xl font-black text-slate-900 tracking-tighter leading-[0.95]">
-                                From Classroom <br />
-                                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-slate-400 italic text-[0.9em]">to Career.</span>
+                                20 Lakh Professionals <br />
+                                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-slate-400 italic text-[0.9em]">Needed by 2030.</span>
                             </h1>
                             <p className="text-clamp-lg font-bold text-slate-600 tracking-tight max-w-xl">
-                                Skill-based education launching high-impact careers in Fashion, Interior & Graphic design.
+                                Start a high-impact career in Fashion, Interior,Graphic Design ui/ux animation, jewellery, textile photography or make-up with INSD 
                             </p>
                         </div>
 
@@ -342,7 +342,7 @@ const Home = () => {
                                 })}
                                 className="w-full sm:w-auto h-16 md:h-20 px-10 bg-primary text-white rounded-full font-black uppercase tracking-widest text-[11px] shadow-xl flex items-center justify-center gap-3 transition-all hover:bg-slate-950"
                             >
-                                Talk to a Counsellor
+                                Talk to a Expert
                                 <ArrowRight size={18} />
                             </motion.button>
                             <motion.a
@@ -360,10 +360,7 @@ const Home = () => {
                                     <div className="absolute top-0 -left-full w-full h-full bg-linear-to-r from-transparent via-white/20 to-transparent skew-x-[-20deg] group-hover:animate-shimmer" />
                                 </div>
                                 
-                                <div className="relative z-10 flex items-center gap-2 group-hover:text-white transition-colors duration-300">
-                                    <FileDown size={14} className="group-hover:scale-110 transition-transform duration-300" />
-                                    <span>Prospectus</span>
-                                </div>
+                                
                             </motion.a>
 
                         </div>
