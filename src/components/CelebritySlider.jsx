@@ -61,7 +61,7 @@ const CelebritySlider = () => {
 
     return (
         <section 
-            className="py-24 bg-white overflow-hidden relative"
+            className="py-12 md:py-20 bg-white overflow-hidden relative"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
         >
@@ -73,10 +73,10 @@ const CelebritySlider = () => {
                     className="space-y-4"
                 >
                     <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">Elite Ecosystem</span>
-                    <h2 className="text-5xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none">
+                    <h2 className="text-3xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter leading-none">
                         CELEBRITIES <br /> <span className="text-slate-300">OF INSD</span>
                     </h2>
-                    <p className="text-slate-500 font-bold max-w-2xl mx-auto uppercase text-xs tracking-widest mt-6">
+                    <p className="text-slate-500 font-bold max-w-2xl mx-auto uppercase text-[10px] tracking-widest mt-4">
                         Experience the star power of INSD where global icons meet the next generation of designers.
                     </p>
                 </motion.div>
@@ -88,7 +88,7 @@ const CelebritySlider = () => {
                         <motion.div 
                             className="flex gap-4 md:gap-12"
                             animate={{
-                                x: `calc(-${activeIndex * (window.innerWidth < 768 ? (window.innerWidth - 32) : 550)}px - ${activeIndex * (window.innerWidth < 768 ? 16 : 48)}px)`,
+                                x: `calc(-${activeIndex * (window.innerWidth < 768 ? (window.innerWidth - 32) : 350)}px - ${activeIndex * (window.innerWidth < 768 ? 16 : 48)}px)`,
                             }}
                             transition={{
                                 type: "spring",
@@ -102,9 +102,9 @@ const CelebritySlider = () => {
                             {celebrities.map((celeb, index) => (
                                 <div 
                                     key={index} 
-                                    className="w-[calc(100vw-32px)] md:w-[550px] shrink-0 group"
+                                    className="w-[calc(100vw-32px)] md:w-[350px] shrink-0 group"
                                 >
-                                    <div className="relative aspect-3/4 overflow-hidden rounded-[2.5rem] md:rounded-[3.5rem] bg-slate-100 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] transition-all duration-700">
+                                    <div className="relative aspect-square overflow-hidden rounded-[2.5rem] md:rounded-[3rem] bg-slate-100 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.2)] transition-all duration-700">
                                         <img 
                                             src={celeb.img} 
                                             alt={celeb.name}
@@ -112,23 +112,23 @@ const CelebritySlider = () => {
                                         />
                                         
                                         {/* Bottom Content Overlay - More prominent */}
-                                        <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-8 md:p-16">
+                                        <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/10 to-transparent flex flex-col justify-end p-8 md:p-10">
                                             <motion.div 
-                                                className="space-y-4 md:space-y-6"
+                                                className="space-y-3 md:space-y-4"
                                                 animate={{
                                                     y: activeIndex === index ? 0 : 20,
                                                     opacity: activeIndex === index ? 1 : 0.6
                                                 }}
                                             >
-                                                <div className="space-y-2">
-                                                    <span className="text-primary text-xs md:text-sm font-black uppercase tracking-[0.3em]">
+                                                <div className="space-y-1">
+                                                    <span className="text-primary text-[10px] md:text-xs font-black uppercase tracking-[0.3em]">
                                                         {celeb.role}
                                                     </span>
-                                                    <h3 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter leading-none">
+                                                    <h3 className="text-xl md:text-3xl font-black text-white uppercase tracking-tighter leading-none">
                                                         {celeb.name}
                                                     </h3>
                                                 </div>
-                                                <p className="text-white/70 text-sm md:text-base font-medium leading-relaxed max-w-2xl">
+                                                <p className="text-white/70 text-[10px] md:text-xs font-medium leading-relaxed max-w-2xl">
                                                     {celeb.desc}
                                                 </p>
                                             </motion.div>
@@ -182,7 +182,7 @@ const CelebritySlider = () => {
             </div>
 
             {/* Bottom Label Marquee - Keep for visual flair but reduce vertical space */}
-            <div className="mt-16 border-y border-slate-100 py-4 overflow-hidden">
+            <div className="mt-12 border-y border-slate-100 py-4 overflow-hidden">
                 <motion.div 
                     className="flex whitespace-nowrap gap-12"
                     animate={{

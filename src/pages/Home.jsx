@@ -450,10 +450,9 @@ const Home = () => {
 
 
             {/* Student Spotlight Section - High Fashion Editorial Style */}
-            <div ref={studentRef} className="relative section-py container-px overflow-hidden transition-colors duration-700">
+            {/* <div ref={studentRef} className="relative section-py container-px overflow-hidden transition-colors duration-700">
                 <div className="max-w-360 mx-auto">
 
-                    {/* Header */}
                     <div className="mb-16 md:mb-24 border-b border-current pb-8 md:pb-12 overflow-hidden">
                         <span className="block text-[10px] md:text-sm font-mono tracking-widest uppercase mb-4 opacity-60">Spotlight</span>
                         <h2 className="text-[12vw] md:text-[6vw] font-black uppercase tracking-tighter leading-none flex flex-col">
@@ -462,10 +461,8 @@ const Home = () => {
                         </h2>
                     </div>
 
-                    {/* Editorial Layout */}
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
-                        {/* Large Image */}
                         <div className="lg:col-span-7 relative">
                             <div className="overflow-hidden rounded-sm aspect-3/4">
                                 <img
@@ -475,13 +472,12 @@ const Home = () => {
                                     className="spotlight-img-main w-full h-full object-cover transition-all duration-700 ease-out hover:scale-105"
                                 />
                             </div>
-                            {/* Graphic Elements */}
+                            
                             <div className="absolute -bottom-12 -right-12 text-[12rem] leading-none font-black text-transparent stroke-text opacity-20 select-none pointer-events-none">
                                 2026
                             </div>
                         </div>
 
-                        {/* Content & Smaller Image */}
                         <div className="lg:col-span-5 flex flex-col justify-between h-full pl-0 lg:pl-8">
                             <div className="mb-12">
                                 <p className="text-clamp-xl font-light leading-relaxed mb-8 opacity-80 flex flex-wrap gap-x-2 quote-container">
@@ -505,7 +501,7 @@ const Home = () => {
 
                     </div>
                 </div>
-            </div>
+            </div> */}
 
 
 
