@@ -310,28 +310,27 @@ const Home = () => {
             <div ref={heroRef} className="relative z-10 min-h-screen w-full flex flex-col lg:flex-row bg-white overflow-hidden pt-12 lg:pt-0 cursor-default">
 
                 {/* Left Side: Content & Headlines */}
-                <div className="w-full lg:w-[55%] flex flex-col justify-center items-center text-center px-6 md:px-16 lg:px-24 py-8 md:py-16 space-y-6 md:space-y-8 relative z-20">
+                <div className="w-full lg:w-[55%] flex flex-col justify-center px-6 md:px-16 lg:px-24 py-8 md:py-16 space-y-6 md:space-y-8 relative z-20">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0, x: -30 }}
+                        animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="space-y-5 lg:mt-12 flex flex-col items-center"
+                        className="space-y-5 lg:mt-12"
                     >
 
-                        <div className="space-y-4 flex flex-col items-center">
+                        <div className="space-y-4">
 
-                            <h1 className="text-clamp-3xl font-black text-slate-900 tracking-tighter leading-[0.95] text-center">
+                            <h1 className="text-clamp-3xl font-black text-slate-900 tracking-tighter leading-[0.95]">
                                 20 Lakh Professionals <br />
                                 <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-slate-400 italic text-[0.9em]">Needed by 2030.</span>
                             </h1>
-                            <p className="text-clamp-lg font-bold text-slate-600 tracking-tight max-w-xl mx-auto text-justify">
-                                Start a high-impact career in Fashion, Interior, Graphic Design UI/UX, Animation, Jewellery, Textile, Photography or Make-up with INSD 
+                            <p className="text-clamp-lg font-bold text-slate-600 tracking-tight max-w-xl">
+                                Start a high-impact career in Fashion, Interior, Graphic Design UI/UX, Animation & VFX, Jewellery, Textile, Photography or Make-up with INSD 
                             </p>
                         </div>
 
-                        {/* CTA Buttons */}
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-
+                        {/* CTA Buttons - Centered */}
+                        <div className="w-full flex justify-center pt-6">
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
@@ -345,8 +344,6 @@ const Home = () => {
                                 Talk to a Expert
                                 <ArrowRight size={18} />
                             </motion.button>
-
-
                         </div>
 
                         {/* Transformation Vision - Pills removed */}
@@ -365,6 +362,7 @@ const Home = () => {
 
             </div>
 
+            <IndustryInsights />
             <div className="w-full bg-white py-12 container-px">
                 <div className="max-w-7xl mx-auto">
                     <PlacementPartners />
@@ -405,7 +403,6 @@ const Home = () => {
                 </div>
             </div>
 
-            <IndustryInsights />
             <NetworkCounter />
             <InsdDifference />
             <SuccessStory />
