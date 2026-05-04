@@ -33,6 +33,7 @@ import { ArrowRight, CheckCircle2, Sparkles, Briefcase, Rocket, FileDown } from 
 import PlacementPartners from '../components/PlacementPartners';
 import SuccessStory from '../components/SuccessStory';
 import { useAdmissionModal } from '../context/AdmissionModalContext';
+import CreativeRevolution from '../components/CreativeRevolution';
 
 
 import SEO from '../components/SEO';
@@ -325,7 +326,7 @@ const Home = () => {
                                 <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-slate-400 italic text-[0.9em]">Needed by 2030.</span>
                             </h1>
                             <p className="text-clamp-lg font-bold text-slate-600 tracking-tight max-w-xl">
-                                Start a high-impact career in Fashion, Interior, Graphic Design UI/UX, Animation & VFX, Jewellery, Textile, Photography or Make-up with INSD 
+                                Start a high-impact career in Fashion, Interior, Graphic Design UI/UX, Animation & VFX, Jewellery, Textile, Photography or Make-up with INSD
                             </p>
                         </div>
 
@@ -363,6 +364,10 @@ const Home = () => {
             </div>
 
             <IndustryInsights />
+            <ProgramGrid />
+            {/* Monumental CTA Section */}
+            <CreativeRevolution />
+
             <div className="w-full bg-white py-12 container-px">
                 <div className="max-w-7xl mx-auto">
                     <PlacementPartners />
@@ -397,7 +402,6 @@ const Home = () => {
                             </div>
 
                         </div>
-                        <ProgramGrid />
 
                     </motion.div>
                 </div>
@@ -442,9 +446,9 @@ const Home = () => {
                                     </div>
                                 </div>
 
-                        </Link>
-                    ))
-                }
+                            </Link>
+                        ))
+                    }
                 </div>
             </div>
             <AdmissionScroller />
