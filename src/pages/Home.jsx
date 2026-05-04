@@ -372,7 +372,6 @@ const Home = () => {
                 <div className="max-w-7xl mx-auto">
                     <PlacementPartners />
                     {/* <TrainingPartners /> */}
-
                 </div>
                 {/* Monumental CTA Section */}
                 <CreativeRevolution />

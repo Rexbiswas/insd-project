@@ -44,7 +44,7 @@ const PlacementPartners = () => {
     return (
         <div className="pt-8 md:pt-20 space-y-8 md:space-y-12 w-full overflow-hidden">
             <div className="space-y-4 md:space-y-6">
-                <div className="flex items-center justify-center gap-2 px-4 mb-4">
+                <div className="flex items-center justify-center gap-2 px-4 mb-12 md:mb-16">
                     <span className="text-clamp-xl font-bold text-slate-800 tracking-tight">Placement & Training Partners</span>
                 </div>
                 <div className="relative flex overflow-hidden scroller group">
