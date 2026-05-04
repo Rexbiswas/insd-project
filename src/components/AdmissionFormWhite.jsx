@@ -115,11 +115,6 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
 
                 <div className="p-4 md:p-10 relative z-10 flex flex-col h-full items-center text-center justify-center">
                     <div className="space-y-3 md:space-y-8 flex flex-col items-center">
-                        {/* Badge */}
-                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 border border-white/20 rounded-full w-fit">
-                            <div className="w-1.5 h-1.5 bg-[#db3436] rounded-full animate-pulse" />
-                            <span className="text-[8px] md:text-[9px] uppercase tracking-[0.2em] font-black text-white">Limited Seats Available</span>
-                        </div>
 
                         <h2 className="text-xl md:text-4xl font-black leading-tight tracking-tight">
                             Start Your<br className="hidden md:block" />

@@ -324,9 +324,6 @@ const GrowthChart = () => {
                     <p className="text-sm md:text-base font-black uppercase tracking-tighter text-gray-900">
                         Join the <span className="text-primary italic">Creative Economy</span>
                     </p>
-                    <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">
-                        Limited seats available for 2026 batch
-                    </p>
                 </div>
 
                 <button
