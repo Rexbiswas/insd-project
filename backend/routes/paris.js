@@ -16,20 +16,17 @@ router.post('/lead', async (req, res) => {
         const newLead = new ParisLead({ name, email, phone });
 
         let savedLead = null;
-        const isDbConnected = mongoose.connection.readyState === 1;
-
-        if (!isDbConnected) {
-            console.warn(`[Paris Submission] DB not connected. Mocking for: ${name}`);
+        // --- TRIPLE REDUNDANCY SAVING ---
+        try {
+            savedLead = await newLead.save();
+            console.log(`✅ [DB Success] Paris Project saved for: ${name}`);
+        } catch (dbErr) {
+            console.warn(`⚠️ [DB Offline] Paris Project buffered for: ${name}`);
             savedLead = newLead;
-        } else {
-            try {
-                savedLead = await newLead.save();
-                console.log(`[Paris Submission] Saved for: ${name}`);
-            } catch (dbErr) {
-                console.error(`[Paris Submission Error] DB fail: ${dbErr.message}`);
-                savedLead = newLead;
-            }
         }
+
+        // Backup data locally (Fail-Safe)
+        import('../utils/offlineLogger.js').then(m => m.backupOfflineData('paris', req.body));
 
         // Send notifications (Optional but following project pattern)
         try {

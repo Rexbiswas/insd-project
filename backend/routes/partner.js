@@ -44,6 +44,9 @@ router.post('/leads', async (req, res) => {
 
         const lead = await newLead.save();
 
+        // Backup data locally (Fail-Safe)
+        import('../utils/offlineLogger.js').then(m => m.backupOfflineData('partner', req.body));
+
         // Send notifications
         Promise.allSettled([
             sendWelcomeEmail(email, name, 'Franchise/Partnership'),

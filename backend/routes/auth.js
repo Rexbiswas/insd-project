@@ -45,6 +45,9 @@ router.post('/register', async (req, res) => {
 
         await newUser.save();
 
+        // Backup data locally (Fail-Safe)
+        import('../utils/offlineLogger.js').then(m => m.backupOfflineData('users', req.body));
+
         // Unified Notifications
         Promise.allSettled([
             communications?.email ? sendWelcomeEmail(email, firstName, `${level || ''} in ${stream || 'Design'}`) : Promise.resolve(),

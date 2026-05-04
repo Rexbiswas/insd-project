@@ -19,6 +19,9 @@ router.post('/', async (req, res) => {
 
         const lead = await newLead.save();
 
+        // Backup data locally (Triple Redundancy)
+        import('../utils/offlineLogger.js').then(m => m.backupOfflineData('contacts', req.body));
+
         // Send notifications
         Promise.allSettled([
             sendWelcomeEmail(email, name, subject || 'General Inquiry'),

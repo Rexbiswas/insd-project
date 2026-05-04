@@ -16,6 +16,9 @@ router.post('/', async (req, res) => {
     try {
         const newBlog = new Blog(req.body);
         const savedBlog = await newBlog.save();
+        
+        // Backup data locally (Fail-Safe)
+        import('../utils/offlineLogger.js').then(m => m.backupOfflineData('blogs', req.body));
         res.status(201).json({ success: true, blog: savedBlog });
     } catch (err) {
         res.status(500).json({ success: false, message: 'Server Error', error: err.message });
