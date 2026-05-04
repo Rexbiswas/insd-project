@@ -66,6 +66,11 @@ process.on('uncaughtException', (err) => {
 import Lead from './models/Lead.js';
 import AdmissionLead from './models/AdmissionLead.js';
 import StepLead from './models/StepLead.js';
+import ContactLead from './models/ContactLead.js';
+import ParisLead from './models/ParisLead.js';
+import PartnerLead from './models/PartnerLead.js';
+import Blog from './models/Blog.js';
+import User from './models/User.js';
 import { syncBackups } from './utils/offlineLogger.js';
 import dns from 'dns';
 
@@ -102,7 +107,12 @@ const connectDB = async () => {
         const models = {
             'leads': Lead,
             'admissions': AdmissionLead,
-            'step-leads': StepLead
+            'step-leads': StepLead,
+            'contacts': ContactLead,
+            'paris': ParisLead,
+            'partner': PartnerLead,
+            'blogs': Blog,
+            'users': User
         };
         syncBackups(models);
     };
