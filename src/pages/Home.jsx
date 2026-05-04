@@ -309,15 +309,15 @@ const Home = () => {
 
 
             {/* Hero Split Section */}
-            <div ref={heroRef} className="relative z-10 min-h-screen w-full flex flex-col lg:flex-row bg-white overflow-hidden pt-12 lg:pt-0 cursor-default">
+            <div ref={heroRef} className="relative z-10 min-h-screen w-full flex flex-col lg:flex-row bg-white overflow-hidden pt-12 lg:pt-0 cursor-default items-center">
 
                 {/* Left Side: Content & Headlines */}
-                <div className="w-full lg:w-[55%] flex flex-col justify-center px-6 md:px-16 lg:px-24 py-8 md:py-16 space-y-6 md:space-y-8 relative z-20">
+                <div className="w-full lg:w-[55%] flex flex-col px-6 md:px-16 lg:px-24 py-8 md:py-16 space-y-6 md:space-y-8 relative z-20">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="space-y-5 lg:mt-12"
+                        className="space-y-5"
                     >
 
                         <div className="space-y-4">

@@ -30,7 +30,7 @@ const TrainingPartners = () => {
                 <div className="space-y-4 md:space-y-6">
                     <div className="flex items-center justify-center gap-2 opacity-50 px-4">
                         <Palette size={10} className="text-slate-400 md:w-3 md:h-3" />
-                        <span className="text-[14px] md:text-[20px] font-black uppercase tracking-[0.2em] md:tracking-[0.3em]">Placement & Training Partners</span>
+                        <span className="text-[9px] md:text-[11px] font-black uppercase tracking-[0.3em] md:tracking-[0.4em] text-slate-400">Placement & Training Partners</span>
                     </div>
                     <div className="relative flex overflow-hidden scroller group">
                         <div className="flex animate-marquee-reverse scroller whitespace-nowrap gap-3 md:gap-4 py-2 md:py-4 pr-3 md:pr-4 pointer-events-auto">
