@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "server": "nodemon backend/server.js",
     "dev:all": "concurrently \"npm run dev\" \"npm run server\"",
     "tunnel": "lt --port 5173",

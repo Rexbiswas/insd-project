@@ -67,11 +67,22 @@ import Lead from './models/Lead.js';
 import AdmissionLead from './models/AdmissionLead.js';
 import StepLead from './models/StepLead.js';
 import { syncBackups } from './utils/offlineLogger.js';
+import dns from 'dns';
+
+// Check if we have an active internet connection
+const checkInternet = () => {
+    return new Promise((resolve) => {
+        dns.lookup('google.com', (err) => {
+            resolve(!(err && err.code === 'ENOTFOUND'));
+        });
+    });
+};
 
 // Database Connection Logic with Persistent Retries and Auto-Sync
 const connectDB = async () => {
     const cloudURI = process.env.MONGO_URI;
     const localURI = process.env.MONGO_URI_LOCAL || 'mongodb://127.0.0.1:27017/insd';
+    const hasInternet = await checkInternet();
 
     const options = {
         serverSelectionTimeoutMS: 5000,
@@ -87,25 +98,31 @@ const connectDB = async () => {
         syncBackups(models);
     };
 
-    try {
-        console.log('📡 Attempting to connect to Cloud Database...');
-        await mongoose.connect(cloudURI, options);
-        console.log('✅ MongoDB Cloud Connected successfully');
-        runSync();
-    } catch (cloudErr) {
-        console.warn('⚠️ Cloud Database Connection Failed. Attempting Local Fallback...');
-        
+    if (hasInternet) {
         try {
-            await mongoose.connect(localURI, options);
-            console.log('✅ Local MongoDB Connected successfully (Offline Mode)');
+            console.log('📡 Internet Detected: Connecting to Cloud Database...');
+            await mongoose.connect(cloudURI, options);
+            console.log('✅ MongoDB Cloud Connected successfully');
             runSync();
-        } catch (localErr) {
-            console.error('🛑 No database connection established. Entering "Buffer Mode".');
-            console.log('ℹ️  Data will be saved to local JSON files and synced when a connection is found.');
-            
-            // Retry connection every 30 seconds
-            setTimeout(connectDB, 30000);
+            return;
+        } catch (cloudErr) {
+            console.warn('⚠️ Cloud Connection failed despite being online. Trying Local...');
         }
+    } else {
+        console.log('🌐 Offline Mode: Skipping Cloud and using Local Database...');
+    }
+
+    // Attempt Local Connection
+    try {
+        await mongoose.connect(localURI, options);
+        console.log('✅ Local MongoDB Connected successfully');
+        runSync();
+    } catch (localErr) {
+        console.error('🛑 No database found locally or online. Entering "Buffer Mode".');
+        console.log('ℹ️  Data will be saved to local JSON files and synced later.');
+        
+        // Retry connection every 30 seconds
+        setTimeout(connectDB, 30000);
     }
 };
 
@@ -126,10 +143,27 @@ app.use('/api/partner', partnerRoutes);
 app.use('/api/contact', contactRoutes);
 app.use('/api/blogs', blogRoutes);
 
+import os from 'os';
+
+const getLocalIp = () => {
+    const interfaces = os.networkInterfaces();
+    for (const name of Object.keys(interfaces)) {
+        for (const iface of interfaces[name]) {
+            if (iface.family === 'IPv4' && !iface.internal) {
+                return iface.address;
+            }
+        }
+    }
+    return '0.0.0.0';
+};
+
 // Start Server locally
 if (process.env.NODE_ENV !== 'production') {
+    const localIp = getLocalIp();
     app.listen(PORT, '0.0.0.0', () => {
-        console.log(`Server running on port ${PORT}`);
+        console.log(`\n🚀 INSD Backend is live!`);
+        console.log(`🏠 Local:   http://localhost:${PORT}`);
+        console.log(`📱 Mobile:  http://${localIp}:${PORT}\n`);
     });
 }
 

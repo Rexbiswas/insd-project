@@ -99,37 +99,47 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
         <div className={`w-full max-w-6xl mx-auto overflow-hidden bg-white md:rounded-[2rem] shadow-2xl flex flex-col md:flex-row relative ${isModal ? 'max-h-[95vh] md:max-h-[90vh]' : 'my-4 md:my-10 animate-fade-in'}`}>
 
 
+            {/* Absolute Close Button for Modal (Visible on all devices, top right) */}
+            {isModal && (
+                <button 
+                    onClick={onClose}
+                    className="absolute top-4 right-4 z-50 p-2 md:p-3 rounded-full bg-white/90 md:bg-slate-50 text-slate-400 hover:bg-[#db3436] hover:text-white transition-all border border-slate-100 shadow-xl group backdrop-blur-sm"
+                >
+                    <X size={20} className="md:w-6 md:h-6 group-hover:rotate-90 transition-transform" />
+                </button>
+            )}
+
             {/* Left Content - Marketing */}
-            <div className={`w-full md:w-[45%] bg-gradient-to-br from-[#134a84] to-[#db3436] text-white flex flex-col justify-between relative overflow-hidden ${isModal ? 'md:h-auto' : 'min-h-[300px] md:min-h-[650px]'}`}>
+            <div className={`w-full md:w-[45%] bg-gradient-to-br from-[#134a84] to-[#db3436] text-white flex flex-col justify-between relative overflow-hidden ${isModal ? 'h-[200px] md:h-auto' : 'min-h-[200px] md:min-h-[650px]'}`}>
                 {/* Background Decoration */}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-[#db3436] opacity-10 rounded-full blur-[80px] -mr-32 -mt-32" />
                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#db3436] opacity-10 rounded-full blur-[80px] -ml-32 -mb-32" />
 
-                <div className="p-6 md:p-10 relative z-10 flex flex-col h-full items-center text-center justify-center">
-                    <div className="space-y-6 md:space-y-8 flex flex-col items-center">
+                <div className="p-4 md:p-10 relative z-10 flex flex-col h-full items-center text-center justify-center">
+                    <div className="space-y-3 md:space-y-8 flex flex-col items-center">
                         {/* Badge */}
                         <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 border border-white/20 rounded-full w-fit">
                             <div className="w-1.5 h-1.5 bg-[#db3436] rounded-full animate-pulse" />
-                            <span className="text-[9px] uppercase tracking-[0.2em] font-black text-white">Limited Seats Available</span>
+                            <span className="text-[8px] md:text-[9px] uppercase tracking-[0.2em] font-black text-white">Limited Seats Available</span>
                         </div>
 
-                        <h2 className="text-xl md:text-4xl font-black leading-[1.2] tracking-tight">
-                            Start Your<br />
-                            <span className="text-[#db3436]">Creative Career</span><br />
-                            Today
+                        <h2 className="text-xl md:text-4xl font-black leading-tight tracking-tight">
+                            Start Your<br className="hidden md:block" />
+                            <span className="text-[#db3436] ml-2 md:ml-0">Creative Career</span><br className="hidden md:block" />
+                            <span className="ml-2 md:ml-0">Today</span>
                         </h2>
 
-                        <p className="text-white font-bold text-xs md:text-sm max-w-[280px] leading-relaxed opacity-80">
+                        <p className="text-white font-bold text-[10px] md:text-sm max-w-[280px] leading-relaxed opacity-80 hidden md:block">
                             Limited Intakes Annually. Enroll Now to Secure Your Seat!
                         </p>
 
-                        <div className="space-y-3 pt-2 w-full flex flex-col items-center">
+                        <div className="flex md:flex-col items-center gap-4 md:gap-3 pt-1 w-full justify-center">
                             {benefits.map((benefit, i) => (
-                                <div key={i} className="flex items-center gap-3">
-                                    <div className="w-4 h-4 bg-[#db3436] rounded-full flex items-center justify-center shrink-0">
-                                        <CheckCircle2 className="w-2.5 h-2.5 text-white" strokeWidth={5} />
+                                <div key={i} className="flex items-center gap-2 md:gap-3">
+                                    <div className="w-3.5 h-3.5 md:w-4 md:h-4 bg-[#db3436] rounded-full flex items-center justify-center shrink-0">
+                                        <CheckCircle2 className="w-2 md:w-2.5 h-2 md:h-2.5 text-white" strokeWidth={5} />
                                     </div>
-                                    <span className="text-xs md:text-sm font-bold text-white tracking-tight">{benefit}</span>
+                                    <span className="text-[10px] md:text-sm font-bold text-white tracking-tight">{benefit}</span>
                                 </div>
                             ))}
                         </div>
@@ -138,12 +148,12 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
             </div>
 
             {/* Right Content - Form */}
-            <div className={`flex-1 bg-white flex flex-col relative ${isModal ? 'overflow-y-auto max-h-[60vh] md:max-h-full' : ''}`}>
+            <div className={`flex-1 bg-white flex flex-col relative ${isModal ? 'overflow-y-auto max-h-[65vh] md:max-h-full' : ''}`}>
                 {/* Visual Accent Line on far right */}
                 <div className="absolute right-0 top-0 bottom-0 w-2 bg-[#db3436] opacity-10 pointer-events-none hidden md:block" />
                 <div className="absolute right-0 top-0 bottom-0 w-0.5 bg-[#db3436] opacity-30 pointer-events-none hidden md:block" />
                 
-                <div className="p-6 md:p-10 space-y-6 md:space-y-8">
+                <div className="p-5 md:p-10 space-y-5 md:space-y-8">
                     <div className="flex items-center justify-between gap-4">
                         <div className="space-y-1">
                             <h3 className="text-xl md:text-3xl font-black text-slate-900 tracking-tight uppercase">
@@ -153,14 +163,6 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
                                 {subtitle || "Our experts will call you within 24 hours"}
                             </p>
                         </div>
-                        {isModal && (
-                            <button 
-                                onClick={onClose}
-                                className="p-2 md:p-3 rounded-full bg-slate-50 text-slate-400 hover:bg-[#db3436] hover:text-white transition-all border border-slate-100 shadow-md group"
-                            >
-                                <X size={24} className="group-hover:rotate-90 transition-transform" />
-                            </button>
-                        )}
                     </div>
 
                     <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
