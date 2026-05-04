@@ -28,7 +28,7 @@ const CreativeRevolution = () => {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => openAdmissionModal({ 
-                                formType: 'step'
+                                formType: 'admission'
                             })}
                             className="inline-flex items-center justify-center gap-4 bg-white text-slate-950 px-8 md:px-10 py-4 md:py-5 rounded-full font-black text-[9px] md:text-[11px] uppercase tracking-[0.25em] shadow-2xl transition-all duration-300 hover:shadow-[#db3436]/20 w-full sm:w-auto"
                         >
