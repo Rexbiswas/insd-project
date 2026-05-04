@@ -337,7 +337,7 @@ const Home = () => {
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => openAdmissionModal({
-                                    title: 'Talk to a Counsellor',
+                                    title: 'TALK TO OUR EXPERTS',
                                     subtitle: 'Get professional guidance for your design career.',
                                     ctaText: 'Connect Now'
                                 })}

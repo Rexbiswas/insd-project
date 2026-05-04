@@ -7,10 +7,10 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
     const [formData, setFormData] = useState({
         name: '',
         mobile: '',
-        email: '',
+        qualification: '',
+        course: '',
         state: '',
-        city: '',
-        referred: false
+        city: ''
     });
 
     const [status, setStatus] = useState('idle'); // idle, loading, success, error
@@ -39,10 +39,10 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
                 body: JSON.stringify({
                     name: formData.name,
                     mobile: formData.mobile,
-                    email: formData.email,
+                    qualification: formData.qualification,
+                    course: formData.course,
                     state: formData.state,
-                    city: formData.city,
-                    referred: formData.referred
+                    city: formData.city
                 }),
             });
 
@@ -51,7 +51,7 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
             if (response.ok) {
                 setStatus('success');
                 setFormData({
-                    name: '', mobile: '', email: '', state: '', city: '', referred: false
+                    name: '', mobile: '', qualification: '', course: '', state: '', city: ''
                 });
             } else {
                 alert(data.message || "Something went wrong. Please try again.");
@@ -64,10 +64,6 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
         }
     };
 
-    const benefits = [
-        "Limited Intakes Annually",
-        "Expert Career Counseling"
-    ];
 
     if (status === 'success') {
         return (
@@ -116,26 +112,15 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
                 <div className="p-4 md:p-10 relative z-10 flex flex-col h-full items-center text-center justify-center">
                     <div className="space-y-3 md:space-y-8 flex flex-col items-center">
 
-                        <h2 className="text-xl md:text-4xl font-black leading-tight tracking-tight">
-                            Start Your<br className="hidden md:block" />
-                            <span className="text-[#db3436] ml-2 md:ml-0">Creative Career</span><br className="hidden md:block" />
-                            <span className="ml-2 md:ml-0">Today</span>
+                        <h2 className="text-xl md:text-3xl font-black leading-tight tracking-tight px-4">
+                            Are you ready to be part of this <br className="hidden md:block" />
+                            <span className="text-[#db3436]">Billion-dollar Industry?</span>
                         </h2>
 
-                        <p className="text-white font-bold text-[10px] md:text-sm max-w-[280px] leading-relaxed opacity-80 hidden md:block">
-                            Limited Intakes Annually. Enroll Now to Secure Your Seat!
+                        <p className="text-white font-bold text-sm md:text-lg max-w-[320px] leading-relaxed">
+                            Start your creative career today!
                         </p>
 
-                        <div className="flex md:flex-col items-center gap-4 md:gap-3 pt-1 w-full justify-center">
-                            {benefits.map((benefit, i) => (
-                                <div key={i} className="flex items-center gap-2 md:gap-3">
-                                    <div className="w-3.5 h-3.5 md:w-4 md:h-4 bg-[#db3436] rounded-full flex items-center justify-center shrink-0">
-                                        <CheckCircle2 className="w-2 md:w-2.5 h-2 md:h-2.5 text-white" strokeWidth={5} />
-                                    </div>
-                                    <span className="text-[10px] md:text-sm font-bold text-white tracking-tight">{benefit}</span>
-                                </div>
-                            ))}
-                        </div>
                     </div>
                 </div>
             </div>
@@ -150,7 +135,7 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
                     <div className="flex items-center justify-between gap-4">
                         <div className="space-y-1">
                             <h3 className="text-xl md:text-3xl font-black text-slate-900 tracking-tight uppercase">
-                                {title || "Talk to our Career Expert"}
+                                {title || "TALK TO OUR EXPERTS"}
                             </h3>
                             <p className="text-slate-500 font-bold text-sm md:text-base">
                                 {subtitle || "Our experts will call you within 24 hours"}
@@ -162,21 +147,24 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
                         {/* Name Field */}
                         <div className="space-y-1">
                             <label className="text-[10px] md:text-xs font-black text-slate-800 ml-1 uppercase tracking-wider">Full Name</label>
-                            <input 
-                                type="text"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                placeholder="Enter your full name"
-                                required
-                                className="w-full h-11 md:h-14 px-5 bg-slate-50/50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#134a84]/5 focus:border-[#134a84] transition-all text-slate-900 font-bold text-sm md:text-base placeholder:text-slate-300"
-                            />
-                        </div>
-
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                            {/* Mobile Number Field */}
+                            {/* Name Field */}
                             <div className="space-y-1">
-                                <label className="text-[10px] md:text-xs font-black text-slate-800 ml-1 uppercase tracking-wider">Mobile Number</label>
+                                <label className="text-[10px] md:text-xs font-black text-slate-800 ml-1 uppercase tracking-wider">Full Name</label>
+                                <input 
+                                    type="text"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    placeholder="Enter your full name"
+                                    required
+                                    className="w-full h-11 md:h-14 px-5 bg-slate-50/50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#134a84]/5 focus:border-[#134a84] transition-all text-slate-900 font-bold text-sm md:text-base placeholder:text-slate-300"
+                                />
+                            </div>
+
+                            {/* Phone Number Field */}
+                            <div className="space-y-1">
+                                <label className="text-[10px] md:text-xs font-black text-slate-800 ml-1 uppercase tracking-wider">Phone Number</label>
                                 <input 
                                     type="tel"
                                     name="mobile"
@@ -187,19 +175,57 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
                                     className="w-full h-11 md:h-14 px-5 bg-slate-50/50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#134a84]/5 focus:border-[#134a84] transition-all text-slate-900 font-bold text-sm md:text-base placeholder:text-slate-300"
                                 />
                             </div>
+                        </div>
 
-                            {/* Email Field */}
+                        {/* Qualification & Course */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                             <div className="space-y-1">
-                                <label className="text-[10px] md:text-xs font-black text-slate-800 ml-1 uppercase tracking-wider">Email Address</label>
-                                <input 
-                                    type="email"
-                                    name="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    placeholder="yourname@gmail.com"
-                                    required
-                                    className="w-full h-11 md:h-14 px-5 bg-slate-50/50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#134a84]/5 focus:border-[#134a84] transition-all text-slate-900 font-bold text-sm md:text-base placeholder:text-slate-300"
-                                />
+                                <label className="text-[10px] md:text-xs font-black text-slate-800 ml-1 uppercase tracking-wider">Highest Qualification</label>
+                                <div className="relative">
+                                    <select 
+                                        name="qualification"
+                                        value={formData.qualification}
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full h-11 md:h-14 px-5 bg-slate-50/50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:border-[#134a84] appearance-none text-slate-900 font-bold text-sm md:text-base cursor-pointer"
+                                    >
+                                        <option value="" disabled>Select Qualification</option>
+                                        <option value="Completed 10th">Completed 10th</option>
+                                        <option value="Completed 12th">Completed 12th</option>
+                                        <option value="Graduate">Graduate</option>
+                                        <option value="Postgraduate">Postgraduate</option>
+                                    </select>
+                                    <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                                        <ChevronDown size={18} />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="space-y-1">
+                                <label className="text-[10px] md:text-xs font-black text-slate-800 ml-1 uppercase tracking-wider">Course of Interest</label>
+                                <div className="relative">
+                                    <select 
+                                        name="course"
+                                        value={formData.course}
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full h-11 md:h-14 px-5 bg-slate-50/50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:border-[#134a84] appearance-none text-slate-900 font-bold text-sm md:text-base cursor-pointer"
+                                    >
+                                        <option value="" disabled>Select Course</option>
+                                        <option value="Fashion Design">Fashion Design</option>
+                                        <option value="Interior Design">Interior Design</option>
+                                        <option value="Graphic Design">Graphic Design</option>
+                                        <option value="Animation VFX">Animation VFX</option>
+                                        <option value="UI/UX Design">UI/UX Design</option>
+                                        <option value="Jewellery Design">Jewellery Design</option>
+                                        <option value="Photography">Photography</option>
+                                        <option value="Beauty Make-up">Beauty Make-up</option>
+                                        <option value="Textile Design">Textile Design</option>
+                                    </select>
+                                    <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                                        <ChevronDown size={18} />
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -249,23 +275,6 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        {/* Referral Checkbox */}
-                        <div className="pt-1">
-                            <label className="flex items-center gap-3 cursor-pointer group select-none">
-                                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all ${formData.referred ? 'bg-[#134a84] border-[#134a84]' : 'border-slate-200 group-hover:border-slate-300'}`}>
-                                    {formData.referred && <CheckCircle2 className="w-3 h-3 text-white" strokeWidth={4} />}
-                                </div>
-                                <input 
-                                    type="checkbox" 
-                                    name="referred" 
-                                    checked={formData.referred} 
-                                    onChange={handleChange} 
-                                    className="hidden" 
-                                />
-                                <span className="text-slate-600 font-bold text-xs md:text-sm">Referral?</span>
-                            </label>
                         </div>
 
                         {/* Submit Button */ }
