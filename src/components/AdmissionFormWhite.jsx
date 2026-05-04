@@ -59,7 +59,7 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
             }
         } catch (error) {
             console.error('Error submitting form:', error);
-            alert("Connection error. Please try again later.");
+            alert(`Connection Error: ${error.message || "Please check your internet."}`);
             setStatus('idle');
         }
     };

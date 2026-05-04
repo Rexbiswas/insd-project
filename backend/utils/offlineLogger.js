@@ -44,11 +44,13 @@ export const backupOfflineData = async (collectionName, data) => {
  * Called when the database connection is restored.
  */
 export const syncBackups = async (models) => {
-    try {
-        const backupDir = path.join(__dirname, '../backups');
-        if (!fs.existsSync(backupDir)) return;
+    // Skip sync if the backups directory doesn't exist (e.g., on Vercel)
+    if (!fs.existsSync(BACKUP_DIR)) {
+        return;
+    }
 
-        const files = fs.readdirSync(backupDir).filter(f => f.endsWith('_backup.json'));
+    try {
+        const files = fs.readdirSync(BACKUP_DIR).filter(f => f.endsWith('_backup.json'));
         
         for (const file of files) {
             const collectionName = file.replace('_backup.json', '');
