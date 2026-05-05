@@ -19,6 +19,7 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
     const [isStateDropdownOpen, setIsStateDropdownOpen] = useState(false);
     const [isCityDropdownOpen, setIsCityDropdownOpen] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     const stateCityData = {
         "Andhra Pradesh": ["Vishakhapattnam", "Anantapur", "Guntur", "Kadappa", "Kakinada", "Kurnool", "Nellor", "Rajamundari", "Tirupati", "Vizianagram", "Eluru", "Machhlipattnam", "Nandayal", "Ongole"],
@@ -70,6 +71,7 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
+        setError(null);
         try {
             const response = await fetch('/api/step-leads', {
                 method: 'POST',
@@ -90,21 +92,28 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
 
             // Handle non-JSON or error responses from Vercel/Server
             const contentType = response.headers.get("content-type");
-            if (!response.ok || !contentType || !contentType.includes("application/json")) {
-                const errorText = await response.text();
-                console.error('Server error response:', errorText);
-                throw new Error(`Server Error (${response.status}): ${errorText.substring(0, 50)}...`);
+            let data;
+            
+            if (contentType && contentType.includes("application/json")) {
+                data = await response.json();
+            } else {
+                const text = await response.text();
+                console.error('Server error response:', text.substring(0, 200));
+                throw new Error(`Server Error (${response.status})`);
             }
 
-            const data = await response.json();
-            if (data.success) {
+            if (data.success || response.ok) {
                 setSubmitted(true);
             } else {
-                alert(data.message || "Something went wrong. Please try again.");
+                setError(data.message || `Server Error (${response.status}): Submission failed.`);
             }
         } catch (error) {
             console.error('Submission Error:', error);
-            alert(`Submission Error: ${error.message.includes('Unexpected token') ? "Server returned an invalid response. Please try again later." : error.message}`);
+            if (error.name === 'TypeError') {
+                setError("Connection Error: Server is unreachable. Please check your internet.");
+            } else {
+                setError(error.message || "An unexpected error occurred. Please try again.");
+            }
         } finally {
             setLoading(false);
         }
@@ -372,6 +381,13 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
                                                         </span>
                                                     </label>
                                                 </div>
+
+                                                {error && (
+                                                    <div className="p-3 rounded-xl bg-red-50 border border-red-100 flex items-center gap-3 text-red-600 animate-fade-in">
+                                                        <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse shrink-0" />
+                                                        <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider">{error}</span>
+                                                    </div>
+                                                )}
 
                                                 <div className="flex flex-col sm:flex-row gap-4 pt-2">
                                                     <button

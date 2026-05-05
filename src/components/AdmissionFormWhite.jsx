@@ -14,6 +14,7 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
     });
 
     const [status, setStatus] = useState('idle'); // idle, loading, success, error
+    const [errorMessage, setErrorMessage] = useState('');
 
     const states = ["Select State", ...Object.keys(stateCityData)];
 
@@ -29,6 +30,7 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
     const handleSubmit = async (e) => {
         e.preventDefault();
         setStatus('loading');
+        setErrorMessage('');
         
         try {
             const response = await fetch('/api/admission', {
@@ -48,27 +50,33 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
 
             // Handle non-JSON or error responses
             const contentType = response.headers.get("content-type");
-            if (!response.ok || !contentType || !contentType.includes("application/json")) {
-                const errorText = await response.text();
-                console.error('Server error response:', errorText);
-                throw new Error(`Server Error (${response.status}): ${errorText.substring(0, 50)}...`);
+            let data;
+
+            if (contentType && contentType.includes("application/json")) {
+                data = await response.json();
+            } else {
+                const text = await response.text();
+                console.error("Non-JSON response received:", text.substring(0, 200));
+                throw new Error(`Server Error (${response.status})`);
             }
 
-            const data = await response.json();
-
-            if (data.success || response.ok) {
+            if (response.ok || data.success) {
                 setStatus('success');
                 setFormData({
                     name: '', mobile: '', qualification: '', course: '', state: '', city: ''
                 });
             } else {
-                alert(data.message || "Something went wrong. Please try again.");
-                setStatus('idle');
+                setErrorMessage(data.message || `Server Error (${response.status}): Submission failed.`);
+                setStatus('error');
             }
         } catch (error) {
             console.error('Submission Error:', error);
-            alert(`Connection Error: ${error.message.includes('Unexpected token') ? "Server returned an invalid response. Please try again later." : error.message}`);
-            setStatus('idle');
+            if (error.name === 'TypeError') {
+                setErrorMessage("Connection Error: Server is unreachable. Please check your internet.");
+            } else {
+                setErrorMessage(error.message || "An unexpected error occurred. Please try again.");
+            }
+            setStatus('error');
         }
     };
 
@@ -281,6 +289,13 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
                                 </div>
                             </div>
                         </div>
+
+                        {status === 'error' && (
+                            <div className="p-3 rounded-xl bg-red-50 border border-red-100 flex items-center gap-3 text-red-600 animate-fade-in">
+                                <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse shrink-0" />
+                                <span className="text-xs font-bold uppercase tracking-wider">{errorMessage}</span>
+                            </div>
+                        )}
 
                         {/* Submit Button */ }
                         <button
