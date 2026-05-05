@@ -227,6 +227,15 @@ apiRouter.get('/health', (req, res) => {
     });
 });
 
+// Diagnostic Endpoint
+apiRouter.get('/diagnostic', (req, res) => {
+    res.json({
+        success: true,
+        message: "API Gateway is active",
+        endpoints: ['/api/auth/register', '/api/admission', '/api/step-leads', '/api/paris/lead', '/api/partner/leads', '/api/contact', '/api/blogs']
+    });
+});
+
 // --- API ROUTES REGISTRATION ---
 // Define routes on the apiRouter
 apiRouter.use('/auth', authRoutes);
@@ -250,6 +259,14 @@ apiRouter.get('/status', (req, res) => res.json({ status: 'ok', time: new Date()
 // This ensures http://localhost:5001/api/admission and http://localhost:5001/admission both work
 app.use('/api', apiRouter);
 app.use('/', apiRouter);
+
+// Global Logger for all requests to help debug 404s
+app.use((req, res, next) => {
+    if (req.url.startsWith('/api')) {
+        console.log(`🔍 [DEBUG LOG] ${req.method} ${req.url} arriving at server`);
+    }
+    next();
+});
 
 // Strict 404 handler for any unmatched /api/* calls
 app.all('/api/*', (req, res) => {
