@@ -22,7 +22,7 @@ const timelineData = [
         dotColor: "bg-[#b91c1c]"
     },
     {
-        year: "2017",
+        year: "2016",
         title: "INSD WINS RECOGNITION",
         description: "As one of India's promising design schools for its hands-on teaching approach.",
         image: "https://ik.imagekit.io/fmldynl4j4/Best%20design%20school%20award%202017%20insd%20(1).jpg_2017.jpeg",
