@@ -40,8 +40,13 @@ app.use(helmet({
 // Rate Limiter: Prevent DDOS and Brute Force
 const apiLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100, // limit each IP to 100 requests per windowMs
-    message: { message: "Too many requests from this IP, please try again after 15 minutes." }
+    max: 500, // Increased for mobile networks/shared IPs
+    handler: (req, res) => {
+        res.status(429).json({
+            success: false,
+            message: "Too many requests from this IP, please try again after 15 minutes."
+        });
+    }
 });
 app.use('/api/', apiLimiter);
 
@@ -59,7 +64,8 @@ process.on('unhandledRejection', (reason, promise) => {
 
 process.on('uncaughtException', (err) => {
     console.error('Uncaught Exception thrown:', err.message);
-    if (process.env.NODE_ENV === 'production') process.exit(1);
+    // On Vercel, we shouldn't exit as it kills the function instance
+    if (process.env.NODE_ENV === 'production' && !process.env.VERCEL) process.exit(1);
 });
 
 // Import Models for Sync
@@ -99,7 +105,7 @@ const connectDB = async () => {
     const hasInternet = isProd ? true : await checkInternet();
 
     const options = {
-        serverSelectionTimeoutMS: 10000, // Higher timeout for serverless cold starts
+        serverSelectionTimeoutMS: 15000, // Increased for serverless cold starts
         socketTimeoutMS: 45000,
     };
 
@@ -141,6 +147,8 @@ const connectDB = async () => {
             console.error('🛑 No database found. Entering Buffer Mode.');
             setTimeout(connectDB, 30000);
         }
+    } else {
+        console.warn('⚠️ Production database connection skipped/failed. Ensure MONGO_URI is set.');
     }
 };
 

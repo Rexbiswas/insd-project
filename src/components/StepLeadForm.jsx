@@ -88,15 +88,23 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
                 }),
             });
 
+            // Handle non-JSON or error responses from Vercel/Server
+            const contentType = response.headers.get("content-type");
+            if (!response.ok || !contentType || !contentType.includes("application/json")) {
+                const errorText = await response.text();
+                console.error('Server error response:', errorText);
+                throw new Error(`Server Error (${response.status}): ${errorText.substring(0, 50)}...`);
+            }
+
             const data = await response.json();
             if (data.success) {
                 setSubmitted(true);
             } else {
-                alert("Something went wrong. Please try again.");
+                alert(data.message || "Something went wrong. Please try again.");
             }
         } catch (error) {
-            console.error('Error submitting form:', error);
-            alert("Connection error. Please check if backend is running.");
+            console.error('Submission Error:', error);
+            alert(`Submission Error: ${error.message.includes('Unexpected token') ? "Server returned an invalid response. Please try again later." : error.message}`);
         } finally {
             setLoading(false);
         }

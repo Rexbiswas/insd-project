@@ -46,9 +46,17 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
                 }),
             });
 
+            // Handle non-JSON or error responses
+            const contentType = response.headers.get("content-type");
+            if (!response.ok || !contentType || !contentType.includes("application/json")) {
+                const errorText = await response.text();
+                console.error('Server error response:', errorText);
+                throw new Error(`Server Error (${response.status}): ${errorText.substring(0, 50)}...`);
+            }
+
             const data = await response.json();
 
-            if (response.ok) {
+            if (data.success || response.ok) {
                 setStatus('success');
                 setFormData({
                     name: '', mobile: '', qualification: '', course: '', state: '', city: ''
@@ -58,8 +66,8 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
                 setStatus('idle');
             }
         } catch (error) {
-            console.error('Error submitting form:', error);
-            alert(`Connection Error: ${error.message || "Please check your internet."}`);
+            console.error('Submission Error:', error);
+            alert(`Connection Error: ${error.message.includes('Unexpected token') ? "Server returned an invalid response. Please try again later." : error.message}`);
             setStatus('idle');
         }
     };

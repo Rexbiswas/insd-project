@@ -38,11 +38,21 @@ const Contact = () => {
                     setFormState({ name: '', email: '', phone: '', subject: '', message: '' });
                 }, 5000);
             } else {
-                throw new Error("Failed to send message");
+                const contentType = response.headers.get("content-type");
+                let errorMessage = "Failed to send message";
+                if (contentType && contentType.includes("application/json")) {
+                    const data = await response.json();
+                    errorMessage = data.message || errorMessage;
+                } else {
+                    const text = await response.text();
+                    console.error('Server error:', text);
+                    errorMessage = `Server Error: ${text.substring(0, 30)}...`;
+                }
+                throw new Error(errorMessage);
             }
         } catch (error) {
             console.error('Contact error:', error);
-            alert("Connection error. Please try again later.");
+            alert(`Submission Error: ${error.message.includes('Unexpected token') ? "Server returned an invalid response. Please try again later." : error.message}`);
         } finally {
             setIsSubmitting(false);
         }
