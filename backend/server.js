@@ -236,8 +236,9 @@ apiRouter.use('/partner', partnerRoutes);
 apiRouter.use('/contact', contactRoutes);
 apiRouter.use('/blogs', blogRoutes);
 
-// Mount the router at the root level for Direct Routing
-// Vercel's /api prefix is already handled by the entry point mapping in vercel.json
+// Mount the router at both /api and / to ensure Direct Routing works everywhere
+// This handles both local requests (http://localhost:5001/api/...) and Vercel functions
+app.use('/api', apiRouter);
 app.use('/', apiRouter);
 
 // Catch-all for missing API routes
