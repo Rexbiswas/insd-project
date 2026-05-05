@@ -3,7 +3,7 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "functions": {
-    "vercel-api/index.js": {
+    "api/index.js": {
       "memory": 1024,
       "maxDuration": 10
     }
@@ -21,14 +21,11 @@
   ],
   "rewrites": [
     {
-      "source": "/api/:path*",
-      "destination": "/vercel-api/index.js"
+      "source": "/api/:match*",
+      "destination": "/api/index.js"
     },
     {
-      "handle": "filesystem"
-    },
-    {
-      "source": "/(.*)",
+      "source": "/((?!api|.*\\.[a-z0-9]+$).*)",
       "destination": "/index.html"
     }
   ]
