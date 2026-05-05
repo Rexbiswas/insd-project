@@ -36,11 +36,14 @@ self.addEventListener('activate', (event) => {
 
 // Fetch Event - Network First Strategy for most assets
 self.addEventListener('fetch', (event) => {
+  // Only handle GET requests for caching
+  if (event.request.method !== 'GET') return;
+
   // Skip cross-origin requests
   if (!event.request.url.startsWith(self.location.origin)) return;
 
-  // Skip API requests - we want fresh data
-  if (event.request.url.includes('/api/')) return;
+  // Skip API requests
+  if (event.request.url.includes('/api')) return;
 
   event.respondWith(
     fetch(event.request)
