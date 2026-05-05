@@ -262,8 +262,21 @@ apiRouter.use('/leadauth', leadRoutes);
 apiRouter.use('/stepleads', stepLeadRoutes);
 apiRouter.use('/blog', blogRoutes);
 
+// --- DEBUG HEADERS & DIRECT ADMISSION ---
+app.use((req, res, next) => {
+    res.setHeader('X-Server-Path', req.url);
+    res.setHeader('X-Server-Method', req.method);
+    next();
+});
+
+// Direct Bypass for Admission Form
+app.post('/api/admission', async (req, res, next) => {
+    console.log('🚀 Direct Admission Post Received');
+    // If admissionRoutes exists and has a handler, we can try to call it or just use it here
+    next(); // Fall through to router if not handled
+});
+
 // Main Application Mounting
-// This ensures that http://domain.com/api/admission AND http://domain.com/admission both work
 app.use('/api', apiRouter);
 app.use('/', apiRouter);
 
