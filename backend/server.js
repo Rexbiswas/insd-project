@@ -7,6 +7,8 @@ import { fileURLToPath } from 'url';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import hpp from 'hpp';
+import os from 'os';
+import dns from 'dns';
 import authRoutes from './routes/auth.js';
 import leadRoutes from './routes/leadauth.js';
 import stepLeadRoutes from './routes/stepleads.js';
@@ -15,6 +17,19 @@ import parisRoutes from './routes/paris.js';
 import partnerRoutes from './routes/partner.js';
 import contactRoutes from './routes/contact.js';
 import blogRoutes from './routes/blogs.js';
+
+// Models
+import Lead from './models/Lead.js';
+import AdmissionLead from './models/AdmissionLead.js';
+import StepLead from './models/StepLead.js';
+import ContactLead from './models/ContactLead.js';
+import ParisLead from './models/ParisLead.js';
+import PartnerLead from './models/PartnerLead.js';
+import Blog from './models/Blog.js';
+import User from './models/User.js';
+
+// Utils
+import { syncBackups } from './utils/offlineLogger.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -57,6 +72,14 @@ app.use(hpp());
 app.use(express.json());
 app.use(cors({ origin: '*', credentials: true }));
 
+// Debug Middleware for Vercel
+app.use((req, res, next) => {
+    if (req.url.startsWith('/api')) {
+        console.log(`🔍 [API Request] ${req.method} ${req.url}`);
+    }
+    next();
+});
+
 // Graceful Error Handling for Development
 process.on('unhandledRejection', (reason, promise) => {
     console.error('Unhandled Rejection at:', promise, 'reason:', reason);
@@ -68,17 +91,7 @@ process.on('uncaughtException', (err) => {
     if (process.env.NODE_ENV === 'production' && !process.env.VERCEL) process.exit(1);
 });
 
-// Import Models for Sync
-import Lead from './models/Lead.js';
-import AdmissionLead from './models/AdmissionLead.js';
-import StepLead from './models/StepLead.js';
-import ContactLead from './models/ContactLead.js';
-import ParisLead from './models/ParisLead.js';
-import PartnerLead from './models/PartnerLead.js';
-import Blog from './models/Blog.js';
-import User from './models/User.js';
-import { syncBackups } from './utils/offlineLogger.js';
-import dns from 'dns';
+
 
 // Check if we have an active internet connection
 const checkInternet = () => {
@@ -169,7 +182,16 @@ app.use('/api/partner', partnerRoutes);
 app.use('/api/contact', contactRoutes);
 app.use('/api/blogs', blogRoutes);
 
-import os from 'os';
+// Catch-all for missing API routes
+app.all('/api/*', (req, res) => {
+    console.warn(`⚠️ [404] API Route not found: ${req.method} ${req.url}`);
+    res.status(404).json({
+        success: false,
+        message: `API endpoint ${req.method} ${req.url} not found on this server.`
+    });
+});
+
+
 
 const getLocalIp = () => {
     const interfaces = os.networkInterfaces();
