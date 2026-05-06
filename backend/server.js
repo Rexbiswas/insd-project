@@ -42,61 +42,20 @@ dotenv.config({ path: path.join(__dirname, '../.env') });
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-// --- SOFTWARE FIREWALL (Security Middleware) ---
-app.use(helmet({
-    contentSecurityPolicy: {
-        directives: {
-            defaultSrc: ["'self'"],
-            scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://www.googletagmanager.com", "https://va.vercel-scripts.com"],
-            imgSrc: ["'self'", "https://insd.edu.in", "https://*.insd.edu.in", "https://*.google.com", "data:", "blob:"],
-            connectSrc: ["'self'", "https://*.vercel-scripts.com", "https://*.vercel.sh", "https://www.googletagmanager.com", "https://*.mongodb.net"],
-            styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-            fontSrc: ["'self'", "https://fonts.gstatic.com"],
-            objectSrc: ["'none'"],
-        }
-    },
-    crossOriginEmbedderPolicy: false
-}));
+// --- TEMPORARY SECURITY BYPASS FOR DIAGNOSTICS ---
+// We are disabling Helmet and Rate Limiter temporarily to find the source of 403 errors
+console.log('🛡️ Security middleware temporarily disabled for diagnostics');
 
-// Rate Limiter: Prevent DDOS and Brute Force
-const apiLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 500, // Increased for mobile networks/shared IPs
-    handler: (req, res) => {
-        res.status(429).json({
-            success: false,
-            message: "Too many requests from this IP, please try again after 15 minutes."
-        });
-    }
-});
-app.use('/api', apiLimiter);
+// Basic CORS
+app.use(cors({ origin: true, credentials: true }));
 
-// Protect against HTTP Parameter Pollution
+// Body Parsers
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(hpp());
 
-// Core Middleware
-app.use(express.json());
-app.use(cors({ 
-    origin: (origin, callback) => {
-        // Allow all origins for now but return the origin itself to satisfy credentials: true
-        callback(null, true);
-    }, 
-    credentials: true 
-}));
-
-// Debug Middleware for Vercel
-app.use((req, res, next) => {
-    if (req.url.startsWith('/api')) {
-        console.log(`🔍 [API Request] ${req.method} ${req.url}`);
-    }
-    next();
-});
-
-// Graceful Error Handling for Development
-process.on('unhandledRejection', (reason, promise) => {
-    console.error('Unhandled Rejection at:', promise, 'reason:', reason);
-});
-
+// Diagnostic Ping
+app.get('/api/ping', (req, res) => res.send('pong'));
 process.on('uncaughtException', (err) => {
     console.error('Uncaught Exception thrown:', err.message);
     // On Vercel, we shouldn't exit as it kills the function instance

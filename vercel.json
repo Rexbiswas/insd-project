@@ -2,12 +2,6 @@
   "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
-  "functions": {
-    "api/index.js": {
-      "memory": 1024,
-      "maxDuration": 10
-    }
-  },
   "headers": [
     {
       "source": "/sitemap.xml",
@@ -20,10 +14,6 @@
     }
   ],
   "rewrites": [
-    {
-      "source": "/api/:match*",
-      "destination": "/api/index.js"
-    },
     {
       "source": "/((?!api|.*\\.[a-z0-9]+$).*)",
       "destination": "/index.html"
