@@ -39,6 +39,8 @@ dotenv.config();
 dotenv.config({ path: path.join(__dirname, '.env') });
 dotenv.config({ path: path.join(__dirname, '../.env') });
 
+console.log('🔍 MONGO_URI Debug:', process.env.MONGO_URI ? 'Defined (length: ' + process.env.MONGO_URI.length + ')' : 'UNDEFINED');
+
 const app = express();
 const PORT = process.env.PORT || 5001;
 
@@ -278,6 +280,9 @@ if (process.env.NODE_ENV !== 'production') {
         console.log(`\n🚀 INSD Backend is live!`);
         console.log(`🏠 Local:   http://localhost:${PORT}`);
         console.log(`📱 Mobile:  http://${localIp}:${PORT}\n`);
+        
+        // Initial connection attempt
+        connectDB();
     });
 }
 
