@@ -4,10 +4,6 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
-    },
-    {
       "source": "/((?!api|.*\\.[a-z0-9]+$).*)",
       "destination": "/index.html"
     }
