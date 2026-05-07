@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { User, Mail, Phone, MapPin, Building2, BookOpen, GraduationCap, CheckCircle2, AlertCircle, ChevronDown, Send } from 'lucide-react';
 
 const AdmissionForm = ({ isModal = false, title, subtitle }) => {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -95,10 +97,16 @@ const AdmissionForm = ({ isModal = false, title, subtitle }) => {
 
             if (response.ok) {
                 setStatus('success');
+                const submittedName = formData.name;
                 setFormData({
                     name: '', email: '', phone: '', state: '', city: '', 
                     program: '', course: '', marketingConsent: false
                 });
+                
+                // Redirect to Thank You page
+                setTimeout(() => {
+                    navigate('/thank-you', { state: { name: submittedName, type: 'admission' } });
+                }, 1000);
             } else {
                 setErrorMessage(data.message || `Server Error (${response.status}): Submission failed.`);
                 setStatus('error');
@@ -179,12 +187,11 @@ const AdmissionForm = ({ isModal = false, title, subtitle }) => {
 
                     <div className="relative group/field">
                          <input 
-                            required
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
                             type="email" 
-                            placeholder="Email Address *" 
+                            placeholder="Email Address (Optional)" 
                             className="w-full h-15 bg-white/5 border border-white/10 rounded-2xl pl-12 pr-4 text-white placeholder-slate-500 focus:outline-none focus:border-primary focus:bg-white/10 focus:ring-4 focus:ring-primary/10 transition-all font-bold text-sm md:text-base shadow-inner"
                          />
                         <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within/field:text-primary transition-colors" size={18} />

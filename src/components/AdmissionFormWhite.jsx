@@ -9,6 +9,7 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
     const [formData, setFormData] = useState({
         name: '',
         mobile: '',
+        email: '',
         qualification: '',
         course: '',
         state: '',
@@ -43,6 +44,7 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
                 body: JSON.stringify({
                     name: formData.name,
                     mobile: formData.mobile,
+                    email: formData.email,
                     qualification: formData.qualification,
                     course: formData.course,
                     state: formData.state,
@@ -65,7 +67,7 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
             if (response.ok || data.success) {
                 setStatus('success');
                 setFormData({
-                    name: '', mobile: '', qualification: '', course: '', state: '', city: ''
+                    name: '', mobile: '', email: '', qualification: '', course: '', state: '', city: ''
                 });
                 
                 // Redirect to Thank You page after a brief delay
@@ -142,24 +144,44 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
                 </button>
             )}
 
-            {/* Left Content - Marketing */}
-            <div className={`w-full md:w-[45%] bg-gradient-to-br from-[#134a84] to-[#db3436] text-white flex flex-col justify-between relative overflow-hidden ${isModal ? 'h-[200px] md:h-auto' : 'min-h-[200px] md:min-h-[650px]'}`}>
-                {/* Background decorative glows removed */}
+            {/* Left Content - Marketing - Redesigned for Premium UI */}
+            <div className={`w-full md:w-[42%] bg-gradient-to-br from-[#134a84] via-[#134a84] to-[#db3436] text-white flex flex-col justify-center relative overflow-hidden ${isModal ? 'h-[250px] md:h-auto' : 'min-h-[300px] md:min-h-[650px]'}`}>
+                {/* Decorative background element */}
+                <div className="absolute top-[-10%] right-[-10%] w-[300px] h-[300px] bg-white/5 rounded-full blur-3xl pointer-events-none" />
+                <div className="absolute bottom-[-10%] left-[-10%] w-[300px] h-[300px] bg-[#db3436]/20 rounded-full blur-3xl pointer-events-none" />
 
-                <div className="p-4 md:p-10 relative z-10 flex flex-col h-full items-center text-center justify-center">
-                    <div className="space-y-3 md:space-y-8 flex flex-col items-center">
-
-                        <h2 className="text-xl md:text-3xl font-black leading-tight tracking-tight px-4">
-                            Are you ready to be part of this <br className="hidden md:block" />
-                            <span className="text-[#db3436]">Billion-dollar Industry?</span>
+                <div className="p-8 md:p-12 relative z-10 text-center space-y-4 md:space-y-10">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <h2 className="text-2xl md:text-5xl font-black leading-[1.1] tracking-tighter uppercase italic drop-shadow-2xl">
+                            Are you ready <br />
+                            <span className="text-white/90">to be part of this</span><br />
+                            <span className="text-[#db3436] drop-shadow-[0_0_15px_rgba(219,52,54,0.4)] not-italic">
+                                Billion-dollar <br />
+                                Industry?
+                            </span>
                         </h2>
+                    </motion.div>
 
-                        <p className="text-white font-bold text-sm md:text-lg max-w-[320px] leading-relaxed">
-                            Start your creative career today!
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.3 }}
+                        className="flex flex-col items-center gap-4"
+                    >
+                        <div className="w-12 h-1 bg-white/20 rounded-full" />
+                        <p className="text-white/80 font-black text-sm md:text-xl uppercase tracking-[0.2em] drop-shadow-lg">
+                            Start your creative <br className="hidden md:block" />
+                            career today!
                         </p>
-
-                    </div>
+                    </motion.div>
                 </div>
+
+                {/* Subtle bottom accent */}
+                <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-linear-to-r from-transparent via-white/10 to-transparent" />
             </div>
 
             {/* Right Content - Form */}
@@ -168,7 +190,7 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
                 <div className="absolute right-0 top-0 bottom-0 w-2 bg-[#db3436] opacity-10 pointer-events-none hidden md:block" />
                 <div className="absolute right-0 top-0 bottom-0 w-0.5 bg-[#db3436] opacity-30 pointer-events-none hidden md:block" />
                 
-                <div className="p-5 md:p-10 space-y-5 md:space-y-8">
+                <div className="p-4 md:p-8 space-y-4 md:space-y-6">
                     <div className="flex items-center justify-between gap-4">
                         <div className="space-y-1">
                             <h3 className="text-xl md:text-3xl font-black text-slate-900 tracking-tight uppercase">
@@ -180,8 +202,8 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
                         </div>
                     </div>
 
-                    <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                    <form onSubmit={handleSubmit} className="space-y-2 md:space-y-3">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                             {/* Name Field */}
                             <div className="space-y-1">
                                 <label className="text-[10px] md:text-xs font-black text-slate-800 ml-1 uppercase tracking-wider">Full Name</label>
@@ -192,10 +214,25 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
                                     onChange={handleChange}
                                     placeholder="Enter your full name"
                                     required
-                                    className="w-full h-11 md:h-14 px-5 bg-slate-50/50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#134a84]/5 focus:border-[#134a84] transition-all text-slate-900 font-bold text-sm md:text-base placeholder:text-slate-300"
+                                    className="w-full h-10 md:h-12 px-5 bg-slate-50/50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#134a84]/5 focus:border-[#134a84] transition-all text-slate-900 font-bold text-sm md:text-base placeholder:text-slate-300"
                                 />
                             </div>
 
+                            {/* Email Field - Optional for Remarketing */}
+                            <div className="space-y-1">
+                                <label className="text-[10px] md:text-xs font-black text-slate-800 ml-1 uppercase tracking-wider">Email Address (Optional)</label>
+                                <input 
+                                    type="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    placeholder="Enter your email"
+                                    className="w-full h-10 md:h-12 px-5 bg-slate-50/50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#134a84]/5 focus:border-[#134a84] transition-all text-slate-900 font-bold text-sm md:text-base placeholder:text-slate-300"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                             {/* Phone Number Field */}
                             <div className="space-y-1">
                                 <label className="text-[10px] md:text-xs font-black text-slate-800 ml-1 uppercase tracking-wider">Phone Number</label>
@@ -206,13 +243,10 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
                                     onChange={handleChange}
                                     placeholder="+91 00000 00000"
                                     required
-                                    className="w-full h-11 md:h-14 px-5 bg-slate-50/50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#134a84]/5 focus:border-[#134a84] transition-all text-slate-900 font-bold text-sm md:text-base placeholder:text-slate-300"
+                                    className="w-full h-10 md:h-12 px-5 bg-slate-50/50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#134a84]/5 focus:border-[#134a84] transition-all text-slate-900 font-bold text-sm md:text-base placeholder:text-slate-300"
                                 />
                             </div>
-                        </div>
 
-                        {/* Qualification & Course */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                             <div className="space-y-1">
                                 <label className="text-[10px] md:text-xs font-black text-slate-800 ml-1 uppercase tracking-wider">Highest Qualification</label>
                                 <div className="relative">
@@ -221,7 +255,7 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
                                         value={formData.qualification}
                                         onChange={handleChange}
                                         required
-                                        className="w-full h-11 md:h-14 px-5 bg-slate-50/50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:border-[#134a84] appearance-none text-slate-900 font-bold text-sm md:text-base cursor-pointer"
+                                        className="w-full h-10 md:h-12 px-5 bg-slate-50/50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:border-[#134a84] appearance-none text-slate-900 font-bold text-sm md:text-base cursor-pointer"
                                     >
                                         <option value="" disabled>Select Qualification</option>
                                         <option value="Completed 10th">Completed 10th</option>
@@ -234,7 +268,10 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
+                        {/* Course of Interest - Full Width for Balance */}
+                        <div className="grid grid-cols-1">
                             <div className="space-y-1">
                                 <label className="text-[10px] md:text-xs font-black text-slate-800 ml-1 uppercase tracking-wider">Course of Interest</label>
                                 <div className="relative">
@@ -243,7 +280,7 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
                                         value={formData.course}
                                         onChange={handleChange}
                                         required
-                                        className="w-full h-11 md:h-14 px-5 bg-slate-50/50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:border-[#134a84] appearance-none text-slate-900 font-bold text-sm md:text-base cursor-pointer"
+                                        className="w-full h-10 md:h-12 px-5 bg-slate-50/50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:border-[#134a84] appearance-none text-slate-900 font-bold text-sm md:text-base cursor-pointer"
                                     >
                                         <option value="" disabled>Select Course</option>
                                         <option value="Fashion Design">Fashion Design</option>
@@ -273,7 +310,7 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
                                         value={formData.state}
                                         onChange={handleChange}
                                         required
-                                        className="w-full h-11 md:h-14 px-5 bg-slate-50/50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:border-[#134a84] appearance-none text-slate-900 font-bold text-sm md:text-base cursor-pointer"
+                                        className="w-full h-10 md:h-12 px-5 bg-slate-50/50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:border-[#134a84] appearance-none text-slate-900 font-bold text-sm md:text-base cursor-pointer"
                                     >
                                         {states.map(opt => (
                                             <option key={opt} value={opt === states[0] ? "" : opt} disabled={opt === states[0]}>
@@ -297,7 +334,7 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
                                         onChange={handleChange}
                                         disabled={!formData.state}
                                         required
-                                        className="w-full h-11 md:h-14 px-5 bg-slate-50/50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:border-[#134a84] appearance-none text-slate-900 font-bold text-sm md:text-base cursor-pointer disabled:opacity-50"
+                                        className="w-full h-10 md:h-12 px-5 bg-slate-50/50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:border-[#134a84] appearance-none text-slate-900 font-bold text-sm md:text-base cursor-pointer disabled:opacity-50"
                                     >
                                         <option value="">Select City</option>
                                         {(formData.state ? stateCityData[formData.state] : []).map(city => (
@@ -322,7 +359,7 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
                         <button
                             type="submit"
                             disabled={status === 'loading'}
-                            className="w-full h-12 md:h-14 bg-linear-to-r from-[#134a84] to-[#db3436] hover:brightness-110 disabled:opacity-50 text-white font-black uppercase tracking-[0.25em] text-sm md:text-base rounded-full transition-all shadow-2xl hover:shadow-[0_10px_40px_-10px_rgba(219,52,54,0.6)] active:scale-[0.95] mt-4 flex items-center justify-center gap-3"
+                            className="w-full h-11 md:h-13 bg-linear-to-r from-[#134a84] to-[#db3436] hover:brightness-110 disabled:opacity-50 text-white font-black uppercase tracking-[0.25em] text-sm md:text-base rounded-full transition-all shadow-2xl hover:shadow-[0_10px_40px_-10px_rgba(219,52,54,0.6)] active:scale-[0.95] mt-2 flex items-center justify-center gap-3"
                         >
                             {status === 'loading' ? (
                                 <>

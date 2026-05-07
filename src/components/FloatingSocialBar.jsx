@@ -25,7 +25,10 @@ const FloatingSocialBar = () => {
     ];
 
     return (
-        <div className="fixed left-6 top-1/2 -translate-y-1/2 z-[999] hidden xl:flex flex-col gap-4">
+        <div className="fixed left-6 md:left-8 top-1/2 -translate-y-1/2 z-[999] hidden lg:flex flex-col items-center gap-6">
+            {/* Vertical Accent Line */}
+            <div className="w-px h-12 bg-linear-to-b from-transparent via-slate-200 to-transparent mb-2" />
+            
             {socials.map((social, index) => (
                 <motion.a
                     key={index}
@@ -59,6 +62,9 @@ const FloatingSocialBar = () => {
                     </div>
                 </motion.a>
             ))}
+            
+            {/* Vertical Accent Line */}
+            <div className="w-px h-12 bg-linear-to-b from-slate-200 via-slate-200 to-transparent mt-2" />
         </div>
     );
 };

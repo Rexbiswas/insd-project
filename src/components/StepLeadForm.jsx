@@ -294,9 +294,8 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
                                                 <div className="relative group">
                                                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                                                     <input
-                                                        required
                                                         type="email"
-                                                        placeholder="Email Address"
+                                                        placeholder="Email Address (Optional)"
                                                         className="w-full h-14 bg-slate-50 border border-slate-100 rounded-xl pl-12 pr-4 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-primary/50 transition-all font-bold text-sm"
                                                         value={formData.email}
                                                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}

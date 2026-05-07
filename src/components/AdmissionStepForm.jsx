@@ -1,8 +1,10 @@
 import React, { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { User, Phone, Mail, MapPin, ArrowRight, ArrowLeft, CheckCircle2, Sparkles, Building, Briefcase, GraduationCap, Monitor, Palette, Hexagon, Star } from 'lucide-react';
 
 const AdmissionStepForm = () => {
+    const navigate = useNavigate();
     const sectionRef = useRef(null);
     const [step, setStep] = useState(1);
     const [formData, setFormData] = useState({
@@ -83,16 +85,25 @@ const AdmissionStepForm = () => {
             const data = await response.json();
             if (data.success) {
                 setSubmitted(true);
+                // Redirect to Thank You page after a brief delay for consistency
+                setTimeout(() => {
+                    navigate('/thank-you', { state: { name: formData.name, type: 'admission' } });
+                }, 1000);
             } else {
                 console.error('Submission failed:', data.message);
                 // Fallback for demo purposes even if backend fails
                 setSubmitted(true);
+                setTimeout(() => {
+                    navigate('/thank-you', { state: { name: formData.name, type: 'admission' } });
+                }, 1000);
             }
         } catch (error) {
             console.error('Submission error:', error);
             // Even if there's an error, we show success to the user for now 
-            // but log it for developers
             setSubmitted(true);
+            setTimeout(() => {
+                navigate('/thank-you', { state: { name: formData.name, type: 'admission' } });
+            }, 1000);
         } finally {
             setLoading(false);
             scrollToTop();
@@ -231,11 +242,10 @@ const AdmissionStepForm = () => {
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
-                                    <label className="text-xs font-bold uppercase tracking-widest text-slate-400 ml-2">Email Address</label>
+                                    <label className="text-xs font-bold uppercase tracking-widest text-slate-400 ml-2">Email Address (Optional)</label>
                                     <div className="relative group">
                                         <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-primary transition-colors" />
                                         <input
-                                            required
                                             type="email"
                                             placeholder="jane@example.com"
                                             className="w-full h-14 bg-white border-2 border-slate-200 rounded-xl pl-12 pr-4 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold text-sm"
