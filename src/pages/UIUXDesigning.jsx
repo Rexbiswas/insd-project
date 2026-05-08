@@ -80,6 +80,26 @@ const UIUXDesigning = () => {
                     "Industrial Internship (OJT)",
                     "Final Graduation Showcase"
                 ]
+            },
+            "Year 3": {
+                "Semester 5": [
+                    "Client & Case Study",
+                    "Full Branding Project On Existing Company"
+                ],
+                "Semester 6": [
+                    "Group Project",
+                    "Advanced Interaction Design"
+                ]
+            },
+            "Year 4": {
+                "Semester 7": [
+                    "Industry Projects",
+                    "Entrepreneurship"
+                ],
+                "Semester 8": [
+                    "Internship & On the Job Training",
+                    "Final Graduation Showcase"
+                ]
             }
         },
         PG: {

@@ -103,7 +103,9 @@ const GraphicDesigning = () => {
                 ],
                 "Semester 6": [
                     "Group Project"
-                ],
+                ]
+            },
+            "Year 4": {
                 "Semester 7": [
                     "Industry Projects",
                     "Enterprenuership"

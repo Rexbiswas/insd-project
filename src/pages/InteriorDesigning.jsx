@@ -41,7 +41,7 @@ const InteriorDesigning = () => {
             "Foundation: Advanced Drafting": [
                 "Advance Drafting",
                 "Enhanced visualisation with AI",
-                "Interior Designing Studio (Residential + Commercial) with AI",
+                "Interior Design Studio (Residential + Commercial) with AI",
                 "Supported ideation & research with AI",
                 "Design to Concept & Conceptualising Design with AI",
                 "Building Construction",
@@ -66,23 +66,25 @@ const InteriorDesigning = () => {
                 "Semester 1": [
                     "Basics of Drafting",
                     "Basics of Graphics",
-                    "Introduction of Interior designing",
+                    "Introduction of Interior Design",
                     "History of architecture",
-                    "Basics of furniture designing",
+                    "Basics of furniture Design",
                     "Market survey & Building construction",
                     "Grooming & communication skills"
                 ],
                 "Semester 2": [
                     "Application of Drafting",
                     "Application of colors",
-                    "Principle of Interior designing",
+                    "Principle of Interior Design",
                     "History of architecture",
                     "Glossary of furniture",
                     "Building construction"
-                ],
+                ]
+            },
+            "Year 2": {
                 "Semester 3": [
                     "Building technology",
-                    "Life space planning and interior designing",
+                    "Life space planning and interior Design",
                     "Design graphics & display",
                     "History of architecture",
                     "Furniture & furnishings",
@@ -91,32 +93,34 @@ const InteriorDesigning = () => {
                 "Semester 4": [
                     "Building services & estimation",
                     "Urban space planning",
-                    "Elements of Interior designing",
+                    "Elements of Interior Design",
                     "Theory of architecture",
                     "Significance of Furniture",
                     "Market Dynamics",
                     "Project work"
                 ]
             },
-            "Year 2": {
+            "Year 3": {
                 "Semester 5": [
                     "Interior and exterior treatments",
                     "Furniture, furnishings and fittings",
-                    "Art and graphics in interior designing",
+                    "Art and graphics in interior Design",
                     "Entrepreneurship development",
                     "Computer aided design",
                     "Building construction – Part 3",
-                    "Interior designing projects – Part 1"
+                    "Interior Design projects – Part 1"
                 ],
                 "Semester 6": [
                     "Interior and exterior treatments",
                     "Furniture, furnishings and fittings",
-                    "Art and graphics in interior designing",
+                    "Art and graphics in interior Design",
                     "Entrepreneurship development",
                     "Computer aided design",
                     "Building construction – Part 3",
-                    "Interior designing projects – Part 1"
-                ],
+                    "Interior Design projects – Part 1"
+                ]
+            },
+            "Year 4": {
                 "Semester 7": [
                     "Industry Projects",
                     "Enterprenuership"

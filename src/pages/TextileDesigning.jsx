@@ -104,7 +104,9 @@ const TextileDesigning = () => {
                 "Semester 6": [
                     "Knitting process",
                     "Finishing process"
-                ],
+                ]
+            },
+            "Year 4": {
                 "Semester 7": [
                     "Industry Projects",
                     "Enterprenuership"
@@ -121,7 +123,7 @@ const TextileDesigning = () => {
         { title: "Prints & Patterns Designer", desc: "Creating innovative surface designs and repeated patterns for fashion and home interiors.", img: "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&fit=crop&q=80&w=800" },
         { title: "Weaving Consultant", desc: "Expertly directing the structural composition of fabrics through traditional and modern weaving.", img: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&q=80&w=800" },
         { title: "Material Researcher", desc: "Exploring sustainable and high-tech fibers to define the next generation of performance fabrics.", img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800" },
-        { title: "Home Furnishing Lead", desc: "Designing comprehensive textile collections for luxury upholstery, curtains, and linens.", img: "https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&q=80&w=800" },
+        { title: "Home Furnishing Lead", desc: "Design comprehensive textile collections for luxury upholstery, curtains, and linens.", img: "https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&q=80&w=800" },
         { title: "Sustainability Architect", desc: "Leading the global transition toward circular textiles, eco-friendly dyes, and ethical manufacturing.", img: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&q=80&w=800" },
         { title: "Independent Artist", desc: "Launching a boutique studio focused on artisanal, handcrafted, and limited-edition textiles.", img: "https://images.unsplash.com/photo-1459156212016-c812468e2115?auto=format&fit=crop&q=80&w=800" },
     ];
@@ -153,7 +155,7 @@ const TextileDesigning = () => {
                     >
                         <h1 className="text-clamp-5xl font-black text-white uppercase tracking-tighter leading-tight md:leading-[0.85] mb-8">
                             <span className="text-primary">Textile</span> <br className="hidden md:block" /> 
-                            Designing
+                            Design
                         </h1>
                         
                         <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default justify-center">

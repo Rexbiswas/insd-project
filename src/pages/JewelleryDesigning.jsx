@@ -38,11 +38,11 @@ const JewelleryDesigning = () => {
                 "Elements of Design with AI",
                 "Gemology",
                 "Diamond Grading",
-                "Designing Project 1 with AI",
-                "Designing Project 2 inspiration"
+                "Design Project 1 with AI",
+                "Design Project 2 inspiration"
             ],
             "Industry: CAD & Market": [
-                "Concept Designing with AI",
+                "Concept Design with AI",
                 "Costume Jewellery",
                 "Coral draw CAD 2 D software with AI",
                 "CAD Matrix 3D software with AI",
@@ -73,7 +73,7 @@ const JewelleryDesigning = () => {
         Bachelors: {
             "Year 1": {
                 "Semester 1": [
-                    "Manual designing: designing with different motives and knowledge of jewellery.",
+                    "Manual Design: Design with different motives and knowledge of jewellery.",
                     "shading, rendering of white gold, yellow gold, gemstones etc.",
                     "costume jewellery: making all jewellery by different types of beads, stones.",
                     "metallurgy- basic knowledge and theory of all terms used in jewellery."
@@ -85,17 +85,17 @@ const JewelleryDesigning = () => {
             },
             "Year 2": {
                 "Semester 3": [
-                    "Production management designing projects.like state project, country project, detachable project, temple jewellery.",
+                    "Production management design projects.like state project, country project, detachable project, temple jewellery.",
                     "gemology- advanced study.",
                     "diamond grading -advanced study of diamonds."
                 ],
                 "Semester 4": [
-                    "Market surveys.cad designing – rhino n matrix.",
+                    "Market surveys.CAD Design – Rhino n Matrix.",
                     "Fashion Accessory Design",
                     "Hallmarking System of Jewellery",
                     "History of Eras",
-                    "Eras Designing Prac. 1",
-                    "Accessory Designing Prac 2"
+                    "Eras Design Prac. 1",
+                    "Accessory Design Prac 2"
                 ]
             },
             "Year 3": {
@@ -104,12 +104,14 @@ const JewelleryDesigning = () => {
                     "Custome Made Jewellery",
                     "Entrepreneurship Development",
                     "Study of Pearl",
-                    "Inspirational Designing (Prac. 1)",
-                    "State Designing (Prac 2)"
+                    "Inspirational Design (Prac. 1)",
+                    "State Design (Prac 2)"
                 ],
                 "Semester 6": [
                     "Marketing"
-                ],
+                ]
+            },
+            "Year 4": {
                 "Semester 7": [
                     "Industry Projects",
                     "Enterprenuership"
@@ -158,7 +160,7 @@ const JewelleryDesigning = () => {
                     >
                         <h1 className="text-clamp-5xl font-black text-white uppercase tracking-tighter leading-tight md:leading-[0.85] mb-8">
                             <span className="text-primary">Jewellery</span> <br className="hidden md:block" /> 
-                            Designing
+                            Design
                         </h1>
                        
                         <div className="flex items-center gap-4 text-white/50 animate-bounce cursor-default justify-center">
@@ -443,7 +445,7 @@ const JewelleryDesigning = () => {
                 <div className="max-w-7xl mx-auto space-y-20">
                     <div className="text-center space-y-4">
                         <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 uppercase tracking-tighter leading-none">
-                            Why Choose <br /> <span className="text-primary">INSD</span> Jewellery Designing?
+                            Why Choose <br /> <span className="text-primary">INSD</span> Jewellery Design?
                         </h2>
                     </div>
 

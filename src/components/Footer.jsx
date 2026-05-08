@@ -87,11 +87,11 @@ const Footer = () => {
                             </h5>
                             <ul className="space-y-4">
                                 {[
-                                    { name: "Fashion Designing", path: "/courses/fashion-designing" },
-                                    { name: "Interior Designing", path: "/courses/interior-designing" },
-                                    { name: "Graphic Designing", path: "/courses/graphic-designing" },
-                                    { name: "Animation & VFX", path: "/courses/animation-and-vfx" },
-                                    { name: "Jewellery Designing", path: "/courses/jewellery-designing" },
+                                    { name: "Fashion Design", path: "/courses/fashion-design" },
+                                    { name: "Interior Design", path: "/courses/interior-design" },
+                                    { name: "Graphic Design", path: "/courses/graphic-design" },
+                                    { name: "Animation Design", path: "/courses/animation" },
+                                    { name: "Jewellery Design", path: "/courses/jewellery-design" },
                                     { name: "UI/UX Design", path: "/courses/uiux-designing" },
                                     { name: "Beauty & Makeup", path: "/courses/beauty-and-makeup" },
                                     { name: "Photography", path: "/courses/photography" },
