@@ -74,7 +74,7 @@ const CelebritySlider = () => {
                 >
                     <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">Elite Ecosystem</span>
                     <h2 className="text-3xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter leading-none">
-                        CELEBRITIES <br /> <span className="text-slate-300">OF INSD</span>
+                        CELEBRITIES <br /> <span className="text-slate-300">AT INSD EVENTS</span>
                     </h2>
                     <p className="text-slate-500 font-bold max-w-2xl mx-auto uppercase text-[10px] tracking-widest mt-4">
                         Experience the star power of INSD where global icons meet the next generation of designers.
