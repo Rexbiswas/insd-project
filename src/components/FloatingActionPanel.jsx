@@ -35,7 +35,7 @@ const FloatingActionPanel = () => {
                         <FloatingSocialCTA />
                         <AIChatbot isFloatingPanel />
                     </motion.div>
-                )}
+               )}
             </AnimatePresence>
 
             {/* WhatsApp is ALWAYS visible at the bottom of the stack */}

@@ -44,7 +44,7 @@ const InsdDifference = () => {
         <section className="relative py-24 md:py-32 bg-white overflow-hidden">
             <div className="container mx-auto px-6">
                 <div className="flex flex-col lg:flex-row gap-16 items-center">
-                    
+
                     {/* Left Side: Scroller Tiles (60%) */}
                     <div className="w-full lg:w-[60%] space-y-12">
                         <div className="max-w-2xl">
@@ -57,8 +57,8 @@ const InsdDifference = () => {
                                 <div className="w-12 h-px bg-primary"></div>
                                 <span className="text-primary font-black uppercase tracking-[0.4em] text-xs">The Excellence Framework</span>
                             </motion.div>
-                            
-                            <motion.h2 
+
+                            <motion.h2
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
@@ -66,8 +66,8 @@ const InsdDifference = () => {
                             >
                                 See the <span className="text-primary italic">INSD Difference</span>
                             </motion.h2>
-                            
-                            <motion.p 
+
+                            <motion.p
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
@@ -111,7 +111,7 @@ const InsdDifference = () => {
 
                     {/* Right Side: Video Content (40%) */}
                     <div className="w-full lg:w-[40%] flex justify-center">
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
@@ -121,8 +121,8 @@ const InsdDifference = () => {
                             {!isPlaying ? (
                                 <>
                                     {/* Cinematic Video Loop */}
-                                    <video 
-                                        src="https://player.vimeo.com/external/494163967.sd.mp4?s=6a982924151a6907d64380f681bc7e828e8b6b90&profile_id=165" 
+                                    <video
+                                        src="https://player.vimeo.com/external/494163967.sd.mp4?s=6a982924151a6907d64380f681bc7e828e8b6b90&profile_id=165"
                                         className="w-full h-full object-cover -20 group-hover/video:-0 transition-all duration-1000 group-hover/video:scale-105"
                                         autoPlay
                                         loop
@@ -130,7 +130,7 @@ const InsdDifference = () => {
                                         playsInline
                                     />
                                     <div className="absolute inset-0 bg-linear-to-t from-slate-900/80 via-transparent to-transparent" />
-                                    
+
                                     {/* Play Button Overlay */}
                                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                                         <div className="w-24 h-24 bg-primary rounded-full flex items-center justify-center shadow-2xl transform group-hover/video:scale-110 transition-transform duration-500 animate-pulse">
@@ -147,13 +147,13 @@ const InsdDifference = () => {
                                     </div>
                                 </>
                             ) : (
-                                <iframe 
+                                <iframe
                                     className="w-full h-full"
-                                    src={`https://www.youtube.com/embed/3t4m4f1vaRo?autoplay=1&rel=0&modestbranding=1&iv_load_policy=3&controls=1&showinfo=0&origin=${window.location.origin}`} 
-                                    title="INSD Difference Video" 
-                                    frameBorder="0" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                    referrerPolicy="strict-origin-when-cross-origin" 
+                                    src={`https://www.youtube.com/embed/3t4m4f1vaRo?autoplay=1&rel=0&modestbranding=1&iv_load_policy=3&controls=1&showinfo=0&origin=${window.location.origin}`}
+                                    title="INSD Difference Video"
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerPolicy="strict-origin-when-cross-origin"
                                     allowFullScreen
                                 ></iframe>
                             )}

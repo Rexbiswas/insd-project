@@ -50,8 +50,8 @@ const SuccessStory = () => {
                         <div className="w-12 h-[2px] bg-primary"></div>
                         <span className="text-primary font-black uppercase tracking-[0.4em] text-clamp-sm">Industry Placements</span>
                     </motion.div>
-                    
-                    <motion.h2 
+
+                    <motion.h2
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -60,8 +60,8 @@ const SuccessStory = () => {
                         They made it.<br />
                         <span className="text-primary italic">So Can You!</span>
                     </motion.h2>
-                    
-                    <motion.p 
+
+                    <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -84,13 +84,13 @@ const SuccessStory = () => {
                         >
                             {/* Card Image Part */}
                             <Link to="/industry-potential" className="relative aspect-[4/5] rounded-t-4xl overflow-hidden shadow-2xl block cursor-pointer">
-                                <img 
-                                    src={story.img} 
-                                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" 
-                                    alt={story.name} 
+                                <img
+                                    src={story.img}
+                                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"
+                                    alt={story.name}
                                 />
                                 <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/20 to-transparent" />
-                                
+
                                 {/* Top Badge */}
                                 <div className="absolute top-4 left-4 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 flex items-center gap-2">
                                     <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
@@ -106,7 +106,7 @@ const SuccessStory = () => {
                                     </p>
                                 </div>
                             </Link>
-                            
+
                             {/* Card Content Part */}
                             <div className="bg-white p-8 rounded-b-4xl shadow-xl border-x border-b border-slate-100 flex-1 flex flex-col">
                                 <p className="text-slate-500 text-clamp-sm font-semibold leading-relaxed mb-6 flex-1">
@@ -122,15 +122,15 @@ const SuccessStory = () => {
                     ))}
                 </div>
 
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     className="mt-20 flex justify-center"
                 >
-                    <button 
-                        onClick={() => openAdmissionModal({ 
-                            title: 'Download Placement Report', 
+                    <button
+                        onClick={() => openAdmissionModal({
+                            title: 'Download Placement Report',
                             subtitle: 'Join our elite alumni network.',
                             ctaText: 'Download Now',
                             successMsg: 'Thank you! Your placement report is being prepared. Our team will also reach out to guide you through our alumni network.'

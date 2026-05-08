@@ -348,7 +348,7 @@ const Home = () => {
                         </div>
 
                         {/* Stats Highlights */}
-                        <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 md:gap-6 pt-8">
+                        <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center lg:justify-start gap-y-8 gap-x-4 md:gap-6 pt-8">
                             <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
                                 <span className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-linear-to-r from-[#db3436] to-[#134a84]">15+</span>
                                 <span className="text-[9px] md:text-[11px] font-black uppercase tracking-widest text-slate-900 mt-1">Years Legacy</span>

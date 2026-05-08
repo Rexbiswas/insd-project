@@ -273,7 +273,7 @@ const ProgramGrid = () => {
             <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-transparent to-black/40 opacity-100 z-0" />
 
             <div className="absolute inset-0 z-10 flex flex-col items-center justify-center p-6 text-center">
-                <h3 className="text-white font-black text-[32px] md:text-[38px] lg:text-[44px] leading-none uppercase tracking-tighter transition-all duration-700 group-hover:scale-110 group-hover:text-primary drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
+                <h3 className="text-white font-black text-xl md:text-[38px] lg:text-[44px] leading-none uppercase tracking-tighter transition-all duration-700 group-hover:scale-110 group-hover:text-primary drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
                     {program.title}
                 </h3>
 
