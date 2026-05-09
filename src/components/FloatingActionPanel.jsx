@@ -3,7 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import BackToTop from './BackToTop';
 import AIChatbot from './AIChatbot';
 import WhatsappCTA from './WhatsappCTA';
-import FloatingSocialCTA from './FloatingSocialCTA';
+import FacebookCTA from './FacebookCTA';
+import InstagramCTA from './InstagramCTA';
+import YoutubeCTA from './YoutubeCTA';
+
 
 const FloatingActionPanel = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -19,23 +22,24 @@ const FloatingActionPanel = () => {
     }, []);
 
     return (
-        <div className="fixed bottom-24 md:bottom-10 right-6 md:right-10 z-[1001] flex flex-col items-end gap-4 pointer-events-none">
+        <div className="fixed bottom-24 md:bottom-10 right-6 md:right-10 z-[1001] hidden lg:flex flex-col items-end gap-4 pointer-events-none">
             {/* Persistently Fixed Icons - Always Visible */}
             <div className="flex flex-col items-end gap-4 pointer-events-auto">
                 <BackToTop isFloatingPanel />
+                <YoutubeCTA isFloatingPanel />
+                <InstagramCTA isFloatingPanel />
+                <FacebookCTA isFloatingPanel />
                 <WhatsappCTA isFloatingPanel />
             </div>
-
-            {/* Scroll-Dependent Icons (Desktop Only in FAB) */}
+            {/* Scroll-Dependent AI Chatbot (Desktop Only) */}
             <AnimatePresence>
                 {isScrolled && (
                     <motion.div
                         initial={{ opacity: 0, y: 20, scale: 0.8 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.8 }}
-                        className="hidden lg:flex flex-col items-end gap-4 pointer-events-auto"
+                        className="pointer-events-auto"
                     >
-                        <FloatingSocialCTA />
                         <AIChatbot isFloatingPanel />
                     </motion.div>
                 )}

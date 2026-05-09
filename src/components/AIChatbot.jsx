@@ -4,10 +4,11 @@ import { MessageCircle, X, Bot, Minus, SendHorizonal, User, LayoutDashboard, Log
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
-const AIChatbot = ({ isFloatingPanel = false }) => {
+const AIChatbot = ({ isFloatingPanel = false, hideWindow = false }) => {
     const { user, logout } = useAuth();
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
+    const [isCentered, setIsCentered] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
     const [message, setMessage] = useState('');
     const [isTyping, setIsTyping] = useState(false);
@@ -34,7 +35,12 @@ const AIChatbot = ({ isFloatingPanel = false }) => {
     useEffect(() => {
         if (isFloatingPanel) return;
         const handleScroll = () => {
-            const show = window.scrollY > 200;
+            // Don't hide if already open
+            if (isOpen) {
+                if (!isVisible) setIsVisible(true);
+                return;
+            }
+            const show = window.scrollY > 100;
             if (show !== isVisible) {
                 setIsVisible(show);
             }
@@ -42,7 +48,25 @@ const AIChatbot = ({ isFloatingPanel = false }) => {
         handleScroll();
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [isVisible, isFloatingPanel]);
+    }, [isVisible, isFloatingPanel, isOpen]);
+
+    // Handle external trigger
+    useEffect(() => {
+        const handleExternalOpen = (e) => {
+            // Only the instance that is allowed to show the window should respond
+            if (hideWindow) return;
+            
+            setIsOpen(true);
+            if (e.detail?.centered) {
+                setIsCentered(true);
+            } else {
+                setIsCentered(false);
+            }
+            if (!isFloatingPanel) setIsVisible(true);
+        };
+        window.addEventListener('open-ai-chatbot', handleExternalOpen);
+        return () => window.removeEventListener('open-ai-chatbot', handleExternalOpen);
+    }, [isFloatingPanel, hideWindow]);
 
     const handleSend = async (e) => {
         if (e && typeof e.preventDefault === 'function') {
@@ -140,139 +164,168 @@ const AIChatbot = ({ isFloatingPanel = false }) => {
         { label: "Contact Counselor", icon: MessageCircle, action: () => { navigate('/contact-us'); setIsOpen(false); } }
     ];
 
+    const ChatWindow = ({ centered }) => (
+        <motion.div
+            initial={centered 
+                ? { opacity: 0, scale: 0.9, y: 20 }
+                : { opacity: 0, scale: 0.5, x: 100, y: 100, transformOrigin: 'bottom right' }
+            }
+            animate={centered
+                ? { opacity: 1, scale: 1, y: 0 }
+                : { opacity: 1, scale: 1, x: 0, y: 0 }
+            }
+            exit={centered
+                ? { opacity: 0, scale: 0.9, y: 20 }
+                : { opacity: 0, scale: 0.5, x: 100, y: 100 }
+            }
+            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+            className={`${centered 
+                ? 'relative w-full max-w-[400px] h-[600px] max-h-[80vh]' 
+                : 'absolute bottom-full right-0 md:bottom-0 md:right-full mb-4 md:mb-0 md:mr-6 w-[90vw] md:w-[400px] h-[600px] max-h-[70vh]'
+            } bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] flex flex-col`}
+        >
+            {/* Header */}
+            <div className="p-6 bg-linear-to-r from-primary to-secondary text-white flex items-center justify-between shrink-0">
+                <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30">
+                        {user ? <User size={20} /> : <Bot size={24} />}
+                    </div>
+                    <div>
+                        <h3 className="font-bold text-sm tracking-tight text-white leading-none">
+                            {user ? `Hi, ${user.name.split(' ')[0]}` : "INSD Assistant"}
+                        </h3>
+                        <div className="flex items-center gap-1.5 mt-1">
+                            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                            <span className="text-[10px] text-white/80 font-medium uppercase tracking-widest">
+                                {user ? user.courseName : "AI Online"}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div className="flex items-center gap-2">
+                    <button
+                        onClick={clearChat}
+                        title="Clear Chat"
+                        className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors border border-white/10"
+                    >
+                        <Trash2 size={16} />
+                    </button>
+                    <button
+                        onClick={() => { setIsOpen(false); setIsCentered(false); }}
+                        className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors border border-white/10"
+                    >
+                        <X size={18} />
+                    </button>
+                </div>
+            </div>
+
+            {/* Chat Area */}
+            <div
+                ref={scrollRef}
+                className="flex-1 overflow-y-auto p-6 space-y-4 custom-scrollbar bg-slate-50"
+            >
+                {chatHistory.map((item, index) => (
+                    <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        className={`flex ${item.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                    >
+                        <div className={`max-w-[80%] p-4 rounded-2xl shadow-sm ${item.role === 'user'
+                            ? 'bg-primary text-white rounded-tr-none shadow-md shadow-primary/10'
+                            : 'bg-white text-slate-800 border border-slate-200 rounded-tl-none'
+                            }`}>
+                            <p className="text-sm font-medium leading-relaxed">{item.content}</p>
+                        </div>
+                    </motion.div>
+                ))}
+
+                {isTyping && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="flex justify-start"
+                    >
+                        <div className="bg-white/80 backdrop-blur-md p-4 rounded-2xl rounded-tl-none border border-slate-100 shadow-sm flex gap-1">
+                            <span className="w-1.5 h-1.5 bg-slate-300 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                            <span className="w-1.5 h-1.5 bg-slate-300 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                            <span className="w-1.5 h-1.5 bg-slate-300 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                        </div>
+                    </motion.div>
+                )}
+
+                {/* Quick Actions */}
+                {!isTyping && chatHistory.length === 1 && (
+                    <div className="pt-4 flex flex-wrap gap-2">
+                        {quickActions.map((action, i) => (
+                            <motion.button
+                                key={i}
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.1 * i }}
+                                onClick={action.action}
+                                className="px-4 py-2 bg-white/50 hover:bg-white text-primary border border-primary/20 rounded-full text-xs font-bold transition-all hover:shadow-md active:scale-95 flex items-center gap-2"
+                            >
+                                <action.icon size={12} />
+                                {action.label}
+                            </motion.button>
+                        ))}
+                    </div>
+                )}
+            </div>
+
+            {/* Input Area */}
+            <div className="p-4 bg-white border-t border-slate-100 shrink-0">
+                <form
+                    onSubmit={handleSend}
+                    className="relative flex items-center"
+                >
+                    <input
+                        type="text"
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        placeholder={user ? `Ask me about ${user.courseName}...` : "Ask anything..."}
+                        className="w-full bg-slate-100/50 border border-slate-200 rounded-2xl py-3.5 pl-5 pr-14 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/30 transition-all font-medium"
+                    />
+                    <button
+                        type="submit"
+                        disabled={!message.trim()}
+                        className="absolute right-2 p-2 bg-primary text-white rounded-xl hover:scale-105 active:scale-95 transition-all disabled:opacity-50 disabled:scale-100 shadow-lg shadow-primary/20"
+                    >
+                        <SendHorizonal size={20} />
+                    </button>
+                </form>
+                <p className="text-[10px] text-center text-slate-400 mt-3 font-medium tracking-tight uppercase">
+                    Powered by INSD Intelligence
+                </p>
+            </div>
+        </motion.div>
+    );
+
     const content = (
         <motion.div
             initial={isFloatingPanel ? {} : { opacity: 0, scale: 0.5, y: 50 }}
             animate={isFloatingPanel ? {} : { opacity: 1, scale: 1, y: 0 }}
             exit={isFloatingPanel ? {} : { opacity: 0, scale: 0.5, y: 50 }}
-            className={`${isFloatingPanel ? 'relative' : 'fixed bottom-28 md:bottom-10 right-6 md:right-10'} z-1000 font-sans group flex flex-col items-end`}
+            className={`${isFloatingPanel ? 'relative flex flex-col items-end' : 'fixed bottom-28 md:bottom-10 right-6 md:right-10 hidden lg:flex lg:flex-col lg:items-end'} z-1000 font-sans group`}
         >
             {/* Chat Window */}
             <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.5, x: 100, y: 100, transformOrigin: 'bottom right' }}
-                        animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.5, x: 100, y: 100 }}
-                        transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-                        className="absolute bottom-full right-0 md:bottom-0 md:right-full mb-4 md:mb-0 md:mr-6 w-[90vw] md:w-[400px] h-[600px] max-h-[70vh] bg-white border-slate-200 rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] flex flex-col"
-                    >
-                        {/* Header */}
-                        <div className="p-6 bg-linear-to-r from-primary to-secondary text-white flex items-center justify-between">
-                            <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30">
-                                    {user ? <User size={20} /> : <Bot size={24} />}
-                                </div>
-                                <div>
-                                    <h3 className="font-bold text-sm tracking-tight text-white leading-none">
-                                        {user ? `Hi, ${user.name.split(' ')[0]}` : "INSD Assistant"}
-                                    </h3>
-                                    <div className="flex items-center gap-1.5 mt-1">
-                                        <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                                        <span className="text-[10px] text-white/80 font-medium uppercase tracking-widest">
-                                            {user ? user.courseName : "AI Online"}
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <button
-                                    onClick={clearChat}
-                                    title="Clear Chat"
-                                    className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors border border-white/10"
-                                >
-                                    <Trash2 size={16} />
-                                </button>
-                                <button
-                                    onClick={() => setIsOpen(false)}
-                                    className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors border border-white/10"
-                                >
-                                    <X size={18} />
-                                </button>
-                            </div>
+                {isOpen && !hideWindow && (
+                    isCentered ? (
+                        <div className="fixed inset-0 z-[5000] flex items-center justify-center p-4 lg:hidden">
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                onClick={() => { setIsOpen(false); setIsCentered(false); }}
+                                className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
+                            />
+                            <ChatWindow centered={true} />
                         </div>
-
-                        {/* Chat Area */}
-                        <div
-                            ref={scrollRef}
-                            className="flex-1 overflow-y-auto p-6 space-y-4 custom-scrollbar bg-slate-50"
-                        >
-                            {chatHistory.map((item, index) => (
-                                <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                                    className={`flex ${item.role === 'user' ? 'justify-end' : 'justify-start'}`}
-                                >
-                                    <div className={`max-w-[80%] p-4 rounded-2xl shadow-sm ${item.role === 'user'
-                                        ? 'bg-primary text-white rounded-tr-none shadow-md shadow-primary/10'
-                                        : 'bg-white text-slate-800 border border-slate-200 rounded-tl-none'
-                                        }`}>
-                                        <p className="text-sm font-medium leading-relaxed">{item.content}</p>
-                                    </div>
-                                </motion.div>
-                            ))}
-
-                            {isTyping && (
-                                <motion.div
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    className="flex justify-start"
-                                >
-                                    <div className="bg-white/80 backdrop-blur-md p-4 rounded-2xl rounded-tl-none border border-slate-100 shadow-sm flex gap-1">
-                                        <span className="w-1.5 h-1.5 bg-slate-300 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                                        <span className="w-1.5 h-1.5 bg-slate-300 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                                        <span className="w-1.5 h-1.5 bg-slate-300 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
-                                    </div>
-                                </motion.div>
-                            )}
-
-                            {/* Quick Actions */}
-                            {!isTyping && chatHistory.length === 1 && (
-                                <div className="pt-4 flex flex-wrap gap-2">
-                                    {quickActions.map((action, i) => (
-                                        <motion.button
-                                            key={i}
-                                            initial={{ opacity: 0, x: -10 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            transition={{ delay: 0.1 * i }}
-                                            onClick={action.action}
-                                            className="px-4 py-2 bg-white/50 hover:bg-white text-primary border border-primary/20 rounded-full text-xs font-bold transition-all hover:shadow-md active:scale-95 flex items-center gap-2"
-                                        >
-                                            <action.icon size={12} />
-                                            {action.label}
-                                        </motion.button>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-
-                        {/* Input Area */}
-                        <div className="p-4 bg-white border-t border-slate-100">
-                            <form
-                                onSubmit={handleSend}
-                                className="relative flex items-center"
-                            >
-                                <input
-                                    type="text"
-                                    value={message}
-                                    onChange={(e) => setMessage(e.target.value)}
-                                    placeholder={user ? `Ask me about ${user.courseName}...` : "Ask anything..."}
-                                    className="w-full bg-slate-100/50 border border-slate-200 rounded-2xl py-3.5 pl-5 pr-14 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/30 transition-all font-medium"
-                                />
-                                <button
-                                    type="submit"
-                                    disabled={!message.trim()}
-                                    className="absolute right-2 p-2 bg-primary text-white rounded-xl hover:scale-105 active:scale-95 transition-all disabled:opacity-50 disabled:scale-100 shadow-lg shadow-primary/20"
-                                >
-                                    <SendHorizonal size={20} />
-                                </button>
-                            </form>
-                            <p className="text-[10px] text-center text-slate-400 mt-3 font-medium tracking-tight uppercase">
-                                Powered by INSD Intelligence
-                            </p>
-                        </div>
-                    </motion.div>
+                    ) : (
+                        <ChatWindow centered={false} />
+                    )
                 )}
             </AnimatePresence>
 

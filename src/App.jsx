@@ -87,66 +87,67 @@ function App() {
                                 <RegistrationModal />
                                 <AdmissionModal />
 
-                                 <ScrollToTop />
-                                 <div className="relative z-0 bg-white min-h-screen pb-20 md:pb-0 overflow-x-hidden">
-                                     <Routes>
-                                         <Route path="/" element={<Home />} />
-                                         <Route path="/about-us" element={<About />} />
-                                         <Route path="/awards-recognition" element={<AwardsRecognition />} />
-                                         <Route path="/student" element={<Student />} />
-                                         <Route path="/entrepreneur" element={<Entrepreneur />} />
-                                         <Route path="/industry-interaction" element={<IndustryInteraction />} />
-                                         <Route path="/industry-potential" element={<IndustryPotential />} />
-                                         <Route path="/placementandtraining" element={<PlacementAndTraining />} />
-                                         <Route path="/placement" element={<Placement />} />
-                                         <Route path="/future-of-design" element={<FutureOfDesign />} />
-                                         <Route path="/campuses" element={<Campus />} />
-                                         <Route path="/campuses/:campusId" element={<Campus />} />
-                                         <Route path="/campuses/paris-cdp" element={<ParisCDP />} />
-                                         <Route path="/courses" element={<Courses />} />
-                                         <Route path="/courses/undergraduate" element={<Undergraduate />} />
-                                         <Route path="/courses/postgraduate" element={<Postgraduate />} />
-                                         <Route path="/courses/diploma-and-certificates" element={<DiplomaAndCertificate />} />
-                                         <Route path="/courses/short-term-courses" element={<ShortTermCourse />} />
-                                         <Route path="/courses/msc-luxury-brand-management" element={<MscLuxury />} />
-                                         <Route path="/courses/fashion-design" element={<FashionDesigning />} />
-                                         <Route path="/courses/interior-design" element={<InteriorDesigning />} />
-                                         <Route path="/courses/graphic-design" element={<GraphicDesigning />} />
-                                         <Route path="/courses/animation-and-vfx" element={<AnimationAndVFX />} />
-                                         <Route path="/courses/jewellery-design" element={<JewelleryDesigning />} />
-                                         <Route path="/courses/uiux-design" element={<UIUXDesigning />} />
-                                         <Route path="/courses/beauty-and-makeup" element={<BeautyAndMakeup />} />
-                                         <Route path="/courses/photography" element={<Photography />} />
-                                         <Route path="/courses/textile-design" element={<TextileDesigning />} />
-                                         <Route path="/insd-luxe" element={<InsdLuxe />} />
-                                         <Route path="/student-careers" element={<StudentCareers />} />
-                                         <Route path="/franchise" element={<Franchise />} />
-                                         <Route path="/contact-us" element={<Contact />} />
-                                         <Route path="/international-partners" element={<InternationalPartner />} />
-                                         <Route path="/apply" element={<Admission />} />
-                                         <Route path="/courses/online-courses" element={<OnlineCourse />} />
-                                         <Route path="/insd-360/blog" element={<Blog />} />
-                                         <Route path="/insd-360/fashion-week" element={<FashionWeek />} />
-                                         <Route path="/insd-360/paris-project" element={<ParisProject />} />
-                                         <Route path="/events" element={<Events />} />
-                                         <Route path="/mentors" element={<Mentors />} />
-                                         <Route path="/15-years-legacy" element={<Legacy />} />
-                                         <Route path="/centers-across-india" element={<Centers />} />
-                                         <Route path="/profile" element={<ProfileDashboard />} />
-                                         <Route path="/success-stories" element={<SuccessStory />} />
-                                         <Route path="/gallery" element={<Gallery />} />
-                                         <Route path="/thank-you" element={<ThankYou />} />
-                                         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                                         <Route path="/faq" element={<FAQ />} />
-                                         <Route path="/cookie-policy" element={<CookiePolicy />} />
+                                <ScrollToTop />
+                                <div className="relative z-0 bg-white min-h-screen pb-20 md:pb-0 overflow-x-hidden">
+                                    <Routes>
+                                        <Route path="/" element={<Home />} />
+                                        <Route path="/about-us" element={<About />} />
+                                        <Route path="/awards-recognition" element={<AwardsRecognition />} />
+                                        <Route path="/student" element={<Student />} />
+                                        <Route path="/entrepreneur" element={<Entrepreneur />} />
+                                        <Route path="/industry-interaction" element={<IndustryInteraction />} />
+                                        <Route path="/industry-potential" element={<IndustryPotential />} />
+                                        <Route path="/placementandtraining" element={<PlacementAndTraining />} />
+                                        <Route path="/placement" element={<Placement />} />
+                                        <Route path="/future-of-design" element={<FutureOfDesign />} />
+                                        <Route path="/campuses" element={<Campus />} />
+                                        <Route path="/campuses/:campusId" element={<Campus />} />
+                                        <Route path="/campuses/paris-cdp" element={<ParisCDP />} />
+                                        <Route path="/courses" element={<Courses />} />
+                                        <Route path="/courses/undergraduate" element={<Undergraduate />} />
+                                        <Route path="/courses/postgraduate" element={<Postgraduate />} />
+                                        <Route path="/courses/diploma-and-certificates" element={<DiplomaAndCertificate />} />
+                                        <Route path="/courses/short-term-courses" element={<ShortTermCourse />} />
+                                        <Route path="/courses/msc-luxury-brand-management" element={<MscLuxury />} />
+                                        <Route path="/courses/fashion-design" element={<FashionDesigning />} />
+                                        <Route path="/courses/interior-design" element={<InteriorDesigning />} />
+                                        <Route path="/courses/graphic-design" element={<GraphicDesigning />} />
+                                        <Route path="/courses/animation-and-vfx" element={<AnimationAndVFX />} />
+                                        <Route path="/courses/jewellery-design" element={<JewelleryDesigning />} />
+                                        <Route path="/courses/uiux-design" element={<UIUXDesigning />} />
+                                        <Route path="/courses/beauty-and-makeup" element={<BeautyAndMakeup />} />
+                                        <Route path="/courses/photography" element={<Photography />} />
+                                        <Route path="/courses/textile-design" element={<TextileDesigning />} />
+                                        <Route path="/insd-luxe" element={<InsdLuxe />} />
+                                        <Route path="/student-careers" element={<StudentCareers />} />
+                                        <Route path="/franchise" element={<Franchise />} />
+                                        <Route path="/contact-us" element={<Contact />} />
+                                        <Route path="/international-partners" element={<InternationalPartner />} />
+                                        <Route path="/apply" element={<Admission />} />
+                                        <Route path="/courses/online-courses" element={<OnlineCourse />} />
+                                        <Route path="/insd-360/blog" element={<Blog />} />
+                                        <Route path="/insd-360/fashion-week" element={<FashionWeek />} />
+                                        <Route path="/insd-360/paris-project" element={<ParisProject />} />
+                                        <Route path="/events" element={<Events />} />
+                                        <Route path="/mentors" element={<Mentors />} />
+                                        <Route path="/15-years-legacy" element={<Legacy />} />
+                                        <Route path="/centers-across-india" element={<Centers />} />
+                                        <Route path="/profile" element={<ProfileDashboard />} />
+                                        <Route path="/success-stories" element={<SuccessStory />} />
+                                        <Route path="/gallery" element={<Gallery />} />
+                                        <Route path="/thank-you" element={<ThankYou />} />
+                                        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                                        <Route path="/faq" element={<FAQ />} />
+                                        <Route path="/cookie-policy" element={<CookiePolicy />} />
 
-                                         <Route path="/test-404" element={<NotFound />} />
-                                         <Route path="*" element={<NotFound />} />
-                                     </Routes>
-                                 </div>
-                                 <FloatingActionPanel />
-                                 <Analytics />
-                                 <SpeedInsights />
+                                        <Route path="/test-404" element={<NotFound />} />
+                                        <Route path="*" element={<NotFound />} />
+                                    </Routes>
+                                </div>
+                                <FloatingActionPanel />
+                                <Analytics />
+
+                                <SpeedInsights />
                             </div>
                         </Suspense>
                     </Router>
