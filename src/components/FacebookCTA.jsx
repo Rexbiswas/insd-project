@@ -48,7 +48,7 @@ const FacebookCTA = ({ isFloatingPanel = false }) => {
             className={`${isFloatingPanel ? 'relative' : 'fixed bottom-[260px] md:bottom-[180px] right-6 md:right-10'} z-[1000] group flex items-center justify-center`}
         >
             {/* Tooltip */}
-            <div className="absolute right-full mr-4 px-4 py-2 bg-slate-900 text-white text-[10px] font-black uppercase tracking-widest rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none translate-x-4 group-hover:translate-x-0 whitespace-nowrap shadow-2xl">
+            <div className="absolute right-full mr-4 px-4 py-2 bg-slate-900 text-white text-[10px] font-black uppercase tracking-widest rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none translate-x-4 group-hover:translate-x-0 whitespace-nowrap shadow-2xl hidden md:block">
                 Follow us on Facebook
                 <div className="absolute top-1/2 -right-1 -translate-y-1/2 w-2 h-2 bg-slate-900 rotate-45" />
             </div>
