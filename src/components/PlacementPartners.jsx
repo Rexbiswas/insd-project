@@ -78,7 +78,7 @@ const PlacementPartners = () => {
                                     src={logo} 
                                     alt="Partner Logo" 
                                     loading="lazy"
-                                    className="max-h-full max-w-full object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 scale-90 group-hover:scale-100" 
+                                    className="max-h-full max-w-full object-contain transition-all duration-700 scale-90 group-hover:scale-100" 
                                 />
                             </motion.div>
                         ))}

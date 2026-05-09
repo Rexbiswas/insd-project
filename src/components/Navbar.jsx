@@ -94,6 +94,15 @@ const Navbar = () => {
         };
     }, []);
 
+    useEffect(() => {
+        if (isOpen) {
+            document.body.classList.add('mobile-menu-open');
+        } else {
+            document.body.classList.remove('mobile-menu-open');
+        }
+        window.dispatchEvent(new CustomEvent('menu-state', { detail: { isOpen } }));
+    }, [isOpen]);
+
     const [expandedItem, setExpandedItem] = useState(null);
     const [expandedSubItem, setExpandedSubItem] = useState(null);
     const { scrollY } = useScroll();
@@ -187,7 +196,7 @@ const Navbar = () => {
 
     // Mobile Dynamic Island Animations
     const mobileWidth = useTransform(scrollProgress, transitionRange, ["100%", "100%"]);
-    const mobileHeight = useTransform(scrollProgress, transitionRange, ["72px", "72px"]);
+    const mobileHeight = useTransform(scrollProgress, transitionRange, ["88px", "88px"]);
     const mobileTop = useTransform(scrollProgress, transitionRange, ["0px", "0px"]);
     const mobileRadius = useTransform(scrollProgress, transitionRange, ["0px", "0px"]);
     const mobileBackground = useTransform(scrollProgress, transitionRange, ["rgba(255, 255, 255, 1)", "rgba(255, 255, 255, 1)"]);
@@ -623,7 +632,7 @@ const Navbar = () => {
                 <div className="relative w-full h-full flex items-center justify-center px-4 pointer-events-auto">
                     <Link to="/" onClick={() => setIsOpen(false)} className="h-full flex items-center justify-center">
                         <img
-                            className="h-18 w-auto object-contain drop-shadow-sm"
+                            className="h-20 w-auto object-contain drop-shadow-sm"
                             src="https://ik.imagekit.io/fmldynl4j4/INSD-Logo_Horizontal-removebg-preview.png"
                             alt="INSD Logo"
                         />

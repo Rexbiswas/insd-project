@@ -11,10 +11,12 @@ import { useRegisterModal } from '../context/RegisterModalContext';
 const FloatingActionPanel = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isSocialOpen, setIsSocialOpen] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { isAdmissionOpen } = useAdmissionModal();
     const { isOpen: isRegisterOpen } = useRegisterModal();
 
     const isAnyModalOpen = isAdmissionOpen || isRegisterOpen;
+    const shouldHideIcons = isSocialOpen || isAnyModalOpen || isMenuOpen;
 
     const [isFooterVisible, setIsFooterVisible] = useState(false);
 
@@ -40,19 +42,27 @@ const FloatingActionPanel = () => {
         // Initial check and event listener for social panel state
         const checkSocialStatus = () => {
             const isBodySocialOpen = document.body.classList.contains('social-hub-open');
+            const isBodyMenuOpen = document.body.classList.contains('mobile-menu-open');
             setIsSocialOpen(isBodySocialOpen);
+            setIsMenuOpen(isBodyMenuOpen);
         };
 
         const handleSocialState = (e) => {
             setIsSocialOpen(e.detail.isOpen);
         };
 
+        const handleMenuState = (e) => {
+            setIsMenuOpen(e.detail.isOpen);
+        };
+
         checkSocialStatus();
         window.addEventListener('social-panel-state', handleSocialState);
+        window.addEventListener('menu-state', handleMenuState);
 
         return () => {
             window.removeEventListener('scroll', checkScroll);
             window.removeEventListener('social-panel-state', handleSocialState);
+            window.removeEventListener('menu-state', handleMenuState);
             if (footerElement) footerObserver.unobserve(footerElement);
         };
     }, []);
@@ -62,7 +72,7 @@ const FloatingActionPanel = () => {
             {/* Desktop Persistent Icons */}
             <div className="hidden lg:flex flex-col items-end gap-4 pointer-events-auto">
                 <AnimatePresence>
-                    {!isSocialOpen && !isAnyModalOpen && (
+                    {!shouldHideIcons && (
                         <div className="flex flex-col items-end gap-4">
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.8 }}
@@ -93,7 +103,7 @@ const FloatingActionPanel = () => {
                     >
                         {/* AIChatbot and Mobile BackToTop hide when social or modals are open */}
                         <AnimatePresence>
-                            {!isSocialOpen && !isAnyModalOpen && (
+                            {!shouldHideIcons && (
                                 <motion.div
                                     key="floating-icons"
                                     initial={{ opacity: 0, scale: 0.8 }}
