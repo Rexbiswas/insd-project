@@ -12,6 +12,9 @@ import gsap from 'gsap';
 import { Sidebar, Menu, MenuItem, Submenu, Logo } from "react-mui-sidebar";
 import AIChatbot from './AIChatbot';
 import WhatsappCTA from './WhatsappCTA';
+import FacebookCTA from './FacebookCTA';
+import InstagramCTA from './InstagramCTA';
+import YoutubeCTA from './YoutubeCTA';
 
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import InfoIcon from "@mui/icons-material/Info";
@@ -74,6 +77,7 @@ const Navbar = () => {
     const { openAdmissionModal } = useAdmissionModal();
     const { user } = useAuth();
     const [isOpen, setIsOpen] = useState(false);
+    const [isSocialMenuOpen, setIsSocialMenuOpen] = useState(false);
 
     const [expandedItem, setExpandedItem] = useState(null);
     const [expandedSubItem, setExpandedSubItem] = useState(null);
@@ -626,7 +630,84 @@ const Navbar = () => {
                         <span className="text-[9px] font-bold mt-1.5 uppercase tracking-widest opacity-60">Enquiry</span>
                     </button>
 
+                    {/* SOCIAL (TRIGGER) */}
+                    <button
+                        onClick={() => {
+                            setIsOpen(false);
+                            setIsSocialMenuOpen(!isSocialMenuOpen);
+                        }}
+                        className={`relative flex flex-col items-center justify-center w-16 h-16 transition-all duration-500 scale-90 active:scale-75 ${isSocialMenuOpen ? 'text-primary' : 'text-slate-900/40'}`}
+                    >
+                        {isSocialMenuOpen && (
+                            <motion.div
+                                layoutId="activeBubble"
+                                className="absolute inset-0 bg-primary/10 rounded-full border border-primary/20 shadow-[0_0_20px_rgba(219,52,54,0.1)]"
+                                transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
+                            />
+                        )}
+                        <Share2 size={22} strokeWidth={2} className="relative z-10" />
+                        <span className={`text-[9px] font-bold mt-1.5 uppercase tracking-widest relative z-10 ${isSocialMenuOpen ? 'opacity-100' : 'opacity-60'}`}>Social</span>
+                    </button>
 
+                    {/* QUICK SOCIAL PANEL (MOBILE) */}
+                    <AnimatePresence>
+                        {isSocialMenuOpen && (
+                            <>
+                                {/* Backdrop */}
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    onClick={() => setIsSocialMenuOpen(false)}
+                                    className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[1001] lg:hidden"
+                                />
+
+                                {/* Panel Content */}
+                                <motion.div
+                                    initial={{ opacity: 0, y: 100, scale: 0.95 }}
+                                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                                    exit={{ opacity: 0, y: 100, scale: 0.95 }}
+                                    transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                                    className="fixed bottom-32 left-1/2 -translate-x-1/2 w-[90%] max-w-[360px] z-[1002] lg:hidden"
+                                >
+                                    <div className="bg-white/95 backdrop-blur-xl rounded-[32px] p-8 shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/20">
+                                        <div className="flex flex-col items-center gap-8">
+                                            <div className="text-center">
+                                                <h3 className="text-lg font-black text-slate-900 tracking-tight uppercase">Social Hub</h3>
+                                                <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em] mt-1">Connect with us</p>
+                                            </div>
+
+                                            <div className="grid grid-cols-2 w-full gap-4">
+                                                <div className="flex flex-col items-center gap-2">
+                                                    <InstagramCTA isFloatingPanel />
+                                                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Instagram</span>
+                                                </div>
+                                                <div className="flex flex-col items-center gap-2">
+                                                    <FacebookCTA isFloatingPanel />
+                                                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Facebook</span>
+                                                </div>
+                                                <div className="flex flex-col items-center gap-2">
+                                                    <YoutubeCTA isFloatingPanel />
+                                                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">YouTube</span>
+                                                </div>
+                                                <div className="flex flex-col items-center gap-2">
+                                                    <WhatsappCTA isFloatingPanel />
+                                                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">WhatsApp</span>
+                                                </div>
+                                            </div>
+
+                                            <button 
+                                                onClick={() => setIsSocialMenuOpen(false)}
+                                                className="w-full py-4 bg-slate-900 text-white rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-primary transition-colors"
+                                            >
+                                                Close Hub
+                                            </button>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            </>
+                        )}
+                    </AnimatePresence>
 
                     {/* MENU */}
                     <button
@@ -974,7 +1055,6 @@ const Navbar = () => {
                                             </a>
                                         </div>
                                     </motion.div>
-
                                     <motion.div variants={itemVariants}>
                                         <h4 className="text-[9px] md:text-[10px] font-black tracking-[0.4em] text-secondary uppercase mb-4 md:mb-6">Location</h4>
                                         <div className="space-y-3 max-w-xs">

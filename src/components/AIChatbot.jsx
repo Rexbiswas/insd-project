@@ -307,7 +307,7 @@ const AIChatbot = ({ isFloatingPanel = false, hideWindow = false }) => {
             initial={isFloatingPanel ? {} : { opacity: 0, scale: 0.5, y: 50 }}
             animate={isFloatingPanel ? {} : { opacity: 1, scale: 1, y: 0 }}
             exit={isFloatingPanel ? {} : { opacity: 0, scale: 0.5, y: 50 }}
-            className={`${isFloatingPanel ? 'relative flex flex-col items-end' : 'fixed bottom-28 md:bottom-10 right-6 md:right-10 hidden lg:flex lg:flex-col lg:items-end'} z-1000 font-sans group`}
+            className={`${isFloatingPanel ? 'relative flex flex-col items-end' : 'fixed bottom-28 md:bottom-10 right-6 md:right-10 flex flex-col items-end'} z-1000 font-sans group`}
         >
             {/* Chat Window */}
             <AnimatePresence>

@@ -20,10 +20,9 @@ const FloatingActionPanel = () => {
     }, []);
 
     return (
-        <div className="fixed bottom-24 md:bottom-10 right-6 md:right-10 z-[1001] hidden lg:flex flex-col items-end gap-4 pointer-events-none">
+        <div className="fixed bottom-24 md:bottom-10 right-6 md:right-10 z-[1001] flex flex-col items-end gap-4 pointer-events-none">
             {/* Persistently Fixed Icons - Always Visible */}
-            <div className="flex flex-col items-end gap-4 pointer-events-auto">
-                <BackToTop isFloatingPanel />
+            <div className="hidden lg:flex flex-col items-end gap-4 pointer-events-auto">
                 <SocialPanel isFloatingPanel />
                 <WhatsappCTA isFloatingPanel />
             </div>
@@ -34,8 +33,9 @@ const FloatingActionPanel = () => {
                         initial={{ opacity: 0, y: 20, scale: 0.8 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.8 }}
-                        className="pointer-events-auto"
+                        className="pointer-events-auto flex flex-col items-end gap-4"
                     >
+                        <BackToTop isFloatingPanel />
                         <AIChatbot isFloatingPanel />
                     </motion.div>
                 )}
