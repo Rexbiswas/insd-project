@@ -74,7 +74,7 @@ const RegisterButton = ({ className = "", isDarkTheme = false, isScrolled = fals
 
 const Navbar = () => {
     const { openModal } = useRegisterModal();
-    const { openAdmissionModal } = useAdmissionModal();
+    const { openAdmissionModal, isAdmissionOpen } = useAdmissionModal();
     const { user } = useAuth();
     const [isOpen, setIsOpen] = useState(false);
     const [isSocialMenuOpen, setIsSocialMenuOpen] = useState(false);
@@ -586,16 +586,17 @@ const Navbar = () => {
                     height: mobileHeight,
                     top: mobileTop,
                     borderRadius: mobileRadius,
-                    backgroundColor: isOpen ? "transparent" : mobileBackground,
-                    backdropFilter: isOpen ? "none" : mobileBackdrop,
-                    WebkitBackdropFilter: isOpen ? "none" : mobileBackdrop,
-                    boxShadow: isOpen ? "none" : mobileShadow,
-                    borderColor: isOpen ? "transparent" : mobileBorder,
+                    backgroundColor: isOpen || isSocialMenuOpen || isAdmissionOpen ? "transparent" : mobileBackground,
+                    backdropFilter: isOpen || isSocialMenuOpen || isAdmissionOpen ? "none" : mobileBackdrop,
+                    WebkitBackdropFilter: isOpen || isSocialMenuOpen || isAdmissionOpen ? "none" : mobileBackdrop,
+                    boxShadow: isOpen || isSocialMenuOpen || isAdmissionOpen ? "none" : mobileShadow,
+                    borderColor: isOpen || isSocialMenuOpen || isAdmissionOpen ? "transparent" : mobileBorder,
                     borderWidth: "1px",
                     borderStyle: "solid",
+                    opacity: isOpen || isSocialMenuOpen || isAdmissionOpen ? 0 : 1,
                 }}
                 ref={mobileNavRef}
-                className="lg:hidden fixed top-0 left-0 right-0 z-50 flex items-center pointer-events-none"
+                className="lg:hidden fixed top-0 left-0 right-0 z-50 flex items-center pointer-events-none transition-all duration-500"
             >
                 <div className="relative w-full h-full flex items-center justify-center px-4 pointer-events-auto">
                     <Link to="/" onClick={() => setIsOpen(false)} className="h-full flex items-center justify-center">
@@ -608,9 +609,8 @@ const Navbar = () => {
                 </div>
             </motion.div >
 
-            {/* Mobile Bottom Navigation Bar - Pill Glass Style */}
-            <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-[400px] h-16 z-[1005] lg:hidden">
-                <div className={`w-full h-full flex items-center justify-around px-6 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition-all duration-500 border ${isOpen ? 'bg-white border-slate-200' : 'bg-white border-white'}`}>
+            <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-[400px] h-16 z-[1005] lg:hidden transition-all duration-500 ${isOpen || isSocialMenuOpen || isAdmissionOpen ? 'opacity-0 pointer-events-none translate-y-10' : 'opacity-100 translate-y-0'}`}>
+                <div className={`w-full h-full flex items-center justify-around px-6 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition-all duration-500 border ${isOpen || isSocialMenuOpen ? 'bg-white border-slate-200' : 'bg-white border-white'}`}>
 
                     {/* HOME */}
                     <NavLink
