@@ -4,11 +4,17 @@ import BackToTop from './BackToTop';
 import AIChatbot from './AIChatbot';
 import WhatsappCTA from './WhatsappCTA';
 import SocialPanel from './SocialPanel';
+import { useAdmissionModal } from '../context/AdmissionModalContext';
+import { useRegisterModal } from '../context/RegisterModalContext';
 
 
 const FloatingActionPanel = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isSocialOpen, setIsSocialOpen] = useState(false);
+    const { isAdmissionOpen } = useAdmissionModal();
+    const { isOpen: isRegisterOpen } = useRegisterModal();
+
+    const isAnyModalOpen = isAdmissionOpen || isRegisterOpen;
 
     useEffect(() => {
         const checkScroll = () => {
@@ -42,7 +48,7 @@ const FloatingActionPanel = () => {
             {/* Desktop Persistent Icons */}
             <div className="hidden lg:flex flex-col items-end gap-4 pointer-events-auto">
                 <AnimatePresence>
-                    {!isSocialOpen && (
+                    {!isSocialOpen && !isAnyModalOpen && (
                         <motion.div
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
@@ -64,9 +70,9 @@ const FloatingActionPanel = () => {
                         exit={{ opacity: 0, y: 20, scale: 0.8 }}
                         className="pointer-events-auto flex flex-col items-end gap-4"
                     >
-                        {/* AIChatbot and Mobile BackToTop hide when social is open */}
+                        {/* AIChatbot and Mobile BackToTop hide when social or modals are open */}
                         <AnimatePresence>
-                            {!isSocialOpen && (
+                            {!isSocialOpen && !isAnyModalOpen && (
                                 <motion.div
                                     key="floating-icons"
                                     initial={{ opacity: 0, scale: 0.8 }}
