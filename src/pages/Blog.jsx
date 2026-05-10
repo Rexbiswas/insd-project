@@ -27,6 +27,156 @@ const Blog = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     const categories = ['All', 'Fashion', 'Interior', 'Graphic', 'Luxury', 'Career'];
+    
+    const templates = {
+        Fashion: {
+            title: "Trend Report: [Seasonal Trend Name] 2026",
+            excerpt: "Analyzing the shift towards [Trend] and its impact on the upcoming fashion cycle.",
+            content: "## The Resurgence of [Trend]\nDesigners this season are focusing on...\n\n### Key Materiality\nWe are seeing a heavy use of [Material] which symbolizes...\n\n### Global Impact\nThis trend is more than just aesthetic; it reflects a deeper cultural shift towards..."
+        },
+        Interior: {
+            title: "Maximizing Small Spaces: [Concept] Approach",
+            excerpt: "How [Concept] is helping urban dwellers transform compact apartments into luxury living spaces.",
+            content: "## The Art of Space Optimization\nIn modern cities, space is a luxury. Here is how to...\n\n### Lighting Strategy\nNatural light plays a crucial role in...\n\n### Multipurpose Furniture\nChoosing pieces that serve dual functions like..."
+        },
+        Graphic: {
+            title: "The Evolution of [Style Name] in Digital Branding",
+            excerpt: "Why [Style] is making a comeback in modern app interfaces and marketing campaigns.",
+            content: "## Defining the [Style] Aesthetic\nThis style is characterized by...\n\n### Why it Works Now\nIn a world of minimalist design, [Style] offers a breath of fresh air because...\n\n### Case Study\nLook at how [Brand Name] utilized this to increase engagement by..."
+        },
+        Career: {
+            title: "5 Skills Every Junior [Designer Type] Needs in 2026",
+            excerpt: "Navigating the entry-level market with these essential technical and soft skills.",
+            content: "## The Entry-Level Landscape\nGetting your first job in design requires more than just a portfolio...\n\n### 1. [Skill Name]\nThis is critical because...\n\n### 2. [Skill Name]\nMastering this tool will set you apart from..."
+        }
+    };
+
+    const categoryImages = {
+        Fashion: [
+            "https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg",
+            "https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg",
+            "https://images.pexels.com/photos/934070/pexels-photo-934070.jpeg",
+            "https://images.pexels.com/photos/2043590/pexels-photo-2043590.jpeg",
+            "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg",
+            "https://images.pexels.com/photos/2730812/pexels-photo-2730812.jpeg",
+            "https://images.pexels.com/photos/1036622/pexels-photo-1036622.jpeg",
+            "https://images.pexels.com/photos/1488507/pexels-photo-1488507.jpeg",
+            "https://images.pexels.com/photos/1154861/pexels-photo-1154861.jpeg",
+            "https://images.pexels.com/photos/934063/pexels-photo-934063.jpeg",
+            "https://images.pexels.com/photos/428338/pexels-photo-428338.jpeg",
+            "https://images.pexels.com/photos/2065195/pexels-photo-2065195.jpeg",
+            "https://images.pexels.com/photos/974911/pexels-photo-974911.jpeg",
+            "https://images.pexels.com/photos/1126993/pexels-photo-1126993.jpeg",
+            "https://images.pexels.com/photos/1300550/pexels-photo-1300550.jpeg",
+            "https://images.pexels.com/photos/1154861/pexels-photo-1154861.jpeg",
+            "https://images.pexels.com/photos/1036622/pexels-photo-1036622.jpeg",
+            "https://images.pexels.com/photos/1126993/pexels-photo-1126993.jpeg",
+            "https://images.pexels.com/photos/2043590/pexels-photo-2043590.jpeg",
+            "https://images.pexels.com/photos/1488507/pexels-photo-1488507.jpeg"
+        ],
+        Interior: [
+            "https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg",
+            "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg",
+            "https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg",
+            "https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg",
+            "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg",
+            "https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg",
+            "https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg",
+            "https://images.pexels.com/photos/1643384/pexels-photo-1643384.jpeg",
+            "https://images.pexels.com/photos/1571453/pexels-photo-1571453.jpeg",
+            "https://images.pexels.com/photos/279719/pexels-photo-279719.jpeg",
+            "https://images.pexels.com/photos/1648771/pexels-photo-1648771.jpeg",
+            "https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg",
+            "https://images.pexels.com/photos/245208/pexels-photo-245208.jpeg",
+            "https://images.pexels.com/photos/276514/pexels-photo-276514.jpeg",
+            "https://images.pexels.com/photos/1571463/pexels-photo-1571463.jpeg",
+            "https://images.pexels.com/photos/1571471/pexels-photo-1571471.jpeg",
+            "https://images.pexels.com/photos/1571457/pexels-photo-1571457.jpeg",
+            "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg",
+            "https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg",
+            "https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg"
+        ],
+        Graphic: [
+            "https://images.pexels.com/photos/356056/pexels-photo-356056.jpeg",
+            "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg",
+            "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg",
+            "https://images.pexels.com/photos/4348404/pexels-photo-4348404.jpeg",
+            "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg",
+            "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg",
+            "https://images.pexels.com/photos/326503/pexels-photo-326503.jpeg",
+            "https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg",
+            "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg",
+            "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg",
+            "https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg",
+            "https://images.pexels.com/photos/3184460/pexels-photo-3184460.jpeg",
+            "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg",
+            "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg",
+            "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg",
+            "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg",
+            "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg",
+            "https://images.pexels.com/photos/326503/pexels-photo-326503.jpeg",
+            "https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg",
+            "https://images.pexels.com/photos/356056/pexels-photo-356056.jpeg"
+        ],
+        Luxury: [
+            "https://images.pexels.com/photos/3785104/pexels-photo-3785104.jpeg",
+            "https://images.pexels.com/photos/322207/pexels-photo-322207.jpeg",
+            "https://images.pexels.com/photos/2065195/pexels-photo-2065195.jpeg",
+            "https://images.pexels.com/photos/2043590/pexels-photo-2043590.jpeg",
+            "https://images.pexels.com/photos/322207/pexels-photo-322207.jpeg",
+            "https://images.pexels.com/photos/3785104/pexels-photo-3785104.jpeg",
+            "https://images.pexels.com/photos/2065195/pexels-photo-2065195.jpeg",
+            "https://images.pexels.com/photos/2043590/pexels-photo-2043590.jpeg",
+            "https://images.pexels.com/photos/322207/pexels-photo-322207.jpeg",
+            "https://images.pexels.com/photos/3785104/pexels-photo-3785104.jpeg",
+            "https://images.pexels.com/photos/2065195/pexels-photo-2065195.jpeg",
+            "https://images.pexels.com/photos/2043590/pexels-photo-2043590.jpeg",
+            "https://images.pexels.com/photos/322207/pexels-photo-322207.jpeg",
+            "https://images.pexels.com/photos/3785104/pexels-photo-3785104.jpeg",
+            "https://images.pexels.com/photos/2065195/pexels-photo-2065195.jpeg",
+            "https://images.pexels.com/photos/2043590/pexels-photo-2043590.jpeg",
+            "https://images.pexels.com/photos/322207/pexels-photo-322207.jpeg",
+            "https://images.pexels.com/photos/3785104/pexels-photo-3785104.jpeg",
+            "https://images.pexels.com/photos/2065195/pexels-photo-2065195.jpeg",
+            "https://images.pexels.com/photos/2043590/pexels-photo-2043590.jpeg"
+        ],
+        Career: [
+            "https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg",
+            "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg",
+            "https://images.pexels.com/photos/3184301/pexels-photo-3184301.jpeg",
+            "https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg",
+            "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg",
+            "https://images.pexels.com/photos/3184301/pexels-photo-3184301.jpeg",
+            "https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg",
+            "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg",
+            "https://images.pexels.com/photos/3184301/pexels-photo-3184301.jpeg",
+            "https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg",
+            "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg",
+            "https://images.pexels.com/photos/3184301/pexels-photo-3184301.jpeg",
+            "https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg",
+            "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg",
+            "https://images.pexels.com/photos/3184301/pexels-photo-3184301.jpeg",
+            "https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg",
+            "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg",
+            "https://images.pexels.com/photos/3184301/pexels-photo-3184301.jpeg",
+            "https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg",
+            "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg"
+        ]
+    };
+
+    const handleTemplateSelect = (category) => {
+        if (templates[category]) {
+            setNewPost(prev => ({
+                ...prev,
+                category: category,
+                title: templates[category].title,
+                excerpt: templates[category].excerpt,
+                content: templates[category].content,
+                // Automatically pick the first image for this category as a default
+                image: categoryImages[category] ? categoryImages[category][0] : prev.image
+            }));
+        }
+    };
 
     const [posts, setPosts] = useState([
         {
@@ -235,9 +385,19 @@ const Blog = () => {
         if (!newPost.title || !newPost.excerpt || !newPost.content || !newPost.author) return;
         
         try {
+            const now = new Date();
+            const formattedDate = now.toLocaleDateString('en-US', { 
+                month: 'short', 
+                day: 'numeric', 
+                year: 'numeric' 
+            }) + " at " + now.toLocaleTimeString('en-US', { 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            });
+
             const postObj = {
                 ...newPost,
-                date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+                date: formattedDate,
                 readTime: Math.max(1, Math.ceil(newPost.content.length / 500)) + " min",
                 likes: 0
             };
@@ -555,9 +715,54 @@ const Blog = () => {
                             <div className="flex items-center justify-between mb-8">
                                 <div>
                                     <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tighter">Draft Article</h2>
-                                    <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-2 hover:text-primary">Publish to INSD Network</p>
+                                    <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-2">Publish to INSD Network</p>
                                 </div>
                                 <button onClick={() => setIsWriting(false)} className="md:hidden p-2 bg-slate-200 rounded-full"><X size={16}/></button>
+                            </div>
+
+                            <div className="mb-8 p-6 bg-white rounded-3xl border border-slate-100">
+                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 mb-4 block">Quick Templates</span>
+                                <div className="flex flex-wrap gap-2">
+                                    {Object.keys(templates).map(temp => (
+                                        <button 
+                                            key={temp}
+                                            type="button"
+                                            onClick={() => handleTemplateSelect(temp)}
+                                            className={`px-4 py-2 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all ${
+                                                newPost.category === temp 
+                                                ? 'bg-slate-900 text-white' 
+                                                : 'bg-slate-50 text-slate-500 hover:bg-slate-100'
+                                            }`}
+                                        >
+                                            {temp}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="mb-8 p-6 bg-white rounded-3xl border border-slate-100">
+                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 mb-4 block">Choose Cover Image</span>
+                                <div className="flex gap-4 overflow-x-auto pb-2 custom-scrollbar snap-x">
+                                    {(categoryImages[newPost.category] || []).map((img, i) => (
+                                        <button 
+                                            key={i}
+                                            type="button"
+                                            onClick={() => setNewPost({...newPost, image: img})}
+                                            className={`relative shrink-0 w-24 h-24 rounded-2xl overflow-hidden snap-start transition-all ${
+                                                newPost.image === img 
+                                                ? 'ring-4 ring-primary ring-offset-2' 
+                                                : 'opacity-60 hover:opacity-100'
+                                            }`}
+                                        >
+                                            <img src={img} className="w-full h-full object-cover" alt={`Template ${i}`} />
+                                            {newPost.image === img && (
+                                                <div className="absolute inset-0 bg-primary/20 flex items-center justify-center">
+                                                    <div className="bg-white rounded-full p-1"><Plus size={10} className="text-primary rotate-45" /></div>
+                                                </div>
+                                            )}
+                                        </button>
+                                    ))}
+                                </div>
                             </div>
                             
                             <form onSubmit={handleCreatePost} className="flex-1 flex flex-col space-y-6">
@@ -653,7 +858,9 @@ const Blog = () => {
                                         <div className="text-[10px] font-black text-slate-900 uppercase tracking-widest">
                                             {newPost.author || "Your Name"}
                                         </div>
-                                        <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Just now</div>
+                                        <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                                            Just now at {new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
+                                        </div>
                                     </div>
                                 </div>
 
