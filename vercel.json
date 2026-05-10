@@ -1,7 +1,5 @@
 {
   "version": 2,
-  "cleanUrls": true,
-  "trailingSlash": false,
   "redirects": [
     { "source": "/courses/short-term-interior-design-courses", "destination": "/courses/short-term-courses", "permanent": true },
     { "source": "/courses/short-term-interior-design-courses/", "destination": "/courses/short-term-courses", "permanent": true },
@@ -23,7 +21,7 @@
     { "source": "/luxury-brand-management-msc/", "destination": "/courses/msc-luxury-brand-management", "permanent": true }
   ],
   "rewrites": [
-    { "source": "/api/:path*", "destination": "/api/:path*" },
+    { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/((?!api/).*)", "destination": "/index.html" }
   ],
   "headers": [
