@@ -201,7 +201,7 @@ const Blog = () => {
             />
 
             {/* --- HERO SECTION --- */}
-            <section className="relative pt-32 pb-24 px-6 md:px-12 lg:px-24 overflow-hidden">
+            <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 px-4 md:px-12 lg:px-24 overflow-hidden">
                 {/* Background Image with Overlay */}
                 <div className="absolute inset-0 z-0">
                     <img 
@@ -209,36 +209,36 @@ const Blog = () => {
                         alt="INSD Campus Life" 
                         className="w-full h-full object-cover scale-105"
                     />
-                    <div className="absolute inset-0 bg-slate-950/70 backdrop-blur-[1px]" />
+                    <div className="absolute inset-0 bg-slate-950/75 backdrop-blur-[1px]" />
                 </div>
 
-                <div className="max-w-7xl mx-auto space-y-12 text-center relative z-10">
-                    <div className="space-y-4">
-                        <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em] block">The Official Journal</span>
+                <div className="max-w-7xl mx-auto space-y-8 md:space-y-12 text-center relative z-10">
+                    <div className="space-y-2 md:space-y-4">
+                        <span className="text-primary font-black uppercase text-[8px] md:text-[10px] tracking-[0.4em] block">The Official Journal</span>
                         <h1 className="text-4xl md:text-7xl lg:text-[8rem] font-black text-white tracking-tighter leading-[0.9]">
                             INSD <br /> <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-white/50 to-secondary">BLOGS.</span>
                         </h1>
                     </div>
 
-                    <div className="max-w-2xl mx-auto flex flex-col md:flex-row items-center gap-4">
+                    <div className="max-w-xl mx-auto flex flex-col md:flex-row items-center gap-4 px-2">
                         <div className="relative w-full">
-                            <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
+                            <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
                             <input 
                                 type="text"
-                                placeholder="Search articles, trends, insights..."
+                                placeholder="Search articles..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full h-16 md:h-20 pl-16 pr-8 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full text-white placeholder:text-white/40 focus:bg-white focus:text-slate-900 focus:placeholder:text-slate-400 transition-all outline-none text-lg font-bold"
+                                className="w-full h-14 md:h-20 pl-14 pr-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full text-white placeholder:text-white/40 focus:bg-white focus:text-slate-900 focus:placeholder:text-slate-400 transition-all outline-none text-base md:text-lg font-bold"
                             />
                         </div>
                     </div>
 
-                    <div className="flex flex-wrap justify-center gap-2 md:gap-4">
+                    <div className="flex flex-wrap justify-center gap-2 md:gap-4 max-w-2xl mx-auto">
                         {categories.map((cat) => (
                             <button
                                 key={cat}
                                 onClick={() => setActiveCategory(cat)}
-                                className={`px-6 md:px-8 py-3 md:py-4 rounded-full text-[10px] font-black uppercase tracking-widest transition-all duration-300 ${
+                                className={`px-4 md:px-8 py-2 md:py-4 rounded-full text-[8px] md:text-[10px] font-black uppercase tracking-widest transition-all duration-300 ${
                                     activeCategory === cat 
                                     ? 'bg-primary text-white shadow-xl shadow-primary/30 scale-105' 
                                     : 'bg-white/5 text-white/60 hover:bg-white/10 border border-white/10'
@@ -281,27 +281,27 @@ const Blog = () => {
                                 </div>
 
                                 {/* Content */}
-                                <div className="p-8 md:p-10 flex flex-col flex-1 justify-between gap-8">
-                                    <div className="space-y-6">
-                                        <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                                <div className="p-6 md:p-10 flex flex-col flex-1 justify-between gap-6 md:gap-8">
+                                    <div className="space-y-4 md:space-y-6">
+                                        <div className="flex items-center gap-4 text-[8px] md:text-[10px] font-black uppercase tracking-widest text-slate-400">
                                             <div className="flex items-center gap-1.5"><Clock size={12} /> {post.readTime}</div>
                                             <div className="w-1 h-1 bg-slate-200 rounded-full" />
                                             <div>{post.date}</div>
                                         </div>
-                                        <h3 className="text-2xl md:text-3xl font-black text-slate-900 uppercase tracking-tighter leading-tight group-hover:text-primary transition-colors duration-300">
+                                        <h3 className="text-xl md:text-3xl font-black text-slate-900 uppercase tracking-tighter leading-tight group-hover:text-primary transition-colors duration-300">
                                             {post.title}
                                         </h3>
-                                        <p className="text-slate-500 text-sm md:text-base leading-relaxed font-medium line-clamp-3">
+                                        <p className="text-slate-500 text-xs md:text-base leading-relaxed font-medium line-clamp-3">
                                             {post.excerpt}
                                         </p>
                                     </div>
 
-                                    <div className="pt-8 border-t border-slate-50 flex items-center justify-between">
+                                    <div className="pt-6 md:pt-8 border-t border-slate-50 flex items-center justify-between">
                                         <div className="flex items-center gap-3">
                                             <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-[10px] uppercase text-slate-500">
                                                 {post.author[0]}
                                             </div>
-                                            <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">{post.author}</span>
+                                            <span className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">{post.author}</span>
                                         </div>
                                         <div className="flex items-center gap-3">
                                             <button 
@@ -321,13 +321,13 @@ const Blog = () => {
                         ))}
                     </div>
                 ) : (
-                    <div className="text-center py-32 space-y-6">
-                        <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mx-auto text-slate-300">
-                            <Search size={40} />
+                    <div className="text-center py-20 md:py-32 space-y-6">
+                        <div className="w-16 h-16 md:w-20 md:h-20 bg-slate-50 rounded-full flex items-center justify-center mx-auto text-slate-300">
+                            <Search size={32} />
                         </div>
-                        <div className="space-y-2">
-                            <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tighter">No articles found</h3>
-                            <p className="text-slate-500 font-medium">We couldn't find any results for "{searchQuery}"</p>
+                        <div className="space-y-2 px-6">
+                            <h3 className="text-xl md:text-2xl font-black text-slate-900 uppercase tracking-tighter">No articles found</h3>
+                            <p className="text-slate-500 text-sm md:text-base font-medium">We couldn't find any results for "{searchQuery}"</p>
                         </div>
                         <button 
                             onClick={() => {setSearchQuery(''); setActiveCategory('All');}}
