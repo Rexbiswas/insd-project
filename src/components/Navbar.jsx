@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import gsap from 'gsap';
 import { Sidebar, Menu, MenuItem, Submenu, Logo } from "react-mui-sidebar";
-import AIChatbot from './AIChatbot';
+// import AIChatbot from './AIChatbot';
 import FacebookCTA from './FacebookCTA';
 import InstagramCTA from './InstagramCTA';
 import YoutubeCTA from './YoutubeCTA';
@@ -691,7 +691,7 @@ const Navbar = () => {
                     </button>
 
                     {/* SOCIAL (TRIGGER) */}
-                    
+
                     <button
                         onClick={() => {
                             setIsOpen(false);
@@ -712,6 +712,7 @@ const Navbar = () => {
 
 
                     {/* MENU */}
+
                     <button
                         onClick={() => setIsOpen(!isOpen)}
                         className={`relative flex flex-col items-center justify-center w-16 h-16 transition-all duration-500 scale-90 active:scale-75 ${isOpen ? 'text-primary' : 'text-slate-900/40 hover:text-slate-900'}`}

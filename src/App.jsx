@@ -59,7 +59,7 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 // Components
 import RegistrationModal from './components/RegistrationModal';
 import AdmissionModal from './components/AdmissionModal';
-import AIChatbot from './components/AIChatbot';
+// import AIChatbot from './components/AIChatbot';
 import FloatingActionPanel from './components/FloatingActionPanel';
 import { RegisterModalProvider } from './context/RegisterModalContext';
 import { AdmissionModalProvider } from './context/AdmissionModalContext';

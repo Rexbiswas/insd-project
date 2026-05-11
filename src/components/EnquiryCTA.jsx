@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MousePointer2, SendHorizonal } from 'lucide-react';
+import { useAdmissionModal } from '../context/AdmissionModalContext';
 
-const StepLeadCTA = ({ isFloatingPanel = false }) => {
+const EnquiryCTA = ({ isFloatingPanel = false }) => {
+    const { openAdmissionModal } = useAdmissionModal();
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
@@ -18,12 +20,11 @@ const StepLeadCTA = ({ isFloatingPanel = false }) => {
 
     const handleNavigate = (e) => {
         e.preventDefault();
-        const formElement = document.getElementById('step-lead-form');
-        if (formElement) {
-            const navHeight = 100; // Account for fixed navbar
-            const y = formElement.getBoundingClientRect().top + window.scrollY - navHeight;
-            window.scrollTo({ top: y, behavior: 'smooth' });
-        }
+        openAdmissionModal({
+            formType: 'admission',
+            title: 'TALK TO OUR EXPERTS',
+            subtitle: 'Get professional guidance for your design career.'
+        });
     };
 
     const content = (
@@ -64,4 +65,4 @@ const StepLeadCTA = ({ isFloatingPanel = false }) => {
     );
 };
 
-export default StepLeadCTA;
+export default EnquiryCTA;

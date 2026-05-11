@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { CheckCircle2, ArrowLeft, Download, ExternalLink, Calendar, Mail } from 'lucide-react';
+import { CheckCircle2, ArrowLeft, Download, ExternalLink, Calendar, Mail, PhoneCall } from 'lucide-react';
 import Footer from '../components/Footer';
 
 const ThankYou = () => {
@@ -69,15 +69,13 @@ const ThankYou = () => {
                             <ArrowLeft size={18} />
                             Back to Home
                         </button>
-                        
-                        <a 
-                            href="https://insd.edu.in/wp-content/uploads/2020/04/INSD-Brochure.pdf" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-3 px-8 h-14 bg-white border-2 border-slate-950 text-slate-950 rounded-full font-black uppercase tracking-widest text-xs hover:bg-slate-50 transition-all duration-300 shadow-xl"
+
+                        <a
+                            href="tel:+919804443300"
+                            className="flex items-center gap-3 px-8 h-14 bg-[#db3436] text-black rounded-full font-black uppercase tracking-widest text-xs hover:bg-primary transition-all duration-300 shadow-xl"
                         >
-                            <Download size={18} />
-                            Download Brochure
+                            <PhoneCall size={18} />
+                            Contact Us
                         </a>
                     </motion.div>
 
