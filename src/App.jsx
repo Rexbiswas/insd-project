@@ -7,7 +7,6 @@ import { SpeedInsights } from "@vercel/speed-insights/react"
 
 // Lazy load pages
 const Home = lazy(() => import('./pages/Home'));
-const Courses = lazy(() => import('./pages/Courses'));
 const About = lazy(() => import('./pages/About'));
 const AwardsRecognition = lazy(() => import('./pages/AwardsRecognition'));
 const Student = lazy(() => import('./pages/Student'));
@@ -104,7 +103,7 @@ function App() {
                                         <Route path="/campuses" element={<Campus />} />
                                         <Route path="/campuses/:campusId" element={<Campus />} />
                                         <Route path="/campuses/paris-cdp" element={<ParisCDP />} />
-                                        <Route path="/courses" element={<Courses />} />
+
                                         <Route path="/courses/undergraduate" element={<Undergraduate />} />
                                         <Route path="/courses/postgraduate" element={<Postgraduate />} />
                                         <Route path="/courses/diploma-and-certificates" element={<DiplomaAndCertificate />} />

@@ -84,7 +84,7 @@ const Navbar = () => {
     useEffect(() => {
         const handleChatbotState = (e) => setIsChatbotOpen(e.detail.isOpen);
         const handleSocialState = (e) => setIsSocialMenuOpen(e.detail.isOpen);
-        
+
         window.addEventListener('chatbot-state', handleChatbotState);
         window.addEventListener('social-panel-state', handleSocialState);
 
@@ -95,12 +95,12 @@ const Navbar = () => {
                 setIsChatbotOpen(hasClass);
             }
         });
-        
-        observer.observe(document.body, { 
-            attributes: true, 
-            attributeFilter: ['class'] 
+
+        observer.observe(document.body, {
+            attributes: true,
+            attributeFilter: ['class']
         });
-        
+
         return () => {
             window.removeEventListener('chatbot-state', handleChatbotState);
             window.removeEventListener('social-panel-state', handleSocialState);
@@ -240,7 +240,6 @@ const Navbar = () => {
         },
         {
             title: 'Our Courses',
-            path: '/courses',
             icon: GraduationCap,
             section: 'OVERVIEW',
             subItems: [
@@ -303,8 +302,8 @@ const Navbar = () => {
 
     // Dispatch event and update body class for social panel state to inform other components
     useEffect(() => {
-        window.dispatchEvent(new CustomEvent('social-panel-state', { 
-            detail: { isOpen: isSocialMenuOpen } 
+        window.dispatchEvent(new CustomEvent('social-panel-state', {
+            detail: { isOpen: isSocialMenuOpen }
         }));
 
         if (isSocialMenuOpen) {
@@ -455,11 +454,11 @@ const Navbar = () => {
                                 <div className="relative group/dropdown">
                                     <div className="flex items-center gap-1 cursor-pointer py-4">
                                         <RollerLink
-                                            to="/courses"
+                                            to="#"
                                             colorClass="nav-hover-gradient"
                                             baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
                                         >
-                                            Courses
+                                            Our Courses
                                         </RollerLink>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`transition-transform duration-300 group-hover/dropdown:rotate-180 ${isHeaderDark && !isScrolled ? 'text-white/70' : 'text-slate-500'}`}><path d="m6 9 6 6 6-6" /></svg>
                                     </div>
@@ -777,7 +776,7 @@ const Navbar = () => {
                                             <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Call Us</span>
                                         </div>
                                         <div className="flex flex-col items-center gap-2">
-                                            <button 
+                                            <button
                                                 onClick={() => {
                                                     setIsSocialMenuOpen(false);
                                                     window.dispatchEvent(new CustomEvent('open-ai-chatbot', { detail: { centered: true } }));
@@ -790,7 +789,7 @@ const Navbar = () => {
                                         </div>
                                     </div>
 
-                                    <button 
+                                    <button
                                         onClick={() => setIsSocialMenuOpen(false)}
                                         className="w-full py-4 bg-slate-900 text-white rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-primary transition-colors"
                                     >
