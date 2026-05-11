@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Navbar from './components/Navbar';
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/react"
+import CookieConsent from './components/CookieConsent';
 
 // Lazy load pages
 const Home = lazy(() => import('./pages/Home'));
@@ -86,6 +87,7 @@ function App() {
                             <div className="transition-opacity duration-1000 opacity-100">
                                 <RegistrationModal />
                                 <AdmissionModal />
+                                <CookieConsent />
 
                                 <ScrollToTop />
                                 <div className="relative z-0 bg-white min-h-screen pb-20 md:pb-0 overflow-x-hidden">

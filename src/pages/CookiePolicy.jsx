@@ -114,9 +114,20 @@ const CookiePolicy = () => {
             <Lock className="mx-auto mb-6 text-primary" size={40} />
             <h2 className="text-3xl font-black uppercase tracking-tight mb-4">Privacy First</h2>
             <p className="text-slate-400 max-w-md mx-auto mb-8 font-medium">We respect your data. For more information, please read our full Privacy Policy.</p>
-            <a href="mailto:office@insd.edu.in" className="text-sm font-bold uppercase tracking-widest text-primary hover:text-white transition-colors">
-              office@insd.edu.in
-            </a>
+            <div className="flex flex-col items-center gap-4">
+              <button 
+                onClick={() => {
+                  localStorage.removeItem('cookie-consent');
+                  window.dispatchEvent(new CustomEvent('show-cookie-consent'));
+                }}
+                className="px-8 py-4 bg-primary text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-slate-900 transition-all duration-500 shadow-xl hover:shadow-primary/30"
+              >
+                Manage Preferences
+              </button>
+              <a href="mailto:office@insd.edu.in" className="text-sm font-bold uppercase tracking-widest text-primary hover:text-white transition-colors mt-4">
+                office@insd.edu.in
+              </a>
+            </div>
           </motion.div>
         </div>
       </main>
