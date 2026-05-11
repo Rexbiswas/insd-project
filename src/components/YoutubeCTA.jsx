@@ -10,10 +10,10 @@ const YoutubeCTA = ({ isFloatingPanel = false }) => {
 
     useMotionValueEvent(scrollY, "change", (latest) => {
         if (isFloatingPanel) return;
-        
+
         const isDesktop = window.innerWidth >= 1024;
         const show = isDesktop ? true : latest > 50;
-        
+
         if (show !== isVisible) {
             setIsVisible(show);
         }

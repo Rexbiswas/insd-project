@@ -119,19 +119,14 @@ const FloatingActionPanel = () => {
                             >
                                 <WhatsappCTA isFloatingPanel />
                             </motion.div>
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.8 }}
-                            >
-                                <EnquiryCTA isFloatingPanel />
-                            </motion.div>
+                            <EnquiryCTA isFloatingPanel />
                         </div>
                     )}
                 </AnimatePresence>
             </div>
 
             {/* Headless AIChatbot for mobile event listening */}
+            
             {/* <div className="lg:hidden pointer-events-auto">
                 <AIChatbot showTrigger={false} isFloatingPanel />
             </div> */}

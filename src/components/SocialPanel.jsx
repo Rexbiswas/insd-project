@@ -4,6 +4,8 @@ import { Share2, X } from 'lucide-react';
 import FacebookCTA from './FacebookCTA';
 import InstagramCTA from './InstagramCTA';
 import YoutubeCTA from './YoutubeCTA';
+import PhoneCTA from './PhoneCTA';
+import WhatsappCTA from './WhatsappCTA';
 
 const SocialPanel = ({ isFloatingPanel = false, onToggle, isOpen: externalOpen }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -39,6 +41,7 @@ const SocialPanel = ({ isFloatingPanel = false, onToggle, isOpen: externalOpen }
                         <YoutubeCTA isFloatingPanel={true} />
                         <InstagramCTA isFloatingPanel={true} />
                         <FacebookCTA isFloatingPanel={true} />
+                        
                     </motion.div>
                 )}
             </AnimatePresence>

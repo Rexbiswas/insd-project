@@ -15,6 +15,7 @@ import FacebookCTA from './FacebookCTA';
 import InstagramCTA from './InstagramCTA';
 import YoutubeCTA from './YoutubeCTA';
 import PhoneCTA from './PhoneCTA';
+import WhatsappCTA from './WhatsappCTA';
 
 
 import DashboardIcon from "@mui/icons-material/Dashboard";
@@ -773,11 +774,12 @@ const Navbar = () => {
                                             <YoutubeCTA isFloatingPanel />
                                             <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">YouTube</span>
                                         </div>
+
                                         <div className="flex flex-col items-center gap-2">
                                             <PhoneCTA isFloatingPanel />
                                             <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Call Us</span>
                                         </div>
-                                        <div className="flex flex-col items-center gap-2">
+                                        {/* <div className="flex flex-col items-center gap-2">
                                             <button
                                                 onClick={() => {
                                                     setIsSocialMenuOpen(false);
@@ -788,7 +790,7 @@ const Navbar = () => {
                                                 <Bot size={24} className="text-white group-hover:rotate-12 transition-transform" />
                                             </button>
                                             <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">AI Assistant</span>
-                                        </div>
+                                        </div> */}
                                     </div>
 
                                     <button

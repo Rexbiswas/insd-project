@@ -8,15 +8,19 @@ const EnquiryCTA = ({ isFloatingPanel = false }) => {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        if (isFloatingPanel) return;
         const checkScroll = () => {
-            const show = window.scrollY > 300;
+            const isDesktop = window.innerWidth >= 1024;
+            const show = isDesktop ? true : window.scrollY > 50;
             setIsVisible(show);
         };
         checkScroll();
         window.addEventListener('scroll', checkScroll);
-        return () => window.removeEventListener('scroll', checkScroll);
-    }, [isFloatingPanel]);
+        window.addEventListener('resize', checkScroll);
+        return () => {
+            window.removeEventListener('scroll', checkScroll);
+            window.removeEventListener('resize', checkScroll);
+        };
+    }, []);
 
     const handleNavigate = (e) => {
         e.preventDefault();
@@ -30,9 +34,9 @@ const EnquiryCTA = ({ isFloatingPanel = false }) => {
     const content = (
         <motion.button
             onClick={handleNavigate}
-            initial={isFloatingPanel ? {} : { opacity: 0, scale: 0.5, y: 50 }}
-            animate={isFloatingPanel ? {} : { opacity: 1, scale: 1, y: 0 }}
-            exit={isFloatingPanel ? {} : { opacity: 0, scale: 0.5, y: 50 }}
+            initial={{ opacity: 0, scale: 0.5, y: 50 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.5, y: 50 }}
             whileHover={{ scale: 1.1, y: -2 }}
             whileTap={{ scale: 0.9 }}
             className={`${isFloatingPanel ? 'relative' : 'fixed bottom-[352px] md:bottom-[280px] right-6 md:right-10'} z-1000 group flex items-center justify-center`}
@@ -51,12 +55,12 @@ const EnquiryCTA = ({ isFloatingPanel = false }) => {
                 {/* Shine Animation */}
                 <div className="absolute inset-0 bg-linear-to-tr from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                 
-                <SendHorizonal className="w-6 h-6 text-white relative z-10 transition-transform duration-500 group-hover:-rotate-12" />
+                <SendHorizonal className="w-6 h-6 text-white relative z-10 transition-transform duration-500 -rotate-45" />
             </div>
         </motion.button>
     );
 
-    if (isFloatingPanel) return content;
+
 
     return (
         <AnimatePresence>

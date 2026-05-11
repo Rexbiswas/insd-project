@@ -6,21 +6,21 @@ const IndiaToParisSlider = () => {
     const [active, setActive] = useState(0);
 
     const stages = [
-        { 
+        {
             step: "01",
-            title: "The India Prelude", 
+            title: "The India Prelude",
             location: "INSD Campuses, India",
             img: "https://ik.imagekit.io/fmldynl4j4/From%20India%20to%20Paris/WhatsApp%20Image%202025-04-11%20at%2012.03.33%20(1).jpeg",
             desc: "Rigorous portfolio curation and conceptual preparation across INSD's premier Indian design labs."
         },
-        { 
+        {
             step: "02",
-            title: "Crossing Borders", 
+            title: "Crossing Borders",
             location: "International Transit",
             img: "https://ik.imagekit.io/fmldynl4j4/From%20India%20to%20Paris/WhatsApp%20Image%202025-04-11%20at%2012.03.33.jpeg",
             desc: "A transition in perspective. Bridging the gap between domestic excellence and global high-fashion."
         },
-        
+
     ];
 
     const next = () => setActive((prev) => (prev + 1) % stages.length);
@@ -29,7 +29,7 @@ const IndiaToParisSlider = () => {
     return (
         <section className="py-24 bg-white overflow-hidden relative border-y border-slate-100">
             <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none bg-[radial-gradient(circle_at_20%_20%,#db3436,transparent)]" />
-            
+
             <div className="container mx-auto px-6 max-w-7xl">
                 <div className="flex flex-col lg:flex-row justify-between items-end mb-16">
                     <motion.div
@@ -45,7 +45,7 @@ const IndiaToParisSlider = () => {
                             India to <span className="text-transparent stroke-text-slate-900 italic font-serif">Paris</span>.
                         </h2>
                     </motion.div>
-                    
+
                     <div className="flex gap-4 mt-8 lg:mt-0 relative z-10">
                         <button onClick={prev} className="p-6 rounded-full border border-slate-200 hover:bg-slate-900 hover:text-white transition-all duration-500 shadow-sm active:scale-95">
                             <ArrowLeft className="w-6 h-6" />
@@ -68,19 +68,19 @@ const IndiaToParisSlider = () => {
                         >
                             {/* Visual Main */}
                             <div className="lg:col-span-8 h-full relative group rounded-4xl overflow-hidden shadow-2xl bg-slate-100">
-                                <motion.img 
-                                    src={stages[active].img} 
-                                    alt={stages[active].title} 
+                                <motion.img
+                                    src={stages[active].img}
+                                    alt={stages[active].title}
                                     className="w-full h-full object-cover brightness-90 transition-all duration-2000 scale-105 group-hover:scale-100"
                                     layoutId="main-image"
                                 />
                                 <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-transparent to-transparent opacity-60" />
-                                
+
                                 <div className="absolute top-8 left-8 flex items-center gap-4 bg-white/10 backdrop-blur-xl px-6 py-3 rounded-full border border-white/20">
                                     <MapPin className="text-white w-4 h-4 scale-150" />
                                     <span className="text-white font-bold text-xs uppercase tracking-widest">{stages[active].location}</span>
                                 </div>
-                                
+
                                 <div className="absolute bottom-12 left-12 inline-flex items-center gap-6">
                                     <span className="text-8xl md:text-[10rem] font-black text-white opacity-20 leading-none">{stages[active].step}</span>
                                     <div className="h-20 w-px bg-white/30"></div>
@@ -104,7 +104,7 @@ const IndiaToParisSlider = () => {
                                     <p className="text-xl text-slate-500 font-light leading-relaxed mt-10">
                                         {stages[active].desc}
                                     </p>
-                                    
+
                                 </motion.div>
                             </div>
                         </motion.div>

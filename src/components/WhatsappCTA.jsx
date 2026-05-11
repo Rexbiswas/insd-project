@@ -12,11 +12,11 @@ const WhatsappCTA = ({ isFloatingPanel = false }) => {
 
     useMotionValueEvent(scrollY, "change", (latest) => {
         if (isFloatingPanel) return;
-        
+
         // On desktop, keep it always visible. On mobile, show after 50px scroll.
         const isDesktop = window.innerWidth >= 1024;
         const show = isDesktop ? true : latest > 50;
-        
+
         if (show !== isVisible) {
             setIsVisible(show);
         }
