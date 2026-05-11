@@ -706,7 +706,7 @@ const Navbar = () => {
                             />
                         )}
                         <Share2 size={22} strokeWidth={2} className="relative z-10" />
-                        <span className={`text-[9px] font-bold mt-1.5 uppercase tracking-widest relative z-10 ${isSocialMenuOpen ? 'opacity-100' : 'opacity-60'}`}>Social</span>
+                        <span className={`text-[9px] font-bold mt-1.5 uppercase tracking-widest relative z-10 ${isSocialMenuOpen ? 'opacity-100' : 'opacity-60'}`}>Connect</span>
                     </button>
 
 
@@ -754,7 +754,7 @@ const Navbar = () => {
                             <div className="bg-white/95 backdrop-blur-xl rounded-[32px] p-8 shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/20">
                                 <div className="flex flex-col items-center gap-8">
                                     <div className="text-center">
-                                        <h3 className="text-lg font-black text-slate-900 tracking-tight uppercase">Social Hub</h3>
+                                        <h3 className="text-lg font-black text-slate-900 tracking-tight uppercase">Connect Hub</h3>
                                         <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em] mt-1">Connect with us</p>
                                     </div>
 
