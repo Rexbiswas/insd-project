@@ -7,6 +7,21 @@ import { useAdmissionModal } from '../context/AdmissionModalContext';
 const InsdDifference = () => {
     const { openAdmissionModal } = useAdmissionModal();
     const [isPlaying, setIsPlaying] = useState(false);
+
+    React.useEffect(() => {
+        if (isPlaying) {
+            const script = document.createElement('script');
+            script.src = "https://go.screenpal.com/player/appearance/cOhlXkntYyn";
+            script.async = true;
+            document.body.appendChild(script);
+            return () => {
+                if (document.body.contains(script)) {
+                    document.body.removeChild(script);
+                }
+            };
+        }
+    }, [isPlaying]);
+
     const tiles = [
         {
             title: "Skill-First Learning",
@@ -148,14 +163,12 @@ const InsdDifference = () => {
                                 </>
                             ) : (
                                     <div className="relative w-full h-full overflow-hidden">
-                                        <iframe
-                                            className="absolute w-[125%] h-[130%] top-[-15%] left-[-12.5%] pointer-events-auto"
-                                            src={`https://www.youtube.com/embed/3t4m4f1vaRo?autoplay=1&mute=1&rel=0&modestbranding=1&iv_load_policy=3&controls=0&playsinline=1`}
+                                        <iframe 
+                                            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 0 }} 
+                                            scrolling="no" 
+                                            src="https://go.screenpal.com/player/cOhlXkntYyn?ff=1&ahc=1&dcc=1&tl=1&bg=transparent&share=1&download=1&embed=1&cl=1" 
+                                            allowFullScreen={true}
                                             title="INSD Difference Video"
-                                            frameBorder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                            referrerPolicy="strict-origin-when-cross-origin"
-                                            allowFullScreen
                                         ></iframe>
                                     </div>
                             )}
