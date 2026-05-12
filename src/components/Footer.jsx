@@ -69,7 +69,7 @@ const Footer = () => {
                                 <img 
                                     src="https://ik.imagekit.io/fmldynl4j4/INSD-Logo_Horizontal-removebg-preview.png" 
                                     alt="INSD Logo" 
-                                    className="h-20 w-auto object-contain brightness-0 invert"
+                                    className="h-24 w-auto object-contain brightness-0 invert"
                                 />
                             </div>
                             <p className="text-lg text-white/60 leading-relaxed font-light">
@@ -124,7 +124,7 @@ const Footer = () => {
                             </h5>
                             <ul className="space-y-4">
                                 {[
-                                    { name: "About Us", path: "/about-us" },
+
                                     { name: "15 Years Legacy", path: "/15-years-legacy" },
                                     { name: "Mentors", path: "/mentors" },
                                     { name: "Center Across India", path: "/centers-across-india" },

@@ -60,82 +60,112 @@ const GraphicDesigning = () => {
         Bachelors: {
             "Year 1": {
                 "Semester 1": [
-                    "Fundamentals Of Design & Drawing",
-                    "Basic Design",
-                    "Idea Visualization",
-                    "Typography",
-                    "Color Theory",
-                    "Illustration",
-                    "Graphic Design",
-                    "Image Editing",
-                    "Page Layout Design"
+                    "Fundamentals of Design & Drawing",
+                    "Design Principle & Color Theory",
+                    "Digital Printing",
+                    "History of Graphic Design",
+                    "Computer Fundamental",
+                    "Adobe Photoshop"
                 ],
                 "Semester 2": [
-                    "Branding And Advertising",
-                    "Composition",
-                    "Photography",
-                    "Still Life",
-                    "Packaging – Product",
-                    "Desktop / Digital Publishing"
+                    "Concept of Vector",
+                    "Typography & Calligraphy",
+                    "Grooming & Communication Skill",
+                    "Product Packaging",
+                    "Corel Draw",
+                    "Adobe Illustrator"
                 ]
             },
             "Year 2": {
                 "Semester 3": [
-                    "Interface Design/ Web Design",
-                    "Media Strategy",
-                    "Language And Practice Of Media Arts",
-                    "Advance Multiplatform Design",
-                    "User Interface Experience"
+                    "Sound Editing Theory",
+                    "Adobe After Effects",
+                    "Adobe Premiere",
+                    "Adobe Audition",
+                    "Video Project & Short Film Making",
+                    "Sound Forge"
                 ],
                 "Semester 4": [
-                    "Fundamentals Of 2d Animation",
-                    "The Art Of Digital Storyboarding",
-                    "Digital 2d Animation",
-                    "Interactive Presentation",
-                    "Video Editing",
-                    "Sound Editing"
+                    "Principles of Animation",
+                    "Character Design",
+                    "Traditional Animation",
+                    "2D Animation Film Making",
+                    "Story Boarding",
+                    "Adobe Animate CC ( Flash )"
                 ]
             },
             "Year 3": {
                 "Semester 5": [
-                    "Client & Case Study",
-                    "Full Branding Project On Existing Company"
+                    "InDesign",
+                    "Concepts of Web Designing",
+                    "Introduction of Web Hosting",
+                    "Webpage Layout Design",
+                    "HTML Software",
+                    "CSS"
                 ],
                 "Semester 6": [
-                    "Group Project"
+                    "PHP",
+                    "Java Script",
+                    "Dreamweaver",
+                    "SEO",
+                    "Wordpress",
+                    "Idea Visualization ( Design Process )"
                 ]
             },
             "Year 4": {
                 "Semester 7": [
-                    "Industry Projects",
-                    "Enterprenuership"
+                    "Business English",
+                    "Portfolio Making",
+                    "Management Skills",
+                    "Live Short Film",
+                    "Davinci Resolve",
+                    "Camera Angle"
                 ],
                 "Semester 8": [
-                    "Internship & On the Job Training",
-                    "Market Dynamics"
+                    "Interview Preparation",
+                    "Personality Development",
+                    "Language Skills",
+                    "Social Media Presence",
+                    "Content Writing",
+                    "Internship"
                 ]
             }
         },
         PG: {
             "Year 1": {
                 "Semester 1": [
-                    "Strategic Design Management",
-                    "Advanced Visual Communication"
+                    "Fundamental of Design",
+                    "Financial Management",
+                    "Design Principle",
+                    "Corel Draw",
+                    "Adobe Photoshop",
+                    "Adobe Illustrator"
                 ],
                 "Semester 2": [
-                    "Interactive Media Design",
-                    "Branding & Global Identity",
-                    "Design Research Methodology"
+                    "Introduction of UIUX",
+                    "Adobe XD For UI Design",
+                    "Human Resource Management",
+                    "Adobe Dreamweaver",
+                    "CSS3.0",
+                    "HTML 5.0"
                 ]
             },
             "Year 2": {
                 "Semester 3": [
-                    "Professional Portfolio Lab",
-                    "Major Research Thesis"
+                    "Javascript",
+                    "PHP",
+                    "Fluid Layout Making",
+                    "Adobe Premiere",
+                    "After Effects",
+                    "Customer Relationship Management"
                 ],
                 "Semester 4": [
-                    "Design Entrepreneurship",
-                    "Final Exhibition & Show"
+                    "Marketing Research",
+                    "Web Hosting",
+                    "Web Portal Making",
+                    "Operations Management",
+                    "Project & Show Reel Making",
+                    "Internship"
                 ]
             }
         }

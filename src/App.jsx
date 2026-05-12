@@ -8,7 +8,6 @@ import CookieConsent from './components/CookieConsent';
 
 // Lazy load pages
 const Home = lazy(() => import('./pages/Home'));
-const About = lazy(() => import('./pages/About'));
 const AwardsRecognition = lazy(() => import('./pages/AwardsRecognition'));
 const Student = lazy(() => import('./pages/Student'));
 const Entrepreneur = lazy(() => import('./pages/Entrepreneur'));
@@ -93,7 +92,7 @@ function App() {
                                 <div className="relative z-0 bg-white min-h-screen pb-20 md:pb-0 overflow-x-hidden">
                                     <Routes>
                                         <Route path="/" element={<Home />} />
-                                        <Route path="/about-us" element={<About />} />
+
                                         <Route path="/awards-recognition" element={<AwardsRecognition />} />
                                         <Route path="/student" element={<Student />} />
                                         <Route path="/entrepreneur" element={<Entrepreneur />} />

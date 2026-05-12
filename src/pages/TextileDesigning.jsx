@@ -79,45 +79,48 @@ const TextileDesigning = () => {
         Bachelors: {
             "Year 1": {
                 "Semester 1": [
-                    "Introduction to traditional textile",
-                    "Textile fiber",
-                    "Physical & chemical properties of fiber",
-                    "Fiber manufacturing system"
+                    "Communication Techniques",
+                    "Fibre Theory",
+                    "History of Textiles",
+                    "Colour & Texture",
+                    "Motif Development",
+                    "Basic Embroidery"
                 ],
                 "Semester 2": [
-                    "Yarn formation looms",
-                    "Types of yarn",
-                    "Basic weaves",
-                    "Communication Skills"
+                    "Design Psychology",
+                    "Dictionary of Textiles",
+                    "Advances in Fibre Innovation",
+                    "Folk Textiles of India",
+                    "Embroideries of India"
                 ]
             },
             "Year 2": {
                 "Semester 3": [
-                    "Introduction to wet process",
-                    "Advance weaving process",
-                    "Industrial visit project on weaves"
+                    "Introduction to Wet Process",
+                    "Advanced Weaving Process",
+                    "Industrial Visit Project on Weaves"
                 ],
                 "Semester 4": [
-                    "Introduction to print process",
-                    "Article on block printing",
-                    "Stencil printing tie & dye",
+                    "Introduction to Print Process",
+                    "Article on Block Printing",
+                    "Stencil Printing, Tie & Dye",
                     "Market Dynamics"
                 ]
             },
             "Year 3": {
                 "Semester 5": [
-                    "Knitting process",
-                    "Finishing process"
+                    "Knitting Process",
+                    "Finishing Process"
                 ],
                 "Semester 6": [
-                    "Knitting process",
-                    "Finishing process"
+                    "Knitting Process",
+                    "Finishing Process"
                 ]
             },
             "Year 4": {
                 "Semester 7": [
                     "Industry Projects",
-                    "Enterprenuership"
+                    "Entrepreneurship"
                 ],
                 "Semester 8": [
                     "Internship & On the Job Training",

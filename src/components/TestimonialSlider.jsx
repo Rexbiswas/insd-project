@@ -6,7 +6,7 @@ const testimonials = [
     {
         id: 1,
         name: "Ankit Khera",
-        role: "Jobs Mall, Chhattarpur",
+        role: "Lifestyle",
         course: "Fashion Design",
         image: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Ankit%20Khera.jpeg",
         quote: "INSD helped me move from basic sketches to a strong portfolio and a full-time job as a Fashion Designer. The shows, juries and software training made interviews feel easy.",
@@ -15,7 +15,7 @@ const testimonials = [
     {
         id: 2,
         name: "Sanchita Pal",
-        role: "Freelance Designer",
+        role: "Lenskart",
         course: "Graphic Design",
         image: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Sanchita%20Pal.jfif",
         quote: "I started taking small freelance graphic design projects in my second year. The feedback on my portfolio and support from faculty gave me the confidence to charge for my skills.",

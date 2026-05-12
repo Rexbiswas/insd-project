@@ -66,8 +66,7 @@ const AdmissionForm = ({ isModal = false, title, subtitle }) => {
         const { name, value, type, checked } = e.target;
         
         if (name === 'phone') {
-            const numericValue = value.replace(/\D/g, '').slice(0, 10);
-            setFormData(prev => ({ ...prev, [name]: numericValue }));
+            setFormData(prev => ({ ...prev, [name]: value }));
             return;
         }
 
@@ -193,14 +192,14 @@ const AdmissionForm = ({ isModal = false, title, subtitle }) => {
                     </div>
 
                     <div className="relative group/field">
-                         <input 
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            type="email" 
-                            placeholder="Email Address (Optional)" 
-                            className="w-full h-15 bg-white/5 border border-white/10 rounded-2xl pl-12 pr-4 text-white placeholder-slate-500 focus:outline-none focus:border-primary focus:bg-white/10 focus:ring-4 focus:ring-primary/10 transition-all font-bold text-sm md:text-base shadow-inner"
-                         />
+                             <input 
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                type="text" 
+                                placeholder="Email Address (Optional)" 
+                                className="w-full h-15 bg-white/5 border border-white/10 rounded-2xl pl-12 pr-4 text-white placeholder-slate-500 focus:outline-none focus:border-primary focus:bg-white/10 focus:ring-4 focus:ring-primary/10 transition-all font-bold text-sm md:text-base shadow-inner"
+                             />
                         <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within/field:text-primary transition-colors" size={18} />
                     </div>
 
@@ -221,7 +220,7 @@ const AdmissionForm = ({ isModal = false, title, subtitle }) => {
                                 name="phone"
                                 value={formData.phone}
                                 onChange={handleChange}
-                                type="tel" 
+                                type="text" 
                                 placeholder="Mobile Number *" 
                                 className="w-full h-15 bg-white/5 border border-white/10 rounded-2xl pl-12 pr-4 text-white placeholder-slate-500 focus:outline-none focus:border-primary focus:bg-white/10 focus:ring-4 focus:ring-primary/10 transition-all font-bold text-sm md:text-base shadow-inner"
                              />

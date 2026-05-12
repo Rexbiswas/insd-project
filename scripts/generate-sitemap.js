@@ -19,7 +19,6 @@ async function generateSitemap() {
     // Add routes manually to match App.jsx paths exactly
     const routes = [
         { path: '/', priority: '1.0' },
-        { path: '/about-us', priority: '0.8' },
         { path: '/15-years-legacy', priority: '0.8' },
         { path: '/awards-recognition', priority: '0.7' },
         { path: '/centers-across-india', priority: '0.8' },

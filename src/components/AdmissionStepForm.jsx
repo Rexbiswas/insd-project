@@ -228,7 +228,7 @@ const AdmissionStepForm = () => {
                                             className="w-full h-14 bg-white border-2 border-slate-200 rounded-xl pl-12 pr-4 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold text-sm"
                                             value={formData.phone}
                                             onChange={(e) => {
-                                                setFormData({ ...formData, phone: e.target.value.replace(/\D/g, '').slice(0, 10) });
+                                                setFormData({ ...formData, phone: e.target.value });
                                             }}
                                         />
                                     </div>
@@ -241,7 +241,7 @@ const AdmissionStepForm = () => {
                                     <div className="relative group">
                                         <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-primary transition-colors" />
                                         <input
-                                            type="email"
+                                            type="text"
                                             placeholder="jane@example.com"
                                             className="w-full h-14 bg-white border-2 border-slate-200 rounded-xl pl-12 pr-4 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold text-sm"
                                             value={formData.email}

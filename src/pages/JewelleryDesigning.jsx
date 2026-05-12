@@ -53,80 +53,106 @@ const JewelleryDesigning = () => {
         PG: {
             "Year 1": {
                 "Semester 1": [
-                    "Gemology: Identification & Grading",
-                    "Advanced Accessory Design",
-                    "Jewelry Illustration & Rendering",
-                    "Traditional Metal-smithing"
+                    "Fundamental of design",
+                    "Foundation of Jewellery designing",
+                    "Jewellery Glossary",
+                    "Signs & technology of metals",
+                    "Fundamental Designing (Practical - 1)",
+                    "Designing & coloured demonstration (Practical - 2)"
                 ],
                 "Semester 2": [
-                    "History of Global Jewelry",
-                    "Material Science: Precious Metals",
-                    "Jewelry Casting Techniques",
-                    "Design Ideation & Sketching"
+                    "Gemology",
+                    "Estimation & Costing",
+                    "Grading System of Diamond",
+                    "Fashion Jewellery",
+                    "Construction of Fashion Jewellery (Practical - 1)",
+                    "Industrial Designing (Practical - 2)"
                 ]
             },
             "Year 2": {
                 "Semester 3": [
-                    "CAD for Jewelry (Rhino/Matrix)",
-                    "Luxury Brand Management",
-                    "Diamond Grading & Valuation"
+                    "Indian & International History",
+                    "Human Resource Management",
+                    "Branding",
+                    "Study of Eras",
+                    "Country & state Designing (Practical - 1)",
+                    "Jewel CAD (Practical - 2)"
                 ],
                 "Semester 4": [
-                    "Sustainable Jewelry Practices",
-                    "Appraisal & Quality Control",
-                    "Professional Portfolio & Exhibition"
+                    "Marketing & Merchandising",
+                    "Fashion Accessory Designing",
+                    "Entrepreneurship Development",
+                    "Custom Made Jewellery",
+                    "Theme Based Designing (Practical - 1)",
+                    "Accessory Designing (Practical - 2)"
                 ]
             }
         },
         Bachelors: {
             "Year 1": {
                 "Semester 1": [
-                    "Manual Design: Design with different motives and knowledge of jewellery.",
-                    "shading, rendering of white gold, yellow gold, gemstones etc.",
-                    "costume jewellery: making all jewellery by different types of beads, stones.",
-                    "metallurgy- basic knowledge and theory of all terms used in jewellery."
+                    "Basic of design",
+                    "introduction of jewellery design",
+                    "Jewellery Terminology",
+                    "Study of Metals",
+                    "Basic designing (Practical - 1)",
+                    "Designing and Rendering (Practical - 2)"
                 ],
                 "Semester 2": [
-                    "Manual design gemology: basic study of gemstones, shapes; origin, occurence etc.",
-                    "diamond grading: basic knowledge of diamond . there 4cs of grading."
+                    "Nature of Gemstones",
+                    "Estimation & costing",
+                    "4C's of Diamond",
+                    "Fashion Jewellery",
+                    "Construction of Fashion Jewellery (Practical - 1)",
+                    "Kundan Designing (Practical - 2)"
                 ]
             },
             "Year 2": {
                 "Semester 3": [
-                    "Production management design projects.like state project, country project, detachable project, temple jewellery.",
-                    "gemology- advanced study.",
-                    "diamond grading -advanced study of diamonds."
+                    "Indian History",
+                    "Imperfection & Enhancemennt treatments of gemstones",
+                    "Merchandising",
+                    "Study & grading system of diamond",
+                    "Industrial Designing (Practical - 1)",
+                    "Bridal designing (Practical - 2)"
                 ],
                 "Semester 4": [
-                    "Market surveys.CAD Design – Rhino n Matrix.",
-                    "Fashion Accessory Design",
-                    "Hallmarking System of Jewellery",
-                    "History of Eras",
-                    "Eras Design Prac. 1",
-                    "Accessory Design Prac 2"
+                    "Gold casting & fabrication",
+                    "Branding",
+                    "Entrepreneurship Development",
+                    "International history",
+                    "Detachable Designing (Practical - 1)",
+                    "Country designing (Practical - 2)"
                 ]
             },
             "Year 3": {
                 "Semester 5": [
                     "Human Resource Management",
-                    "Custome Made Jewellery",
-                    "Entrepreneurship Development",
-                    "Study of Pearl",
-                    "Inspirational Design (Prac. 1)",
-                    "State Design (Prac 2)"
+                    "Fashion Accessory designing",
+                    "Hall Marking System of Jewellery",
+                    "History of Eras",
+                    "Eras Designing (Practical - 1)",
+                    "Accessory Designing (Practical - 2)"
                 ],
                 "Semester 6": [
-                    "Marketing"
+                    "Marketing",
+                    "Custom Made Jewellery",
+                    "Entrepreneurship Development",
+                    "Study of Pearl",
+                    "Inspirational designing (Practical - 1)",
+                    "State Designing (Practical - 2)"
                 ]
             },
             "Year 4": {
                 "Semester 7": [
-                    "Industry Projects",
-                    "Enterprenuership"
+                    "Jewel CAD (Practical - 1)",
+                    "Theme Based Designing (Practical - 2)",
+                    "Large Scale Production",
+                    "Export Management"
                 ],
                 "Semester 8": [
-                    "Internship & On the Job Training",
-                    "Market Dynamics"
+                    "Internship",
+                    "Theme based project"
                 ]
             }
         },

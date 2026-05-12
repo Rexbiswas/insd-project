@@ -211,7 +211,7 @@ const Navbar = () => {
 
     // Mobile Dynamic Island Animations
     const mobileWidth = useTransform(scrollProgress, transitionRange, ["100%", "100%"]);
-    const mobileHeight = useTransform(scrollProgress, transitionRange, ["88px", "88px"]);
+    const mobileHeight = useTransform(scrollProgress, transitionRange, ["100px", "100px"]);
     const mobileTop = useTransform(scrollProgress, transitionRange, ["0px", "0px"]);
     const mobileRadius = useTransform(scrollProgress, transitionRange, ["0px", "0px"]);
     const mobileBackground = useTransform(scrollProgress, transitionRange, ["rgba(255, 255, 255, 1)", "rgba(255, 255, 255, 1)"]);
@@ -228,11 +228,11 @@ const Navbar = () => {
         { title: 'Dashboard', path: '/', icon: LayoutGrid, section: 'OVERVIEW' },
         {
             title: 'About INSD',
-            path: '/about-us',
+            path: '#',
             icon: Info,
             section: 'OVERVIEW',
             subItems: [
-                { title: 'About Us Overview', path: '/about-us', icon: 'info', desc: 'Discover our mission & values' },
+
                 { title: '15 Years Legacy', path: '/15-years-legacy', icon: 'zap', desc: 'Our national award-winning history' },
                 { title: 'Mentors', path: '/mentors', icon: 'users', desc: 'Expert creative leadership' },
                 { title: 'Center Across India', path: '/centers-across-india', icon: 'trending-up', desc: 'Our regional network' },
@@ -375,11 +375,11 @@ const Navbar = () => {
                 className="hidden lg:flex fixed top-0 left-0 right-0 z-1000 px-6 lg:px-8 xl:px-10 py-4 items-center justify-between pointer-events-auto w-full"
             >
                 {/* Left: Logo */}
-                <Link to="/" className="nav-logo relative z-50 shrink-0 block h-20 overflow-hidden" onClick={() => setIsOpen(false)}>
+                <Link to="/" className="nav-logo relative z-50 shrink-0 block h-24 overflow-hidden" onClick={() => setIsOpen(false)}>
                     <motion.img
                         whileHover={{ scale: 1.1, rotate: 2 }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                        className={`h-20 w-auto object-contain transition-all duration-500 ${isHeaderDark && !isScrolled ? 'brightness-0 invert' : 'drop-shadow-sm'}`}
+                        className={`h-24 w-auto object-contain transition-all duration-500 ${isHeaderDark && !isScrolled ? 'brightness-0 invert' : 'drop-shadow-sm'}`}
                         src="https://ik.imagekit.io/fmldynl4j4/INSD-Logo_Horizontal-removebg-preview.png"
                         alt="INSD Logo"
                     />
@@ -398,7 +398,7 @@ const Navbar = () => {
                                 <div className="relative group/dropdown">
                                     <div className="flex items-center gap-1 cursor-pointer py-4">
                                         <RollerLink
-                                            to="/about-us"
+                                            to="#"
                                             colorClass="nav-hover-gradient"
                                             baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
                                         >
@@ -623,7 +623,16 @@ const Navbar = () => {
                 </div>
             </motion.nav>
 
-            {/* Mobile Top Bar - Dynamic Island Style */}
+            {/* SVG Gradient Definition for Icons */}
+            <svg width="0" height="0" className="absolute pointer-events-none">
+                <defs>
+                    <linearGradient id="insd-icon-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#db3436" />
+                        <stop offset="100%" stopColor="#134a84" />
+                    </linearGradient>
+                </defs>
+            </svg>
+
             <motion.div
                 style={{
                     width: mobileWidth,
@@ -645,7 +654,7 @@ const Navbar = () => {
                 <div className="relative w-full h-full flex items-center justify-center px-4 pointer-events-auto">
                     <Link to="/" onClick={() => setIsOpen(false)} className="h-full flex items-center justify-center">
                         <img
-                            className="h-20 w-auto object-contain drop-shadow-sm"
+                            className="h-24 w-auto object-contain drop-shadow-sm"
                             src="https://ik.imagekit.io/fmldynl4j4/INSD-Logo_Horizontal-removebg-preview.png"
                             alt="INSD Logo"
                         />
@@ -673,8 +682,13 @@ const Navbar = () => {
                                         transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
                                     />
                                 )}
-                                <Home size={22} strokeWidth={isActive ? 2.5 : 2} className="relative z-10" />
-                                <span className={`text-[9px] font-bold mt-1.5 uppercase tracking-widest relative z-10 ${isActive ? 'opacity-100' : 'opacity-60'}`}>Home</span>
+                                <Home 
+                                    size={22} 
+                                    strokeWidth={isActive ? 2.5 : 2} 
+                                    className="relative z-10" 
+                                    stroke={isActive ? "url(#insd-icon-gradient)" : "currentColor"}
+                                />
+                                <span className={`text-[9px] font-bold mt-1.5 uppercase tracking-widest relative z-10 ${isActive ? 'text-slate-900 opacity-100' : 'opacity-60'}`}>Home</span>
                             </>
                         )}
                     </NavLink>
@@ -687,8 +701,8 @@ const Navbar = () => {
                         }}
                         className={`relative flex flex-col items-center justify-center w-16 h-16 transition-all duration-500 scale-90 active:scale-75 text-slate-900/40 hover:text-slate-900`}
                     >
-                        <Headset size={22} strokeWidth={2} />
-                        <span className="text-[9px] font-bold mt-1.5 uppercase tracking-widest opacity-60">Enquiry</span>
+                        <Headset size={22} strokeWidth={2} stroke="url(#insd-icon-gradient)" />
+                        <span className="text-[9px] font-bold mt-1.5 uppercase tracking-widest opacity-80 text-slate-900">Enquiry</span>
                     </button>
 
                     {/* SOCIAL (TRIGGER) */}
@@ -707,8 +721,13 @@ const Navbar = () => {
                                 transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
                             />
                         )}
-                        <Share2 size={22} strokeWidth={2} className="relative z-10" />
-                        <span className={`text-[9px] font-bold mt-1.5 uppercase tracking-widest relative z-10 ${isSocialMenuOpen ? 'opacity-100' : 'opacity-60'}`}>Social</span>
+                        <Share2 
+                            size={22} 
+                            strokeWidth={2} 
+                            className="relative z-10" 
+                            stroke={isSocialMenuOpen ? "url(#insd-icon-gradient)" : "url(#insd-icon-gradient)"} 
+                        />
+                        <span className={`text-[9px] font-bold mt-1.5 uppercase tracking-widest relative z-10 ${isSocialMenuOpen ? 'text-slate-900 opacity-100' : 'text-slate-900 opacity-80'}`}>Social</span>
                     </button>
 
 
@@ -726,9 +745,13 @@ const Navbar = () => {
                             />
                         )}
                         <div className="relative z-10">
-                            {isOpen ? <X size={24} strokeWidth={2.5} /> : <LayoutGrid size={22} strokeWidth={2} />}
+                            {isOpen ? (
+                                <X size={24} strokeWidth={2.5} stroke="url(#insd-icon-gradient)" />
+                            ) : (
+                                <LayoutGrid size={22} strokeWidth={2} stroke="url(#insd-icon-gradient)" />
+                            )}
                         </div>
-                        <span className={`text-[9px] font-bold mt-1.5 uppercase tracking-widest relative z-10 ${isOpen ? 'opacity-100' : 'opacity-60'}`}>{isOpen ? 'Close' : 'Menu'}</span>
+                        <span className={`text-[9px] font-bold mt-1.5 uppercase tracking-widest relative z-10 ${isOpen ? 'text-slate-900 opacity-100' : 'text-slate-900 opacity-80'}`}>{isOpen ? 'Close' : 'Menu'}</span>
                     </button>
                 </div>
             </div >

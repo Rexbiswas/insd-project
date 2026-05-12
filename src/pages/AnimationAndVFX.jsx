@@ -55,84 +55,110 @@ const AnimationAndVFX = () => {
         Bachelors: {
             "Year 1": {
                 "Semester 1": [
-                    "Drawing Concepts",
-                    "Pre -Production",
-                    "Digital Art & Design – Theory",
-                    "Digital Art Design – Practical",
-                    "Introduction To Pc Skills And Programming",
-                    "Drawing With Computer"
+                    "Fundamentals of Design & Drawing",
+                    "Design Principle & Color Theory",
+                    "Digital Painting",
+                    "History of Graphic Design",
+                    "Computer Fundamental",
+                    "Adobe Photoshop"
                 ],
                 "Semester 2": [
-                    "Advanced Photoshop & Texturing",
-                    "Anatomy For Animation",
-                    "Cel Animation – Practical",
-                    "Principles Of Animation, Media Laws & Ethics",
-                    "Film Analysis",
-                    "2d Animation"
+                    "Character Design (Anatomy)",
+                    "Typography & Calligraphy",
+                    "Adobe Premiere",
+                    "Adobe After Effects",
+                    "Adobe Audition"
                 ]
             },
             "Year 2": {
                 "Semester 3": [
-                    "Introduction To 3d Studio Max",
-                    "3d Modeling In Max",
-                    "Shading & Texturing In Max",
-                    "Lighting & Camera Techniques In Max",
-                    "Videography"
+                    "Principle of Lights",
+                    "Traditional Animation",
+                    "3ds Max Modeling & Texturing",
+                    "3ds Max Lighting & Rendering",
+                    "3ds Max Rigging & Animation",
+                    "3ds Max Dynamics & FX"
                 ],
                 "Semester 4": [
-                    "Introduction To Maya",
-                    "3d Modeling In Maya",
-                    "Shading & Texturing In Maya",
-                    "Character Setup & Rigging In Maya",
-                    "Lighting & Camera Techniques In Maya",
-                    "Introduction To Mel Scripting"
+                    "Character Design (Part - 2)",
+                    "Camera & Videography",
+                    "Fume FX",
+                    "Ray Fire",
+                    "Real Flow",
+                    "Portfolio Making"
                 ]
             },
             "Year 3": {
                 "Semester 5": [
-                    "Maya Effects, Particles, Dynamics & Rendering Techniques",
-                    "Compositing",
-                    "Editing & Sound For Animation",
-                    "3d Animation",
-                    "Creating Demo Reel",
-                    "Environment Studies"
+                    "Grooming & Communication Skills",
+                    "Management Skills",
+                    "Blender Modeling & Texturing",
+                    "Blender Lighting & Rendering",
+                    "Blender Rigging & Animation",
+                    "Blender Dynamics & FX"
                 ],
                 "Semester 6": [
-                    "3d Group Project Or Internship"
+                    "Personality Development",
+                    "Language Skills",
+                    "Autodesk Maya Modeling & Texturing",
+                    "Autodesk Maya Lighting & Rendering",
+                    "Autodesk Maya Rigging & Animation",
+                    "Autodesk Maya Dynamics & Effects"
                 ]
             },
             "Year 4": {
                 "Semester 7": [
-                    "Industry Projects",
-                    "Enterprenuership"
+                    "Business English",
+                    "Interview Preparation",
+                    "Houdini Modeling & Texturing",
+                    "Houdini Lighting & Rendering",
+                    "Dynamic Effects",
+                    "Motion + Simulation"
                 ],
                 "Semester 8": [
-                    "Internship & On the Job Training",
-                    "Market Dynamics"
+                    "Camera & Production",
+                    "Live Short Film Making",
+                    "Portfolio Making + 3D Animation Show Reel",
+                    "Nuke",
+                    "Silhouette",
+                    "Internship"
                 ]
             }
         },
         PG: {
             "Year 1": {
                 "Semester 1": [
-                    "Advanced Cinematic Lighting",
-                    "Digital Sculpting Mastery",
-                    "Cinematic Look Development"
+                    "Fundamental of Design",
+                    "Digital Printing",
+                    "Management Process & Behavior",
+                    "Corel Draw",
+                    "Adobe Photoshop",
+                    "Adobe Illustrator"
                 ],
                 "Semester 2": [
-                    "Advanced Dynamics & VFX",
-                    "VFX Pipeline Management",
-                    "Global Industry Trends"
+                    "Autodesk Maya Modeling",
+                    "Autodesk Maya - Texturing",
+                    "Autodesk Maya - Lighting",
+                    "Autodesk Maya - Rigging",
+                    "Maya V-RAY",
+                    "Autodesk Mudbox Digital Sculpting"
                 ]
             },
             "Year 2": {
                 "Semester 3": [
-                    "Master Production Project",
-                    "Showreel & Portfolio Lab"
+                    "Cinema 4D V-Ray",
+                    "Digital Marketing & Communication",
+                    "Analysis for Digital Marketing",
+                    "Performance Management for Digital Channels",
+                    "Customer Life Cycle Management"
                 ],
                 "Semester 4": [
-                    "Creative Business Leadership",
-                    "Industry Placement Show"
+                    "Portfolio Making",
+                    "Human Resource Management",
+                    "Entrepreneurship Development (Language & Practice of Media)",
+                    "Interview Preparation",
+                    "Project & Show Reel Making (Digital Storyboarding, Video & Sound Editing)",
+                    "Internship"
                 ]
             }
         }

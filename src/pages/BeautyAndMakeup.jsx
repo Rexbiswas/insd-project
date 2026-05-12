@@ -28,24 +28,41 @@ import { useAdmissionModal } from '../context/AdmissionModalContext';
 const BeautyAndMakeup = () => {
     const navigate = useNavigate();
     const { openAdmissionModal } = useAdmissionModal();
-    const [activeOutline, setActiveOutline] = useState('Industry Diploma');
+    const [activeOutline, setActiveOutline] = useState('Professional Diploma');
     const [expandedSem, setExpandedSem] = useState(1);
 
     const curriculumData = {
-        "Industry Diploma": {
-            "Foundation: Aesthetic Art": [
-                "Basics of Skin & Hygiene",
-                "Color Theory in Artistry",
-                "Self-Grooming & Etiquette",
-                "Day & Evening Makeup Mastery",
-                "Hair Styling Basics"
+        "Professional Diploma": {
+            "Aesthetic Foundations": [
+                "Basic skin care",
+                "Product & Tools knowledge",
+                "Analysing skin type, face shapes, eye shapes",
+                "Eyebrow shaping",
+                "Types & Application of Bases",
+                "Contouring / concealing & Corrective Techniques"
             ],
-            "Industry: Professional Glam": [
-                "Bridal Artistry & Tradition",
-                "High-Fashion & Editorial Shoots",
-                "Special Effects (SFX) Basics",
-                "Salon Management & Marketing",
-                "Digital Portfolio + Industry Placement"
+            "Makeup Artistry": [
+                "Types of eyeshadows & Application",
+                "Application of eyeliner & Blusher (Matte/liquid)",
+                "Lipstick Application & Fixing of false lashes",
+                "Party look (Day/Night)",
+                "Engagement & Cocktail Glam",
+                "Smokey hot glam look"
+            ],
+            "Bridal & Cultural Looks": [
+                "Pakistani & Mehandi look",
+                "Christian & Traditional Bridal look",
+                "Reception glam & Groom makeup"
+            ],
+            "Hairstyling Techniques": [
+                "Open Hairdo’s (8-10 types)",
+                "Floral buns & Russian ponytail",
+                "Softy beachy waves & Tong curls",
+                "Accessory & Extensions application"
+            ],
+            "Professional Practice": [
+                "Client Handling & Consultation",
+                "Career Guidance & Opportunities"
             ]
         },
         Bachelors: {
@@ -253,7 +270,7 @@ const BeautyAndMakeup = () => {
                         
                         <div className="flex bg-white p-2 rounded-full border border-slate-200 shadow-sm overflow-x-auto no-scrollbar">
                             {[
-                                { id: 'Industry Diploma', label: 'Industry Diploma', badge: 'Featured' },
+                                { id: 'Professional Diploma', label: 'Professional Diploma', badge: 'Featured' },
                                 { id: 'Bachelors', label: 'Undergraduate' },
                                 { id: 'PG', label: 'Post Graduate' }
                             ].map((tab) => (

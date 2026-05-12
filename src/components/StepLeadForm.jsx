@@ -95,7 +95,7 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
             // Handle non-JSON or error responses from Vercel/Server
             const contentType = response.headers.get("content-type");
             let data;
-            
+
             if (contentType && contentType.includes("application/json")) {
                 data = await response.json();
             } else {
@@ -155,7 +155,7 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
                         {(!choice && !submitted && isModal && showClose) && (
                             <>
                                 {/* Close Button */}
-                                <button 
+                                <button
                                     onClick={() => closeAdmissionModal()}
                                     className="absolute top-2 right-2 z-[1002] p-2.5 rounded-full bg-slate-50/80 text-slate-400 hover:bg-slate-100 hover:text-slate-900 transition-all border border-slate-100 group backdrop-blur-sm"
                                 >
@@ -165,7 +165,7 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
                                 <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
                             </>
                         )}
-                        
+
                         <motion.span
                             animate={{ opacity: submitted ? 0 : 1, y: submitted ? -20 : 0 }}
                             className="inline-block px-4 py-1 rounded-full bg-slate-100 text-slate-500 font-bold tracking-[0.3em] uppercase text-[10px] md:text-xs mb-8"
@@ -190,7 +190,7 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
                             </motion.h2>
 
                             {choice && !submitted && isModal && showClose && (
-                                <button 
+                                <button
                                     onClick={() => closeAdmissionModal()}
                                     className="p-2 md:p-3 rounded-full bg-slate-50 text-slate-400 hover:bg-primary hover:text-white transition-all border border-slate-100 shadow-lg active:scale-90"
                                 >
@@ -438,7 +438,7 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
                                 className="bg-white p-12 md:p-20 rounded-[4rem] text-center text-slate-950 relative overflow-hidden border border-slate-100 shadow-3xl"
                             >
                                 {isModal && showClose && (
-                                    <button 
+                                    <button
                                         onClick={() => closeAdmissionModal()}
                                         className="absolute top-6 right-6 md:top-10 md:right-10 p-2 rounded-full bg-slate-50 text-slate-400 hover:bg-slate-100 hover:text-slate-900 transition-all border border-slate-100 group z-50"
                                     >
@@ -455,7 +455,7 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
                                     Thank you, {formData.name.split(' ')[0]}! Our mentor will connect with you within 24 business hours.
                                 </p>
                                 <button
-                                    onClick={() => { setChoice(null); setSubmitted(false); if(isModal) closeAdmissionModal(); }}
+                                    onClick={() => { setChoice(null); setSubmitted(false); if (isModal) closeAdmissionModal(); }}
                                     className="px-10 py-4 bg-slate-950 hover:bg-primary text-white rounded-full text-xs font-black uppercase tracking-[0.2em] transition-all"
                                 >
                                     Finish

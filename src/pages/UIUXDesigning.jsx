@@ -56,73 +56,115 @@ const UIUXDesigning = () => {
         Bachelors: {
             "Year 1": {
                 "Semester 1": [
-                    "Basics of Digital Design & IA",
-                    "Color Theory & Digital Typography",
-                    "User Experience (UX) Fundamentals"
+                    "Sketching & Drawing",
+                    "Fundamentals of Design",
+                    "Introduction to UX Design",
+                    "History of Art & Evolution of Design",
+                    "Introduction to Visual Design",
+                    "Design Communication: Visualizing Ideas",
+                    "Empathy & Understanding Problems"
                 ],
                 "Semester 2": [
-                    "HTML5 & CSS3 for Designers",
-                    "Interaction Design Principles",
-                    "High-Fidelity Prototyping (Figma)",
-                    "Visual Interface (UI) Design Mastery"
+                    "Sketching & Drawing (Advanced)",
+                    "Visual Design Tools",
+                    "Technology in Experience Design",
+                    "UX Design (Advanced)",
+                    "Basics of UI Development",
+                    "Integrated Studio for UX"
                 ]
             },
             "Year 2": {
                 "Semester 3": [
-                    "Advanced Mobile Product Design",
-                    "E-commerce Design Strategy",
-                    "Enterprise Design Systems"
+                    "Ethnography & People Research",
+                    "Introduction to User Research",
+                    "Service Design & Task Flows",
+                    "Information Architecture",
+                    "Introduction to UI Design",
+                    "Design Thinking",
+                    "Information & Data Study"
                 ],
                 "Semester 4": [
-                    "Accessibility & Inclusive Design",
-                    "Design Leadership & Product Strategy",
-                    "Design Entrepreneurship Lab",
-                    "Industrial Internship (OJT)",
-                    "Final Graduation Showcase"
+                    "User Research Application",
+                    "Service Design & Task Flows (Advanced)",
+                    "Introduction to Interaction Design",
+                    "UI Design (Advanced)",
+                    "Design Thinking Application",
+                    "Data Analytics",
+                    "Introduction to 6D"
                 ]
             },
             "Year 3": {
                 "Semester 5": [
-                    "Client & Case Study",
-                    "Full Branding Project On Existing Company"
+                    "Wireframing & Prototyping",
+                    "Usability Testing",
+                    "UX & Digitalization",
+                    "Innovation Management",
+                    "Visual Design Tools (Advanced)",
+                    "Technology in Experience Design (Advanced)",
+                    "Omnichannel Experience Design"
                 ],
                 "Semester 6": [
-                    "Group Project",
-                    "Advanced Interaction Design"
+                    "Interaction Design (Advanced)",
+                    "UX Design for Futuristic Technologies",
+                    "UX Design for Rural India",
+                    "UI Development (Advanced)",
+                    "Industry Specific UX Design",
+                    "Integrated Studio for UX (Advanced)"
                 ]
             },
             "Year 4": {
                 "Semester 7": [
-                    "Industry Projects",
-                    "Entrepreneurship"
+                    "Gamification & UX",
+                    "Human-Machine Interface (HMI)",
+                    "Product Design & Lifecycle Management",
+                    "Business, UX & Design Management",
+                    "Live Project"
                 ],
                 "Semester 8": [
-                    "Internship & On the Job Training",
-                    "Final Graduation Showcase"
+                    "Degree Project",
+                    "Project Reviews",
+                    "Jury"
                 ]
             }
         },
         PG: {
             "Year 1": {
                 "Semester 1": [
-                    "Strategic Product Management",
-                    "Advanced Interaction Science",
-                    "Design Systems at Scale"
+                    "Design Fundamentals & Visual Communication",
+                    "Introduction to UI & UX Design",
+                    "Empathy, Problem Definition & User Understanding",
+                    "Sketching & Visualization for Designers",
+                    "Design Tools & Prototyping Basics",
+                    "Principles of Management & Organizational Behavior",
+                    "Studio Project I – UI Process Application"
                 ],
                 "Semester 2": [
-                    "AI in Design Workflows",
-                    "Digital Transformation Strategy",
-                    "Global Design Trends"
+                    "User Research & Ethnography",
+                    "Information Architecture & Service Design",
+                    "Advanced UI Design & Interaction Principles",
+                    "Accounting & Financial Management for Designers",
+                    "Front-End Development for Designers",
+                    "Data Analytics for UI",
+                    "Studio Project II – UI Implementation"
                 ]
             },
             "Year 2": {
                 "Semester 3": [
-                    "Master UX Research Thesis",
-                    "Professional Portfolio Lab"
+                    "Wireframing, Prototyping & Usability Testing",
+                    "Omnichannel Experience Design",
+                    "Interaction Design & Micro-Interactions",
+                    "UI for Futuristic Technologies",
+                    "Product Lifecycle Management",
+                    "Marketing Management & Branding Strategy",
+                    "Studio Project III – Product Experience Design"
                 ],
                 "Semester 4": [
-                    "Industry Placement & Mentorship",
-                    "Final Graduation Showcase"
+                    "Gamification & Behavioral Design",
+                    "Human–Machine Interface (HMI) Design",
+                    "Strategic UI Leadership & Entrepreneurship",
+                    "Industry-Specific UI Design",
+                    "Strategic Management & Business Transformation",
+                    "Capstone Project / Internship & Jury"
                 ]
             }
         }
