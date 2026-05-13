@@ -10,7 +10,8 @@ const EnquiryCTA = ({ isFloatingPanel = false }) => {
     useEffect(() => {
         const checkScroll = () => {
             const isDesktop = window.innerWidth >= 1024;
-            const show = isDesktop ? true : window.scrollY > 50;
+            const isFilled = localStorage.getItem('admission-form-filled') === 'true';
+            const show = (isDesktop ? true : window.scrollY > 50) && !isFilled;
             setIsVisible(show);
         };
         checkScroll();
@@ -24,6 +25,10 @@ const EnquiryCTA = ({ isFloatingPanel = false }) => {
 
     const handleNavigate = (e) => {
         e.preventDefault();
+        if (localStorage.getItem('admission-form-filled')) {
+            // openAdmissionModal();
+            return;
+        }
         openAdmissionModal({
             formType: 'admission',
             title: 'TALK TO OUR EXPERTS',

@@ -54,7 +54,13 @@ const RegisterButton = ({ className = "", isDarkTheme = false, isScrolled = fals
 
     return (
         <button
-            onClick={() => openAdmissionModal()}
+            onClick={() => {
+                if (localStorage.getItem('admission-form-filled')) {
+                    // openAdmissionModal();
+                    return;
+                }
+                openAdmissionModal();
+            }}
             className={`group relative overflow-hidden shadow-lg transition-all duration-300 rounded-full ${isLightMode ? 'bg-slate-900/5 border-slate-900/10' : 'bg-white/10 hover:bg-white/20 border-white/20'} backdrop-blur-xl border ${className} flex items-center justify-center`}
         >
             {/* Animated Gradient Background */}
@@ -81,6 +87,17 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isSocialMenuOpen, setIsSocialMenuOpen] = useState(false);
     const [isChatbotOpen, setIsChatbotOpen] = useState(false);
+    const [formFilled, setFormFilled] = useState(false);
+
+    useEffect(() => {
+        const checkFormStatus = () => {
+            const filled = localStorage.getItem('admission-form-filled') === 'true';
+            setFormFilled(filled);
+        };
+        checkFormStatus();
+        window.addEventListener('storage', checkFormStatus);
+        return () => window.removeEventListener('storage', checkFormStatus);
+    }, []);
 
     useEffect(() => {
         const handleChatbotState = (e) => setIsChatbotOpen(e.detail.isOpen);
@@ -694,16 +711,23 @@ const Navbar = () => {
                     </NavLink>
 
                     {/* ENQUIRY */}
-                    <button
-                        onClick={() => {
-                            setIsOpen(false);
-                            openAdmissionModal();
-                        }}
-                        className={`relative flex flex-col items-center justify-center w-16 h-16 transition-all duration-500 scale-90 active:scale-75 text-slate-900/40 hover:text-slate-900`}
-                    >
-                        <FilePenLine size={22} strokeWidth={2} stroke="url(#insd-icon-gradient)" />
-                        <span className="text-[9px] font-bold mt-1.5 uppercase tracking-widest opacity-80 text-slate-900">Enquiry</span>
-                    </button>
+                    {!formFilled && (
+                        <button
+                            onClick={() => {
+                                setIsOpen(false);
+                                if (localStorage.getItem('admission-form-filled')) {
+                                    // Logic commented out as per user request if form is already filled
+                                    // openAdmissionModal();
+                                    return;
+                                }
+                                openAdmissionModal();
+                            }}
+                            className={`relative flex flex-col items-center justify-center w-16 h-16 transition-all duration-500 scale-90 active:scale-75 text-slate-900/40 hover:text-slate-900`}
+                        >
+                            <FilePenLine size={22} strokeWidth={2} stroke="url(#insd-icon-gradient)" />
+                            <span className="text-[9px] font-bold mt-1.5 uppercase tracking-widest opacity-80 text-slate-900">Enquiry</span>
+                        </button>
+                    )}
 
                     {/* SOCIAL (TRIGGER) */}
 
@@ -1057,7 +1081,14 @@ const Navbar = () => {
                                             >
                                                 {cta.action === 'modal' ? (
                                                     <button
-                                                        onClick={() => { setIsOpen(false); openAdmissionModal(); }}
+                                                        onClick={() => { 
+                                                            setIsOpen(false); 
+                                                            if (localStorage.getItem('admission-form-filled')) {
+                                                                // openAdmissionModal();
+                                                                return;
+                                                            }
+                                                            openAdmissionModal(); 
+                                                        }}
                                                         className="flex items-center gap-6 md:gap-8 text-left w-full"
                                                     >
                                                         <div className="w-10 h-10 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-primary group-hover:scale-110 group-hover:rotate-6 group-hover:border-primary shadow-2xl overflow-hidden relative">
@@ -1075,7 +1106,14 @@ const Navbar = () => {
                                                     </button>
                                                 ) : cta.title === 'Apply Now' ? (
                                                     <button
-                                                        onClick={() => { setIsOpen(false); openAdmissionModal(); }}
+                                                        onClick={() => { 
+                                                            setIsOpen(false); 
+                                                            if (localStorage.getItem('admission-form-filled')) {
+                                                                // openAdmissionModal();
+                                                                return;
+                                                            }
+                                                            openAdmissionModal(); 
+                                                        }}
                                                         className="flex items-center gap-6 md:gap-8 text-left w-full"
                                                     >
                                                         <div className="w-10 h-10 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-primary group-hover:scale-110 group-hover:rotate-6 group-hover:border-primary shadow-2xl overflow-hidden relative">

@@ -78,6 +78,9 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
                     name: '', mobile: '', email: '', qualification: '', course: '', state: '', city: ''
                 });
                 
+                // Set flag to prevent duplicate submissions
+                localStorage.setItem('admission-form-filled', 'true');
+
                 // Redirect to Thank You page after a brief delay
                 setTimeout(() => {
                     if (onClose) onClose(); 
