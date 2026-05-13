@@ -69,6 +69,22 @@ const AdmissionStepForm = () => {
 
     const handleSubmit = async (e) => {
         if (e) e.preventDefault();
+
+        // Validate 10-digit mobile number
+        if (formData.phone.replace('+91', '').length !== 10) {
+            setError('Please provide a 10-digit mobile number');
+            // Scroll to error if needed
+            setTimeout(() => {
+                if (sectionRef.current) {
+                    window.scrollTo({
+                        top: sectionRef.current.getBoundingClientRect().top + window.pageYOffset - 100,
+                        behavior: "smooth"
+                    });
+                }
+            }, 100);
+            return;
+        }
+
         setLoading(true);
         setError(null);
         try {

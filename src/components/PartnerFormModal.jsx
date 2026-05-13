@@ -15,6 +15,7 @@ const PartnerFormModal = ({ isOpen, onClose }) => {
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
+    const [error, setError] = useState(null);
 
     // Toggle body class to hide navbar and prevent scroll
     useEffect(() => {
@@ -33,6 +34,14 @@ const PartnerFormModal = ({ isOpen, onClose }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError(null);
+
+        // Validate 10-digit mobile number
+        if (formData.contact.replace('+91', '').length !== 10) {
+            setError('Please provide a 10-digit mobile number');
+            return;
+        }
+
         setIsSubmitting(true);
         
         try {
@@ -222,6 +231,13 @@ const PartnerFormModal = ({ isOpen, onClose }) => {
                                                 className="w-full bg-slate-50 border border-slate-100 rounded-3xl px-6 py-4 outline-none focus:border-slate-900 focus:bg-white transition-all text-slate-900 font-medium placeholder:text-slate-300 resize-none"
                                             />
                                         </div>
+
+                                        {error && (
+                                            <div className="md:col-span-2 p-3 rounded-xl bg-red-50 border border-red-100 flex items-center gap-2 text-red-600 text-[10px] font-bold uppercase tracking-wider">
+                                                <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                                                {error}
+                                            </div>
+                                        )}
 
                                         <div className="md:col-span-2 pt-4">
                                             <motion.button

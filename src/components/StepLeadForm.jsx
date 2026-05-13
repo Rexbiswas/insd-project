@@ -72,6 +72,13 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Validate 10-digit mobile number
+        if (formData.mobile.replace('+91', '').length !== 10) {
+            setError('Please provide a 10-digit mobile number');
+            return;
+        }
+
         setLoading(true);
         setError(null);
         try {

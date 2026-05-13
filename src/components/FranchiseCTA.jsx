@@ -89,6 +89,13 @@ const FranchiseCTA = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Validate 10-digit mobile number
+        if (formData.mobile.replace('+91', '').length !== 10) {
+            alert('Please provide a 10-digit mobile number');
+            return;
+        }
+
         setIsSubmitting(true);
         try {
             const response = await fetch('/api/partner/leads', {

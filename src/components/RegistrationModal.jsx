@@ -105,10 +105,8 @@ const RegistrationModal = () => {
             if (!emailRegex.test(formData.email)) {
                 newErrors.email = "Please enter a valid email address.";
             }
-            const phoneRegex = /^\+?[0-9]{10,15}$/;
-            const cleanPhone = formData.phone.replace(/[\s-]/g, '');
-            if (!phoneRegex.test(cleanPhone)) {
-                newErrors.phone = "Please enter a valid 10-digit phone number.";
+            if (formData.phone.replace('+91', '').length !== 10) {
+                newErrors.phone = "Please provide a 10-digit mobile number";
             }
         }
 

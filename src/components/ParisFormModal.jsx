@@ -10,6 +10,7 @@ const ParisFormModal = ({ isOpen, onClose }) => {
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
+    const [error, setError] = useState(null);
 
     // Toggle body class to hide navbar and prevent scroll
     useEffect(() => {
@@ -28,6 +29,14 @@ const ParisFormModal = ({ isOpen, onClose }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError(null);
+
+        // Validate 10-digit mobile number
+        if (formData.phone.replace('+91', '').length !== 10) {
+            setError('Please provide a 10-digit mobile number');
+            return;
+        }
+
         setIsSubmitting(true);
         
         try {
@@ -161,6 +170,13 @@ const ParisFormModal = ({ isOpen, onClose }) => {
                                                 />
                                             </div>
                                         </div>
+
+                                        {error && (
+                                            <div className="p-3 rounded-xl bg-red-50 border border-red-100 flex items-center gap-2 text-red-600 text-[10px] font-bold uppercase tracking-wider">
+                                                <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                                                {error}
+                                            </div>
+                                        )}
 
                                         <div className="pt-4">
                                             <motion.button

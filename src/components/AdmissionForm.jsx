@@ -83,6 +83,14 @@ const AdmissionForm = ({ isModal = false, title, subtitle }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
+        // Validate 10-digit mobile number
+        if (formData.phone.replace('+91', '').length !== 10) {
+            setErrorMessage('Please provide a 10-digit mobile number');
+            setStatus('error');
+            return;
+        }
+
         setStatus('loading');
         setErrorMessage('');
 

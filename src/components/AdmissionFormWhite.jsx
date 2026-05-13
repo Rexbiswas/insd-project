@@ -45,6 +45,14 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Validate 10-digit mobile number
+        if (formData.mobile.replace('+91', '').length !== 10) {
+            setErrorMessage('Please provide a 10-digit mobile number');
+            setStatus('error');
+            return;
+        }
+
         setStatus('loading');
         setErrorMessage('');
         
