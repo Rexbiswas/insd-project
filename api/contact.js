@@ -53,6 +53,7 @@ export default async function handler(req, res) {
         if (req.body.mobile) req.body.mobile = cleanedPhone;
 
         // Duplicate Check
+        /*
         const existingContact = await Contact.findOne({
             $or: [
                 { phone: req.body.phone },
@@ -66,6 +67,7 @@ export default async function handler(req, res) {
                 message: "A message has already been received from this email/phone. We will get back to you shortly!" 
             });
         }
+        */
 
         const lead = new Contact(req.body);
         await lead.save();

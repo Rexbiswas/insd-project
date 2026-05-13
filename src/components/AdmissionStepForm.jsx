@@ -85,7 +85,7 @@ const AdmissionStepForm = () => {
             if (response.ok && data.success) {
                 setSubmitted(true);
                 // Set flag to prevent duplicate submissions
-                localStorage.setItem('admission-form-filled', 'true');
+                // localStorage.setItem('admission-form-filled', 'true');
                 
                 setTimeout(() => {
                     navigate('/thank-you', { state: { name: formData.name, type: 'admission' } });

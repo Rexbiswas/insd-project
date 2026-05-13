@@ -59,6 +59,7 @@ export default async function handler(req, res) {
         }
 
         // Duplicate Check
+        /*
         const existingLead = await ParisLead.findOne({
             $or: [{ email }, { phone }]
         });
@@ -69,6 +70,7 @@ export default async function handler(req, res) {
                 message: "You have already applied for the Paris Project. Our international desk will contact you soon!" 
             });
         }
+        */
 
         // Save Lead
         const lead = new ParisLead({ name, email, phone });

@@ -55,10 +55,12 @@ const RegisterButton = ({ className = "", isDarkTheme = false, isScrolled = fals
     return (
         <button
             onClick={() => {
+                /*
                 if (localStorage.getItem('admission-form-filled')) {
                     // openAdmissionModal();
                     return;
                 }
+                */
                 openAdmissionModal();
             }}
             className={`group relative overflow-hidden shadow-lg transition-all duration-300 rounded-full ${isLightMode ? 'bg-slate-900/5 border-slate-900/10' : 'bg-white/10 hover:bg-white/20 border-white/20'} backdrop-blur-xl border ${className} flex items-center justify-center`}
@@ -711,15 +713,17 @@ const Navbar = () => {
                     </NavLink>
 
                     {/* ENQUIRY */}
-                    {!formFilled && (
+                    {true && ( // Always show enquiry button regardless of formFilled status
                         <button
                             onClick={() => {
                                 setIsOpen(false);
+                                /*
                                 if (localStorage.getItem('admission-form-filled')) {
                                     // Logic commented out as per user request if form is already filled
                                     // openAdmissionModal();
                                     return;
                                 }
+                                */
                                 openAdmissionModal();
                             }}
                             className={`relative flex flex-col items-center justify-center w-16 h-16 transition-all duration-500 scale-90 active:scale-75 text-slate-900/40 hover:text-slate-900`}
@@ -1083,10 +1087,12 @@ const Navbar = () => {
                                                     <button
                                                         onClick={() => { 
                                                             setIsOpen(false); 
+                                                            /*
                                                             if (localStorage.getItem('admission-form-filled')) {
                                                                 // openAdmissionModal();
                                                                 return;
                                                             }
+                                                            */
                                                             openAdmissionModal(); 
                                                         }}
                                                         className="flex items-center gap-6 md:gap-8 text-left w-full"
@@ -1108,10 +1114,12 @@ const Navbar = () => {
                                                     <button
                                                         onClick={() => { 
                                                             setIsOpen(false); 
+                                                            /*
                                                             if (localStorage.getItem('admission-form-filled')) {
                                                                 // openAdmissionModal();
                                                                 return;
                                                             }
+                                                            */
                                                             openAdmissionModal(); 
                                                         }}
                                                         className="flex items-center gap-6 md:gap-8 text-left w-full"

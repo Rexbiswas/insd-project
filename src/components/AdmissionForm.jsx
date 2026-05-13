@@ -110,7 +110,7 @@ const AdmissionForm = ({ isModal = false, title, subtitle }) => {
                 });
                 
                 // Set flag to prevent duplicate submissions
-                localStorage.setItem('admission-form-filled', 'true');
+                // localStorage.setItem('admission-form-filled', 'true');
 
                 // Redirect to Thank You page
                 setTimeout(() => {

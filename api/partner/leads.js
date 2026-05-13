@@ -35,6 +35,7 @@ export default async function handler(req, res) {
         req.body.mobile = cleanedMobile; // Normalize to cleaned version
         
         // Duplicate Check
+        /*
         const existingLead = await Partner.findOne({
             $or: [
                 { email: req.body.email },
@@ -48,6 +49,7 @@ export default async function handler(req, res) {
                 message: "You have already submitted an inquiry with this email or mobile. Our team will contact you soon!" 
             });
         }
+        */
 
         const lead = new Partner(req.body);
         await lead.save();

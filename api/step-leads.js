@@ -36,6 +36,7 @@ export default async function handler(req, res) {
         req.body.mobile = cleanedMobile; // Normalize to cleaned version
         
         // Duplicate Check
+        /*
         const existingLead = await StepLead.findOne({
             $or: [
                 { mobile: req.body.mobile },
@@ -49,6 +50,7 @@ export default async function handler(req, res) {
                 message: "This mobile or email is already registered. Our experts will call you soon!" 
             });
         }
+        */
 
         const lead = new StepLead(req.body);
         await lead.save();

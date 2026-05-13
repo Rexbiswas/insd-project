@@ -11,7 +11,7 @@ const EnquiryCTA = ({ isFloatingPanel = false }) => {
         const checkScroll = () => {
             const isDesktop = window.innerWidth >= 1024;
             const isFilled = localStorage.getItem('admission-form-filled') === 'true';
-            const show = (isDesktop ? true : window.scrollY > 50) && !isFilled;
+            const show = (isDesktop ? true : window.scrollY > 50); // Removed !isFilled to allow multiple inquiries
             setIsVisible(show);
         };
         checkScroll();
@@ -25,10 +25,12 @@ const EnquiryCTA = ({ isFloatingPanel = false }) => {
 
     const handleNavigate = (e) => {
         e.preventDefault();
+        /*
         if (localStorage.getItem('admission-form-filled')) {
             // openAdmissionModal();
             return;
         }
+        */
         openAdmissionModal({
             formType: 'admission',
             title: 'TALK TO OUR EXPERTS',

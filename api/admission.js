@@ -67,6 +67,7 @@ export default async function handler(req, res) {
         };
 
         // --- DUPLICATE CHECK LOGIC ---
+        /*
         const existingLead = await Admission.findOne({
             $or: [
                 { phone: leadData.phone },
@@ -81,6 +82,7 @@ export default async function handler(req, res) {
                 message: "You have already submitted an inquiry with this email or phone number. Our team will contact you soon!" 
             });
         }
+        */
 
         const lead = new Admission(leadData);
         await lead.save();

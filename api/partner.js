@@ -35,6 +35,7 @@ export default async function handler(req, res) {
         req.body.mobile = cleanedMobile; // Normalize to cleaned version
         
         // Duplicate Check
+        /*
         const existingLead = await Partner.findOne({
             $or: [
                 { mobile: req.body.mobile },
@@ -48,6 +49,7 @@ export default async function handler(req, res) {
                 message: "You have already applied for a franchise. Our team is reviewing your application!" 
             });
         }
+        */
 
         const lead = new Partner(req.body);
         await lead.save();
