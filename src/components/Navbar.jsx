@@ -305,7 +305,7 @@ const Navbar = () => {
                 { title: 'Call Us Now', path: 'tel:+919804443300', icon: Phone, desc: 'Direct support line' },
                 { title: 'Enquiry Now', path: '/apply', icon: Headset, desc: 'Get in touch with us' },
                 { title: 'Career Counselling', path: '/apply', icon: Calendar, desc: 'Book a session' },
-                { title: 'Download Brochure', path: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', icon: FileDown, desc: 'Course catalogues', isDownload: true }
+                { title: 'Download Brochure', path: '#', icon: FileDown, desc: 'Course catalogues' }
             ]
         },
     ];
@@ -1023,9 +1023,17 @@ const Navbar = () => {
 
                                         <div className="w-full">
                                             <a
-                                                href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
-                                                download="INSD-Prospectus-2026.pdf"
-                                                className="w-full py-4 bg-primary text-white rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] shadow-xl shadow-primary/20 active:scale-95 transition-all flex items-center justify-center gap-3"
+                                                href="#"
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    setIsOpen(false);
+                                                    openAdmissionModal({
+                                                        title: 'Download Prospectus',
+                                                        subtitle: 'Please provide your details to receive the digital brochure.',
+                                                        ctaText: 'Get Prospectus'
+                                                    });
+                                                }}
+                                                className="w-full py-4 bg-primary text-white rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] shadow-xl shadow-primary/20 active:scale-95 transition-all flex items-center justify-center gap-3 cursor-pointer"
                                             >
                                                 <FileDown size={18} />
                                                 Download Prospectus
@@ -1085,7 +1093,7 @@ const Navbar = () => {
                                             { title: 'Call Us Now', sub: '+91 9804443300', icon: Phone, href: 'tel:+919804443300' },
                                             { title: 'Apply Now', sub: 'Admission Cycle 2026', icon: UserPlus, href: '/apply' },
                                             { title: 'Book Counselling', sub: 'Free Expert Session', icon: Calendar, action: 'modal' },
-                                            { title: 'Download Brochure', sub: 'Detailed Course Guide', icon: FileDown, href: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', isDownload: true },
+                                            { title: 'Download Brochure', sub: 'Detailed Course Guide', icon: FileDown, action: 'modal' },
                                         ].map((cta, i) => (
                                             <motion.div
                                                 key={i}
@@ -1093,18 +1101,14 @@ const Navbar = () => {
                                                 className="group relative"
                                             >
                                                 {cta.action === 'modal' ? (
-                                                    <button
-                                                        onClick={() => { 
+                                                    <a
+                                                        href={cta.href || "#"}
+                                                        onClick={(e) => { 
+                                                            if (!cta.href || cta.href === '#') e.preventDefault();
                                                             setIsOpen(false); 
-                                                            /*
-                                                            if (localStorage.getItem('admission-form-filled')) {
-                                                                // openAdmissionModal();
-                                                                return;
-                                                            }
-                                                            */
                                                             openAdmissionModal(); 
                                                         }}
-                                                        className="flex items-center gap-6 md:gap-8 text-left w-full"
+                                                        className="flex items-center gap-6 md:gap-8 text-left w-full cursor-pointer"
                                                     >
                                                         <div className="w-10 h-10 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-primary group-hover:scale-110 group-hover:rotate-6 group-hover:border-primary shadow-2xl overflow-hidden relative">
                                                             <div className="absolute inset-0 bg-linear-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -1118,7 +1122,7 @@ const Navbar = () => {
                                                                 {cta.sub}
                                                             </p>
                                                         </div>
-                                                    </button>
+                                                    </a>
                                                 ) : cta.title === 'Apply Now' ? (
                                                     <button
                                                         onClick={() => { 

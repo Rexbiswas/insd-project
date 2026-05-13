@@ -111,7 +111,7 @@ const Undergraduate = () => {
 
     return (
         <div className="bg-white min-h-screen font-sans selection:bg-primary selection:text-white pt-28">
-            <SEO 
+            <SEO
                 title="Undergraduate Design Degrees | B.Des India - Fashion, Interior, Graphic"
                 description="Elevate your creative career with INSD's world-class B.Des and undergraduate degrees. Master your craft in India's top design college with industry-standard protocols."
                 keywords="undergraduate design courses, B.Des India, bachelor of design India, fashion design degree, interior design degree, top design colleges India"
@@ -121,23 +121,23 @@ const Undergraduate = () => {
             <section className="relative h-screen min-h-[900px] flex items-center px-6 md:px-12 lg:px-24 overflow-hidden bg-slate-50">
                 {/* Cinematic Background Layer */}
                 <div className="absolute inset-0 z-0">
-                    <motion.div 
+                    <motion.div
                         initial={{ scale: 1.1, opacity: 0 }}
                         animate={{ scale: 1, opacity: 0.2 }}
                         transition={{ duration: 2, ease: "easeOut" }}
                         className="absolute inset-0"
                     >
-                        <img 
+                        <img
                             src="https://images.pexels.com/photos/3771088/pexels-photo-3771088.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                            alt="College Campus" 
+                            alt="College Campus"
                             className="w-full h-full object-cover mix-blend-multiply"
                         />
                     </motion.div>
-                    
+
                     <div className="absolute inset-0 bg-linear-to-b from-white via-transparent to-white" />
                     <div className="absolute inset-0 noise-bg opacity-[0.03]" />
                     <div className="absolute inset-0 cyber-grid opacity-[0.05]" />
-                    
+
                     <div className="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px] animate-blob" />
                     <div className="absolute bottom-1/4 -left-20 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] animate-blob" style={{ animationDelay: '3s' }} />
                 </div>
@@ -194,7 +194,7 @@ const Undergraduate = () => {
 
                             <div className="space-y-4">
                                 <h1 className="text-8xl md:text-[11rem] font-black text-slate-900 leading-[0.75] tracking-tighter uppercase overflow-hidden">
-                                    <motion.span 
+                                    <motion.span
                                         initial={{ y: "110%" }}
                                         animate={{ y: 0 }}
                                         transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
@@ -204,7 +204,7 @@ const Undergraduate = () => {
                                         <span className="stroke-text-slate-900 opacity-20">Genesis.</span>
                                     </motion.span>
                                 </h1>
-                                <motion.div 
+                                <motion.div
                                     initial={{ opacity: 0, x: -30 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ duration: 1, delay: 0.6 }}
@@ -221,16 +221,16 @@ const Undergraduate = () => {
                             transition={{ duration: 1.5, delay: 0.9 }}
                             className="text-xl md:text-3xl text-slate-500 font-medium max-w-3xl leading-relaxed tracking-tight"
                         >
-                           Bridge the gap between vision and reality. INSD's undergraduate programs are the intensive breeding ground for the next generation of global designers.
+                            Bridge the gap between vision and reality. INSD's undergraduate programs are the intensive breeding ground for the next generation of global designers.
                         </motion.p>
 
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1, delay: 1.1 }}
                             className="flex flex-wrap items-center gap-12 pt-10"
                         >
-                            <button 
+                            <button
                                 onClick={() => openAdmissionModal({
                                     title: 'Talk to a Counsellor',
                                     subtitle: 'Our senior experts will call you within 24 hours.',
@@ -243,15 +243,19 @@ const Undergraduate = () => {
                                 <div className="absolute inset-0 bg-primary translate-x-[-101%] group-hover:translate-x-0 transition-transform duration-500" />
                                 <ArrowRight className="absolute right-10 top-1/2 -translate-y-1/2 w-7 h-7 opacity-0 group-hover:opacity-100 transition-all text-white" />
                             </button>
-                            
-                            <button 
-                                onClick={() => openAdmissionModal({
-                                    title: 'Download Prospectus',
-                                    subtitle: 'Get detailed insights into our undergraduate programs.',
-                                    ctaText: 'Download Now',
-                                    successMsg: 'successful! Your prospectus download is ready. Check your email for the direct link.'
-                                })}
-                                className="flex items-center gap-6 group"
+
+                            <a 
+                                href="#"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    openAdmissionModal({
+                                        title: 'Download Prospectus',
+                                        subtitle: 'Get detailed insights into our undergraduate programs.',
+                                        ctaText: 'Download Now',
+                                        successMsg: 'successful! Your prospectus download is ready. Check your email for the direct link.'
+                                    });
+                                }}
+                                className="flex items-center gap-6 group cursor-pointer"
                             >
                                 <div className="relative w-16 h-16 flex items-center justify-center">
                                     <div className="absolute inset-0 border-2 border-slate-200 rounded-full group-hover:border-primary/50 group-hover:scale-110 transition-all duration-700" />
@@ -262,17 +266,17 @@ const Undergraduate = () => {
                                     <span className="block font-black uppercase text-[10px] tracking-[0.2em] text-slate-950">View Prospectus</span>
                                     <span className="block text-[8px] font-bold text-slate-400 uppercase tracking-widest">Digital Edition 2026</span>
                                 </div>
-                            </button>
+                            </a>
                         </motion.div>
                     </div>
                 </div>
 
                 {/* Aesthetic Detail */}
                 <div className="absolute bottom-16 left-6 md:left-24 flex items-center gap-10">
-                    <motion.div 
+                    <motion.div
                         animate={{ height: [0, 80, 0] }}
                         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                        className="w-px h-24 bg-linear-to-b from-primary to-transparent" 
+                        className="w-px h-24 bg-linear-to-b from-primary to-transparent"
                     />
                     <span className="text-[10px] font-black uppercase tracking-[0.6em] text-slate-300 [writing-mode:vertical-lr]">Scroll To Discover</span>
                 </div>
@@ -284,7 +288,7 @@ const Undergraduate = () => {
                     <div className="lg:col-span-5 space-y-12 sticky top-40">
                         <div className="relative">
                             <span className="text-[14rem] font-black text-slate-50 absolute -top-32 -left-12 -z-10 select-none">01</span>
-                            <motion.h2 
+                            <motion.h2
                                 initial={{ opacity: 0, x: -50 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
@@ -295,9 +299,9 @@ const Undergraduate = () => {
                         </div>
                         <div className="h-px w-24 bg-primary" />
                     </div>
-                    
+
                     <div className="lg:col-span-7 space-y-12">
-                        <motion.p 
+                        <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -305,7 +309,7 @@ const Undergraduate = () => {
                         >
                             <span className="font-black text-primary">INSD was established</span> with a radical premise: that design is not just a skill, but a <span className="stroke-text-slate-900 opacity-30">neural framework</span> for the future.
                         </motion.p>
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -344,17 +348,17 @@ const Undergraduate = () => {
                                     className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-110"
                                 />
                                 <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/20 to-transparent group-hover:from-primary/80 transition-all duration-700" />
-                                
+
                                 <div className="absolute inset-0 p-16 flex flex-col justify-end">
                                     <div className="flex items-center gap-4 mb-8 translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                                         <div className="w-px h-8 bg-white/40" />
                                         <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white">Advanced Module Phase 1</span>
                                     </div>
-                                    
+
                                     <h3 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter leading-[0.9] mb-6 transform group-hover:-translate-y-2 transition-transform duration-500">
                                         {course.title}
                                     </h3>
-                                    
+
                                     <div className="overflow-hidden h-0 group-hover:h-24 transition-all duration-700">
                                         <p className="text-white/80 text-lg leading-relaxed font-medium">
                                             {course.desc}
@@ -410,8 +414,8 @@ const Undergraduate = () => {
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
                                     {courseData[activeCategory].courses.map((course, i) => (
-                                        <motion.div 
-                                            key={i} 
+                                        <motion.div
+                                            key={i}
                                             whileHover={{ x: 10 }}
                                             className="group flex items-center justify-between border-b border-slate-200 pb-6 cursor-pointer"
                                         >
@@ -433,7 +437,7 @@ const Undergraduate = () => {
             <section className="py-60 px-6 md:px-12 lg:px-24 bg-slate-950 relative overflow-hidden">
                 <div className="max-w-6xl mx-auto text-center space-y-24 relative z-10">
                     <div className="inline-flex flex-col items-center gap-10">
-                        <motion.div 
+                        <motion.div
                             animate={{ rotate: 360 }}
                             transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
                             className="w-24 h-24 rounded-full border-2 border-primary border-dashed flex items-center justify-center"
@@ -442,13 +446,13 @@ const Undergraduate = () => {
                         </motion.div>
                         <span className="text-primary font-black uppercase text-xs tracking-[1em]">Enrollment Protocol v.26</span>
                     </div>
-                    
+
                     <h2 className="text-7xl md:text-[14rem] font-black text-white uppercase tracking-tighter leading-[0.7]">
                         Forge <br /> <span className="stroke-text-white opacity-20">Your</span> <br /> <span className="text-primary italic font-serif lowercase">Legacy.</span>
                     </h2>
-                    
+
                     <div className="flex flex-col md:flex-row items-center justify-center gap-12 pt-12">
-                        <button 
+                        <button
                             onClick={() => openAdmissionModal({
                                 title: 'Apply Admission',
                                 subtitle: 'Take the first step towards your creative career.',
@@ -458,7 +462,7 @@ const Undergraduate = () => {
                         >
                             Apply Admission
                         </button>
-                        <button 
+                        <button
                             onClick={() => openAdmissionModal({
                                 title: 'Curriculum Access',
                                 subtitle: 'Request detailed curriculum for our undergraduate programs.',
@@ -478,13 +482,13 @@ const Undergraduate = () => {
                     Ready to <br /> Create?
                 </h2>
                 <div className="flex flex-col md:flex-row justify-center items-center gap-6">
-                    <button 
+                    <button
                         onClick={() => navigate('/apply')}
                         className="px-12 md:px-20 h-12 md:h-14 bg-primary text-white font-bold uppercase tracking-widest rounded-full hover:bg-[#a61517] shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3"
                     >
                         Apply Now
                     </button>
-                    <button 
+                    <button
                         onClick={() => openAdmissionModal({
                             title: 'Download Brochure',
                             subtitle: 'Explore our world-class undergraduate curriculum.',
