@@ -113,7 +113,7 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
                 setTimeout(() => {
                     closeAdmissionModal();
                     navigate('/thank-you', { state: { name: formData.name, type: 'enquiry' } });
-                }, 1000);
+                }, 300);
             } else {
                 setError(data.message || `Server Error (${response.status}): Submission failed.`);
             }
@@ -127,7 +127,7 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
                 setTimeout(() => {
                     closeAdmissionModal();
                     navigate('/thank-you', { state: { name: formData.name, type: 'enquiry' } });
-                }, 1000);
+                }, 300);
                 return;
             }
 

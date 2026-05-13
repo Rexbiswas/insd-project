@@ -85,7 +85,7 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
                 setTimeout(() => {
                     if (onClose) onClose(); 
                     navigate('/thank-you', { state: { name: formData.name, type: title?.toLowerCase().includes('report') ? 'report' : 'admission' } });
-                }, 1000);
+                }, 300);
             } else {
                 setErrorMessage(data.message || `Server Error (${response.status}): Submission failed.`);
                 setStatus('error');
@@ -101,7 +101,7 @@ const AdmissionFormWhite = ({ isModal = false, onClose, title, subtitle, ctaText
                 setTimeout(() => {
                     if (onClose) onClose();
                     navigate('/thank-you', { state: { name: formData.name, type: title?.toLowerCase().includes('report') ? 'report' : 'admission' } });
-                }, 1000);
+                }, 300);
                 return;
             }
 

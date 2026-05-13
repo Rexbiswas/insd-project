@@ -89,7 +89,7 @@ const AdmissionStepForm = () => {
                 
                 setTimeout(() => {
                     navigate('/thank-you', { state: { name: formData.name, type: 'admission' } });
-                }, 1000);
+                }, 300);
             } else {
                 setError(data.message || 'Submission failed. Please try again.');
                 console.error('Submission failed:', data.message);

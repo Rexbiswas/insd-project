@@ -50,7 +50,7 @@ const PartnerFormModal = ({ isOpen, onClose }) => {
                     setIsSuccess(false);
                     setFormData({ name: '', email: '', contact: '', company: '', industry: '', potential: 'Mentor', message: '', address: '' });
                     onClose();
-                }, 3000);
+                }, 500);
             } else {
                 throw new Error(data.message || "Something went wrong.");
             }

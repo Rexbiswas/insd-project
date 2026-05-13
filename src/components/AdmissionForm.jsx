@@ -115,7 +115,7 @@ const AdmissionForm = ({ isModal = false, title, subtitle }) => {
                 // Redirect to Thank You page
                 setTimeout(() => {
                     navigate('/thank-you', { state: { name: submittedName, type: 'admission' } });
-                }, 1000);
+                }, 300);
             } else {
                 setErrorMessage(data.message || `Server Error (${response.status}): Submission failed.`);
                 setStatus('error');
