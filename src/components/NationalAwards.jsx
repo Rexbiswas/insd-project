@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
-import Matter from 'matter-js';
+// import Matter from 'matter-js';
 
 const NationalAwards = () => {
     // --- INTERACTIVE AWARD LOGIC ---
@@ -15,7 +15,8 @@ const NationalAwards = () => {
         let render;
         let runner;
 
-        const initMatter = (textureImg) => {
+        const initMatter = async (textureImg) => {
+            const Matter = (await import('matter-js')).default;
             if (!sceneRef.current) return;
 
             const isMobile = window.innerWidth < 768;

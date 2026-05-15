@@ -6,7 +6,7 @@ const HeroSlider = () => {
             {/* Main Hero Image */}
             <div className="relative w-full h-full overflow-hidden">
                 <img
-                    src="https://ik.imagekit.io/fmldynl4j4/Removed%20background.png"
+                    src="https://ik.imagekit.io/fmldynl4j4/Removed%20background.png?tr=w-1600,q-80,f-auto"
                     alt="Student with Vision"
                     className="w-full h-full object-cover object-right"
                 />

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { useInView } from 'framer-motion';
-import Matter from 'matter-js';
+// import Matter from 'matter-js';
 import gsap from 'gsap';
 
 const TimesAwards = () => {
@@ -22,7 +22,8 @@ const TimesAwards = () => {
         let render;
         let runner;
 
-        const initMatter = (textureImg) => {
+        const initMatter = async (textureImg) => {
+            const Matter = (await import('matter-js')).default;
             if (!sceneRef.current) return;
 
             const isMobile = window.innerWidth < 768;
