@@ -1,4 +1,17 @@
 User-agent: *
+# Allow everything by default
 Allow: /
 
+# Disallow sensitive or private routes
+Disallow: /profile
+Disallow: /api/
+Disallow: /auth/
+Disallow: /admin/
+
+# Disallow system files
+Disallow: /cgi-bin/
+Disallow: *.json
+Disallow: *.config
+
+# Sitemap reference
 Sitemap: https://insd-project.vercel.app/sitemap.xml
