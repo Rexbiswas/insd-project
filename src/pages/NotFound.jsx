@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Home, RefreshCw, WifiOff, MapPinOff, ArrowLeft, Terminal } from 'lucide-react';
 import gsap from 'gsap';
+import SEO from '../components/SEO';
 
 const NotFound = () => {
     const navigate = useNavigate();
@@ -69,6 +70,11 @@ const NotFound = () => {
 
     return (
         <div ref={containerRef} className="fixed inset-0 z-1000 bg-[#0f172b] flex items-center justify-center overflow-hidden font-sans">
+            <SEO 
+                title="404 - Page Not Found | INSD"
+                description="The page you are looking for does not exist or has been moved. Return to the home page to continue exploring INSD."
+                robots="noindex, follow"
+            />
             {/* Liquid Background Orbs */}
             <div className="absolute inset-0 pointer-events-none opacity-40">
                 <div className="orb absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/20 blur-[120px] rounded-full" />

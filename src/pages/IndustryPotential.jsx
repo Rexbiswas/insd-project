@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import IndustryExposure from '../components/IndustryExposure';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 const CardSlider = ({ images }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -106,6 +107,12 @@ const IndustryPotential = () => {
 
     return (
         <main className="min-h-screen bg-[#fafafa]">
+            <SEO 
+                title="Global Industry Potential & Opportunities | INSD"
+                description="Explore the massive global potential and industry demand for design professionals. Learn how INSD prepares students for top-tier design careers."
+                keywords="design industry potential, design career opportunities, global design market, fashion industry growth, interior design demand"
+                canonical="https://insd-project.vercel.app/industry-potential"
+            />
             {/* Minimal Hero Section to introduce Industry Potential */}
             <section className="relative section-py overflow-hidden border-b border-slate-200/50">
                 {/* Background Details */}

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import TOICertification from '../components/TOICertification';
 import { Award } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const Awards = () => {
     useEffect(() => {
@@ -10,6 +11,12 @@ const Awards = () => {
 
     return (
         <main className="min-h-screen pt-24 md:pt-32 bg-[#fafafa]">
+            <SEO 
+                title="Awards and Recognitions | INSD - National Design Excellence"
+                description="Explore the awards and industry recognition earned by the International School of Design for excellence in fashion, interior, and graphic design education."
+                keywords="design school awards, INSD achievements, national design excellence, best design institute recognition"
+                canonical="https://insd-project.vercel.app/awards"
+            />
             {/* Hero Section */}
             <section className="relative overflow-hidden mb-8 md:mb-12">
                 {/* Background Details */}

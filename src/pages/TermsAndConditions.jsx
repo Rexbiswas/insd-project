@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FileText, ShieldCheck, Scale, AlertCircle, Clock, Gavel } from 'lucide-react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 const TermsAndConditions = () => {
     useEffect(() => {
@@ -63,6 +64,11 @@ const TermsAndConditions = () => {
 
     return (
         <div className="bg-slate-50 min-h-screen font-sans selection:bg-primary/10 selection:text-primary">
+            <SEO 
+                title="Terms and Conditions | INSD Legal"
+                description="Read the official terms and conditions for using the International School of Design website and our educational services."
+                canonical="https://insd-project.vercel.app/terms-and-conditions"
+            />
             {/* Hero Section */}
             <section className="relative pt-32 pb-20 overflow-hidden bg-white border-b border-slate-200">
                 <div className="container mx-auto px-6 relative z-10 text-center">

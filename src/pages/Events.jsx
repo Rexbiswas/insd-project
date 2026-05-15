@@ -129,7 +129,7 @@ const Events = () => {
         <div className="bg-white selection:bg-primary selection:text-white min-h-screen">
             <SEO
                 title="INSD Events - Annual Showcases & Fashion Weeks"
-                description="Explore INSD's Annual Talent Showcases and our impact at Delhi, Pune, and Ahmedabad Times Fashion Weeks."
+                description="Experience INSD's annual talent showcases, national fashion weeks, and grand runway events across India."
             />
 
             {/* 0. GRAND PAGE HEADER */}

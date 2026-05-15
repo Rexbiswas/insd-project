@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { CheckCircle2, ArrowLeft, Download, ExternalLink, Calendar, Mail, PhoneCall } from 'lucide-react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 const ThankYou = () => {
     const navigate = useNavigate();
@@ -20,6 +21,11 @@ const ThankYou = () => {
 
     return (
         <div className="min-h-screen bg-white">
+            <SEO 
+                title="Thank You | Submission Received | INSD"
+                description="Thank you for contacting the International School of Design. We have received your request and will get back to you shortly."
+                robots="noindex, follow"
+            />
             <div className="pt-32 pb-20 px-6">
                 <div className="max-w-4xl mx-auto text-center space-y-12">
                     {/* Success Icon */}

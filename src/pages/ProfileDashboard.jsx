@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { LogOut, User, BookOpen, Calendar, MapPin, Award, Settings, Bell, ChevronRight, Camera } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 const ProfileDashboard = () => {
     const { user, logout } = useAuth();
@@ -25,6 +26,11 @@ const ProfileDashboard = () => {
 
     return (
         <div className="min-h-screen bg-[#f3f3f3] text-slate-900 pt-32 pb-20 selection:bg-primary selection:text-white">
+            <SEO 
+                title={`${user.firstName || 'Student'} Profile | Student Portal | INSD`}
+                description="Access your academic records, course schedule, and study materials via the INSD Student Portal."
+                robots="noindex, nofollow"
+            />
             <div className="max-w-7xl mx-auto px-6">
                 
                 {/* Dashboard Header */}
