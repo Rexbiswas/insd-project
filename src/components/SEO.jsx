@@ -8,7 +8,7 @@ const SEO = ({
     canonical = "https://insd-project.vercel.app/", 
     ogTitle, 
     ogDescription, 
-    ogImage = "https://insd.edu.in/wp-content/uploads/2020/04/Homepage-Banner-Laptop-1.jpg", 
+    ogImage = "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_wy3si8wy3si8wy3s.png?tr=w-1200,h-630,fo-auto", 
     ogType = 'website',
     twitterCard = 'summary_large_image',
     robots = 'max-snippet:-1, max-image-preview:large, max-video-preview:-1',
