@@ -80,7 +80,15 @@ function App() {
             <AdmissionModalProvider>
                 <RegisterModalProvider>
                     <Router>
-                        <Suspense fallback={<div className="min-h-screen bg-white" />}>
+                        <Suspense fallback={
+                            <div className="min-h-screen bg-white">
+                                <div className="h-20 w-full border-b border-slate-100" /> {/* Navbar Placeholder */}
+                                <div className="max-w-7xl mx-auto px-6 py-20 animate-pulse">
+                                    <div className="h-12 w-2/3 bg-slate-50 rounded-lg mb-6" />
+                                    <div className="h-6 w-1/2 bg-slate-50 rounded-lg" />
+                                </div>
+                            </div>
+                        }>
                             <ScrollTriggerRefresher />
                             <Navbar />
                             <div className="transition-opacity duration-1000 opacity-100">
