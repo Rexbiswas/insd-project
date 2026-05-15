@@ -18,7 +18,9 @@
     { "source": "/courses/advanced-diploma-in-animation", "destination": "/courses/animation-and-vfx", "permanent": true },
     { "source": "/courses/advanced-diploma-in-animation/", "destination": "/courses/animation-and-vfx", "permanent": true },
     { "source": "/luxury-brand-management-msc", "destination": "/courses/msc-luxury-brand-management", "permanent": true },
-    { "source": "/luxury-brand-management-msc/", "destination": "/courses/msc-luxury-brand-management", "permanent": true }
+    { "source": "/luxury-brand-management-msc/", "destination": "/courses/msc-luxury-brand-management", "permanent": true },
+    { "source": "/blog", "destination": "/insd-360/blog", "permanent": true },
+    { "source": "/blog/", "destination": "/insd-360/blog", "permanent": true }
   ],
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
