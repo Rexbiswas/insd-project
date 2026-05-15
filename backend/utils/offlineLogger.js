@@ -54,15 +54,20 @@ export const syncBackups = async (models) => {
         const files = fs.readdirSync(BACKUP_DIR).filter(f => f.endsWith('_backup.json'));
         
         for (const file of files) {
-            const collectionName = file.replace('_backup.json', '');
+            const filePath = path.join(BACKUP_DIR, file);
+            let collectionName = file.replace('_backup.json', '');
+            
+            // Handle common plural typo
+            if (collectionName === 'admissions') collectionName = 'admission';
+            if (collectionName === 'step-leads') collectionName = 'stepleads';
+
             const model = models[collectionName];
             
             if (!model) {
-                console.warn(`[Sync] ⚠️ No model found for collection: ${collectionName}`);
-                continue;
+                console.warn(`[Sync] ⚠️ No model found for collection: ${collectionName} (File: ${file}). Skipping file.`);
+                continue; // Skip the entire file, DON'T overwrite it
             }
 
-            const filePath = path.join(BACKUP_DIR, file);
             const content = fs.readFileSync(filePath, 'utf8');
             let backups = JSON.parse(content || '[]');
 
@@ -79,8 +84,6 @@ export const syncBackups = async (models) => {
                     const data = { ...entry.data };
                     if (data.mobile && !data.phone) data.phone = data.mobile;
 
-                    // Relaxed duplicate check: check if exactly the same record exists within the last hour
-                    // This allows re-testing with the same email if needed.
                     const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000);
                     const exists = await model.findOne({ 
                         email: data.email,
@@ -95,15 +98,15 @@ export const syncBackups = async (models) => {
                     }
                 } catch (e) {
                     console.error(`[Sync] ❌ Error syncing record: ${e.message}`);
-                    remainingBackups.push(entry); // Keep failed ones
+                    remainingBackups.push(entry); 
                 }
             }
 
-            // Update file with only failed records
+            // ONLY update file if we actually processed it
             fs.writeFileSync(filePath, JSON.stringify(remainingBackups, null, 2));
             
             if (syncedCount > 0 || skippedCount > 0) {
-                console.log(`[Sync] ✅ [${collectionName}] Done: ${syncedCount} synced, ${skippedCount} skipped (duplicates).`);
+                console.log(`[Sync] ✅ [${collectionName}] Done: ${syncedCount} synced, ${skippedCount} skipped.`);
             }
         }
     } catch (err) {

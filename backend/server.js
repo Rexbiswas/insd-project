@@ -211,9 +211,17 @@ apiRouter.use('/contact', contactRoutes);
 apiRouter.use('/blogs', blogRoutes);
 
 // Compatibility Aliases
-apiRouter.use('/leadauth', leadRoutes);
-apiRouter.use('/stepleads', stepLeadRoutes);
 apiRouter.use('/blog', blogRoutes);
+
+// Health Check / Ping
+apiRouter.get('/ping', (req, res) => {
+    res.json({
+        status: 'online',
+        timestamp: new Date().toISOString(),
+        database: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected',
+        environment: process.env.NODE_ENV || 'development'
+    });
+});
 
 // Main Application Mounting
 app.use('/api', apiRouter);
