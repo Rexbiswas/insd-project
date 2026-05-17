@@ -197,8 +197,8 @@ const apiRouter = express.Router();
 
 // --- DIRECT TEST ROUTES (Bypass Router) ---
 app.get('/api/test-direct', (req, res) => {
-    res.json({ 
-        success: true, 
+    res.json({
+        success: true,
         message: "Direct App route is functional!",
         env: {
             node: process.version,
@@ -287,21 +287,28 @@ const getLocalIp = () => {
     return '0.0.0.0';
 };
 
-// Start Server locally or in persistent production environments (like cPanel)
-// Vercel serverless functions do not need app.listen()
-if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+// =====================================================================
+// SERVER INITIALIZATION (Compatible with Vercel, cPanel, and Local)
+// =====================================================================
+
+// Always try to connect to the DB immediately when the file loads.
+// This ensures persistent environments (cPanel/Local) get connected right away.
+connectDB();
+
+// Vercel handles the server listening internally. We ONLY run app.listen 
+// if we are NOT on Vercel. cPanel and Local environments require app.listen.
+if (!process.env.VERCEL) {
+    const port = process.env.PORT || 5001;
     const localIp = getLocalIp();
-    app.listen(PORT, '0.0.0.0', () => {
-        console.log(`\n🚀 INSD Backend is live on port ${PORT}!`);
+    
+    app.listen(port, '0.0.0.0', () => {
+        console.log(`\n🚀 INSD Backend is live on port ${port}!`);
         if (process.env.NODE_ENV !== 'production') {
-            console.log(`🏠 Local:   http://localhost:${PORT}`);
-            console.log(`📱 Mobile:  http://${localIp}:${PORT}\n`);
+            console.log(`🏠 Local:   http://localhost:${port}`);
+            console.log(`📱 Mobile:  http://${localIp}:${port}\n`);
         } else {
-            console.log(`🌍 Environment: Production`);
+            console.log(`🌍 Environment: cPanel / Production`);
         }
-        
-        // Initial connection attempt
-        connectDB();
     });
 }
 
