@@ -287,13 +287,18 @@ const getLocalIp = () => {
     return '0.0.0.0';
 };
 
-// Start Server locally
-if (process.env.NODE_ENV !== 'production') {
+// Start Server locally or in persistent production environments (like cPanel)
+// Vercel serverless functions do not need app.listen()
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
     const localIp = getLocalIp();
     app.listen(PORT, '0.0.0.0', () => {
-        console.log(`\n🚀 INSD Backend is live!`);
-        console.log(`🏠 Local:   http://localhost:${PORT}`);
-        console.log(`📱 Mobile:  http://${localIp}:${PORT}\n`);
+        console.log(`\n🚀 INSD Backend is live on port ${PORT}!`);
+        if (process.env.NODE_ENV !== 'production') {
+            console.log(`🏠 Local:   http://localhost:${PORT}`);
+            console.log(`📱 Mobile:  http://${localIp}:${PORT}\n`);
+        } else {
+            console.log(`🌍 Environment: Production`);
+        }
         
         // Initial connection attempt
         connectDB();
