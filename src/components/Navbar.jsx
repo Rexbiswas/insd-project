@@ -394,11 +394,11 @@ const Navbar = () => {
                 className="hidden lg:flex fixed top-0 left-0 right-0 z-1000 px-10 lg:px-14 xl:px-20 py-4 items-center justify-between pointer-events-auto"
             >
                 {/* Left: Logo */}
-                <Link to="/" className="nav-logo relative z-50 shrink-0 block h-[65px]" onClick={() => setIsOpen(false)}>
+                <Link to="/" className="nav-logo relative z-50 shrink-0 block h-[80px]" onClick={() => setIsOpen(false)}>
                     <motion.img
                         whileHover={{ scale: 1.1, rotate: 2 }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                        className={`h-[90px] w-auto object-contain transition-all duration-500 ${isHeaderDark && !isScrolled ? 'brightness-0 invert' : 'drop-shadow-sm'}`}
+                        className={`h-[110px] w-auto object-contain transition-all duration-500 ${isHeaderDark && !isScrolled ? 'brightness-0 invert' : 'drop-shadow-sm'}`}
                         src="https://ik.imagekit.io/fmldynl4j4/INSD-Logo_Horizontal-removebg-preview.png"
                         alt="INSD Logo"
                     />
@@ -682,7 +682,7 @@ const Navbar = () => {
                 <div className="relative w-full h-full flex items-center justify-center px-8 py-3 pointer-events-auto">
                     <Link to="/" onClick={() => setIsOpen(false)} className="h-full flex items-center justify-center">
                         <img
-                            className="h-[53px] lg:h-[65px] w-auto object-contain drop-shadow-sm"
+                            className="h-[64px] lg:h-[78px] w-auto object-contain drop-shadow-sm"
                             src="https://ik.imagekit.io/fmldynl4j4/INSD-Logo_Horizontal-removebg-preview.png"
                             alt="INSD Logo"
                         />
@@ -1041,7 +1041,7 @@ const Navbar = () => {
                                 variants={itemVariants}
                                 className="flex items-center justify-between px-6 md:px-12 py-8 relative z-10"
                             >
-                                <Link to="/" onClick={() => setIsOpen(false)} className="h-[72px] md:h-[83px]">
+                                <Link to="/" onClick={() => setIsOpen(false)} className="h-[88px] md:h-[100px]">
                                     <img
                                         src="https://ik.imagekit.io/fmldynl4j4/INSD-Logo_Horizontal-removebg-preview.png"
                                         alt="INSD Logo"
