@@ -273,7 +273,7 @@ const LegacyTimeline = () => {
                                         <span className="stat-number text-6xl md:text-7xl font-black text-white leading-none tracking-tighter">30000</span>
                                         <span className="text-white/60 text-4xl font-black leading-none ml-1">+</span>
                                     </div>
-                                    <p className="text-xs font-black uppercase tracking-[0.2em] text-white/70">Creative Students<br />Trained & Placed</p>
+                                    <p className="text-xs font-black uppercase tracking-[0.2em] text-white/70">Creative Students<br />Trained</p>
                                 </div>
                             </div>
                         </div>

@@ -12,11 +12,11 @@ const Legacy = () => {
 
     return (
         <div className="bg-white min-h-screen">
-            <SEO 
+            <SEO
                 title="15 Years of Legacy | INSD - International School of Design"
                 description="Explore INSD's 15-year journey of nurturing creative talent and shaping design futures. From our foundation in 2011 to becoming India's fastest-growing design institute."
             />
-            
+
             <main className="pt-20">
                 {/* 15-Year Jubilee Hero Section */}
                 <section className="relative min-h-[80vh] flex flex-col items-center justify-center bg-[#f8f5f0] overflow-hidden px-4 md:px-12">
@@ -26,7 +26,7 @@ const Legacy = () => {
                     </div>
 
                     {/* Floating Design Elements (Parallax) */}
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1.2, ease: "easeOut" }}
@@ -35,7 +35,7 @@ const Legacy = () => {
                         <span className="inline-block px-6 py-2 rounded-full border border-primary/20 text-primary font-black uppercase tracking-[0.5em] text-[10px] mb-8 bg-white/50 backdrop-blur-sm">A Decade and a Half of Vision</span>
                         <h1 className="text-[12vw] md:text-8xl font-black uppercase tracking-tighter leading-[0.85] text-slate-900 mb-8">
                             Fifteen Years <br />
-                            <span className="italic font-serif lowercase tracking-normal text-primary">of</span> Creative <br />
+                            Creative <br />
                             Dynasty
                         </h1>
                     </motion.div>
