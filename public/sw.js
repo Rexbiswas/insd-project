@@ -1,4 +1,4 @@
-const CACHE_NAME = 'insd-cache-v1';
+const CACHE_NAME = 'insd-cache-v2';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
@@ -68,10 +68,19 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Navigation requests: Network First, fallback to index.html
+  // Navigation requests: Network First, fallback to index.html (updates cache with fresh index.html on success)
   if (event.request.mode === 'navigate') {
     event.respondWith(
       fetch(event.request)
+        .then((response) => {
+          if (response && response.status === 200) {
+            const responseToCache = response.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put('/index.html', responseToCache);
+            });
+          }
+          return response;
+        })
         .catch(() => caches.match('/index.html'))
     );
     return;
