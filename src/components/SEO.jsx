@@ -5,7 +5,7 @@ const SEO = ({
     title, 
     description, 
     keywords, 
-    canonical = "https://subdomain.insd.edu.in/",
+    canonical = "https://insd.edu.in/",
     ogTitle, 
     ogDescription, 
     ogImage = "https://ik.imagekit.io/fmldynl4j4/insd-awards/Gemini_Generated_Image_wy3si8wy3si8wy3s.png?tr=w-1200,h-630,fo-auto", 
@@ -23,7 +23,7 @@ const SEO = ({
         "@context": "https://schema.org",
         "@type": "EducationalOrganization",
         "name": siteName,
-        "url": "https://subdomain.insd.edu.in",
+        "url": "https://insd.edu.in",
         "logo": "https://ik.imagekit.io/fmldynl4j4/INSD-Logo_Horizontal-removebg-preview.png",
         "sameAs": [
             "https://www.facebook.com/INSD.Official/",

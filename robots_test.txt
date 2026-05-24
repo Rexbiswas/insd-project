@@ -1,1 +1,1 @@
-Sitemap: https://subdomain.insd.edu.in/sitemap.xml
+Sitemap: https://insd.edu.in/sitemap.xml
