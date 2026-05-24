@@ -46,7 +46,7 @@ async function generateSitemap() {
         { path: '/franchise', priority: '0.8' },
         { path: '/contact-us', priority: '0.7' },
         { path: '/international-partners', priority: '0.7' },
-        { path: '/apply', priority: '0.9' },
+        { path: '/course-apply-now', priority: '0.9' },
         { path: '/courses/online-courses', priority: '0.7' },
         { path: '/insd-360/blog', priority: '0.6' },
         { path: '/insd-360/fashion-week', priority: '0.7' },

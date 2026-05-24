@@ -130,7 +130,7 @@ const Footer = () => {
                                     { name: "Center Across India", path: "/centers-across-india" },
                                     { name: "Paris Project", path: "/insd-360/paris-project" },
                                     { name: "Awards", path: "/awards-recognition" },
-                                    { name: "Enquiry", path: "/apply" },
+                                    { name: "Enquiry", path: "/course-apply-now" },
                                     { name: "Franchise", path: "/franchise" }
                                 ].map((item, i) => (
                                     <motion.li key={i} whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>

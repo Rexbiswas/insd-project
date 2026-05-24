@@ -241,7 +241,7 @@ const TextileDesigning = () => {
                     className="flex justify-center mt-12 mb-4"
                 >
                     <button
-                        onClick={() => navigate('/apply')}
+                        onClick={() => navigate('/course-apply-now')}
                         className="px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-white hover:text-slate-900 transition-all transform hover:scale-105 flex items-center gap-3"
                     >
                         Enroll Now
@@ -562,7 +562,7 @@ const TextileDesigning = () => {
                                 <p className="text-white/50 max-w-sm uppercase text-xs tracking-widest font-black">Join the 2026 session. Limited seats for high-potential material visionaries.</p>
                             </div>
                             <button 
-                                onClick={() => navigate('/apply')}
+                                onClick={() => navigate('/course-apply-now')}
                                 className="px-16 py-6 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-primary hover:text-white transition-all transform hover:scale-105"
                             >
                                 Start Application

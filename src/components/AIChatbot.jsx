@@ -192,7 +192,7 @@ const AIChatbot = ({ isFloatingPanel = false, hideWindow = false, showTrigger = 
         { label: "Course Info", icon: Bot, action: () => handleSend("Tell me about my course") },
         { label: "Logout", icon: LogOut, action: () => logout() }
     ] : [
-        { label: "Admission Process", icon: User, action: () => { navigate('/apply'); setIsOpen(false); } },
+        { label: "Admission Process", icon: User, action: () => { navigate('/course-apply-now'); setIsOpen(false); } },
         { label: "Campus Locations", icon: Bot, action: () => { navigate('/campuses'); setIsOpen(false); } },
         { label: "Contact Counselor", icon: MessageCircle, action: () => { navigate('/contact-us'); setIsOpen(false); } }
     ];

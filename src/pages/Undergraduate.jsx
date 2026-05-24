@@ -483,7 +483,7 @@ const Undergraduate = () => {
                 </h2>
                 <div className="flex flex-col md:flex-row justify-center items-center gap-6">
                     <button
-                        onClick={() => navigate('/apply')}
+                        onClick={() => navigate('/course-apply-now')}
                         className="px-12 md:px-20 h-12 md:h-14 bg-primary text-white font-bold uppercase tracking-widest rounded-full hover:bg-[#a61517] shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3"
                     >
                         Apply Now

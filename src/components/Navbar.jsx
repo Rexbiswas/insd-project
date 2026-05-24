@@ -146,7 +146,7 @@ const Navbar = () => {
     // Pages that have a dark background/theme or high-impact gradient hero sections
     // Updated detection: Pages with permanent dark themes or sections
     const darkPages = [
-        '/apply',
+        '/course-apply-now',
         '/insd-360/blog',
         '/entrepreneur',
         '/courses/fashion-designing',
@@ -276,7 +276,7 @@ const Navbar = () => {
                 { title: 'INSD Luxe', path: '/courses/msc-luxury-brand-management', icon: 'sparkles', desc: 'Premium Luxury Arts', badge: 'New' }
             ]
         },
-        { title: 'Admissions', path: '/apply', icon: CreditCard, section: 'OVERVIEW' },
+        { title: 'Admissions', path: '/course-apply-now', icon: CreditCard, section: 'OVERVIEW' },
         { title: 'Franchise', path: '/franchise', icon: Store, section: 'OVERVIEW' },
         {
             title: 'Careers & Exposure',
@@ -303,8 +303,8 @@ const Navbar = () => {
             section: 'OVERVIEW',
             subItems: [
                 { title: 'Call Us Now', path: 'tel:+919804443300', icon: Phone, desc: 'Direct support line' },
-                { title: 'Enquiry Now', path: '/apply', icon: Headset, desc: 'Get in touch with us' },
-                { title: 'Career Counselling', path: '/apply', icon: Calendar, desc: 'Book a session' },
+                { title: 'Enquiry Now', path: '/course-apply-now', icon: Headset, desc: 'Get in touch with us' },
+                { title: 'Career Counselling', path: '/course-apply-now', icon: Calendar, desc: 'Book a session' },
                 { title: 'Download Brochure', path: '#', icon: FileDown, desc: 'Course catalogues' }
             ]
         },
@@ -598,7 +598,7 @@ const Navbar = () => {
                                     Blogs
                                 </RollerLink>
                                 <RollerLink
-                                    to="/apply"
+                                    to="/course-apply-now"
                                     colorClass="nav-hover-gradient"
                                     baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
                                 >
@@ -1072,7 +1072,7 @@ const Navbar = () => {
                                     <div className="space-y-4 md:space-y-6">
                                         {[
                                             { title: 'Call Us Now', sub: '+91 9804443300', icon: Phone, href: 'tel:+919804443300' },
-                                            { title: 'Apply Now', sub: 'Admission Cycle 2026', icon: UserPlus, href: '/apply' },
+                                            { title: 'Apply Now', sub: 'Admission Cycle 2026', icon: UserPlus, href: '/course-apply-now' },
                                             { title: 'Book Counselling', sub: 'Free Expert Session', icon: Calendar, action: 'modal' },
 
                                         ].map((cta, i) => (

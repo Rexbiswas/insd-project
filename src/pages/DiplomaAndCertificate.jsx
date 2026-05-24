@@ -230,7 +230,7 @@ const DiplomaAndCertificate = () => {
                     <motion.button 
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={() => navigate('/apply')}
+                        onClick={() => navigate('/course-apply-now')}
                         className="bg-black text-white px-12 py-5 rounded-full font-bold uppercase tracking-widest text-sm shadow-[0_20px_40px_rgba(0,0,0,0.2)] flex items-center gap-4 transition-all hover:bg-[#111]"
                     >
                         Register Interest <ArrowUpRight size={18} />

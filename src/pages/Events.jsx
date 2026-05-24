@@ -325,7 +325,7 @@ const Events = () => {
                                 </div>
 
                                 <div className="flex items-center gap-6">
-                                    <Link to="/apply" className="px-10 py-5 bg-primary text-white rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all text-center shadow-xl shadow-primary/20">Get Vip Entry</Link>
+                                    <Link to="/course-apply-now" className="px-10 py-5 bg-primary text-white rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-white hover:text-slate-950 transition-all text-center shadow-xl shadow-primary/20">Get Vip Entry</Link>
                                     <div className="flex gap-2">
                                         {timesFashionEvents.map((_, i) => (
                                             <button
@@ -411,7 +411,7 @@ const Events = () => {
                         <p className="text-slate-400 max-w-xl mx-auto text-lg font-medium">Join INSD and see your designs on the world's most prestigious runways. Our next showcase is waiting for your creativity.</p>
                     </div>
                     <div className="relative flex flex-col sm:flex-row gap-6">
-                        <Link to="/apply" className="px-12 py-5 bg-primary rounded-full font-black uppercase text-xs tracking-widest hover:scale-105 transition-all shadow-2xl shadow-primary/30">Apply for 2026</Link>
+                        <Link to="/course-apply-now" className="px-12 py-5 bg-primary rounded-full font-black uppercase text-xs tracking-widest hover:scale-105 transition-all shadow-2xl shadow-primary/30">Apply for 2026</Link>
                     </div>
                 </motion.div>
             </div>

@@ -356,7 +356,7 @@ const Mentors = () => {
                             </p>
                         </div>
                         <div className="flex md:justify-end gap-6">
-                            <Link to="/apply" className="px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-slate-900 transition-all shadow-2xl active:scale-95">
+                            <Link to="/course-apply-now" className="px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-slate-900 transition-all shadow-2xl active:scale-95">
                                 APPLY FOR 2026
                             </Link>
                         </div>

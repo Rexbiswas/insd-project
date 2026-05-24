@@ -400,7 +400,7 @@ const MscLuxury = () => {
                                 <p className="text-white/50 font-medium max-w-sm">Join the 2026 session. Limited seats for high-potential luxury leaders.</p>
                             </div>
                              <button 
-                                onClick={() => navigate('/apply')}
+                                onClick={() => navigate('/course-apply-now')}
                                 className="px-16 py-6 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-primary hover:text-white transition-all transform hover:scale-105"
                             >
                                 Start Application

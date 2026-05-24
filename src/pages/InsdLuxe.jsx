@@ -67,7 +67,7 @@ const InsdLuxe = () => {
                             className="flex flex-wrap items-center gap-8"
                         >
                             <button 
-                                onClick={() => navigate('/apply')}
+                                onClick={() => navigate('/course-apply-now')}
                                 className="px-10 py-4 bg-gold text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-secondary transition-all transform hover:scale-105 shadow-xl shadow-gold/20"
                             >
                                 Apply Now
@@ -296,7 +296,7 @@ const InsdLuxe = () => {
                     </p>
                     <div className="flex flex-col md:flex-row items-center justify-center gap-6">
                         <button 
-                            onClick={() => navigate('/apply')}
+                            onClick={() => navigate('/course-apply-now')}
                             className="px-12 py-5 bg-gold text-white rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-secondary hover:text-white transition-all transform hover:scale-105"
                         >
                             Start Application

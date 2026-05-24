@@ -203,7 +203,7 @@ const ShortTermCourse = () => {
                         Next intake begins in 14 days. Limited seats per module.
                     </p>
                     <button 
-                        onClick={() => navigate('/apply')}
+                        onClick={() => navigate('/course-apply-now')}
                         className="bg-black text-[#e1f021] px-12 py-5 rounded-full font-bold uppercase tracking-widest text-sm hover:scale-105 transition-transform flex items-center justify-center gap-4 mx-auto shadow-2xl shadow-black/20"
                     >
                         Enroll Now <ArrowUpRight size={18} />
