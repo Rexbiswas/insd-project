@@ -17,11 +17,13 @@ export default defineConfig({
     },
   },
   build: {
+    chunkSizeWarningLimit: 1000,
     // Optimize chunk splitting for better performance
     rollupOptions: {
       output: {
         manualChunks: {
           // Separate vendor libraries to leverage browser caching
+          'react-vendor': ['react', 'react-dom', 'react-helmet-async', '@emotion/react', '@emotion/styled'],
           'gsap': ['gsap'],
           'three': ['three', '@react-three/fiber', '@react-three/drei'],
           'framer': ['framer-motion'],
