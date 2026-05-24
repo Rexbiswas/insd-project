@@ -4,7 +4,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MapPin, ArrowUpRight, ArrowLeft, Mic, Scissors, Monitor, Camera, Coffee, Utensils, Hexagon, Gem, Briefcase, Palette, Castle, BookOpen, Sun, Globe2, Compass, GraduationCap } from 'lucide-react';
-import Lenis from 'lenis';
+import useLenisSmoothScroll from '../hooks/useLenisSmoothScroll';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import { campusData } from '../data/campusData';
@@ -235,22 +235,12 @@ const Campuses = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    useEffect(() => {
-        const lenis = new Lenis({
-            lerp: 0.1,
-            smoothWheel: true,
-            orientation: 'vertical',
-            gestureOrientation: 'vertical',
-        });
-
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
-
-        return () => lenis.destroy();
-    }, [campusId]);
+    // Lenis Smooth Scroll (optimized for Safari/Chrome)
+    useLenisSmoothScroll({ 
+        lerp: 0.08,
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+    });
 
     useLayoutEffect(() => {
         if (campusId) return;

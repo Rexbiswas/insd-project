@@ -3,8 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate, Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-import Lenis from 'lenis';
+import useLenisSmoothScroll from '../hooks/useLenisSmoothScroll';
 
 
 
@@ -60,34 +59,18 @@ const Home = () => {
     const { openAdmissionModal } = useAdmissionModal();
     const navigate = useNavigate();
 
+    // Lenis Smooth Scroll Integration (optimized for Safari/Chrome)
+    useLenisSmoothScroll({ 
+        duration: 1.0,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
 
-    // Lenis Smooth Scroll Integration
     useEffect(() => {
         const checkMobile = () => setIsMobile(window.innerWidth < 1024);
         checkMobile();
         window.addEventListener('resize', checkMobile);
-
-        const lenis = new Lenis({
-            duration: 1.0, // Reduced from 1.2 for faster response
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            smooth: !isMobile, // Disable smooth scroll on mobile to avoid conflicts
-        });
-
-        // Sync ScrollTrigger with Lenis
-        lenis.on('scroll', ScrollTrigger.update);
-
-        gsap.ticker.add((time) => {
-            lenis.raf(time * 1000);
-        });
-
-        gsap.ticker.lagSmoothing(0);
-
-        return () => {
-            lenis.destroy();
-            gsap.ticker.remove(lenis.raf);
-            window.removeEventListener('resize', checkMobile);
-        };
-    }, [isMobile]);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     useEffect(() => {
         const timer = setTimeout(() => {

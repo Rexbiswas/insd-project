@@ -16,4 +16,33 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    // Optimize chunk splitting for better performance
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Separate vendor libraries to leverage browser caching
+          'gsap': ['gsap'],
+          'three': ['three', '@react-three/fiber', '@react-three/drei'],
+          'framer': ['framer-motion'],
+          'utils': ['axios', 'lenis', 'react-router-dom'],
+          'ui': ['@mui/material', '@mui/icons-material', 'lucide-react'],
+        }
+      }
+    },
+    // Optimize CSS and JS minification for Safari compatibility
+    cssCodeSplit: true,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        // Preserve important code for Safari
+        safari10: true,
+      },
+      mangle: {
+        // Prevent mangling of constructor names (helps with Three.js)
+        keep_classnames: true,
+      }
+    }
+  }
 })

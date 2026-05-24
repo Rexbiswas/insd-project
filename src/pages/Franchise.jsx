@@ -2,7 +2,7 @@ import React, { useRef, useLayoutEffect, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Shield, Target, TrendingUp, Globe, Award, Users } from 'lucide-react';
-import Lenis from 'lenis';
+import useLenisSmoothScroll from '../hooks/useLenisSmoothScroll';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import FranchiseCTA from '../components/FranchiseCTA';
@@ -17,25 +17,8 @@ const Franchise = () => {
     const gridRef = useRef(null);
 
     useEffect(() => {
-        // Robust Lenis initialization
-        let lenis;
-        try {
-            lenis = new Lenis({
-                lerp: 0.1,
-                smoothWheel: true
-            });
-            function raf(time) {
-                lenis.raf(time);
-                requestAnimationFrame(raf);
-            }
-            requestAnimationFrame(raf);
-        } catch (e) {
-            console.error("Lenis init failed", e);
-        }
-
-        return () => {
-            if (lenis) lenis.destroy();
-        };
+        // Lenis Smooth Scroll (optimized for Safari/Chrome)
+        useLenisSmoothScroll({ lerp: 0.1 });
     }, []);
 
     useLayoutEffect(() => {

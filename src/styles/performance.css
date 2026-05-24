@@ -1,0 +1,54 @@
+/* Performance Optimizations for Chrome & Safari */
+
+/* Enable GPU acceleration for smooth scrolling */
+html, body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimize animations with will-change (use sparingly) */
+.animate-hero {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+.gsap-animated {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Optimize scroll-triggered elements */
+[data-scroll-trigger] {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Reduce paint areas for animations */
+.animation-container {
+  contain: layout style paint;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Safari-specific optimizations */
+@supports (-webkit-appearance: none) {
+  /* Reduce motion for Safari */
+  .scroll-animation {
+    animation: none;
+  }
+
+  /* Use native smooth scroll instead */
+  html {
+    scroll-behavior: smooth;
+  }
+}

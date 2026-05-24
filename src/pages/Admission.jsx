@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Lenis from 'lenis';
+import useLenisSmoothScroll from '../hooks/useLenisSmoothScroll';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { useRegisterModal } from '../context/RegisterModalContext';
@@ -26,19 +26,8 @@ const Admission = () => {
     }, []);
 
 
-    // Lenis Smooth Scroll
-    useEffect(() => {
-        const lenis = new Lenis({
-            lerp: 0.1,
-            smoothWheel: true,
-        });
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
-        return () => lenis.destroy();
-    }, []);
+    // Lenis Smooth Scroll (optimized for Safari/Chrome)
+    useLenisSmoothScroll({ lerp: 0.08 });
 
     // GSAP Aperture Logic
     useEffect(() => {
