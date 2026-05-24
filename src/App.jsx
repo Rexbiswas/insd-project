@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import { Analytics } from "@vercel/analytics/react"
@@ -133,6 +133,7 @@ function App() {
                                         <Route path="/contact-us" element={<Contact />} />
                                         <Route path="/international-partners" element={<InternationalPartner />} />
                                         <Route path="/apply" element={<Admission />} />
+                                        <Route path="/course-apply-now" element={<Navigate to="/apply" replace />} />
                                         <Route path="/courses/online-courses" element={<OnlineCourse />} />
                                         <Route path="/insd-360/blog" element={<Blog />} />
                                         <Route path="/insd-360/fashion-week" element={<FashionWeek />} />

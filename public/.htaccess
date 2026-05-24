@@ -2,6 +2,9 @@
   RewriteEngine On
   RewriteBase /
 
+  # Legacy URL redirects
+  RewriteRule ^course-apply-now/?$ /apply [R=301,L]
+
   # Serve existing files and folders directly
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
