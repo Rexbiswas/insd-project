@@ -8,6 +8,7 @@ import CookieConsent from './components/CookieConsent';
 
 // Lazy load pages
 const Home = lazy(() => import('./pages/Home'));
+const Courses = lazy(() => import('./pages/Courses'));
 const AwardsRecognition = lazy(() => import('./pages/AwardsRecognition'));
 const Student = lazy(() => import('./pages/Student'));
 const Entrepreneur = lazy(() => import('./pages/Entrepreneur'));
@@ -24,6 +25,7 @@ const Undergraduate = lazy(() => import('./pages/Undergraduate'));
 const Postgraduate = lazy(() => import('./pages/Postgraduate'));
 const DiplomaAndCertificate = lazy(() => import('./pages/DiplomaAndCertificate'));
 const ShortTermCourse = lazy(() => import('./pages/ShortTermCourse'));
+const ShortTermInteriorDesign = lazy(() => import('./pages/short-term-interior-design'));
 const Contact = lazy(() => import('./pages/Contact'));
 const MscLuxury = lazy(() => import('./pages/MscLuxury'));
 const StudentCareers = lazy(() => import('./pages/StudentCareers'));
@@ -113,10 +115,12 @@ function App() {
                                         <Route path="/campuses/:campusId" element={<Campus />} />
                                         <Route path="/campuses/paris-cdp" element={<ParisCDP />} />
 
+                                        <Route path="/courses" element={<Courses />} />
                                         <Route path="/courses/undergraduate" element={<Undergraduate />} />
                                         <Route path="/courses/postgraduate" element={<Postgraduate />} />
                                         <Route path="/courses/diploma-and-certificates" element={<DiplomaAndCertificate />} />
                                         <Route path="/courses/short-term-courses" element={<ShortTermCourse />} />
+                                        <Route path="/courses/short-term-interior-design" element={<ShortTermInteriorDesign />} />
                                         <Route path="/courses/msc-luxury-brand-management" element={<MscLuxury />} />
                                         <Route path="/courses/fashion-designing" element={<FashionDesigning />} />
                                         <Route path="/courses/interior-designing" element={<InteriorDesigning />} />

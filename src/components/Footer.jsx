@@ -100,6 +100,7 @@ const Footer = () => {
                                     { name: "Photography", path: "/courses/photography" },
                                     { name: "Textile Design", path: "/courses/textile-designing" },
                                     { name: "Short Term Courses", path: "/courses/short-term-courses" },
+                                    { name: "Short Term Interior Design", path: "/courses/short-term-interior-design" },
                                     { name: "INSD Luxe", path: "/courses/msc-luxury-brand-management" }
                                 ].map((item, i) => (
                                     <motion.li

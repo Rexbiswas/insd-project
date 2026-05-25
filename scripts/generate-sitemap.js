@@ -31,6 +31,7 @@ async function generateSitemap() {
         { path: '/courses/postgraduate', priority: '0.8' },
         { path: '/courses/diploma-and-certificates', priority: '0.7' },
         { path: '/courses/short-term-courses', priority: '0.7' },
+        { path: '/courses/short-term-interior-design', priority: '0.8' },
         { path: '/courses/msc-luxury-brand-management', priority: '0.7' },
         { path: '/courses/fashion-designing', priority: '0.9' },
         { path: '/courses/interior-designing', priority: '0.8' },

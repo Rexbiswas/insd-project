@@ -260,6 +260,7 @@ const Navbar = () => {
         },
         {
             title: 'Our Courses',
+            path: '/courses',
             icon: GraduationCap,
             section: 'OVERVIEW',
             subItems: [
@@ -429,7 +430,7 @@ const Navbar = () => {
                                     {/* Dropdown Menu */}
                                     <div className="absolute top-12 left-1/2 -translate-x-1/2 pt-6 w-64 opacity-0 invisible translate-y-4 group-hover/dropdown:opacity-100 group-hover/dropdown:visible group-hover/dropdown:translate-y-0 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] z-50">
                                         <div className="bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-white/10 rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] p-2 relative before:content-[''] before:absolute before:inset-0 before:bg-linear-to-b before:from-white/40 before:to-transparent before:pointer-events-none after:content-[''] after:absolute after:-top-px after:left-10 after:right-10 after:h-px after:bg-linear-to-r after:from-transparent after:via-primary/30 after:to-transparent">
-                                            <div 
+                                            <div
                                                 className="max-h-[320px] overflow-y-auto dropdown-scrollbar pr-1 overscroll-contain"
                                                 onWheel={(e) => e.stopPropagation()}
                                             >
@@ -477,7 +478,7 @@ const Navbar = () => {
                                 <div className="relative group/dropdown">
                                     <div className="flex items-center gap-1 cursor-pointer py-2">
                                         <RollerLink
-                                            to="#"
+                                            to="/courses"
                                             colorClass="nav-hover-gradient"
                                             baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
                                         >
@@ -488,7 +489,7 @@ const Navbar = () => {
 
                                     <div className="absolute top-12 left-1/2 -translate-x-1/2 pt-6 w-80 opacity-0 invisible translate-y-4 group-hover/dropdown:opacity-100 group-hover/dropdown:visible group-hover/dropdown:translate-y-0 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] z-50">
                                         <div className="bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-white/10 rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] p-2 relative before:content-[''] before:absolute before:inset-0 before:bg-linear-to-b before:from-white/40 before:to-transparent before:pointer-events-none">
-                                            <div 
+                                            <div
                                                 className="max-h-[320px] overflow-y-auto dropdown-scrollbar pr-1 overscroll-contain"
                                                 onWheel={(e) => e.stopPropagation()}
                                             >
@@ -545,7 +546,7 @@ const Navbar = () => {
 
                                     <div className="absolute top-12 left-1/2 -translate-x-1/2 pt-6 w-80 opacity-0 invisible translate-y-4 group-hover/dropdown:opacity-100 group-hover/dropdown:visible group-hover/dropdown:translate-y-0 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] z-50">
                                         <div className="bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-white/10 rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] p-2 relative before:content-[''] before:absolute before:inset-0 before:bg-linear-to-b before:from-white/40 before:to-transparent before:pointer-events-none after:content-[''] after:absolute after:-top-px after:left-10 after:right-10 after:h-px after:bg-linear-to-r after:from-transparent after:via-primary/30 after:to-transparent">
-                                            <div 
+                                            <div
                                                 className="max-h-[320px] overflow-y-auto dropdown-scrollbar pr-1 overscroll-contain"
                                                 onWheel={(e) => e.stopPropagation()}
                                             >
@@ -710,10 +711,10 @@ const Navbar = () => {
                                         transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
                                     />
                                 )}
-                                <Home 
-                                    size={22} 
-                                    strokeWidth={isActive ? 2.5 : 2} 
-                                    className="relative z-10" 
+                                <Home
+                                    size={22}
+                                    strokeWidth={isActive ? 2.5 : 2}
+                                    className="relative z-10"
                                     stroke={isActive ? "url(#insd-icon-gradient)" : "currentColor"}
                                 />
                                 <span className={`text-[9px] font-bold mt-1.5 uppercase tracking-widest relative z-10 ${isActive ? 'text-slate-900 opacity-100' : 'opacity-60'}`}>Home</span>
@@ -758,11 +759,11 @@ const Navbar = () => {
                                 transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
                             />
                         )}
-                        <Share2 
-                            size={22} 
-                            strokeWidth={2} 
-                            className="relative z-10" 
-                            stroke={isSocialMenuOpen ? "url(#insd-icon-gradient)" : "url(#insd-icon-gradient)"} 
+                        <Share2
+                            size={22}
+                            strokeWidth={2}
+                            className="relative z-10"
+                            stroke={isSocialMenuOpen ? "url(#insd-icon-gradient)" : "url(#insd-icon-gradient)"}
                         />
                         <span className={`text-[9px] font-bold mt-1.5 uppercase tracking-widest relative z-10 ${isSocialMenuOpen ? 'text-slate-900 opacity-100' : 'text-slate-900 opacity-80'}`}>Social</span>
                     </button>
@@ -1084,10 +1085,10 @@ const Navbar = () => {
                                                 {cta.action === 'modal' ? (
                                                     <a
                                                         href={cta.href || "#"}
-                                                        onClick={(e) => { 
+                                                        onClick={(e) => {
                                                             if (!cta.href || cta.href === '#') e.preventDefault();
-                                                            setIsOpen(false); 
-                                                            openAdmissionModal(); 
+                                                            setIsOpen(false);
+                                                            openAdmissionModal();
                                                         }}
                                                         className="flex items-center gap-6 md:gap-8 text-left w-full cursor-pointer"
                                                     >
@@ -1106,15 +1107,15 @@ const Navbar = () => {
                                                     </a>
                                                 ) : cta.title === 'Apply Now' ? (
                                                     <button
-                                                        onClick={() => { 
-                                                            setIsOpen(false); 
+                                                        onClick={() => {
+                                                            setIsOpen(false);
                                                             /*
                                                             if (localStorage.getItem('admission-form-filled')) {
                                                                 // openAdmissionModal();
                                                                 return;
                                                             }
                                                             */
-                                                            openAdmissionModal(); 
+                                                            openAdmissionModal();
                                                         }}
                                                         className="flex items-center gap-6 md:gap-8 text-left w-full"
                                                     >
