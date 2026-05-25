@@ -66,9 +66,9 @@ const Footer = () => {
                     <div className="lg:col-span-5">
                         <div className="mb-12">
                             <div className="mb-6">
-                                <img 
-                                    src="https://ik.imagekit.io/fmldynl4j4/INSD-Logo_Horizontal-removebg-preview.png" 
-                                    alt="INSD Logo" 
+                                <img
+                                    src="https://ik.imagekit.io/fmldynl4j4/INSD-Logo_Horizontal-removebg-preview.png"
+                                    alt="INSD Logo"
                                     className="h-[84px] w-auto object-contain brightness-0 invert"
                                 />
                             </div>
@@ -93,6 +93,9 @@ const Footer = () => {
                                     { name: "Fashion Design", path: "/courses/fashion-designing" },
                                     { name: "Interior Design", path: "/courses/interior-designing" },
                                     { name: "Graphic Design", path: "/courses/graphic-designing" },
+                                    { name: "Bachelors in Graphic Design", path: "/courses/bachelors-in-graphic-design" },
+                                    { name: "Diploma in Graphic Design", path: "/courses/diploma-in-graphic-design" },
+                                    { name: "Diploma in Textile Design", path: "/courses/diploma-in-textile-design" },
                                     { name: "Animation Design", path: "/courses/animation-and-vfx" },
                                     { name: "Jewellery Design", path: "/courses/jewellery-designing" },
                                     { name: "UI/UX Design", path: "/courses/uiux-designing" },
@@ -128,7 +131,7 @@ const Footer = () => {
 
                                     { name: "15 Years Legacy", path: "/15-years-legacy" },
                                     { name: "Mentors", path: "/mentors" },
-                                    { name: "Center Across India", path: "/centers-across-india" },
+                                    { name: "Center Across India", path: "/locations" },
                                     { name: "Paris Project", path: "/insd-360/paris-project" },
                                     { name: "Awards", path: "/awards-recognition" },
                                     { name: "Enquiry", path: "/course-apply-now" },
@@ -161,7 +164,8 @@ const Footer = () => {
                                     { name: "Future of Design", path: "/future-of-design" },
                                     { name: "Events", path: "/events" },
                                     { name: "Blogs", path: "/insd-360/blog" },
-                                    { name: "Success Stories", path: "/success-stories" }
+                                    { name: "Success Stories", path: "/success-stories" },
+                                    { name: "locations", path: "/locations" }
                                 ].map((item, i) => (
                                     <motion.li key={i} whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
                                         <Link to={item.path} className="text-[13px] text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
@@ -189,7 +193,7 @@ const Footer = () => {
                                 </motion.div>
                                 <motion.div whileHover={{ x: 5 }} className="group cursor-pointer">
                                     <span className="block text-[10px] uppercase tracking-widest text-white/40 mb-1">Location</span>
-                                    <Link to="/contact-us" className="text-sm font-bold border-b border-white/5 group-hover:border-white transition-all pb-1">Delhi, India</Link>
+                                    <Link to="/locations" className="text-sm font-bold border-b border-white/5 group-hover:border-white transition-all pb-1">Delhi, India</Link>
                                 </motion.div>
                             </div>
                         </div>

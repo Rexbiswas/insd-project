@@ -26,6 +26,9 @@ const Postgraduate = lazy(() => import('./pages/Postgraduate'));
 const DiplomaAndCertificate = lazy(() => import('./pages/DiplomaAndCertificate'));
 const ShortTermCourse = lazy(() => import('./pages/ShortTermCourse'));
 const ShortTermInteriorDesign = lazy(() => import('./pages/short-term-interior-design'));
+const DiplomaInGraphicDesign = lazy(() => import('./pages/diploma-in-graphic-design'));
+const DiplomaInTextileDesign = lazy(() => import('./pages/diploma-in-textile-design'));
+const BachelorsInGraphicDesign = lazy(() => import('./pages/bachelors-in-graphic-design'));
 const Contact = lazy(() => import('./pages/Contact'));
 const MscLuxury = lazy(() => import('./pages/MscLuxury'));
 const StudentCareers = lazy(() => import('./pages/StudentCareers'));
@@ -36,7 +39,7 @@ const ParisProject = lazy(() => import('./pages/ParisProject'));
 const Events = lazy(() => import('./pages/Events'));
 const Mentors = lazy(() => import('./pages/Mentors'));
 const Legacy = lazy(() => import('./pages/Legacy'));
-const Centers = lazy(() => import('./pages/Centers'));
+const Location = lazy(() => import('./pages/location'));
 const FutureOfDesign = lazy(() => import('./pages/FutureOfDesign'));
 const ProfileDashboard = lazy(() => import('./pages/ProfileDashboard'));
 const FashionDesigning = lazy(() => import('./pages/FashionDesigning'));
@@ -121,6 +124,9 @@ function App() {
                                         <Route path="/courses/diploma-and-certificates" element={<DiplomaAndCertificate />} />
                                         <Route path="/courses/short-term-courses" element={<ShortTermCourse />} />
                                         <Route path="/courses/short-term-interior-design" element={<ShortTermInteriorDesign />} />
+                                        <Route path="/courses/diploma-in-graphic-design" element={<DiplomaInGraphicDesign />} />
+                                        <Route path="/courses/diploma-in-textile-design" element={<DiplomaInTextileDesign />} />
+                                        <Route path="/courses/bachelors-in-graphic-design" element={<BachelorsInGraphicDesign />} />
                                         <Route path="/courses/msc-luxury-brand-management" element={<MscLuxury />} />
                                         <Route path="/courses/fashion-designing" element={<FashionDesigning />} />
                                         <Route path="/courses/interior-designing" element={<InteriorDesigning />} />
@@ -145,7 +151,8 @@ function App() {
                                         <Route path="/events" element={<Events />} />
                                         <Route path="/mentors" element={<Mentors />} />
                                         <Route path="/15-years-legacy" element={<Legacy />} />
-                                        <Route path="/centers-across-india" element={<Centers />} />
+                                        <Route path="/locations" element={<Location />} />
+                                        <Route path="/centers-across-india" element={<Navigate to="/locations" replace />} />
                                         <Route path="/profile" element={<ProfileDashboard />} />
                                         <Route path="/success-stories" element={<SuccessStory />} />
                                         <Route path="/gallery" element={<Gallery />} />

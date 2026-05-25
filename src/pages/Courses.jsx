@@ -36,12 +36,28 @@ const coursesData = [
         description: "From brand logic to motion design, define the visual language of the next digital era. Intensive focus on typography, brand identity synthesis, and algorithmic visual generation."
     },
     {
+        id: "bachelors-graphic",
+        title: "Bachelors in Graphic Design",
+        category: "VFX",
+        duration: "3 Years Bachelors",
+        path: "/courses/bachelors-in-graphic-design",
+        description: "Master the visual code of modern commerce. A comprehensive studio-oriented degree framework covering typography, brand engineering, package layouts, and high-performance UI/UX design."
+    },
+    {
         id: "adv-graphic",
         title: "Advanced Graphic Design",
         category: "VFX",
         duration: "1 Year Diploma",
-        path: "/courses/graphic-designing",
+        path: "/courses/diploma-in-graphic-design",
         description: "An intensive diploma designed specifically for career changers looking to enter the design industry. Master standard industry tools including the Adobe Suite, Figma, and Cinema 4D."
+    },
+    {
+        id: "diploma-textile",
+        title: "Diploma in Textile Design",
+        category: "Fashion",
+        duration: "1 Year Diploma",
+        path: "/courses/diploma-in-textile-design",
+        description: "Craft the fabrics of tomorrow. Master digital repeats, organic dyes, yarn structures, and visual strategies for premium apparel and home collections."
     },
     {
         id: "animation",
@@ -134,20 +150,20 @@ const CourseCard = ({ course, index }) => {
                         {course.category} • {course.duration}
                     </span>
                     <div className="w-12 h-12 rounded-full border border-zinc-200 group-hover:border-zinc-700 group-hover:bg-white bg-white text-black flex items-center justify-center transition-colors duration-500 relative overflow-hidden">
-                         <div className="absolute inset-0 bg-pink-500 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out" />
-                         <ArrowUpRight size={20} className="relative z-10 group-hover:text-white transition-colors duration-500" />
+                        <div className="absolute inset-0 bg-pink-500 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out" />
+                        <ArrowUpRight size={20} className="relative z-10 group-hover:text-white transition-colors duration-500" />
                     </div>
                 </div>
 
                 <h3 className="text-3xl md:text-4xl font-black text-black group-hover:text-white uppercase tracking-tighter leading-[0.95] mb-6 transition-colors duration-500">
                     {course.title}
                 </h3>
-                
+
                 <p className="text-zinc-600 group-hover:text-zinc-400 text-sm md:text-base font-light leading-relaxed mb-8 transition-colors duration-500">
                     {course.description}
                 </p>
             </div>
-            
+
             <Link
                 to={course.path}
                 className="inline-flex items-center gap-3 text-black group-hover:text-pink-500 font-bold uppercase tracking-widest text-xs transition-colors duration-500 mt-auto"
@@ -186,12 +202,12 @@ const Courses = () => {
         // Text reveal animations
         const titles = gsap.utils.toArray('.reveal-text');
         titles.forEach(title => {
-            gsap.fromTo(title, 
+            gsap.fromTo(title,
                 { y: 50, opacity: 0 },
-                { 
-                    y: 0, 
-                    opacity: 1, 
-                    duration: 1, 
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
                     ease: "power4.out",
                     scrollTrigger: {
                         trigger: title,
@@ -230,7 +246,7 @@ const Courses = () => {
                 </div>
 
                 <div className="relative z-10 w-full px-6 md:px-12 max-w-[1600px] mx-auto text-center flex flex-col items-center">
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8 }}
@@ -240,7 +256,7 @@ const Courses = () => {
                             The Design Academics
                         </span>
                     </motion.div>
-                    <motion.h1 
+                    <motion.h1
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.1 }}
@@ -249,7 +265,7 @@ const Courses = () => {
                         Programs &<br />
                         <span className="text-zinc-400">Curriculum.</span>
                     </motion.h1>
-                    <motion.p 
+                    <motion.p
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
@@ -264,7 +280,7 @@ const Courses = () => {
             <section className="py-24 md:py-32 px-6 bg-white relative z-10 border-b border-zinc-200">
                 <div className="max-w-[1600px] mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
-                        
+
                         <div className="lg:col-span-5 space-y-8">
                             <div>
                                 <span className="font-mono text-xs uppercase tracking-[0.3em] text-pink-600 mb-6 block font-bold">Pedagogy Design</span>
@@ -276,7 +292,7 @@ const Courses = () => {
                                 We believe in an environment entirely devoid of creative restriction. From your very first semester, you are treated not just as a student, but as an emerging design professional navigating high-stakes briefs.
                             </p>
                         </div>
-                        
+
                         <div className="lg:col-span-7 grid sm:grid-cols-2 gap-8 lg:mt-24">
                             <div className="border-t-2 border-black pt-6 bg-zinc-50 p-8 rounded-xl">
                                 <div className="text-4xl font-black text-pink-600 mb-4 tracking-tighter">01.</div>
@@ -285,7 +301,7 @@ const Courses = () => {
                                     Our programs are designed in direct consultation with top design councils and luxury brands, ensuring you learn the exact technical workflows and aesthetics the global market demands right now.
                                 </p>
                             </div>
-                            
+
                             <div className="border-t-2 border-zinc-300 hover:border-pink-600 pt-6 bg-zinc-50 hover:bg-pink-50 p-8 rounded-xl transition-colors duration-500">
                                 <div className="text-4xl font-black text-black mb-4 tracking-tighter">02.</div>
                                 <h3 className="text-xl font-bold uppercase tracking-wider text-black mb-3">Global Masterclasses</h3>
@@ -323,11 +339,10 @@ const Courses = () => {
                             <button
                                 key={cat}
                                 onClick={() => setActiveFilter(cat)}
-                                className={`px-5 py-2.5 rounded-lg text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em] transition-all whitespace-nowrap ${
-                                    activeFilter === cat
+                                className={`px-5 py-2.5 rounded-lg text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em] transition-all whitespace-nowrap ${activeFilter === cat
                                         ? "bg-black text-white"
                                         : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-black"
-                                }`}
+                                    }`}
                             >
                                 {cat}
                             </button>
@@ -350,7 +365,7 @@ const Courses = () => {
             {/* CURATED GRID */}
             <section className="py-24 px-6 bg-white relative z-10">
                 <div className="max-w-[1600px] mx-auto">
-                    
+
                     <div className="mb-20 flex flex-col lg:flex-row gap-12 items-baseline justify-between border-b border-zinc-200 pb-12">
                         <div className="overflow-hidden">
                             <h2 className="reveal-text text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9] text-black">
@@ -359,12 +374,12 @@ const Courses = () => {
                             </h2>
                         </div>
                         <div className="max-w-md text-zinc-500 font-mono text-sm tracking-wide leading-relaxed">
-                            BROWSE OUR CORE PROGRAMS <br/> AND SPECIALIZED DIPLOMAS. EVERYTHING YOU NEED TO LAUNCH A CREATIVE CAREER.
+                            BROWSE OUR CORE PROGRAMS <br /> AND SPECIALIZED DIPLOMAS. EVERYTHING YOU NEED TO LAUNCH A CREATIVE CAREER.
                         </div>
                     </div>
 
                     <AnimatePresence mode="popLayout">
-                        <motion.div 
+                        <motion.div
                             layout
                             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
                         >
@@ -375,9 +390,9 @@ const Courses = () => {
                     </AnimatePresence>
 
                     {filteredCourses.length === 0 && (
-                        <motion.div 
-                            initial={{ opacity: 0 }} 
-                            animate={{ opacity: 1 }} 
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
                             className="h-[30vh] flex flex-col items-center justify-center text-center space-y-6 bg-zinc-50 rounded-2xl border border-zinc-200 mt-8"
                         >
                             <Sparkles className="text-zinc-300" size={48} />
@@ -402,7 +417,7 @@ const Courses = () => {
                     <h2 className="text-[10vw] md:text-[8vw] font-black uppercase tracking-tighter leading-[0.8] mb-12">
                         Ready To <br /> Create?
                     </h2>
-                    
+
                     <div className="flex flex-col sm:flex-row gap-6">
                         <MagneticButton>
                             <Link to="/apply" className="flex items-center justify-center gap-3 px-10 py-5 bg-white text-black rounded-full font-bold uppercase tracking-widest text-sm hover:scale-105 hover:bg-pink-500 hover:text-white transition-all">
