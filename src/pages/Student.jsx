@@ -16,7 +16,6 @@ import {
 import SEO from '../components/SEO';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import SuccessStory from '../components/SuccessStory';
 import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const Student = () => {
@@ -626,11 +625,11 @@ const Student = () => {
                             className="space-y-4"
                         >
                             <h2 className="text-clamp-4xl font-black uppercase tracking-tighter leading-none">
-                                <span className="text-primary italic">INSD Students</span> <span className="text-slate-400">vs</span> <br />
-                                <span className="text-secondary">Other Students</span>
+                                <span className="text-slate-950">The INSD</span> <br />
+                                <span className="text-primary italic">Journey</span>
                             </h2>
                             <p className="text-clamp-xl font-bold text-primary tracking-tight">
-                                We develop professionals, not just designers.
+                                From enrollment to placement.
                             </p>
                         </motion.div>
                     </div>
@@ -638,31 +637,19 @@ const Student = () => {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                         {[
                             {
-                                label: "Skill-based education",
-                                imgInsd: "https://images.pexels.com/photos/3823488/pexels-photo-3823488.jpeg?auto=compress&cs=tinysrgb&w=800",
-                                imgOther: "https://images.pexels.com/photos/159844/science-fair-school-education-learning-159844.jpeg?auto=compress&cs=tinysrgb&w=800",
-                                comparison: {
-                                    insd: "Direct Industry Mastery",
-                                    others: "Theoretical Limitations"
-                                }
+                                label: "Step 01",
+                                img: "https://ik.imagekit.io/fmldynl4j4/ai_image/AI%204_1.png",
+                                text: "getting admission in insd"
                             },
                             {
-                                label: "Industry preparation",
-                                imgInsd: "https://images.pexels.com/photos/3182763/pexels-photo-3182763.jpeg?auto=compress&cs=tinysrgb&w=800",
-                                imgOther: "https://images.pexels.com/photos/1181311/pexels-photo-1181311.jpeg?auto=compress&cs=tinysrgb&w=800",
-                                comparison: {
-                                    insd: "Real Industry Briefs",
-                                    others: "Classroom Mock-ups"
-                                }
+                                label: "Step 02",
+                                img: "https://ik.imagekit.io/fmldynl4j4/ai_image/AI%204_2.png",
+                                text: "learning fast-paced gaining practical skills"
                             },
                             {
-                                label: "Launching your career",
-                                imgInsd: "https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg?auto=compress&cs=tinysrgb&w=800",
-                                imgOther: "https://images.pexels.com/photos/2102416/pexels-photo-2102416.jpeg?auto=compress&cs=tinysrgb&w=800",
-                                comparison: {
-                                    insd: "100% Career Support",
-                                    others: "Generic Job Boards"
-                                }
+                                label: "Step 03",
+                                img: "https://ik.imagekit.io/fmldynl4j4/ai_image/AI%204_3.png",
+                                text: "skilled enough and placed in company"
                             }
                         ].map((item, i) => (
                             <motion.div
@@ -678,49 +665,23 @@ const Student = () => {
                                         {item.label}
                                     </h3>
                                     
-                                    <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl border-2 border-slate-100 flex">
-                                        {/* Other Students Side */}
-                                        <div className="relative w-1/2 h-full group/other overflow-hidden border-r border-white/20">
+                                    <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl border-2 border-slate-100 block">
+                                        <div className="relative w-full h-full overflow-hidden">
                                             <img 
-                                                src={item.imgOther} 
-                                                className="w-full h-full object-cover brightness-75 transition-all duration-1000 group-hover:scale-105" 
-                                                alt="Other Students" 
-                                            />
-                                            <div className="absolute inset-0 bg-slate-900/40" />
-                                            <div className="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-full">
-                                                <span className="text-[10px] font-black text-white uppercase tracking-widest">Other Students</span>
-                                            </div>
-                                            <div className="absolute bottom-6 left-4 right-4">
-                                                <p className="text-white/60 text-[10px] font-bold uppercase tracking-widest line-through">{item.comparison.others}</p>
-                                            </div>
-                                        </div>
-
-                                        {/* INSD Students Side */}
-                                        <div className="relative w-1/2 h-full group/insd overflow-hidden">
-                                            <img 
-                                                src={item.imgInsd} 
+                                                src={item.img} 
                                                 className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110" 
-                                                alt="INSD Students" 
+                                                alt={item.text} 
                                             />
-                                            <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-500" />
-                                            <div className="absolute top-4 right-4 bg-primary px-3 py-1 rounded-full shadow-lg">
-                                                <span className="text-[10px] font-black text-white uppercase tracking-widest">INSD Edge</span>
+                                            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/20 to-transparent transition-colors duration-500" />
+                                            
+                                            <div className="absolute bottom-8 left-6 right-6">
+                                                <p className="text-white font-black text-xl uppercase tracking-wider leading-snug">
+                                                    {item.text}
+                                                </p>
+                                                <div className="w-12 h-1 bg-primary mt-4 transition-all duration-500 group-hover:w-24" />
                                             </div>
-                                            <div className="absolute bottom-6 left-4 right-4">
-                                                <p className="text-white font-black text-[10px] uppercase tracking-widest">{item.comparison.insd}</p>
-                                                <div className="w-8 h-1 bg-primary mt-2" />
-                                            </div>
-                                        </div>
-
-                                        {/* Floating VS Badge */}
-                                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white shadow-2xl flex items-center justify-center z-10 border-4 border-slate-50">
-                                            <span className="text-primary font-black italic text-sm">VS</span>
                                         </div>
                                     </div>
-
-                                    <p className="text-slate-500 font-bold text-center px-4 text-sm italic">
-                                        "We develop professionals, not just designers."
-                                    </p>
                                 </div>
                             </motion.div>
                         ))}
@@ -758,22 +719,22 @@ const Student = () => {
                                 {[
                                     {
                                         label: "Hospitality Industry",
-                                        img: "https://images.pexels.com/photos/1579253/pexels-photo-1579253.jpeg?auto=compress&cs=tinysrgb&w=800",
+                                        img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&h=1600&q=80",
                                         delay: 0.1
                                     },
                                     {
                                         label: "Retail Industry",
-                                        img: "https://images.pexels.com/photos/1036856/pexels-photo-1036856.jpeg?auto=compress&cs=tinysrgb&w=800",
+                                        img: "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=800&h=1600&q=80",
                                         delay: 0.2
                                     },
                                     {
                                         label: "Media & Entertainment",
-                                        img: "https://images.pexels.com/photos/2510428/pexels-photo-2510428.jpeg?auto=compress&cs=tinysrgb&w=800",
+                                        img: "https://images.unsplash.com/photo-1485095329183-d0797cdc5676?auto=format&fit=crop&w=800&h=1600&q=80",
                                         delay: 0.3
                                     },
                                     {
                                         label: "Design Industry",
-                                        img: "https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg?auto=compress&cs=tinysrgb&w=800",
+                                        img: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&h=1600&q=80",
                                         delay: 0.4
                                     }
                                 ].map((sector, i) => (
@@ -808,9 +769,6 @@ const Student = () => {
                     </div>
                 </div>
             </section>
-
-            {/* Success Stories Section */}
-            <SuccessStory />
 
             {/* Video Modal */}
             <AnimatePresence>

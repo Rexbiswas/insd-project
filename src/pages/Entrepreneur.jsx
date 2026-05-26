@@ -18,6 +18,7 @@ import Footer from '../components/Footer';
 import ConclaveSlider from '../components/ConclaveSlider';
 import LabSlider from '../components/LabSlider';
 import SuccessStory from '../components/SuccessStory';
+import GlobalIndustryNetwork from '../components/GlobalIndustryNetwork';
 
 const Entrepreneur = () => {
     return (
@@ -587,6 +588,9 @@ const Entrepreneur = () => {
                     </div>
                 </div>
             </section>
+
+            {/* --- GLOBAL INDUSTRY NETWORK --- */}
+            <GlobalIndustryNetwork />
 
             <Footer />
         </div>

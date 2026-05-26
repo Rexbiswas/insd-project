@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import StudentTransformation from '../components/StudentTransformation';
-import GlobalIndustryNetwork from '../components/GlobalIndustryNetwork';
 import HiringPartnersLogoCloud from '../components/HiringPartnersLogoCloud';
+import SuccessStory from '../components/SuccessStory';
 import Footer from '../components/Footer';
 
 import SEO from '../components/SEO';
@@ -58,9 +58,7 @@ const Placement = () => {
                 <StudentTransformation />
             </motion.div>
 
-            {/* Global Industry Network - Detailed Partner View */}
-            <GlobalIndustryNetwork />
-
+            <SuccessStory />
 
             <Footer />
         </main>

@@ -9,55 +9,34 @@ const TransformationCard = ({ student, index }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.5, delay: index * 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="group relative bg-white rounded-[3.5rem] overflow-hidden border border-slate-100 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.02)] hover:shadow-[0_80px_100px_-20px_rgba(0,0,0,0.12)] transition-all duration-1000"
+            className="group relative bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.02)] hover:shadow-[0_80px_100px_-20px_rgba(0,0,0,0.12)] transition-all duration-1000"
         >
-            {/* Split View Container */}
-            <div className="relative h-[450px] overflow-hidden flex">
-                {/* Before Side - The Raw Talent */}
-                <div className="w-1/2 relative overflow-hidden bg-slate-100 group">
-                    <img
-                        src={student.beforeImg}
-                        alt="Initial Phase"
-                        className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-[1px]" />
-                    <div className="absolute top-8 left-8 z-10">
-                        <span className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-md text-[10px] font-black uppercase tracking-widest text-white border border-white/20">
-                            Day 01: Raw Creative
-                        </span>
-                    </div>
-                </div>
-
-                {/* After Side - The INSD Professional */}
-                <div className="w-1/2 relative overflow-hidden">
-                    <img
-                        src={student.afterImg}
-                        alt="Professional Mastery"
-                        className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-slate-950/40 via-transparent to-transparent" />
-                    <div className="absolute top-8 right-8 z-10">
-                        <span className="px-4 py-2 rounded-full bg-primary backdrop-blur-md text-[10px] font-black uppercase tracking-widest text-white border border-primary/20 animate-pulse">
-                            INSD Graduate Power
-                        </span>
-                    </div>
-                </div>
-
-                {/* Central Identity Badge */}
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-white shadow-2xl z-30 flex items-center justify-center border-4 border-slate-50">
-                    <Sparkles className="text-primary w-6 h-6 group-hover:rotate-90 transition-transform duration-700" />
+            {/* Single Image View */}
+            <div className="relative h-[180px] md:h-[200px] overflow-hidden group">
+                <img
+                    src={student.img}
+                    alt={student.name}
+                    className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-slate-950/60 via-transparent to-transparent" />
+                
+                {/* Badge */}
+                <div className="absolute top-8 right-8 z-10">
+                    <span className="px-4 py-2 rounded-full bg-primary backdrop-blur-md text-[10px] font-black uppercase tracking-widest text-white border border-primary/20">
+                        INSD Graduate
+                    </span>
                 </div>
             </div>
 
             {/* Content Section */}
-            <div className="p-10 md:p-14 relative">
-                <div className="flex justify-between items-start mb-10">
+            <div className="p-4 md:p-5 relative">
+                <div className="flex justify-between items-start mb-4">
                     <div>
-                        <div className="flex items-center gap-2 mb-3">
-                            <span className="text-[10px] font-black uppercase tracking-widest text-primary bg-primary/5 px-2 py-0.5 rounded">INSD Alumni</span>
-                            <span className="text-[10px] font-bold text-slate-300">Class of 2024</span>
+                        <div className="flex items-center gap-1.5 mb-1.5">
+                            <span className="text-[7px] font-black uppercase tracking-widest text-primary bg-primary/5 px-1.5 py-0.5 rounded">INSD Alumni</span>
+                            <span className="text-[7px] font-bold text-slate-400">Class of 2024</span>
                         </div>
-                        <h4 className="text-4xl font-black text-slate-900 tracking-tighter leading-none mb-1">
+                        <h4 className="text-xl font-black text-slate-900 tracking-tight leading-none mb-1">
                             {student.name}
                         </h4>
                         <p className="text-slate-400 font-bold uppercase tracking-[0.3em] text-[10px]">
@@ -66,35 +45,35 @@ const TransformationCard = ({ student, index }) => {
                     </div>
                 </div>
 
-                <div className="space-y-6 mb-12">
-                    <div className="p-6 rounded-3xl bg-slate-50 border border-slate-100 group-hover:bg-white group-hover:border-primary/20 transition-colors duration-500">
-                        <p className="text-slate-600 text-base md:text-lg font-medium leading-relaxed italic relative">
-                            <span className="text-primary text-4xl font-serif absolute -top-4 -left-2 opacity-20">"</span>
+                <div className="space-y-3 mb-4">
+                    <div className="p-3 rounded-lg bg-slate-50 border border-slate-100 group-hover:bg-white group-hover:border-primary/20 transition-colors duration-500">
+                        <p className="text-slate-600 text-[10px] md:text-xs font-medium leading-snug italic relative">
+                            <span className="text-primary text-xl font-serif absolute -top-1 -left-1 opacity-20">"</span>
                             {student.quote}
-                            <span className="text-primary text-4xl font-serif absolute -bottom-10 right-0 opacity-20">"</span>
+                            <span className="text-primary text-xl font-serif absolute -bottom-4 right-0 opacity-20">"</span>
                         </p>
                     </div>
                 </div>
 
                 {/* Placement Branding */}
-                <div className="pt-10 border-t border-slate-100 flex flex-col md:flex-row items-center gap-8 justify-between">
-                    <div className="flex items-center gap-6">
-                        <div className="flex -space-x-4">
+                <div className="pt-4 border-t border-slate-100 flex flex-col xl:flex-row items-start xl:items-center gap-3 justify-between">
+                    <div className="flex items-center gap-2">
+                        <div className="flex -space-x-2">
                             {[1, 2, 3].map(i => (
-                                <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
+                                <div key={i} className="w-6 h-6 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
                                     <img src={`https://i.pravatar.cc/100?img=${index + i + 10}`} alt="avatar" />
                                 </div>
                             ))}
                         </div>
                         <div>
-                            <p className="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-1">Hired By Global Giant</p>
-                            <p className="font-black text-xl text-slate-900 tracking-tighter uppercase">{student.placement}</p>
+                            <p className="text-[6px] font-black uppercase tracking-widest text-slate-400 mb-0.5">Hired By Giant</p>
+                            <p className="font-black text-sm md:text-base text-slate-900 tracking-tighter uppercase leading-none">{student.placement}</p>
                         </div>
                     </div>
 
-                    <button className="flex items-center gap-4 px-8 py-4 bg-slate-50 rounded-2xl group/btn hover:bg-primary transition-all duration-500">
-                        <span className="text-xs font-black uppercase tracking-widest text-slate-900 group-hover/btn:text-white">Review Portfolio</span>
-                        <ArrowRight size={16} className="text-slate-400 group-hover/btn:text-white transform group-hover/btn:translate-x-2 transition-transform" />
+                    <button className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 rounded-md group/btn hover:bg-primary transition-all duration-500">
+                        <span className="text-[8px] font-black uppercase tracking-widest text-slate-900 group-hover/btn:text-white">Portfolio</span>
+                        <ArrowRight size={10} className="text-slate-400 group-hover/btn:text-white transform group-hover/btn:translate-x-1 transition-transform" />
                     </button>
                 </div>
             </div>
@@ -134,24 +113,144 @@ const StudentTransformation = () => {
 
     const students = [
         {
-            name: "Isha Malhotra",
+            name: "Ankit Khera",
             discipline: "Fashion Design",
-            program: "B.Des Excellence",
-            beforeImg: "https://images.pexels.com/photos/4458554/pexels-photo-4458554.jpeg?auto=compress&cs=tinysrgb&w=800",
-            afterImg: "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1Z7dfd.img?w=800&h=415&q=60&m=2&f=jpg",
-            quote: "At INSD, I didn't just learn to stitch; I learned the business of couture. My final project landed me directly at the Lakmé Fashion Week studio.",
-            placement: "Manish Malhotra",
-            portfolio: "#"
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Ankit%20Khera.jpeg",
+            quote: "INSD helped me move from basic sketches to a strong portfolio and a full-time job as a Fashion Designer. The shows, juries and software training made interviews feel easy.",
+            placement: "Jigar Mali, Chhatarpur"
         },
         {
-            name: "Kabir Mehra",
+            name: "Sanchita Pal",
+            discipline: "Graphic Design",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Sanchita%20Pal.jfif",
+            quote: "I started taking small freelance graphic design projects in my second year. The feedback on my portfolio and support from faculty gave me the confidence to charge for my skills.",
+            placement: "Freelance Designer"
+        },
+        {
+            name: "Sameer Siddiqui",
+            discipline: "Jewellery Design",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Sameer%20Siddiqui.jpeg",
+            quote: "The hands-on training in jewellery design and the exposure to industry techniques helped me build strong technical skills. The portfolio development sessions played a key role.",
+            placement: "Gold Mark"
+        },
+        {
+            name: "Nitika Gautam",
             discipline: "Interior Design",
-            program: "M.Des Leadership",
-            beforeImg: "https://images.pexels.com/photos/545012/pexels-photo-545012.jpeg?auto=compress&cs=tinysrgb&w=800",
-            afterImg: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800",
-            quote: "The INSD Studio Labs provided the exact ecosystem I needed to transition from amateur floor plans to commercial retail architecture for premium lifestyle brands.",
-            placement: "Hafele India",
-            portfolio: "#"
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Nitika%20Gautam%20.jpeg",
+            quote: "The placement cell connected me with a top interior design firm in Gurgaon. My 3D visualisation skills and studio projects made me job-ready from day one.",
+            placement: "Virgo Clothing Culture Private"
+        },
+        {
+            name: "Sanskriti Jha",
+            discipline: "Graphic Design",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Sanskriti%20Jha%20-%20Testimonial%205%20.jpg",
+            quote: "Learning design software alongside creative concepts made a big difference for me. I was able to confidently apply for jobs because I had practical skills.",
+            placement: "Government of India"
+        },
+        {
+            name: "Preeti Jangra",
+            discipline: "Fashion Design",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Preeti%20Jangra.png",
+            quote: "The exposure through workshops, industry visits, and live projects helped me understand how the design industry really works.",
+            placement: "Shiva Arjun Entertainment House (Mumbai)"
+        },
+        {
+            name: "Kajalpriya",
+            discipline: "Interior Design",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Kajalpriya.jpeg",
+            quote: "The faculty at INSD constantly pushed us to think creatively and present our ideas professionally. The portfolio reviews prepared me well.",
+            placement: "Aman Export International"
+        },
+        {
+            name: "Muskan Singh",
+            discipline: "Fashion Design",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Muskan%20Singh%20.jpeg",
+            quote: "My time at INSD helped me discover my unique design style. The guidance from mentors and showcasing my work boosted my confidence.",
+            placement: "Pluch Designs, Gurugram"
+        },
+        {
+            name: "Anshuman Deb",
+            discipline: "Interior Design",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Anshuman%20deb.jpeg",
+            quote: "The course structure balanced creativity with business understanding. I learned how to design, present, and market my work.",
+            placement: "The Design Atelier"
+        },
+        {
+            name: "Rahul Yadav",
+            discipline: "Interior Design",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Rahul%20Yadav.jpeg",
+            quote: "The studio-based learning and practical assignments helped me build a strong design foundation. I felt prepared for real client requirements.",
+            placement: "Wriver"
+        },
+        {
+            name: "Himani",
+            discipline: "Fashion Design",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Himani.jpeg",
+            quote: "From mood boards to final collections, every project helped me improve my design thinking. The constant mentoring helped me refine my portfolio.",
+            placement: "Virgo Clothing Culture Private"
+        },
+        {
+            name: "Shreya Sinha",
+            discipline: "Graphic Design",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Shreya%20Sinha.jfif",
+            quote: "INSD gave me the platform to experiment with different styles and techniques. The guidance helped me turn my passion into a career.",
+            placement: "TO THE NEW Pvt Ltd"
+        },
+        {
+            name: "Chitra",
+            discipline: "Interior Design",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Chitra%20.jpeg",
+            quote: "The practical approach to learning at INSD helped me understand design beyond theory. Working on live projects gave me real industry exposure.",
+            placement: "Casamink"
+        },
+        {
+            name: "Abhinav Rajput",
+            discipline: "Graphic Design",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Abhinav%20Rajput.jfif",
+            quote: "INSD gave me the right platform to explore my creativity. The continuous feedback from faculty helped me improve my work.",
+            placement: "Magiccircle Communication Pvt Ltd"
+        },
+        {
+            name: "Tamanna Das",
+            discipline: "Fashion Design",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Tamanna%20Das.jpeg",
+            quote: "The fashion shows and jury evaluations pushed me to perform better with every project. It really prepared me for the competitive industry outside.",
+            placement: "Sahil Kocchar, Noida"
+        },
+        {
+            name: "Sarabjeet",
+            discipline: "Interior Design",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Sarabjeet.jpeg",
+            quote: "I learned how to convert ideas into practical designs through hands-on training. The software skills I gained helped me secure my first job quickly.",
+            placement: "Height Buildcon South"
+        },
+        {
+            name: "Nimit Lakhanpal",
+            discipline: "Graphic Design",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Nimit%20Lakhanpal.jfif",
+            quote: "The faculty support at INSD was incredible. They guided me at every step, from concept development to final portfolio presentation.",
+            placement: "GMS Group"
+        },
+        {
+            name: "Nausheena Naaz",
+            discipline: "Fashion Design",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Nausheena%20Naaz.jpeg",
+            quote: "The exposure to different design fields helped me discover my strengths. By the end of the course, I had clarity on my career path.",
+            placement: "Freelance Stylist"
+        },
+        {
+            name: "Tamanna Dua",
+            discipline: "Interior Design",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Tamanna%20Dua%20.jpeg",
+            quote: "INSD helped me build both creative and professional skills. The portfolio preparation and mock interviews made a huge difference during placements.",
+            placement: "Portray Interior & Decors LLC, Abu Dhabi"
+        },
+        {
+            name: "Vandana",
+            discipline: "Interior Design",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Vandana%20.jpeg",
+            quote: "Workshops and industry interactions gave me insights into real-world design practices. It helped me stay ahead and be job-ready.",
+            placement: "Dazor Constructions"
         }
     ];
 
@@ -178,10 +277,11 @@ const StudentTransformation = () => {
                         whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 1.2, ease: "easeOut" }}
-                        className="text-6xl md:text-9xl font-black uppercase tracking-tighter text-slate-900 leading-none mb-12"
+                        className="text-5xl md:text-8xl font-black uppercase tracking-tighter text-slate-900 leading-none mb-12"
                     >
-                        From Student <br />
-                        <span className="text-slate-800 italic font-serif">to</span> Professional
+                        From Classroom <br />
+                        <span className="text-slate-800 italic font-serif">to</span> Career: <br />
+                        <span className="text-primary">Voices of INSDians</span>
                     </motion.h2>
 
                     <motion.div
@@ -192,15 +292,17 @@ const StudentTransformation = () => {
                         className="max-w-3xl"
                     >
                         <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tight text-slate-900 mb-6 leading-tight">
-                            Witness the evolution of <br />
-                            the <span className="text-primary">next-gen</span> creative leaders.
+                            Every story is different. <br />
+                            The common link is simple – <span className="text-primary">skills, portfolios and confidence.</span>
                         </h3>
                     </motion.div>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-12 px-4 -mx-4 md:px-0 md:mx-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                     {students.map((student, index) => (
-                        <TransformationCard key={index} student={student} index={index} />
+                        <div key={index} className="w-[240px] md:w-[260px] snap-center shrink-0">
+                            <TransformationCard student={student} index={index} />
+                        </div>
                     ))}
                 </div>
 
