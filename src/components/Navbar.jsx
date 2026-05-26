@@ -158,6 +158,7 @@ const Navbar = () => {
         '/courses/beauty-and-makeup',
         '/courses/photography',
         '/courses/textile-designing',
+        '/courses/msc-luxury-brand-management',
         '/student'
     ];
     const [isHeaderDark, setIsHeaderDark] = useState(darkPages.includes(location.pathname));
