@@ -199,7 +199,7 @@ const Mentors = () => {
                                             <img
                                                 src={visitingLegends[visitingIndex].img}
                                                 alt={visitingLegends[visitingIndex].name}
-                                                className="w-full h-full object-cover transition-all duration-700"
+                                                className="w-full h-full object-cover object-top transition-all duration-700"
                                             />
 
                                             <div className="absolute top-10 right-10 z-20 flex gap-4">
