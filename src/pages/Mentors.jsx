@@ -20,7 +20,7 @@ const Mentors = () => {
             name: "Sunjey Aggarwal",
             title: "Founder & Chairman, INSD",
             tags: ["Visionary Leader", "Educational Pioneer", "Chairman"],
-            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Copy%20of%20Sunjey%20sir%20.jpeg",
+            img: "https://ik.imagekit.io/fmldynl4j4/co-founder/Sunjey%20Aggarwal.png",
             desc: "The visionary behind INSD's global footprint. Sunjey has dedicated decades to revolutionizing design education in India, bridging the gap between local talent and international standards.",
             impact: "Global Design Vision"
         },
@@ -28,7 +28,7 @@ const Mentors = () => {
             name: "Pranav Raj Aggarwal",
             title: "CEO, INSD",
             tags: ["Global Strategy", "Tech Optimist", "Executive Board"],
-            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Copy%20of%20pranav%20sir%20.jpeg",
+            img: "https://ik.imagekit.io/fmldynl4j4/co-founder/Pranav%20Raaj%20Aggarwall.png",
             desc: "Driving the next wave of innovation at INSD. Pranav focuses on integrating emerging technologies and international alliances into the core curriculum for 21st-century designers.",
             impact: "Future Tech & Strategy"
         }
