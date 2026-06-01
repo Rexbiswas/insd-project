@@ -322,7 +322,7 @@ const PlacementAndTraining = () => {
                 </div>
             </section>
 
-            <HiringPartnersLogoCloud />
+            {/* <HiringPartnersLogoCloud /> */}
 
             {/* --- TRAINING ECOSYSTEM --- */}
             <section className="py-32 px-6 md:px-12 lg:px-24 bg-white">

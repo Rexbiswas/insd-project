@@ -345,14 +345,7 @@ const Student = () => {
                         </motion.div>
 
                         {/* Middle Row */}
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="lg:col-span-3 lg:row-span-1 rounded-2xl overflow-hidden shadow-lg"
-                        >
-                            <img src="https://ik.imagekit.io/fmldynl4j4/drive-download-20260430T134248Z-3-001/ARI02555.JPG?updatedAt=1777556819602" className="w-full h-auto object-cover transition-all duration-700" alt="Campus Life" />
-                        </motion.div>
+
 
 
                         <motion.div
@@ -410,15 +403,7 @@ const Student = () => {
                         >
                             <img src="https://ik.imagekit.io/fmldynl4j4/drive-download-20260430T134248Z-3-001/ARI02484.JPG?updatedAt=1777556817796" className="w-full h-auto object-cover transition-all duration-700" alt="Campus Life" />
                         </motion.div>
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.1 }}
-                            className="break-inside-avoid mb-4 rounded-2xl overflow-hidden shadow-lg"
-                        >
-                            <img src="https://ik.imagekit.io/fmldynl4j4/drive-download-20260430T134248Z-3-001/ARI02494.JPG?updatedAt=1777556817711" className="w-full h-auto object-cover transition-all duration-700" alt="Campus Life" />
-                        </motion.div>
+
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
@@ -484,24 +469,8 @@ const Student = () => {
                         >
                             <img src="https://ik.imagekit.io/fmldynl4j4/drive-download-20260526T141903Z-3-001/Scanned_20260220-1422-03.jpg" className="w-full h-auto object-cover transition-all duration-700" alt="Student Artwork" />
                         </motion.div>
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.1 }}
-                            className="break-inside-avoid mb-4 rounded-2xl overflow-hidden shadow-lg"
-                        >
-                            <img src="https://ik.imagekit.io/fmldynl4j4/drive-download-20260526T141903Z-3-001/Scanned_20260220-1422-04.jpg" className="w-full h-auto object-cover transition-all duration-700" alt="Student Artwork" />
-                        </motion.div>
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                            className="break-inside-avoid mb-4 rounded-2xl overflow-hidden shadow-lg"
-                        >
-                            <img src="https://ik.imagekit.io/fmldynl4j4/drive-download-20260526T141903Z-3-001/Scanned_20260220-1422-05.jpg" className="w-full h-auto object-cover transition-all duration-700" alt="Student Artwork" />
-                        </motion.div>
+
+
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
@@ -530,24 +499,8 @@ const Student = () => {
                         >
                             <img src="https://ik.imagekit.io/fmldynl4j4/drive-download-20260526T141903Z-3-001/Scanned_20260220-1422-08.jpg" className="w-full h-auto object-cover transition-all duration-700" alt="Student Artwork" />
                         </motion.div>
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                            className="break-inside-avoid mb-4 rounded-2xl overflow-hidden shadow-lg"
-                        >
-                            <img src="https://ik.imagekit.io/fmldynl4j4/drive-download-20260526T141903Z-3-001/Scanned_20260220-1422-09.jpg" className="w-full h-auto object-cover transition-all duration-700" alt="Student Artwork" />
-                        </motion.div>
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.3 }}
-                            className="break-inside-avoid mb-4 rounded-2xl overflow-hidden shadow-lg"
-                        >
-                            <img src="https://ik.imagekit.io/fmldynl4j4/drive-download-20260526T141903Z-3-001/Scanned_20260220-1422-10.jpg" className="w-full h-auto object-cover transition-all duration-700" alt="Student Artwork" />
-                        </motion.div>
+
+
 
                     </div>
 
