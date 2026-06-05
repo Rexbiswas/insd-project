@@ -63,6 +63,7 @@ app.use('/api/', limiter);
 
 // Optimized CORS for Production
 const allowedOrigins = [
+    'https://subdomain.insd.edu.in',
     'https://insd.edu.in',
     'http://localhost:5173',
     'http://localhost:5174'
@@ -241,10 +242,6 @@ apiRouter.use('/blogs', blogRoutes);
 // Compatibility Aliases
 apiRouter.use('/blog', blogRoutes);
 
-// Custom routes mounted on sub-router
-apiRouter.use('/users', userRouter);
-apiRouter.get('/', (req, res) => res.send("Welcome to the API"));
-
 // Health Check / Ping
 apiRouter.get('/ping', (req, res) => {
     res.json({
@@ -256,6 +253,9 @@ apiRouter.get('/ping', (req, res) => {
 });
 
 // Main Application Mounting
+app.use('/api/users', userRouter);
+app.get('/api', (req, res) => res.send('Working now!'));
+app.use('/api', express.static('public'));
 app.use('/api', apiRouter);
 app.use('/', apiRouter);
 
