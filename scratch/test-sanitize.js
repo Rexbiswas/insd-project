@@ -1,5 +1,5 @@
-import { sanitize } from '../api/utils/sanitize.js';
-import { schemas } from '../api/utils/validate.js';
+import { sanitize } from '../api/_utils/sanitize.js';
+import { schemas } from '../api/_utils/validate.js';
 
 const longInput = "a".repeat(6000);
 

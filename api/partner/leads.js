@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import nodemailer from 'nodemailer';
-import { sanitize } from '../utils/sanitize.js';
-import { schemas, validateRequest } from '../utils/validate.js';
+import { sanitize } from '../_utils/sanitize.js';
+import { schemas, validateRequest } from '../_utils/validate.js';
 
 // Partner Schema
 const partnerSchema = new mongoose.Schema({
