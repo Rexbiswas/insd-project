@@ -69,19 +69,12 @@ export default async function handler(req, res) {
             return res.status(400).json({ success: false, message: 'Please enter a valid 10-digit mobile number' });
         }
 
-        // Duplicate Check
-        /*
-        const existingLead = await ParisLead.findOne({
-            $or: [{ email }, { phone }]
-        });
-
-        if (existingLead) {
-            return res.status(409).json({ 
-                success: false, 
-                message: "You have already applied for the Paris Project. Our international desk will contact you soon!" 
-            });
+        // 5-Minute Cooldown Check (Throttle to prevent replay spamming)
+        const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000);
+        const duplicate = await ParisLead.findOne({ email, createdAt: { $gte: fiveMinutesAgo } });
+        if (duplicate) {
+            return res.status(409).json({ success: false, message: 'You have already submitted an inquiry recently. Please wait 5 minutes.' });
         }
-        */
 
         // Save Lead
         const lead = new ParisLead({ name, email, phone });

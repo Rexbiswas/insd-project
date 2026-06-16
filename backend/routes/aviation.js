@@ -31,6 +31,15 @@ router.post('/', validateAviation, async (req, res) => {
             return res.status(400).json({ success: false, message: 'Please enter a valid 10-digit mobile number' });
         }
 
+        // 5-Minute Cooldown Check (Throttle to prevent replay spamming)
+        if (mongoose.connection.readyState === 1) {
+            const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000);
+            const duplicate = await AviationLead.findOne({ email, createdAt: { $gte: fiveMinutesAgo } });
+            if (duplicate) {
+                return res.status(409).json({ success: false, message: 'You have already submitted an inquiry recently. Please wait 5 minutes.' });
+            }
+        }
+
         const newLead = new AviationLead({
             name,
             email,

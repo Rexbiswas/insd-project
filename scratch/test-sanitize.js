@@ -251,9 +251,258 @@ for (const check of clipboardChecks) {
     if (!check.pass) allPassed = false;
 }
 
+// === COOLDOWN & THROTTLE TESTING ===
+console.log("\n=== TESTING REQUEST REPLAY & RATE COOLDOWN CHECKS ===");
+
+const cooldownChecks = [];
+
+// 1. Test Forgot Password Throttle (60-second limit)
+import authRouter, { resetTokens } from '../backend/routes/auth.js';
+import User from '../backend/models/User.js';
+import nodemailer from 'nodemailer';
+import mongoose from 'mongoose';
+
+// Mock nodemailer & User model
+const originalCreateTransport = nodemailer.createTransport;
+nodemailer.createTransport = () => ({
+    sendMail: async () => ({ messageId: 'dummy-id' })
+});
+process.env.GOOGLE_APP_PASSWORD = 'dummy-password';
+
+const originalUserFindOne = User.findOne;
+User.findOne = async () => ({ email: 'test-throttle@example.com' });
+
+const forgotPasswordHandler = authRouter.stack.find(
+    layer => layer.route && layer.route.path === '/forgot-password' && layer.route.methods.post
+).route.stack[0].handle;
+
+const runForgotPassword = async (email) => {
+    let responseStatus = 200;
+    let responseData = {};
+    const req = { body: { email } };
+    const res = {
+        status: (code) => {
+            responseStatus = code;
+            return {
+                json: (data) => { responseData = data; }
+            };
+        },
+        json: (data) => { responseData = data; }
+    };
+    await forgotPasswordHandler(req, res);
+    return { status: responseStatus, data: responseData };
+};
+
+resetTokens.clear();
+
+const res1 = await runForgotPassword('test-throttle@example.com');
+const hasToken1 = resetTokens.has('test-throttle@example.com');
+const res2 = await runForgotPassword('test-throttle@example.com');
+
+cooldownChecks.push({
+    name: "First forgot-password request succeeds and sets token",
+    pass: res1.status === 200 && hasToken1
+});
+
+cooldownChecks.push({
+    name: "Subsequent forgot-password request within 60s is throttled with 429",
+    pass: res2.status === 429 && res2.data.message.includes("Please wait 60 seconds")
+});
+
+User.findOne = originalUserFindOne;
+
+// 2. Test lead submission 5-minute cooldown checks for Express routers
+import admissionRouter from '../backend/routes/admission.js';
+import AdmissionLead from '../backend/models/AdmissionLead.js';
+
+import aviationRouter from '../backend/routes/aviation.js';
+import AviationLead from '../backend/models/AviationLead.js';
+
+import contactRouter from '../backend/routes/contact.js';
+import ContactLead from '../backend/models/ContactLead.js';
+
+import parisRouter from '../backend/routes/paris.js';
+import ParisLead from '../backend/models/ParisLead.js';
+
+import partnerRouter from '../backend/routes/partner.js';
+import PartnerLead from '../backend/models/PartnerLead.js';
+
+import stepleadsRouter from '../backend/routes/stepleads.js';
+import StepLead from '../backend/models/StepLead.js';
+
+// 3. Test lead submission 5-minute cooldown checks for Vercel API Handlers
+import admissionHandler from '../api/admission.js';
+import aviationHandler from '../api/aviation.js';
+import contactHandler from '../api/contact.js';
+import parisLeadHandler from '../api/paris/lead.js';
+import partnerHandler from '../api/partner.js';
+import partnerLeadsHandler from '../api/partner/leads.js';
+import stepLeadsHandler from '../api/step-leads.js';
+
+const originalReadyState = mongoose.connection.readyState;
+Object.defineProperty(mongoose.connection, 'readyState', {
+    writable: true,
+    value: 1
+});
+
+const testFormCooldown = async (router, model, validPayload, formName) => {
+    const route = router.stack.find(
+        layer => layer.route && (layer.route.path === '/' || layer.route.path === '/leads' || layer.route.path === '/lead') && layer.route.methods.post
+    ).route;
+
+    const originalFindOne = model.findOne;
+    const originalSave = model.prototype.save;
+    model.prototype.save = async function() { return this; };
+
+    let queryCallCount = 0;
+    model.findOne = async (query) => {
+        queryCallCount++;
+        if (query.email && query.createdAt && query.createdAt.$gte instanceof Date) {
+            if (queryCallCount === 1) return null;
+            return { email: query.email, createdAt: new Date() };
+        }
+        return null;
+    };
+
+    let responseStatus = 201;
+    let responseData = {};
+    const req = { body: { ...validPayload } };
+    const res = {
+        status: (code) => {
+            responseStatus = code;
+            return {
+                json: (data) => { responseData = data; },
+                send: (data) => { responseData = { message: data }; }
+            };
+        },
+        json: (data) => { responseData = data; },
+        send: (data) => { responseData = { message: data }; }
+    };
+
+    let idx = 0;
+    const next = async (err) => {
+        if (err) throw err;
+        const layer = route.stack[idx++];
+        if (layer) {
+            await layer.handle(req, res, next);
+        }
+    };
+
+    await next();
+    const firstStatus = responseStatus;
+
+    idx = 0;
+    responseStatus = 201;
+    await next();
+    const secondStatus = responseStatus;
+
+    model.findOne = originalFindOne;
+    model.prototype.save = originalSave;
+
+    cooldownChecks.push({
+        name: `Express ${formName} Form - First submission succeeds (200 or 201)`,
+        pass: firstStatus === 200 || firstStatus === 201
+    });
+
+    cooldownChecks.push({
+        name: `Express ${formName} Form - Replay within 5m rejected with 409`,
+        pass: secondStatus === 409
+    });
+};
+
+const testVercelCooldown = async (handler, modelName, validPayload, formName) => {
+    const model = mongoose.models[modelName];
+    if (!model) {
+        throw new Error(`Model ${modelName} not found in mongoose.models`);
+    }
+
+    const originalFindOne = model.findOne;
+    const originalSave = model.prototype.save;
+    model.prototype.save = async function() { return this; };
+
+    let queryCallCount = 0;
+    model.findOne = async (query) => {
+        queryCallCount++;
+        if (query.email && query.createdAt && query.createdAt.$gte instanceof Date) {
+            if (queryCallCount === 1) return null;
+            return { email: query.email, createdAt: new Date() };
+        }
+        return null;
+    };
+
+    let responseStatus = 200;
+    let responseData = {};
+    const req = {
+        method: 'POST',
+        body: { ...validPayload },
+        headers: {}
+    };
+    const res = {
+        status: (code) => {
+            responseStatus = code;
+            return {
+                json: (data) => { responseData = data; },
+                end: () => {}
+            };
+        },
+        json: (data) => { responseData = data; },
+        setHeader: () => {}
+    };
+
+    await handler(req, res);
+    const firstStatus = responseStatus;
+
+    responseStatus = 200;
+    await handler(req, res);
+    const secondStatus = responseStatus;
+
+    model.findOne = originalFindOne;
+    model.prototype.save = originalSave;
+
+    cooldownChecks.push({
+        name: `Vercel ${formName} Handler - First submission succeeds (200)`,
+        pass: firstStatus === 200
+    });
+
+    cooldownChecks.push({
+        name: `Vercel ${formName} Handler - Replay within 5m rejected with 409`,
+        pass: secondStatus === 409
+    });
+};
+
+await testFormCooldown(admissionRouter, AdmissionLead, { name: "Jane Smith", email: "jane.smith@example.com", phone: "9876543210", city: "New Delhi", course: "Interior Designing" }, "Admission");
+await testFormCooldown(aviationRouter, AviationLead, { name: "Jane Smith", email: "jane.smith@example.com", phone: "9876543210", city: "New Delhi", course: "Aviation" }, "Aviation");
+await testFormCooldown(contactRouter, ContactLead, { name: "Jane Smith", email: "jane.smith@example.com", phone: "9876543210", subject: "Help", message: "Hello there" }, "Contact");
+await testFormCooldown(parisRouter, ParisLead, { name: "Jean Luc", email: "jean@paris.fr", phone: "9876543210" }, "Paris");
+await testFormCooldown(partnerRouter, PartnerLead, { name: "ABC Group", email: "info@abc.com", phone: "9876543210", city: "Mumbai" }, "Partner");
+await testFormCooldown(stepleadsRouter, StepLead, { name: "Jane Smith", email: "jane.smith@example.com", mobile: "9876543210", city: "New Delhi", readyToStart: "Immediately", inquiryType: "Career Guide" }, "StepLeads");
+
+// Run Vercel Handlers Tests
+await testVercelCooldown(admissionHandler, "Admission", { name: "Jane Smith", email: "jane.smith@example.com", phone: "9876543210", city: "New Delhi", course: "Interior Designing" }, "Admission");
+await testVercelCooldown(aviationHandler, "AviationLead", { name: "Jane Smith", email: "jane.smith@example.com", phone: "9876543210", city: "New Delhi", course: "Aviation" }, "Aviation");
+await testVercelCooldown(contactHandler, "Contact", { name: "Jane Smith", email: "jane.smith@example.com", phone: "9876543210", subject: "Help", message: "Hello there" }, "Contact");
+await testVercelCooldown(parisLeadHandler, "ParisLead", { name: "Jean Luc", email: "jean@paris.fr", phone: "9876543210" }, "Paris");
+await testVercelCooldown(partnerHandler, "Partner", { name: "ABC Group", email: "info@abc.com", phone: "9876543210", city: "Mumbai" }, "Partner (franchise)");
+await testVercelCooldown(partnerLeadsHandler, "Partner", { name: "ABC Group", email: "info@abc.com", phone: "9876543210", city: "Mumbai" }, "Partner (leads)");
+await testVercelCooldown(stepLeadsHandler, "StepLead", { name: "Jane Smith", email: "jane.smith@example.com", mobile: "9876543210", city: "New Delhi", readyToStart: "Immediately", inquiryType: "Career Guide" }, "StepLeads");
+
+nodemailer.createTransport = originalCreateTransport;
+
+Object.defineProperty(mongoose.connection, 'readyState', {
+    writable: true,
+    value: originalReadyState
+});
+
+console.log("\n=== COOLDOWN & THROTTLE TEST RESULTS ===");
+for (const check of cooldownChecks) {
+    console.log(`${check.pass ? '✅' : '❌'} ${check.name}`);
+    if (!check.pass) allPassed = false;
+}
+
 if (allPassed) {
-    console.log("\n🎉 ALL SECURITY SANITIZATION, VALIDATION & CLIPBOARD CHECKS PASSED!");
+    console.log("\n🎉 ALL SECURITY SANITIZATION, VALIDATION, CLIPBOARD & COOLDOWN CHECKS PASSED!");
 } else {
     console.log("\n🛑 SOME SECURITY CHECKS FAILED!");
     process.exit(1);
 }
+

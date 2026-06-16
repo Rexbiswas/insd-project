@@ -1,14 +1,16 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import StepLead from '../models/StepLead.js';
 import { sendSMS, sendWelcomeEmail, sendAdminLeadEmail } from '../utils/notifications.js';
 import { backupOfflineData } from '../utils/offlineLogger.js';
+import { validateStepLead } from '../middleware/validate.js';
 
 const router = express.Router();
 
 // @route   POST /api/step-leads
 // @desc    Submit a new multi-step lead
 // @access  Public
-router.post('/', async (req, res) => {
+router.post('/', validateStepLead, async (req, res) => {
     console.log(`\n📩 [StepLead] New Request: ${req.body.name}`);
     try {
         const { name, mobile, phone, email, city, readyToStart, inquiryType, marketingConsent } = req.body;
@@ -28,6 +30,15 @@ router.post('/', async (req, res) => {
             return res.status(400).json({ success: false, message: 'Please enter a valid 10-digit mobile number' });
         }
 
+        // 5-Minute Cooldown Check (Throttle to prevent replay spamming)
+        if (mongoose.connection.readyState === 1) {
+            const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000);
+            const duplicate = await StepLead.findOne({ email, createdAt: { $gte: fiveMinutesAgo } });
+            if (duplicate) {
+                return res.status(409).json({ success: false, message: 'You have already submitted an inquiry recently. Please wait 5 minutes.' });
+            }
+        }
+
         const newLead = new StepLead({
             name,
             mobile: mobileNumber,
@@ -42,7 +53,6 @@ router.post('/', async (req, res) => {
         let savedLead = null;
         let isRealDBSave = false;
         try {
-            const mongoose = (await import('mongoose')).default;
             if (mongoose.connection.readyState === 1) {
                 savedLead = await Promise.race([
                     newLead.save(),

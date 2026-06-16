@@ -46,22 +46,12 @@ export default async function handler(req, res) {
         }
         req.body.mobile = cleanedMobile; // Normalize to cleaned version
         
-        // Duplicate Check
-        /*
-        const existingLead = await StepLead.findOne({
-            $or: [
-                { mobile: req.body.mobile },
-                { email: req.body.email }
-            ]
-        });
-
-        if (existingLead) {
-            return res.status(409).json({ 
-                success: false, 
-                message: "This mobile or email is already registered. Our experts will call you soon!" 
-            });
+        // 5-Minute Cooldown Check (Throttle to prevent replay spamming)
+        const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000);
+        const duplicate = await StepLead.findOne({ email: req.body.email, createdAt: { $gte: fiveMinutesAgo } });
+        if (duplicate) {
+            return res.status(409).json({ success: false, message: 'You have already submitted an inquiry recently. Please wait 5 minutes.' });
         }
-        */
 
         const lead = new StepLead(req.body);
         await lead.save();

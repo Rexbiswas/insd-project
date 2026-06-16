@@ -77,23 +77,12 @@ export default async function handler(req, res) {
             phone: phone // Store the cleaned 10-digit number
         };
 
-        // --- DUPLICATE CHECK LOGIC ---
-        /*
-        const existingLead = await Admission.findOne({
-            $or: [
-                { phone: leadData.phone },
-                { email: leadData.email }
-            ]
-        });
-
-        if (existingLead) {
-            console.log(`⚠️ Duplicate Lead Attempt: ${leadData.name} (${leadData.phone})`);
-            return res.status(409).json({ 
-                success: false, 
-                message: "You have already submitted an inquiry with this email or phone number. Our team will contact you soon!" 
-            });
+        // 5-Minute Cooldown Check (Throttle to prevent replay spamming)
+        const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000);
+        const duplicate = await Admission.findOne({ email: leadData.email, createdAt: { $gte: fiveMinutesAgo } });
+        if (duplicate) {
+            return res.status(409).json({ success: false, message: 'You have already submitted an inquiry recently. Please wait 5 minutes.' });
         }
-        */
 
         const lead = new Admission(leadData);
         await lead.save();

@@ -193,18 +193,29 @@ router.post('/send-test-sms', async (req, res) => {
 });
 
 // Mock In-Memory Store for Password Reset Tokens (In production, use Redis or DB fields)
-const resetTokens = new Map();
+export const resetTokens = new Map();
 
 // Generate Password Reset Token & Email it
 router.post('/forgot-password', async (req, res) => {
     try {
         const { email } = req.body;
+
+        // 60-Second Cooldown Check (Throttle to prevent replay email bombing)
+        const record = resetTokens.get(email);
+        if (record && (Date.now() - record.createdAt < 60 * 1000)) {
+            return res.status(429).json({ message: "Please wait 60 seconds before requesting another reset code." });
+        }
+
         const user = await User.findOne({ email });
         if (!user) return res.status(404).json({ message: "No account found with this email." });
 
         // Generate 6 digit code
         const resetToken = Math.floor(100000 + Math.random() * 900000).toString();
-        resetTokens.set(email, { token: resetToken, expires: Date.now() + 15 * 60 * 1000 }); // 15 mins
+        resetTokens.set(email, { 
+            token: resetToken, 
+            expires: Date.now() + 15 * 60 * 1000, 
+            createdAt: Date.now() 
+        }); // 15 mins
 
         const transporter = await getGoogleTransporter();
 

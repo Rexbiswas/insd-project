@@ -63,22 +63,12 @@ export default async function handler(req, res) {
         if (req.body.phone) req.body.phone = cleanedPhone;
         if (req.body.mobile) req.body.mobile = cleanedPhone;
 
-        // Duplicate Check
-        /*
-        const existingContact = await Contact.findOne({
-            $or: [
-                { phone: req.body.phone },
-                { email: req.body.email }
-            ]
-        });
-
-        if (existingContact) {
-            return res.status(409).json({ 
-                success: false, 
-                message: "A message has already been received from this email/phone. We will get back to you shortly!" 
-            });
+        // 5-Minute Cooldown Check (Throttle to prevent replay spamming)
+        const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000);
+        const duplicate = await Contact.findOne({ email: req.body.email, createdAt: { $gte: fiveMinutesAgo } });
+        if (duplicate) {
+            return res.status(409).json({ success: false, message: 'You have already submitted an inquiry recently. Please wait 5 minutes.' });
         }
-        */
 
         const lead = new Contact(req.body);
         await lead.save();
