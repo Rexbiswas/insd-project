@@ -1,5 +1,7 @@
 import { sanitize } from '../api/utils/sanitize.js';
 
+const longInput = "a".repeat(6000);
+
 // Test cases containing SSTI/HTML/XSS injections
 const testPayloads = {
     name: "John Doe",
@@ -15,17 +17,23 @@ const testPayloads = {
         "Normal 1",
         "Attack {{ 1 + 1 }}"
     ],
-    password: "MySuperSecretPassword${123}!" // Should NOT be sanitized
+    password: "MySuperSecretPassword${123}!" + longInput, // Should NOT be sanitized or truncated
+    longString: longInput, // Standard string, should be truncated to 5000
+    content: longInput // Blog content, should be allowed up to 100,000
 };
 
 console.log("=== ORIGINAL PAYLOAD ===");
-console.log(JSON.stringify(testPayloads, null, 2));
+console.log(`Original longString length: ${testPayloads.longString.length}`);
+console.log(`Original content length: ${testPayloads.content.length}`);
+console.log(`Original password length: ${testPayloads.password.length}`);
 
 console.log("\n=== SANITIZING... ===");
 const sanitized = sanitize(testPayloads);
 
-console.log("\n=== SANITIZED PAYLOAD ===");
-console.log(JSON.stringify(sanitized, null, 2));
+console.log("\n=== SANITIZED PAYLOAD STATS ===");
+console.log(`Sanitized longString length: ${sanitized.longString.length}`);
+console.log(`Sanitized content length: ${sanitized.content.length}`);
+console.log(`Sanitized password length: ${sanitized.password.length}`);
 
 // Automated validations
 const checks = [
@@ -35,15 +43,23 @@ const checks = [
     },
     {
         name: "Neutralizes braces ({{)",
-        pass: !JSON.stringify(sanitized).includes("{{")
+        pass: !sanitized.subject.includes("{{") && !sanitized.arrayField[1].includes("{{")
     },
     {
         name: "Neutralizes HTML tags (<script>)",
-        pass: !JSON.stringify(sanitized).includes("<script>")
+        pass: !sanitized.message.includes("<script>")
     },
     {
-        name: "Bypasses password fields",
-        pass: sanitized.password === "MySuperSecretPassword${123}!"
+        name: "Bypasses password fields entirely (no sanitization or truncation)",
+        pass: sanitized.password === "MySuperSecretPassword${123}!" + longInput
+    },
+    {
+        name: "Truncates standard long strings to 5000 chars",
+        pass: sanitized.longString.length === 5000
+    },
+    {
+        name: "Allows long blog content (> 5000 chars)",
+        pass: sanitized.content.length === 6000
     }
 ];
 

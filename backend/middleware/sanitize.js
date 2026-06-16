@@ -10,7 +10,11 @@ function sanitizeValue(val, key) {
     }
 
     if (typeof val === 'string') {
-        return val
+        // Enforce length limit to prevent ReDoS CPU exhaustion (allow longer limits for blog content)
+        const maxLength = key === 'content' ? 100000 : 5000;
+        const truncated = val.length > maxLength ? val.slice(0, maxLength) : val;
+
+        return truncated
             // 1. Escape HTML special characters
             .replace(/&/g, '&amp;')
             .replace(/</g, '&lt;')
