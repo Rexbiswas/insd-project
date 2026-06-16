@@ -181,8 +181,78 @@ for (const check of validationChecks) {
     if (!check.pass) allPassed = false;
 }
 
+// === ADVANCED CLIPBOARD TESTING ===
+console.log("\n=== TESTING CLIPBOARD SECURITY UTILITY ===");
+
+// Mock browser globals for Node.js context
+global.window = { location: { origin: "https://insd.edu.in" } };
+let lastWrittenClipboardText = "";
+global.navigator = {
+    clipboard: {
+        writeText: async (text) => {
+            lastWrittenClipboardText = text;
+        }
+    }
+};
+
+// Dynamically import ES modules clipboard helper
+const { safeCopyToClipboard } = await import('../src/utils/clipboard.js');
+
+const clipboardChecks = [];
+
+// Check 1: Allows valid same-origin link
+try {
+    const text = "https://insd.edu.in/blog?id=65ed3c2e1f4a5b6c7d8e9f01";
+    await safeCopyToClipboard(text);
+    clipboardChecks.push({
+        name: "Allows copying same-origin URL",
+        pass: lastWrittenClipboardText === text
+    });
+} catch (err) {
+    clipboardChecks.push({ name: "Allows copying same-origin URL", pass: false });
+}
+
+// Check 2: Blocks external phishing link
+try {
+    await safeCopyToClipboard("https://malicious-phishing-site.com/blog?id=123");
+    clipboardChecks.push({ name: "Blocks external phishing origin", pass: false });
+} catch (err) {
+    clipboardChecks.push({
+        name: "Blocks external phishing origin",
+        pass: err.message.includes("domain mismatch")
+    });
+}
+
+// Check 3: Pastejacking defense (strips newlines)
+try {
+    await safeCopyToClipboard("https://insd.edu.in/blog\n\nmalicious_cmd_here");
+    clipboardChecks.push({
+        name: "Pastejacking defense (strips newlines and carriage returns)",
+        pass: lastWrittenClipboardText === "https://insd.edu.in/blogmalicious_cmd_here"
+    });
+} catch (err) {
+    clipboardChecks.push({ name: "Pastejacking defense (strips newlines and carriage returns)", pass: false });
+}
+
+// Check 4: Rejects excessively long clipboard buffers
+try {
+    await safeCopyToClipboard("a".repeat(2500));
+    clipboardChecks.push({ name: "Rejects text exceeding clipboard length limits", pass: false });
+} catch (err) {
+    clipboardChecks.push({
+        name: "Rejects text exceeding clipboard length limits",
+        pass: err.message.includes("exceeds safe length")
+    });
+}
+
+console.log("\n=== CLIPBOARD SECURITY TEST RESULTS ===");
+for (const check of clipboardChecks) {
+    console.log(`${check.pass ? '✅' : '❌'} ${check.name}`);
+    if (!check.pass) allPassed = false;
+}
+
 if (allPassed) {
-    console.log("\n🎉 ALL SECURITY SANITIZATION & VALIDATION CHECKS PASSED!");
+    console.log("\n🎉 ALL SECURITY SANITIZATION, VALIDATION & CLIPBOARD CHECKS PASSED!");
 } else {
     console.log("\n🛑 SOME SECURITY CHECKS FAILED!");
     process.exit(1);

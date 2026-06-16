@@ -10,6 +10,7 @@ import {
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
+import { safeCopyToClipboard } from '../utils/clipboard.js';
 
 const Blog = () => {
     const [activeCategory, setActiveCategory] = useState('All');
@@ -387,7 +388,7 @@ const Blog = () => {
                 });
             } else {
                 // Fallback to Clipboard
-                await navigator.clipboard.writeText(shareUrl);
+                await safeCopyToClipboard(shareUrl);
                 setCopySuccess(true);
                 setTimeout(() => setCopySuccess(false), 3000);
             }
@@ -395,7 +396,7 @@ const Blog = () => {
             console.error("Share failed:", err);
             // Forced fallback if navigator.share was cancelled or failed
             try {
-                await navigator.clipboard.writeText(shareUrl);
+                await safeCopyToClipboard(shareUrl);
                 setCopySuccess(true);
                 setTimeout(() => setCopySuccess(false), 3000);
             } catch (clipErr) {
