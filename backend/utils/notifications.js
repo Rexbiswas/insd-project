@@ -210,7 +210,12 @@ export const pushToNPF = async (leadData) => {
         if (leadData.city) payload.city = leadData.city;
         if (leadData.course) payload.course = leadData.course;
         if (leadData.program) payload.program = leadData.program;
-        if (leadData.centre || leadData.center) payload.centre = leadData.centre || leadData.center;
+        
+        const campusVal = leadData.campus || leadData.centre || leadData.center || leadData.city;
+        if (campusVal) {
+            payload.campus = campusVal;
+            payload.centre = campusVal;
+        }
         
         const messageVal = leadData.message || leadData.subject;
         if (messageVal) payload.message = messageVal;
