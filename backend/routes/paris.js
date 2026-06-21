@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import ParisLead from '../models/ParisLead.js';
-import { sendWelcomeEmail, sendSMS, sendAdminLeadEmail } from '../utils/notifications.js';
+import { sendWelcomeEmail, sendSMS, sendAdminLeadEmail, pushToNPF } from '../utils/notifications.js';
 import { backupOfflineData } from '../utils/offlineLogger.js';
 import { validateParis } from '../middleware/validate.js';
 
@@ -57,7 +57,8 @@ router.post('/lead', validateParis, async (req, res) => {
         Promise.allSettled([
             sendWelcomeEmail(email, name, 'The Paris Project'),
             sendSMS(phone, name),
-            sendAdminLeadEmail('insd.admissionleads@gmail.com', req.body, 'Paris Project Inquiry')
+            sendAdminLeadEmail('insd.admissionleads@gmail.com', req.body, 'Paris Project Inquiry'),
+            pushToNPF(req.body)
         ]).catch(err => console.error('[Paris Notifications] Error:', err.message));
 
         res.status(201).json({

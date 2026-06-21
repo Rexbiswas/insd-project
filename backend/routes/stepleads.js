@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import StepLead from '../models/StepLead.js';
-import { sendSMS, sendWelcomeEmail, sendAdminLeadEmail } from '../utils/notifications.js';
+import { sendSMS, sendWelcomeEmail, sendAdminLeadEmail, pushToNPF } from '../utils/notifications.js';
 import { backupOfflineData } from '../utils/offlineLogger.js';
 import { validateStepLead } from '../middleware/validate.js';
 
@@ -78,7 +78,11 @@ router.post('/', validateStepLead, async (req, res) => {
             sendAdminLeadEmail("insd.admissionleads@gmail.com", {
                 ...req.body,
                 phone: mobileNumber
-            }, "Step Lead Inquiry")
+            }, "Step Lead Inquiry"),
+            pushToNPF({
+                ...req.body,
+                phone: mobileNumber
+            })
         ]).catch(err => console.error('[StepLead Notifications] Error:', err.message));
 
         res.status(201).json({

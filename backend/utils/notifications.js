@@ -173,3 +173,70 @@ export const sendWhatsApp = async (phone, name) => {
         return false;
     }
 };
+
+/**
+ * Pushes lead details to NoPaperForms CRM
+ */
+export const pushToNPF = async (leadData) => {
+    const ACCESS_KEY = process.env.ACCESS_KEY;
+    const SECRET_KEY = process.env.SECRET_KEY;
+
+    if (!ACCESS_KEY || !SECRET_KEY) {
+        console.warn('[NPF CRM] Credentials missing in .env. Skipping lead push.');
+        return false;
+    }
+
+    const email = leadData.email || '';
+    const phone = leadData.phone || leadData.mobile || '';
+    const cleanedPhone = phone.replace(/[^0-9]/g, '').slice(-10);
+
+    if (!email && !cleanedPhone) {
+        console.error('[NPF CRM Error] Both email and phone are missing. Cannot push lead.');
+        return false;
+    }
+
+    try {
+        const payload = {
+            name: leadData.name || leadData.fullName || 'Lead',
+            email: email,
+            mobile: cleanedPhone,
+            search_criteria: email ? 'email' : 'mobile',
+            email_verification_status: true,
+            lead_stage: 'hot'
+        };
+
+        // Add custom fields only if they have truthy values (not empty strings)
+        if (leadData.state) payload.state = leadData.state;
+        if (leadData.city) payload.city = leadData.city;
+        if (leadData.course) payload.course = leadData.course;
+        if (leadData.program) payload.program = leadData.program;
+        if (leadData.centre || leadData.center) payload.centre = leadData.centre || leadData.center;
+        
+        const messageVal = leadData.message || leadData.subject;
+        if (messageVal) payload.message = messageVal;
+
+        const response = await axios({
+            method: 'POST',
+            url: 'https://api.nopaperforms.io/lead/v1/createOrUpdate',
+            headers: {
+                'access-key': ACCESS_KEY,
+                'secret-key': SECRET_KEY,
+                'Content-Type': 'application/json'
+            },
+            data: payload,
+            timeout: 10000 // 10s timeout
+        });
+
+        if (response.data && response.data.status === true) {
+            console.log(`[NPF CRM] Lead pushed successfully for ${email || cleanedPhone}. Lead ID: ${response.data.data?.lead_id}`);
+            return true;
+        } else {
+            console.error(`[NPF CRM Error] API Rejected: ${JSON.stringify(response.data)}`);
+            return false;
+        }
+    } catch (err) {
+        const errorMsg = err.response?.data ? JSON.stringify(err.response.data) : err.message;
+        console.error(`[NPF CRM Error] Failed to push lead:`, errorMsg);
+        return false;
+    }
+};

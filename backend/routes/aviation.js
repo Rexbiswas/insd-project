@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import AviationLead from '../models/AviationLead.js';
 import { validateAviation } from '../middleware/validate.js';
 
-import { sendSMS, sendWelcomeEmail, sendAdminLeadEmail } from '../utils/notifications.js';
+import { sendSMS, sendWelcomeEmail, sendAdminLeadEmail, pushToNPF } from '../utils/notifications.js';
 import { backupOfflineData } from '../utils/offlineLogger.js';
 
 const router = express.Router();
@@ -82,7 +82,8 @@ router.post('/', validateAviation, async (req, res) => {
                 await Promise.allSettled([
                     sendWelcomeEmail(email, name, course || program || 'Aviation & Cabin Crew Course'),
                     sendSMS(phone || mobile || '', name),
-                    sendAdminLeadEmail('insd.admissionleads@gmail.com', req.body, 'Aviation Inquiry')
+                    sendAdminLeadEmail('insd.admissionleads@gmail.com', req.body, 'Aviation Inquiry'),
+                    pushToNPF(req.body)
                 ]);
                 console.log(`[Aviation Notifications] Processed for ${name}`);
             } catch (err) {

@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "timestamp": "2026-06-21T11:39:16.944Z",
+    "data": {
+      "name": "Test Student NPF",
+      "email": "test.npf.student.8812@gmail.com",
+      "phone": "+919876588120",
+      "state": "Andhra Pradesh",
+      "city": "Vijayawada",
+      "program": "UG Degree",
+      "course": "Fashion Design",
+      "marketingConsent": true
+    }
+  }
+]

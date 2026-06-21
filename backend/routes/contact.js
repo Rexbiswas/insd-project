@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import ContactLead from '../models/ContactLead.js';
-import { sendSMS, sendWelcomeEmail, sendAdminLeadEmail } from '../utils/notifications.js';
+import { sendSMS, sendWelcomeEmail, sendAdminLeadEmail, pushToNPF } from '../utils/notifications.js';
 import { validateContact } from '../middleware/validate.js';
 
 const router = express.Router();
@@ -43,7 +43,8 @@ router.post('/', validateContact, async (req, res) => {
         Promise.allSettled([
             sendWelcomeEmail(email, name, subject || 'General Inquiry'),
             sendSMS(phone || '', name),
-            sendAdminLeadEmail('insd.admissionleads@gmail.com', req.body, 'Contact Form Inquiry')
+            sendAdminLeadEmail('insd.admissionleads@gmail.com', req.body, 'Contact Form Inquiry'),
+            pushToNPF(req.body)
         ]).catch(err => console.error('[Contact Notification Error]', err.message));
 
         res.status(201).json({ 

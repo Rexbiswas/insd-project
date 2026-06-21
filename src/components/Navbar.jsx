@@ -275,8 +275,7 @@ const Navbar = () => {
                 { title: 'Photography', path: '/courses/photography', icon: 'camera', desc: 'Visual Storytelling' },
                 { title: 'Textile Design', path: '/courses/textile-designing', icon: 'textile', desc: 'Material Science Arts' },
                 { title: 'Short Term Courses', path: '/courses/short-term-courses', icon: 'zap', desc: 'Intensive Skill Modules' },
-                { title: 'INSD Luxe', path: '/courses/msc-luxury-brand-management', icon: 'sparkles', desc: 'Premium Luxury Arts', badge: 'New' },
-                { title: 'Aviation', path: '/courses/aviation', icon: 'aviation', desc: 'Aviation & Cabin Crew Management', badge: 'New' }
+                { title: 'INSD Luxe', path: '/courses/msc-luxury-brand-management', icon: 'sparkles', desc: 'Premium Luxury Arts', badge: 'New' }
             ]
         },
         { title: 'Admissions', path: '/course-apply-now', icon: CreditCard, section: 'OVERVIEW' },
@@ -506,8 +505,7 @@ const Navbar = () => {
                                                     { title: 'Beauty & Makeup', path: '/courses/beauty-and-makeup', icon: 'beauty', desc: 'Professional Esthetics' },
                                                     { title: 'Photography', path: '/courses/photography', icon: 'photography', desc: 'Visual Storytelling Art' },
                                                     { title: 'Textile Design', path: '/courses/textile-designing', icon: 'textile', desc: 'Material Science Arts' },
-                                                    { title: 'INSD Luxe', path: '/insd-luxe', icon: 'textile', desc: 'Premium Luxury Arts' },
-                                                    { title: 'Aviation & Cabin Crew', path: '/courses/aviation', icon: 'aviation', desc: 'Aviation & Cabin Crew Management' },
+                                                    { title: 'INSD Luxe', path: '/insd-luxe', icon: 'textile', desc: 'Premium Luxury Arts' }
                                                 ].map((item, i) => (
                                                     <Link
                                                         key={i}
