@@ -27,7 +27,7 @@ async function testCreateOrUpdateLead() {
         search_criteria: "mobile",
         name: "rohit test",
         email: "utkal.k@meritto.com",
-        source: "Wesbite",
+        source: "Organic",
         medium: "Google Ads",
         campaign: "B2C",
         cf_course_of_interest: "Photography",
