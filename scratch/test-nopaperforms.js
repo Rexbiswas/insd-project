@@ -36,7 +36,8 @@ async function testCreateOrUpdateLead() {
         state: "Delhi",
         city: "South Delhi",
         cf_investment: "25 to 30 lakhs",
-        cf_preference: "Immediately"
+        cf_preference: "Immediately",
+        cf_qualification: "12th Pass",
     };
 
     console.log('\nSending POST request to:', url);
