@@ -129,10 +129,6 @@
   ],
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
-    },
-    {
       "source": "/favicon.ico",
       "destination": "https://ik.imagekit.io/fmldynl4j4/INSD-Logo_Half-logo-removebg-preview.png?v=20260524"
     },
@@ -141,7 +137,7 @@
       "destination": "https://ik.imagekit.io/fmldynl4j4/INSD-Logo_Half-logo-removebg-preview.png?v=20260524"
     },
     {
-      "source": "/(.*)",
+      "source": "/((?!api/|api$).*)",
       "destination": "/index.html"
     }
   ],
