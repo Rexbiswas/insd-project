@@ -1,8 +1,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import ContactLead from '../models/ContactLead.js';
-import { sendSMS, sendWelcomeEmail, sendAdminLeadEmail, pushToNPF } from '../utils/notifications.js';
-import { validateContact } from '../middleware/validate.js';
+import ContactLead from '../_models/ContactLead.js';
+import { sendSMS, sendWelcomeEmail, sendAdminLeadEmail, pushToNPF } from '../_utils/notifications.js';
+import { validateContact } from '../_middleware/validate.js';
 
 const router = express.Router();
 
@@ -37,7 +37,7 @@ router.post('/', validateContact, async (req, res) => {
         const lead = await newLead.save();
 
         // Backup data locally (Triple Redundancy)
-        import('../utils/offlineLogger.js').then(m => m.backupOfflineData('contacts', req.body));
+        import('../_utils/offlineLogger.js').then(m => m.backupOfflineData('contacts', req.body));
 
         // Send notifications
         Promise.allSettled([

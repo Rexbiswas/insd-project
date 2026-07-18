@@ -1,9 +1,9 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import StepLead from '../models/StepLead.js';
-import { sendSMS, sendWelcomeEmail, sendAdminLeadEmail, pushToNPF } from '../utils/notifications.js';
-import { backupOfflineData } from '../utils/offlineLogger.js';
-import { validateStepLead } from '../middleware/validate.js';
+import StepLead from '../_models/StepLead.js';
+import { sendSMS, sendWelcomeEmail, sendAdminLeadEmail, pushToNPF } from '../_utils/notifications.js';
+import { backupOfflineData } from '../_utils/offlineLogger.js';
+import { validateStepLead } from '../_middleware/validate.js';
 
 const router = express.Router();
 

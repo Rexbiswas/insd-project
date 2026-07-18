@@ -1,9 +1,9 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import ParisLead from '../models/ParisLead.js';
-import { sendWelcomeEmail, sendSMS, sendAdminLeadEmail, pushToNPF } from '../utils/notifications.js';
-import { backupOfflineData } from '../utils/offlineLogger.js';
-import { validateParis } from '../middleware/validate.js';
+import ParisLead from '../_models/ParisLead.js';
+import { sendWelcomeEmail, sendSMS, sendAdminLeadEmail, pushToNPF } from '../_utils/notifications.js';
+import { backupOfflineData } from '../_utils/offlineLogger.js';
+import { validateParis } from '../_middleware/validate.js';
 
 const router = express.Router();
 

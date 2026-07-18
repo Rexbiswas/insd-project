@@ -2,11 +2,11 @@ import express from 'express';
 const router = express.Router();
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import User from '../models/User.js';
+import User from '../_models/User.js';
 import axios from 'axios';
-import { getGoogleTransporter } from '../utils/email.js';
-import { sendWelcomeEmail, sendAdminLeadEmail, pushToNPF } from '../utils/notifications.js';
-import { validateRegister, validateLogin, validateResetPassword } from '../middleware/validate.js';
+import { getGoogleTransporter } from '../_utils/email.js';
+import { sendWelcomeEmail, sendAdminLeadEmail, pushToNPF } from '../_utils/notifications.js';
+import { validateRegister, validateLogin, validateResetPassword } from '../_middleware/validate.js';
 
 
 // Register User
@@ -53,7 +53,7 @@ router.post('/register', validateRegister, async (req, res) => {
         await newUser.save();
 
         // Backup data locally (Fail-Safe)
-        import('../utils/offlineLogger.js').then(m => m.backupOfflineData('users', req.body));
+        import('../_utils/offlineLogger.js').then(m => m.backupOfflineData('users', req.body));
 
         // Unified Notifications
         Promise.allSettled([

@@ -9,31 +9,31 @@ import rateLimit from 'express-rate-limit';
 import hpp from 'hpp';
 import os from 'os';
 import dns from 'dns';
-import authRoutes from './routes/auth.js';
-import userRouter from './routes/auth.js';
-import leadRoutes from './routes/leadauth.js';
-import stepLeadRoutes from './routes/stepleads.js';
-import admissionRoutes from './routes/admission.js';
-import parisRoutes from './routes/paris.js';
-import aviationRoutes from './routes/aviation.js';
-import partnerRoutes from './routes/partner.js';
-import contactRoutes from './routes/contact.js';
-import blogRoutes from './routes/blogs.js';
-import { sanitizeRequest } from './middleware/sanitize.js';
+import authRoutes from './_routes/auth.js';
+import userRouter from './_routes/auth.js';
+import leadRoutes from './_routes/leadauth.js';
+import stepLeadRoutes from './_routes/stepleads.js';
+import admissionRoutes from './_routes/admission.js';
+import parisRoutes from './_routes/paris.js';
+import aviationRoutes from './_routes/aviation.js';
+import partnerRoutes from './_routes/partner.js';
+import contactRoutes from './_routes/contact.js';
+import blogRoutes from './_routes/blogs.js';
+import { sanitizeRequest } from './_middleware/sanitize.js';
 
 // Models
-import Lead from './models/Lead.js';
-import AdmissionLead from './models/AdmissionLead.js';
-import StepLead from './models/StepLead.js';
-import AviationLead from './models/AviationLead.js';
-import ContactLead from './models/ContactLead.js';
-import ParisLead from './models/ParisLead.js';
-import PartnerLead from './models/PartnerLead.js';
-import Blog from './models/Blog.js';
-import User from './models/User.js';
+import Lead from './_models/Lead.js';
+import AdmissionLead from './_models/AdmissionLead.js';
+import StepLead from './_models/StepLead.js';
+import AviationLead from './_models/AviationLead.js';
+import ContactLead from './_models/ContactLead.js';
+import ParisLead from './_models/ParisLead.js';
+import PartnerLead from './_models/PartnerLead.js';
+import Blog from './_models/Blog.js';
+import User from './_models/User.js';
 
 // Utils
-import { syncBackups } from './utils/offlineLogger.js';
+import { syncBackups } from './_utils/offlineLogger.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

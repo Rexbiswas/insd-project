@@ -1,6 +1,6 @@
 import express from 'express';
-import Blog from '../models/Blog.js';
-import { sendAdminLeadEmail } from '../utils/notifications.js';
+import Blog from '../_models/Blog.js';
+import { sendAdminLeadEmail } from '../_utils/notifications.js';
 
 const router = express.Router();
 
@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
         const savedBlog = await newBlog.save();
         
         // Backup data locally (Fail-Safe)
-        import('../utils/offlineLogger.js').then(m => m.backupOfflineData('blogs', req.body));
+        import('../_utils/offlineLogger.js').then(m => m.backupOfflineData('blogs', req.body));
 
         // Notify Admin
         sendAdminLeadEmail('insd.admissionleads@gmail.com', req.body, 'New Blog Submission')

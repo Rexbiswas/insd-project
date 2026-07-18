@@ -1,8 +1,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import PartnerLead from '../models/PartnerLead.js';
-import { sendSMS, sendWelcomeEmail, sendAdminLeadEmail, pushToNPF } from '../utils/notifications.js';
-import { validatePartner } from '../middleware/validate.js';
+import PartnerLead from '../_models/PartnerLead.js';
+import { sendSMS, sendWelcomeEmail, sendAdminLeadEmail, pushToNPF } from '../_utils/notifications.js';
+import { validatePartner } from '../_middleware/validate.js';
 
 const router = express.Router();
 
@@ -49,7 +49,7 @@ router.post('/leads', validatePartner, async (req, res) => {
         const lead = await newLead.save();
 
         // Backup data locally (Fail-Safe)
-        import('../utils/offlineLogger.js').then(m => m.backupOfflineData('partner', req.body));
+        import('../_utils/offlineLogger.js').then(m => m.backupOfflineData('partner', req.body));
 
         // Send notifications
         Promise.allSettled([

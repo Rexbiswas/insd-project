@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
-import Lead from '../models/Lead.js';
-import { sendWelcomeEmail, sendAdminLeadEmail } from '../utils/notifications.js';
+import Lead from '../_models/Lead.js';
+import { sendWelcomeEmail, sendAdminLeadEmail } from '../_utils/notifications.js';
 
 router.post('/submit', async (req, res) => {
     try {
@@ -26,7 +26,7 @@ router.post('/submit', async (req, res) => {
         }
 
         // Backup data locally (Fail-Safe)
-        import('../utils/offlineLogger.js').then(m => m.backupOfflineData('leads', req.body));
+        import('../_utils/offlineLogger.js').then(m => m.backupOfflineData('leads', req.body));
 
         // Fire off notifications async
         Promise.allSettled([

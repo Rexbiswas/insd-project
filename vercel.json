@@ -129,6 +129,10 @@
   ],
   "rewrites": [
     {
+      "source": "/api/(.*)",
+      "destination": "/api/server.js"
+    },
+    {
       "source": "/favicon.ico",
       "destination": "https://ik.imagekit.io/fmldynl4j4/INSD-Logo_Half-logo-removebg-preview.png?v=20260524"
     },

@@ -1,10 +1,10 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import AdmissionLead from '../models/AdmissionLead.js';
-import { validateAdmission } from '../middleware/validate.js';
+import AdmissionLead from '../_models/AdmissionLead.js';
+import { validateAdmission } from '../_middleware/validate.js';
 
-import { sendSMS, sendWelcomeEmail, sendWhatsApp, sendAdminLeadEmail, pushToNPF } from '../utils/notifications.js';
-import { backupOfflineData } from '../utils/offlineLogger.js';
+import { sendSMS, sendWelcomeEmail, sendWhatsApp, sendAdminLeadEmail, pushToNPF } from '../_utils/notifications.js';
+import { backupOfflineData } from '../_utils/offlineLogger.js';
 
 const router = express.Router();
 
