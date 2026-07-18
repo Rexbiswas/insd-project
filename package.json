@@ -6,11 +6,11 @@
   "engines": {
     "node": "20.x"
   },
-  "main": "backend/server.js",
+  "main": "api/server.js",
   "scripts": {
-    "start": "node backend/server.js",
+    "start": "node api/server.js",
     "dev": "vite --host",
-    "server": "nodemon backend/server.js",
+    "server": "nodemon api/server.js",
     "dev:all": "concurrently \"npm run dev\" \"npm run server\"",
     "tunnel": "lt --port 5173",
     "build": "node scripts/generate-sitemap.js && vite build",

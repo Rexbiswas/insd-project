@@ -1,6 +1,6 @@
 {
     "watch": [
-        "backend/"
+        "api/"
     ],
     "ext": "js,json",
     "ignore": [
@@ -9,6 +9,6 @@
         "public",
         "dist",
         "vite.config.js",
-        "backend/backups"
+        "api/backups"
     ]
 }

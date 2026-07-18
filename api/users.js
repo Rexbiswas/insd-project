@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import authRoutes from '../backend/routes/auth.js'; // userRouter/authRoutes contains login/register etc.
+import authRoutes from './routes/auth.js'; // userRouter/authRoutes contains login/register etc.
 
 dotenv.config();
 const app = express();
