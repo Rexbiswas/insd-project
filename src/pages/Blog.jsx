@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { createPortal } from 'react-dom';
+import DOMPurify from 'dompurify';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
     Search, Clock, User, ArrowUpRight, 
@@ -713,7 +714,7 @@ const Blog = () => {
                                 </p>
                                 <div className="text-slate-600 leading-loose space-y-6">
                                     {selectedPost.content ? (
-                                        <div dangerouslySetInnerHTML={{ __html: selectedPost.content.replace(/\n /g, '<br />') }} />
+                                        <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(selectedPost.content.replace(/\n /g, '<br />')) }} />
                                     ) : (
                                         <>
                                             <p>This is a placeholder for the extended blog content. In a full production environment, this would be fetched from a CMS like Sanity, Strapi, or Contentful.</p>
