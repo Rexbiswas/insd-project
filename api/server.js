@@ -182,7 +182,7 @@ const connectDB = async () => {
     if (!isProd) {
         try {
             console.log(`🏠 Attempting Local Connection: ${localURI}...`);
-            const conn = await mongoose.connect(localURI, localOptions);
+            const conn = await mongoose.connect(localURI, { serverSelectionTimeoutMS: 5000 });
             console.log('✅ Local MongoDB Connected');
             isConnected = true;
             runSync();

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Globe, TrendingUp, ShoppingBag, Palette, Layout, UserCheck } from 'lucide-react';

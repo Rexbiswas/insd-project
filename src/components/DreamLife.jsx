@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Camera, Globe, Briefcase, Rocket, ExternalLink } from 'lucide-react';

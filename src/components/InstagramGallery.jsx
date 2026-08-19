@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, useLayoutEffect } from 'react';
 import { Instagram, ArrowUpRight, Heart, MessageCircle } from 'lucide-react';
 import gsap from 'gsap';

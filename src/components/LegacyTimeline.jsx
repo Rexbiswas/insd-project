@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, useLayoutEffect } from 'react';
 import { motion } from 'framer-motion';
 import { GraduationCap, Users, MapPin } from 'lucide-react';

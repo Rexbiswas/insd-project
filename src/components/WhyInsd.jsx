@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Zap, Target, Briefcase, Rocket } from 'lucide-react';

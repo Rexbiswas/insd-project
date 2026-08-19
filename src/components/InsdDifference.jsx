@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Target, Briefcase, Building2, Globe, Rocket, Play, CheckCircle2 } from 'lucide-react';

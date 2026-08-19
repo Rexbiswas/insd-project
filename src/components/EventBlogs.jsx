@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, useLayoutEffect } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';

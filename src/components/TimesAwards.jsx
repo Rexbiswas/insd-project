@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, useEffect } from 'react';
 import { useInView } from 'framer-motion';
 // import Matter from 'matter-js';

@@ -32,3 +32,8 @@ node_modules.zip
 .env
 backend/.env
 src/config.json
+
+# Next.js
+.next/
+out/
+build/

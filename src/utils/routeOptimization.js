@@ -11,53 +11,53 @@ import { lazy } from 'react';
  */
 export const routeChunks = {
   // Public routes
-  home: () => import('../pages/Home'),
-  admission: () => import('../pages/Admission'),
-  campus: () => import('../pages/Campus'),
-  contact: () => import('../pages/Contact'),
+  home: () => import('../views/Home'),
+  admission: () => import('../views/Admission'),
+  campus: () => import('../views/Campus'),
+  contact: () => import('../views/Contact'),
   
   // Program routes
-  fashion: () => import('../pages/FashionDesigning'),
-  interior: () => import('../pages/InteriorDesigning'),
-  graphic: () => import('../pages/GraphicDesigning'),
-  animation: () => import('../pages/AnimationAndVFX'),
-  jewellery: () => import('../pages/JewelleryDesigning'),
-  uiux: () => import('../pages/UIUXDesigning'),
-  beauty: () => import('../pages/BeautyAndMakeup'),
-  photography: () => import('../pages/Photography'),
-  textile: () => import('../pages/TextileDesigning'),
+  fashion: () => import('../views/FashionDesigning'),
+  interior: () => import('../views/InteriorDesigning'),
+  graphic: () => import('../views/GraphicDesigning'),
+  animation: () => import('../views/AnimationAndVFX'),
+  jewellery: () => import('../views/JewelleryDesigning'),
+  uiux: () => import('../views/UIUXDesigning'),
+  beauty: () => import('../views/BeautyAndMakeup'),
+  photography: () => import('../views/Photography'),
+  textile: () => import('../views/TextileDesigning'),
   
   // Academic routes
-  undergraduate: () => import('../pages/Undergraduate'),
-  postgraduate: () => import('../pages/Postgraduate'),
-  diploma: () => import('../pages/DiplomaAndCertificate'),
-  shortterm: () => import('../pages/ShortTermCourse'),
-  mscLuxury: () => import('../pages/MscLuxury'),
-  onlineCourse: () => import('../pages/OnlineCourse'),
+  undergraduate: () => import('../views/Undergraduate'),
+  postgraduate: () => import('../views/Postgraduate'),
+  diploma: () => import('../views/DiplomaAndCertificate'),
+  shortterm: () => import('../views/ShortTermCourse'),
+  mscLuxury: () => import('../views/MscLuxury'),
+  onlineCourse: () => import('../views/OnlineCourse'),
   
   // Information routes
-  placement: () => import('../pages/Placement'),
-  placements: () => import('../pages/PlacementAndTraining'),
-  awards: () => import('../pages/AwardsRecognition'),
-  events: () => import('../pages/Events'),
-  blog: () => import('../pages/Blog'),
-  gallery: () => import('../pages/Gallery'),
-  legacy: () => import('../pages/Legacy'),
+  placement: () => import('../views/Placement'),
+  placements: () => import('../views/PlacementAndTraining'),
+  awards: () => import('../views/AwardsRecognition'),
+  events: () => import('../views/Events'),
+  blog: () => import('../views/Blog'),
+  gallery: () => import('../views/Gallery'),
+  legacy: () => import('../views/Legacy'),
   
   // Special routes
-  paris: () => import('../pages/Paris(CDP)'),
-  franchise: () => import('../pages/Franchise'),
-  aviation: () => import('../pages/Aviation'),
-  successStory: () => import('../pages/SuccessStory'),
+  paris: () => import('../views/Paris(CDP)'),
+  franchise: () => import('../views/Franchise'),
+  aviation: () => import('../views/Aviation'),
+  successStory: () => import('../views/SuccessStory'),
   
   // Policy routes (load on demand)
-  privacy: () => import('../pages/PrivacyPolicy'),
-  terms: () => import('../pages/TermsAndConditions'),
-  cookies: () => import('../pages/CookiePolicy'),
-  faq: () => import('../pages/FAQ'),
+  privacy: () => import('../views/PrivacyPolicy'),
+  terms: () => import('../views/TermsAndConditions'),
+  cookies: () => import('../views/CookiePolicy'),
+  faq: () => import('../views/FAQ'),
   
   // Error route
-  notFound: () => import('../pages/NotFound'),
+  notFound: () => import('../views/NotFound'),
 };
 
 /**

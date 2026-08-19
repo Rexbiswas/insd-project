@@ -1,5 +1,6 @@
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
+'use client';
+
+import React, { useEffect } from 'react';
 
 const SEO = ({ 
     title, 
@@ -16,7 +17,12 @@ const SEO = ({
 }) => {
     const siteName = "INSD";
     const metaDescription = description || "Best design institute in Delhi, India. Join INSD is one of the top design colleges in Delhi, NCR offers fashion, interior, textile and graphic design courses in UG and PG.";
-    const metaKeywords = keywords || "best design institute in Delhi, skill school design, job oriented fashion design, interior design placement, graphic design course, INSD India";
+
+    useEffect(() => {
+        if (typeof document !== 'undefined' && title) {
+            document.title = `${title} | INSD`;
+        }
+    }, [title]);
 
     // JSON-LD Structured Data for Ranking Enhancement
     const organizationSchema = {
@@ -40,47 +46,18 @@ const SEO = ({
     };
 
     return (
-        <Helmet>
-            {/* Standard metadata */}
-            <title>{title}</title>
-            <meta name="description" content={metaDescription} />
-            <meta name="keywords" content={metaKeywords} />
-            <meta name="robots" content={robots} />
-            <link rel="canonical" href={canonical} />
-
-            {/* Mobile / Interaction */}
-            <meta name="theme-color" content="#b30000" />
-
-            {/* Open Graph / Facebook */}
-            <meta property="og:locale" content="en_US" />
-            <meta property="og:type" content={ogType} />
-            <meta property="og:title" content={ogTitle || title} />
-            <meta property="og:description" content={ogDescription || metaDescription} />
-            <meta property="og:url" content={canonical} />
-            <meta property="og:site_name" content={siteName} />
-            <meta property="og:image" content={ogImage} />
-            <meta property="og:image:secure_url" content={ogImage} />
-            <meta property="og:image:width" content="1357" />
-            <meta property="og:image:height" content="627" />
-
-            {/* Twitter */}
-            <meta name="twitter:card" content={twitterCard} />
-            <meta name="twitter:title" content={ogTitle || title} />
-            <meta name="twitter:description" content={ogDescription || metaDescription} />
-            <meta name="twitter:image" content={ogImage} />
-
-            <meta name="twitter:site" content="@INSDofficial" />
-
-            {/* Structured Data (Schema.org) */}
-            <script type="application/ld+json">
-                {JSON.stringify(organizationSchema)}
-            </script>
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+            />
             {courseSchema && (
-                <script type="application/ld+json">
-                    {JSON.stringify(courseSchema)}
-                </script>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }}
+                />
             )}
-        </Helmet>
+        </>
     );
 };
 

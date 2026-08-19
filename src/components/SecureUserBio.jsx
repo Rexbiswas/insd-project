@@ -1,3 +1,5 @@
+'use client';
+
 // Import React library for component creation
 import React from 'react';
 // Import DOMPurify library to sanitize HTML strings against Cross-Site Scripting (XSS) attacks

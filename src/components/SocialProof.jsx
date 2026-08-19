@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Award, FileCheck, Landmark, Star, Medal, Globe } from 'lucide-react';
