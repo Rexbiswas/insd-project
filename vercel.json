@@ -27,6 +27,16 @@
       "permanent": true
     },
     {
+      "source": "/courses/aviation",
+      "destination": "/aviation",
+      "permanent": true
+    },
+    {
+      "source": "/courses/aviation/",
+      "destination": "/aviation",
+      "permanent": true
+    },
+    {
       "source": "/courses/short-term-interior-design-courses",
       "destination": "/courses/short-term-courses",
       "permanent": true

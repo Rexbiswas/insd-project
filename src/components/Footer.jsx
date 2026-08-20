@@ -110,7 +110,7 @@ const Footer = () => {
                                     { name: "Short Term Courses", path: "/courses/short-term-courses" },
                                     { name: "Short Term Interior Design", path: "/courses/short-term-interior-design" },
                                     { name: "INSD Luxe", path: "/courses/msc-luxury-brand-management" },
-                                    { name: "Aviation & Cabin Crew", path: "/courses/aviation" }
+                                    { name: "Aviation & Cabin Crew", path: "/aviation" }
                                 ].map((item, i) => (
                                     <motion.li
                                         key={i}

@@ -149,7 +149,8 @@ function App() {
                                         <Route path="/insd-luxe" element={<InsdLuxe />} />
                                         <Route path="/student-careers" element={<StudentCareers />} />
                                         <Route path="/franchise" element={<Franchise />} />
-                                        <Route path="/courses/aviation" element={<Aviation />} />
+                                        <Route path="/aviation" element={<Aviation />} />
+                                        <Route path="/courses/aviation" element={<Navigate to="/aviation" replace />} />
                                         <Route path="/contact-us" element={<Contact />} />
                                         <Route path="/international-partners" element={<InternationalPartner />} />
                                         <Route path="/course-apply-now" element={<Admission />} />

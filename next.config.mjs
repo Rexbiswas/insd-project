@@ -109,6 +109,11 @@ const nextConfig = {
         destination: '/locations',
         permanent: true,
       },
+      {
+        source: '/courses/aviation',
+        destination: '/aviation',
+        permanent: true,
+      },
     ];
   },
   async rewrites() {

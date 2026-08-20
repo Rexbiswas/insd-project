@@ -67,7 +67,7 @@ const AviationThankYou = () => {
                         className="flex flex-wrap items-center justify-center gap-6 pt-8"
                     >
                         <button
-                            onClick={() => navigate('/courses/aviation')}
+                            onClick={() => navigate('/aviation')}
                             className="flex items-center gap-3 px-8 h-14 bg-slate-950 text-white rounded-full font-black uppercase tracking-widest text-xs hover:bg-[#db3436] transition-all duration-300 shadow-xl cursor-pointer"
                         >
                             <ArrowLeft size={18} />

@@ -45,7 +45,7 @@ const routes = [
   { path: 'insd-luxe', component: 'InsdLuxe' },
   { path: 'student-careers', component: 'StudentCareers' },
   { path: 'franchise', component: 'Franchise' },
-  { path: 'courses/aviation', component: 'Aviation' },
+  { path: 'aviation', component: 'Aviation' },
   { path: 'contact-us', component: 'Contact' },
   { path: 'international-partners', component: 'InternationalPartner' },
   { path: 'course-apply-now', component: 'Admission' },

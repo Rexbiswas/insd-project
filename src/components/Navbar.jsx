@@ -283,7 +283,7 @@ const Navbar = () => {
         },
         { title: 'Admissions', path: '/course-apply-now', icon: CreditCard, section: 'OVERVIEW' },
         { title: 'Franchise', path: '/franchise', icon: Store, section: 'OVERVIEW' },
-        { title: 'Aviation', path: '/courses/aviation', icon: Plane, section: 'OVERVIEW' },
+        { title: 'Aviation', path: '/aviation', icon: Plane, section: 'OVERVIEW' },
         {
             title: 'Careers & Exposure',
             path: '/placement',
@@ -619,7 +619,7 @@ const Navbar = () => {
                                     Franchise
                                 </RollerLink>
                                 <RollerLink
-                                    to="/courses/aviation"
+                                    to="/aviation"
                                     colorClass="nav-hover-gradient"
                                     baseTextClass={isHeaderDark && !isScrolled ? "text-white" : "text-slate-800"}
                                 >
