@@ -19,6 +19,7 @@ const AviationThankYou = () => {
             <SEO 
                 title="Thank You | Submission Received | INSD Aviation"
                 description="Thank you for contacting the International School of Design. We have received your request and will get back to you shortly."
+                canonical="https://insd.edu.in/aviation-thankyou"
                 robots="noindex, follow"
             />
             <div className="pt-32 pb-20 px-6">

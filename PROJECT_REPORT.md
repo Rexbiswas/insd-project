@@ -98,7 +98,7 @@ All 60+ routes were generated in `src/app/` importing from modular views in `src
 | `/courses/beauty-and-makeup` | `src/app/courses/beauty-and-makeup/page.jsx` | `src/views/BeautyAndMakeup.jsx` |
 | `/courses/photography` | `src/app/courses/photography/page.jsx` | `src/views/Photography.jsx` |
 | `/courses/textile-designing` | `src/app/courses/textile-designing/page.jsx` | `src/views/TextileDesigning.jsx` |
-| `/courses/aviation` | `src/app/courses/aviation/page.jsx` | `src/views/Aviation.jsx` |
+| `/aviation` | `src/app/aviation/page.jsx` | `src/views/Aviation.jsx` |
 | `/courses/undergraduate` | `src/app/courses/undergraduate/page.jsx` | `src/views/Undergraduate.jsx` |
 | `/courses/postgraduate` | `src/app/courses/postgraduate/page.jsx` | `src/views/Postgraduate.jsx` |
 | `/courses/diploma-and-certificates` | `src/app/courses/diploma-and-certificates/page.jsx` | `src/views/DiplomaAndCertificate.jsx` |

@@ -142,6 +142,8 @@ const Aviation = () => {
             <SEO
                 title="INSD Aviation & Cabin Crew | Airport & Airline Career Training"
                 description="Introducing INSD Aviation. Master cabin crew safety, airport logistics, global hospitality, and premium retail customer services."
+                canonical="https://insd.edu.in/aviation"
+                keywords="aviation courses, cabin crew training, airport management, hospitality courses, INSD aviation, aviation diploma, cabin crew courses in Delhi"
             />
 
             {/* --- HERO SECTION --- */}
