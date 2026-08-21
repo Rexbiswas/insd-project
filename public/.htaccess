@@ -1,0 +1,12 @@
+# 301 Redirects
+RewriteEngine On
+RewriteBase /
+
+# Redirect /courses/aviation to /aviation
+RewriteRule ^courses/aviation/?$ /aviation [R=301,L]
+
+# Redirect /admissions and /apply to /course-apply-now
+RewriteRule ^admissions/?$ /course-apply-now [R=301,L]
+RewriteRule ^apply/?$ /course-apply-now [R=301,L]
+RewriteRule ^locations/?$ /centers-across-india [R=301,L]
+RewriteRule ^blog/?$ /insd-360/blog [R=301,L]
