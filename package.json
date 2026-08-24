@@ -10,7 +10,6 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:dist": "next build && node scripts/build-dist.js",
     "start": "next start",
     "server": "nodemon api/server.js",
     "dev:all": "concurrently \"npm run dev\" \"npm run server\"",
