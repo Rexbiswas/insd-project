@@ -1,0 +1,22 @@
+[
+  {
+    "timestamp": "2026-08-24T17:11:57.899Z",
+    "data": {
+      "name": "Step Tester",
+      "email": "step-1787591512274@example.com",
+      "phone": "+919876543211",
+      "course": "Interior Design",
+      "mobile": "+919876543211"
+    }
+  },
+  {
+    "timestamp": "2026-08-24T17:11:57.967Z",
+    "data": {
+      "name": "Step Tester",
+      "email": "step-1787591514043@example.com",
+      "phone": "+919876543211",
+      "course": "Interior Design",
+      "mobile": "+919876543211"
+    }
+  }
+]

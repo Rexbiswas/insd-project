@@ -1,1 +1,2 @@
 Sitemap: https://insd.edu.in/sitemap.xml
+user-agent: * 
