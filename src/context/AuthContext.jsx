@@ -2,15 +2,28 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-const AuthContext = createContext();
+const defaultAuth = {
+    user: null,
+    register: async () => ({ success: false }),
+    login: async () => ({}),
+    logout: () => {}
+};
+
+const AuthContext = createContext(defaultAuth);
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        const storedUser = localStorage.getItem('insd_user');
-        if (storedUser) {
-            setUser(JSON.parse(storedUser));
+        if (typeof window !== 'undefined') {
+            const storedUser = localStorage.getItem('insd_user');
+            if (storedUser) {
+                try {
+                    setUser(JSON.parse(storedUser));
+                } catch (e) {
+                    console.error("Failed to parse stored user", e);
+                }
+            }
         }
     }, []);
 
@@ -78,8 +91,10 @@ export const AuthProvider = ({ children }) => {
             // Remove password/token logic from user object and format it
             const formattedUser = processBackendUser(data);
 
-            localStorage.setItem('insd_user', JSON.stringify(formattedUser));
-            localStorage.setItem('insd_token', data.token);
+            if (typeof window !== 'undefined') {
+                localStorage.setItem('insd_user', JSON.stringify(formattedUser));
+                localStorage.setItem('insd_token', data.token);
+            }
             setUser(formattedUser);
 
             return formattedUser;
@@ -89,8 +104,10 @@ export const AuthProvider = ({ children }) => {
     };
 
     const logout = () => {
-        localStorage.removeItem('insd_user');
-        localStorage.removeItem('insd_token');
+        if (typeof window !== 'undefined') {
+            localStorage.removeItem('insd_user');
+            localStorage.removeItem('insd_token');
+        }
         setUser(null);
     };
 
@@ -102,5 +119,6 @@ export const AuthProvider = ({ children }) => {
 };
 
 export const useAuth = () => {
-    return useContext(AuthContext);
+    const context = useContext(AuthContext);
+    return context || defaultAuth;
 };

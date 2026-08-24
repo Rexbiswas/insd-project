@@ -10,7 +10,8 @@ import {
     Share2, Heart, BookOpen, ChevronRight,
     MessageSquare, X, Plus, Edit3, Trash2
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
+
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import { safeCopyToClipboard } from '../utils/clipboard.js';

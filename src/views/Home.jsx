@@ -2,7 +2,9 @@
 
 import React, { useRef, useLayoutEffect, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useNavigate, Link } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import useLenisSmoothScroll from '../hooks/useLenisSmoothScroll';
@@ -59,7 +61,7 @@ const Home = () => {
 
     const [isMobile, setIsMobile] = React.useState(false);
     const { openAdmissionModal } = useAdmissionModal();
-    const navigate = useNavigate();
+    const router = useRouter();
 
     // Lenis Smooth Scroll Integration (optimized for Safari/Chrome)
     useLenisSmoothScroll({ 
@@ -395,9 +397,8 @@ const Home = () => {
                 <div className="max-w-7xl mx-auto px-6 h-[500px] md:h-[600px] flex flex-col lg:flex-row gap-6">
                     {
                         galleryItems.map((item, index) => (
-                            <Link
-                                key={index}
-                                to={item.link || "#"}
+                            <Link key={index}
+                                href={item.link || "#"}
                                 className="gallery-item relative flex-1 group transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] hover:flex-2 cursor-pointer border border-slate-100 rounded-[2rem] overflow-hidden shadow-2xl"
                             >
                                 <div className="absolute inset-0 z-0">

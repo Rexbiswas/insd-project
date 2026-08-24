@@ -9,12 +9,12 @@ import {
     BookOpen, 
     MousePointerClick 
 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
 
 const ShortTermInteriorDesign = () => {
-    const navigate = useNavigate();
+    const router = useRouter();
 
     return (
         <div className="bg-slate-50 min-h-screen font-sans selection:bg-[#c5a044] selection:text-white text-slate-800">
@@ -83,7 +83,7 @@ const ShortTermInteriorDesign = () => {
 
                     <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
                         <button 
-                            onClick={() => navigate('/')}
+                            onClick={() => router.push('/')}
                             className="bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 px-12 py-5 rounded-full font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 transition-all shadow-sm cursor-pointer w-full sm:w-auto"
                         >
                             <span className="relative flex h-2 w-2">
@@ -93,7 +93,7 @@ const ShortTermInteriorDesign = () => {
                             Coming Soon
                         </button>
                         <button 
-                            onClick={() => navigate('/contact-us')}
+                            onClick={() => router.push('/contact-us')}
                             className="border border-slate-200 hover:border-slate-400 text-slate-800 px-10 py-5 rounded-full font-black uppercase tracking-widest text-xs hover:bg-slate-50 transition-all w-full sm:w-auto"
                         >
                             Speak with an Advisor

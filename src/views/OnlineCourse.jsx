@@ -5,14 +5,15 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Play, Pause, Clock, Globe, Sparkles, Star, BookOpen, CheckCircle2 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
+
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const OnlineCourse = () => {
-    const navigate = useNavigate();
+    const router = useRouter();
     const heroRef = useRef(null);
     const navRef = useRef(null);
     const containerRef = useRef(null);
@@ -156,7 +157,7 @@ const OnlineCourse = () => {
 
                         <div className="flex flex-col md:flex-row items-center gap-6 justify-center lg:justify-start">
                              <button 
-                                onClick={() => navigate('/course-apply-now')}
+                                onClick={() => router.push('/course-apply-now')}
                                 className="magnetic group relative px-12 py-5 bg-white text-black font-black uppercase tracking-widest rounded-full hover:bg-primary hover:text-white transition-all duration-500 shadow-2xl overflow-hidden"
                             >
                                 <span className="relative z-10">Start Learning Now</span>
@@ -522,7 +523,7 @@ const OnlineCourse = () => {
 
                         <div className="flex flex-col sm:flex-row gap-6 justify-center">
                              <button 
-                                onClick={() => navigate('/course-apply-now')}
+                                onClick={() => router.push('/course-apply-now')}
                                 className="px-12 py-6 bg-primary text-white font-black uppercase tracking-widest rounded-full hover:scale-105 active:scale-95 transition-all shadow-[0_20px_40px_rgba(219,52,54,0.4)]"
                             >
                                 Claim My Seat

@@ -2,7 +2,14 @@
 
 import React, { createContext, useContext, useState } from 'react';
 
-const AdmissionModalContext = createContext();
+const defaultAdmission = {
+    isAdmissionOpen: false,
+    openAdmissionModal: () => {},
+    closeAdmissionModal: () => {},
+    modalConfig: { title: '', subtitle: '', formType: 'admission' }
+};
+
+const AdmissionModalContext = createContext(defaultAdmission);
 
 export const AdmissionModalProvider = ({ children }) => {
     const [isAdmissionOpen, setIsAdmissionOpen] = useState(false);
@@ -27,8 +34,5 @@ export const AdmissionModalProvider = ({ children }) => {
 
 export const useAdmissionModal = () => {
     const context = useContext(AdmissionModalContext);
-    if (!context) {
-        throw new Error('useAdmissionModal must be used within an AdmissionModalProvider');
-    }
-    return context;
+    return context || defaultAdmission;
 };

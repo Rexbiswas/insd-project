@@ -13,13 +13,14 @@ import {
     Zap,
     Layers
 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
+
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
 import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const AdvancedDiplomaInAnimation = () => {
-    const navigate = useNavigate();
+    const router = useRouter();
     const { openAdmissionModal } = useAdmissionModal();
 
     const toolsData = [
@@ -128,7 +129,7 @@ const AdvancedDiplomaInAnimation = () => {
                                 <ArrowRight size={16} />
                             </button>
                             <button
-                                onClick={() => navigate('/')}
+                                onClick={() => router.push('/')}
                                 className="px-8 py-4 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full font-black uppercase text-xs tracking-widest flex items-center gap-2 transition-all shadow-sm cursor-pointer"
                             >
                                 <span className="relative flex h-2 w-2">
@@ -251,7 +252,7 @@ const AdvancedDiplomaInAnimation = () => {
                     </p>
                     <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
                         <button
-                            onClick={() => navigate('/')}
+                            onClick={() => router.push('/')}
                             className="bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 px-12 py-5 rounded-full font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 transition-all shadow-sm cursor-pointer w-full sm:w-auto"
                         >
                             <span className="relative flex h-2 w-2">

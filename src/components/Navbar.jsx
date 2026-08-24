@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { NavLink, Link, useLocation, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter, usePathname } from 'next/navigation';
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import SocialIcons from './SocialIcons';
@@ -11,7 +12,6 @@ import {
     Phone, Calendar, UserPlus, FileDown, Instagram, Linkedin, Facebook, MapPin, Mail, MessageSquare, Globe, BookOpen, Youtube, Info, Headset, MessageCircle, Bot, Share2, FilePenLine
 } from 'lucide-react';
 import gsap from 'gsap';
-import { Sidebar, Menu, MenuItem, Submenu, Logo } from "react-mui-sidebar";
 // import AIChatbot from './AIChatbot';
 import FacebookCTA from './FacebookCTA';
 import InstagramCTA from './InstagramCTA';
@@ -31,7 +31,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const RollerLink = ({ to, children, colorClass = "text-primary", baseTextClass = "text-slate-800" }) => {
     return (
-        <Link to={to} className="relative block h-[24px] group overflow-hidden">
+        <Link href={to} className="relative block h-[24px] group overflow-hidden">
             <div className="flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-1/2">
                 <span className={`flex items-center justify-center h-[24px] text-[10px] lg:text-[11px] xl:text-xs 2xl:text-[13px] font-bold ${baseTextClass} uppercase tracking-wider whitespace-nowrap transition-all duration-300 leading-none px-1`}>
                     {children}
@@ -142,9 +142,9 @@ const Navbar = () => {
     const [expandedItem, setExpandedItem] = useState(null);
     const [expandedSubItem, setExpandedSubItem] = useState(null);
     const { scrollY } = useScroll();
-    const location = useLocation();
+    const pathname = usePathname();
+    const router = useRouter();
 
-    const navigate = useNavigate();
     // Pages that have a dark background/theme or high-impact gradient hero sections
     // Updated detection: Pages with permanent dark themes or sections
     const darkPages = [
@@ -163,7 +163,7 @@ const Navbar = () => {
         '/courses/msc-luxury-brand-management',
         '/student'
     ];
-    const [isHeaderDark, setIsHeaderDark] = useState(darkPages.includes(location.pathname));
+    const [isHeaderDark, setIsHeaderDark] = useState(darkPages.includes(pathname));
 
     // GSAP SVG Animation REfs
     const svgRef = useRef(null);
@@ -179,9 +179,9 @@ const Navbar = () => {
 
             const is404 = document.body.classList.contains('is-404-page');
 
-            if (location.pathname === '/') {
+            if (pathname === '/') {
                 setIsHeaderDark(currentScroll > 1200 && currentScroll < 4000);
-            } else if (location.pathname === '/student') {
+            } else if (pathname === '/student') {
                 // Student page has alternating dark/light sections
                 const isHero = currentScroll < 500;
                 const isExpertFaculties = currentScroll > 1800 && currentScroll < 3200;
@@ -189,7 +189,7 @@ const Navbar = () => {
                 setIsHeaderDark(isHero || isExpertFaculties || isWorkshopChronicles);
             } else if (is404) {
                 setIsHeaderDark(true);
-            } else if (darkPages.includes(location.pathname)) {
+            } else if (darkPages.includes(pathname)) {
                 setIsHeaderDark(currentScroll < 500);
             } else {
                 setIsHeaderDark(false);
@@ -202,7 +202,7 @@ const Navbar = () => {
 
         window.addEventListener('scroll', checkColor);
         return () => window.removeEventListener('scroll', checkColor);
-    }, [location.pathname]);
+    }, [pathname]);
     // Responsive check
     const [isMobile, setIsMobile] = useState(false);
     useEffect(() => {
@@ -400,7 +400,7 @@ const Navbar = () => {
                 className="hidden lg:flex fixed top-0 left-0 right-0 z-1000 px-10 lg:px-14 xl:px-20 py-4 items-center justify-between pointer-events-auto"
             >
                 {/* Left: Logo */}
-                <Link to="/" className="nav-logo relative z-50 shrink-0 block h-[65px]" onClick={() => setIsOpen(false)}>
+                <Link  href="/" className="nav-logo relative z-50 shrink-0 block h-[65px]" onClick={() => setIsOpen(false)}>
                     <motion.img
                         whileHover={{ scale: 1.1 }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -447,9 +447,9 @@ const Navbar = () => {
                                                     { title: 'Paris Project', path: '/insd-360/paris-project', icon: 'globe', desc: 'International design showcase', badge: 'Featured' }
 
                                                 ].map((item, i) => (
-                                                    <Link
+                                                    <Link 
                                                         key={i}
-                                                        to={item.path}
+                                                        href={item.path}
                                                         className="flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 group/item transition-all duration-300 relative overflow-hidden"
                                                     >
                                                         <div className="absolute inset-0 bg-linear-to-r from-primary/5 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-300" />
@@ -510,9 +510,9 @@ const Navbar = () => {
                                                     { title: 'Textile Design', path: '/courses/textile-designing', icon: 'textile', desc: 'Material Science Arts' },
                                                     { title: 'INSD Luxe', path: '/insd-luxe', icon: 'textile', desc: 'Premium Luxury Arts' }
                                                 ].map((item, i) => (
-                                                    <Link
+                                                    <Link 
                                                         key={i}
-                                                        to={item.path}
+                                                        href={item.path}
                                                         className="flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 group/item transition-all duration-300 relative overflow-hidden"
                                                     >
                                                         <div className="absolute inset-0 bg-linear-to-r from-primary/5 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-300" />
@@ -565,9 +565,9 @@ const Navbar = () => {
                                                     { title: 'Placement & Training Partners', path: '/placementandtraining', icon: 'award', desc: 'Our corporate network' },
                                                     { title: 'Future of Design', path: '/future-of-design', icon: 'sparkles', desc: 'Trends & innovations' },
                                                 ].map((item, i) => (
-                                                    <Link
+                                                    <Link 
                                                         key={i}
-                                                        to={item.path}
+                                                        href={item.path}
                                                         className="flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 group/item transition-all duration-300 relative overflow-hidden"
                                                     >
                                                         <div className="absolute inset-0 bg-linear-to-r from-primary/5 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-300" />
@@ -646,8 +646,8 @@ const Navbar = () => {
                     {/* Profile Component - Commented Out */}
                     {/* 
                     {user ? (
-                        <Link
-                            to="/profile"
+                        <Link 
+                            href="/profile"
                             className={`hidden lg:flex items-center justify-center w-10 h-10 rounded-full border transition-all duration-300 font-black text-sm ${isDarkTheme && !isScrolled ? 'border-primary bg-primary text-white hover:scale-105' : 'border-primary bg-primary text-white hover:scale-105'} shadow-xl`}
                             title="Profile Dashboard"
                         >
@@ -694,7 +694,7 @@ const Navbar = () => {
                 className="lg:hidden fixed top-0 left-0 right-0 z-50 flex items-center pointer-events-none transition-all duration-500"
             >
                 <div className="relative w-full h-full flex items-center justify-center px-8 py-3 pointer-events-auto">
-                    <Link to="/" onClick={() => setIsOpen(false)} className="h-full flex items-center justify-center">
+                    <Link  href="/" onClick={() => setIsOpen(false)} className="h-full flex items-center justify-center">
                         <img
                             className="h-[53px] lg:h-[65px] w-auto object-contain drop-shadow-sm"
                             src="https://ik.imagekit.io/fmldynl4j4/INSD-Logo_Horizontal-removebg-preview.png"
@@ -708,16 +708,15 @@ const Navbar = () => {
                 <div className={`w-full h-full flex items-center justify-around px-6 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition-all duration-500 border ${isOpen || isSocialMenuOpen ? 'bg-white border-slate-200' : 'bg-white border-white'}`}>
 
                     {/* HOME */}
-                    <NavLink
-                        to="/"
-                        onClick={() => setIsOpen(false)}
-                        className={({ isActive }) =>
-                            `relative flex flex-col items-center justify-center w-16 h-16 transition-all duration-500 scale-90 active:scale-75 ${isActive ? 'text-primary' : 'text-slate-900/40'}`
-                        }
-                    >
-                        {({ isActive }) => (
-                            <>
-                                {isActive && (
+                    {(() => {
+                        const isHomeActive = pathname === '/';
+                        return (
+                            <Link
+                                href="/"
+                                onClick={() => setIsOpen(false)}
+                                className={`relative flex flex-col items-center justify-center w-16 h-16 transition-all duration-500 scale-90 active:scale-75 ${isHomeActive ? 'text-primary' : 'text-slate-900/40'}`}
+                            >
+                                {isHomeActive && (
                                     <motion.div
                                         layoutId="activeBubble"
                                         className="absolute inset-0 bg-primary/10 rounded-full border border-primary/20 shadow-[0_0_20px_rgba(219,52,54,0.1)]"
@@ -726,14 +725,14 @@ const Navbar = () => {
                                 )}
                                 <Home
                                     size={22}
-                                    strokeWidth={isActive ? 2.5 : 2}
+                                    strokeWidth={isHomeActive ? 2.5 : 2}
                                     className="relative z-10"
-                                    stroke={isActive ? "url(#insd-icon-gradient)" : "currentColor"}
+                                    stroke={isHomeActive ? "url(#insd-icon-gradient)" : "currentColor"}
                                 />
-                                <span className={`text-[9px] font-bold mt-1.5 uppercase tracking-widest relative z-10 ${isActive ? 'text-slate-900 opacity-100' : 'opacity-60'}`}>Home</span>
-                            </>
-                        )}
-                    </NavLink>
+                                <span className={`text-[9px] font-bold mt-1.5 uppercase tracking-widest relative z-10 ${isHomeActive ? 'text-slate-900 opacity-100' : 'opacity-60'}`}>Home</span>
+                            </Link>
+                        );
+                    })()}
 
                     {/* ENQUIRY */}
                     {true && ( // Always show enquiry button regardless of formFilled status
@@ -912,7 +911,7 @@ const Navbar = () => {
                                         onClick={() => {
                                             setIsOpen(false);
                                             if (user) {
-                                                navigate('/profile');
+                                                router.push('/profile');
                                             } else {
                                                 openModal();
                                             }
@@ -987,9 +986,9 @@ const Navbar = () => {
                                                                                     {sub.title}
                                                                                 </a>
                                                                             ) : (
-                                                                                <Link
+                                                                                <Link 
                                                                                     key={sIdx}
-                                                                                    to={sub.path}
+                                                                                    href={sub.path}
                                                                                     onClick={() => setIsOpen(false)}
                                                                                     className="block p-3 text-xs font-bold text-slate-500 hover:text-primary transition-colors border-l border-slate-100 ml-2"
                                                                                 >
@@ -1002,8 +1001,8 @@ const Navbar = () => {
                                                             </AnimatePresence>
                                                         </>
                                                     ) : (
-                                                        <Link
-                                                            to={item.path}
+                                                        <Link 
+                                                            href={item.path}
                                                             onClick={() => setIsOpen(false)}
                                                             className="flex items-center gap-4 p-4 rounded-2xl text-slate-600 active:bg-slate-50 hover:bg-slate-50/50 transition-all"
                                                         >
@@ -1055,7 +1054,7 @@ const Navbar = () => {
                                 variants={itemVariants}
                                 className="flex items-center justify-between px-6 md:px-12 py-7 relative z-10"
                             >
-                                <Link to="/" onClick={() => setIsOpen(false)} className="h-[72px] md:h-[83px]">
+                                <Link  href="/" onClick={() => setIsOpen(false)} className="h-[72px] md:h-[83px]">
                                     <img
                                         src="https://ik.imagekit.io/fmldynl4j4/INSD-Logo_Horizontal-removebg-preview.png"
                                         alt="INSD Logo"

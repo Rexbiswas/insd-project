@@ -6,7 +6,8 @@ import {
     ArrowUpRight, ChevronLeft, ChevronRight,
     PlayCircle
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
+
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
 import CoFoundingVisionary from '../components/CoFoundingVisionary';
@@ -366,7 +367,7 @@ const Mentors = () => {
                             </p>
                         </div>
                         <div className="flex md:justify-end gap-6">
-                            <Link to="/course-apply-now" className="px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-slate-900 transition-all shadow-2xl active:scale-95">
+                            <Link href="/course-apply-now" className="px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-slate-900 transition-all shadow-2xl active:scale-95">
                                 APPLY FOR 2026
                             </Link>
                         </div>

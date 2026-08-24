@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { User, Phone, Mail, MapPin, ArrowRight, ArrowLeft, Sparkles, MessageSquare, X } from 'lucide-react';
 import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, subtitle = null, showClose = true }) => {
-    const navigate = useNavigate();
+    const router = useRouter();
     const { closeAdmissionModal } = useAdmissionModal();
     const sectionRef = useRef(null);
     const [choice, setChoice] = useState(initialChoice);
@@ -28,62 +28,64 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
     const stateCityData = {
         "Andhra Pradesh": ["Vishakhapattnam", "Anantapur", "Guntur", "Kadappa", "Kakinada", "Kurnool", "Nellor", "Rajamundari", "Tirupati", "Vizianagram", "Eluru", "Machhlipattnam", "Nandayal", "Ongole"],
         "Assam": ["Guwahati", "Dibrugarh", "Jorhat", "Nagaon", "Silchar"],
-        "Bihar": ["Patna", "Ara", "Begusarai", "Bhagalpur", "Biharsharif", "Darbhanga", "Gaya", "Mungher", "Muzaffarpur", "Purnea", "Katihar", "Sasaram"],
-        "Chhatisgarh": ["Raipur", "Bhilai", "Bilaspur", "Durg", "Korba"],
-        "Delhi/NCR": ["Delhi", "Faridabad", "Ghzaiabad", "Gurugram", "Noida", "Greater Noida"],
-        "Goa": ["North Goa", "South Goa"],
-        "Gujarat": ["Ahmedabad", "Rajkot", "Surat", "Vadodara", "Bardoli", "Jamnagar", "Junagarh", "Idar", "Rapar", "Songarh"],
-        "Haryana": ["Ambala", "Bhiwani", "Karnal", "Panipat", "Rohtak", "Panchkula", "Sonipat", "Yamunanagar"],
-        "Himachal Pradesh": ["Baddi", "Dharamshala", "Hamirpur", "Kullu", "Mandi", "Nahan", "Palampur", "Shimla", "Solan", "Una"],
-        "J & K": ["Sri Nagar", "Anantnag"],
-        "Jharkhand": ["Dhanbad", "Jamshedpur", "Ranchi", "Bokaro", "Deoghar"],
-        "Karnataka": ["Benagaluru", "Belgaun", "Hubballi", "Mangalore", "Bijapur", "Udupi"],
-        "Kerala": ["Thiruvananthapuram", "Kochi", "Kollam", "Kozhikod", "Allapuzha", "Mallapuram", "Palakkad"],
-        "Madhya Pradesh": ["Bhopal", "Gwallior", "Indore", "Jabalpur", "Sagar", "Ujjain", "Dewas", "Ratlam", "Rewa", "Satna"],
-        "Maharashtra": ["Kalyan/Dombivli", "Mumbai", "Nagpur", "Nashik", "Navi Mumbai", "Pune", "Sambhaji Nagar", "Thane", "Ahmednagar", "Akola", "Bhiwandi", "Chandrapur", "Dhule", "Jalgaon", "Kolhapur", "Latur", "Malegaon", "Mira-Bhayandar", "Sangli-miraj-kupwad", "Solapur", "Ulhashnagar", "Parbhani"],
-        "Manipur": ["Imphal West", "Senapati", "Churachandpur"],
-        "Mijoram": ["Aizwal", "Champhai", "Lunglei"],
-        "Nagaland": ["Dimapur", "Kohima", "Mon"],
-        "Odisha": ["Bhubneshwar", "Cuttack", "Balasore", "Berhampur", "Puri", "Rourkela", "Sambhal pur"],
-        "Punjab": ["Amritsar", "Ludhiana", "Bathinda", "Jalandhar", "Mohali (SAS Nagar)", "Patiala", "Zirakpur", "Firozpur", "Hoshiarpur", "Khanna", "Moga", "Pathankot", "Phagwara"],
-        "Rajasthan": ["Jaipur", "Jodhpur", "Ajmer", "Alwar", "Bikaner", "Udaipur", "Bharatpur", "Pali", "Sikar", "Sri Ganganagar"],
-        "Sikkim": ["Gangtok", "Namchi"],
-        "Tamilnadu": ["Chennai", "Coimbatore", "Madurai", "Tambaram", "Trippur", "Avadi", "Erode", "Hosur", "Nagarcoil", "Salem", "Tirunaveli", "Trichy", "Tuticorin", "Vellore"],
-        "Telengana": ["Hydrabad", "Karimnagar", "Nizamabad", "Warangal", "Godavarikhani", "Ramagundam", "Secundrabad"],
-        "Tripura": ["Agartala", "Dharmanagar"],
-        "Uttar Pradesh": ["Agra", "Kanpur", "Lucknow", "Meerut", "Varanasi", "Aligarh", "Ayodhya", "Bareilly", "Firozabad", "Gorakhpur", "Jhansi", "Mathura", "Moradabad", "Muzaffarnagar", "Rampur", "Saharanpur", "Amroha", "Budaun", "Bulandshahr", "Etawah", "Farrukhabad", "Mau", "Mirzapur", "Shahjahanpur"],
-        "West Bengal": ["Kolkata", "Asansol", "Siliguri", "Durgapur", "Bardhaman", "Malda", "Baharampur", "Shantipur", "Ranaghat", "Haldia"]
+        "Bihar": ["Patna", "Gaya", "Bhagalpur", "Muzaffarpur", "Purnia", "Darbhanga", "Bihar Sharif", "Arrah", "Begusarai", "Katihar", "Munger", "Chhapra", "Danapur", "Saharsa", "Sasaram", "Hajipur", "Dehri", "Siwan", "Motihari", "Nawada", "Bagaha", "Buxar", "Kishanganj", "Sitamarhi", "Jamalpur", "Jehanabad", "Aurangabad"],
+        "Chandigarh": ["Chandigarh"],
+        "Chhattisgarh": ["Bhilai", "Raipur", "Bilaspur", "Korba", "Rajnandgaon", "Raigarh", "Jagdalpur", "Ambikapur", "Dhamtari", "Mahasamund"],
+        "Delhi": ["Head Campus", "Dwarka"],
+        "Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Bhavnagar", "Jamnagar", "Junagadh", "Gandhinagar", "Gandhidham", "Anand", "Navsari", "Morbi", "Nadiad", "Surendranagar", "Bharuch", "Mehsana", "Bhuj", "Porbandar", "Palanpur", "Valsad", "Vapi", "Gondal", "Veraval", "Godhra", "Patan", "Kalol", "Dahod", "Botad", "Amreli", "Deesa", "Jetpur"],
+        "Haryana": ["Hisar", "Faridabad", "Gurgaon", "Panipat", "Ambala", "Yamunanagar", "Rohtak", "Karnal", "Sonipat", "Panchkula", "Bhiwani", "Sirsa", "Bahadurgarh", "Jind", "Thanesar", "Kaithal", "Rewari", "Palwal"],
+        "Himachal Pradesh": ["Shimla", "Dharamshala", "Solan", "Mandi", "Palampur", "Baddi", "Nahan", "Paonta Sahib", "Sundarnagar", "Chamba"],
+        "Jammu and Kashmir": ["Jammu", "Srinagar", "Anantnag"],
+        "Jharkhand": ["Dhanbad", "Ranchi", "Jamshedpur", "Bokaro", "Deoghar", "Phusro", "Hazaribagh", "Giridih", "Ramgarh", "Medininagar", "Chirkunda"],
+        "Karnataka": ["Bangalore JP Nagar", "Kalaburagi", "Mysore", "Bangalore Whitefield", "Shivamogga", "Davanagere", "Bangalore", "Hubli-Dharwad", "Mangalore", "Belgaum", "Gulbarga", "Bellary", "Bijapur", "Shimoga", "Tumkur", "Bidar", "Hospet", "Hassan", "Gadag", "Udupi", "Robertsonpet", "Bhadravati", "Chitradurga", "Kolar", "Mandya", "Chikmagalur", "Gangavati", "Bagalkot", "Ranebennuru"],
+        "Kerala": ["Kochin", "Thrissur", "Trivandrum", "Kozhikode", "Kollam", "Palakkad", "Alappuzha", "Malappuram", "Kannur", "Kottayam", "Kasaragod"],
+        "Madhya Pradesh": ["Bhopal", "Indore", "Jabalpur", "Gwalior", "Ujjain", "Sagar", "Dewas", "Satna", "Ratlam", "Rewa", "Murwara", "Singrauli", "Burhanpur", "Khandwa", "Bhind", "Chhindwara", "Guna", "Shivpuri", "Vidisha", "Chhatarpur", "Damoh", "Mandsaur", "Khargone", "Neemuch", "Pithampur", "Hoshangabad", "Itarsi", "Sehore", "Morena", "Betul"],
+        "Maharashtra": ["Amravati", "Mumbai Andheri", "Pune Baner", "Mumbai Ghtakopar", "Pune Hadapsar", "Mumbai Kandivali", "Nanded", "Pune PCMC", "Pune Deccan", "Pune Kothrud", "Navi Mumbai Sanpada", "Mumbai Thane", "Navi Mumbai Vasai", "Mumbai", "Pune", "Nagpur", "Thane", "Nashik", "Kalyan-Dombivali", "Vasai-Virar", "Aurangabad", "Navi Mumbai", "Solapur", "Mira-Bhayandar", "Bhiwandi", "Kolhapur", "Ulhasnagar", "Sangli-Miraj & Kupwad", "Malegaon", "Jalgaon", "Akola", "Latur", "Dhule", "Ahmednagar", "Chandrapur", "Parbhani", "Ichalkaranji", "Jalna", "Ambarnath", "Bhusawal", "Panvel", "Badlapur", "Beed", "Gondia", "Satara", "Barshi", "Yavatmal", "Achalpur", "Osmanabad", "Nandurbar", "Wardha", "Udgir", "Hinganghat"],
+        "Manipur": ["Imphal"],
+        "Meghalaya": ["Shillong"],
+        "Mizoram": ["Aizawl"],
+        "Nagaland": ["Dimapur", "Kohima"],
+        "Odisha": ["Bhubaneshvar", "Cuttack", "Rourkela", "Brahmapur", "Sambalpur", "Puri", "Balasore", "Bhadrak", "Baripada", "Jharsuguda"],
+        "Puducherry": ["Pondicherry", "Ozhukarai"],
+        "Punjab": ["Mohali", "New Amritsar", "Ludhiana", "Amritsar", "Jalandhar", "Patiala", "Bathinda", "Hoshiarpur", "Batala", "Pathankot", "Moga", "Abohar", "Malerkotla", "Khanna", "Muktsar", "Barnala", "Firozpur", "Kapurthala", "Phagwara"],
+        "Rajasthan": ["Jaipur", "Udaipur", "Kota", "Jodhpur", "Bikaner", "Ajmer", "Bhilwara", "Alwar", "Bharatpur", "Sikar", "Pali", "Sri Ganganagar", "Kishangarh", "Baran", "Dhaulpur", "Tonk", "Beawar", "Hanumangarh"],
+        "Sikkim": ["Gangtok"],
+        "Tamil Nadu": ["Coimbatore", "Salem", "Chennai", "Madurai", "Tiruchirappalli", "Tiruppur", "Erode", "Tirunelveli", "Vellore", "Thoothukkudi", "Dindigul", "Thanjavur", "Ranipet", "Sivakasi", "Karur", "Udhagamandalam", "Hosur", "Nagercoil", "Kanchipuram", "Kumarapalayam", "Karaikkudi", "Neyveli", "Cuddalore", "Kumbakonam", "Tiruvannamalai", "Pollachi", "Rajapalayam", "Gudiyatham", "Pudukkottai"],
+        "Telangana": ["Hyderabad", "Warangal", "Nizamabad", "Khammam", "Karimnagar", "Ramagundam", "Mahbubnagar", "Nalgonda", "Adilabad", "Suryapet"],
+        "Tripura": ["Agartala"],
+        "Uttar Pradesh": ["Bareilly", "Prayagraj", "Lucknow", "Kanpur", "Ghaziabad", "Agra", "Meerut", "Varanasi", "Aligarh", "Moradabad", "Saharanpur", "Gorakhpur", "Noida", "Firozabad", "Jhansi", "Muzaffarnagar", "Mathura", "Budaun", "Rampur", "Shahjahanpur", "Farrukhabad", "Ayodhya", "Mau", "Hapur", "Etawah", "Mirzapur", "Bulandshahr", "Sambhal", "Amroha", "Hardoi", "Fatehpur", "Raebareli", "Orai", "Sitapur", "Bahraich", "Modinagar", "Unnao", "Jaunpur", "Lakhimpur", "Hathras", "Banda", "Pilibhit", "Barabanki", "Khurja", "Gonda", "Mainpuri", "Lalitpur", "Etah", "Deoria", "Ghazipur", "Sultanpur", "Azamgarh", "Bijnor", "Sahaswan", "Basti", "Chandausi", "Akbarpur", "Ballia", "Mubarakpur", "Greater Noida", "Shikohabad"],
+        "Uttarakhand": ["Dehradun", "Haridwar", "Roorkee", "Haldwani", "Rudrapur", "Kashipur", "Rishikesh"],
+        "West Bengal": ["Kolkata", "Siliguri", "Asansol", "Siliguri", "Durgapur", "Bardhaman", "Malda", "Baharampur", "Habra", "Kharagpur", "Shantipur", "Dankuni", "Dhulian", "Ranaghat", "Haldia", "Raiganj", "Krishnanagar", "Nabadwip", "Midnapore", "Jalpaiguri", "Balurghat", "Basirhat", "Bankura", "Chakdaha", "Darjeeling", "Alipurduar", "Purulia", "Jangipur", "Bangaon", "Cooch Behar"]
     };
 
-    const handleChoice = (val) => {
-        setChoice(val);
-
-        // Auto-scroll to top of section when choice is made
-        setTimeout(() => {
-            if (sectionRef.current) {
-                const navHeight = 100; // Account for fixed navbar
-                const elementPosition = sectionRef.current.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - navHeight;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth"
-                });
-            }
-        }, 100);
-    };
+    const disciplines = [
+        { id: 'fashion', title: 'Fashion Design', icon: '👗', desc: 'Couture, styling & apparel trends' },
+        { id: 'interior', title: 'Interior Design', icon: '🏛️', desc: 'Spatial concepts & modern architecture' },
+        { id: 'graphic', title: 'Graphic & UI/UX', icon: '🎨', desc: 'Brand systems & interactive media' },
+        { id: 'animation', title: 'Animation & VFX', icon: '⚡', desc: '3D modeling, CGI & game assets' }
+    ];
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError(null);
 
-        // Validate 10-digit mobile number
+        if (!formData.name || !formData.mobile || !formData.email || !formData.state || !formData.city) {
+            setError("All fields marked * are required.");
+            return;
+        }
+
         if (formData.mobile.length !== 10) {
-            setError('Please enter a valid 10-digit mobile number');
+            setError("Please enter a valid 10-digit mobile number.");
+            return;
+        }
+
+        if (!formData.marketingConsent) {
+            setError("Please accept the terms to proceed.");
             return;
         }
 
         setLoading(true);
-        setError(null);
+
         try {
             const response = await fetch('/api/step-leads', {
                 method: 'POST',
@@ -91,50 +93,37 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    ...formData,
-                    mobile: `+91${formData.mobile}`,
-                    readyToStart: choice,
-                    inquiryType: choice === 'yes' ? "Talk to our Career Expert" : "Let us Career Decide"
+                    name: formData.name,
+                    phone: `+91${formData.mobile}`,
+                    email: formData.email,
+                    state: formData.state,
+                    city: formData.city,
+                    industry: choice?.title || 'General Design Inquiry',
+                    marketingConsent: formData.marketingConsent
                 }),
             });
 
-            // Handle non-JSON or error responses from Vercel/Server
             const contentType = response.headers.get("content-type");
-            let data;
-
+            let data = {};
             if (contentType && contentType.includes("application/json")) {
                 data = await response.json();
             } else {
                 const text = await response.text();
-                console.error('Server error response:', text.substring(0, 200));
-                throw new Error(`Server Error (${response.status})`);
+                console.error("Non-JSON response received:", text);
+                throw new Error(`Server returned non-JSON response (${response.status})`);
             }
 
-            if (data.success || response.ok) {
+            if (response.ok) {
                 setSubmitted(true);
-                // Set flag to prevent duplicate submissions
-                // localStorage.setItem('admission-form-filled', 'true');
-
-                // Redirect to Thank You page after a brief delay
-                setTimeout(() => {
-                    closeAdmissionModal();
-                    navigate('/thank-you', { state: { name: formData.name, type: 'enquiry' } });
-                }, 300);
             } else {
-                setError(data.message || `Server Error (${response.status}): Submission failed.`);
+                setError(data.message || `Submission failed (${response.status}). Please try again.`);
             }
-        } catch (error) {
-            console.error('Submission Error:', error);
-
-            // --- DEVELOPMENT WARNING ---
-            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-                console.error('❌ Submission failed on localhost. Ensure backend is running on :5001');
-            }
-
-            if (error.name === 'TypeError') {
-                setError("Connection Error: Server is unreachable. Please check your internet.");
+        } catch (err) {
+            console.error('Submission Error:', err);
+            if (err.name === 'TypeError' && err.message.includes('fetch')) {
+                setError("Connection Error: Server is unreachable. Please check your internet connection.");
             } else {
-                setError(error.message || "An unexpected error occurred. Please try again.");
+                setError(err.message || 'Something went wrong. Please check your connection and try again.');
             }
         } finally {
             setLoading(false);
@@ -142,198 +131,165 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
     };
 
     const content = (
-        <div className={`relative ${isModal ? 'overflow-y-auto max-h-[85vh] rounded-[2rem]' : 'py-24 md:py-32 bg-white overflow-hidden selection:bg-primary selection:text-white'}`}>
-            {!isModal && (
-                <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-40">
-                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2" />
-                    <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/5 blur-[120px] rounded-full -translate-x-1/2 translate-y-1/2" />
-                </div>
-            )}
-
-            <div className="container mx-auto px-6 relative z-10">
+        <div className={`relative ${isModal ? 'p-6 md:p-12' : 'py-20 px-6 max-w-7xl mx-auto'}`}>
+            <div className="relative z-10 w-full">
                 <div className="max-w-4xl mx-auto">
-
-                    {/* Header Area - Transformed based on state */}
-                    <div className={`relative ${!choice && !submitted ? 'bg-white p-8 md:p-16 rounded-[3rem] text-center border border-slate-100 shadow-3xl text-slate-900 overflow-hidden' : 'text-center mb-10 md:mb-16'}`}>
-                        {(!choice && !submitted && isModal && showClose) && (
-                            <>
-                                {/* Close Button */}
-                                <button
-                                    onClick={() => closeAdmissionModal()}
-                                    className="absolute top-2 right-2 z-[1002] p-2.5 rounded-full bg-slate-50/80 text-slate-400 hover:bg-slate-100 hover:text-slate-900 transition-all border border-slate-100 group backdrop-blur-sm"
-                                >
-                                    <X size={20} className="group-hover:rotate-90 transition-transform duration-300" />
-                                </button>
-                                <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-primary via-secondary to-primary" />
-                                <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
-                            </>
-                        )}
-
-                        <motion.span
-                            animate={{ opacity: submitted ? 0 : 1, y: submitted ? -20 : 0 }}
-                            className="inline-block px-4 py-1 rounded-full bg-slate-100 text-slate-500 font-bold tracking-[0.3em] uppercase text-[10px] md:text-xs mb-8"
-                        >
-                            {submitted ? "success" : "Take the first step"}
-                        </motion.span>
-
-                        <div className="relative inline-flex items-center justify-center gap-4 md:gap-8 group">
-                            <motion.h2
-                                layout
-                                animate={{
-                                    scale: choice ? 0.8 : 1,
-                                    opacity: submitted ? 0 : 1
-                                }}
-                                className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-slate-950 leading-[0.9]"
-                            >
-                                {title ? title : (
-                                    choice
-                                        ? (choice === 'yes' ? "Talk to our Career Expert" : "Let us Career Decide")
-                                        : <>Start Your <br /> <span className="text-primary italic font-serif">Creative Career</span> <br /> Today</>
-                                )}
-                            </motion.h2>
-
-                            {choice && !submitted && isModal && showClose && (
-                                <button
-                                    onClick={() => closeAdmissionModal()}
-                                    className="p-2 md:p-3 rounded-full bg-slate-50 text-slate-400 hover:bg-primary hover:text-white transition-all border border-slate-100 shadow-lg active:scale-90"
-                                >
-                                    <X size={24} className="transition-transform group-hover:rotate-90" />
-                                </button>
-                            )}
-                        </div>
-
-                        {!choice && !submitted && (
-                            <>
-                                <p className="text-slate-500 text-lg md:text-xl font-medium max-w-2xl mx-auto mb-16 leading-relaxed">
-                                    {subtitle || "Our experts are ready to help you navigate your design journey and identify your creative strengths."}
-                                </p>
-                                <motion.div
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-8"
-                                >
-                                    <button
-                                        onClick={() => handleChoice('yes')}
-                                        className="group relative w-full sm:w-64 h-20 bg-transparent border-2 border-slate-950 text-slate-950 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] hover:text-white active:scale-95"
-                                    >
-                                        <div className="absolute inset-0 bg-slate-950 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" />
-                                        <span className="relative z-10 text-2xl font-black uppercase tracking-widest inline-block transition-transform duration-300 group-hover:scale-110">
-                                            Yes
-                                        </span>
-                                    </button>
-
-                                    <button
-                                        onClick={() => handleChoice('no')}
-                                        className="group relative w-full sm:w-64 h-20 bg-white border-2 border-slate-200 text-slate-400 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-slate-800 hover:text-slate-900 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] active:scale-95"
-                                    >
-                                        <div className="absolute inset-0 bg-slate-50 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" />
-                                        <span className="relative z-10 text-2xl font-black uppercase tracking-widest inline-block transition-transform duration-300 group-hover:scale-110">
-                                            No
-                                        </span>
-                                    </button>
-                                </motion.div>
-                            </>
-                        )}
-                    </div>
-
                     <AnimatePresence mode="wait">
+                        {!choice && !submitted && (
+                            <motion.div
+                                key="step-1"
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                                className="bg-white p-8 md:p-16 rounded-[3rem] border border-slate-100 shadow-2xl relative overflow-hidden"
+                            >
+                                {isModal && showClose && (
+                                    <button
+                                        onClick={() => closeAdmissionModal()}
+                                        className="absolute top-6 right-6 md:top-10 md:right-10 p-2 rounded-full bg-slate-50 text-slate-400 hover:bg-slate-100 hover:text-slate-900 transition-all border border-slate-100 group z-50"
+                                    >
+                                        <X size={20} className="group-hover:rotate-90 transition-transform duration-300" />
+                                    </button>
+                                )}
+
+                                <div className="text-center space-y-4 mb-12">
+                                    <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">Admission 2026</span>
+                                    <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-slate-950">
+                                        {title || "Select Your Focus"}
+                                    </h2>
+                                    <p className="text-slate-500 max-w-md mx-auto text-sm md:text-base font-medium">
+                                        {subtitle || "Choose your area of interest to get a personalized prospectus & curriculum overview."}
+                                    </p>
+                                </div>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    {disciplines.map((d) => (
+                                        <button
+                                            key={d.id}
+                                            onClick={() => setChoice(d)}
+                                            className="p-6 rounded-3xl border border-slate-100 bg-slate-50/50 hover:bg-white hover:border-primary/30 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-left flex items-start gap-4 group cursor-pointer"
+                                        >
+                                            <span className="text-3xl p-3 bg-white rounded-2xl shadow-sm border border-slate-100 group-hover:scale-110 transition-transform">{d.icon}</span>
+                                            <div>
+                                                <h4 className="font-black text-slate-950 text-base uppercase tracking-wider mb-1 group-hover:text-primary transition-colors">{d.title}</h4>
+                                                <p className="text-xs text-slate-500 font-medium leading-relaxed">{d.desc}</p>
+                                            </div>
+                                        </button>
+                                    ))}
+                                </div>
+                            </motion.div>
+                        )}
+
                         {choice && !submitted && (
                             <motion.div
-                                key="form-expansion"
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: 'auto' }}
-                                exit={{ opacity: 0, height: 0 }}
-                                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                                className="overflow-hidden"
+                                key="step-2"
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                                className="bg-white p-8 md:p-16 rounded-[3rem] border border-slate-100 shadow-2xl relative overflow-hidden"
                             >
-                                <div className="bg-white rounded-[3rem] p-6 md:p-10 border border-slate-100 shadow-3xl text-slate-900 relative">
-                                    {/* Close Button Removed from here as it is now next to the title above */}
+                                {isModal && showClose && (
+                                    <button
+                                        onClick={() => closeAdmissionModal()}
+                                        className="absolute top-6 right-6 md:top-10 md:right-10 p-2 rounded-full bg-slate-50 text-slate-400 hover:bg-slate-100 hover:text-slate-900 transition-all border border-slate-100 group z-50"
+                                    >
+                                        <X size={20} className="group-hover:rotate-90 transition-transform duration-300" />
+                                    </button>
+                                )}
 
-                                    <div className="absolute top-0 right-0 p-8 opacity-5 pointer-events-none">
-                                        {choice === 'yes' ? <MessageSquare size={120} /> : <Sparkles size={120} />}
+                                <div className="max-w-xl mx-auto">
+                                    <div className="flex items-center gap-4 mb-8">
+                                        <button
+                                            type="button"
+                                            onClick={() => { setChoice(null); }}
+                                            className="w-12 h-12 rounded-full border border-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:bg-slate-50 transition-all"
+                                        >
+                                            <ArrowLeft size={20} />
+                                        </button>
+                                        <div>
+                                            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">Selected Stream</span>
+                                            <h3 className="text-xl md:text-2xl font-black uppercase text-slate-950">{choice.title}</h3>
+                                        </div>
                                     </div>
 
-                                    <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 md:gap-12 items-center">
-                                        <div className="lg:col-span-2 space-y-6">
-                                            <p className="text-slate-500 text-lg md:text-xl font-medium leading-relaxed">
-                                                {choice === 'yes'
-                                                    ? "Our industry mentors are ready to guide you through your design journey. Excellence awaits."
-                                                    : "Unsure about your path? Our career counselors will help identify your creative strengths."
-                                                }
-                                            </p>
-                                            <div className="flex items-center gap-3 text-primary">
-                                                <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                                                <span className="text-[10px] font-black uppercase tracking-[0.3em]">Institutional Intake 2026</span>
-                                            </div>
-                                        </div>
-
-                                        <div className="lg:col-span-3">
+                                    <div className="relative">
+                                        <div className="bg-white rounded-3xl relative">
                                             <form onSubmit={handleSubmit} className="space-y-4">
-                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                                    <div className="relative group">
-                                                        <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                                                <div className="relative group/field">
+                                                    <label className="text-[10px] font-black uppercase tracking-wider text-slate-500 ml-1 mb-1 block">Full Name *</label>
+                                                    <div className="relative flex items-center">
+                                                        <User className="absolute left-4 text-slate-400" size={18} />
                                                         <input
-                                                            required
                                                             type="text"
-                                                            placeholder="Full Name"
-                                                            className="w-full h-14 bg-slate-50 border border-slate-100 rounded-xl pl-12 pr-4 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-primary/50 transition-all font-bold text-sm"
+                                                            required
+                                                            placeholder="Your Full Name"
                                                             value={formData.name}
                                                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                                            className="w-full h-12 md:h-14 pl-12 pr-4 bg-slate-50 border border-slate-200 rounded-2xl font-bold text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:bg-white transition-all text-xs md:text-sm"
                                                         />
                                                     </div>
-                                                    <div className="flex items-stretch h-14 bg-slate-50 border border-slate-100 rounded-xl overflow-hidden focus-within:border-secondary/50 transition-all">
-                                                        <div className="flex items-center px-4 bg-slate-100 border-r border-slate-200 gap-2">
-                                                            <Phone className="w-4 h-4 text-slate-500" />
-                                                            <span className="text-slate-400 font-bold text-xs">+91</span>
-                                                        </div>
-                                                        <input
-                                                            required
-                                                            type="tel"
-                                                            inputMode="numeric"
-                                                            placeholder="00000 00000"
-                                                            className="flex-1 h-full bg-transparent px-4 text-slate-900 placeholder-slate-400 focus:outline-none font-bold text-sm"
-                                                            value={formData.mobile}
-                                                            onChange={(e) => {
-                                                                const digits = e.target.value.replace(/\D/g, '').slice(0, 10);
-                                                                setFormData({ ...formData, mobile: digits });
-                                                            }}
-                                                        />
-                                                    </div>
-                                                </div>
-
-                                                <div className="relative group">
-                                                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
-                                                    <input
-                                                        type="email"
-                                                        placeholder="Email Address (Optional)"
-                                                        className="w-full h-14 bg-slate-50 border border-slate-100 rounded-xl pl-12 pr-4 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-primary/50 transition-all font-bold text-sm"
-                                                        value={formData.email}
-                                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                                    />
                                                 </div>
 
                                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                                    <div className="relative">
-                                                        <div
-                                                            onClick={() => setIsStateDropdownOpen(!isStateDropdownOpen)}
-                                                            className="w-full h-14 bg-slate-50 border border-slate-100 rounded-xl pl-12 pr-4 text-slate-900 flex items-center justify-between cursor-pointer focus-within:border-primary/50 hover:bg-slate-100 transition-all font-bold text-sm group"
-                                                        >
-                                                            <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-hover:text-primary transition-colors" />
-                                                            <span className={formData.state ? "text-slate-900" : "text-slate-400"}>
-                                                                {formData.state || "Select State"}
-                                                            </span>
-                                                            <motion.div animate={{ rotate: isStateDropdownOpen ? 180 : 0 }}>
-                                                                <ArrowRight className="w-4 h-4 rotate-90 opacity-40" />
-                                                            </motion.div>
+                                                    <div className="relative group/field">
+                                                        <label className="text-[10px] font-black uppercase tracking-wider text-slate-500 ml-1 mb-1 block">Mobile Number *</label>
+                                                        <div className="relative flex items-center">
+                                                            <div className="absolute left-4 flex items-center gap-1 border-r border-slate-300 pr-2">
+                                                                <span className="text-slate-500 font-bold text-xs">+91</span>
+                                                            </div>
+                                                            <input
+                                                                type="tel"
+                                                                required
+                                                                inputMode="numeric"
+                                                                placeholder="10-digit number"
+                                                                value={formData.mobile}
+                                                                onChange={(e) => setFormData({ ...formData, mobile: e.target.value.replace(/\D/g, '').slice(0, 10) })}
+                                                                className="w-full h-12 md:h-14 pl-18 pr-4 bg-slate-50 border border-slate-200 rounded-2xl font-bold text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:bg-white transition-all text-xs md:text-sm"
+                                                            />
                                                         </div>
+                                                    </div>
+
+                                                    <div className="relative group/field">
+                                                        <label className="text-[10px] font-black uppercase tracking-wider text-slate-500 ml-1 mb-1 block">Email Address *</label>
+                                                        <div className="relative flex items-center">
+                                                            <Mail className="absolute left-4 text-slate-400" size={18} />
+                                                            <input
+                                                                type="email"
+                                                                required
+                                                                placeholder="you@email.com"
+                                                                value={formData.email}
+                                                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                                                className="w-full h-12 md:h-14 pl-12 pr-4 bg-slate-50 border border-slate-200 rounded-2xl font-bold text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:bg-white transition-all text-xs md:text-sm"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                    {/* Custom State Dropdown */}
+                                                    <div className="relative group/field">
+                                                        <label className="text-[10px] font-black uppercase tracking-wider text-slate-500 ml-1 mb-1 block">State *</label>
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => {
+                                                                setIsStateDropdownOpen(!isStateDropdownOpen);
+                                                                setIsCityDropdownOpen(false);
+                                                            }}
+                                                            className="w-full h-12 md:h-14 px-4 bg-slate-50 border border-slate-200 rounded-2xl font-bold text-slate-800 focus:outline-none focus:border-primary flex items-center justify-between text-xs md:text-sm"
+                                                        >
+                                                            <span className="truncate">{formData.state || "Select State"}</span>
+                                                            <MapPin className="text-slate-400 shrink-0" size={16} />
+                                                        </button>
 
                                                         <AnimatePresence>
                                                             {isStateDropdownOpen && (
                                                                 <motion.div
-                                                                    initial={{ opacity: 0, y: 10 }}
+                                                                    initial={{ opacity: 0, y: -10 }}
                                                                     animate={{ opacity: 1, y: 0 }}
-                                                                    exit={{ opacity: 0, y: 10 }}
-                                                                    className="absolute z-50 left-0 right-0 mt-2 max-h-60 overflow-y-auto bg-white border border-slate-100 rounded-xl shadow-2xl custom-scrollbar"
+                                                                    exit={{ opacity: 0, y: -10 }}
+                                                                    className="absolute z-50 left-0 right-0 top-full mt-2 max-h-48 overflow-y-auto bg-white border border-slate-200 rounded-2xl shadow-2xl py-2"
                                                                 >
                                                                     {Object.keys(stateCityData).map((state) => (
                                                                         <div
@@ -352,29 +308,31 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
                                                         </AnimatePresence>
                                                     </div>
 
-                                                    <div className="relative">
-                                                        <div
-                                                            onClick={() => formData.state && setIsCityDropdownOpen(!isCityDropdownOpen)}
-                                                            className={`w-full h-14 bg-slate-50 border border-slate-100 rounded-xl pl-12 pr-4 text-slate-900 flex items-center justify-between cursor-pointer focus-within:border-primary/50 hover:bg-slate-100 transition-all font-bold text-sm group ${!formData.state ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                                    {/* Custom City Dropdown */}
+                                                    <div className="relative group/field">
+                                                        <label className="text-[10px] font-black uppercase tracking-wider text-slate-500 ml-1 mb-1 block">City *</label>
+                                                        <button
+                                                            type="button"
+                                                            disabled={!formData.state}
+                                                            onClick={() => {
+                                                                setIsCityDropdownOpen(!isCityDropdownOpen);
+                                                                setIsStateDropdownOpen(false);
+                                                            }}
+                                                            className={`w-full h-12 md:h-14 px-4 bg-slate-50 border border-slate-200 rounded-2xl font-bold text-slate-800 focus:outline-none focus:border-primary flex items-center justify-between text-xs md:text-sm ${!formData.state ? 'opacity-50 cursor-not-allowed' : ''}`}
                                                         >
-                                                            <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-hover:text-primary transition-colors" />
-                                                            <span className={formData.city ? "text-slate-900" : "text-slate-400"}>
-                                                                {formData.city || (formData.state ? "Select City" : "Choose State First")}
-                                                            </span>
-                                                            <motion.div animate={{ rotate: isCityDropdownOpen ? 180 : 0 }}>
-                                                                <ArrowRight className="w-4 h-4 rotate-90 opacity-40" />
-                                                            </motion.div>
-                                                        </div>
+                                                            <span className="truncate">{formData.city || "Select City"}</span>
+                                                            <MapPin className="text-slate-400 shrink-0" size={16} />
+                                                        </button>
 
                                                         <AnimatePresence>
                                                             {isCityDropdownOpen && formData.state && (
                                                                 <motion.div
-                                                                    initial={{ opacity: 0, y: 10 }}
+                                                                    initial={{ opacity: 0, y: -10 }}
                                                                     animate={{ opacity: 1, y: 0 }}
-                                                                    exit={{ opacity: 0, y: 10 }}
-                                                                    className="absolute z-40 left-0 right-0 mt-2 max-h-60 overflow-y-auto bg-white border border-slate-100 rounded-xl shadow-2xl custom-scrollbar"
+                                                                    exit={{ opacity: 0, y: -10 }}
+                                                                    className="absolute z-50 left-0 right-0 top-full mt-2 max-h-48 overflow-y-auto bg-white border border-slate-200 rounded-2xl shadow-2xl py-2"
                                                                 >
-                                                                    {stateCityData[formData.state].map((city) => (
+                                                                    {(stateCityData[formData.state] || []).map((city) => (
                                                                         <div
                                                                             key={city}
                                                                             onClick={() => {

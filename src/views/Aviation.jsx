@@ -29,14 +29,14 @@ import {
     X,
     Download
 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
 import { useAdmissionModal } from '../context/AdmissionModalContext';
 import AviationForm from '../components/AviationForm';
 
 const Aviation = () => {
-    const navigate = useNavigate();
+    const router = useRouter();
     const { openAdmissionModal } = useAdmissionModal();
     const [selectedCourse, setSelectedCourse] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);

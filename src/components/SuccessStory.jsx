@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ArrowUpRight, Star } from 'lucide-react';
 import { useAdmissionModal } from '../context/AdmissionModalContext';
 import Text from './text.jsx';
@@ -68,6 +68,7 @@ const SuccessStory = ({ heading, subheading, customStories }) => {
                     </motion.p>
                 </div>
 
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {stories.map((story, idx) => (
                         <motion.div
@@ -79,7 +80,7 @@ const SuccessStory = ({ heading, subheading, customStories }) => {
                             className="group flex flex-col h-full"
                         >
                             {/* Card Image Part */}
-                            <Link to="/industry-potential" className="relative aspect-[4/5] rounded-t-4xl overflow-hidden shadow-2xl block cursor-pointer">
+                            <Link href="/industry-potential" className="relative aspect-[4/5] rounded-t-4xl overflow-hidden shadow-2xl block cursor-pointer">
                                 <img
                                     src={story.img}
                                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"

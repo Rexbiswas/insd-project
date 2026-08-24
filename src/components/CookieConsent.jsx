@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Cookie, X, Check } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const CookieConsent = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -71,7 +71,7 @@ const CookieConsent = () => {
                             </div>
 
                             <p className="text-slate-600 text-[13px] leading-relaxed mb-10 font-medium">
-                                We utilize advanced tracking protocols to optimize your design journey. By continuing, you agree to our <Link to="/cookie-policy" className="text-slate-900 font-bold border-b-2 border-primary/20 hover:border-primary transition-all pb-0.5">Cookie Policy</Link>.
+                                We utilize advanced tracking protocols to optimize your design journey. By continuing, you agree to our <Link href="/cookie-policy" className="text-slate-900 font-bold border-b-2 border-primary/20 hover:border-primary transition-all pb-0.5">Cookie Policy</Link>.
                             </p>
 
                             <div className="flex gap-4">

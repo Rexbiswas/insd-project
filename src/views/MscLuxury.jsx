@@ -15,13 +15,14 @@ import {
     Award,
     Target
 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
+
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
 import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const MscLuxury = () => {
-    const navigate = useNavigate();
+    const router = useRouter();
     const { openAdmissionModal } = useAdmissionModal();
     const [activeOutline, setActiveOutline] = useState('PG');
     const [expandedYear, setExpandedYear] = useState(1);
@@ -402,7 +403,7 @@ const MscLuxury = () => {
                                 <p className="text-white/50 font-medium max-w-sm">Join the 2026 session. Limited seats for high-potential luxury leaders.</p>
                             </div>
                              <button 
-                                onClick={() => navigate('/course-apply-now')}
+                                onClick={() => router.push('/course-apply-now')}
                                 className="px-16 py-6 bg-white text-slate-900 rounded-full font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-primary hover:text-white transition-all transform hover:scale-105"
                             >
                                 Start Application

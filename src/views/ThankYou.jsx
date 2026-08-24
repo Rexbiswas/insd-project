@@ -1,23 +1,17 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { CheckCircle2, ArrowLeft, Download, ExternalLink, Calendar, Mail, PhoneCall } from 'lucide-react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { CheckCircle2, ArrowLeft, PhoneCall } from 'lucide-react';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 
 const ThankYou = () => {
-    const navigate = useNavigate();
-    const location = useLocation();
-    const { name, type } = location.state || {};
-
-    // Safety check: If no state is present, the user likely accessed the URL directly
-    useEffect(() => {
-        if (!location.state && window.location.hostname !== 'localhost') {
-            navigate('/', { replace: true });
-        }
-    }, [location.state, navigate]);
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const name = searchParams ? searchParams.get('name') : '';
+    const type = searchParams ? searchParams.get('type') : '';
 
     const isPlacementReport = type === 'report';
 
@@ -71,7 +65,7 @@ const ThankYou = () => {
                         className="flex flex-wrap items-center justify-center gap-6 pt-8"
                     >
                         <button
-                            onClick={() => navigate('/')}
+                            onClick={() => router.push('/')}
                             className="flex items-center gap-3 px-8 h-14 bg-slate-950 text-white rounded-full font-black uppercase tracking-widest text-xs hover:bg-primary transition-all duration-300 shadow-xl"
                         >
                             <ArrowLeft size={18} />

@@ -4,14 +4,14 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X, Bot, Minus, SendHorizonal, User, LayoutDashboard, LogOut, Trash2 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 
 // Global state to track open chatbot instances across components
 const openChatbots = new Set();
 
 const AIChatbot = ({ isFloatingPanel = false, hideWindow = false, showTrigger = true }) => {
     const { user, logout } = useAuth();
-    const navigate = useNavigate();
+    const router = useRouter();
     const [isOpen, setIsOpen] = useState(false);
     const [isCentered, setIsCentered] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
@@ -38,299 +38,246 @@ const AIChatbot = ({ isFloatingPanel = false, hideWindow = false, showTrigger = 
     }, [chatHistory, isTyping]);
 
     useEffect(() => {
+        const checkScroll = () => {
+            const show = window.scrollY > 200;
+            setIsVisible(show);
+        };
+        checkScroll();
+        window.addEventListener('scroll', checkScroll);
+        return () => window.removeEventListener('scroll', checkScroll);
+    }, []);
+
+    // Manage global open state to avoid duplicate instances
+    useEffect(() => {
         if (isOpen) {
             openChatbots.add(instanceId.current);
         } else {
             openChatbots.delete(instanceId.current);
         }
 
-        const isAnyOpen = openChatbots.size > 0;
-        
-        if (isAnyOpen) {
-            document.body.classList.add('chatbot-open');
-        } else {
-            document.body.classList.remove('chatbot-open');
-        }
+        const handleOpenEvent = (e) => {
+            if (e.detail && e.detail.source !== instanceId.current) {
+                // If it's a mobile open event, set centered mode
+                if (e.detail.isMobile) {
+                    setIsCentered(true);
+                }
+                setIsOpen(true);
+            }
+        };
 
-        window.dispatchEvent(new CustomEvent('chatbot-state', { 
-            detail: { isOpen: isAnyOpen } 
-        }));
-
+        window.addEventListener('open-ai-chat', handleOpenEvent);
         return () => {
             openChatbots.delete(instanceId.current);
-            if (openChatbots.size === 0) {
-                document.body.classList.remove('chatbot-open');
-                window.dispatchEvent(new CustomEvent('chatbot-state', { 
-                    detail: { isOpen: false } 
-                }));
-            }
+            window.removeEventListener('open-ai-chat', handleOpenEvent);
         };
     }, [isOpen]);
 
-    // Visibility logic on scroll
-    useEffect(() => {
-        if (isFloatingPanel) return;
-        const handleScroll = () => {
-            // Don't hide if already open
-            if (isOpen) {
-                if (!isVisible) setIsVisible(true);
-                return;
-            }
-            const show = window.scrollY > 100;
-            if (show !== isVisible) {
-                setIsVisible(show);
-            }
-        };
-        handleScroll();
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, [isVisible, isFloatingPanel, isOpen]);
+    const handleSendMessage = async (e) => {
+        e.preventDefault();
+        if (!message.trim()) return;
 
-    // Handle external trigger
-    useEffect(() => {
-        const handleExternalOpen = (e) => {
-            // Only the instance that is allowed to show the window should respond
-            if (hideWindow) return;
-            
-            setIsOpen(true);
-            if (e.detail?.centered) {
-                setIsCentered(true);
-            } else {
-                setIsCentered(false);
-            }
-            if (!isFloatingPanel) setIsVisible(true);
-        };
-        window.addEventListener('open-ai-chatbot', handleExternalOpen);
-        return () => window.removeEventListener('open-ai-chatbot', handleExternalOpen);
-    }, [isFloatingPanel, hideWindow]);
-
-    const handleSend = async (e) => {
-        if (e && typeof e.preventDefault === 'function') {
-            e.preventDefault();
-        }
-        
-        const msg = typeof e === 'string' ? e : message;
-        if (!msg.trim()) return;
-
-        // Handle Clear Command
-        if (msg.toLowerCase() === 'clear' || msg.toLowerCase() === '/clear') {
-            clearChat();
-            setMessage('');
-            return;
-        }
-
-        const userMessage = { role: 'user', content: msg };
-        setChatHistory(prev => [...prev, userMessage]);
-        if (typeof e !== 'string') setMessage('');
+        const userMsg = message;
+        setMessage('');
+        setChatHistory(prev => [...prev, { role: 'user', content: userMsg }]);
         setIsTyping(true);
 
-        setTimeout(() => {
-            const botResponse = {
-                role: 'bot',
-                content: getMockResponse(msg)
-            };
-            setChatHistory(prev => [...prev, botResponse]);
+        try {
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    message: userMsg,
+                    history: chatHistory.slice(-6), // Send last 6 messages for context
+                    userContext: user ? {
+                        name: user.name,
+                        email: user.email,
+                        courseName: user.courseName,
+                        currentYear: user.currentYear
+                    } : null
+                })
+            });
+
+            const data = await response.json();
+            
+            if (data.reply) {
+                setChatHistory(prev => [...prev, { role: 'bot', content: data.reply }]);
+            } else {
+                throw new Error("Invalid response format");
+            }
+        } catch (error) {
+            console.error("Chat Error:", error);
+            setChatHistory(prev => [...prev, { 
+                role: 'bot', 
+                content: "I'm having trouble connecting to my creative database right now. Please feel free to reach out to us at admissions@insd.edu.in or call us directly!" 
+            }]);
+        } finally {
             setIsTyping(false);
-        }, 1500);
+        }
     };
 
-    const clearChat = () => {
+    const handleClearChat = () => {
         const greeting = user 
-            ? `Hi ${user.name}! Chat cleared. How else can I help you?`
-            : "Chat cleared! I'm here if you have more questions about INSD.";
+            ? `Hi ${user.name}! Welcome back. How can I help you today?`
+            : "Hi there! I'm your INSD Design Assistant. How can I help you shape your creative future today?";
         setChatHistory([{ role: 'bot', content: greeting }]);
     };
 
-    const getMockResponse = (input) => {
-        const lowerInput = input.toLowerCase();
-
-        // Course Knowledge Base
-        const coursesInfo = {
-            fashion: "Our Fashion Design programs range from 1-year Diplomas to 3-year Bachelors and 2-year Masters. They cover everything from pattern making to haute couture.",
-            interior: "Interior Design at INSD focuses on spatial planning, 3D modeling, and luxury residential/commercial projects. Available in Diploma, UG, and PG levels.",
-            graphic: "Graphic Design & UI/UX courses focus on visual communication, brand identity, and digital product design using industry-standard tools like Adobe Suite and Figma.",
-            timing: "Standard class timings are Monday to Friday. We have two main batches: Morning (10:00 AM - 1:00 PM) and Afternoon (2:00 PM - 5:00 PM). Some professional workshops also happen on Saturdays."
-        };
-
-        if (user) {
-            if (lowerInput.includes('profile') || lowerInput.includes('dashboard') || lowerInput.includes('my info')) {
-                return `You can view and manage your profile in your dashboard. You are currently enrolled in ${user.courseName}. Shall I take you there?`;
-            }
-            if (lowerInput.includes('application') || lowerInput.includes('status')) {
-                return `Your application status for ${user.courseName} is currently being processed. You can check for updates in your student portal.`;
-            }
-        }
-
-        // Timing Queries
-        if (lowerInput.includes('timing') || lowerInput.includes('time') || lowerInput.includes('schedule') || lowerInput.includes('batch')) {
-            return coursesInfo.timing;
-        }
-
-        // Specific Course Queries
-        if (lowerInput.includes('fashion')) return coursesInfo.fashion;
-        if (lowerInput.includes('interior')) return coursesInfo.interior;
-        if (lowerInput.includes('graphic') || lowerInput.includes('ui/ux')) return coursesInfo.graphic;
-
-        // General Responses
-        if (lowerInput.includes('course') || lowerInput.includes('program') || lowerInput.includes('study')) {
-            return "We offer premium courses in Fashion, Interior, Graphic, Animation, and Jewelry Design. Which field are you most interested in?";
-        }
-        if (lowerInput.includes('admission') || lowerInput.includes('apply') || lowerInput.includes('join')) {
-            return "The admission process for the 2026 session is open! You can apply online or visit our campus for a counseling session. Would you like the application link?";
-        }
-        if (lowerInput.includes('campus') || lowerInput.includes('location')) {
-            return "INSD has 75+ centers across India, including major hubs in Delhi, Mumbai, and Kolkata. I can help you find the one closest to you!";
-        }
-        if (lowerInput.includes('hello') || lowerInput.includes('hi')) {
-            return user ? `Hello again, ${user.name}! How can I help you with your ${user.courseName} studies today?` : "Hello! I'm your INSD Assistant. I can help you with course details, timings, and admissions. What can I do for you?";
-        }
-        
-        return "I'm not sure about that specifically, but I can tell you about our Design courses, batch timings, or help you connect with a counselor. What would you prefer?";
-    };
-
-    const quickActions = user ? [
-        { label: "Check Dashboard", icon: LayoutDashboard, action: () => navigate('/profile') },
-        { label: "Application Status", icon: User, action: () => handleSend("What is my application status?") },
-        { label: "Course Info", icon: Bot, action: () => handleSend("Tell me about my course") },
-        { label: "Logout", icon: LogOut, action: () => logout() }
-    ] : [
-        { label: "Admission Process", icon: User, action: () => { navigate('/course-apply-now'); setIsOpen(false); } },
-        { label: "Campus Locations", icon: Bot, action: () => { navigate('/campuses'); setIsOpen(false); } },
-        { label: "Contact Counselor", icon: MessageCircle, action: () => { navigate('/contact-us'); setIsOpen(false); } }
-    ];
-
-    const ChatWindow = ({ centered }) => (
+    const ChatWindow = ({ centered = false }) => (
         <motion.div
-            initial={centered 
-                ? { opacity: 0, scale: 0.9, y: 20 }
-                : { opacity: 0, scale: 0.5, x: 100, y: 100, transformOrigin: 'bottom right' }
-            }
-            animate={centered
-                ? { opacity: 1, scale: 1, y: 0 }
-                : { opacity: 1, scale: 1, x: 0, y: 0 }
-            }
-            exit={centered
-                ? { opacity: 0, scale: 0.9, y: 20 }
-                : { opacity: 0, scale: 0.5, x: 100, y: 100 }
-            }
-            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className={`${centered 
-                ? 'relative w-full max-w-[400px] h-[600px] max-h-[80vh]' 
-                : 'absolute bottom-full right-0 md:bottom-0 md:right-full mb-4 md:mb-0 md:mr-6 w-[90vw] md:w-[400px] h-[600px] max-h-[70vh]'
-            } bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] flex flex-col pointer-events-auto chatbot-window-active`}
+            initial={{ opacity: 0, scale: 0.9, y: centered ? 0 : 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: centered ? 0 : 20 }}
+            className={`w-[92vw] sm:w-[400px] h-[550px] max-h-[85vh] bg-white rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.15)] border border-slate-100 flex flex-col overflow-hidden backdrop-blur-2xl ${
+                centered 
+                    ? 'mx-auto' 
+                    : 'mb-4 shadow-2xl origin-bottom-right'
+            }`}
         >
             {/* Header */}
-            <div className="p-6 bg-linear-to-r from-primary to-secondary text-white flex items-center justify-between shrink-0">
+            <div className="bg-slate-900 px-6 py-4 flex items-center justify-between border-b border-slate-800">
                 <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30">
-                        {user ? <User size={20} /> : <Bot size={24} />}
+                    <div className="relative">
+                        <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white shadow-lg">
+                            <Bot size={20} />
+                        </div>
+                        <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 border-2 border-slate-900 rounded-full" />
                     </div>
                     <div>
-                        <h3 className="font-bold text-sm tracking-tight text-white leading-none">
-                            {user ? `Hi, ${user.name.split(' ')[0]}` : "INSD Assistant"}
+                        <h3 className="font-black text-sm text-white tracking-wide uppercase flex items-center gap-2">
+                            INSD AI
+                            <span className="text-[9px] bg-primary/20 text-primary px-2 py-0.5 rounded-full border border-primary/30 font-bold">2.0</span>
                         </h3>
-                        <div className="flex items-center gap-1.5 mt-1">
-                            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                            <span className="text-[10px] text-white/80 font-medium uppercase tracking-widest">
-                                {user ? user.courseName : "AI Online"}
-                            </span>
-                        </div>
+                        <p className="text-[10px] text-slate-400 font-medium">Always Active Design Guide</p>
                     </div>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1">
                     <button
-                        onClick={clearChat}
-                        title="Clear Chat"
-                        className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors border border-white/10"
+                        onClick={handleClearChat}
+                        title="Clear History"
+                        className="p-2 text-slate-400 hover:text-white rounded-full hover:bg-slate-800 transition-colors"
                     >
                         <Trash2 size={16} />
                     </button>
                     <button
-                        onClick={() => { setIsOpen(false); setIsCentered(false); }}
-                        className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors border border-white/10"
+                        onClick={() => {
+                            setIsOpen(false);
+                            setIsCentered(false);
+                        }}
+                        className="p-2 text-slate-400 hover:text-white rounded-full hover:bg-slate-800 transition-colors"
                     >
                         <X size={18} />
                     </button>
                 </div>
             </div>
 
-            {/* Chat Area */}
-            <div
+            {/* User Session Banner if logged in */}
+            {user && (
+                <div className="bg-slate-50 px-6 py-2 border-b border-slate-100 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-primary" />
+                        <span className="text-[11px] font-bold text-slate-700 truncate max-w-[180px]">
+                            {user.name} ({user.role === 'admin' ? 'Admin' : 'Student'})
+                        </span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                        <a 
+                            href={user.role === 'admin' ? '/admin/dashboard' : '/student/dashboard'} 
+                            className="text-[10px] font-black uppercase text-primary hover:underline flex items-center gap-1"
+                        >
+                            <LayoutDashboard size={12} /> Dashboard
+                        </a>
+                    </div>
+                </div>
+            )}
+
+            {/* Chat Messages Body */}
+            <div 
                 ref={scrollRef}
-                className="flex-1 overflow-y-auto p-6 space-y-4 custom-scrollbar bg-slate-50"
+                className="flex-1 overflow-y-auto p-6 space-y-4 bg-slate-50/50 scroll-smooth"
             >
-                {chatHistory.map((item, index) => (
+                {chatHistory.map((msg, index) => (
                     <motion.div
                         key={index}
-                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        className={`flex ${item.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className={`flex gap-3 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                     >
-                        <div className={`max-w-[80%] p-4 rounded-2xl shadow-sm ${item.role === 'user'
-                            ? 'bg-primary text-white rounded-tr-none shadow-md shadow-primary/10'
-                            : 'bg-white text-slate-800 border border-slate-200 rounded-tl-none'
-                            }`}>
-                            <p className="text-sm font-medium leading-relaxed">{item.content}</p>
+                        {msg.role === 'bot' && (
+                            <div className="w-7 h-7 rounded-xl bg-slate-900 flex items-center justify-center text-white shrink-0 mt-1 shadow-md">
+                                <Bot size={14} />
+                            </div>
+                        )}
+                        <div
+                            className={`max-w-[80%] rounded-2xl px-4 py-3 text-xs leading-relaxed ${
+                                msg.role === 'user'
+                                    ? 'bg-slate-900 text-white rounded-br-none shadow-md font-medium'
+                                    : 'bg-white text-slate-700 rounded-bl-none border border-slate-100 shadow-sm font-normal'
+                            }`}
+                        >
+                            {msg.content}
                         </div>
+                        {msg.role === 'user' && (
+                            <div className="w-7 h-7 rounded-xl bg-primary flex items-center justify-center text-white shrink-0 mt-1 shadow-md">
+                                <User size={14} />
+                            </div>
+                        )}
                     </motion.div>
                 ))}
 
                 {isTyping && (
                     <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="flex justify-start"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="flex gap-3 justify-start"
                     >
-                        <div className="bg-white/80 backdrop-blur-md p-4 rounded-2xl rounded-tl-none border border-slate-100 shadow-sm flex gap-1">
-                            <span className="w-1.5 h-1.5 bg-slate-300 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                            <span className="w-1.5 h-1.5 bg-slate-300 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                            <span className="w-1.5 h-1.5 bg-slate-300 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                        <div className="w-7 h-7 rounded-xl bg-slate-900 flex items-center justify-center text-white shrink-0 shadow-md">
+                            <Bot size={14} />
+                        </div>
+                        <div className="bg-white border border-slate-100 rounded-2xl rounded-bl-none px-4 py-3 shadow-sm flex items-center gap-1.5">
+                            <motion.span animate={{ opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 1 }} className="w-1.5 h-1.5 rounded-full bg-slate-400" />
+                            <motion.span animate={{ opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 1, delay: 0.2 }} className="w-1.5 h-1.5 rounded-full bg-slate-400" />
+                            <motion.span animate={{ opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 1, delay: 0.4 }} className="w-1.5 h-1.5 rounded-full bg-slate-400" />
                         </div>
                     </motion.div>
                 )}
-
-                {/* Quick Actions */}
-                {!isTyping && chatHistory.length === 1 && (
-                    <div className="pt-4 flex flex-wrap gap-2">
-                        {quickActions.map((action, i) => (
-                            <motion.button
-                                key={i}
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 0.1 * i }}
-                                onClick={action.action}
-                                className="px-4 py-2 bg-white/50 hover:bg-white text-primary border border-primary/20 rounded-full text-xs font-bold transition-all hover:shadow-md active:scale-95 flex items-center gap-2"
-                            >
-                                <action.icon size={12} />
-                                {action.label}
-                            </motion.button>
-                        ))}
-                    </div>
-                )}
             </div>
 
-            {/* Input Area */}
-            <div className="p-4 bg-white border-t border-slate-100 shrink-0">
-                <form
-                    onSubmit={handleSend}
-                    className="relative flex items-center"
-                >
+            {/* Quick Action Suggestions */}
+            {chatHistory.length <= 2 && (
+                <div className="px-6 py-2 bg-white flex gap-2 overflow-x-auto no-scrollbar border-t border-slate-100">
+                    {["Course Options", "Admissions 2026", "Campus Placements", "Fee Structure"].map((suggestion, idx) => (
+                        <button
+                            key={idx}
+                            onClick={() => {
+                                setMessage(`Tell me about ${suggestion}`);
+                            }}
+                            className="whitespace-nowrap px-3 py-1.5 rounded-full border border-slate-200 text-[10px] font-bold text-slate-600 hover:border-primary hover:text-primary transition-all shrink-0 bg-slate-50/50"
+                        >
+                            {suggestion}
+                        </button>
+                    ))}
+                </div>
+            )}
+
+            {/* Input Footer */}
+            <div className="p-4 bg-white border-t border-slate-100">
+                <form onSubmit={handleSendMessage} className="relative flex items-center">
                     <input
                         type="text"
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
-                        placeholder={user ? `Ask me about ${user.courseName}...` : "Ask anything..."}
-                        className="w-full bg-slate-100/50 border border-slate-200 rounded-2xl py-3.5 pl-5 pr-14 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/30 transition-all font-medium"
+                        placeholder="Ask about design programs, admissions..."
+                        className="w-full bg-slate-50 text-slate-900 text-xs rounded-full pl-4 pr-12 py-3.5 border border-slate-200 focus:outline-none focus:border-primary focus:bg-white transition-all placeholder:text-slate-400"
                     />
                     <button
                         type="submit"
                         disabled={!message.trim()}
-                        className="absolute right-2 p-2 bg-primary text-white rounded-xl hover:scale-105 active:scale-95 transition-all disabled:opacity-50 disabled:scale-100 shadow-lg shadow-primary/20"
+                        className="absolute right-1.5 w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center disabled:opacity-40 disabled:hover:bg-slate-900 hover:bg-primary transition-all duration-300 shadow-md"
                     >
-                        <SendHorizonal size={20} />
+                        <SendHorizonal size={14} />
                     </button>
                 </form>
-                <p className="text-[10px] text-center text-slate-400 mt-3 font-medium tracking-tight uppercase">
+                <p className="text-[10px] text-center text-slate-400 mt-2 font-medium tracking-tight uppercase">
                     Powered by INSD Intelligence
                 </p>
             </div>

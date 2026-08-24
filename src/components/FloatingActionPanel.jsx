@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import BackToTop from './BackToTop';
 // import AIChatbot from './AIChatbot';
@@ -13,7 +13,7 @@ import { useRegisterModal } from '../context/RegisterModalContext';
 
 
 const FloatingActionPanel = () => {
-    const location = useLocation();
+    const pathname = usePathname();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isSocialOpen, setIsSocialOpen] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -94,7 +94,7 @@ const FloatingActionPanel = () => {
             footerObserver.disconnect();
             clearTimeout(timer);
         };
-    }, [location.pathname]);
+    }, [pathname]);
 
     return (
         <div className={`fixed transition-all duration-300 ease-in-out ${isFooterVisible ? 'bottom-[195px] md:bottom-[170px]' : 'bottom-[140px] md:bottom-[40px]'} right-4 md:right-10 z-[1001] flex flex-col items-end gap-3 md:gap-4 pointer-events-none`}>

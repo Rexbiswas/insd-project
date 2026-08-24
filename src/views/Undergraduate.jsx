@@ -4,7 +4,8 @@ import React, { useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
+
 import { ArrowUpRight, Palette, PenTool, Layout, Monitor, Scissors, Home, Camera, Video, Rocket, Globe, Target, ArrowRight } from 'lucide-react';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
@@ -14,7 +15,7 @@ import { useAdmissionModal } from '../context/AdmissionModalContext';
 gsap.registerPlugin(ScrollTrigger);
 
 const Undergraduate = () => {
-    const navigate = useNavigate();
+    const router = useRouter();
     const { openAdmissionModal } = useAdmissionModal();
     const containerRef = useRef(null);
     const [activeCategory, setActiveCategory] = React.useState("Undergraduate");
@@ -485,7 +486,7 @@ const Undergraduate = () => {
                 </h2>
                 <div className="flex flex-col md:flex-row justify-center items-center gap-6">
                     <button
-                        onClick={() => navigate('/course-apply-now')}
+                        onClick={() => router.push('/course-apply-now')}
                         className="px-12 md:px-20 h-12 md:h-14 bg-primary text-white font-bold uppercase tracking-widest rounded-full hover:bg-[#a61517] shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3"
                     >
                         Apply Now

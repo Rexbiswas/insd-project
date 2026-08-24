@@ -7,6 +7,7 @@ const __dirname = path.dirname(__filename);
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  devIndicators: false,
   images: {
     remotePatterns: [
       {
@@ -34,18 +35,6 @@ const nextConfig = {
         hostname: 'lh3.googleusercontent.com',
       },
     ],
-  },
-  turbopack: {
-    resolveAlias: {
-      'react-router-dom': './src/utils/navigation.jsx',
-    },
-  },
-  webpack: (config) => {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      'react-router-dom': path.resolve(__dirname, 'src/utils/navigation.jsx'),
-    };
-    return config;
   },
   async redirects() {
     return [

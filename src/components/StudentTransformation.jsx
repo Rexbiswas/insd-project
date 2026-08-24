@@ -3,7 +3,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView, animate } from 'framer-motion';
 import { ArrowRight, User, Briefcase, Star, Sparkles } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const TransformationCard = ({ student, index }) => {
     return (
@@ -23,90 +23,81 @@ const TransformationCard = ({ student, index }) => {
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-slate-950/60 via-transparent to-transparent" />
                 
-                {/* Badge */}
-                <div className="absolute top-8 right-8 z-10">
-                    <span className="px-4 py-2 rounded-full bg-primary backdrop-blur-md text-[10px] font-black uppercase tracking-widest text-white border border-primary/20">
-                        INSD Graduate
+                {/* Floating Tags */}
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between pointer-events-none">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-white bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
+                        {student.discipline}
                     </span>
                 </div>
             </div>
 
-            {/* Content Section */}
-            <div className="p-4 md:p-5 relative">
-                <div className="flex justify-between items-start mb-4">
+            {/* Content Space */}
+            <div className="p-4 md:p-6 flex flex-col justify-between h-[200px] md:h-[220px]">
+                <div>
+                    <h3 className="text-base md:text-lg font-black uppercase tracking-tight text-slate-900 mb-1 line-clamp-1">
+                        {student.name}
+                    </h3>
+                    <p className="text-slate-500 font-medium text-xs leading-relaxed line-clamp-3 mb-4 italic">
+                        "{student.quote}"
+                    </p>
+                </div>
+
+                <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
                     <div>
-                        <div className="flex items-center gap-1.5 mb-1.5">
-                            <span className="text-[7px] font-black uppercase tracking-widest text-primary bg-primary/5 px-1.5 py-0.5 rounded">INSD Alumni</span>
-                            <span className="text-[7px] font-bold text-slate-400">Class of 2024</span>
-                        </div>
-                        <h4 className="text-xl font-black text-slate-900 tracking-tight leading-none mb-1">
-                            {student.name}
-                        </h4>
-                        <p className="text-slate-400 font-bold uppercase tracking-[0.3em] text-[10px]">
-                            {student.discipline} • {student.program}
-                        </p>
+                        <span className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 block mb-0.5">Placed At</span>
+                        <span className="text-xs md:text-sm font-black text-primary tracking-tight line-clamp-1 block">{student.placement}</span>
                     </div>
-                </div>
-
-                <div className="space-y-3 mb-4">
-                    <div className="p-3 rounded-lg bg-slate-50 border border-slate-100 group-hover:bg-white group-hover:border-primary/20 transition-colors duration-500">
-                        <p className="text-slate-600 text-[10px] md:text-xs font-medium leading-snug italic relative">
-                            <span className="text-primary text-xl font-serif absolute -top-1 -left-1 opacity-20">"</span>
-                            {student.quote}
-                            <span className="text-primary text-xl font-serif absolute -bottom-4 right-0 opacity-20">"</span>
-                        </p>
+                    <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-900 group-hover:bg-primary group-hover:text-white transition-colors duration-500 shrink-0">
+                        <ArrowRight size={14} className="transform -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
                     </div>
-                </div>
-
-                {/* Placement Branding */}
-                <div className="pt-4 border-t border-slate-100 flex flex-col xl:flex-row items-start xl:items-center gap-3 justify-between">
-                    <div className="flex items-center gap-2">
-                        <div className="flex -space-x-2">
-                            {[1, 2, 3].map(i => (
-                                <div key={i} className="w-6 h-6 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
-                                    <img src={`https://i.pravatar.cc/100?img=${index + i + 10}`} alt="avatar" />
-                                </div>
-                            ))}
-                        </div>
-                        <div>
-                            <p className="text-[6px] font-black uppercase tracking-widest text-slate-400 mb-0.5">Hired By Giant</p>
-                            <p className="font-black text-sm md:text-base text-slate-900 tracking-tighter uppercase leading-none">{student.placement}</p>
-                        </div>
-                    </div>
-
-                    <button className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 rounded-md group/btn hover:bg-primary transition-all duration-500">
-                        <span className="text-[8px] font-black uppercase tracking-widest text-slate-900 group-hover/btn:text-white">Portfolio</span>
-                        <ArrowRight size={10} className="text-slate-400 group-hover/btn:text-white transform group-hover/btn:translate-x-1 transition-transform" />
-                    </button>
                 </div>
             </div>
         </motion.div>
     );
 };
 
-const MetricCounter = ({ value, suffix, label, delay }) => {
-    const [count, setCount] = useState(0);
+const MetricCounter = ({ value, suffix, label, delay = 0 }) => {
+    const [displayValue, setDisplayValue] = useState(0);
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const isInView = useInView(ref, { once: true, margin: "-50px" });
 
     useEffect(() => {
-        if (isInView && typeof value === 'number') {
-            const controls = animate(0, value, {
+        if (isInView) {
+            // Handle numeric strings vs numbers
+            const numericValue = typeof value === 'string' ? parseFloat(value.replace(/,/g, '')) : value;
+            
+            if (isNaN(numericValue)) {
+                // If it's a pure string like "Global", just set it
+                setDisplayValue(value);
+                return;
+            }
+
+            const controls = animate(0, numericValue, {
                 duration: 2,
                 delay: delay,
-                ease: "easeOut",
-                onUpdate: (value) => setCount(Math.floor(value))
+                ease: [0.16, 1, 0.3, 1],
+                onUpdate: (latest) => {
+                    if (typeof value === 'string' && value.includes(',')) {
+                        // Format with commas if original was formatted
+                        setDisplayValue(Math.floor(latest).toLocaleString('en-IN'));
+                    } else {
+                        setDisplayValue(Math.floor(latest));
+                    }
+                }
             });
             return () => controls.stop();
         }
     }, [isInView, value, delay]);
 
     return (
-        <div ref={ref} className="flex flex-col items-center">
-            <div className="text-4xl md:text-5xl font-black text-slate-900 mb-2 leading-none">
-                {typeof value === 'number' ? `${count}${suffix}` : value}
-            </div>
-            <div className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-primary">{label}</div>
+        <div ref={ref} className="text-center group">
+            <h4 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-slate-900 mb-2 flex items-center justify-center">
+                <span>{displayValue}</span>
+                <span className="text-primary tracking-normal">{suffix}</span>
+            </h4>
+            <p className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-slate-400 group-hover:text-slate-900 transition-colors duration-300">
+                {label}
+            </p>
         </div>
     );
 };
@@ -118,92 +109,36 @@ const StudentTransformation = () => {
         {
             name: "Ankit Khera",
             discipline: "Fashion Design",
-            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Ankit%20Khera.jpeg",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Ankit%20Khera.jpeg",
             quote: "INSD helped me move from basic sketches to a strong portfolio and a full-time job as a Fashion Designer. The shows, juries and software training made interviews feel easy.",
-            placement: "Jigar Mali, Chhatarpur"
+            placement: "Lifestyle"
         },
         {
             name: "Sanchita Pal",
             discipline: "Graphic Design",
-            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Sanchita%20Pal.jfif",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Sanchita%20Pal.jfif",
             quote: "I started taking small freelance graphic design projects in my second year. The feedback on my portfolio and support from faculty gave me the confidence to charge for my skills.",
-            placement: "Freelance Designer"
+            placement: "Lenskart"
         },
         {
             name: "Sameer Siddiqui",
             discipline: "Jewellery Design",
-            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Sameer%20Siddiqui.jpeg",
-            quote: "The hands-on training in jewellery design and the exposure to industry techniques helped me build strong technical skills. The portfolio development sessions played a key role.",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Sameer%20Siddiqui.jpeg",
+            quote: "The hands-on training in jewellery design and the exposure to industry techniques helped me build strong technical skills. The mentor guidance played a key role in helping me secure a position.",
             placement: "Gold Mark"
         },
         {
             name: "Nitika Gautam",
             discipline: "Interior Design",
-            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Nitika%20Gautam%20.jpeg",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Nitika%20Gautam%20.jpeg",
             quote: "The placement cell connected me with a top interior design firm in Gurgaon. My 3D visualisation skills and studio projects made me job-ready from day one.",
-            placement: "Virgo Clothing Culture Private"
+            placement: "Virgo Clothing"
         },
         {
-            name: "Sanskriti Jha",
-            discipline: "Graphic Design",
-            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Sanskriti%20Jha%20-%20Testimonial%205%20.jpg",
-            quote: "Learning design software alongside creative concepts made a big difference for me. I was able to confidently apply for jobs because I had practical skills.",
-            placement: "Government of India"
-        },
-        {
-            name: "Preeti Jangra",
-            discipline: "Fashion Design",
-            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Preeti%20Jangra.png",
-            quote: "The exposure through workshops, industry visits, and live projects helped me understand how the design industry really works.",
-            placement: "Shiva Arjun Entertainment House (Mumbai)"
-        },
-        {
-            name: "Kajalpriya",
+            name: "Harshita Sharma",
             discipline: "Interior Design",
-            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Kajalpriya.jpeg",
-            quote: "The faculty at INSD constantly pushed us to think creatively and present our ideas professionally. The portfolio reviews prepared me well.",
-            placement: "Aman Export International"
-        },
-        {
-            name: "Muskan Singh",
-            discipline: "Fashion Design",
-            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Muskan%20Singh%20.jpeg",
-            quote: "My time at INSD helped me discover my unique design style. The guidance from mentors and showcasing my work boosted my confidence.",
-            placement: "Pluch Designs, Gurugram"
-        },
-        {
-            name: "Anshuman Deb",
-            discipline: "Interior Design",
-            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Anshuman%20deb.jpeg",
-            quote: "The course structure balanced creativity with business understanding. I learned how to design, present, and market my work.",
-            placement: "The Design Atelier"
-        },
-        {
-            name: "Rahul Yadav",
-            discipline: "Interior Design",
-            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Rahul%20Yadav.jpeg",
-            quote: "The studio-based learning and practical assignments helped me build a strong design foundation. I felt prepared for real client requirements.",
-            placement: "Wriver"
-        },
-        {
-            name: "Himani",
-            discipline: "Fashion Design",
-            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Himani.jpeg",
-            quote: "From mood boards to final collections, every project helped me improve my design thinking. The constant mentoring helped me refine my portfolio.",
-            placement: "Virgo Clothing Culture Private"
-        },
-        {
-            name: "Shreya Sinha",
-            discipline: "Graphic Design",
-            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Shreya%20Sinha.jfif",
-            quote: "INSD gave me the platform to experiment with different styles and techniques. The guidance helped me turn my passion into a career.",
-            placement: "TO THE NEW Pvt Ltd"
-        },
-        {
-            name: "Chitra",
-            discipline: "Interior Design",
-            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder-20260526T180408Z-3-001/Untitled%20folder/Copy%20of%20Chitra%20.jpeg",
-            quote: "The practical approach to learning at INSD helped me understand design beyond theory. Working on live projects gave me real industry exposure.",
+            img: "https://ik.imagekit.io/fmldynl4j4/Untitled%20folder/Untitled%20folder/Copy%20of%20Harshita%20Sharma.jpeg",
+            quote: "Live site visits and practical studio work helped me understand materials, lighting and spaces clearly. It gave me the confidence to present designs to clients directly.",
             placement: "Casamink"
         },
         {
@@ -332,7 +267,7 @@ const StudentTransformation = () => {
                     </div>
 
                     <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-8">Ready to write your own story?</p>
-                    <Link to="/course-apply-now" className="h-16 md:h-20 px-12 bg-slate-900 text-white rounded-full font-black uppercase tracking-widest hover:bg-primary transition-all duration-500 shadow-xl inline-flex items-center justify-center mx-auto w-max">
+                    <Link href="/course-apply-now" className="h-16 md:h-20 px-12 bg-slate-900 text-white rounded-full font-black uppercase tracking-widest hover:bg-primary transition-all duration-500 shadow-xl inline-flex items-center justify-center mx-auto w-max">
                         Start Your Evolution
                     </Link>
                 </motion.div>

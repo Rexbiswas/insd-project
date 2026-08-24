@@ -3,7 +3,8 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight, BookOpen, GraduationCap, Briefcase, Globe } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
+
 import { useAdmissionModal } from '../context/AdmissionModalContext';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
@@ -108,7 +109,7 @@ const StickyCards = () => {
 };
 
 const Postgraduate = () => {
-    const navigate = useNavigate();
+    const router = useRouter();
     const { openAdmissionModal } = useAdmissionModal();
     const heroRef = useRef(null);
     const { scrollYProgress: heroScroll } = useScroll({

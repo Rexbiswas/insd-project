@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { LogOut, User, BookOpen, Calendar, MapPin, Award, Settings, Bell, ChevronRight, Camera } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
@@ -10,26 +10,26 @@ import SEO from '../components/SEO';
 
 const ProfileDashboard = () => {
     const { user, logout } = useAuth();
-    const navigate = useNavigate();
+    const router = useRouter();
 
     // Redirect to home if not logged in
     useEffect(() => {
         if (!user) {
-            navigate('/');
+            router.push('/');
         }
-    }, [user, navigate]);
+    }, [user, router]);
 
     if (!user) return null; // Avoid rendering until redirect
 
     const handleLogout = () => {
         logout();
-        navigate('/');
+        router.push('/');
     };
 
     return (
         <div className="min-h-screen bg-[#f3f3f3] text-slate-900 pt-32 pb-20 selection:bg-primary selection:text-white">
             <SEO 
-                title={`${user.firstName || 'Student'} Profile | Student Portal | INSD`}
+                title={`${user?.firstName || 'Student'} Profile | Student Portal | INSD`}
                 description="Access your academic records, course schedule, and study materials via the INSD Student Portal."
                 robots="noindex, nofollow"
             />
@@ -39,67 +39,62 @@ const ProfileDashboard = () => {
                 <div className="flex flex-col md:flex-row items-center md:items-start justify-between mb-12 gap-6">
                     <div>
                         <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-slate-900">
-                            Student <span className="text-primary italic">Portal</span>
+                            Welcome, <span className="text-primary">{user?.firstName || user?.name}</span>
                         </h1>
-                        <p className="text-slate-500 font-medium uppercase tracking-widest text-xs mt-2">
-                            Welcome Back, {user.firstName || user.username}
+                        <p className="text-slate-500 font-mono text-xs uppercase tracking-widest mt-2 flex items-center gap-2">
+                            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                            Official INSD Student Portal &bull; ID: {user?._id ? user._id.slice(-8).toUpperCase() : 'AUTH-VERIFIED'}
                         </p>
                     </div>
-                    
+
                     <button 
                         onClick={handleLogout}
-                        className="flex items-center gap-2 px-6 py-3 bg-white text-slate-900 border border-slate-200 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-red-50 hover:text-red-600 hover:border-red-200 transition-all shadow-sm group"
+                        className="px-6 py-3 bg-white hover:bg-red-50 text-slate-700 hover:text-red-600 border border-slate-200 hover:border-red-200 rounded-full font-black text-xs uppercase tracking-widest transition-all shadow-sm flex items-center gap-2"
                     >
-                        <LogOut size={16} className="group-hover:-translate-x-1 transition-transform" />
-                        Log Out Session
+                        <LogOut size={16} /> Sign Out
                     </button>
                 </div>
 
-                {/* Dashboard Grid Layout */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                     
-                    {/* Left Column: Avatar & Quick Info */}
-                    <div className="lg:col-span-4 space-y-8">
-                        {/* Profile Identity Card */}
+                    {/* Left Column: Identity Card */}
+                    <div className="lg:col-span-4 flex flex-col gap-6">
                         <motion.div 
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="bg-white rounded-[2.5rem] p-8 shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col items-center text-center relative overflow-hidden"
+                            className="bg-white rounded-[2rem] p-8 shadow-md shadow-slate-200/50 border border-slate-100 relative overflow-hidden"
                         >
-                            <div className="absolute top-0 w-full h-32 bg-linear-to-b from-slate-100 to-white" />
-                            
-                            <div className="relative z-10 w-32 h-32 rounded-full border-4 border-white bg-slate-900 flex items-center justify-center shadow-lg mb-6 group cursor-pointer overflow-hidden">
-                                {user.avatarUrl ? (
-                                    <img src={user.avatarUrl} alt="Avatar" className="w-full h-full object-cover transition-all duration-500" />
-                                ) : (
-                                    <span className="text-5xl font-black text-white group-hover:scale-110 transition-transform duration-300">
-                                        {user.username.charAt(0).toUpperCase()}
-                                    </span>
-                                )}
-                                {/* Edit Overlay */}
-                                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    <Camera size={24} className="text-white" />
+                            <div className="flex flex-col items-center text-center">
+                                <div className="w-28 h-28 rounded-full bg-slate-100 border-4 border-white shadow-xl flex items-center justify-center text-slate-400 mb-6 relative group overflow-hidden">
+                                    <User size={54} />
+                                    <div className="absolute inset-0 bg-slate-950/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer text-white">
+                                        <Camera size={20} />
+                                    </div>
                                 </div>
-                            </div>
-                            
-                            <h2 className="text-2xl font-black uppercase tracking-tighter text-slate-900 mb-1">
-                                {user.firstName} {user.lastName}
-                            </h2>
-                            <p className="text-slate-500 text-sm font-medium mb-4">@{user.username}</p>
-                            
-                            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-green-50 text-green-600 rounded-full border border-green-200 text-xs font-bold uppercase tracking-widest w-fit mb-6 shadow-sm">
-                                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                                Active Student
-                            </div>
 
-                            <div className="w-full border-t border-slate-100 pt-6 mt-2 grid grid-cols-2 gap-4">
-                                <div className="text-left">
-                                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Joined</p>
-                                    <p className="text-sm font-black text-slate-800">{user.admissionYear}</p>
-                                </div>
-                                <div className="text-left">
-                                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Campus</p>
-                                    <p className="text-sm font-black text-slate-800">Global</p>
+                                <h2 className="text-2xl font-black text-slate-900 uppercase tracking-tight mb-1">
+                                    {user?.name}
+                                </h2>
+                                <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest rounded-full mb-6">
+                                    {user?.role || 'Verified Student'}
+                                </span>
+
+                                <div className="w-full border-t border-slate-100 pt-6 space-y-4 text-left">
+                                    <div>
+                                        <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 block">Registered Email</span>
+                                        <span className="text-xs font-bold text-slate-800 break-all">{user?.email}</span>
+                                    </div>
+                                    <div>
+                                        <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 block">Contact Phone</span>
+                                        <span className="text-xs font-bold text-slate-800">{user?.phone}</span>
+                                    </div>
+                                    <div>
+                                        <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 block">Home City</span>
+                                        <span className="text-xs font-bold text-slate-800 flex items-center gap-1 mt-0.5">
+                                            <MapPin size={12} className="text-slate-400" />
+                                            {user?.city || 'Not specified'}
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>
@@ -163,10 +158,10 @@ const ProfileDashboard = () => {
                                     <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-primary">Enrolled Degree</span>
                                 </div>
                                 <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter leading-none mb-4">
-                                    {user.courseName}
+                                    {user?.courseName || 'Design Program'}
                                 </h2>
                                 <p className="text-slate-400 max-w-xl text-sm md:text-base font-light">
-                                    Your academic journey at INSD began in the {user.admissionYear} session. You are currently active and cleared for all campus facilities.
+                                    Your academic journey at INSD began in the {user?.admissionYear || new Date().getFullYear()} session. You are currently active and cleared for all campus facilities.
                                 </p>
                             </div>
                         </motion.div>

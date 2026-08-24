@@ -22,13 +22,14 @@ import {
     ShoppingBag,
     Briefcase
 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
+
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
 import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const BeautyAndMakeup = () => {
-    const navigate = useNavigate();
+    const router = useRouter();
     const { openAdmissionModal } = useAdmissionModal();
     const [activeOutline, setActiveOutline] = useState('Professional Diploma');
     const [expandedSem, setExpandedSem] = useState(1);
@@ -205,7 +206,7 @@ const BeautyAndMakeup = () => {
                     className="flex justify-center mt-12 mb-4"
                 >
                     <button
-                        onClick={() => navigate('/course-apply-now')}
+                        onClick={() => router.push('/course-apply-now')}
                         className="px-12 py-5 bg-primary text-white rounded-full font-black uppercase text-clamp-sm tracking-widest shadow-2xl hover:bg-white hover:text-slate-900 transition-all transform hover:scale-105 flex items-center gap-3"
                     >
                         Enroll Now
@@ -487,7 +488,7 @@ const BeautyAndMakeup = () => {
                                 <p className="text-white/50 max-w-sm uppercase text-clamp-sm tracking-widest font-black">Join the 2026 session. Limited seats for high-potential aesthetic visionaries.</p>
                             </div>
                             <button 
-                                onClick={() => navigate('/course-apply-now')}
+                                onClick={() => router.push('/course-apply-now')}
                                 className="px-16 py-6 bg-white text-slate-900 rounded-full font-black uppercase text-clamp-sm tracking-widest shadow-2xl hover:bg-primary hover:text-white transition-all transform hover:scale-105"
                             >
                                 Start Application

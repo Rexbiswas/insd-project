@@ -18,7 +18,8 @@ import {
     Layers,
     Award
 } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
 
@@ -81,7 +82,7 @@ const zoneData = {
 
 
 const Location = () => {
-    const navigate = useNavigate();
+    const router = useRouter();
     const [selectedZone, setSelectedZone] = useState("West Zone");
     const [searchQuery, setSearchQuery] = useState("");
 
@@ -200,10 +201,10 @@ const Location = () => {
                                 </div>
 
                                 <div className="pt-6 mt-6 border-t border-slate-50 flex items-center justify-between relative z-10">
-                                    <Link to="/contact-us" className="text-[9px] font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-colors flex items-center gap-2">
+                                    <Link href="/contact-us" className="text-[9px] font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-colors flex items-center gap-2">
                                         Enquire Campus <ChevronRight size={12} />
                                     </Link>
-                                    <Link to="/contact-us" className="text-[#c5a044] hover:scale-110 transition-transform">
+                                    <Link href="/contact-us" className="text-[#c5a044] hover:scale-110 transition-transform">
                                         <ArrowUpRight size={18} />
                                     </Link>
                                 </div>
@@ -224,7 +225,7 @@ const Location = () => {
                     </p>
                     <div className="flex justify-center pt-4">
                         <button
-                            onClick={() => navigate('/')}
+                            onClick={() => router.push('/')}
                             className="px-10 py-5 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 rounded-full font-black uppercase text-xs tracking-widest flex items-center gap-3 transition-all shadow-sm cursor-pointer"
                         >
                             <span className="relative flex h-2 w-2">

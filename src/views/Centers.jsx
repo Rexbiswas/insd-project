@@ -8,7 +8,8 @@ import {
     ChevronRight, Sparkles, Zap, GraduationCap,
     Search
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
+
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
 
@@ -191,10 +192,10 @@ const Centers = () => {
                                 </div>
 
                                 <div className="pt-8 mt-auto border-t border-slate-50 flex items-center justify-between relative z-10">
-                                    <Link to="/contact-us" className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-colors flex items-center gap-2">
+                                    <Link href="/contact-us" className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-colors flex items-center gap-2">
                                         Enquire Now <ChevronRight size={14} />
                                     </Link>
-                                    <Link to="/contact-us" className="text-primary hover:scale-110 transition-transform">
+                                    <Link href="/contact-us" className="text-primary hover:scale-110 transition-transform">
                                         <ArrowUpRight size={20} />
                                     </Link>
                                 </div>

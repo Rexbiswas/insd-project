@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { User, Mail, Phone, MapPin, Building2, BookOpen, GraduationCap, CheckCircle2, AlertCircle, ChevronDown, Send } from 'lucide-react';
 
 const AdmissionForm = ({ isModal = false, title, subtitle }) => {
-    const navigate = useNavigate();
+    const router = useRouter();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -128,7 +128,7 @@ const AdmissionForm = ({ isModal = false, title, subtitle }) => {
 
                 // Redirect to Thank You page
                 setTimeout(() => {
-                    navigate('/thank-you', { state: { name: submittedName, type: 'admission' } });
+                    router.push(`/thank-you?name=${encodeURIComponent(submittedName)}&type=admission`);
                 }, 300);
             } else {
                 setErrorMessage(data.message || `Server Error (${response.status}): Submission failed.`);

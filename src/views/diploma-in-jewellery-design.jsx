@@ -9,13 +9,13 @@ import {
     Clock, 
     BookOpen
 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
 import { useAdmissionModal } from '../context/AdmissionModalContext';
 
 const DiplomaInJewelleryDesign = () => {
-    const navigate = useNavigate();
+    const router = useRouter();
     const { openAdmissionModal } = useAdmissionModal();
 
     const toolsData = [
@@ -155,7 +155,7 @@ const DiplomaInJewelleryDesign = () => {
                     </p>
                     <div className="flex justify-center pt-4">
                         <button
-                            onClick={() => navigate('/')}
+                            onClick={() => router.push('/')}
                             className="px-10 py-5 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 rounded-full font-black uppercase text-xs tracking-widest flex items-center gap-3 transition-all shadow-sm cursor-pointer"
                         >
                             <span className="relative flex h-2 w-2">

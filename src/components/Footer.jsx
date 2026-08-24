@@ -2,7 +2,7 @@
 
 import React, { useRef, useLayoutEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ArrowUpRight, Globe } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -117,7 +117,7 @@ const Footer = () => {
                                         whileHover={{ x: 5 }}
                                         transition={{ type: "spring", stiffness: 300 }}
                                     >
-                                        <Link to={item.path} className="text-[13px] text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
+                                        <Link href={item.path} className="text-[13px] text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
                                             <span className="w-0 group-hover/link:w-2 h-px bg-primary transition-all duration-300 shrink-0"></span>
                                             {item.name}
                                         </Link>
@@ -144,7 +144,7 @@ const Footer = () => {
                                     { name: "Franchise", path: "/franchise" }
                                 ].map((item, i) => (
                                     <motion.li key={i} whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
-                                        <Link to={item.path} className="text-[13px] text-white/50 hover:text-white transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
+                                        <Link href={item.path} className="text-[13px] text-white/50 hover:text-white transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
                                             <span className="w-0 group-hover/link:w-2 h-px bg-white transition-all duration-300 shrink-0"></span>
                                             {item.name}
                                         </Link>
@@ -174,7 +174,7 @@ const Footer = () => {
                                     { name: "locations", path: "/locations" }
                                 ].map((item, i) => (
                                     <motion.li key={i} whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
-                                        <Link to={item.path} className="text-[13px] text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
+                                        <Link href={item.path} className="text-[13px] text-white/50 hover:text-primary transition-all duration-300 flex items-center gap-2 group/link whitespace-nowrap">
                                             <span className="w-0 group-hover/link:w-2 h-px bg-primary transition-all duration-300 shrink-0"></span>
                                             {item.name}
                                         </Link>
@@ -199,7 +199,7 @@ const Footer = () => {
                                 </motion.div>
                                 <motion.div whileHover={{ x: 5 }} className="group cursor-pointer">
                                     <span className="block text-[10px] uppercase tracking-widest text-white/40 mb-1">Location</span>
-                                    <Link to="/locations" className="text-sm font-bold border-b border-white/5 group-hover:border-white transition-all pb-1">Delhi, India</Link>
+                                    <Link href="/locations" className="text-sm font-bold border-b border-white/5 group-hover:border-white transition-all pb-1">Delhi, India</Link>
                                 </motion.div>
                             </div>
                         </div>
@@ -219,7 +219,6 @@ const Footer = () => {
                     }}
                     style={{ '--x': '50%', '--y': '50%' }}
                 >
-                    {/* Layer 1: The "Ghost" Outline */}
                     {/* Layer 1: The "Ghost" Outline */}
                     <h1 className="giant-footer-text absolute text-[25vw] lg:text-[35vw] font-black text-transparent stroke-text-white/2 select-none whitespace-nowrap leading-none tracking-[-0.05em] uppercase pointer-events-none">
                         INSD
@@ -248,10 +247,10 @@ const Footer = () => {
                     </div>
 
                     <div className="flex gap-10">
-                        <Link to="/faq" className="hover:text-primary transition-colors">FAQ</Link>
-                        <Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy</Link>
-                        <Link to="/cookie-policy" className="hover:text-primary transition-colors">Cookies</Link>
-                        <Link to="/terms-and-conditions" className="hover:text-primary transition-colors">Terms and Condition</Link>
+                        <Link href="/faq" className="hover:text-primary transition-colors">FAQ</Link>
+                        <Link href="/privacy-policy" className="hover:text-primary transition-colors">Privacy</Link>
+                        <Link href="/cookie-policy" className="hover:text-primary transition-colors">Cookies</Link>
+                        <Link href="/terms-and-conditions" className="hover:text-primary transition-colors">Terms and Condition</Link>
                     </div>
 
                     <a href="https://www.linkedin.com/in/rishi-biswas-0474a6258/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors">
@@ -259,8 +258,8 @@ const Footer = () => {
                         Design By Rishi Biswas
                     </a>
                 </div>
-            </div >
-        </footer >
+            </div>
+        </footer>
     );
 };
 

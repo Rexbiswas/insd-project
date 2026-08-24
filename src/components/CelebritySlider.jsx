@@ -1,7 +1,13 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { ChevronLeft, ChevronRight, Sparkles, Star } from 'lucide-react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, EffectCoverflow, Keyboard, A11y } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
 
 const celebrities = [
     {
@@ -43,180 +49,168 @@ const celebrities = [
 ];
 
 const CelebritySlider = () => {
-    const [activeIndex, setActiveIndex] = React.useState(0);
-    const [isPaused, setIsPaused] = React.useState(false);
-    const containerRef = React.useRef(null);
-    const [containerWidth, setContainerWidth] = React.useState(0);
-
-    // Track container width for responsive calculations
-    React.useEffect(() => {
-        const updateWidth = () => {
-            if (containerRef.current) {
-                setContainerWidth(containerRef.current.offsetWidth);
-            }
-        };
-        
-        updateWidth();
-        window.addEventListener('resize', updateWidth);
-        return () => window.removeEventListener('resize', updateWidth);
-    }, []);
-
-    // Auto-advance slider
-    React.useEffect(() => {
-        if (!isPaused) {
-            const interval = setInterval(() => {
-                setActiveIndex((prev) => (prev + 1) % celebrities.length);
-            }, 5000);
-            return () => clearInterval(interval);
-        }
-    }, [isPaused]);
-
-    // Responsive constants
-    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-    const itemWidth = isMobile ? (containerWidth - 32) : 350;
-    const gap = isMobile ? 16 : 48;
-
-    // Calculate the x offset to center the active item
-    // Offset = (Half of container) - (Half of item) - (Index * (Item + Gap))
-    const xOffset = containerWidth 
-        ? (containerWidth / 2) - (itemWidth / 2) - (activeIndex * (itemWidth + gap))
-        : 0;
-
-    const handleNext = () => setActiveIndex((prev) => (prev + 1) % celebrities.length);
-    const handlePrev = () => setActiveIndex((prev) => (prev - 1 + celebrities.length) % celebrities.length);
-
-    const handleDragEnd = (event, info) => {
-        const threshold = 50;
-        if (info.offset.x < -threshold) {
-            handleNext();
-        } else if (info.offset.x > threshold) {
-            handlePrev();
-        }
-    };
+    const [swiperInstance, setSwiperInstance] = useState(null);
+    const [activeIndex, setActiveIndex] = useState(0);
 
     return (
-        <section
-            className="py-12 md:py-20 bg-white overflow-hidden relative"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-        >
-            <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
+        <section className="py-16 md:py-24 bg-white overflow-hidden relative selection:bg-primary selection:text-white">
+            {/* Background Decorative Ambient Glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 blur-[140px] rounded-full pointer-events-none -z-10" />
+
+            <div className="max-w-7xl mx-auto px-6 mb-12 md:mb-16 text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     className="space-y-4"
                 >
-                    <span className="text-primary font-black uppercase text-[10px] tracking-[0.4em]">Elite Ecosystem</span>
-                    <h2 className="text-3xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter leading-none">
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] md:text-xs font-black tracking-[0.3em] uppercase">
+                        <Sparkles size={12} className="animate-pulse" />
+                        Elite Ecosystem
+                    </div>
+
+                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 uppercase tracking-tighter leading-none">
                         CELEBRITIES <br /> <span className="text-slate-300">AT INSD EVENTS</span>
                     </h2>
-                    <p className="text-slate-500 font-bold max-w-2xl mx-auto uppercase text-[10px] tracking-widest mt-4">
+
+                    <p className="text-slate-500 font-bold max-w-2xl mx-auto uppercase text-[10px] md:text-xs tracking-widest mt-4">
                         Experience the star power of INSD where global icons meet the next generation of designers.
                     </p>
                 </motion.div>
             </div>
 
-            <div className="relative" ref={containerRef}>
-                <div className="flex justify-start">
-                    <div className="w-full max-w-[1400px] mx-auto overflow-visible relative">
-                        <motion.div
-                            drag="x"
-                            dragConstraints={{ left: 0, right: 0 }}
-                            onDragEnd={handleDragEnd}
-                            className="flex cursor-grab active:cursor-grabbing"
-                            animate={{ x: xOffset }}
-                            transition={{
-                                type: "spring",
-                                stiffness: 100,
-                                damping: 20,
-                                mass: 1
-                            }}
-                            style={{ 
-                                gap: `${gap}px`,
-                                width: "fit-content"
-                            }}
-                        >
-                            {celebrities.map((celeb, index) => (
-                                <motion.div
-                                    key={index}
-                                    className="shrink-0 group"
-                                    style={{ width: itemWidth }}
-                                    animate={{
-                                        scale: activeIndex === index ? 1 : 0.9,
-                                        opacity: activeIndex === index ? 1 : 0.4,
-                                    }}
-                                    transition={{ duration: 0.5 }}
+            {/* Swiper Carousel */}
+            <div className="relative max-w-[1440px] mx-auto px-4 md:px-8">
+                <Swiper
+                    modules={[Autoplay, EffectCoverflow, Keyboard, A11y]}
+                    effect="coverflow"
+                    grabCursor={true}
+                    centeredSlides={true}
+                    loop={true}
+                    speed={700}
+                    autoplay={{
+                        delay: 3500,
+                        disableOnInteraction: false,
+                        pauseOnMouseEnter: true,
+                    }}
+                    keyboard={{ enabled: true }}
+                    coverflowEffect={{
+                        rotate: 0,
+                        stretch: 0,
+                        depth: 80,
+                        modifier: 2,
+                        slideShadows: false,
+                    }}
+                    onSwiper={setSwiperInstance}
+                    onSlideChange={(s) => setActiveIndex(s.realIndex)}
+                    breakpoints={{
+                        320: {
+                            slidesPerView: 1.15,
+                            spaceBetween: 16,
+                        },
+                        640: {
+                            slidesPerView: 1.6,
+                            spaceBetween: 24,
+                        },
+                        1024: {
+                            slidesPerView: 2.4,
+                            spaceBetween: 32,
+                        },
+                        1280: {
+                            slidesPerView: 3,
+                            spaceBetween: 40,
+                        }
+                    }}
+                    className="celebrity-swiper !py-8 !px-2 overflow-visible"
+                >
+                    {celebrities.map((celeb, index) => (
+                        <SwiperSlide key={index} className="transition-transform duration-500">
+                            {({ isActive }) => (
+                                <div
+                                    className={`relative aspect-square max-w-[420px] mx-auto overflow-hidden rounded-[2.5rem] md:rounded-[3rem] bg-slate-900 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.3)] transition-all duration-700 group ${
+                                        isActive 
+                                            ? 'scale-100 ring-2 ring-primary/40 shadow-2xl shadow-primary/20' 
+                                            : 'scale-90 opacity-60 hover:opacity-85'
+                                    }`}
                                 >
-                                    <div className="relative aspect-square overflow-hidden rounded-[2.5rem] md:rounded-[3rem] bg-slate-100 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.2)] transition-all duration-700">
-                                        <img
-                                            src={celeb.img}
-                                            alt={celeb.name}
-                                            className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110"
-                                        />
+                                    <img
+                                        src={celeb.img}
+                                        alt={celeb.name}
+                                        className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110"
+                                        loading="lazy"
+                                    />
 
-                                        {/* Bottom Content Overlay */}
-                                        <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-8 md:p-10">
-                                            <div className="space-y-3 md:space-y-4">
-                                                <div className="space-y-1">
-                                                    <span className="text-primary text-[10px] md:text-xs font-black uppercase tracking-[0.3em]">
-                                                        {celeb.role}
-                                                    </span>
-                                                    <h3 className="text-xl md:text-3xl font-black text-white uppercase tracking-tighter leading-none">
-                                                        {celeb.name}
-                                                    </h3>
-                                                </div>
-                                                <p className="text-white/70 text-[10px] md:text-xs font-medium leading-relaxed max-w-2xl">
-                                                    {celeb.desc}
-                                                </p>
-                                            </div>
+                                    {/* Gradient Dark Overlay */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent flex flex-col justify-end p-6 md:p-10" />
+
+                                    {/* Top Corner Badge */}
+                                    <div className="absolute top-6 left-6 z-10">
+                                        <div className="px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white text-[9px] font-black uppercase tracking-widest flex items-center gap-1.5">
+                                            <Star size={10} className="text-primary fill-primary" />
+                                            Star Spotlight
+                                        </div>
+                                    </div>
+
+                                    {/* Bottom Content Info */}
+                                    <div className="absolute inset-x-0 bottom-0 p-6 md:p-10 z-10 space-y-2 md:space-y-3">
+                                        <div>
+                                            <span className="text-primary text-[10px] md:text-xs font-black uppercase tracking-[0.25em] block mb-1">
+                                                {celeb.role}
+                                            </span>
+                                            <h3 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight leading-none drop-shadow-md">
+                                                {celeb.name}
+                                            </h3>
                                         </div>
 
-                                        {/* Corner Accent */}
-                                        <div className="absolute top-12 right-12 w-16 h-16 border-t-2 border-r-2 border-white/20 rounded-tr-3xl hidden md:block" />
+                                        <p className="text-white/80 text-[11px] md:text-xs font-medium leading-relaxed max-w-sm line-clamp-2 drop-shadow">
+                                            {celeb.desc}
+                                        </p>
                                     </div>
-                                </motion.div>
-                            ))}
-                        </motion.div>
-                    </div>
-                </div>
 
-                {/* Navigation Controls */}
-                <div className="absolute top-1/2 -translate-y-1/2 left-4 md:left-8 z-20 pointer-events-none">
-                    <button
-                        onClick={handlePrev}
-                        className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-white flex items-center justify-center hover:bg-white hover:text-slate-900 transition-all active:scale-90 pointer-events-auto"
-                    >
-                        <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-                    </button>
-                </div>
-                <div className="absolute top-1/2 -translate-y-1/2 right-4 md:right-8 z-20 pointer-events-none">
-                    <button
-                        onClick={handleNext}
-                        className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-white flex items-center justify-center hover:bg-white hover:text-slate-900 transition-all active:scale-90 pointer-events-auto"
-                    >
-                        <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-                    </button>
-                </div>
+                                    {/* Luxury Corner Accent */}
+                                    <div className="absolute top-8 right-8 w-12 h-12 border-t-2 border-r-2 border-white/20 rounded-tr-2xl hidden md:block group-hover:border-primary/60 transition-colors" />
+                                </div>
+                            )}
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
             </div>
 
-            {/* Pagination Dots */}
-            <div className="mt-16 flex items-center justify-center gap-4">
-                {celebrities.map((_, i) => (
-                    <button
-                        key={i}
-                        onClick={() => setActiveIndex(i)}
-                        className="group relative flex items-center justify-center w-12 h-4"
-                    >
-                        <div className={`transition-all duration-500 rounded-full ${activeIndex === i ? 'w-full h-1 bg-primary' : 'w-2 h-2 bg-slate-200 hover:bg-slate-300'}`} />
-                        {activeIndex === i && (
-                            <motion.div
-                                className="absolute inset-0 border-b-2 border-primary"
-                                layoutId="activeDotLine"
-                            />
-                        )}
-                    </button>
-                ))}
+            {/* Centered Navigation Control Bar: Prev Arrow - Pagination Dots - Next Arrow */}
+            <div className="mt-6 md:mt-10 flex items-center justify-center gap-4 md:gap-6">
+                {/* Previous Arrow */}
+                <button
+                    onClick={() => swiperInstance?.slidePrev()}
+                    aria-label="Previous Celebrity Slide"
+                    className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-slate-900 hover:bg-primary text-white border border-slate-200/20 shadow-lg shadow-slate-900/10 flex items-center justify-center transition-all duration-300 active:scale-90 hover:scale-105 cursor-pointer"
+                >
+                    <ChevronLeft size={22} />
+                </button>
+
+                {/* Pagination Dots Container */}
+                <div className="flex items-center justify-center gap-2.5 px-5 py-3 bg-slate-100/90 rounded-full border border-slate-200/80 shadow-inner">
+                    {celebrities.map((_, i) => (
+                        <button
+                            key={i}
+                            onClick={() => swiperInstance?.slideToLoop(i)}
+                            aria-label={`Go to slide ${i + 1}`}
+                            className={`transition-all duration-500 rounded-full cursor-pointer ${
+                                activeIndex === i 
+                                    ? 'w-7 h-2.5 bg-primary shadow-[0_0_12px_rgba(219,52,54,0.5)]' 
+                                    : 'w-2.5 h-2.5 bg-slate-300 hover:bg-slate-400'
+                            }`}
+                        />
+                    ))}
+                </div>
+
+                {/* Next Arrow */}
+                <button
+                    onClick={() => swiperInstance?.slideNext()}
+                    aria-label="Next Celebrity Slide"
+                    className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-slate-900 hover:bg-primary text-white border border-slate-200/20 shadow-lg shadow-slate-900/10 flex items-center justify-center transition-all duration-300 active:scale-90 hover:scale-105 cursor-pointer"
+                >
+                    <ChevronRight size={22} />
+                </button>
             </div>
         </section>
     );

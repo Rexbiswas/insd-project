@@ -1,6 +1,6 @@
 // Standard Node 18+ global fetch test script
 
-const BASE_URL = 'http://localhost:5001/api';
+const BASE_URL = 'http://localhost:3000/api';
 
 async function testAdmissionForm() {
     console.log('🧪 Testing Admission Form API...');

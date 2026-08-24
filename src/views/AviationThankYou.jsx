@@ -1,18 +1,16 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Plane, ArrowLeft, PhoneCall } from 'lucide-react';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 
 const AviationThankYou = () => {
-    const navigate = useNavigate();
-    const location = useLocation();
-    const { name } = location.state || {};
-
-
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const name = searchParams ? searchParams.get('name') : '';
 
     return (
         <div className="min-h-screen bg-white">
@@ -68,7 +66,7 @@ const AviationThankYou = () => {
                         className="flex flex-wrap items-center justify-center gap-6 pt-8"
                     >
                         <button
-                            onClick={() => navigate('/aviation')}
+                            onClick={() => router.push('/aviation')}
                             className="flex items-center gap-3 px-8 h-14 bg-slate-950 text-white rounded-full font-black uppercase tracking-widest text-xs hover:bg-[#db3436] transition-all duration-300 shadow-xl cursor-pointer"
                         >
                             <ArrowLeft size={18} />

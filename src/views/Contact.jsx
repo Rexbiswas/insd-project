@@ -1,14 +1,14 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { MapPin, Phone, Mail, Send, ArrowRight, MessageSquare, Clock, Globe, Instagram, Facebook, Linkedin, Twitter, CheckCircle2, Youtube } from 'lucide-react';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 
 const Contact = () => {
-    const navigate = useNavigate();
+    const router = useRouter();
     const { scrollYProgress } = useScroll();
     const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
@@ -48,7 +48,7 @@ const Contact = () => {
                 setIsSuccess(true);
                 // Redirect to Thank You page after a brief delay
                 setTimeout(() => {
-                    navigate('/thank-you', { state: { name: formState.name, type: 'contact' } });
+                    router.push(`/thank-you?name=${encodeURIComponent(formState.name)}&type=contact`);
                 }, 1000);
             } else {
                 const contentType = response.headers.get("content-type");
@@ -71,7 +71,7 @@ const Contact = () => {
                 console.warn('Backend unavailable on localhost. Simulating success for testing.');
                 setIsSuccess(true);
                 setTimeout(() => {
-                    navigate('/thank-you', { state: { name: formState.name, type: 'contact' } });
+                    router.push(`/thank-you?name=${encodeURIComponent(formState.name)}&type=contact`);
                 }, 1000);
                 return;
             }
@@ -106,194 +106,133 @@ const Contact = () => {
 
     const itemVars = {
         hidden: { opacity: 0, y: 20 },
-        show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 50 } }
+        show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
     };
 
     return (
         <div className="min-h-screen bg-slate-50 relative overflow-hidden">
             <SEO
-                title="Contact US - Reach Out to INSD"
-                description="Have questions about our programs or admissions? Get in touch with our expert counselors today. Visit our main campus in Delhi or contact us via phone or email."
-                keywords="INSD contact, design school admission help, INSD Delhi address, contact design institute"
+                title="Contact Us | INSD Admissions & Campuses"
+                description="Get in touch with International School of Design. Visit our campuses across India or drop us an inquiry for fashion, interior, and graphic design admissions."
             />
-            {/* Background Abstract Elements */}
-            <div className="fixed inset-0 pointer-events-none z-0">
-                <div className="absolute top-[-10%] left-[-10%] w-[40rem] h-[40rem] bg-secondary/20 rounded-full blur-[100px] mix-blend-multiply opacity-70 animate-blob" />
-                <div className="absolute top-[-10%] right-[-10%] w-[35rem] h-[35rem] bg-primary/20 rounded-full blur-[100px] mix-blend-multiply opacity-70 animate-blob animation-delay-2000" />
-                <div className="absolute bottom-[-20%] left-[20%] w-[45rem] h-[45rem] bg-secondary/20 rounded-full blur-[100px] mix-blend-multiply opacity-70 animate-blob animation-delay-4000" />
-            </div>
 
-            {/* Hero Section */}
-            <section className="relative z-10 pt-32 pb-20 px-6 lg:px-12 max-w-7xl mx-auto">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="text-center mb-20"
-                >
+            {/* --- HERO SECTION --- */}
+            <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 bg-slate-950 text-white overflow-hidden">
+                {/* Visual accents */}
+                <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl pointer-events-none" />
+
+                <div className="max-w-7xl mx-auto px-6 relative z-10">
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.2 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/50 backdrop-blur-sm border border-slate-200 text-xs font-bold uppercase tracking-widest text-secondary mb-6 shadow-sm"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="max-w-3xl"
                     >
-                        <MessageSquare size={12} />
-                        <span>We're Here to Listen</span>
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6">
+                            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                            <span className="text-xs font-mono tracking-widest text-slate-300 uppercase">Connect With Us</span>
+                        </div>
+                        <h1 className="text-4xl md:text-7xl font-black tracking-tight leading-none uppercase mb-8">
+                            Start Your <br />
+                            <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-secondary to-primary bg-[length:200%_auto] animate-gradient">
+                                Creative Journey
+                            </span>
+                        </h1>
+                        <p className="text-lg md:text-xl text-slate-400 font-light leading-relaxed">
+                            Have questions about our programs, admissions, or campuses? Our team is here to help you navigate your future in design.
+                        </p>
                     </motion.div>
+                </div>
+            </section>
 
-                    <h1 className="text-clamp-4xl font-black text-slate-900 mb-6 tracking-tight leading-tight">
-                        Let's Start a <br className="hidden md:block" />
-                        <span className="text-transparent bg-clip-text bg-linear-to-r from-secondary to-primary">Conversation.</span>
-                    </h1>
+            {/* --- MAIN CONTENT: CONTACT INFO & FORM --- */}
+            <section className="py-16 md:py-24 relative -mt-10 z-20">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
-                    <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-                        Have a project in mind, a question about our courses, or simply want to say hello? We're ready to help you shape your future.
-                    </p>
-                </motion.div>
-
-                {/* Main Content Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
-
-                    {/* Left Column: Contact Info Cards */}
-                    <div className="lg:col-span-5 space-y-6">
+                        {/* LEFT COLUMN: Contact Cards */}
                         <motion.div
                             variants={containerVars}
                             initial="hidden"
                             animate="show"
-                            className="space-y-6"
+                            className="lg:col-span-5 space-y-6"
                         >
-                            {/* Contact Card 1: Main Office */}
-                            <motion.div variants={itemVars} className="group relative p-8 bg-white/80 backdrop-blur-xl border border-white/40 rounded-[2rem] shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-                                <div className="absolute inset-x-0 bottom-0 h-1 bg-linear-to-r from-secondary to-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-[2rem]" />
-                                <div className="flex items-start gap-6">
-                                    <div className="w-12 h-12 rounded-2xl bg-secondary/5 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white transition-colors duration-300 shadow-inner">
-                                        <MapPin size={24} />
-                                    </div>
-                                    <div className="flex-1 min-w-0">
-                                        <h3 className="text-lg font-bold text-slate-900 mb-4">Campuses</h3>
-                                        <div className="space-y-6 max-h-[280px] overflow-y-auto pr-2 dropdown-scrollbar">
-                                            <div className="space-y-1">
-                                                <h4 className="font-bold text-sm text-slate-800">INSD Corporate Headquarters</h4>
-                                                <p className="text-slate-600 text-xs leading-relaxed">
-                                                    International School of Design,<br />
-                                                    Gujranwala Town, Part 1,<br />
-                                                    Delhi - 110009
-                                                </p>
-                                                <a href="https://maps.google.com/?q=International+School+of+Design+Gujranwala+Town+Delhi" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-xs font-bold text-secondary hover:text-primary transition-colors mt-1">
-                                                    Get Directions <ArrowRight size={12} className="ml-1" />
-                                                </a>
-                                            </div>
-                                            <div className="space-y-1 pt-4 border-t border-slate-100">
-                                                <h4 className="font-bold text-sm text-slate-800">INSD Vijayawada</h4>
-                                                <p className="text-slate-600 text-xs leading-relaxed">
-                                                    3rd floor, above Indian Bank, opposite Jade suites, Acharya Ranga Nagar, Benz Circle, Vijayawada, Andhra Pradesh 520010
-                                                </p>
-                                                <a href="https://maps.google.com/?q=INSD+Vijayawada+Acharya+Ranga+Nagar+Benz+Circle+Vijayawada+Andhra+Pradesh+520010" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-xs font-bold text-secondary hover:text-primary transition-colors mt-1">
-                                                    Get Directions <ArrowRight size={12} className="ml-1" />
-                                                </a>
-                                            </div>
-                                            <div className="space-y-1 pt-4 border-t border-slate-100">
-                                                <h4 className="font-bold text-sm text-slate-800">INSD - Thrissur</h4>
-                                                <p className="text-slate-600 text-xs leading-relaxed">
-                                                    G65F+2HQ Fabis Arcade, High Rd, Kuriachira, Thrissur, Kerala 680006
-                                                </p>
-                                                <a href="https://maps.google.com/?q=INSD+Thrissur+Fabis+Arcade+High+Rd+Kuriachira+Thrissur+Kerala+680006" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-xs font-bold text-secondary hover:text-primary transition-colors mt-1">
-                                                    Get Directions <ArrowRight size={12} className="ml-1" />
-                                                </a>
-                                            </div>
+                            {/* Card 1: Head Office */}
+                            <motion.div variants={itemVars} className="bg-white p-8 rounded-3xl shadow-xl shadow-slate-950/5 border border-slate-100 hover:shadow-2xl transition-all duration-300">
+                                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6">
+                                    <MapPin size={24} />
+                                </div>
+                                <h3 className="text-xl font-bold text-slate-900 mb-2">Corporate Head Office</h3>
+                                <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                                    INSD Corporate Campus, Gujranwala Town Part 1, Delhi, 110009
+                                </p>
+                                <span className="inline-flex items-center gap-1.5 text-xs font-bold text-primary tracking-wider uppercase">
+                                    <Clock size={14} /> Mon - Sat: 9:30 AM - 6:30 PM
+                                </span>
+                            </motion.div>
+
+                            {/* Card 2: Quick Connect */}
+                            <motion.div variants={itemVars} className="bg-white p-8 rounded-3xl shadow-xl shadow-slate-950/5 border border-slate-100 hover:shadow-2xl transition-all duration-300">
+                                <div className="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary mb-6">
+                                    <Phone size={24} />
+                                </div>
+                                <h3 className="text-xl font-bold text-slate-900 mb-4">Direct Contact</h3>
+                                <div className="space-y-3">
+                                    <a href="tel:+919804443300" className="flex items-center gap-3 text-slate-600 hover:text-primary transition-colors group">
+                                        <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-primary/10">
+                                            <Phone size={14} className="group-hover:text-primary" />
                                         </div>
-                                    </div>
+                                        <span className="font-semibold text-sm">+91 98044 43300</span>
+                                    </a>
+                                    <a href="mailto:info@insd.edu.in" className="flex items-center gap-3 text-slate-600 hover:text-primary transition-colors group">
+                                        <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-primary/10">
+                                            <Mail size={14} className="group-hover:text-primary" />
+                                        </div>
+                                        <span className="font-semibold text-sm">info@insd.edu.in</span>
+                                    </a>
                                 </div>
                             </motion.div>
 
-                                    {/* Contact Card 2: Contact Info */}
-                                    <motion.div variants={itemVars} className="group relative p-8 bg-white/80 backdrop-blur-xl border border-white/40 rounded-[2rem] shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-                                        <div className="absolute inset-x-0 bottom-0 h-1 bg-linear-to-r from-primary to-secondary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-[2rem]" />
-                                        <div className="flex flex-col gap-6">
-                                            <div className="flex items-center gap-4">
-                                                <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                                                    <Phone size={20} />
-                                                </div>
-                                                <div>
-                                                    <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Call Us</p>
-                                                    <div className="flex flex-col">
-                                                        <a href="tel:+919804443300" className="text-lg font-bold text-slate-900 hover:text-primary transition-colors">+91 98044 43300</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="w-full h-px bg-slate-100" />
-                                            <div className="flex items-center gap-4">
-                                                <div className="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center text-green-500 group-hover:bg-green-500 group-hover:text-white transition-colors duration-300">
-                                                    <MessageSquare size={20} />
-                                                </div>
-                                                <div>
-                                                    <p className="text-xs font-bold uppercase tracking-wider text-slate-400">WhatsApp</p>
-                                                    <a href="https://wa.me/919804443300" target="_blank" rel="noopener noreferrer" className="text-lg font-bold text-slate-900 hover:text-green-500 transition-colors">+91 98044 43300</a>
-                                                </div>
-                                            </div>
-                                            <div className="w-full h-px bg-slate-100" />
-                                            <div className="flex items-center gap-4">
-                                                <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                                                    <Mail size={20} />
-                                                </div>
-                                                <div>
-                                                    <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Email Us</p>
-                                                    <a href="mailto:info@insd.edu.in" className="text-lg font-bold text-slate-900 hover:text-primary transition-colors">info@insd.edu.in</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </motion.div>
-
-                                    {/* Contact Card 3: Socials */}
-                                    <motion.div variants={itemVars} className="p-8 bg-slate-900 text-white rounded-[2rem] shadow-2xl overflow-hidden relative group">
-                                        <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-secondary/40 transition-colors duration-500" />
-                                        <div className="relative z-10">
-                                            <h3 className="text-xl font-bold mb-6">Connect With Us</h3>
-                                            <div className="flex gap-4">
-                                                {[
-                                                    { icon: Instagram, href: "https://www.instagram.com/insd_official" },
-                                                    { icon: Facebook, href: "https://www.facebook.com/share/1CMuRdTV69/" },
-                                                    { icon: Linkedin, href: "https://www.linkedin.com/school/international-school-of-design/" },
-                                                    { icon: Youtube, href: "https://youtube.com/@insd-internationalschoolof5139?feature=shared" }
-                                                ].map((soc, idx) => (
-                                                    <a
-                                                        key={idx}
-                                                        href={soc.href}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className="w-12 h-12 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
-                                                    >
-                                                        <soc.icon size={20} />
-                                                    </a>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </motion.div>
-
+                            {/* Card 3: Social Hub */}
+                            <motion.div variants={itemVars} className="bg-slate-900 text-white p-8 rounded-3xl shadow-xl shadow-slate-950/10">
+                                <h3 className="text-xl font-bold mb-2">Follow the Movement</h3>
+                                <p className="text-slate-400 text-sm mb-6">Explore life, design works, and events across our official social channels.</p>
+                                <div className="flex items-center gap-3">
+                                    <a href="https://www.instagram.com/insd_india/" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary hover:scale-110 transition-all">
+                                        <Instagram size={18} />
+                                    </a>
+                                    <a href="https://www.facebook.com/insdedu/" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary hover:scale-110 transition-all">
+                                        <Facebook size={18} />
+                                    </a>
+                                    <a href="https://www.linkedin.com/school/international-school-of-design/" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary hover:scale-110 transition-all">
+                                        <Linkedin size={18} />
+                                    </a>
+                                    <a href="https://www.youtube.com/channel/UCyMh3_zG3W_6VvW_w8E7VmA" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary hover:scale-110 transition-all">
+                                        <Youtube size={18} />
+                                    </a>
+                                </div>
                             </motion.div>
-                    </div>
+                        </motion.div>
 
-                    {/* Right Column: Interactive Form */}
-                    <div className="lg:col-span-7">
+                        {/* RIGHT COLUMN: Interactive Form */}
                         <motion.div
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            className="bg-white/70 backdrop-blur-2xl border border-white/50 rounded-[2.5rem] p-8 md:p-12 shadow-2xl relative overflow-hidden"
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            className="lg:col-span-7"
                         >
-                            {/* Decorative gradients inside form */}
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-linear-to-br from-primary/20 to-secondary/20 opacity-30 blur-3xl pointer-events-none" />
-                            <div className="absolute bottom-0 left-0 w-64 h-64 bg-linear-to-tr from-secondary/20 to-primary/20 opacity-30 blur-3xl pointer-events-none" />
-
-                            <div className="relative z-10">
-                                <h2 className="text-3xl font-black text-slate-900 mb-2">Send a Message</h2>
-                                <p className="text-slate-500 mb-8">We usually respond within 24 hours.</p>
+                            <div className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl shadow-slate-950/10 border border-slate-100">
+                                <div className="mb-8">
+                                    <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight mb-2">Send Us a Message</h2>
+                                    <p className="text-slate-500 text-sm">Fill out the form below and an admissions advisor will get in touch within 24 hours.</p>
+                                </div>
 
                                 {!isSuccess ? (
                                     <form onSubmit={handleSubmit} className="space-y-6">
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <div className="space-y-2">
-                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-400 ml-1">Your Name</label>
+                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-400 ml-1">Full Name</label>
                                                 <input
                                                     type="text"
                                                     name="name"

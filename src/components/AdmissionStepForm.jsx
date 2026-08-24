@@ -1,12 +1,12 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { User, Phone, Mail, MapPin, ArrowRight, ArrowLeft, CheckCircle2, Sparkles, Building, Briefcase, GraduationCap, Monitor, Palette, Hexagon, Star } from 'lucide-react';
 
 const AdmissionStepForm = () => {
-    const navigate = useNavigate();
+    const router = useRouter();
     const sectionRef = useRef(null);
     const [step, setStep] = useState(1);
     const [formData, setFormData] = useState({
@@ -36,92 +36,68 @@ const AdmissionStepForm = () => {
     };
 
     const scrollToTop = () => {
-        setTimeout(() => {
-            if (sectionRef.current) {
-                const navHeight = 100;
-                const elementPosition = sectionRef.current.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - navHeight;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth"
-                });
-            }
-        }, 100);
-    };
-
-    const handleOptionSelect = (field, value, autoAdvance = true) => {
-        setFormData(prev => ({ ...prev, [field]: value }));
-        if (autoAdvance) {
-            setTimeout(() => {
-                // If user clicks "No" on step 1, jump to submittion state as requested
-                if (field === 'readyToStart' && value === 'No') {
-                    handleSubmit();
-                    return;
-                }
-
-                if (step === TOTAL_STEPS) {
-                    handleSubmit();
-                } else {
-                    handleNext();
-                }
-            }, 300);
+        if (sectionRef.current) {
+            sectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     };
 
     const handleSubmit = async (e) => {
         if (e) e.preventDefault();
+        setError(null);
 
-        // Validate 10-digit mobile number
-        if (formData.phone.length !== 10) {
-            setError('Please enter a valid 10-digit mobile number');
-            // Scroll to error if needed
-            setTimeout(() => {
-                if (sectionRef.current) {
-                    window.scrollTo({
-                        top: sectionRef.current.getBoundingClientRect().top + window.pageYOffset - 100,
-                        behavior: "smooth"
-                    });
-                }
-            }, 100);
+        if (!formData.qualification) {
+            setError('Please select your current qualification.');
+            return;
+        }
+
+        if (!formData.marketingConsent) {
+            setError('Please accept the terms to proceed.');
             return;
         }
 
         setLoading(true);
-        setError(null);
+
         try {
-            const response = await fetch('/api/admission', {
+            const response = await fetch('/api/step-leads', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    ...formData,
-                    phone: `+91${formData.phone}`
+                    readyToStart: formData.readyToStart,
+                    industry: formData.industry,
+                    name: formData.name,
+                    phone: `+91${formData.phone}`,
+                    email: formData.email,
+                    city: formData.city,
+                    qualification: formData.qualification,
+                    marketingConsent: formData.marketingConsent
                 }),
             });
 
-            const data = await response.json();
-            
-            if (response.ok && data.success) {
-                setSubmitted(true);
-                // Set flag to prevent duplicate submissions
-                // localStorage.setItem('admission-form-filled', 'true');
-                
-                setTimeout(() => {
-                    navigate('/thank-you', { state: { name: formData.name, type: 'admission' } });
-                }, 300);
+            const contentType = response.headers.get("content-type");
+            let data = {};
+            if (contentType && contentType.includes("application/json")) {
+                data = await response.json();
             } else {
-                setError(data.message || 'Submission failed. Please try again.');
-                console.error('Submission failed:', data.message);
-                
-                // If it's a conflict (duplicate), scroll to the error
+                const text = await response.text();
+                console.error("Non-JSON response received:", text);
+                throw new Error(`Server returned non-JSON response (${response.status})`);
+            }
+
+            if (response.ok) {
+                setSubmitted(true);
                 scrollToTop();
+            } else {
+                setError(data.message || `Submission failed (${response.status}). Please try again.`);
             }
         } catch (err) {
-            console.error('Submission error:', err);
-            setError(err.message || "An unexpected error occurred. Please try again.");
-            scrollToTop();
+            console.error('Submission Error:', err);
+            if (err.name === 'TypeError' && err.message.includes('fetch')) {
+                setError("Connection Error: Server is unreachable. Please check your internet connection.");
+            } else {
+                setError(err.message || 'Something went wrong. Please check your connection and try again.');
+            }
         } finally {
             setLoading(false);
         }
@@ -133,77 +109,90 @@ const AdmissionStepForm = () => {
                 return (
                     <motion.div
                         key="step1"
-                        initial={{ opacity: 0, x: 50 }}
+                        initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -50 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        transition={{ duration: 0.4 }}
                         className="space-y-8"
                     >
-                        <div className="text-center mb-12">
-                            <h2 className="text-clamp-3xl font-black uppercase tracking-tighter mb-4 text-slate-900 leading-[0.9]">
-                                Start Your <br /> <span className="text-primary italic font-serif">Creative Career</span> <br /> Today
-                            </h2>
-                            <p className="text-slate-500 font-medium max-w-lg mx-auto text-lg">
-                                Start your creative career with industry-standard protocols. Let's determine the right path for your talent.
-                            </p>
+                        <div className="text-center space-y-3">
+                            <span className="text-primary font-mono text-xs uppercase tracking-widest block font-bold">Step 01 / Phase Alignment</span>
+                            <h3 className="text-3xl md:text-5xl font-black tracking-tight text-slate-900 uppercase">When are you looking to start?</h3>
+                            <p className="text-slate-500 max-w-md mx-auto text-sm md:text-base">Select your intended timeframe so we can reserve your seat and connect you with right cohort.</p>
                         </div>
 
-                        <div className="flex flex-col sm:flex-row gap-6 max-w-2xl mx-auto">
-                            <button
-                                onClick={() => handleOptionSelect('readyToStart', 'Yes')}
-                                className={`flex-1 group relative h-24 rounded-2xl overflow-hidden border-2 transition-all duration-300 ${formData.readyToStart === 'Yes' ? 'border-primary bg-primary/10' : 'border-slate-200 hover:border-slate-950 bg-white'}`}
-                            >
-                                <div className="absolute inset-0 bg-slate-950 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" />
-                                <span className={`relative z-10 text-2xl font-black uppercase tracking-widest flex items-center justify-center h-full transition-colors duration-300 ${formData.readyToStart === 'Yes' ? 'text-primary group-hover:text-white' : 'text-slate-950 group-hover:text-white'}`}>
-                                    Yes
-                                </span>
-                            </button>
-                            <button
-                                onClick={() => handleOptionSelect('readyToStart', 'No')}
-                                className={`flex-1 group relative h-24 rounded-2xl overflow-hidden border-2 transition-all duration-300 ${formData.readyToStart === 'No' ? 'border-slate-950 bg-slate-950 text-white' : 'border-slate-200 hover:border-slate-300 bg-white text-slate-400'}`}
-                            >
-                                <div className="absolute inset-0 bg-slate-50 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" />
-                                <span className={`relative z-10 text-2xl font-black uppercase tracking-widest flex items-center justify-center h-full transition-colors duration-300 ${formData.readyToStart === 'No' ? 'text-white' : 'text-slate-400 group-hover:text-slate-950'}`}>
-                                    No
-                                </span>
-                            </button>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto pt-4">
+                            {[
+                                { title: "Immediately", desc: "Joining the current upcoming intake batch", icon: Sparkles },
+                                { title: "In 1-3 Months", desc: "Planning ahead for next quarterly session", icon: Hexagon },
+                                { title: "Exploring / Next Year", desc: "Gathering information & career guidance", icon: Star }
+                            ].map((item, idx) => (
+                                <button
+                                    key={idx}
+                                    type="button"
+                                    onClick={() => {
+                                        setFormData({ ...formData, readyToStart: item.title });
+                                        handleNext();
+                                    }}
+                                    className={`p-6 md:p-8 rounded-3xl border-2 text-left transition-all duration-300 relative group overflow-hidden flex flex-col justify-between min-h-[180px] ${formData.readyToStart === item.title ? 'border-primary bg-primary/5 shadow-xl shadow-primary/10' : 'border-slate-100 bg-white hover:border-slate-300 hover:shadow-lg'}`}
+                                >
+                                    <div className="flex justify-between items-start">
+                                        <div className={`w-10 h-10 rounded-2xl flex items-center justify-center transition-colors ${formData.readyToStart === item.title ? 'bg-primary text-white' : 'bg-slate-50 text-slate-400 group-hover:text-primary group-hover:bg-primary/10'}`}>
+                                            <item.icon size={20} />
+                                        </div>
+                                        <div className={`w-5 h-5 rounded-full border flex items-center justify-center ${formData.readyToStart === item.title ? 'border-primary bg-primary text-white' : 'border-slate-300'}`}>
+                                            {formData.readyToStart === item.title && <CheckCircle2 size={12} />}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 className="font-black text-lg md:text-xl text-slate-900 uppercase tracking-tight mb-1">{item.title}</h4>
+                                        <p className="text-xs md:text-sm text-slate-500 font-medium leading-relaxed">{item.desc}</p>
+                                    </div>
+                                </button>
+                            ))}
                         </div>
                     </motion.div>
                 );
             case 2:
-                const industries = [
-                    { name: 'Fashion Design', icon: <Star /> },
-                    { name: 'Graphic Design', icon: <Palette /> },
-                    { name: 'Interior Design', icon: <Building /> },
-                    { name: 'Jewellery Design', icon: <Hexagon /> },
-                    { name: 'Animation & VFX', icon: <Monitor /> },
-                    { name: 'UIUX', icon: <Sparkles /> },
-                ];
                 return (
                     <motion.div
                         key="step2"
-                        initial={{ opacity: 0, x: 50 }}
+                        initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -50 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        transition={{ duration: 0.4 }}
                         className="space-y-8"
                     >
-                        <div className="text-center mb-10">
-                            <h2 className="text-clamp-3xl font-black uppercase tracking-tighter mb-4 text-slate-900 leading-[0.9]">
-                                Which Billion-dollar <br /> Industry <span className="text-secondary italic font-serif">Excites</span> You?
-                            </h2>
-                            <p className="text-slate-500 font-medium text-lg">Select a discipline to personalize your path.</p>
+                        <div className="text-center space-y-3">
+                            <span className="text-primary font-mono text-xs uppercase tracking-widest block font-bold">Step 02 / Creative Discipline</span>
+                            <h3 className="text-3xl md:text-5xl font-black tracking-tight text-slate-900 uppercase">Select Your Design Focus</h3>
+                            <p className="text-slate-500 max-w-md mx-auto text-sm md:text-base">Choose the specialized school of design you are passionate about pursuing.</p>
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                            {industries.map((ind, i) => (
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-4">
+                            {[
+                                { name: "Fashion Design", icon: Palette },
+                                { name: "Interior Design", icon: Building },
+                                { name: "Graphic Design", icon: Monitor },
+                                { name: "Animation & VFX", icon: Sparkles },
+                                { name: "Jewellery Design", icon: Hexagon },
+                                { name: "Textile Design", icon: Briefcase },
+                                { name: "UI/UX Design", icon: Monitor },
+                                { name: "Photography & Media", icon: Star }
+                            ].map((item, idx) => (
                                 <button
-                                    key={i}
-                                    onClick={() => handleOptionSelect('industry', ind.name)}
-                                    className={`relative p-6 rounded-3xl border-2 transition-all duration-300 flex flex-col items-center justify-center gap-4 group ${formData.industry === ind.name ? 'border-primary bg-primary text-white shadow-xl scale-105' : 'border-slate-100 hover:border-primary/30 bg-white text-slate-700 hover:shadow-lg'}`}
+                                    key={idx}
+                                    type="button"
+                                    onClick={() => {
+                                        setFormData({ ...formData, industry: item.name });
+                                        handleNext();
+                                    }}
+                                    className={`p-6 rounded-3xl border-2 text-center transition-all duration-300 flex flex-col items-center justify-center gap-4 group ${formData.industry === item.name ? 'border-primary bg-primary/5 shadow-xl shadow-primary/10' : 'border-slate-100 bg-white hover:border-slate-300 hover:shadow-lg'}`}
                                 >
-                                    <div className={`p-5 rounded-full transition-all duration-500 ${formData.industry === ind.name ? 'bg-white/20 scale-110' : 'bg-slate-50 group-hover:bg-primary/5 group-hover:text-primary'}`}>
-                                        {React.cloneElement(ind.icon, { size: 32 })}
+                                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110 ${formData.industry === item.name ? 'bg-primary text-white' : 'bg-slate-50 text-slate-600'}`}>
+                                        <item.icon size={24} />
                                     </div>
-                                    <span className="font-bold text-sm md:text-base uppercase tracking-wider text-center">{ind.name}</span>
+                                    <h4 className="font-bold text-sm md:text-base text-slate-900 leading-snug">{item.name}</h4>
                                 </button>
                             ))}
                         </div>
@@ -213,139 +202,148 @@ const AdmissionStepForm = () => {
                 return (
                     <motion.div
                         key="step3"
-                        initial={{ opacity: 0, x: 50 }}
+                        initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -50 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        transition={{ duration: 0.4 }}
                         className="space-y-8"
                     >
-                        <div className="text-center mb-12">
-                            <h2 className="text-clamp-3xl font-black uppercase tracking-tighter mb-4 text-slate-900 leading-none">
-                                Tell Us About <span className="text-primary italic font-serif">Yourself</span>
-                            </h2>
-                            <p className="text-slate-500 font-medium text-lg">We need these details to send you the admission brochure.</p>
+                        <div className="text-center space-y-3">
+                            <span className="text-primary font-mono text-xs uppercase tracking-widest block font-bold">Step 03 / Applicant Details</span>
+                            <h3 className="text-3xl md:text-5xl font-black tracking-tight text-slate-900 uppercase">Tell Us About Yourself</h3>
+                            <p className="text-slate-500 max-w-md mx-auto text-sm md:text-base">We'll assign your personal senior admissions counselor based on these details.</p>
                         </div>
 
-                        <form onSubmit={(e) => { e.preventDefault(); handleNext(); }} className="max-w-2xl mx-auto space-y-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label className="text-xs font-bold uppercase tracking-widest text-slate-400 ml-2">Full Name</label>
-                                    <div className="relative group">
-                                        <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-primary transition-colors" />
+                        <div className="max-w-2xl mx-auto space-y-4 pt-4">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="space-y-1">
+                                    <label className="text-xs font-bold uppercase tracking-wider text-slate-400 ml-1">Full Name *</label>
+                                    <div className="relative flex items-center">
+                                        <User className="absolute left-4 text-slate-400" size={18} />
                                         <input
-                                            required
                                             type="text"
-                                            placeholder="Jane Doe"
-                                            className="w-full h-14 bg-white border-2 border-slate-200 rounded-xl pl-12 pr-4 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold text-sm"
+                                            required
                                             value={formData.name}
                                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                            placeholder="Your Name"
+                                            className="w-full h-14 pl-12 pr-4 bg-slate-50 border border-slate-200 rounded-2xl font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:bg-white transition-all text-sm md:text-base"
                                         />
                                     </div>
                                 </div>
-                                <div className="space-y-2">
-                                    <label className="text-xs font-bold uppercase tracking-widest text-slate-400 ml-2">Phone Number</label>
-                                    <div className="flex items-stretch h-14 bg-white border-2 border-slate-200 rounded-xl overflow-hidden focus-within:border-primary focus-within:ring-4 focus-within:ring-primary/10 transition-all">
-                                        <div className="flex items-center px-4 bg-slate-50 border-r-2 border-slate-200 gap-3">
-                                            <Phone className="w-5 h-5 text-slate-400 group-focus-within:text-primary transition-colors" />
-                                            <span className="text-slate-400 font-bold text-sm">+91</span>
+
+                                <div className="space-y-1">
+                                    <label className="text-xs font-bold uppercase tracking-wider text-slate-400 ml-1">Phone Number *</label>
+                                    <div className="relative flex items-center">
+                                        <div className="absolute left-4 flex items-center gap-1 border-r border-slate-300 pr-2">
+                                            <span className="text-slate-500 font-bold text-xs">+91</span>
                                         </div>
                                         <input
-                                            required
                                             type="tel"
+                                            required
                                             inputMode="numeric"
-                                            placeholder="00000-00000"
-                                            className="flex-1 h-full bg-transparent px-4 text-slate-900 placeholder-slate-400 focus:outline-none font-bold text-sm"
                                             value={formData.phone}
-                                            onChange={(e) => {
-                                                const digits = e.target.value.replace(/\D/g, '').slice(0, 10);
-                                                setFormData({ ...formData, phone: digits });
-                                            }}
+                                            onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/\D/g, '').slice(0, 10) })}
+                                            placeholder="10-digit number"
+                                            className="w-full h-14 pl-18 pr-4 bg-slate-50 border border-slate-200 rounded-2xl font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:bg-white transition-all text-sm md:text-base"
                                         />
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label className="text-xs font-bold uppercase tracking-widest text-slate-400 ml-2">Email Address (Optional)</label>
-                                    <div className="relative group">
-                                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-primary transition-colors" />
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="space-y-1">
+                                    <label className="text-xs font-bold uppercase tracking-wider text-slate-400 ml-1">Email Address *</label>
+                                    <div className="relative flex items-center">
+                                        <Mail className="absolute left-4 text-slate-400" size={18} />
                                         <input
-                                            type="text"
-                                            placeholder="jane@example.com"
-                                            className="w-full h-14 bg-white border-2 border-slate-200 rounded-xl pl-12 pr-4 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold text-sm"
+                                            type="email"
+                                            required
                                             value={formData.email}
                                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                            placeholder="you@email.com"
+                                            className="w-full h-14 pl-12 pr-4 bg-slate-50 border border-slate-200 rounded-2xl font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:bg-white transition-all text-sm md:text-base"
                                         />
                                     </div>
                                 </div>
-                                <div className="space-y-2">
-                                    <label className="text-xs font-bold uppercase tracking-widest text-slate-400 ml-2">City</label>
-                                    <div className="relative group">
-                                        <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-primary transition-colors" />
+
+                                <div className="space-y-1">
+                                    <label className="text-xs font-bold uppercase tracking-wider text-slate-400 ml-1">City *</label>
+                                    <div className="relative flex items-center">
+                                        <MapPin className="absolute left-4 text-slate-400" size={18} />
                                         <input
-                                            required
                                             type="text"
-                                            placeholder="New Delhi"
-                                            className="w-full h-14 bg-white border-2 border-slate-200 rounded-xl pl-12 pr-4 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold text-sm"
+                                            required
                                             value={formData.city}
                                             onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                                            placeholder="Current City"
+                                            className="w-full h-14 pl-12 pr-4 bg-slate-50 border border-slate-200 rounded-2xl font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:bg-white transition-all text-sm md:text-base"
                                         />
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="pt-8">
-                                <button type="submit" className="w-full h-16 md:h-20 bg-primary text-white rounded-full font-black uppercase tracking-[0.25em] text-sm md:text-base hover:bg-slate-950 hover:shadow-2xl transition-all duration-500 flex items-center justify-center gap-3 active:scale-[0.95]">
-                                    Continue <ArrowRight className="w-5 h-5" />
+                            <div className="pt-4">
+                                <button
+                                    onClick={() => {
+                                        if (formData.name && formData.phone.length === 10 && formData.email && formData.city) {
+                                            handleNext();
+                                        } else {
+                                            setError("Please fill all required fields correctly (10-digit mobile number).");
+                                        }
+                                    }}
+                                    className="w-full h-16 md:h-18 bg-slate-900 text-white rounded-full font-black uppercase tracking-[0.2em] text-xs md:text-sm hover:bg-primary transition-all duration-300 flex items-center justify-center gap-3 shadow-xl active:scale-[0.98]"
+                                >
+                                    Proceed to Final Step <ArrowRight size={18} />
                                 </button>
                             </div>
-                        </form>
+                        </div>
                     </motion.div>
                 );
             case 4:
-                const qualifications = [
-                    { name: "12th Appearing", icon: <GraduationCap /> },
-                    { name: "12th Passed", icon: <GraduationCap /> },
-                    { name: "Graduate", icon: <Briefcase /> },
-                    { name: "Working Professional", icon: <Briefcase /> }
-                ];
                 return (
                     <motion.div
                         key="step4"
-                        initial={{ opacity: 0, x: 50 }}
+                        initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -50 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        transition={{ duration: 0.4 }}
                         className="space-y-8"
                     >
-                        <div className="text-center mb-10">
-                            <h2 className="text-clamp-3xl font-black uppercase tracking-tighter mb-4 text-slate-900 leading-[0.9]">
-                                Current <span className="text-primary italic font-serif">Qualification</span>
-                            </h2>
-                            <p className="text-slate-500 font-medium text-lg">Help us recommend the right programs for you.</p>
+                        <div className="text-center space-y-3">
+                            <span className="text-primary font-mono text-xs uppercase tracking-widest block font-bold">Step 04 / Academic Baseline</span>
+                            <h3 className="text-3xl md:text-5xl font-black tracking-tight text-slate-900 uppercase">Highest Qualification</h3>
+                            <p className="text-slate-500 max-w-md mx-auto text-sm md:text-base">Helps us curate the appropriate diploma, degree, or masters track for you.</p>
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
-                            {qualifications.map((qual, i) => (
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto pt-4">
+                            {[
+                                { title: "10th Standard / High School", desc: "Foundational diploma & certificate options" },
+                                { title: "12th Standard / Pursuing (Any Stream)", desc: "Direct UG degree & professional diplomas" },
+                                { title: "Graduation Completed / Final Year", desc: "PG degree, master courses & advanced diploma" },
+                                { title: "Working Professional", desc: "Executive luxury management & specialized tracks" }
+                            ].map((item, idx) => (
                                 <button
-                                    key={i}
-                                    onClick={() => handleOptionSelect('qualification', qual.name, false)}
-                                    className={`relative p-6 h-auto md:h-32 rounded-3xl border-2 transition-all duration-300 flex items-center justify-start gap-6 group ${formData.qualification === qual.name ? 'border-primary bg-primary/5 shadow-md scale-105' : 'border-slate-100 hover:border-slate-300 bg-white hover:shadow-lg'}`}
+                                    key={idx}
+                                    type="button"
+                                    onClick={() => setFormData({ ...formData, qualification: item.title })}
+                                    className={`p-6 rounded-3xl border-2 text-left transition-all duration-300 flex items-start gap-4 ${formData.qualification === item.title ? 'border-primary bg-primary/5 shadow-xl shadow-primary/10' : 'border-slate-100 bg-white hover:border-slate-300'}`}
                                 >
-                                    <div className={`p-4 flex-shrink-0 rounded-full transition-all duration-500 ${formData.qualification === qual.name ? 'bg-primary text-white scale-110' : 'bg-slate-50 text-slate-500 group-hover:bg-slate-900 group-hover:text-white'}`}>
-                                        {React.cloneElement(qual.icon, { size: 28 })}
+                                    <div className={`w-8 h-8 rounded-full border flex items-center justify-center shrink-0 mt-0.5 ${formData.qualification === item.title ? 'border-primary bg-primary text-white' : 'border-slate-300'}`}>
+                                        {formData.qualification === item.title && <CheckCircle2 size={14} />}
                                     </div>
-                                    <span className={`text-lg md:text-xl font-bold tracking-tight text-left transition-colors ${formData.qualification === qual.name ? 'text-primary' : 'text-slate-700 group-hover:text-slate-950'}`}>
-                                        {qual.name}
-                                    </span>
+                                    <div>
+                                        <h4 className="font-bold text-sm md:text-base text-slate-900 mb-1 leading-snug">{item.title}</h4>
+                                        <p className="text-xs text-slate-500 font-medium leading-relaxed">{item.desc}</p>
+                                    </div>
                                 </button>
                             ))}
                         </div>
 
-                        <div className="max-w-3xl mx-auto pt-10 space-y-8">
-                            {/* Marketing Consent */}
-                            <div className="flex justify-center">
-                                <label className="flex items-start gap-4 cursor-pointer group/consent max-w-lg">
-                                    <div className={`mt-1 md:mt-0 w-6 h-6 rounded-md border-2 shrink-0 flex items-center justify-center transition-all ${formData.marketingConsent ? 'bg-primary border-primary shadow-[0_0_15px_rgba(219,52,54,0.4)]' : 'border-slate-300 hover:border-slate-500 bg-white'}`}>
+                        {/* Consent Checkbox */}
+                        <div className="max-w-xl mx-auto space-y-4 pt-2">
+                            <div className="flex items-center justify-center">
+                                <label className="flex items-start gap-3 cursor-pointer group/consent">
+                                    <div className={`mt-0.5 w-5 h-5 rounded-md border-2 shrink-0 flex items-center justify-center transition-all ${formData.marketingConsent ? 'bg-primary border-primary shadow-[0_0_10px_rgba(219,52,54,0.3)]' : 'border-slate-300 hover:border-slate-400 bg-slate-50'}`}>
                                         {formData.marketingConsent && <CheckCircle2 className="text-white w-4 h-4" />}
                                     </div>
                                     <input 

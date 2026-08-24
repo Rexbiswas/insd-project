@@ -1,14 +1,14 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Home, RefreshCw, WifiOff, MapPinOff, ArrowLeft, Terminal } from 'lucide-react';
 import gsap from 'gsap';
 import SEO from '../components/SEO';
 
 const NotFound = () => {
-    const navigate = useNavigate();
+    const router = useRouter();
     const [isOffline, setIsOffline] = useState(false);
     const containerRef = useRef(null);
     const glitchRef = useRef(null);
@@ -121,7 +121,7 @@ const NotFound = () => {
                                     <RefreshCw className="w-4 h-4" /> Try Again
                                 </button>
                                 <button
-                                    onClick={() => navigate('/')}
+                                    onClick={() => router.push('/')}
                                     className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white font-medium hover:bg-slate-800/80 transition-colors"
                                 >
                                     <Home className="w-4 h-4" /> Go to Homepage
@@ -157,13 +157,13 @@ const NotFound = () => {
 
                             <div className="flex flex-wrap gap-4 justify-center">
                                 <button
-                                    onClick={() => navigate(-1)}
+                                    onClick={() => router.back()}
                                     className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white font-medium hover:bg-slate-800/80 transition-colors"
                                 >
                                     <ArrowLeft className="w-4 h-4" /> Go Back
                                 </button>
                                 <button
-                                    onClick={() => navigate('/')}
+                                    onClick={() => router.push('/')}
                                     className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-red-600 text-white font-semibold hover:bg-red-500 transition-colors shadow-lg shadow-red-600/20"
                                 >
                                     <Home className="w-4 h-4" /> Back to Home

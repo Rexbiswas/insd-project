@@ -2,7 +2,13 @@
 
 import React, { createContext, useContext, useState } from 'react';
 
-const RegisterModalContext = createContext();
+const defaultRegister = {
+    isOpen: false,
+    openModal: () => {},
+    closeModal: () => {}
+};
+
+const RegisterModalContext = createContext(defaultRegister);
 
 export const RegisterModalProvider = ({ children }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -19,8 +25,5 @@ export const RegisterModalProvider = ({ children }) => {
 
 export const useRegisterModal = () => {
     const context = useContext(RegisterModalContext);
-    if (!context) {
-        throw new Error('useRegisterModal must be used within a RegisterModalProvider');
-    }
-    return context;
+    return context || defaultRegister;
 };

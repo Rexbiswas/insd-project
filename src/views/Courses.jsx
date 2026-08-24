@@ -6,7 +6,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import { ArrowUpRight, Search, Sparkles, MoveRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
+
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 
@@ -166,8 +167,7 @@ const CourseCard = ({ course, index }) => {
                 </p>
             </div>
 
-            <Link
-                to={course.path}
+            <Link href={course.path}
                 className="inline-flex items-center gap-3 text-black group-hover:text-pink-500 font-bold uppercase tracking-widest text-xs transition-colors duration-500 mt-auto"
             >
                 <span>Syllabus & Fees</span>
@@ -422,7 +422,7 @@ const Courses = () => {
 
                     <div className="flex flex-col sm:flex-row gap-6">
                         <MagneticButton>
-                            <Link to="/apply" className="flex items-center justify-center gap-3 px-10 py-5 bg-white text-black rounded-full font-bold uppercase tracking-widest text-sm hover:scale-105 hover:bg-pink-500 hover:text-white transition-all">
+                            <Link href="/apply" className="flex items-center justify-center gap-3 px-10 py-5 bg-white text-black rounded-full font-bold uppercase tracking-widest text-sm hover:scale-105 hover:bg-pink-500 hover:text-white transition-all">
                                 Apply Now <ArrowUpRight size={18} />
                             </Link>
                         </MagneticButton>

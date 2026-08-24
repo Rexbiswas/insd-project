@@ -12,7 +12,7 @@ import {
     Send,
     X
 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 
 const stateCityData = {
     "Andhra Pradesh": ["Vishakhapatnam", "Vijayawada"],
@@ -39,7 +39,7 @@ const stateCityData = {
 const states = Object.keys(stateCityData);
 
 const AviationForm = ({ isOpen, onClose }) => {
-    const navigate = useNavigate();
+    const router = useRouter();
 
     // Form State
     const [formData, setFormData] = useState({
@@ -118,7 +118,7 @@ const AviationForm = ({ isOpen, onClose }) => {
             if (response.ok) {
                 setStatus('success');
                 const submittedName = formData.name;
-                navigate('/aviation-thankyou', { state: { name: submittedName } });
+                router.push(`/aviation-thankyou?name=${encodeURIComponent(submittedName || '')}`);
                 setFormData({
                     name: '', email: '', phone: '', state: '', city: '', 
                     program: 'certificate course', course: 'Aviation & Cabin Crew', marketingConsent: false

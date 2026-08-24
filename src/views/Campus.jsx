@@ -2,7 +2,9 @@
 
 import React, { useRef, useLayoutEffect, useEffect, useState } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter, useParams } from 'next/navigation';
+
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MapPin, ArrowUpRight, ArrowLeft, Mic, Scissors, Monitor, Camera, Coffee, Utensils, Hexagon, Gem, Briefcase, Palette, Castle, BookOpen, Sun, Globe2, Compass, GraduationCap } from 'lucide-react';
@@ -92,7 +94,7 @@ const CampusDetail = ({ campus }) => {
                     </h1>
                 </motion.div>
 
-                <Link to="/campuses" className="absolute top-32 left-8 md:left-20 z-50 flex items-center gap-3 px-6 py-3 bg-white/80 backdrop-blur-xl rounded-full border border-black/5 hover:bg-black hover:text-white transition-all group">
+                <Link href="/campuses" className="absolute top-32 left-8 md:left-20 z-50 flex items-center gap-3 px-6 py-3 bg-white/80 backdrop-blur-xl rounded-full border border-black/5 hover:bg-black hover:text-white transition-all group">
                     <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
                     <span className="text-sm font-bold uppercase tracking-widest">All Campuses</span>
                 </Link>
@@ -223,7 +225,7 @@ const CampusDetail = ({ campus }) => {
 
 const Campuses = () => {
     const { campusId } = useParams();
-    const navigate = useNavigate();
+    const router = useRouter();
     const containerRef = useRef(null);
     const heroRef = useRef(null);
     const horizontalScrollRef = useRef(null);
@@ -536,7 +538,7 @@ const Campuses = () => {
                                     <span className="text-primary font-mono text-sm md:text-xl border border-primary/30 px-4 md:px-6 py-1 md:py-2 rounded-full w-fit block">{loc.num}</span>
                                     <h3 className="text-clamp-4xl font-black uppercase text-black tracking-tighter leading-none">{loc.city.split(' ')[0]}</h3>
                                     <p className="text-black/60 text-base md:text-xl font-light whitespace-normal max-w-sm"><span className="text-black font-bold">{loc.title}.</span> {loc.desc}</p>
-                                    <Link to={`/campuses/${loc.id}`} className="inline-block px-8 md:px-10 py-3 md:py-4 bg-black text-white font-bold uppercase tracking-widest rounded-full hover:bg-primary transition-all text-xs md:text-base">Explore Node</Link>
+                                    <Link href={`/campuses/${loc.id}`} className="inline-block px-8 md:px-10 py-3 md:py-4 bg-black text-white font-bold uppercase tracking-widest rounded-full hover:bg-primary transition-all text-xs md:text-base">Explore Node</Link>
                                 </div>
                                 <div className="w-full md:w-1/2 h-full rounded-[1.5rem] md:rounded-[2rem] overflow-hidden relative min-h-[200px] md:min-h-0">
                                     <img src={loc.img} className="loc-panel-img w-full h-full object-cover brightness-75 transition-all duration-1000 scale-125 group-hover:scale-100" />
