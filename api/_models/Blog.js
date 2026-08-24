@@ -12,4 +12,4 @@ const blogSchema = new mongoose.Schema({
     likes: { type: Number, default: 0 }
 }, { timestamps: true });
 
-export default mongoose.model('Blog', blogSchema);
+export default mongoose.models.Blog || mongoose.model('Blog', blogSchema);

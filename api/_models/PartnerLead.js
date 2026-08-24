@@ -19,4 +19,4 @@ const PartnerLeadSchema = new mongoose.Schema({
     address: { type: String },
 }, { timestamps: true });
 
-export default mongoose.model('PartnerLead', PartnerLeadSchema);
+export default mongoose.models.PartnerLead || mongoose.model('PartnerLead', PartnerLeadSchema);

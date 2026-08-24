@@ -43,4 +43,4 @@ const AdmissionLeadSchema = new mongoose.Schema({
     qualification: { type: String }
 }, { timestamps: true });
 
-export default mongoose.model('AdmissionLead', AdmissionLeadSchema);
+export default mongoose.models.AdmissionLead || mongoose.model('AdmissionLead', AdmissionLeadSchema);

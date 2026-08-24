@@ -31,4 +31,4 @@ const AviationLeadSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-export default mongoose.model('AviationLead', AviationLeadSchema);
+export default mongoose.models.AviationLead || mongoose.model('AviationLead', AviationLeadSchema);

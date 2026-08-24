@@ -24,4 +24,4 @@ const ParisLeadSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-export default mongoose.model('ParisLead', ParisLeadSchema);
+export default mongoose.models.ParisLead || mongoose.model('ParisLead', ParisLeadSchema);

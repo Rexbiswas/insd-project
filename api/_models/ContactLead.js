@@ -21,4 +21,4 @@ const ContactLeadSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-export default mongoose.model('ContactLead', ContactLeadSchema);
+export default mongoose.models.ContactLead || mongoose.model('ContactLead', ContactLeadSchema);

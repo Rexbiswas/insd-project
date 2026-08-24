@@ -6,25 +6,38 @@ const StepLeadSchema = new mongoose.Schema({
         required: true
     },
     mobile: {
-        type: String,
-        required: true
+        type: String
+    },
+    phone: {
+        type: String
     },
     email: {
         type: String,
         required: true
     },
+    state: {
+        type: String
+    },
     city: {
         type: String,
         required: true
     },
+    qualification: {
+        type: String
+    },
+    industry: {
+        type: String
+    },
+    course: {
+        type: String
+    },
     readyToStart: {
         type: String,
-        enum: ['yes', 'no'],
-        required: true
+        default: 'yes'
     },
     inquiryType: {
         type: String,
-        required: true
+        default: 'Career Guidance Inquiry'
     },
     marketingConsent: {
         type: Boolean,
@@ -32,4 +45,4 @@ const StepLeadSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-export default mongoose.model('StepLead', StepLeadSchema);
+export default mongoose.models.StepLead || mongoose.model('StepLead', StepLeadSchema);
