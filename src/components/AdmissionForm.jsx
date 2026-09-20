@@ -112,7 +112,7 @@ const AdmissionForm = ({ isModal = false, title, subtitle }) => {
                 // If it's not JSON, it's likely a server error page (HTML)
                 const text = await response.text();
                 console.error("Non-JSON response received:", text.substring(0, 200));
-                throw new Error(`Server returned non-JSON response (${response.status})`);
+                throw new Error("Unable to submit application at this moment. Please try again or contact admissions directly.");
             }
 
             if (response.ok) {

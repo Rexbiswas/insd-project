@@ -6,7 +6,7 @@ const __dirname = path.dirname(__filename);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: process.env.VERCEL ? undefined : 'standalone',
+  output: process.env.BUILD_STANDALONE === 'true' ? 'standalone' : undefined,
   reactStrictMode: true,
   devIndicators: false,
   images: {
@@ -112,14 +112,15 @@ const nextConfig = {
     ];
   },
   async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: process.env.NODE_ENV === 'production' 
-          ? '/api/:path*' 
-          : 'http://127.0.0.1:5001/api/:path*',
-      },
-    ];
+    if (process.env.BACKEND_URL) {
+      return [
+        {
+          source: '/api/:path*',
+          destination: `${process.env.BACKEND_URL}/api/:path*`,
+        },
+      ];
+    }
+    return [];
   },
 };
 

@@ -110,7 +110,7 @@ const StepLeadForm = ({ isModal = false, initialChoice = null, title = null, sub
             } else {
                 const text = await response.text();
                 console.error("Non-JSON response received:", text);
-                throw new Error(`Server returned non-JSON response (${response.status})`);
+                throw new Error("Unable to submit inquiry at this moment. Please try again or contact admissions directly.");
             }
 
             if (response.ok) {
