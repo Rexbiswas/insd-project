@@ -283,8 +283,18 @@ apiRouter.get('/ping', (req, res) => {
 app.use('/api/users', userRouter);
 app.get('/api', (req, res) => res.send('Working now!'));
 app.use('/api', express.static('public'));
+
+// Root health check
+app.get('/', (req, res) => {
+    res.json({
+        success: true,
+        message: 'INSD API Server is running',
+        status: 'online'
+    });
+});
+
+// API routes
 app.use('/api', apiRouter);
-app.use('/', apiRouter);
 
 // Global Error Handler for all requests
 app.use((err, req, res, next) => {
@@ -306,41 +316,7 @@ app.all('/api/*', (req, res) => {
     });
 });
 
-const getLocalIp = () => {
-    const interfaces = os.networkInterfaces();
-    for (const name of Object.keys(interfaces)) {
-        for (const iface of interfaces[name]) {
-            if (iface.family === 'IPv4' && !iface.internal) {
-                return iface.address;
-            }
-        }
-    }
-    return '0.0.0.0';
-};
-
-// =====================================================================
-// SERVER INITIALIZATION (Compatible with Vercel, cPanel, and Local)
-// =====================================================================
-
-// Always try to connect to the DB immediately when the file loads.
-// This ensures persistent environments (cPanel/Local) get connected right away.
+// Connect to Database
 connectDB();
-
-// Vercel handles the server listening internally. We ONLY run app.listen 
-// if we are NOT on Vercel. cPanel and Local environments require app.listen.
-if (!process.env.VERCEL) {
-    const port = process.env.PORT || 5001;
-    const localIp = getLocalIp();
-    
-    app.listen(port, '0.0.0.0', () => {
-        console.log(`\n🚀 INSD Backend is live on port ${port}!`);
-        if (process.env.NODE_ENV !== 'production') {
-            console.log(`🏠 Local:   http://localhost:${port}`);
-            console.log(`📱 Mobile:  http://${localIp}:${port}\n`);
-        } else {
-            console.log(`🌍 Environment: cPanel / Production`);
-        }
-    });
-}
 
 export default app;
